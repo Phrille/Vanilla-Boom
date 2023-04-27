@@ -12,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import phrille.vanillaboom.block.entity.ModBlockEntities;
 import phrille.vanillaboom.config.ConfigHandler;
+import phrille.vanillaboom.util.FuelHandler;
 import phrille.vanillaboom.util.Utils;
 
 @Mod(VanillaBoom.MOD_ID)
@@ -44,6 +45,7 @@ public class VanillaBoom {
             //ModConfiguredStructures.registerConfiguredStructures();
             //LootConditionTypes.registerLootConditions();
 
+            FuelHandler.registerBurnTimes();
             Utils.registerFlowerPots();
             Utils.addCompostMaterials();
         });
