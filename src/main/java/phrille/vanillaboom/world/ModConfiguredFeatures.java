@@ -25,7 +25,6 @@ import phrille.vanillaboom.block.ModBlocks;
 public class ModConfiguredFeatures {
     //Overworld
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_PERIDOTITE = key("ore_peridotite");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_FINE_GRAVEL = key("ore_fine_gravel");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DISK_HYDRO_ROCK = key("disk_hydro_rock");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ROSE_PATCHES = key("rose_patches");
 
@@ -33,8 +32,6 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_INFERNAL_ROCK = key("ore_infernal_rock");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_BONE_SAND = key("ore_bone_sand");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_WITHER_BONE_SAND = key("ore_wither_bone_sand");
-
-    public static final RuleTest SOUL_SOIL_FILLER = new BlockMatchTest(Blocks.SOUL_SOIL);
 
     private static ResourceKey<ConfiguredFeature<?, ?>> key(final String name) {
         return ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, new ResourceLocation(VanillaBoom.MOD_ID, name));
@@ -52,8 +49,8 @@ public class ModConfiguredFeatures {
 
             //Nether
             //register(ORE_INFERNAL_ROCK, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NETHERRACK, ModBlocks.INFERNAL_ROCK.getDefaultState(), 33)).withPlacement(Placement.MAGMA.configure(NoPlacementConfig.INSTANCE)).square().func_242731_b(4));
-            //register(ORE_BONE_SAND, Feature.ORE.withConfiguration(new OreFeatureConfig(SOUL_SOIL_FILLER, ModBlocks.BONE_SAND.getDefaultState(), 26)).withPlacement(Features.Placements.NETHER_SPRING_ORE_PLACEMENT).square().func_242731_b(16));
-            //register(ORE_WITHER_BONE_SAND, Feature.ORE.withConfiguration(new OreFeatureConfig(SOUL_SOIL_FILLER, ModBlocks.WITHER_BONE_SAND.getDefaultState(), 12)).withPlacement(Features.Placements.NETHER_SPRING_ORE_PLACEMENT).square().func_242731_b(10));
+            register(ORE_BONE_SAND, Feature.ORE.configured(Configs.BONE_SAND_CONFIG).rangeUniform(VerticalAnchor.absolute(20), VerticalAnchor.absolute(90)).squared().count(10));
+            register(ORE_WITHER_BONE_SAND, Feature.ORE.configured(Configs.WITHER_BONE_SAND_CONFIG).rangeUniform(VerticalAnchor.absolute(20), VerticalAnchor.absolute(62)).squared().count(8));
         }
 
         private static void register(final ResourceKey<ConfiguredFeature<?, ?>> key, final ConfiguredFeature<?, ?> configuredFeature) {
@@ -62,7 +59,17 @@ public class ModConfiguredFeatures {
     }
 
     public static final class Configs {
+        //Overworld
         public static final OreConfiguration PERIDOTITE_CONFIG = new OreConfiguration(OreConfiguration.Predicates.NATURAL_STONE, ModBlocks.PERIDOTITE.defaultBlockState(), 33);
         public static final RandomPatchConfiguration ROSE_CONFIG = new RandomPatchConfiguration.GrassConfigurationBuilder(new SimpleStateProvider(ModBlocks.ROSE.defaultBlockState()), SimpleBlockPlacer.INSTANCE).tries(32).build();
+
+        //Nether
+        public static final OreConfiguration BONE_SAND_CONFIG = new OreConfiguration(Predicates.SOUL_SOIL, ModBlocks.BONE_SAND.defaultBlockState(), 29);
+        public static final OreConfiguration WITHER_BONE_SAND_CONFIG = new OreConfiguration(Predicates.BONE_SAND, ModBlocks.WITHER_BONE_SAND.defaultBlockState(), 10);
+    }
+
+    public static final class Predicates {
+        public static final RuleTest SOUL_SOIL = new BlockMatchTest(Blocks.SOUL_SOIL);
+        public static final RuleTest BONE_SAND = new BlockMatchTest(ModBlocks.BONE_SAND);
     }
 }
