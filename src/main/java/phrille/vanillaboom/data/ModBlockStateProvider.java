@@ -1,6 +1,10 @@
 package phrille.vanillaboom.data;
 
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import phrille.vanillaboom.VanillaBoom;
@@ -63,5 +67,42 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.CHISELED_RED_NETHER_BRICKS);
         simpleBlock(ModBlocks.CHISELED_PURPUR_BLOCK);
         simpleBlock(ModBlocks.CHISELED_OBSIDIAN);
+
+        //Pillars
+        pillarBlock(ModBlocks.GRANITE_PILLAR);
+        pillarBlock(ModBlocks.DIORITE_PILLAR);
+        pillarBlock(ModBlocks.ANDESITE_PILLAR);
+        pillarBlock(ModBlocks.PERIDOTITE_PILLAR);
+        pillarBlock(ModBlocks.PRISMARINE_PILLAR);
+        pillarBlock(ModBlocks.DARK_PRISMARINE_PILLAR);
+        pillarBlock(ModBlocks.END_STONE_PILLAR);
+        pillarBlock(ModBlocks.NETHERRACK_PILLAR);
+        pillarBlock(ModBlocks.RED_NETHER_PILLAR);
+        pillarBlock(ModBlocks.OBSIDIAN_PILLAR);
+
+        //Wood Variations
+        bookshelfBlock(ModBlocks.SPRUCE_BOOKSHELF, Blocks.SPRUCE_PLANKS);
+        bookshelfBlock(ModBlocks.BIRCH_BOOKSHELF, Blocks.BIRCH_PLANKS);
+        bookshelfBlock(ModBlocks.JUNGLE_BOOKSHELF, Blocks.JUNGLE_PLANKS);
+        bookshelfBlock(ModBlocks.ACACIA_BOOKSHELF, Blocks.ACACIA_PLANKS);
+        bookshelfBlock(ModBlocks.DARK_OAK_BOOKSHELF, Blocks.DARK_OAK_PLANKS);
+        bookshelfBlock(ModBlocks.CRIMSON_BOOKSHELF, Blocks.CRIMSON_PLANKS);
+        bookshelfBlock(ModBlocks.WARPED_BOOKSHELF, Blocks.WARPED_PLANKS);
+    }
+
+    public void pillarBlock(Block block) {
+        axisBlock((RotatedPillarBlock) block, extend(blockTexture(block), "_side"), extend(blockTexture(block), "_top"));
+    }
+
+    public void bookshelfBlock(Block block, Block plank) {
+        simpleBlock(block, models().cubeColumn(name(block), blockTexture(block), blockTexture(plank)));
+    }
+
+    private String name(Block block) {
+        return block.getRegistryName().getPath();
+    }
+
+    private ResourceLocation extend(ResourceLocation rl, String suffix) {
+        return new ResourceLocation(rl.getNamespace(), rl.getPath() + suffix);
     }
 }
