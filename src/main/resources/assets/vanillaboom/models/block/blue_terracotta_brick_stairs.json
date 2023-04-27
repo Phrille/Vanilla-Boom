@@ -1,0 +1,8 @@
+{
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "vanillaboom:block/blue_terracotta_bricks",
+    "top": "vanillaboom:block/blue_terracotta_bricks",
+    "side": "vanillaboom:block/blue_terracotta_bricks"
+  }
+}

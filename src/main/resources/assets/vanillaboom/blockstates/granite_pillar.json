@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":  { "model": "vanillaboom:block/granite_pillar" },
+        "axis=z":   { "model": "vanillaboom:block/granite_pillar", "x": 90 },
+        "axis=x":   { "model": "vanillaboom:block/granite_pillar", "x": 90, "y": 90 }
+    }
+}

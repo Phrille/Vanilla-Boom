@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "vanillaboom:horizontal_painting",
+    "count": 8
+  },
+  "pattern": [
+    "x x",
+    "yyy",
+    "x x"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "tag": "forge:rods/wooden"
+    },
+    "y": {
+      "item": "vanillaboom:canvas"
+    }
+  }
+}

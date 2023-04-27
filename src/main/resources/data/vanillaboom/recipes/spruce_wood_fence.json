@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "vanillaboom:spruce_wood_fence",
+    "count": 3
+  },
+  "pattern": [
+    "xyx",
+    "xyx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:spruce_wood"
+    },
+    "y": {
+      "item": "minecraft:stick"
+    }
+  }
+}

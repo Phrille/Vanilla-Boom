@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "vanillaboom:spruce_bookshelf",
+    "vanillaboom:birch_bookshelf",
+    "vanillaboom:jungle_bookshelf",
+    "vanillaboom:acacia_bookshelf",
+    "vanillaboom:dark_oak_bookshelf",
+    "vanillaboom:warped_bookshelf",
+    "vanillaboom:crimson_bookshelf"
+  ]
+}

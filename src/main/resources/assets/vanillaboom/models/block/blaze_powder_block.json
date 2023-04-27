@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "vanillaboom:block/blaze_powder_block"
+    }
+}

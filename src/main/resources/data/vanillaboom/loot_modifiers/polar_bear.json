@@ -1,0 +1,23 @@
+{
+  "type": "vanillaboom:polar_bear",
+  "conditions": 
+  [    
+    {
+      "condition": "minecraft:entity_properties",
+      "predicate": {
+        "type": "minecraft:polar_bear"
+      },
+      "entity": "this"
+    }
+  ],
+  "table": "vanillaboom:entities/polar_bear",
+  "overwrites":
+  [
+    {
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:salmon"
+    }
+  ]
+}

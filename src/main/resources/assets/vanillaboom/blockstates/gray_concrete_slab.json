@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "vanillaboom:block/gray_concrete_slab"
+    },
+    "type=top": {
+      "model": "vanillaboom:block/gray_concrete_slab_top"
+    },
+    "type=double": {
+      "model": "minecraft:block/gray_concrete"
+    }
+  }
+}

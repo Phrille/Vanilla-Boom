@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "vanillaboom:yellow_stained_soul_glass_pane",
+    "count": 16
+  },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "vanillaboom:light_blue_stained_soul_glass"
+    }
+  }
+}

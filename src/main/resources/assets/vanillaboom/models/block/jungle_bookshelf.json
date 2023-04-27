@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "minecraft:block/jungle_planks",
+        "side": "vanillaboom:block/jungle_bookshelf"
+    }
+}

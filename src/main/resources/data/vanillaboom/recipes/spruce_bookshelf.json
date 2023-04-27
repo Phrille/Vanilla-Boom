@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "vanillaboom:spruce_bookshelf"
+  },
+  "pattern": [
+    "xxx",
+    "yyy",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:spruce_planks"
+    },
+    "y": {
+      "item": "minecraft:book"
+    }
+  }
+}

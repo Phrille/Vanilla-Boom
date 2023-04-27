@@ -1,0 +1,12 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "vanillaboom:magenta_dye_block"
+    }
+  ],
+  "result": {
+    "item": "minecraft:magenta_dye",
+    "count": 9
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "vanillaboom:block/gravel_bricks",
+    "top": "vanillaboom:block/gravel_bricks",
+    "side": "vanillaboom:block/gravel_bricks"
+  }
+}

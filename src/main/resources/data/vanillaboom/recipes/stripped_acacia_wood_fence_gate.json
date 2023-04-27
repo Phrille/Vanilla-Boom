@@ -1,0 +1,18 @@
+{
+  "result": {
+    "item": "vanillaboom:stripped_acacia_wood_fence_gate"
+  },
+  "pattern": [
+    "xyx",
+    "xyx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "tag": "forge:rods/wooden"
+    },
+    "y": {
+      "item": "minecraft:stripped_acacia_wood"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "blasting",
+  "ingredient": {
+    "item": "minecraft:magma_block"
+  },
+  "result": "vanillaboom:magma_brick",
+  "experience": 0.1,
+  "cookingtime": 100
+}

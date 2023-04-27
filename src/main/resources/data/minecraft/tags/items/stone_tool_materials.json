@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:stone",
+    "vanillaboom:cobblestone_bricks",
+    "vanillaboom:gravel_stone"
+  ]
+}

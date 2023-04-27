@@ -1,0 +1,77 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "vanillaboom:block/yellow_stained_soul_glass_pane_post"
+      }
+    },
+    {
+      "apply": {
+        "model": "vanillaboom:block/yellow_stained_soul_glass_pane_side"
+      },
+      "when": {
+        "north": true
+      }
+    },
+    {
+      "apply": {
+        "y": 90,
+        "model": "vanillaboom:block/yellow_stained_soul_glass_pane_side"
+      },
+      "when": {
+        "east": true
+      }
+    },
+    {
+      "apply": {
+        "model": "vanillaboom:block/yellow_stained_soul_glass_pane_side_alt"
+      },
+      "when": {
+        "south": true
+      }
+    },
+    {
+      "apply": {
+        "y": 90,
+        "model": "vanillaboom:block/yellow_stained_soul_glass_pane_side_alt"
+      },
+      "when": {
+        "west": true
+      }
+    },
+    {
+      "apply": {
+        "model": "vanillaboom:block/yellow_stained_soul_glass_pane_noside"
+      },
+      "when": {
+        "north": false
+      }
+    },
+    {
+      "apply": {
+        "model": "vanillaboom:block/yellow_stained_soul_glass_pane_noside_alt"
+      },
+      "when": {
+        "east": false
+      }
+    },
+    {
+      "apply": {
+        "y": 90,
+        "model": "vanillaboom:block/yellow_stained_soul_glass_pane_noside_alt"
+      },
+      "when": {
+        "south": false
+      }
+    },
+    {
+      "apply": {
+        "y": 270,
+        "model": "vanillaboom:block/yellow_stained_soul_glass_pane_noside"
+      },
+      "when": {
+        "west": false
+      }
+    }
+  ]
+}

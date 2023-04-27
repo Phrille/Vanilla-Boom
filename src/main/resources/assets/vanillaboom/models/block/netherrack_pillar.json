@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "vanillaboom:block/netherrack_pillar_top",
+        "side": "vanillaboom:block/netherrack_pillar_side"
+    }
+}

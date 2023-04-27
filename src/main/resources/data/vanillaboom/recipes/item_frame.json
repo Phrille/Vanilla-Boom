@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "minecraft:item_frame",
+    "count": 4
+  },
+  "pattern": [
+    "xxx",
+    "xyx",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:stick"
+    },
+    "y": {
+      "item": "vanillaboom:polar_bear_fur"
+    }
+  }
+}

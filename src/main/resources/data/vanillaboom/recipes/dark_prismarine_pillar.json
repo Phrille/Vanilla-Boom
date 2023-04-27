@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "vanillaboom:dark_prismarine_pillar",
+    "count": 2
+  },
+  "pattern": [
+    "x",
+    "x"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "vanillaboom:polished_dark_prismarine"
+    }
+  }
+}

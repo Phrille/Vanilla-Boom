@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "vanillaboom:block/terracotta_slab"
+    },
+    "type=top": {
+      "model": "vanillaboom:block/terracotta_slab_top"
+    },
+    "type=double": {
+      "model": "minecraft:block/terracotta"
+    }
+  }
+}

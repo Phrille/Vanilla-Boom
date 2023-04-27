@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "vanillaboom:terracotta_brick_wall",
+    "count": 6
+  },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "vanillaboom:terracotta_bricks"
+    }
+  }
+}

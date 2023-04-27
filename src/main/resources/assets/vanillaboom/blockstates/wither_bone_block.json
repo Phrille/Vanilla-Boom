@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":  { "model": "vanillaboom:block/wither_bone_block" },
+        "axis=z":   { "model": "vanillaboom:block/wither_bone_block", "x": 90 },
+        "axis=x":   { "model": "vanillaboom:block/wither_bone_block", "x": 90, "y": 90 }
+    }
+}

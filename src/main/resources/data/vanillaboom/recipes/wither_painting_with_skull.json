@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "vanillaboom:wither_painting",
+    "count": 64
+  },
+  "pattern": [
+    "xpy",
+    " s "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "p": {
+      "item": "vanillaboom:medium_painting"
+    },
+    "s": {
+      "item": "minecraft:wither_skeleton_skull"
+    },
+    "x": {
+      "tag": "forge:dyes/red"
+    },
+    "y": {
+      "tag": "forge:dyes/green"
+    }
+  }
+}

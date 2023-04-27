@@ -1,0 +1,7 @@
+{
+  "parent": "block/template_glass_pane_side_alt",
+  "textures": {
+    "edge": "vanillaboom:block/black_stained_soul_glass_pane_top",
+    "pane": "vanillaboom:block/black_stained_soul_glass"
+  }
+}

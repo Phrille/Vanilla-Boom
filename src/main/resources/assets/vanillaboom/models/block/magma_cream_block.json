@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "bottom": "vanillaboom:block/magma_cream_block_bottom",
+        "top": "vanillaboom:block/magma_cream_block_top",
+        "side": "vanillaboom:block/magma_cream_block_side"
+    }
+}

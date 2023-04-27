@@ -1,0 +1,18 @@
+{
+  "result": {
+    "item": "vanillaboom:spruce_wood_fence_gate"
+  },
+  "pattern": [
+    "xyx",
+    "xyx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:stick"
+    },
+    "y": {
+      "item": "minecraft:spruce_wood"
+    }
+  }
+}

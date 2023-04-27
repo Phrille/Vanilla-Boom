@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "vanillaboom:aztec2_painting"
+  },
+  "pattern": [
+    "xpy",
+    " s "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "p": {
+      "item": "vanillaboom:small_painting"
+    },
+    "s": {
+      "item": "minecraft:poisonous_potato"
+    },
+    "x": {
+      "tag": "forge:dyes/blue"
+    },
+    "y": {
+      "tag": "forge:dyes/green"
+    }
+  }
+}

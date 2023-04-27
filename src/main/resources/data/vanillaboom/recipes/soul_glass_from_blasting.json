@@ -1,0 +1,9 @@
+{
+  "type": "blasting",
+  "ingredient": {
+    "item": "minecraft:soul_sand"
+  },
+  "result": "vanillaboom:soul_glass",
+  "experience": 0.1,
+  "cookingtime": 100
+}

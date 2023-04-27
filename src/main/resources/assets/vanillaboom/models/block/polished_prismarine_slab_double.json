@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "side": "vanillaboom:block/polished_prismarine_slab_side",
+        "end": "vanillaboom:block/polished_prismarine"
+    }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "vanillaboom:polished_prismarine"
+  },
+  "result": "vanillaboom:polished_prismarine_wall",
+  "count": 1
+}

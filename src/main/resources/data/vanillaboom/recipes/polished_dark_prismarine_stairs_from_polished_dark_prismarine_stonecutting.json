@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "vanillaboom:polished_dark_prismarine"
+  },
+  "result": "vanillaboom:polished_dark_prismarine_stairs",
+  "count": 1
+}

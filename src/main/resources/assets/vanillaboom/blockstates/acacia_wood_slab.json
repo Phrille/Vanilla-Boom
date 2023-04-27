@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "vanillaboom:block/acacia_wood_slab"
+    },
+    "type=top": {
+      "model": "vanillaboom:block/acacia_wood_slab_top"
+    },
+    "type=double": {
+      "model": "minecraft:block/acacia_wood"
+    }
+  }
+}

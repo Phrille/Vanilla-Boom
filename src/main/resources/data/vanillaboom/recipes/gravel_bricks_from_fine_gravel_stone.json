@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "vanillaboom:gravel_bricks",
+    "count": 4
+  },
+  "pattern": [
+    "xx",
+    "xx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "vanillaboom:fine_gravel_stone"
+    }
+  }
+}

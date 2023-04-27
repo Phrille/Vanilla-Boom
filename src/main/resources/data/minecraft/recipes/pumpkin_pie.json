@@ -1,0 +1,35 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "vanillaboom:pumpkin_slice"
+    },
+    {
+      "item": "vanillaboom:pumpkin_slice"
+    },
+    {
+      "item": "vanillaboom:pumpkin_slice"
+    },
+    {
+      "item": "vanillaboom:pumpkin_slice"
+    },
+    {
+      "item": "vanillaboom:pumpkin_slice"
+    },
+    {
+      "item": "vanillaboom:pumpkin_slice"
+    },
+    {
+      "item": "vanillaboom:pumpkin_slice"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "tag": "forge:eggs"
+    }
+  ],
+  "result": {
+    "item": "minecraft:pumpkin_pie"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "vanillaboom:obsidian_bricks",
+    "vanillaboom:obsidian_pillar",
+    "vanillaboom:chiseled_obsidian",
+    "vanillaboom:obsidian_brick_stairs",
+    "vanillaboom:obsidian_brick_slab",
+    "vanillaboom:obsidian_brick_wall",
+    "vanillaboom:obsidian_stairs",
+    "vanillaboom:obsidian_slab",
+    "vanillaboom:obsidian_wall",
+    "vanillaboom:chiseled_obsidian_stairs",
+    "vanillaboom:chiseled_obsidian_slab",
+    "vanillaboom:chiseled_obsidian_wall",
+    "vanillaboom:bedrock_stairs",
+    "vanillaboom:bedrock_slab",
+    "vanillaboom:bedrock_wall"
+  ]
+}

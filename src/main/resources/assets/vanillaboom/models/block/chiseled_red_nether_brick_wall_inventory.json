@@ -1,0 +1,6 @@
+{
+  "parent": "block/wall_inventory",
+  "textures": {
+    "wall": "vanillaboom:block/chiseled_red_nether_bricks"
+  }
+}

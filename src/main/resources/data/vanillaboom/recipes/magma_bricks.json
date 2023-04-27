@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "vanillaboom:magma_bricks"
+  },
+  "pattern": [
+    "xx",
+    "xx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "tag": "forge:ingots/magma_brick"
+    }
+  }
+}

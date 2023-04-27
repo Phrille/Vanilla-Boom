@@ -1,0 +1,7 @@
+{
+  "parent": "block/template_glass_pane_post",
+  "textures": {
+    "edge": "vanillaboom:block/pink_stained_soul_glass_pane_top",
+    "pane": "vanillaboom:block/pink_stained_soul_glass"
+  }
+}

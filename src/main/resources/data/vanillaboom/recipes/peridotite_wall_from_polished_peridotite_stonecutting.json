@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "vanillaboom:polished_peridotite"
+  },
+  "result": "vanillaboom:peridotite_wall",
+  "count": 1
+}

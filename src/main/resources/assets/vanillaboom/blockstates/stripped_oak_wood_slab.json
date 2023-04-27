@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "vanillaboom:block/stripped_oak_wood_slab"
+    },
+    "type=top": {
+      "model": "vanillaboom:block/stripped_oak_wood_slab_top"
+    },
+    "type=double": {
+      "model": "minecraft:block/stripped_oak_wood"
+    }
+  }
+}

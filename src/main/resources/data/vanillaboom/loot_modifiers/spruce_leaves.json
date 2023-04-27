@@ -1,0 +1,13 @@
+{
+  "type": "vanillaboom:spruce_leaves",
+  "conditions": [
+    {
+      "condition": "block_state_property",
+      "block":"minecraft:spruce_leaves"
+    }
+  ],
+  "table": "vanillaboom:blocks/spruce_leaves",
+  "overwrites":
+  [
+  ]
+}

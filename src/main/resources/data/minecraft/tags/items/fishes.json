@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "vanillaboom:perch",
+    "vanillaboom:tuna",
+    "vanillaboom:eel",
+    "vanillaboom:pike",
+    "vanillaboom:cooked_perch",
+    "vanillaboom:cooked_tuna",
+    "vanillaboom:cooked_eel",
+    "vanillaboom:cooked_pike"
+  ]
+}

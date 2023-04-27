@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "vanillaboom:block/light_gray_stained_soul_glass"
+  }
+}

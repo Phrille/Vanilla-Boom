@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "vanillaboom:block/hydro_rock_slab"
+    },
+    "type=top": {
+      "model": "vanillaboom:block/hydro_rock_slab_top"
+    },
+    "type=double": {
+      "model": "vanillaboom:block/hydro_rock"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "vanillaboom:block/obsidian_pillar_top",
+        "side": "vanillaboom:block/obsidian_pillar_side"
+    }
+}

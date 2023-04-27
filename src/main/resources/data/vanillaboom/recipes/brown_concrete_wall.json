@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "vanillaboom:brown_concrete_wall",
+    "count": 6
+  },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:brown_concrete"
+    }
+  }
+}

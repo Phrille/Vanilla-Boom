@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "vanillaboom:pointer_painting"
+  },
+  "pattern": [
+    "xpy",
+    " s "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "p": {
+      "item": "vanillaboom:large_painting"
+    },
+    "s": {
+      "item": "minecraft:snowball"
+    },
+    "x": {
+      "tag": "forge:dyes/white"
+    },
+    "y": {
+      "tag": "forge:dyes/orange"
+    }
+  }
+}

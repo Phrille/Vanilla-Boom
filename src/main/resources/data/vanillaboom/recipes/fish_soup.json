@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "vanillaboom:fish_soup"
+  },
+  "type": "minecraft:crafting_shaped",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "tag": "minecaft:items/fishes"
+    },
+    {
+      "tag": "minecaft:items/fishes"
+    }
+  ]
+}

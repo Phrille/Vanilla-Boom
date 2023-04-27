@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "vanillaboom:dark_oak_bookshelf"
+  },
+  "pattern": [
+    "xxx",
+    "yyy",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:dark_oak_planks"
+    },
+    "y": {
+      "item": "minecraft:book"
+    }
+  }
+}

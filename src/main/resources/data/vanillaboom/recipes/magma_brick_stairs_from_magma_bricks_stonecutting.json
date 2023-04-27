@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "vanillaboom:magma_bricks"
+  },
+  "result": "vanillaboom:magma_brick_stairs",
+  "count": 1
+}

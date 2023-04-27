@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "vanillaboom:block/pink_dye_block"
+    }
+}

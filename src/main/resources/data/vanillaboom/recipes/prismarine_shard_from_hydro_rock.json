@@ -1,0 +1,11 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "vanillaboom:hydro_rock"
+    }
+  ],
+  "result": {
+    "item": "minecraft:prismarine_shard"
+  }
+}

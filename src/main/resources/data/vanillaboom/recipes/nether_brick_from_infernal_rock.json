@@ -1,0 +1,11 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "vanillaboom:infernal_rock"
+    }
+  ],
+  "result": {
+    "item": "minecraft:nether_brick"
+  }
+}

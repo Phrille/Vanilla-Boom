@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":  { "model": "vanillaboom:block/dark_prismarine_pillar" },
+        "axis=z":   { "model": "vanillaboom:block/dark_prismarine_pillar", "x": 90 },
+        "axis=x":   { "model": "vanillaboom:block/dark_prismarine_pillar", "x": 90, "y": 90 }
+    }
+}

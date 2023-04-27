@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "vanillaboom:fine_gravel_stone"
+  },
+  "result": "vanillaboom:gravel_brick_wall",
+  "count": 1
+}

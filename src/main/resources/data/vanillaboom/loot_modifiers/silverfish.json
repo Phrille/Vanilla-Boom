@@ -1,0 +1,17 @@
+{
+  "type": "vanillaboom:silverfish",
+  "conditions": 
+  [    
+    {
+      "condition": "minecraft:entity_properties",
+      "predicate": {
+        "type": "minecraft:silverfish"
+      },
+      "entity": "this"
+    }
+  ],
+  "table": "vanillaboom:entities/silverfish",
+  "overwrites":
+  [
+  ]
+}

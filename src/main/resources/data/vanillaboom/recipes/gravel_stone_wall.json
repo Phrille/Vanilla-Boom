@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "vanillaboom:gravel_stone_wall",
+    "count": 6
+  },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "vanillaboom:gravel_stone"
+    }
+  }
+}

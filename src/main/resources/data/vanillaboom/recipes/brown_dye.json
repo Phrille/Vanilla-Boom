@@ -1,0 +1,12 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "vanillaboom:brown_dye_block"
+    }
+  ],
+  "result": {
+    "item": "minecraft:brown_dye",
+    "count": 9
+  }
+}

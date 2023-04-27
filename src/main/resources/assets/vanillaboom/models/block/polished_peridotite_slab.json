@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "vanillaboom:block/polished_peridotite",
+    "top": "vanillaboom:block/polished_peridotite",
+    "side": "vanillaboom:block/polished_peridotite"
+  }
+}

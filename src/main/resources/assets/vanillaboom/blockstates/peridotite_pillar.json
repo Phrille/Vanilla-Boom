@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":  { "model": "vanillaboom:block/peridotite_pillar" },
+        "axis=z":   { "model": "vanillaboom:block/peridotite_pillar", "x": 90 },
+        "axis=x":   { "model": "vanillaboom:block/peridotite_pillar", "x": 90, "y": 90 }
+    }
+}

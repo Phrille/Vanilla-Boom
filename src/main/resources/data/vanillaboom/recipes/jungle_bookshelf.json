@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "vanillaboom:jungle_bookshelf"
+  },
+  "pattern": [
+    "xxx",
+    "yyy",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:jungle_planks"
+    },
+    "y": {
+      "item": "minecraft:book"
+    }
+  }
+}

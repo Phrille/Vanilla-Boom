@@ -1,0 +1,20 @@
+{
+  "type": "vanillaboom:drowned",
+  "conditions": 
+  [    
+    {
+      "condition": "minecraft:entity_properties",
+      "predicate": {
+        "type": "minecraft:drowned"
+      },
+      "entity": "this"
+    }
+  ],
+  "table": "vanillaboom:entities/drowned",
+  "overwrites":
+  [
+    {
+      "item":  "minecraft:rotten_flesh"   
+    }
+  ]
+}

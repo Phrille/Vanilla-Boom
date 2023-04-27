@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "vanillaboom:oak_wood_stairs",
+    "vanillaboom:spruce_wood_stairs",
+    "vanillaboom:birch_wood_stairs",
+    "vanillaboom:jungle_wood_stairs",      
+    "vanillaboom:acacia_wood_stairs", 
+    "vanillaboom:dark_oak_wood_stairs", 
+    "vanillaboom:crimson_hyphae_stairs",
+    "vanillaboom:warped_hyphae_stairs",
+    "vanillaboom:stripped_oak_wood_stairs",
+    "vanillaboom:stripped_spruce_wood_stairs",
+    "vanillaboom:stripped_birch_wood_stairs",
+    "vanillaboom:stripped_jungle_wood_stairs",      
+    "vanillaboom:stripped_acacia_wood_stairs", 
+    "vanillaboom:stripped_dark_oak_wood_stairs",     
+    "vanillaboom:stripped_crimson_hyphae_stairs",
+    "vanillaboom:stripped_warped_hyphae_stairs"
+  ]
+}

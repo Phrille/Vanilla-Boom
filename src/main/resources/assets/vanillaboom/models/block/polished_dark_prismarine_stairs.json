@@ -1,0 +1,8 @@
+{
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "vanillaboom:block/polished_dark_prismarine",
+    "top": "vanillaboom:block/polished_dark_prismarine",
+    "side": "vanillaboom:block/polished_dark_prismarine"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "vanillaboom:oak_wood_slab",
+    "vanillaboom:spruce_wood_slab",
+    "vanillaboom:birch_wood_slab",
+    "vanillaboom:jungle_wood_slab",      
+    "vanillaboom:acacia_wood_slab", 
+    "vanillaboom:dark_oak_wood_slab", 
+    "vanillaboom:crimson_hyphae_slab",
+    "vanillaboom:warped_hyphae_slab",
+    "vanillaboom:stripped_oak_wood_slab",
+    "vanillaboom:stripped_spruce_wood_slab",
+    "vanillaboom:stripped_birch_wood_slab",
+    "vanillaboom:stripped_jungle_wood_slab",      
+    "vanillaboom:stripped_acacia_wood_slab", 
+    "vanillaboom:stripped_dark_oak_wood_slab",     
+    "vanillaboom:stripped_crimson_hyphae_slab",
+    "vanillaboom:stripped_warped_hyphae_slab"
+  ]
+}

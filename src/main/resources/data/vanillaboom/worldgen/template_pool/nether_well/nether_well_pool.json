@@ -1,0 +1,33 @@
+{
+  "name": "vanillaboom:nether_well/nether_well_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 3,
+      "element": {
+        "location": "vanillaboom:nether_well/nether_brick_well",
+        "processors": "vanillaboom:nether_brick_well",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "vanillaboom:nether_well/red_nether_brick_well",
+        "processors": "vanillaboom:red_nether_brick_well",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "vanillaboom:nether_well/blackstone_brick_well",
+        "processors": "vanillaboom:blackstone_brick_well",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

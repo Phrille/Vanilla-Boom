@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "vanillaboom:spruce_ladder",
+    "count": 3
+  },
+  "pattern": [
+    "x x",
+    "xyx",
+    "x x"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:stick"
+    },
+    "y": {
+      "item": "minecraft:spruce_slab"
+    }
+  }
+}

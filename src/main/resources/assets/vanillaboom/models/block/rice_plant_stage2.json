@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "vanillaboom:block/rice_plant_stage2"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "block/inner_stairs",
+  "textures": {
+    "bottom": "vanillaboom:block/cracked_red_nether_bricks",
+    "top": "vanillaboom:block/cracked_red_nether_bricks",
+    "side": "vanillaboom:block/cracked_red_nether_bricks"
+  }
+}

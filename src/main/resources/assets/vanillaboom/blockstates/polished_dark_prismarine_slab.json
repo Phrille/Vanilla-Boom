@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "vanillaboom:block/polished_dark_prismarine_slab"
+    },
+    "type=top": {
+      "model": "vanillaboom:block/polished_dark_prismarine_slab_top"
+    },
+    "type=double": {
+      "model": "vanillaboom:block/polished_dark_prismarine_slab_double"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "vanillaboom:yellow_dye_block"
+  },
+  "pattern": [
+    "xxx",
+    "xxx",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "tag": "forge:dyes/yellow"
+    }
+  }
+}

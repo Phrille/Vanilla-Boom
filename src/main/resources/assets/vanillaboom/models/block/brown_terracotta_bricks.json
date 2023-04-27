@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "vanillaboom:block/brown_terracotta_bricks"
+    }
+}

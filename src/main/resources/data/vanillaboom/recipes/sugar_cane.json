@@ -1,0 +1,12 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "vanillaboom:sugar_cane_block"
+    }
+  ],
+  "result": {
+    "item": "minecraft:sugar_cane",
+    "count": 9
+  }
+}

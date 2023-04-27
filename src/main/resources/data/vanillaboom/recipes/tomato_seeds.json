@@ -1,0 +1,11 @@
+{
+  "result": {
+    "item": "vanillaboom:tomato_seeds"
+  },
+  "ingredients": [
+    {
+      "item": "vanillaboom:tomato"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

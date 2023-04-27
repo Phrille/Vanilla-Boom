@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "vanillaboom:block/chiseled_red_nether_brick_slab"
+    },
+    "type=top": {
+      "model": "vanillaboom:block/chiseled_red_nether_brick_slab_top"
+    },
+    "type=double": {
+      "model": "vanillaboom:block/chiseled_red_nether_bricks"
+    }
+  }
+}

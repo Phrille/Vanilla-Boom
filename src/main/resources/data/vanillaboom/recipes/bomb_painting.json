@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "vanillaboom:bomb_painting"
+  },
+  "pattern": [
+    "xpy",
+    " s "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "p": {
+      "item": "vanillaboom:small_painting"
+    },
+    "s": {
+      "item": "minecraft:tnt"
+    },
+    "x": {
+      "tag": "forge:dyes/yellow"
+    },
+    "y": {
+      "tag": "forge:dyes/light_blue"
+    }
+  }
+}

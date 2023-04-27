@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "vanillaboom:prismarine_arrow"
+  },
+  "pattern": [
+    "x",
+    "y",
+    "z"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:prismarine_shard"
+    },
+    "y": {
+      "tag": "forge:rods/wooden"
+    },
+    "z": {
+      "tag": "forge:feathers"
+    }
+  }
+}

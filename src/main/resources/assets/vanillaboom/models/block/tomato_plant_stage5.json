@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "vanillaboom:block/tomato_plant_stage5"
+  }
+}

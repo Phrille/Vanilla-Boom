@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "vanillaboom:canvas",
+    "count": 3
+  },
+  "pattern": [
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:paper"
+    }
+  }
+}

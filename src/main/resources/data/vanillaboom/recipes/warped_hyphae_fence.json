@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "vanillaboom:warped_hyphae_fence",
+    "count": 3
+  },
+  "pattern": [
+    "xyx",
+    "xyx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:warped_hyphae"
+    },
+    "y": {
+      "tag": "forge:rods/wooden"
+    }
+  }
+}

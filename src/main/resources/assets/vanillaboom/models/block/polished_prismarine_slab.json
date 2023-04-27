@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "vanillaboom:block/polished_prismarine",
+    "top": "vanillaboom:block/polished_prismarine",
+    "side": "vanillaboom:block/polished_prismarine_slab_side"
+  }
+}

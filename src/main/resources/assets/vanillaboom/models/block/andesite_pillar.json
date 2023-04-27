@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "vanillaboom:block/andesite_pillar_top",
+        "side": "vanillaboom:block/andesite_pillar_side"
+    }
+}

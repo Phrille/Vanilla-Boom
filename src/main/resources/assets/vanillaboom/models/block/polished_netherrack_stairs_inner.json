@@ -1,0 +1,8 @@
+{
+  "parent": "block/inner_stairs",
+  "textures": {
+    "bottom": "vanillaboom:block/polished_netherrack",
+    "top": "vanillaboom:block/polished_netherrack",
+    "side": "vanillaboom:block/polished_netherrack"
+  }
+}

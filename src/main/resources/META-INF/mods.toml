@@ -1,0 +1,60 @@
+# This is an example mods.toml file. It contains the data relating to the loading mods.
+# There are several mandatory fields (#mandatory), and many more that are optional (#optional).
+# The overall format is standard TOML format, v0.5.0.
+# Note that there are a couple of TOML lists in this file.
+# Find more information on toml format here:  https://github.com/toml-lang/toml
+# The name of the mod loader type to load - for regular FML @Mod mods it should be javafml
+modLoader="javafml" #mandatory
+# A version range to match for said mod loader - for regular FML @Mod it will be the forge version
+loaderVersion="[37,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+# The license for you mod. This is mandatory metadata and allows for easier comprehension of your redistributive properties.
+# Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
+license="GNU General Public License v3.0"
+# A URL to refer people to when problems occur with this mod
+issueTrackerURL="https://github.com/MinecraftBoomMod/Minecraft-Boom/issues/" #optional
+# A list of mods - how many allowed here is determined by the individual mod loader
+[[mods]] #mandatory
+# The modid of the mod
+modId="vanillaboom" #mandatory
+# The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
+# ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
+# see the associated build.gradle script for how to populate this completely automatically during a build
+version="1.8.0.0" #mandatory
+ # A display name for the mod
+displayName="Vanilla Boom" #mandatory
+# A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
+#updateJSONURL="https://change.me.example.invalid/updates.json" #optional
+# A URL for the "homepage" for this mod, displayed in the mod UI
+displayURL="https://www.curseforge.com/minecraft/mc-mods/vanilla-boom" #optional
+# A file name (in the root of the mod JAR) containing a logo for display
+logoFile="vanillaboom_logo.png" #optional
+# A text field displayed in the mod UI
+credits="Phrille as mod author and maintainer. RetroPacifict as current texture artist. Special thanks to RatavierCreations." #optional
+# A text field displayed in the mod UI
+authors="Phrille" #optional
+# The description text for the mod (multi line!) (#mandatory)
+description='''
+Exploiting the potential of the game
+------------------------------------
+Vanilla Boom is a mod that aims to expand the vanilla experience. All things that are added, block, items, mobs and structures, are in the spirit of the vanilla game. This is a mod for those of you who love the essence of vanilla, but are just looking to add that little extra. Blocks that should be in the game but aren't, missing items and extra features to make the game a little bit more appealing, here they all are. Knock yourself out...
+'''
+# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+[[dependencies.examplemod]] #optional
+    # the modid of the dependency
+    modId="forge" #mandatory
+    # Does this dependency have to exist - if not, ordering below must be specified
+    mandatory=true #mandatory
+    # The version range of the dependency
+    versionRange="[37,)" #mandatory
+    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+    ordering="NONE"
+    # Side this dependency is applied on - BOTH, CLIENT or SERVER
+    side="BOTH"
+# Here's another dependency
+[[dependencies.examplemod]]
+    modId="minecraft"
+    mandatory=true
+# This version range declares a minimum of the current minecraft version up to but not including the next major version
+    versionRange="[1.17.1,1.18)"
+    ordering="NONE"
+    side="BOTH"

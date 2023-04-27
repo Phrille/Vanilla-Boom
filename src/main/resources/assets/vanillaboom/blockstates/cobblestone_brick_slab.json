@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "vanillaboom:block/cobblestone_brick_slab" },
+        "type=top": { "model": "vanillaboom:block/cobblestone_brick_slab_top" },
+        "type=double": { "model": "vanillaboom:block/cobblestone_bricks" }
+    }
+}

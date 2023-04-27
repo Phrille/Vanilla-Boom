@@ -1,0 +1,12 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "vanillaboom:magma_cream_block"
+    }
+  ],
+  "result": {
+    "item": "minecraft:magma_cream",
+    "count": 9
+  }
+}

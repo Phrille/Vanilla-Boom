@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "minecraft:pumpkin"
+  },
+  "pattern": [
+    "xxx",
+    "xxx",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "vanillaboom:pumpkin_slice"
+    }
+  }
+}

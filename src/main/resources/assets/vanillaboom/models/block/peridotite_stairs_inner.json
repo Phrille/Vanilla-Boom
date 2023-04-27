@@ -1,0 +1,8 @@
+{
+  "parent": "block/inner_stairs",
+  "textures": {
+    "bottom": "vanillaboom:block/peridotite",
+    "top": "vanillaboom:block/peridotite",
+    "side": "vanillaboom:block/peridotite"
+  }
+}

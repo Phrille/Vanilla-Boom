@@ -1,0 +1,16 @@
+{
+  "type": "vanillaboom:pumpkin",
+  "conditions": [
+    {
+      "condition": "block_state_property",
+      "block":"minecraft:pumpkin"
+    }
+  ],
+  "table": "vanillaboom:blocks/pumpkin",
+  "overwrites":
+  [
+    {
+      "item": "minecraft:pumpkin"
+    }
+  ]
+}

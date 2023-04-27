@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "vanillaboom:donkey_kong_painting"
+  },
+  "pattern": [
+    "xpy",
+    " s "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "p": {
+      "item": "vanillaboom:large_painting"
+    },
+    "s": {
+      "item": "minecraft:barrel"
+    },
+    "x": {
+      "tag": "forge:dyes/black"
+    },
+    "y": {
+      "tag": "forge:dyes/pink"
+    }
+  }
+}
