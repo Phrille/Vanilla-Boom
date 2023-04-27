@@ -8,7 +8,6 @@ import phrille.vanillaboom.block.ModBlocks;
 
 public class ModBlockStateProvider extends BlockStateProvider {
 
-    //test
     public ModBlockStateProvider(DataGenerator gen, ExistingFileHelper fileHelper) {
         super(gen, VanillaBoom.MOD_ID, fileHelper);
     }
