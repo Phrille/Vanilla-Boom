@@ -29,50 +29,16 @@ public class WorldGenEventHandler {
             generate(event, GenerationStep.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.ORE_PERIDOTITE, VanillaBoomConfig.peridotiteGenEnabled);
             generate(event, GenerationStep.Decoration.VEGETAL_DECORATION, ModConfiguredFeatures.ROSE_PATCHES, VanillaBoomConfig.roseGenEnabled);
 
-            /**
-             generate(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.ORE_FINE_GRAVEL, VanillaBoomConfig.fineGravelGenEnabled);
-
-             if (BiomeDictionary.hasType(biomeRegistryKey, BiomeDictionary.Type.OCEAN)) {
-             generate(event, GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.DISK_HYDRO_ROCK, VanillaBoomConfig.hydroRockGenEnabled);
-             }
-             */
-
+            if (BiomeDictionary.hasType(biomeRegistryKey, BiomeDictionary.Type.OCEAN)) {
+                generate(event, GenerationStep.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.DISK_HYDRO_ROCK, VanillaBoomConfig.hydroRockGenEnabled);
+            }
         }
-
-        if (BiomeDictionary.hasType(biomeRegistryKey, BiomeDictionary.Type.NETHER)) {
-            //generate(event, GenerationStage.Decoration.UNDERGROUND_DECORATION, ModConfiguredFeatures.ORE_INFERNAL_ROCK, VanillaBoomConfig.infernalRockGenEnabled);
+        else if (BiomeDictionary.hasType(biomeRegistryKey, BiomeDictionary.Type.NETHER)) {
+            generate(event, GenerationStep.Decoration.UNDERGROUND_DECORATION, ModConfiguredFeatures.ORE_INFERNAL_ROCK, VanillaBoomConfig.infernalRockGenEnabled);
             generate(event, GenerationStep.Decoration.UNDERGROUND_DECORATION, ModConfiguredFeatures.ORE_BONE_SAND, VanillaBoomConfig.boneSandGenEnabled);
             generate(event, GenerationStep.Decoration.UNDERGROUND_DECORATION, ModConfiguredFeatures.ORE_WITHER_BONE_SAND, VanillaBoomConfig.witherBoneSandGenEnabled);
-
-            /**
-             if (VanillaBoomConfig.netherWellGenEnabled && !biomeName.getPath().equals("basalt_deltas")) {
-             event.getGeneration().getStructures().add(() -> ModConfiguredStructures.NETHER_WELL);
-             }
-
-             if (VanillaBoomConfig.graveGenEnabled && biomeName.getPath().equals("soul_sand_valley")) {
-             event.getGeneration().getStructures().add(() -> ModConfiguredStructures.GRAVE);
-             }
-             */
         }
     }
-
-    /**
-     * @SubscribeEvent(priority = EventPriority.NORMAL)
-     * public static void addDimensionalSpacing(WorldEvent.Load event) {
-     * if (event.getWorld() instanceof ServerLevel) {
-     * ServerLevel world = (ServerLevel) event.getWorld();
-     * <p>
-     * if (world.getChunkProvider().getChunkGenerator() instanceof FlatChunkGenerator && world.getDimensionKey().equals(World.OVERWORLD)) {
-     * return;
-     * }
-     * <p>
-     * Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(world.getChunkProvider().generator.func_235957_b_().func_236195_a_());
-     * tempMap.put(ModStructures.NETHER_WELL.get(), DimensionStructuresSettings.field_236191_b_.get(ModStructures.NETHER_WELL.get()));
-     * tempMap.put(ModStructures.GRAVE.get(), DimensionStructuresSettings.field_236191_b_.get(ModStructures.GRAVE.get()));
-     * serverWorld.getChunkProvider().generator.func_235957_b_().field_236193_d_ = tempMap;
-     * }
-     * }
-     */
 
     public static void generate(BiomeLoadingEvent event, GenerationStep.Decoration decorationStage, ResourceKey<ConfiguredFeature<?, ?>> key, boolean config) {
         if (config) {

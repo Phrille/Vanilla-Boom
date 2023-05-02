@@ -61,7 +61,6 @@ public final class ConfigHandler {
 
         //Worldgen Overworld
         public final ForgeConfigSpec.BooleanValue peridotiteGenEnabled;
-        public final ForgeConfigSpec.BooleanValue fineGravelGenEnabled;
         public final ForgeConfigSpec.BooleanValue hydroRockGenEnabled;
         public final ForgeConfigSpec.BooleanValue roseGenEnabled;
 
@@ -69,14 +68,6 @@ public final class ConfigHandler {
         public final ForgeConfigSpec.BooleanValue infernalRockGenEnabled;
         public final ForgeConfigSpec.BooleanValue boneSandGenEnabled;
         public final ForgeConfigSpec.BooleanValue witherBoneSandGenEnabled;
-
-        public final ForgeConfigSpec.BooleanValue netherWellGenEnabled;
-        public final ForgeConfigSpec.IntValue netherWellMinChunk;
-        public final ForgeConfigSpec.IntValue netherWellMaxChunk;
-
-        public final ForgeConfigSpec.BooleanValue graveGenEnabled;
-        public final ForgeConfigSpec.IntValue gravelMinChunk;
-        public final ForgeConfigSpec.IntValue graveMaxChunk;
 
         public Common(ForgeConfigSpec.Builder builder) {
             builder.push("general");
@@ -91,21 +82,12 @@ public final class ConfigHandler {
             builder.push("worldgen");
 
             peridotiteGenEnabled = builder.comment(" Set this to false to stop Peridotite being generated in the Overworld.").define("peridotite_gen", true);
-            fineGravelGenEnabled = builder.comment("\n Set this to false to stop Fine Gravel being generated in the Overworld.").define("fine_gravel_gen", true);
             hydroRockGenEnabled = builder.comment("\n Set this to false to stop Hydro Rock being generated in the Overworld.").define("hydro_rock_gen", true);
             roseGenEnabled = builder.comment("\n Set this to false to stop Roses being generated in the Overworld.").define("rose_gen", true);
 
             infernalRockGenEnabled = builder.comment("\n Set this to false to stop Infernal Rock being generated in the Nether.").define("infernal_rock_gen", true);
             boneSandGenEnabled = builder.comment("\n Set this to false to stop Bone Sand being generated in the Nether.").define("bone_sand_gen", true);
             witherBoneSandGenEnabled = builder.comment("\n Set this to false to stop Wither Bone Sand being generated in the Nether.").define("wither_bone_sand_gen", true);
-
-            netherWellGenEnabled = builder.comment("\n Set this to false to stop Nether Wells being generated in the Nether.").define("nether_well_gen", true);
-            netherWellMinChunk = builder.comment("Minium chunk distance between Nether Wells").defineInRange("nether_well_min_chunk", 3, 1, Integer.MAX_VALUE);
-            netherWellMaxChunk = builder.comment("Maximum chunk distance between Nether Wells").defineInRange("nether_well_max_chunk", 7, 2, Integer.MAX_VALUE);
-
-            graveGenEnabled = builder.comment("\n Set this to false to stop Graves being generated in the Nether.").define("grave_gen", true);
-            gravelMinChunk = builder.comment("Minium chunk distance between Graves").defineInRange("grave_min_chunk", 3, 1, Integer.MAX_VALUE);
-            graveMaxChunk = builder.comment("Maximum chunk distance between Graves").defineInRange("grave_max_chunk", 5, 2, Integer.MAX_VALUE);
 
             builder.pop();
         }
