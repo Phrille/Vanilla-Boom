@@ -56,6 +56,7 @@ public final class ConfigHandler {
         //General
         public final ForgeConfigSpec.BooleanValue growNetherWarts;
         public final ForgeConfigSpec.BooleanValue growWitherRoses;
+        public final ForgeConfigSpec.BooleanValue placeSlimeBallPistons;
         public final ForgeConfigSpec.BooleanValue removeSlimeBallPistons;
         public final ForgeConfigSpec.BooleanValue fillWaterBottleHydroRock;
 
@@ -74,8 +75,9 @@ public final class ConfigHandler {
 
             growNetherWarts = builder.comment(" Set this to false to disable Blaze Powder or Wither Bone Meal being used to grow Nether Wart.").define("grow_nether_warts", true);
             growWitherRoses = builder.comment("\n Set this to false to disable Wither Bone Meal being used to grow Roses into Wither Roses.").define("grow_wither_roses", true);
-            removeSlimeBallPistons = builder.comment("\n Set this to false to disable removing a Slime Ball from a Sticky Piston when right clickling and crouching with a Shovel.").define("remove_slime_ball_pistons", true);
-            fillWaterBottleHydroRock = builder.comment("\n Set this to false to disable Glass Bottles being able to be filled up when right clickling a Hydro Rock block.").define("fill_water_bottle_hydro_rock", true);
+            placeSlimeBallPistons = builder.comment("\n Set this to false to disable placing Slime Balls on Sticky Pistons when right clicking with a Slime Ball.").define("place_slime_ball_pistons", true);
+            removeSlimeBallPistons = builder.comment("\n Set this to false to disable removing Slime Balls from Sticky Pistons when right clicking and crouching with a Shovel.").define("remove_slime_ball_pistons", true);
+            fillWaterBottleHydroRock = builder.comment("\n Set this to false to disable Glass Bottles being able to be filled up when right clicking a Hydro Rock block.").define("fill_water_bottle_hydro_rock", true);
 
             builder.pop();
             builder.comment(" Warning: \n Changing world gen config options will require \n the world to be reloaded to take action. \n For servers this means a server restart.");

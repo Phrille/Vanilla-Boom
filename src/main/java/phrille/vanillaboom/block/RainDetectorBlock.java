@@ -67,15 +67,12 @@ public class RainDetectorBlock extends BaseEntityBlock {
         }
     }
 
-    /**
-     * Todo: Doesnt work, fix thunder
-     */
     private static void updateSignalStrength(BlockState state, Level world, BlockPos pos) {
         if (world.dimensionType().hasSkyLight()) {
-            boolean isInverted = state.getValue(INVERTED);
-            int power = world.isRaining() ? 10 : world.isThundering() ? 15 : 0;
+            boolean inverted = state.getValue(INVERTED);
+            int power = world.isThundering() ? 2 : world.isRaining() ? 1 : 0;
 
-            if (isInverted) {
+            if (inverted) {
                 power = 15 - power;
             }
 

@@ -50,6 +50,10 @@ public class ItemEventHandler {
             return;
         }
 
+        if (VanillaBoomConfig.placeSlimeBallPistons && tryPlaceSlimeBall(world, player, state, pos, stack)) {
+            return;
+        }
+
         if (VanillaBoomConfig.removeSlimeBallPistons && tryRemoveSlimeBall(world, player, state, pos, stack, event.getHand())) {
         }
     }
@@ -98,20 +102,19 @@ public class ItemEventHandler {
         return false;
     }
 
-    //TODO: check tag instead of ShovelItem
-    protected static boolean tryRemoveSlimeBall(Level world, Player player, BlockState state, BlockPos pos, ItemStack stack, InteractionHand hand) {
-        if (stack.getItem() instanceof ShovelItem && player.isCrouching()) {
-            if (state.getBlock() == Blocks.STICKY_PISTON && !state.getValue(PistonBaseBlock.EXTENDED)) {
+    protected static boolean tryPlaceSlimeBall(Level world, Player player, BlockState state, BlockPos pos, ItemStack stack) {
+        if (stack.is(Items.SLIME_BALL)) {
+            if (state.getBlock() == Blocks.PISTON && !state.getValue(PistonBaseBlock.EXTENDED)) {
                 Direction direction = state.getValue(PistonBaseBlock.FACING);
-                world.setBlock(pos, Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, direction), 2);
-                onSuccess(world, pos, player, stack, hand, direction);
+                world.setBlock(pos, Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, direction), 2);
+                onPlace(world, pos, player, stack);
 
                 return true;
-            } else if (state.getBlock() == Blocks.PISTON_HEAD && state.getValue(PistonHeadBlock.TYPE) == PistonType.STICKY) {
-                Direction direction = state.getValue(PistonHeadBlock.FACING);
-                world.setBlock(pos, Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.TYPE, PistonType.DEFAULT).setValue(PistonHeadBlock.FACING, direction), 2);
-                world.setBlock(pos.relative(direction, -1), Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.EXTENDED, Boolean.valueOf(true)).setValue(PistonBaseBlock.FACING, direction), 2);
-                onSuccess(world, pos, player, stack, hand, direction);
+            } else if (state.getBlock() == Blocks.PISTON_HEAD && state.getValue(PistonHeadBlock.TYPE) == PistonType.DEFAULT) {
+                Direction direction = state.getValue(PistonBaseBlock.FACING);
+                world.setBlock(pos, Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.TYPE, PistonType.STICKY).setValue(PistonHeadBlock.FACING, direction), 2);
+                world.setBlock(pos.relative(direction, -1), Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.EXTENDED, Boolean.valueOf(true)).setValue(PistonBaseBlock.FACING, direction), 2);
+                onPlace(world, pos, player, stack);
 
                 return true;
             }
@@ -120,7 +123,38 @@ public class ItemEventHandler {
         return false;
     }
 
-    protected static void onSuccess(Level world, BlockPos pos, Player player, ItemStack stack, InteractionHand hand, Direction direction) {
+    protected static void onPlace(Level world, BlockPos pos, Player player, ItemStack stack) {
+        if (!player.isCreative()) {
+            stack.shrink(1);
+        }
+
+        player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
+        world.playSound(null, pos, SoundEvents.SLIME_BLOCK_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+    }
+
+    //TODO: check tag instead of ShovelItem
+    protected static boolean tryRemoveSlimeBall(Level world, Player player, BlockState state, BlockPos pos, ItemStack stack, InteractionHand hand) {
+        if (stack.getItem() instanceof ShovelItem && player.isCrouching()) {
+            if (state.getBlock() == Blocks.STICKY_PISTON && !state.getValue(PistonBaseBlock.EXTENDED)) {
+                Direction direction = state.getValue(PistonBaseBlock.FACING);
+                world.setBlock(pos, Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, direction), 2);
+                onRemove(world, pos, player, stack, hand, direction);
+
+                return true;
+            } else if (state.getBlock() == Blocks.PISTON_HEAD && state.getValue(PistonHeadBlock.TYPE) == PistonType.STICKY) {
+                Direction direction = state.getValue(PistonHeadBlock.FACING);
+                world.setBlock(pos, Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.TYPE, PistonType.DEFAULT).setValue(PistonHeadBlock.FACING, direction), 2);
+                world.setBlock(pos.relative(direction, -1), Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.EXTENDED, Boolean.valueOf(true)).setValue(PistonBaseBlock.FACING, direction), 2);
+                onRemove(world, pos, player, stack, hand, direction);
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    protected static void onRemove(Level world, BlockPos pos, Player player, ItemStack stack, InteractionHand hand, Direction direction) {
         if (!player.isCreative()) {
             stack.hurtAndBreak(1, player, (entity) -> {
                 entity.broadcastBreakEvent(hand);
