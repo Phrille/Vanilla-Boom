@@ -31,7 +31,7 @@
               "function": "minecraft:explosion_decay"
             }
           ],
-          "name": "vanillaboom:pinecone"
+          "name": "vanillaboom:pine_cone"
         }
       ],
       "conditions": [
