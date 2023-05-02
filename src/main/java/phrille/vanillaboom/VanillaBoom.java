@@ -12,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import phrille.vanillaboom.block.entity.ModBlockEntities;
 import phrille.vanillaboom.config.ConfigHandler;
+import phrille.vanillaboom.entity.ModEntities;
 import phrille.vanillaboom.util.FuelHandler;
 import phrille.vanillaboom.util.Utils;
 
@@ -28,7 +29,6 @@ public class VanillaBoom {
         modEventBus.addListener(this::enqueueIMC);
         modEventBus.addListener(this::processIMC);
 
-        //ModStructures.init(modEventBus);
         //LootTableHandler.init(modEventBus);
         ModBlockEntities.init(modEventBus);
 
@@ -37,14 +37,10 @@ public class VanillaBoom {
     }
 
     public void setup(FMLCommonSetupEvent event) {
-        //JsonAssetsGenerator.init();
-        //JsonDataGenerator.init();
-
         event.enqueueWork(() -> {
-            //ModStructures.setupStructures();
-            //ModConfiguredStructures.registerConfiguredStructures();
             //LootConditionTypes.registerLootConditions();
 
+            ModEntities.RegistrationHandler.registerSpawnPlacements();
             FuelHandler.registerBurnTimes();
             Utils.registerFlowerPots();
             Utils.addCompostMaterials();

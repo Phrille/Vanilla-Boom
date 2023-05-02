@@ -4,7 +4,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.animal.AbstractFish;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -38,11 +40,6 @@ public class ModEntities {
             registry.register(build("perch", EntityType.Builder.of(Perch::new, MobCategory.WATER_AMBIENT).setCustomClientFactory((spawnEntity, world) -> new Perch(PERCH, world)).sized(0.5F, 0.3F).clientTrackingRange(4)));
             registry.register(build("pike", EntityType.Builder.of(Pike::new, MobCategory.WATER_AMBIENT).setCustomClientFactory((spawnEntity, world) -> new Pike(PIKE, world)).sized(0.7F, 0.4F).clientTrackingRange(4)));
             registry.register(build("eel", EntityType.Builder.of(Eel::new, MobCategory.WATER_AMBIENT).setCustomClientFactory((spawnEntity, world) -> new Eel(EEL, world)).sized(0.8F, 0.2F).clientTrackingRange(4)));
-
-            //SpawnPlacements.register(TUNA, SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractFish::checkFishSpawnRules);
-            //SpawnPlacements.register(PERCH, SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractFish::checkFishSpawnRules);
-            //SpawnPlacements.register(PIKE, SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractFish::checkFishSpawnRules);
-            //SpawnPlacements.register(EEL, SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractFish::checkFishSpawnRules);
         }
 
         @SubscribeEvent
@@ -51,6 +48,13 @@ public class ModEntities {
             event.put(PERCH, AbstractFish.createAttributes().build());
             event.put(PIKE, AbstractFish.createAttributes().build());
             event.put(EEL, AbstractFish.createAttributes().build());
+        }
+
+        public static void registerSpawnPlacements() {
+            SpawnPlacements.register(TUNA, SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractFish::checkFishSpawnRules);
+            SpawnPlacements.register(PERCH, SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractFish::checkFishSpawnRules);
+            SpawnPlacements.register(PIKE, SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractFish::checkFishSpawnRules);
+            SpawnPlacements.register(EEL, SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractFish::checkFishSpawnRules);
         }
 
         private static <T extends Entity> EntityType<T> build(String name, EntityType.Builder<T> builder) {
