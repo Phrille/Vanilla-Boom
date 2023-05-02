@@ -68,10 +68,7 @@ public class RainDetectorBlock extends BaseEntityBlock {
     }
 
     /**
-     * Doesnt work, fix thunder
-     * @param state
-     * @param world
-     * @param pos
+     * Todo: Doesnt work, fix thunder
      */
     private static void updateSignalStrength(BlockState state, Level world, BlockPos pos) {
         if (world.dimensionType().hasSkyLight()) {
