@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 import phrille.vanillaboom.block.entity.ModBlockEntities;
 import phrille.vanillaboom.config.ConfigHandler;
 import phrille.vanillaboom.entity.ModEntities;
+import phrille.vanillaboom.loot.LootTableHandler;
 import phrille.vanillaboom.util.FuelHandler;
 import phrille.vanillaboom.util.Utils;
 
@@ -29,7 +30,7 @@ public class VanillaBoom {
         modEventBus.addListener(this::enqueueIMC);
         modEventBus.addListener(this::processIMC);
 
-        //LootTableHandler.init(modEventBus);
+        LootTableHandler.init(modEventBus);
         ModBlockEntities.init(modEventBus);
 
         modLoadingContext.registerConfig(ModConfig.Type.CLIENT, ConfigHandler.CLIENT_SPEC);
