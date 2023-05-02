@@ -77,9 +77,9 @@ public class GunpowderBlock extends FallingBlock {
         explode(world, pos, igniter);
     }
 
-    private void explode(Level level, BlockPos pos, Entity entity) {
-        if (!level.isClientSide) {
-            level.explode(entity, pos.getX(), pos.getY(), pos.getZ(), 1.0F, true, Explosion.BlockInteraction.DESTROY);
+    private void explode(Level world, BlockPos pos, Entity entity) {
+        if (!world.isClientSide) {
+            world.explode(entity, pos.getX(), pos.getY(), pos.getZ(), 1.0F, true, Explosion.BlockInteraction.DESTROY);
         }
     }
 }
