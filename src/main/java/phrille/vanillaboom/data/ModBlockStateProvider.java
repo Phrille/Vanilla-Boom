@@ -4,11 +4,13 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
+import phrille.vanillaboom.block.RainDetectorBlock;
 
 public class ModBlockStateProvider extends BlockStateProvider {
 
@@ -88,21 +90,137 @@ public class ModBlockStateProvider extends BlockStateProvider {
         bookshelfBlock(ModBlocks.DARK_OAK_BOOKSHELF, Blocks.DARK_OAK_PLANKS);
         bookshelfBlock(ModBlocks.CRIMSON_BOOKSHELF, Blocks.CRIMSON_PLANKS);
         bookshelfBlock(ModBlocks.WARPED_BOOKSHELF, Blocks.WARPED_PLANKS);
+        /*
+         * TODO: add ladders
+         */
+
+        //Storage Blocks
+        simpleBlock(ModBlocks.CHARCOAL_BLOCK);
+        simpleBlock(ModBlocks.SUGAR_BLOCK);
+        pillarBlock(ModBlocks.SUGAR_CANE_BLOCK);
+        pillarBlock(ModBlocks.BAMBOO_BLOCK);
+        simpleBlock(ModBlocks.GUNPOWDER_BLOCK);
+        simpleBlock(ModBlocks.BLAZE_POWDER_BLOCK);
+        sideBottomTopBlock(ModBlocks.MAGMA_CREAM_BLOCK);
+        simpleBlock(ModBlocks.PRISMARINE_CRYSTAL_BLOCK);
+        pillarBlock(ModBlocks.WITHER_BONE_BLOCK);
+        simpleBlock(ModBlocks.WHITE_DYE_BLOCK);
+        simpleBlock(ModBlocks.ORANGE_DYE_BLOCK);
+        simpleBlock(ModBlocks.MAGENTA_DYE_BLOCK);
+        simpleBlock(ModBlocks.LIGHT_BLUE_DYE_BLOCK);
+        simpleBlock(ModBlocks.YELLOW_DYE_BLOCK);
+        simpleBlock(ModBlocks.LIME_DYE_BLOCK);
+        simpleBlock(ModBlocks.PINK_DYE_BLOCK);
+        simpleBlock(ModBlocks.GRAY_DYE_BLOCK);
+        simpleBlock(ModBlocks.LIGHT_GRAY_DYE_BLOCK);
+        simpleBlock(ModBlocks.CYAN_DYE_BLOCK);
+        simpleBlock(ModBlocks.PURPLE_DYE_BLOCK);
+        simpleBlock(ModBlocks.BLUE_DYE_BLOCK);
+        simpleBlock(ModBlocks.BROWN_DYE_BLOCK);
+        simpleBlock(ModBlocks.GREEN_DYE_BLOCK);
+        simpleBlock(ModBlocks.RED_DYE_BLOCK);
+        simpleBlock(ModBlocks.BLACK_DYE_BLOCK);
+
+        //Glass
+        simpleBlock(ModBlocks.SOUL_GLASS);
+        simpleBlock(ModBlocks.WHITE_STAINED_SOUL_GLASS);
+        simpleBlock(ModBlocks.ORANGE_STAINED_SOUL_GLASS);
+        simpleBlock(ModBlocks.MAGENTA_STAINED_SOUL_GLASS);
+        simpleBlock(ModBlocks.LIGHT_BLUE_STAINED_SOUL_GLASS);
+        simpleBlock(ModBlocks.YELLOW_STAINED_SOUL_GLASS);
+        simpleBlock(ModBlocks.LIME_STAINED_SOUL_GLASS);
+        simpleBlock(ModBlocks.PINK_STAINED_SOUL_GLASS);
+        simpleBlock(ModBlocks.GRAY_STAINED_SOUL_GLASS);
+        simpleBlock(ModBlocks.LIGHT_GRAY_STAINED_SOUL_GLASS);
+        simpleBlock(ModBlocks.CYAN_STAINED_SOUL_GLASS);
+        simpleBlock(ModBlocks.PURPLE_STAINED_SOUL_GLASS);
+        simpleBlock(ModBlocks.BLUE_STAINED_SOUL_GLASS);
+        simpleBlock(ModBlocks.BROWN_STAINED_SOUL_GLASS);
+        simpleBlock(ModBlocks.GREEN_STAINED_SOUL_GLASS);
+        simpleBlock(ModBlocks.RED_STAINED_SOUL_GLASS);
+        simpleBlock(ModBlocks.BLACK_STAINED_SOUL_GLASS);
+
+        glassPaneBlock(ModBlocks.SOUL_GLASS_PANE);
+        glassPaneBlock(ModBlocks.WHITE_STAINED_SOUL_GLASS_PANE);
+        glassPaneBlock(ModBlocks.ORANGE_STAINED_SOUL_GLASS_PANE);
+        glassPaneBlock(ModBlocks.MAGENTA_STAINED_SOUL_GLASS_PANE);
+        glassPaneBlock(ModBlocks.LIGHT_BLUE_STAINED_SOUL_GLASS_PANE);
+        glassPaneBlock(ModBlocks.YELLOW_STAINED_SOUL_GLASS_PANE);
+        glassPaneBlock(ModBlocks.LIME_STAINED_SOUL_GLASS_PANE);
+        glassPaneBlock(ModBlocks.PINK_STAINED_SOUL_GLASS_PANE);
+        glassPaneBlock(ModBlocks.GRAY_STAINED_SOUL_GLASS_PANE);
+        glassPaneBlock(ModBlocks.LIGHT_GRAY_STAINED_SOUL_GLASS_PANE);
+        glassPaneBlock(ModBlocks.CYAN_STAINED_SOUL_GLASS_PANE);
+        glassPaneBlock(ModBlocks.PURPLE_STAINED_SOUL_GLASS_PANE);
+        glassPaneBlock(ModBlocks.BLUE_STAINED_SOUL_GLASS_PANE);
+        glassPaneBlock(ModBlocks.BROWN_STAINED_SOUL_GLASS_PANE);
+        glassPaneBlock(ModBlocks.GREEN_STAINED_SOUL_GLASS_PANE);
+        glassPaneBlock(ModBlocks.RED_STAINED_SOUL_GLASS_PANE);
+        glassPaneBlock(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE);
+
+        //Misc
+        rainDetectorBlock(ModBlocks.RAIN_DETECTOR);
+        barsBlock(ModBlocks.GOLD_BARS);
+        flowerBlock(ModBlocks.ROSE, ModBlocks.POTTED_ROSE);
     }
 
     public void pillarBlock(Block block) {
         axisBlock((RotatedPillarBlock) block, extend(blockTexture(block), "_side"), extend(blockTexture(block), "_top"));
     }
 
+    public void sideBottomTopBlock(Block block) {
+        simpleBlock(block, models().cubeBottomTop(name(block), extend(blockTexture(block), "_side"), extend(blockTexture(block), "_bottom"), extend(blockTexture(block), "_top")));
+    }
+
     public void bookshelfBlock(Block block, Block plank) {
         simpleBlock(block, models().cubeColumn(name(block), blockTexture(block), blockTexture(plank)));
     }
 
-    private String name(Block block) {
+    public void glassPaneBlock(Block block) {
+        paneBlock((IronBarsBlock) block, shrink(blockTexture(block), "_pane"), extend(blockTexture(block), "_top"));
+    }
+
+    public void barsBlock(Block block) {
+        paneBlock((IronBarsBlock) block, blockTexture(block), blockTexture(block));
+    }
+
+    public void flowerBlock(Block flower, Block pot) {
+        simpleBlock(flower, models().cross(name(flower), blockTexture(flower)));
+        simpleBlock(pot, models().withExistingParent(name(pot), ModelProvider.BLOCK_FOLDER + "/flower_pot_cross").texture("plant", blockTexture(flower)));
+    }
+
+    public void rainDetectorBlock(Block block) {
+        ModelFile defaultModel = rainDetectorModel(name(block), extend(blockTexture(block), "_top"));
+        ModelFile invertedModel = rainDetectorModel(name(block) + "_inverted", extend(blockTexture(block), "_inverted_top"));
+
+        rainDetectorBlock((RainDetectorBlock) block, defaultModel, invertedModel);
+    }
+
+    protected BlockModelBuilder rainDetectorModel(String name, ResourceLocation top) {
+        return models().withExistingParent(name, ModelProvider.BLOCK_FOLDER + "/template_daylight_detector")
+                .texture("side", extend(blockTexture(Blocks.DAYLIGHT_DETECTOR), "_side"))
+                .texture("top", top);
+    }
+
+    protected void rainDetectorBlock(RainDetectorBlock block, ModelFile defaultModel, ModelFile invertedModel) {
+        getVariantBuilder(block).forAllStatesExcept(state -> {
+            boolean inverted = state.getValue(RainDetectorBlock.INVERTED);
+
+            return ConfiguredModel.builder()
+                    .modelFile(inverted ? invertedModel : defaultModel)
+                    .build();
+        }, RainDetectorBlock.POWER);
+    }
+
+    protected String name(Block block) {
         return block.getRegistryName().getPath();
     }
 
-    private ResourceLocation extend(ResourceLocation rl, String suffix) {
+    protected ResourceLocation extend(ResourceLocation rl, String suffix) {
         return new ResourceLocation(rl.getNamespace(), rl.getPath() + suffix);
+    }
+
+    protected ResourceLocation shrink(ResourceLocation rl, String suffix) {
+        return new ResourceLocation(rl.getNamespace(), rl.getPath().replace(suffix, ""));
     }
 }
