@@ -1,11 +1,9 @@
 package phrille.vanillaboom.data;
 
+import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.IronBarsBlock;
-import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import phrille.vanillaboom.VanillaBoom;
@@ -90,9 +88,13 @@ public class ModBlockStateProvider extends BlockStateProvider {
         bookshelfBlock(ModBlocks.DARK_OAK_BOOKSHELF, Blocks.DARK_OAK_PLANKS);
         bookshelfBlock(ModBlocks.CRIMSON_BOOKSHELF, Blocks.CRIMSON_PLANKS);
         bookshelfBlock(ModBlocks.WARPED_BOOKSHELF, Blocks.WARPED_PLANKS);
-        /*
-         * TODO: add ladders
-         */
+        ladderBlock(ModBlocks.SPRUCE_LADDER);
+        ladderBlock(ModBlocks.BIRCH_LADDER);
+        ladderBlock(ModBlocks.JUNGLE_LADDER);
+        ladderBlock(ModBlocks.ACACIA_LADDER);
+        ladderBlock(ModBlocks.DARK_OAK_LADDER);
+        ladderBlock(ModBlocks.CRIMSON_LADDER);
+        ladderBlock(ModBlocks.WARPED_LADDER);
 
         //Storage Blocks
         simpleBlock(ModBlocks.CHARCOAL_BLOCK);
@@ -189,17 +191,26 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(pot, models().withExistingParent(name(pot), ModelProvider.BLOCK_FOLDER + "/flower_pot_cross").texture("plant", blockTexture(flower)));
     }
 
+    public void ladderBlock(Block block) {
+        ladderBlock((LadderBlock) block, models().withExistingParent(name(block), modParent("ladder")).texture("texture", blockTexture(block)));
+    }
+
+    protected void ladderBlock(LadderBlock block, ModelFile model){
+        getVariantBuilder(block).forAllStatesExcept(state -> {
+            Direction dir = state.getValue(LadderBlock.FACING);
+
+            return ConfiguredModel.builder()
+                    .modelFile(model)
+                    .rotationY((int) dir.getOpposite().toYRot())
+                    .build();
+        }, LadderBlock.WATERLOGGED);
+    }
+
     public void rainDetectorBlock(Block block) {
         ModelFile defaultModel = rainDetectorModel(name(block), extend(blockTexture(block), "_top"));
         ModelFile invertedModel = rainDetectorModel(name(block) + "_inverted", extend(blockTexture(block), "_inverted_top"));
 
         rainDetectorBlock((RainDetectorBlock) block, defaultModel, invertedModel);
-    }
-
-    protected BlockModelBuilder rainDetectorModel(String name, ResourceLocation top) {
-        return models().withExistingParent(name, ModelProvider.BLOCK_FOLDER + "/template_daylight_detector")
-                .texture("side", extend(blockTexture(Blocks.DAYLIGHT_DETECTOR), "_side"))
-                .texture("top", top);
     }
 
     protected void rainDetectorBlock(RainDetectorBlock block, ModelFile defaultModel, ModelFile invertedModel) {
@@ -212,15 +223,25 @@ public class ModBlockStateProvider extends BlockStateProvider {
         }, RainDetectorBlock.POWER);
     }
 
+    protected BlockModelBuilder rainDetectorModel(String name, ResourceLocation top) {
+        return models().withExistingParent(name, ModelProvider.BLOCK_FOLDER + "/template_daylight_detector")
+                .texture("side", extend(blockTexture(Blocks.DAYLIGHT_DETECTOR), "_side"))
+                .texture("top", top);
+    }
+
     protected String name(Block block) {
         return block.getRegistryName().getPath();
     }
 
-    protected ResourceLocation extend(ResourceLocation rl, String suffix) {
-        return new ResourceLocation(rl.getNamespace(), rl.getPath() + suffix);
+    protected ResourceLocation modParent(String name){
+        return modLoc(ModelProvider.BLOCK_FOLDER + "/parent/" + name);
     }
 
-    protected ResourceLocation shrink(ResourceLocation rl, String suffix) {
-        return new ResourceLocation(rl.getNamespace(), rl.getPath().replace(suffix, ""));
+    protected ResourceLocation extend(ResourceLocation rl, String extend) {
+        return new ResourceLocation(rl.getNamespace(), rl.getPath() + extend);
+    }
+
+    protected ResourceLocation shrink(ResourceLocation rl, String shrink) {
+        return new ResourceLocation(rl.getNamespace(), rl.getPath().replace(shrink, ""));
     }
 }
