@@ -1,8 +1,0 @@
-{
-  "parent": "block/inner_stairs",
-  "textures": {
-    "bottom": "vanillaboom:block/gravel_stone",
-    "top": "vanillaboom:block/gravel_stone",
-    "side": "vanillaboom:block/gravel_stone"
-  }
-}
