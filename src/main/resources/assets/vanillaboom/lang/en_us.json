@@ -523,22 +523,22 @@
     "item.vanillaboom.fish_soup": "Fish Soup",
     "item.vanillaboom.meat_soup": "Meat Soup",
         
-    "item.vanillaboom.tuna": "Tuna",
+    "item.vanillaboom.tuna": "Raw Tuna",
     "item.vanillaboom.cooked_tuna": "Cooked Tuna",
     "item.vanillaboom.tuna_bucket": "Bucket of Tuna",
     "item.vanillaboom.tuna_spawn_egg": "Tuna Spawn Egg",
         
-    "item.vanillaboom.perch": "Perch",
+    "item.vanillaboom.perch": "Raw Perch",
     "item.vanillaboom.cooked_perch": "Cooked Perch",
     "item.vanillaboom.perch_bucket": "Bucket of Perch",
     "item.vanillaboom.perch_spawn_egg": "Perch Spawn Egg",
     
-    "item.vanillaboom.pike": "Pike",
+    "item.vanillaboom.pike": "Raw Pike",
     "item.vanillaboom.cooked_pike": "Cooked Pike",
     "item.vanillaboom.pike_bucket": "Bucket of Pike",
     "item.vanillaboom.pike_spawn_egg": "Pike Spawn Egg",
         
-    "item.vanillaboom.eel": "Eel",
+    "item.vanillaboom.eel": "Raw Eel",
     "item.vanillaboom.cooked_eel": "Cooked Eel",
     "item.vanillaboom.eel_bucket": "Bucket of Eel",
     "item.vanillaboom.eel_spawn_egg": "Eel Spawn Egg",
