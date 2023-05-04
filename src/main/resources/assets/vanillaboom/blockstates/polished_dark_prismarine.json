@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "vanillaboom:block/polished_dark_prismarine" }
+  "variants": {
+    "": {
+      "model": "vanillaboom:block/polished_dark_prismarine"
     }
+  }
 }

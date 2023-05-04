@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "vanillaboom:block/potted_rose" }
+  "variants": {
+    "": {
+      "model": "vanillaboom:block/potted_rose"
     }
+  }
 }

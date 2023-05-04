@@ -1,8 +1,8 @@
 {
-  "parent": "block/slab_top",
+  "parent": "minecraft:block/slab_top",
   "textures": {
+    "side": "vanillaboom:block/hydro_rock",
     "bottom": "vanillaboom:block/hydro_rock",
-    "top": "vanillaboom:block/hydro_rock",
-    "side": "vanillaboom:block/hydro_rock"
+    "top": "vanillaboom:block/hydro_rock"
   }
 }

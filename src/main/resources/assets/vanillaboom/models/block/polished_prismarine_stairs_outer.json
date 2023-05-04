@@ -1,8 +1,8 @@
 {
-  "parent": "block/outer_stairs",
+  "parent": "minecraft:block/outer_stairs",
   "textures": {
+    "side": "vanillaboom:block/polished_prismarine",
     "bottom": "vanillaboom:block/polished_prismarine",
-    "top": "vanillaboom:block/polished_prismarine",
-    "side": "vanillaboom:block/polished_prismarine"
+    "top": "vanillaboom:block/polished_prismarine"
   }
 }

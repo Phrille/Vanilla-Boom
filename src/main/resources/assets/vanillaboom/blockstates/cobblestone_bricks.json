@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "vanillaboom:block/cobblestone_bricks" }
+  "variants": {
+    "": {
+      "model": "vanillaboom:block/cobblestone_bricks"
     }
+  }
 }

@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "vanillaboom:block/orange_dye_block" }
+  "variants": {
+    "": {
+      "model": "vanillaboom:block/orange_dye_block"
     }
+  }
 }

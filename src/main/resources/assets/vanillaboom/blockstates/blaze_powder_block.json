@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "vanillaboom:block/blaze_powder_block" }
+  "variants": {
+    "": {
+      "model": "vanillaboom:block/blaze_powder_block"
     }
+  }
 }

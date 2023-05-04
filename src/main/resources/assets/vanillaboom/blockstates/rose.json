@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "vanillaboom:block/rose" }
+  "variants": {
+    "": {
+      "model": "vanillaboom:block/rose"
     }
+  }
 }

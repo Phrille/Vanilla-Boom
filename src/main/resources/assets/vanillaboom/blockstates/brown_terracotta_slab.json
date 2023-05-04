@@ -1,10 +1,10 @@
 {
   "variants": {
-    "type=bottom": {
-      "model": "vanillaboom:block/brown_terracotta_slab"
-    },
     "type=top": {
       "model": "vanillaboom:block/brown_terracotta_slab_top"
+    },
+    "type=bottom": {
+      "model": "vanillaboom:block/brown_terracotta_slab"
     },
     "type=double": {
       "model": "minecraft:block/brown_terracotta"

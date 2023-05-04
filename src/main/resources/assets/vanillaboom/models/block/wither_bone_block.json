@@ -1,7 +1,7 @@
 {
-    "parent": "block/cube_column",
-    "textures": {
-        "end": "vanillaboom:block/wither_bone_block_top",
-        "side": "vanillaboom:block/wither_bone_block_side"
-    }
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "vanillaboom:block/wither_bone_block_side",
+    "end": "vanillaboom:block/wither_bone_block_top"
+  }
 }

@@ -1,8 +1,19 @@
 {
-    "variants": {
-        "facing=north": { "model": "vanillaboom:block/jungle_ladder" },
-        "facing=east":  { "model": "vanillaboom:block/jungle_ladder", "y": 90 },
-        "facing=south": { "model": "vanillaboom:block/jungle_ladder", "y": 180 },
-        "facing=west":  { "model": "vanillaboom:block/jungle_ladder", "y": 270 }
+  "variants": {
+    "facing=north": {
+      "model": "vanillaboom:block/jungle_ladder"
+    },
+    "facing=south": {
+      "model": "vanillaboom:block/jungle_ladder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "vanillaboom:block/jungle_ladder",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "vanillaboom:block/jungle_ladder",
+      "y": 90
     }
+  }
 }

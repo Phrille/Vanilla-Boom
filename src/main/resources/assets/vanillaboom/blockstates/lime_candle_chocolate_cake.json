@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "vanillaboom:block/lime_candle_chocolate_cake"
+    },
+    "lit=true": {
+      "model": "vanillaboom:block/lime_candle_chocolate_cake_lit"
+    }
+  }
+}

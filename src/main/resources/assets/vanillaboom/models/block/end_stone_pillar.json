@@ -1,7 +1,7 @@
 {
-    "parent": "block/cube_column",
-    "textures": {
-        "end": "vanillaboom:block/end_stone_pillar_top",
-        "side": "vanillaboom:block/end_stone_pillar_side"
-    }
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "vanillaboom:block/end_stone_pillar_side",
+    "end": "vanillaboom:block/end_stone_pillar_top"
+  }
 }

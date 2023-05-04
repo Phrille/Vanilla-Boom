@@ -1,8 +1,19 @@
 {
-    "variants": {
-        "facing=north": { "model": "vanillaboom:block/dark_oak_ladder" },
-        "facing=east":  { "model": "vanillaboom:block/dark_oak_ladder", "y": 90 },
-        "facing=south": { "model": "vanillaboom:block/dark_oak_ladder", "y": 180 },
-        "facing=west":  { "model": "vanillaboom:block/dark_oak_ladder", "y": 270 }
+  "variants": {
+    "facing=north": {
+      "model": "vanillaboom:block/dark_oak_ladder"
+    },
+    "facing=south": {
+      "model": "vanillaboom:block/dark_oak_ladder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "vanillaboom:block/dark_oak_ladder",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "vanillaboom:block/dark_oak_ladder",
+      "y": 90
     }
+  }
 }
