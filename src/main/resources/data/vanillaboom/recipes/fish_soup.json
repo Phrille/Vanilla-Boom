@@ -2,16 +2,16 @@
   "result": {
     "item": "vanillaboom:fish_soup"
   },
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
       "item": "minecraft:bowl"
     },
     {
-      "tag": "minecaft:items/fishes"
+      "tag": "minecraft:fishes"
     },
     {
-      "tag": "minecaft:items/fishes"
+      "tag": "minecraft:fishes"
     }
   ]
 }

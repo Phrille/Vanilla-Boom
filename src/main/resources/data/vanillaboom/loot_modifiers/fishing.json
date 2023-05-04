@@ -1,5 +1,5 @@
 {
-  "type": "vanillaboom:fish",
+  "type": "vanillaboom:fishing",
   "conditions": 
   [    
     {
@@ -7,6 +7,6 @@
       "loot_table_id": "minecraft:gameplay/fishing"
     }
   ],
-  "table": "vanillaboom:gameplay/fishing/fish",
+  "table": "vanillaboom:gameplay/fishing/fishing",
   "chance": 0.3
 }
