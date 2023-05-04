@@ -55,10 +55,6 @@ public class ModBlocks {
     //Sand and Gravel
     public static final Block BONE_SAND = Utils._null();
     public static final Block WITHER_BONE_SAND = Utils._null();
-    public static final Block FINE_GRAVEL = Utils._null();
-    public static final Block GRAVEL_STONE = Utils._null();
-    public static final Block FINE_GRAVEL_STONE = Utils._null();
-    public static final Block GRAVEL_BRICKS = Utils._null();
 
     //Polished
     public static final Block POLISHED_PERIDOTITE = Utils._null();
@@ -254,9 +250,6 @@ public class ModBlocks {
     public static final Block PERIDOTITE_STAIRS = Utils._null();
     public static final Block HYDRO_ROCK_STAIRS = Utils._null();
     public static final Block INFERNAL_ROCK_STAIRS = Utils._null();
-    public static final Block GRAVEL_STONE_STAIRS = Utils._null();
-    public static final Block FINE_GRAVEL_STONE_STAIRS = Utils._null();
-    public static final Block GRAVEL_BRICK_STAIRS = Utils._null();
     public static final Block POLISHED_PERIDOTITE_STAIRS = Utils._null();
     public static final Block POLISHED_PRISMARINE_STAIRS = Utils._null();
     public static final Block POLISHED_DARK_PRISMARINE_STAIRS = Utils._null();
@@ -363,9 +356,6 @@ public class ModBlocks {
     public static final Block PERIDOTITE_SLAB = Utils._null();
     public static final Block HYDRO_ROCK_SLAB = Utils._null();
     public static final Block INFERNAL_ROCK_SLAB = Utils._null();
-    public static final Block GRAVEL_STONE_SLAB = Utils._null();
-    public static final Block FINE_GRAVEL_STONE_SLAB = Utils._null();
-    public static final Block GRAVEL_BRICK_SLAB = Utils._null();
     public static final Block POLISHED_PERIDOTITE_SLAB = Utils._null();
     public static final Block POLISHED_PRISMARINE_SLAB = Utils._null();
     public static final Block POLISHED_DARK_PRISMARINE_SLAB = Utils._null();
@@ -469,9 +459,6 @@ public class ModBlocks {
     public static final Block PERIDOTITE_WALL = Utils._null();
     public static final Block HYDRO_ROCK_WALL = Utils._null();
     public static final Block INFERNAL_ROCK_WALL = Utils._null();
-    public static final Block GRAVEL_STONE_WALL = Utils._null();
-    public static final Block FINE_GRAVEL_STONE_WALL = Utils._null();
-    public static final Block GRAVEL_BRICK_WALL = Utils._null();
     public static final Block POLISHED_PERIDOTITE_WALL = Utils._null();
     public static final Block POLISHED_PRISMARINE_WALL = Utils._null();
     public static final Block POLISHED_DARK_PRISMARINE_WALL = Utils._null();
@@ -587,62 +574,56 @@ public class ModBlocks {
     @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistrationHandler {
 
-        private static final Block[] CANDLES = {Blocks.CANDLE, Blocks.WHITE_CANDLE, Blocks.ORANGE_CANDLE, Blocks.MAGENTA_CANDLE, Blocks.LIGHT_BLUE_CANDLE, Blocks.YELLOW_CANDLE, Blocks.LIME_CANDLE, Blocks.PINK_CANDLE, Blocks.GRAY_CANDLE, Blocks.LIGHT_GRAY_CANDLE, Blocks.CYAN_CANDLE, Blocks.PURPLE_CANDLE, Blocks.BLUE_CANDLE, Blocks.BROWN_CANDLE, Blocks.GREEN_CANDLE, Blocks.RED_CANDLE, Blocks.BLACK_CANDLE};
-        public static final String[] CANDLE_COLORS = {"candle_", "white_candle_", "orange_candle_", "magenta_candle_", "light_blue_candle_", "yellow_candle_", "lime_candle_", "pink_candle_", "gray_candle_", "light_gray_candle_", "cyan_candle_", "purple_candle_", "blue_candle_", "brown_candle_", "green_candle_", "red_candle_", "black_candle_"};
-
         @SubscribeEvent
         public static void onRegisterBlocks(RegistryEvent.Register<Block> event) {
             IForgeRegistry<Block> registry = event.getRegistry();
 
             //Bricks
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.COBBLESTONE), Names.COBBLESTONE_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE), Names.MOSSY_COBBLESTONE_BRICKS);
-            createSpecialBlock(registry, new MagmaBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK)), Names.MAGMA_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.OBSIDIAN), Names.OBSIDIAN_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.SNOW_BLOCK), Names.SNOW_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), Names.TERRACOTTA_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.WHITE_TERRACOTTA), Names.WHITE_TERRACOTTA_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.ORANGE_TERRACOTTA), Names.ORANGE_TERRACOTTA_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.MAGENTA_TERRACOTTA), Names.MAGENTA_TERRACOTTA_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.LIGHT_BLUE_TERRACOTTA), Names.LIGHT_BLUE_TERRACOTTA_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.YELLOW_TERRACOTTA), Names.YELLOW_TERRACOTTA_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.LIME_TERRACOTTA), Names.LIME_TERRACOTTA_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.PINK_TERRACOTTA), Names.PINK_TERRACOTTA_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.GRAY_TERRACOTTA), Names.GRAY_TERRACOTTA_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_TERRACOTTA), Names.LIGHT_GRAY_TERRACOTTA_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.CYAN_TERRACOTTA), Names.CYAN_TERRACOTTA_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.PURPLE_TERRACOTTA), Names.PURPLE_TERRACOTTA_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.BLUE_TERRACOTTA), Names.BLUE_TERRACOTTA_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.BROWN_TERRACOTTA), Names.BROWN_TERRACOTTA_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.GREEN_TERRACOTTA), Names.GREEN_TERRACOTTA_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.RED_TERRACOTTA), Names.RED_TERRACOTTA_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.BLACK_TERRACOTTA), Names.BLACK_TERRACOTTA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.COBBLESTONE), Names.COBBLESTONE_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE), Names.MOSSY_COBBLESTONE_BRICKS);
+            blockWithVariants(registry, new MagmaBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK)), Names.MAGMA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.OBSIDIAN), Names.OBSIDIAN_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.SNOW_BLOCK), Names.SNOW_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), Names.TERRACOTTA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.WHITE_TERRACOTTA), Names.WHITE_TERRACOTTA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.ORANGE_TERRACOTTA), Names.ORANGE_TERRACOTTA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.MAGENTA_TERRACOTTA), Names.MAGENTA_TERRACOTTA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.LIGHT_BLUE_TERRACOTTA), Names.LIGHT_BLUE_TERRACOTTA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.YELLOW_TERRACOTTA), Names.YELLOW_TERRACOTTA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.LIME_TERRACOTTA), Names.LIME_TERRACOTTA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.PINK_TERRACOTTA), Names.PINK_TERRACOTTA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.GRAY_TERRACOTTA), Names.GRAY_TERRACOTTA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_TERRACOTTA), Names.LIGHT_GRAY_TERRACOTTA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.CYAN_TERRACOTTA), Names.CYAN_TERRACOTTA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.PURPLE_TERRACOTTA), Names.PURPLE_TERRACOTTA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.BLUE_TERRACOTTA), Names.BLUE_TERRACOTTA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.BROWN_TERRACOTTA), Names.BROWN_TERRACOTTA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.GREEN_TERRACOTTA), Names.GREEN_TERRACOTTA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.RED_TERRACOTTA), Names.RED_TERRACOTTA_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.BLACK_TERRACOTTA), Names.BLACK_TERRACOTTA_BRICKS);
 
             //Rocks
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.ANDESITE), Names.PERIDOTITE);
-            createSpecialBlock(registry, new HydroRockBlock(), Names.HYDRO_ROCK);
-            createSpecialBlock(registry, new InfernalRockBlock(), Names.INFERNAL_ROCK);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.ANDESITE), Names.PERIDOTITE);
+            blockWithVariants(registry, new HydroRockBlock(), Names.HYDRO_ROCK);
+            blockWithVariants(registry, new InfernalRockBlock(), Names.INFERNAL_ROCK);
 
             //Sand and Gravel
             registry.register(setup(new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.SNOW).strength(0.5F, 0.0F).sound(SoundType.SOUL_SAND).requiresCorrectToolForDrops()), Names.BONE_SAND));
             registry.register(setup(new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.COLOR_BLACK).strength(0.5F, 0.0F).sound(SoundType.SOUL_SAND).requiresCorrectToolForDrops()), Names.WITHER_BONE_SAND));
-            registry.register(setup(new FallingBlock(BlockBehaviour.Properties.copy(Blocks.GRAVEL).requiresCorrectToolForDrops()), Names.FINE_GRAVEL));
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.STONE), Names.GRAVEL_STONE);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.STONE), Names.FINE_GRAVEL_STONE);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS), Names.GRAVEL_BRICKS);
+
 
             //Polished
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE), Names.POLISHED_PERIDOTITE);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.PRISMARINE), Names.POLISHED_PRISMARINE);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.DARK_PRISMARINE), Names.POLISHED_DARK_PRISMARINE);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.END_STONE), Names.POLISHED_END_STONE);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.NETHERRACK), Names.POLISHED_NETHERRACK);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE), Names.POLISHED_PERIDOTITE);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.PRISMARINE), Names.POLISHED_PRISMARINE);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.DARK_PRISMARINE), Names.POLISHED_DARK_PRISMARINE);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.END_STONE), Names.POLISHED_END_STONE);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.NETHERRACK), Names.POLISHED_NETHERRACK);
 
             //Chiseled and cracked
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK), Names.CHISELED_PURPUR_BLOCK);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS), Names.CRACKED_RED_NETHER_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS), Names.CHISELED_RED_NETHER_BRICKS);
-            createSpecialBlock(registry, BlockBehaviour.Properties.copy(Blocks.OBSIDIAN), Names.CHISELED_OBSIDIAN);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK), Names.CHISELED_PURPUR_BLOCK);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS), Names.CRACKED_RED_NETHER_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS), Names.CHISELED_RED_NETHER_BRICKS);
+            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.OBSIDIAN), Names.CHISELED_OBSIDIAN);
 
             //Pillars
             registry.register(setup(new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.GRANITE)), Names.GRANITE_PILLAR));
@@ -741,93 +722,93 @@ public class ModBlocks {
             registry.register(setup(new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)), Names.DARK_OAK_LADDER));
             registry.register(setup(new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)), Names.CRIMSON_LADDER));
             registry.register(setup(new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)), Names.WARPED_LADDER));
-            createFlower(registry, MobEffects.DIG_SPEED, 10, Names.ROSE);
+            flowerBlock(registry, MobEffects.DIG_SPEED, 10, Names.ROSE);
             registry.register(setup(new TomatoPlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)), "tomato_plant"));
             registry.register(setup(new RicePlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)), "rice_plant"));
-            createCake(registry, "chocolate_cake");
-            createCake(registry, "berry_cake");
-            createCake(registry, "carrot_cake");
+            cakeBlock(registry, "chocolate_cake");
+            cakeBlock(registry, "berry_cake");
+            cakeBlock(registry, "carrot_cake");
 
             //Vanilla Stairs, Slabs and Walls
-            addVanillaVariants(registry, Blocks.CRACKED_STONE_BRICKS, true, true, true);
-            addVanillaVariants(registry, Blocks.CHISELED_STONE_BRICKS, true, true, true);
-            addVanillaVariants(registry, Blocks.CHISELED_SANDSTONE, true, true, true);
-            addVanillaVariants(registry, Blocks.CHISELED_RED_SANDSTONE, true, true, true);
-            addVanillaVariants(registry, Blocks.IRON_BLOCK, true, true, true);
-            addVanillaVariants(registry, Blocks.GOLD_BLOCK, true, true, true);
-            addVanillaVariants(registry, Blocks.OBSIDIAN, true, true, true);
-            addVanillaVariants(registry, Blocks.BEDROCK, true, true, true);
-            addVanillaVariants(registry, Blocks.NETHERRACK, true, true, true);
-            addVanillaVariants(registry, Blocks.CRACKED_NETHER_BRICKS, true, true, true);
-            addVanillaVariants(registry, Blocks.CHISELED_NETHER_BRICKS, true, true, true);
-            addVanillaVariants(registry, Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS, true, true, true);
-            addVanillaVariants(registry, Blocks.CHISELED_POLISHED_BLACKSTONE, true, true, true);
-            addVanillaVariants(registry, Blocks.END_STONE, true, true, true);
-            addVanillaVariants(registry, Blocks.CHISELED_QUARTZ_BLOCK, true, true, true);
-            addVanillaVariants(registry, Blocks.QUARTZ_BRICKS, true, true, true);
-            addVanillaVariants(registry, Blocks.TERRACOTTA, true, true, true);
-            addVanillaVariants(registry, Blocks.WHITE_TERRACOTTA, true, true, true);
-            addVanillaVariants(registry, Blocks.ORANGE_TERRACOTTA, true, true, true);
-            addVanillaVariants(registry, Blocks.MAGENTA_TERRACOTTA, true, true, true);
-            addVanillaVariants(registry, Blocks.LIGHT_BLUE_TERRACOTTA, true, true, true);
-            addVanillaVariants(registry, Blocks.YELLOW_TERRACOTTA, true, true, true);
-            addVanillaVariants(registry, Blocks.LIME_TERRACOTTA, true, true, true);
-            addVanillaVariants(registry, Blocks.PINK_TERRACOTTA, true, true, true);
-            addVanillaVariants(registry, Blocks.GRAY_TERRACOTTA, true, true, true);
-            addVanillaVariants(registry, Blocks.LIGHT_GRAY_TERRACOTTA, true, true, true);
-            addVanillaVariants(registry, Blocks.CYAN_TERRACOTTA, true, true, true);
-            addVanillaVariants(registry, Blocks.PURPLE_TERRACOTTA, true, true, true);
-            addVanillaVariants(registry, Blocks.BLUE_TERRACOTTA, true, true, true);
-            addVanillaVariants(registry, Blocks.BROWN_TERRACOTTA, true, true, true);
-            addVanillaVariants(registry, Blocks.GREEN_TERRACOTTA, true, true, true);
-            addVanillaVariants(registry, Blocks.RED_TERRACOTTA, true, true, true);
-            addVanillaVariants(registry, Blocks.BLACK_TERRACOTTA, true, true, true);
-            addVanillaVariants(registry, Blocks.WHITE_CONCRETE, true, true, true);
-            addVanillaVariants(registry, Blocks.ORANGE_CONCRETE, true, true, true);
-            addVanillaVariants(registry, Blocks.MAGENTA_CONCRETE, true, true, true);
-            addVanillaVariants(registry, Blocks.LIGHT_BLUE_CONCRETE, true, true, true);
-            addVanillaVariants(registry, Blocks.YELLOW_CONCRETE, true, true, true);
-            addVanillaVariants(registry, Blocks.LIME_CONCRETE, true, true, true);
-            addVanillaVariants(registry, Blocks.PINK_CONCRETE, true, true, true);
-            addVanillaVariants(registry, Blocks.GRAY_CONCRETE, true, true, true);
-            addVanillaVariants(registry, Blocks.LIGHT_GRAY_CONCRETE, true, true, true);
-            addVanillaVariants(registry, Blocks.CYAN_CONCRETE, true, true, true);
-            addVanillaVariants(registry, Blocks.PURPLE_CONCRETE, true, true, true);
-            addVanillaVariants(registry, Blocks.BLUE_CONCRETE, true, true, true);
-            addVanillaVariants(registry, Blocks.BROWN_CONCRETE, true, true, true);
-            addVanillaVariants(registry, Blocks.GREEN_CONCRETE, true, true, true);
-            addVanillaVariants(registry, Blocks.RED_CONCRETE, true, true, true);
-            addVanillaVariants(registry, Blocks.BLACK_CONCRETE, true, true, true);
-            addVanillaVariants(registry, Blocks.OAK_WOOD, true, true, false);
-            addVanillaVariants(registry, Blocks.SPRUCE_WOOD, true, true, false);
-            addVanillaVariants(registry, Blocks.BIRCH_WOOD, true, true, false);
-            addVanillaVariants(registry, Blocks.JUNGLE_WOOD, true, true, false);
-            addVanillaVariants(registry, Blocks.ACACIA_WOOD, true, true, false);
-            addVanillaVariants(registry, Blocks.DARK_OAK_WOOD, true, true, false);
-            addVanillaVariants(registry, Blocks.CRIMSON_HYPHAE, true, true, false);
-            addVanillaVariants(registry, Blocks.WARPED_HYPHAE, true, true, false);
-            addVanillaVariants(registry, Blocks.STRIPPED_OAK_WOOD, true, true, false);
-            addVanillaVariants(registry, Blocks.STRIPPED_SPRUCE_WOOD, true, true, false);
-            addVanillaVariants(registry, Blocks.STRIPPED_BIRCH_WOOD, true, true, false);
-            addVanillaVariants(registry, Blocks.STRIPPED_JUNGLE_WOOD, true, true, false);
-            addVanillaVariants(registry, Blocks.STRIPPED_ACACIA_WOOD, true, true, false);
-            addVanillaVariants(registry, Blocks.STRIPPED_DARK_OAK_WOOD, true, true, false);
-            addVanillaVariants(registry, Blocks.STRIPPED_CRIMSON_HYPHAE, true, true, false);
-            addVanillaVariants(registry, Blocks.STRIPPED_WARPED_HYPHAE, true, true, false);
-            addVanillaVariants(registry, Blocks.CUT_SANDSTONE, true, false, true);
-            addVanillaVariants(registry, Blocks.CUT_RED_SANDSTONE, true, false, true);
-            addVanillaVariants(registry, Blocks.SMOOTH_STONE, true, false, true);
-            addVanillaVariants(registry, Blocks.STONE, false, false, true);
-            addVanillaVariants(registry, Blocks.POLISHED_GRANITE, false, false, true);
-            addVanillaVariants(registry, Blocks.POLISHED_DIORITE, false, false, true);
-            addVanillaVariants(registry, Blocks.POLISHED_ANDESITE, false, false, true);
-            addVanillaVariants(registry, Blocks.SMOOTH_SANDSTONE, false, false, true);
-            addVanillaVariants(registry, Blocks.SMOOTH_RED_SANDSTONE, false, false, true);
-            addVanillaVariants(registry, Blocks.PURPUR_BLOCK, false, false, true);
-            addVanillaVariants(registry, Blocks.QUARTZ_BLOCK, false, false, true);
-            addVanillaVariants(registry, Blocks.SMOOTH_QUARTZ, false, false, true);
-            addVanillaVariants(registry, Blocks.PRISMARINE_BRICKS, false, false, true);
-            addVanillaVariants(registry, Blocks.DARK_PRISMARINE, false, false, true);
+            vanillaVariants(registry, Blocks.CRACKED_STONE_BRICKS, true, true, true);
+            vanillaVariants(registry, Blocks.CHISELED_STONE_BRICKS, true, true, true);
+            vanillaVariants(registry, Blocks.CHISELED_SANDSTONE, true, true, true);
+            vanillaVariants(registry, Blocks.CHISELED_RED_SANDSTONE, true, true, true);
+            vanillaVariants(registry, Blocks.IRON_BLOCK, true, true, true);
+            vanillaVariants(registry, Blocks.GOLD_BLOCK, true, true, true);
+            vanillaVariants(registry, Blocks.OBSIDIAN, true, true, true);
+            vanillaVariants(registry, Blocks.BEDROCK, true, true, true);
+            vanillaVariants(registry, Blocks.NETHERRACK, true, true, true);
+            vanillaVariants(registry, Blocks.CRACKED_NETHER_BRICKS, true, true, true);
+            vanillaVariants(registry, Blocks.CHISELED_NETHER_BRICKS, true, true, true);
+            vanillaVariants(registry, Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS, true, true, true);
+            vanillaVariants(registry, Blocks.CHISELED_POLISHED_BLACKSTONE, true, true, true);
+            vanillaVariants(registry, Blocks.END_STONE, true, true, true);
+            vanillaVariants(registry, Blocks.CHISELED_QUARTZ_BLOCK, true, true, true);
+            vanillaVariants(registry, Blocks.QUARTZ_BRICKS, true, true, true);
+            vanillaVariants(registry, Blocks.TERRACOTTA, true, true, true);
+            vanillaVariants(registry, Blocks.WHITE_TERRACOTTA, true, true, true);
+            vanillaVariants(registry, Blocks.ORANGE_TERRACOTTA, true, true, true);
+            vanillaVariants(registry, Blocks.MAGENTA_TERRACOTTA, true, true, true);
+            vanillaVariants(registry, Blocks.LIGHT_BLUE_TERRACOTTA, true, true, true);
+            vanillaVariants(registry, Blocks.YELLOW_TERRACOTTA, true, true, true);
+            vanillaVariants(registry, Blocks.LIME_TERRACOTTA, true, true, true);
+            vanillaVariants(registry, Blocks.PINK_TERRACOTTA, true, true, true);
+            vanillaVariants(registry, Blocks.GRAY_TERRACOTTA, true, true, true);
+            vanillaVariants(registry, Blocks.LIGHT_GRAY_TERRACOTTA, true, true, true);
+            vanillaVariants(registry, Blocks.CYAN_TERRACOTTA, true, true, true);
+            vanillaVariants(registry, Blocks.PURPLE_TERRACOTTA, true, true, true);
+            vanillaVariants(registry, Blocks.BLUE_TERRACOTTA, true, true, true);
+            vanillaVariants(registry, Blocks.BROWN_TERRACOTTA, true, true, true);
+            vanillaVariants(registry, Blocks.GREEN_TERRACOTTA, true, true, true);
+            vanillaVariants(registry, Blocks.RED_TERRACOTTA, true, true, true);
+            vanillaVariants(registry, Blocks.BLACK_TERRACOTTA, true, true, true);
+            vanillaVariants(registry, Blocks.WHITE_CONCRETE, true, true, true);
+            vanillaVariants(registry, Blocks.ORANGE_CONCRETE, true, true, true);
+            vanillaVariants(registry, Blocks.MAGENTA_CONCRETE, true, true, true);
+            vanillaVariants(registry, Blocks.LIGHT_BLUE_CONCRETE, true, true, true);
+            vanillaVariants(registry, Blocks.YELLOW_CONCRETE, true, true, true);
+            vanillaVariants(registry, Blocks.LIME_CONCRETE, true, true, true);
+            vanillaVariants(registry, Blocks.PINK_CONCRETE, true, true, true);
+            vanillaVariants(registry, Blocks.GRAY_CONCRETE, true, true, true);
+            vanillaVariants(registry, Blocks.LIGHT_GRAY_CONCRETE, true, true, true);
+            vanillaVariants(registry, Blocks.CYAN_CONCRETE, true, true, true);
+            vanillaVariants(registry, Blocks.PURPLE_CONCRETE, true, true, true);
+            vanillaVariants(registry, Blocks.BLUE_CONCRETE, true, true, true);
+            vanillaVariants(registry, Blocks.BROWN_CONCRETE, true, true, true);
+            vanillaVariants(registry, Blocks.GREEN_CONCRETE, true, true, true);
+            vanillaVariants(registry, Blocks.RED_CONCRETE, true, true, true);
+            vanillaVariants(registry, Blocks.BLACK_CONCRETE, true, true, true);
+            vanillaVariants(registry, Blocks.OAK_WOOD, true, true, false);
+            vanillaVariants(registry, Blocks.SPRUCE_WOOD, true, true, false);
+            vanillaVariants(registry, Blocks.BIRCH_WOOD, true, true, false);
+            vanillaVariants(registry, Blocks.JUNGLE_WOOD, true, true, false);
+            vanillaVariants(registry, Blocks.ACACIA_WOOD, true, true, false);
+            vanillaVariants(registry, Blocks.DARK_OAK_WOOD, true, true, false);
+            vanillaVariants(registry, Blocks.CRIMSON_HYPHAE, true, true, false);
+            vanillaVariants(registry, Blocks.WARPED_HYPHAE, true, true, false);
+            vanillaVariants(registry, Blocks.STRIPPED_OAK_WOOD, true, true, false);
+            vanillaVariants(registry, Blocks.STRIPPED_SPRUCE_WOOD, true, true, false);
+            vanillaVariants(registry, Blocks.STRIPPED_BIRCH_WOOD, true, true, false);
+            vanillaVariants(registry, Blocks.STRIPPED_JUNGLE_WOOD, true, true, false);
+            vanillaVariants(registry, Blocks.STRIPPED_ACACIA_WOOD, true, true, false);
+            vanillaVariants(registry, Blocks.STRIPPED_DARK_OAK_WOOD, true, true, false);
+            vanillaVariants(registry, Blocks.STRIPPED_CRIMSON_HYPHAE, true, true, false);
+            vanillaVariants(registry, Blocks.STRIPPED_WARPED_HYPHAE, true, true, false);
+            vanillaVariants(registry, Blocks.CUT_SANDSTONE, true, false, true);
+            vanillaVariants(registry, Blocks.CUT_RED_SANDSTONE, true, false, true);
+            vanillaVariants(registry, Blocks.SMOOTH_STONE, true, false, true);
+            vanillaVariants(registry, Blocks.STONE, false, false, true);
+            vanillaVariants(registry, Blocks.POLISHED_GRANITE, false, false, true);
+            vanillaVariants(registry, Blocks.POLISHED_DIORITE, false, false, true);
+            vanillaVariants(registry, Blocks.POLISHED_ANDESITE, false, false, true);
+            vanillaVariants(registry, Blocks.SMOOTH_SANDSTONE, false, false, true);
+            vanillaVariants(registry, Blocks.SMOOTH_RED_SANDSTONE, false, false, true);
+            vanillaVariants(registry, Blocks.PURPUR_BLOCK, false, false, true);
+            vanillaVariants(registry, Blocks.QUARTZ_BLOCK, false, false, true);
+            vanillaVariants(registry, Blocks.SMOOTH_QUARTZ, false, false, true);
+            vanillaVariants(registry, Blocks.PRISMARINE_BRICKS, false, false, true);
+            vanillaVariants(registry, Blocks.DARK_PRISMARINE, false, false, true);
 
             //Fences
             registry.register(setup(new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)), Names.OAK_WOOD_FENCE));
@@ -867,46 +848,46 @@ public class ModBlocks {
             registry.register(setup(new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_BRICK_FENCE)), Names.RED_NETHER_BRICK_FENCE_GATE));
         }
 
-        private static void addVanillaVariants(IForgeRegistry<Block> registry, Block block, boolean addStair, boolean addSlab, boolean addWall) {
+        private static void vanillaVariants(IForgeRegistry<Block> registry, Block block, boolean addStair, boolean addSlab, boolean addWall) {
             if (addStair) {
-                registry.register(setup(new ModStairBlock(block), Utils.getStairName(block.getRegistryName().getPath())));
+                registry.register(setup(new ModStairBlock(() -> block.defaultBlockState()), ModStairBlock.getStairName(block.getRegistryName().getPath())));
             }
 
             if (addSlab) {
-                registry.register(setup(new ModSlabBlock(block), Utils.getSlabName(block.getRegistryName().getPath())));
+                registry.register(setup(new ModSlabBlock(() -> block.defaultBlockState()), ModSlabBlock.getSlabName(block.getRegistryName().getPath())));
             }
 
             if (addWall) {
-                registry.register(setup(new ModWallBlock(block), Utils.getWallName(block.getRegistryName().getPath())));
+                registry.register(setup(new ModWallBlock(() -> block.defaultBlockState()), ModWallBlock.getWallName(block.getRegistryName().getPath())));
             }
         }
 
-        private static void createSpecialBlock(IForgeRegistry<Block> registry, BlockBehaviour.Properties builder, String name) {
-            createSpecialBlock(registry, new Block(builder), name);
+        private static void blockWithVariants(IForgeRegistry<Block> registry, BlockBehaviour.Properties builder, String name) {
+            blockWithVariants(registry, new Block(builder), name);
         }
 
-        private static void createSpecialBlock(IForgeRegistry<Block> registry, Block block, String name) {
+        private static void blockWithVariants(IForgeRegistry<Block> registry, Block block, String name) {
             registry.register(setup(block, name));
-            registry.register(setup(new ModStairBlock(block), Utils.getStairName(name)));
-            registry.register(setup(new ModSlabBlock(block), Utils.getSlabName(name)));
-            registry.register(setup(new ModWallBlock(block), Utils.getWallName(name)));
+            registry.register(setup(new ModStairBlock(() -> block.defaultBlockState()), ModStairBlock.getStairName(name)));
+            registry.register(setup(new ModSlabBlock(() -> block.defaultBlockState()), ModSlabBlock.getSlabName(name)));
+            registry.register(setup(new ModWallBlock(() -> block.defaultBlockState()), ModWallBlock.getWallName(name)));
         }
 
-        private static void createFlower(IForgeRegistry<Block> registry, MobEffect effect, int effectDuration, String name) {
+        private static void flowerBlock(IForgeRegistry<Block> registry, MobEffect effect, int effectDuration, String name) {
             Block flower = new FlowerBlock(effect, effectDuration, BlockBehaviour.Properties.copy(Blocks.POPPY));
             registry.register(setup(flower, name));
             registry.register(setup(new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, () -> flower, BlockBehaviour.Properties.of(Material.DECORATION).strength(0.0F)), "potted_" + name));
         }
 
-        private static void createCake(IForgeRegistry<Block> registry, String name) {
+        private static void cakeBlock(IForgeRegistry<Block> registry, String name) {
             Block cake = new ModCakeBlock();
             registry.register(setup(cake, name));
             Map<Block, CandleCakeBlock> candleMap = Maps.newHashMap();
 
-            for (int i = 0; i < CANDLE_COLORS.length; i++){
+            for (Block candle : Utils.CANDLES) {
                 CandleCakeBlock candleCake = new ModCandleCakeBlock(cake);
-                candleMap.put(CANDLES[i], candleCake);
-                registry.register(setup(candleCake, CANDLE_COLORS[i]  + name));
+                candleMap.put(candle, candleCake);
+                registry.register(setup(candleCake, candle.getRegistryName().getPath() + "_" + name));
             }
 
             ModCakeBlock.CANDLE_CAKES.put(cake, candleMap);

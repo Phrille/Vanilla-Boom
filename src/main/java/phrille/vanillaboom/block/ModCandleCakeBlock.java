@@ -24,8 +24,8 @@ public class ModCandleCakeBlock extends CandleCakeBlock {
         this.parent = parent;
     }
 
-    private static boolean candleHit(BlockHitResult p_152907_) {
-        return p_152907_.getLocation().y - (double) p_152907_.getBlockPos().getY() > 0.5D;
+    private static boolean candleHit(BlockHitResult result) {
+        return result.getLocation().y - (double) result.getBlockPos().getY() > 0.5D;
     }
 
     @Override

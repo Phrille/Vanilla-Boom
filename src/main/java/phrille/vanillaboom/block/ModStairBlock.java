@@ -1,22 +1,24 @@
 package phrille.vanillaboom.block;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class ModStairBlock extends StairBlock {
-    protected Block modelBlock;
+import java.util.function.Supplier;
 
-    public ModStairBlock(Block block) {
-        super(() -> block.defaultBlockState(), Properties.copy(block));
-        modelBlock = block;
+public class ModStairBlock extends StairBlock {
+    protected Supplier<BlockState> state;
+
+    public ModStairBlock(Supplier<BlockState> state) {
+        super(state, Properties.copy(state.get().getBlock()));
+        this.state = state;
     }
 
-    @Override
-    public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {
-        modelBlock.stepOn(world, pos, state, entity);
+    public static final String getStairName(String name) {
+        return name.replace("bricks", "brick") + "_stairs";
+    }
+
+    public Block getParent() {
+        return state.get().getBlock();
     }
 }

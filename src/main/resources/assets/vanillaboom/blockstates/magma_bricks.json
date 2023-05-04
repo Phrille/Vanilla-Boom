@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "vanillaboom:block/magma_bricks" }
+  "variants": {
+    "": {
+      "model": "vanillaboom:block/magma_bricks"
     }
+  }
 }

@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
@@ -14,6 +15,8 @@ import phrille.vanillaboom.item.ModItems;
 import javax.annotation.Nonnull;
 
 public class Utils {
+    public static final Block[] CANDLES = {Blocks.CANDLE, Blocks.WHITE_CANDLE, Blocks.ORANGE_CANDLE, Blocks.MAGENTA_CANDLE, Blocks.LIGHT_BLUE_CANDLE, Blocks.YELLOW_CANDLE, Blocks.LIME_CANDLE, Blocks.PINK_CANDLE, Blocks.GRAY_CANDLE, Blocks.LIGHT_GRAY_CANDLE, Blocks.CYAN_CANDLE, Blocks.PURPLE_CANDLE, Blocks.BLUE_CANDLE, Blocks.BROWN_CANDLE, Blocks.GREEN_CANDLE, Blocks.RED_CANDLE, Blocks.BLACK_CANDLE};
+
     @Nonnull
     public static <T> T _null() {
         return null;
@@ -38,17 +41,5 @@ public class Utils {
 
     public static void registerFlowerPots() {
         ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(new ResourceLocation(VanillaBoom.MOD_ID, Names.ROSE), () -> ModBlocks.POTTED_ROSE);
-    }
-
-    public static final String getStairName(String name) {
-        return name.replace("bricks", "brick") + "_stairs";
-    }
-
-    public static final String getSlabName(String name) {
-        return name.replace("bricks", "brick") + "_slab";
-    }
-
-    public static final String getWallName(String name) {
-        return name.replace("bricks", "brick") + "_wall";
     }
 }

@@ -7,7 +7,7 @@
     },
     {
       "when": {
-        "north": true
+        "north": "true"
       },
       "apply": {
         "model": "vanillaboom:block/stripped_jungle_wood_fence_side",
@@ -16,17 +16,7 @@
     },
     {
       "when": {
-        "east": true
-      },
-      "apply": {
-        "model": "vanillaboom:block/stripped_jungle_wood_fence_side",
-        "y": 90,
-        "uvlock": true
-      }
-    },
-    {
-      "when": {
-        "south": true
+        "south": "true"
       },
       "apply": {
         "model": "vanillaboom:block/stripped_jungle_wood_fence_side",
@@ -36,11 +26,21 @@
     },
     {
       "when": {
-        "west": true
+        "west": "true"
       },
       "apply": {
         "model": "vanillaboom:block/stripped_jungle_wood_fence_side",
         "y": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "east": "true"
+      },
+      "apply": {
+        "model": "vanillaboom:block/stripped_jungle_wood_fence_side",
+        "y": 90,
         "uvlock": true
       }
     }

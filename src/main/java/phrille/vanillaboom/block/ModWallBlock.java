@@ -7,20 +7,26 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class ModWallBlock extends WallBlock {
-    protected final Block modelBlock;
+import java.util.function.Supplier;
 
-    public ModWallBlock(Block block) {
-        super(Properties.copy(block));
-        modelBlock = block;
+public class ModWallBlock extends WallBlock {
+    protected Supplier<BlockState> state;
+
+    public ModWallBlock(Supplier<BlockState> state) {
+        super(Properties.copy(state.get().getBlock()));
+        this.state = state;
+    }
+
+    public static final String getWallName(String name) {
+        return name.replace("bricks", "brick") + "_wall";
     }
 
     @Override
     public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {
-        modelBlock.stepOn(world, pos, state, entity);
+        getParent().stepOn(world, pos, state, entity);
     }
 
-    public Block getModelBlock() {
-        return modelBlock;
+    public Block getParent() {
+        return state.get().getBlock();
     }
 }

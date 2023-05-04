@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "vanillaboom:block/charcoal_block" }
+  "variants": {
+    "": {
+      "model": "vanillaboom:block/charcoal_block"
     }
+  }
 }

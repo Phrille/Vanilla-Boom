@@ -1,8 +1,8 @@
 {
-  "parent": "block/outer_stairs",
+  "parent": "minecraft:block/outer_stairs",
   "textures": {
+    "side": "minecraft:block/magenta_concrete",
     "bottom": "minecraft:block/magenta_concrete",
-    "top": "minecraft:block/magenta_concrete",
-    "side": "minecraft:block/magenta_concrete"
+    "top": "minecraft:block/magenta_concrete"
   }
 }

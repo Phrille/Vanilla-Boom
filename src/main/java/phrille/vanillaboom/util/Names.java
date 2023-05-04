@@ -34,10 +34,6 @@ public class Names
     //Sand and Gravel
     public static final String BONE_SAND  = "bone_sand";
     public static final String WITHER_BONE_SAND  = "wither_bone_sand";
-    public static final String FINE_GRAVEL = "fine_gravel";
-    public static final String GRAVEL_STONE = "gravel_stone";
-    public static final String FINE_GRAVEL_STONE = "fine_gravel_stone";
-    public static final String GRAVEL_BRICKS = "gravel_bricks";
     
     //Polished
     public static final String POLISHED_PERIDOTITE  = "polished_peridotite";

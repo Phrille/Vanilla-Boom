@@ -2,19 +2,10 @@
   "multipart": [
     {
       "when": {
-        "up": true
+        "up": "true"
       },
       "apply": {
         "model": "vanillaboom:block/black_terracotta_wall_post"
-      }
-    },
-    {
-      "when": {
-        "north": "low"
-      },
-      "apply": {
-        "model": "vanillaboom:block/black_terracotta_wall_side",
-        "uvlock": true
       }
     },
     {
@@ -24,35 +15,6 @@
       "apply": {
         "model": "vanillaboom:block/black_terracotta_wall_side",
         "y": 90,
-        "uvlock": true
-      }
-    },
-    {
-      "when": {
-        "south": "low"
-      },
-      "apply": {
-        "model": "vanillaboom:block/black_terracotta_wall_side",
-        "y": 180,
-        "uvlock": true
-      }
-    },
-    {
-      "when": {
-        "west": "low"
-      },
-      "apply": {
-        "model": "vanillaboom:block/black_terracotta_wall_side",
-        "y": 270,
-        "uvlock": true
-      }
-    },
-    {
-      "when": {
-        "north": "tall"
-      },
-      "apply": {
-        "model": "vanillaboom:block/black_terracotta_wall_side_tall",
         "uvlock": true
       }
     },
@@ -68,11 +30,49 @@
     },
     {
       "when": {
+        "north": "low"
+      },
+      "apply": {
+        "model": "vanillaboom:block/black_terracotta_wall_side",
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "north": "tall"
+      },
+      "apply": {
+        "model": "vanillaboom:block/black_terracotta_wall_side_tall",
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "south": "low"
+      },
+      "apply": {
+        "model": "vanillaboom:block/black_terracotta_wall_side",
+        "y": 180,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
         "south": "tall"
       },
       "apply": {
         "model": "vanillaboom:block/black_terracotta_wall_side_tall",
         "y": 180,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "west": "low"
+      },
+      "apply": {
+        "model": "vanillaboom:block/black_terracotta_wall_side",
+        "y": 270,
         "uvlock": true
       }
     },

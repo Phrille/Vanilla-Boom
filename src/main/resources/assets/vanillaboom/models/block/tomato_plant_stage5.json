@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "minecraft:block/crop",
   "textures": {
-    "cross": "vanillaboom:block/tomato_plant_stage5"
+    "crop": "vanillaboom:block/tomato_plant_stage5"
   }
 }

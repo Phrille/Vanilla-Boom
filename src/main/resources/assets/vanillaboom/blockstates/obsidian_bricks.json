@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "vanillaboom:block/obsidian_bricks" }
+  "variants": {
+    "": {
+      "model": "vanillaboom:block/obsidian_bricks"
     }
+  }
 }

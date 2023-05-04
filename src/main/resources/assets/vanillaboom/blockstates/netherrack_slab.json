@@ -1,10 +1,10 @@
 {
   "variants": {
-    "type=bottom": {
-      "model": "vanillaboom:block/netherrack_slab"
-    },
     "type=top": {
       "model": "vanillaboom:block/netherrack_slab_top"
+    },
+    "type=bottom": {
+      "model": "vanillaboom:block/netherrack_slab"
     },
     "type=double": {
       "model": "minecraft:block/netherrack"

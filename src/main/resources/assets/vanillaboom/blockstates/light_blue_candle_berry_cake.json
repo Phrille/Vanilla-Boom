@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "vanillaboom:block/light_blue_candle_berry_cake"
+    },
+    "lit=true": {
+      "model": "vanillaboom:block/light_blue_candle_berry_cake_lit"
+    }
+  }
+}

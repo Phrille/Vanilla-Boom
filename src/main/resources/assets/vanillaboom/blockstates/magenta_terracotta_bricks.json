@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "vanillaboom:block/magenta_terracotta_bricks" }
+  "variants": {
+    "": {
+      "model": "vanillaboom:block/magenta_terracotta_bricks"
     }
+  }
 }

@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "vanillaboom:block/prismarine_crystal_block" }
+  "variants": {
+    "": {
+      "model": "vanillaboom:block/prismarine_crystal_block"
     }
+  }
 }

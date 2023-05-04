@@ -235,7 +235,7 @@ public class ModItems {
                     continue;
                 }
 
-                boolean notAdd = block instanceof FlowerPotBlock || block instanceof BonemealableBlock || block instanceof CakeBlock;
+                boolean notAdd = block instanceof FlowerPotBlock || block instanceof BonemealableBlock || block instanceof CakeBlock || block instanceof CandleCakeBlock;
 
                 if (!notAdd) {
                     boolean variantBlock = block instanceof SlabBlock || block instanceof StairBlock || block instanceof WallBlock || block instanceof FenceBlock || block instanceof FenceGateBlock;

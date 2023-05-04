@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "vanillaboom:block/mossy_cobblestone_bricks" }
+  "variants": {
+    "": {
+      "model": "vanillaboom:block/mossy_cobblestone_bricks"
     }
+  }
 }

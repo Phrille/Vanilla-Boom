@@ -1,7 +1,7 @@
 {
-    "parent": "block/cube_column",
-    "textures": {
-        "end": "minecraft:block/dark_oak_planks",
-        "side": "vanillaboom:block/dark_oak_bookshelf"
-    }
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "vanillaboom:block/dark_oak_bookshelf",
+    "end": "minecraft:block/dark_oak_planks"
+  }
 }
