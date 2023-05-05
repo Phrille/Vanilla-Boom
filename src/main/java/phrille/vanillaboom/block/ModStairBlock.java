@@ -14,8 +14,8 @@ public class ModStairBlock extends StairBlock {
         this.state = state;
     }
 
-    public static final String getStairName(String name) {
-        return name.replace("bricks", "brick") + "_stairs";
+    public static String getStairName(Block block) {
+        return block.getRegistryName().getPath().replace("bricks", "brick") + "_stairs";
     }
 
     public Block getParent() {

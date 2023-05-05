@@ -57,7 +57,7 @@ public class RicePlantBlock extends CropBlock {
         } else if (isMaxAge && stack.is(Items.BOWL)) {
             fillBowl(stack, player, new ItemStack(ModItems.RICE_BOWL));
             world.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
-            world.setBlock(pos, state.setValue(AGE, Integer.valueOf(5)), 2);
+            world.setBlock(pos, state.setValue(AGE, 5), 2);
 
             return InteractionResult.sidedSuccess(world.isClientSide);
         }

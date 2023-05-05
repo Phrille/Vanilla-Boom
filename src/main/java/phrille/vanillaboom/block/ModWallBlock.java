@@ -17,8 +17,8 @@ public class ModWallBlock extends WallBlock {
         this.state = state;
     }
 
-    public static final String getWallName(String name) {
-        return name.replace("bricks", "brick") + "_wall";
+    public static String getWallName(Block block) {
+        return block.getRegistryName().getPath().replace("bricks", "brick") + "_wall";
     }
 
     @Override

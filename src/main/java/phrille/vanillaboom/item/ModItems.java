@@ -173,9 +173,9 @@ public class ModItems {
             registerItem(registry, setup(new FishBucketItem(() -> ModEntities.EEL), "eel_bucket"));
 
             registerItem(registry, setup(new ForgeSpawnEggItem(() -> ModEntities.PERCH, 0x464614, 0xFD5100, new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "perch_spawn_egg"));
-            registerItem(registry, setup(new ForgeSpawnEggItem(() -> ModEntities.TUNA, 0x33495E, 0x8D8C9F, new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "tuna_spawn_egg"));
-            registerItem(registry, setup(new ForgeSpawnEggItem(() -> ModEntities.PIKE, 0x4C462A, 0x9FA069, new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "pike_spawn_egg"));
-            registerItem(registry, setup(new ForgeSpawnEggItem(() -> ModEntities.EEL, 0x443522, 0xCABBA3, new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "eel_spawn_egg"));
+            registerItem(registry, setup(new ForgeSpawnEggItem(() -> ModEntities.TUNA, 0x33495E, 0xD7C376, new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "tuna_spawn_egg"));
+            registerItem(registry, setup(new ForgeSpawnEggItem(() -> ModEntities.PIKE, 0x4C462A, 0xA0A169, new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "pike_spawn_egg"));
+            registerItem(registry, setup(new ForgeSpawnEggItem(() -> ModEntities.EEL, 0x5F4F37, 0x312517, new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "eel_spawn_egg"));
 
             //Paintings
             registerItem(registry, setup(new Item(new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), Names.CANVAS));

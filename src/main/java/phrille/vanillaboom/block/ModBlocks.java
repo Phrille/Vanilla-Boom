@@ -654,10 +654,7 @@ public class ModBlocks {
             registry.register(setup(new GunpowderBlock(), Names.GUNPOWDER_BLOCK));
             registry.register(setup(new FallingBlock(BlockBehaviour.Properties.copy(Blocks.SAND).sound(SoundType.SNOW).requiresCorrectToolForDrops()), Names.BLAZE_POWDER_BLOCK));
             registry.register(setup(new SlimeBlock(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK)), Names.MAGMA_CREAM_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.COLOR_CYAN).strength(0.3F, 0.5F).sound(SoundType.GLASS).lightLevel((lightValue) ->
-            {
-                return 5;
-            })), Names.PRISMARINE_CRYSTAL_BLOCK));
+            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.COLOR_CYAN).strength(0.3F, 0.5F).sound(SoundType.GLASS).lightLevel((lightValue) -> 5)), Names.PRISMARINE_CRYSTAL_BLOCK));
             registry.register(setup(new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).sound(SoundType.BONE_BLOCK).strength(1.8F, 3.33F)), Names.WITHER_BONE_BLOCK));
             registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.WOOL).strength(3.0F, 5.0F)), Names.WHITE_DYE_BLOCK));
             registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).strength(3.0F, 5.0F)), Names.ORANGE_DYE_BLOCK));
@@ -850,15 +847,15 @@ public class ModBlocks {
 
         private static void vanillaVariants(IForgeRegistry<Block> registry, Block block, boolean addStair, boolean addSlab, boolean addWall) {
             if (addStair) {
-                registry.register(setup(new ModStairBlock(() -> block.defaultBlockState()), ModStairBlock.getStairName(block.getRegistryName().getPath())));
+                registry.register(setup(new ModStairBlock(block::defaultBlockState), ModStairBlock.getStairName(block)));
             }
 
             if (addSlab) {
-                registry.register(setup(new ModSlabBlock(() -> block.defaultBlockState()), ModSlabBlock.getSlabName(block.getRegistryName().getPath())));
+                registry.register(setup(new ModSlabBlock(block::defaultBlockState), ModSlabBlock.getSlabName(block)));
             }
 
             if (addWall) {
-                registry.register(setup(new ModWallBlock(() -> block.defaultBlockState()), ModWallBlock.getWallName(block.getRegistryName().getPath())));
+                registry.register(setup(new ModWallBlock(block::defaultBlockState), ModWallBlock.getWallName(block)));
             }
         }
 
@@ -868,9 +865,9 @@ public class ModBlocks {
 
         private static void blockWithVariants(IForgeRegistry<Block> registry, Block block, String name) {
             registry.register(setup(block, name));
-            registry.register(setup(new ModStairBlock(() -> block.defaultBlockState()), ModStairBlock.getStairName(name)));
-            registry.register(setup(new ModSlabBlock(() -> block.defaultBlockState()), ModSlabBlock.getSlabName(name)));
-            registry.register(setup(new ModWallBlock(() -> block.defaultBlockState()), ModWallBlock.getWallName(name)));
+            registry.register(setup(new ModStairBlock(block::defaultBlockState), ModStairBlock.getStairName(block)));
+            registry.register(setup(new ModSlabBlock(block::defaultBlockState), ModSlabBlock.getSlabName(block)));
+            registry.register(setup(new ModWallBlock(block::defaultBlockState), ModWallBlock.getWallName(block)));
         }
 
         private static void flowerBlock(IForgeRegistry<Block> registry, MobEffect effect, int effectDuration, String name) {

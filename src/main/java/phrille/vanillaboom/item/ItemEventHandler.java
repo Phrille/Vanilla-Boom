@@ -55,6 +55,7 @@ public class ItemEventHandler {
         }
 
         if (VanillaBoomConfig.removeSlimeBallPistons && tryRemoveSlimeBall(world, player, state, pos, stack, event.getHand())) {
+            return;
         }
     }
 
@@ -65,7 +66,7 @@ public class ItemEventHandler {
 
             if (age < NetherWartBlock.MAX_AGE) {
                 if (world.random.nextFloat() < 0.625F) {
-                    state = state.setValue(NetherWartBlock.AGE, Integer.valueOf(age + 1));
+                    state = state.setValue(NetherWartBlock.AGE, age + 1);
                     world.setBlock(pos, state, 2);
                 }
 
@@ -113,7 +114,7 @@ public class ItemEventHandler {
             } else if (state.getBlock() == Blocks.PISTON_HEAD && state.getValue(PistonHeadBlock.TYPE) == PistonType.DEFAULT) {
                 Direction direction = state.getValue(PistonBaseBlock.FACING);
                 world.setBlock(pos, Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.TYPE, PistonType.STICKY).setValue(PistonHeadBlock.FACING, direction), 2);
-                world.setBlock(pos.relative(direction, -1), Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.EXTENDED, Boolean.valueOf(true)).setValue(PistonBaseBlock.FACING, direction), 2);
+                world.setBlock(pos.relative(direction, -1), Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.EXTENDED, true).setValue(PistonBaseBlock.FACING, direction), 2);
                 onPlace(world, pos, player, stack);
 
                 return true;
@@ -144,7 +145,7 @@ public class ItemEventHandler {
             } else if (state.getBlock() == Blocks.PISTON_HEAD && state.getValue(PistonHeadBlock.TYPE) == PistonType.STICKY) {
                 Direction direction = state.getValue(PistonHeadBlock.FACING);
                 world.setBlock(pos, Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.TYPE, PistonType.DEFAULT).setValue(PistonHeadBlock.FACING, direction), 2);
-                world.setBlock(pos.relative(direction, -1), Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.EXTENDED, Boolean.valueOf(true)).setValue(PistonBaseBlock.FACING, direction), 2);
+                world.setBlock(pos.relative(direction, -1), Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.EXTENDED, true).setValue(PistonBaseBlock.FACING, direction), 2);
                 onRemove(world, pos, player, stack, hand, direction);
 
                 return true;
@@ -156,9 +157,7 @@ public class ItemEventHandler {
 
     protected static void onRemove(Level world, BlockPos pos, Player player, ItemStack stack, InteractionHand hand, Direction direction) {
         if (!player.isCreative()) {
-            stack.hurtAndBreak(1, player, (entity) -> {
-                entity.broadcastBreakEvent(hand);
-            });
+            stack.hurtAndBreak(1, player, (entity) -> entity.broadcastBreakEvent(hand));
         }
 
         Block.popResourceFromFace(world, pos, direction, new ItemStack(Items.SLIME_BALL));
