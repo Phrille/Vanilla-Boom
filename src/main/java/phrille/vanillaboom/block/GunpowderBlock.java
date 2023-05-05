@@ -39,9 +39,7 @@ public class GunpowderBlock extends FallingBlock {
             Item item = stack.getItem();
             if (!player.isCreative()) {
                 if (stack.is(Items.FLINT_AND_STEEL)) {
-                    stack.hurtAndBreak(1, player, (entity) -> {
-                        entity.broadcastBreakEvent(hand);
-                    });
+                    stack.hurtAndBreak(1, player, (entity) -> entity.broadcastBreakEvent(hand));
                 } else {
                     stack.shrink(1);
                 }

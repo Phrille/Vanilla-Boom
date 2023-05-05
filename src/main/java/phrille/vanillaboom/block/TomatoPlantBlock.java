@@ -49,7 +49,7 @@ public class TomatoPlantBlock extends CropBlock {
         } else if (isMaxAge) {
             popResource(world, pos, new ItemStack(ModItems.TOMATO));
             world.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
-            world.setBlock(pos, state.setValue(AGE, Integer.valueOf(4)), 2);
+            world.setBlock(pos, state.setValue(AGE, 4), 2);
 
             return InteractionResult.sidedSuccess(world.isClientSide);
         }

@@ -77,7 +77,7 @@ public class RainDetectorBlock extends BaseEntityBlock {
             }
 
             if (state.getValue(POWER) != power) {
-                world.setBlock(pos, state.setValue(POWER, Integer.valueOf(Mth.clamp(power, 0, 15))), 3);
+                world.setBlock(pos, state.setValue(POWER, Mth.clamp(power, 0, 15)), 3);
             }
         }
     }

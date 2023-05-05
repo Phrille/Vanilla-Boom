@@ -79,7 +79,7 @@ public class ModRenderers {
 
     @SubscribeEvent
     public static void registerLayer(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(ModEntities.PRISMARINE_ARROW, context -> new PrismarineArrowRenderer(context));
+        event.registerEntityRenderer(ModEntities.PRISMARINE_ARROW, PrismarineArrowRenderer::new);
         event.registerEntityRenderer(ModEntities.PERCH, context -> new FishRenderer(context, new PerchModel<>(context.bakeLayer(ModRenderers.PERCH_MODEL))));
         event.registerEntityRenderer(ModEntities.TUNA, context -> new FishRenderer(context, new TunaModel<>(context.bakeLayer(ModRenderers.TUNA_MODEL))));
         event.registerEntityRenderer(ModEntities.PIKE, context -> new FishRenderer(context, new SalmonModel<>(context.bakeLayer(ModelLayers.SALMON))));

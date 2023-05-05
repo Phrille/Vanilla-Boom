@@ -17,8 +17,8 @@ public class ModSlabBlock extends SlabBlock {
         this.state = state;
     }
 
-    public static final String getSlabName(String name) {
-        return name.replace("bricks", "brick") + "_slab";
+    public static String getSlabName(Block block) {
+        return block.getRegistryName().getPath().replace("bricks", "brick") + "_slab";
     }
 
     @Override

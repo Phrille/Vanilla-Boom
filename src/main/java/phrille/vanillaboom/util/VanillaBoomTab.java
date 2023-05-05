@@ -21,7 +21,6 @@ public class VanillaBoomTab extends CreativeModeTab {
 
     public static final CreativeModeTab VANILLABOOM_TAB = new VanillaBoomTab(VanillaBoom.MOD_ID + "_tab", () -> new ItemStack(ModBlocks.MOSSY_COBBLESTONE_BRICKS), VANILLABOOM_TAB_LIST);
     public static final CreativeModeTab VANILLABOOM_VARIANT_BLOCKS_TAB = new VanillaBoomTab(VanillaBoom.MOD_ID + "_variant_blocks_tab", () -> new ItemStack(ModBlocks.MAGMA_BRICK_STAIRS), VANILLABOOM_VARIANT_BLOCKS_TAB_LIST);
-    private static Comparator<ItemStack> tabSorter;
     private final Supplier<ItemStack> iconSupplier;
     private final List<Item> tabList;
 
@@ -36,7 +35,7 @@ public class VanillaBoomTab extends CreativeModeTab {
     public void fillItemList(NonNullList<ItemStack> items) {
         super.fillItemList(items);
 
-        tabSorter = Ordering.explicit(tabList).onResultOf(ItemStack::getItem);
+        Comparator<ItemStack> tabSorter = Ordering.explicit(tabList).onResultOf(ItemStack::getItem);
         items.sort(tabSorter);
     }
 
