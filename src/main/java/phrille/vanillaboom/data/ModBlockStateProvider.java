@@ -23,7 +23,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         //Bricks
-        simpleBlock(ModBlocks.COBBLESTONE_BRICKS);
+        simpleBlock(ModBlocks2.COBBLESTONE_BRICKS.get());
         simpleBlock(ModBlocks.MOSSY_COBBLESTONE_BRICKS);
         simpleBlock(ModBlocks.MAGMA_BRICKS);
         simpleBlock(ModBlocks.OBSIDIAN_BRICKS);
@@ -173,7 +173,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         cakeBlock(ModBlocks.BERRY_CAKE);
 
         //Stairs
-        stairsBlock(ModBlocks.COBBLESTONE_BRICK_STAIRS);
+        stairsBlock(ModBlocks2.COBBLESTONE_BRICK_STAIRS.get());
         stairsBlock(ModBlocks.MOSSY_COBBLESTONE_BRICK_STAIRS);
         stairsBlock(ModBlocks.MAGMA_BRICK_STAIRS);
         stairsBlock(ModBlocks.OBSIDIAN_BRICK_STAIRS);
@@ -280,7 +280,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         stairsBlock(ModBlocks.SMOOTH_STONE_STAIRS);
 
         //Slabs
-        slabBlock(ModBlocks.COBBLESTONE_BRICK_SLAB);
+        slabBlock(ModBlocks2.COBBLESTONE_BRICK_SLAB.get());
         slabBlock(ModBlocks.MOSSY_COBBLESTONE_BRICK_SLAB);
         slabBlock(ModBlocks.MAGMA_BRICK_SLAB);
         slabBlock(ModBlocks.OBSIDIAN_BRICK_SLAB);
@@ -383,7 +383,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         slabBlock(ModBlocks.STRIPPED_WARPED_HYPHAE_SLAB);
 
         //VanillaBoom Walls
-        wallBlock(ModBlocks.COBBLESTONE_BRICK_WALL);
+        wallBlock(ModBlocks2.COBBLESTONE_BRICK_WALL.get());
         wallBlock(ModBlocks.MOSSY_COBBLESTONE_BRICK_WALL);
         wallBlock(ModBlocks.MAGMA_BRICK_WALL);
         wallBlock(ModBlocks.OBSIDIAN_BRICK_WALL);

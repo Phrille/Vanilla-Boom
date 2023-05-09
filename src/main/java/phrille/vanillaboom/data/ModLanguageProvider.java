@@ -5,6 +5,7 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.common.data.LanguageProvider;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
+import phrille.vanillaboom.block.ModBlocks2;
 import phrille.vanillaboom.item.ModItems;
 
 public class ModLanguageProvider extends LanguageProvider {
@@ -22,7 +23,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add("itemGroup.vanillaboom_variant_blocks_tab", "Vanilla Boom: Variant Blocks");
 
         //Bricks
-        add(ModBlocks.COBBLESTONE_BRICKS, "Cobblestone Bricks");
+        add(ModBlocks2.COBBLESTONE_BRICKS.get(), "Cobblestone Bricks");
         add(ModBlocks.MOSSY_COBBLESTONE_BRICKS, "Mossy Cobblestone Bricks");
         add(ModBlocks.MAGMA_BRICKS, "Magma Bricks");
         add(ModBlocks.OBSIDIAN_BRICKS, "Obsidian Bricks");
@@ -164,7 +165,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.ROSE, "Rose");
 
         //VanillaBoom Stairs
-        add(ModBlocks.COBBLESTONE_BRICK_STAIRS, "Cobblestone Brick Stairs");
+        add(ModBlocks2.COBBLESTONE_BRICK_STAIRS.get(), "Cobblestone Brick Stairs");
         add(ModBlocks.MOSSY_COBBLESTONE_BRICK_STAIRS, "Mossy Cobblestone Brick Stairs");
         add(ModBlocks.MAGMA_BRICK_STAIRS, "Magma Brick Stairs");
         add(ModBlocks.OBSIDIAN_BRICK_STAIRS, "Obsidian Brick Stairs");
@@ -199,7 +200,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.CHISELED_PURPUR_BLOCK_STAIRS, "Chiseled Purpur Block Stairs");
 
         //VanillaBoom Slabs
-        add(ModBlocks.COBBLESTONE_BRICK_SLAB, "Cobblestone Brick Slab");
+        add(ModBlocks2.COBBLESTONE_BRICK_SLAB.get(), "Cobblestone Brick Slab");
         add(ModBlocks.MOSSY_COBBLESTONE_BRICK_SLAB, "Mossy Cobblestone Brick Slab");
         add(ModBlocks.MAGMA_BRICK_SLAB, "Magma Brick Slab");
         add(ModBlocks.OBSIDIAN_BRICK_SLAB, "Obsidian Brick Slab");
@@ -234,7 +235,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.CHISELED_PURPUR_BLOCK_SLAB, "Chiseled Purpur Block Slab");
 
         //VanillaBoom Walls
-        add(ModBlocks.COBBLESTONE_BRICK_WALL, "Cobblestone Brick Wall");
+        add(ModBlocks2.COBBLESTONE_BRICK_WALL.get(), "Cobblestone Brick Wall");
         add(ModBlocks.MOSSY_COBBLESTONE_BRICK_WALL, "Mossy Cobblestone Brick Wall");
         add(ModBlocks.MAGMA_BRICK_WALL, "Magma Brick Wall");
         add(ModBlocks.OBSIDIAN_BRICK_WALL, "Obsidian Brick Wall");

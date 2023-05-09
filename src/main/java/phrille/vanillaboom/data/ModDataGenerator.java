@@ -17,6 +17,6 @@ public class ModDataGenerator {
 
         //generator.addProvider(new ModBlockStateProvider(generator, fileHelper));
         generator.addProvider(new ModItemModelProvider(generator, fileHelper));
-        generator.addProvider(new ModLanguageProvider(generator, "en_us"));
+        //generator.addProvider(new ModLanguageProvider(generator, "en_us"));
     }
 }

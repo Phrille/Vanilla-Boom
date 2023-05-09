@@ -10,11 +10,11 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistryEntry;
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraftforge.fmllegacy.RegistryObject;
+import net.minecraftforge.registries.*;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.util.Names;
 import phrille.vanillaboom.util.Utils;
@@ -23,150 +23,8 @@ import java.util.Map;
 
 @ObjectHolder(VanillaBoom.MOD_ID)
 public class ModBlocks {
-    //Bricks
-    public static final Block COBBLESTONE_BRICKS = Utils._null();
-    public static final Block MOSSY_COBBLESTONE_BRICKS = Utils._null();
-    public static final Block MAGMA_BRICKS = Utils._null();
-    public static final Block OBSIDIAN_BRICKS = Utils._null();
-    public static final Block SNOW_BRICKS = Utils._null();
-    public static final Block TERRACOTTA_BRICKS = Utils._null();
-    public static final Block WHITE_TERRACOTTA_BRICKS = Utils._null();
-    public static final Block ORANGE_TERRACOTTA_BRICKS = Utils._null();
-    public static final Block MAGENTA_TERRACOTTA_BRICKS = Utils._null();
-    public static final Block LIGHT_BLUE_TERRACOTTA_BRICKS = Utils._null();
-    public static final Block YELLOW_TERRACOTTA_BRICKS = Utils._null();
-    public static final Block LIME_TERRACOTTA_BRICKS = Utils._null();
-    public static final Block PINK_TERRACOTTA_BRICKS = Utils._null();
-    public static final Block GRAY_TERRACOTTA_BRICKS = Utils._null();
-    public static final Block LIGHT_GRAY_TERRACOTTA_BRICKS = Utils._null();
-    public static final Block CYAN_TERRACOTTA_BRICKS = Utils._null();
-    public static final Block PURPLE_TERRACOTTA_BRICKS = Utils._null();
-    public static final Block BLUE_TERRACOTTA_BRICKS = Utils._null();
-    public static final Block BROWN_TERRACOTTA_BRICKS = Utils._null();
-    public static final Block GREEN_TERRACOTTA_BRICKS = Utils._null();
-    public static final Block RED_TERRACOTTA_BRICKS = Utils._null();
-    public static final Block BLACK_TERRACOTTA_BRICKS = Utils._null();
 
-    //Rocks
-    public static final Block PERIDOTITE = Utils._null();
-    public static final Block HYDRO_ROCK = Utils._null();
-    public static final Block INFERNAL_ROCK = Utils._null();
 
-    //Sand and Gravel
-    public static final Block BONE_SAND = Utils._null();
-    public static final Block WITHER_BONE_SAND = Utils._null();
-
-    //Polished
-    public static final Block POLISHED_PERIDOTITE = Utils._null();
-    public static final Block POLISHED_PRISMARINE = Utils._null();
-    public static final Block POLISHED_DARK_PRISMARINE = Utils._null();
-    public static final Block POLISHED_END_STONE = Utils._null();
-    public static final Block POLISHED_NETHERRACK = Utils._null();
-
-    //Chiseled and cracked
-    public static final Block CRACKED_RED_NETHER_BRICKS = Utils._null();
-    public static final Block CHISELED_RED_NETHER_BRICKS = Utils._null();
-    public static final Block CHISELED_PURPUR_BLOCK = Utils._null();
-    public static final Block CHISELED_OBSIDIAN = Utils._null();
-
-    //Pillars
-    public static final Block GRANITE_PILLAR = Utils._null();
-    public static final Block DIORITE_PILLAR = Utils._null();
-    public static final Block ANDESITE_PILLAR = Utils._null();
-    public static final Block PERIDOTITE_PILLAR = Utils._null();
-    public static final Block PRISMARINE_PILLAR = Utils._null();
-    public static final Block DARK_PRISMARINE_PILLAR = Utils._null();
-    public static final Block END_STONE_PILLAR = Utils._null();
-    public static final Block NETHERRACK_PILLAR = Utils._null();
-    public static final Block RED_NETHER_PILLAR = Utils._null();
-    public static final Block OBSIDIAN_PILLAR = Utils._null();
-
-    //Wood Variations
-    public static final Block SPRUCE_BOOKSHELF = Utils._null();
-    public static final Block BIRCH_BOOKSHELF = Utils._null();
-    public static final Block JUNGLE_BOOKSHELF = Utils._null();
-    public static final Block ACACIA_BOOKSHELF = Utils._null();
-    public static final Block DARK_OAK_BOOKSHELF = Utils._null();
-    public static final Block CRIMSON_BOOKSHELF = Utils._null();
-    public static final Block WARPED_BOOKSHELF = Utils._null();
-    public static final Block SPRUCE_LADDER = Utils._null();
-    public static final Block BIRCH_LADDER = Utils._null();
-    public static final Block JUNGLE_LADDER = Utils._null();
-    public static final Block ACACIA_LADDER = Utils._null();
-    public static final Block DARK_OAK_LADDER = Utils._null();
-    public static final Block CRIMSON_LADDER = Utils._null();
-    public static final Block WARPED_LADDER = Utils._null();
-
-    //Storage
-    public static final Block CHARCOAL_BLOCK = Utils._null();
-    public static final Block SUGAR_BLOCK = Utils._null();
-    public static final Block SUGAR_CANE_BLOCK = Utils._null();
-    public static final Block BAMBOO_BLOCK = Utils._null();
-    public static final Block GUNPOWDER_BLOCK = Utils._null();
-    public static final Block BLAZE_POWDER_BLOCK = Utils._null();
-    public static final Block MAGMA_CREAM_BLOCK = Utils._null();
-    public static final Block PRISMARINE_CRYSTAL_BLOCK = Utils._null();
-    public static final Block WITHER_BONE_BLOCK = Utils._null();
-    public static final Block WHITE_DYE_BLOCK = Utils._null();
-    public static final Block ORANGE_DYE_BLOCK = Utils._null();
-    public static final Block MAGENTA_DYE_BLOCK = Utils._null();
-    public static final Block LIGHT_BLUE_DYE_BLOCK = Utils._null();
-    public static final Block YELLOW_DYE_BLOCK = Utils._null();
-    public static final Block LIME_DYE_BLOCK = Utils._null();
-    public static final Block PINK_DYE_BLOCK = Utils._null();
-    public static final Block GRAY_DYE_BLOCK = Utils._null();
-    public static final Block LIGHT_GRAY_DYE_BLOCK = Utils._null();
-    public static final Block CYAN_DYE_BLOCK = Utils._null();
-    public static final Block PURPLE_DYE_BLOCK = Utils._null();
-    public static final Block BLUE_DYE_BLOCK = Utils._null();
-    public static final Block BROWN_DYE_BLOCK = Utils._null();
-    public static final Block GREEN_DYE_BLOCK = Utils._null();
-    public static final Block RED_DYE_BLOCK = Utils._null();
-    public static final Block BLACK_DYE_BLOCK = Utils._null();
-
-    //Glass
-    public static final Block SOUL_GLASS = Utils._null();
-    public static final Block WHITE_STAINED_SOUL_GLASS = Utils._null();
-    public static final Block ORANGE_STAINED_SOUL_GLASS = Utils._null();
-    public static final Block MAGENTA_STAINED_SOUL_GLASS = Utils._null();
-    public static final Block LIGHT_BLUE_STAINED_SOUL_GLASS = Utils._null();
-    public static final Block YELLOW_STAINED_SOUL_GLASS = Utils._null();
-    public static final Block LIME_STAINED_SOUL_GLASS = Utils._null();
-    public static final Block PINK_STAINED_SOUL_GLASS = Utils._null();
-    public static final Block GRAY_STAINED_SOUL_GLASS = Utils._null();
-    public static final Block LIGHT_GRAY_STAINED_SOUL_GLASS = Utils._null();
-    public static final Block CYAN_STAINED_SOUL_GLASS = Utils._null();
-    public static final Block PURPLE_STAINED_SOUL_GLASS = Utils._null();
-    public static final Block BLUE_STAINED_SOUL_GLASS = Utils._null();
-    public static final Block BROWN_STAINED_SOUL_GLASS = Utils._null();
-    public static final Block GREEN_STAINED_SOUL_GLASS = Utils._null();
-    public static final Block RED_STAINED_SOUL_GLASS = Utils._null();
-    public static final Block BLACK_STAINED_SOUL_GLASS = Utils._null();
-    public static final Block SOUL_GLASS_PANE = Utils._null();
-    public static final Block WHITE_STAINED_SOUL_GLASS_PANE = Utils._null();
-    public static final Block ORANGE_STAINED_SOUL_GLASS_PANE = Utils._null();
-    public static final Block MAGENTA_STAINED_SOUL_GLASS_PANE = Utils._null();
-    public static final Block LIGHT_BLUE_STAINED_SOUL_GLASS_PANE = Utils._null();
-    public static final Block YELLOW_STAINED_SOUL_GLASS_PANE = Utils._null();
-    public static final Block LIME_STAINED_SOUL_GLASS_PANE = Utils._null();
-    public static final Block PINK_STAINED_SOUL_GLASS_PANE = Utils._null();
-    public static final Block GRAY_STAINED_SOUL_GLASS_PANE = Utils._null();
-    public static final Block LIGHT_GRAY_STAINED_SOUL_GLASS_PANE = Utils._null();
-    public static final Block CYAN_STAINED_SOUL_GLASS_PANE = Utils._null();
-    public static final Block PURPLE_STAINED_SOUL_GLASS_PANE = Utils._null();
-    public static final Block BLUE_STAINED_SOUL_GLASS_PANE = Utils._null();
-    public static final Block BROWN_STAINED_SOUL_GLASS_PANE = Utils._null();
-    public static final Block GREEN_STAINED_SOUL_GLASS_PANE = Utils._null();
-    public static final Block RED_STAINED_SOUL_GLASS_PANE = Utils._null();
-    public static final Block BLACK_STAINED_SOUL_GLASS_PANE = Utils._null();
-
-    //Misc
-    public static final Block RAIN_DETECTOR = Utils._null();
-    public static final Block GOLD_BARS = Utils._null();
-    public static final Block ROSE = Utils._null();
-    public static final Block POTTED_ROSE = Utils._null();
-    public static final Block TOMATO_PLANT = Utils._null();
-    public static final Block RICE_PLANT = Utils._null();
 
     //Cakes
     public static final Block CHOCOLATE_CAKE = Utils._null();
@@ -225,7 +83,6 @@ public class ModBlocks {
     public static final Block BLACK_CANDLE_CARROT_CAKE = Utils._null();
 
     //VanillaBoom Stairs
-    public static final Block COBBLESTONE_BRICK_STAIRS = Utils._null();
     public static final Block MOSSY_COBBLESTONE_BRICK_STAIRS = Utils._null();
     public static final Block MAGMA_BRICK_STAIRS = Utils._null();
     public static final Block OBSIDIAN_BRICK_STAIRS = Utils._null();
@@ -331,7 +188,6 @@ public class ModBlocks {
     public static final Block SMOOTH_STONE_STAIRS = Utils._null();
 
     //VanillaBoom Slabs
-    public static final Block COBBLESTONE_BRICK_SLAB = Utils._null();
     public static final Block MOSSY_COBBLESTONE_BRICK_SLAB = Utils._null();
     public static final Block MAGMA_BRICK_SLAB = Utils._null();
     public static final Block OBSIDIAN_BRICK_SLAB = Utils._null();
@@ -434,7 +290,6 @@ public class ModBlocks {
     public static final Block STRIPPED_WARPED_HYPHAE_SLAB = Utils._null();
 
     //VanillaBoom Walls
-    public static final Block COBBLESTONE_BRICK_WALL = Utils._null();
     public static final Block MOSSY_COBBLESTONE_BRICK_WALL = Utils._null();
     public static final Block MAGMA_BRICK_WALL = Utils._null();
     public static final Block OBSIDIAN_BRICK_WALL = Utils._null();
@@ -578,101 +433,6 @@ public class ModBlocks {
         public static void onRegisterBlocks(RegistryEvent.Register<Block> event) {
             IForgeRegistry<Block> registry = event.getRegistry();
 
-            //Bricks
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.COBBLESTONE), Names.COBBLESTONE_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE), Names.MOSSY_COBBLESTONE_BRICKS);
-            blockWithVariants(registry, new MagmaBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK)), Names.MAGMA_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.OBSIDIAN), Names.OBSIDIAN_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.SNOW_BLOCK), Names.SNOW_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), Names.TERRACOTTA_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.WHITE_TERRACOTTA), Names.WHITE_TERRACOTTA_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.ORANGE_TERRACOTTA), Names.ORANGE_TERRACOTTA_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.MAGENTA_TERRACOTTA), Names.MAGENTA_TERRACOTTA_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.LIGHT_BLUE_TERRACOTTA), Names.LIGHT_BLUE_TERRACOTTA_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.YELLOW_TERRACOTTA), Names.YELLOW_TERRACOTTA_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.LIME_TERRACOTTA), Names.LIME_TERRACOTTA_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.PINK_TERRACOTTA), Names.PINK_TERRACOTTA_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.GRAY_TERRACOTTA), Names.GRAY_TERRACOTTA_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_TERRACOTTA), Names.LIGHT_GRAY_TERRACOTTA_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.CYAN_TERRACOTTA), Names.CYAN_TERRACOTTA_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.PURPLE_TERRACOTTA), Names.PURPLE_TERRACOTTA_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.BLUE_TERRACOTTA), Names.BLUE_TERRACOTTA_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.BROWN_TERRACOTTA), Names.BROWN_TERRACOTTA_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.GREEN_TERRACOTTA), Names.GREEN_TERRACOTTA_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.RED_TERRACOTTA), Names.RED_TERRACOTTA_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.BLACK_TERRACOTTA), Names.BLACK_TERRACOTTA_BRICKS);
-
-            //Rocks
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.ANDESITE), Names.PERIDOTITE);
-            blockWithVariants(registry, new HydroRockBlock(), Names.HYDRO_ROCK);
-            blockWithVariants(registry, new InfernalRockBlock(), Names.INFERNAL_ROCK);
-
-            //Sand and Gravel
-            registry.register(setup(new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.SNOW).strength(0.5F, 0.0F).sound(SoundType.SOUL_SAND).requiresCorrectToolForDrops()), Names.BONE_SAND));
-            registry.register(setup(new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.COLOR_BLACK).strength(0.5F, 0.0F).sound(SoundType.SOUL_SAND).requiresCorrectToolForDrops()), Names.WITHER_BONE_SAND));
-
-
-            //Polished
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE), Names.POLISHED_PERIDOTITE);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.PRISMARINE), Names.POLISHED_PRISMARINE);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.DARK_PRISMARINE), Names.POLISHED_DARK_PRISMARINE);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.END_STONE), Names.POLISHED_END_STONE);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.NETHERRACK), Names.POLISHED_NETHERRACK);
-
-            //Chiseled and cracked
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK), Names.CHISELED_PURPUR_BLOCK);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS), Names.CRACKED_RED_NETHER_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS), Names.CHISELED_RED_NETHER_BRICKS);
-            blockWithVariants(registry, BlockBehaviour.Properties.copy(Blocks.OBSIDIAN), Names.CHISELED_OBSIDIAN);
-
-            //Pillars
-            registry.register(setup(new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.GRANITE)), Names.GRANITE_PILLAR));
-            registry.register(setup(new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.DIORITE)), Names.DIORITE_PILLAR));
-            registry.register(setup(new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.ANDESITE)), Names.ANDESITE_PILLAR));
-            registry.register(setup(new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.ANDESITE)), Names.PERIDOTITE_PILLAR));
-            registry.register(setup(new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.PRISMARINE)), Names.PRISMARINE_PILLAR));
-            registry.register(setup(new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.DARK_PRISMARINE)), Names.DARK_PRISMARINE_PILLAR));
-            registry.register(setup(new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.END_STONE)), Names.END_STONE_PILLAR));
-            registry.register(setup(new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.NETHERRACK)), Names.NETHERRACK_PILLAR));
-            registry.register(setup(new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)), Names.RED_NETHER_PILLAR));
-            registry.register(setup(new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)), Names.OBSIDIAN_PILLAR));
-
-            //Wood Variations
-            registry.register(setup(new BookshelfBlock(BlockBehaviour.Properties.copy(Blocks.BOOKSHELF)), Names.SPRUCE_BOOKSHELF));
-            registry.register(setup(new BookshelfBlock(BlockBehaviour.Properties.copy(Blocks.BOOKSHELF)), Names.BIRCH_BOOKSHELF));
-            registry.register(setup(new BookshelfBlock(BlockBehaviour.Properties.copy(Blocks.BOOKSHELF)), Names.JUNGLE_BOOKSHELF));
-            registry.register(setup(new BookshelfBlock(BlockBehaviour.Properties.copy(Blocks.BOOKSHELF)), Names.ACACIA_BOOKSHELF));
-            registry.register(setup(new BookshelfBlock(BlockBehaviour.Properties.copy(Blocks.BOOKSHELF)), Names.DARK_OAK_BOOKSHELF));
-            registry.register(setup(new BookshelfBlock(BlockBehaviour.Properties.copy(Blocks.BOOKSHELF)), Names.CRIMSON_BOOKSHELF));
-            registry.register(setup(new BookshelfBlock(BlockBehaviour.Properties.copy(Blocks.BOOKSHELF)), Names.WARPED_BOOKSHELF));
-
-            //Storage Blocks
-            registry.register(setup(new Block(BlockBehaviour.Properties.copy(Blocks.COAL_BLOCK)), Names.CHARCOAL_BLOCK));
-            registry.register(setup(new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.SNOW).strength(0.5F, 0.0F).sound(SoundType.SAND).requiresCorrectToolForDrops()), Names.SUGAR_BLOCK));
-            registry.register(setup(new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.GRASS).strength(0.5F, 0.0F)), Names.SUGAR_CANE_BLOCK));
-            registry.register(setup(new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.BAMBOO)), "bamboo_block"));
-            registry.register(setup(new GunpowderBlock(), Names.GUNPOWDER_BLOCK));
-            registry.register(setup(new FallingBlock(BlockBehaviour.Properties.copy(Blocks.SAND).sound(SoundType.SNOW).requiresCorrectToolForDrops()), Names.BLAZE_POWDER_BLOCK));
-            registry.register(setup(new SlimeBlock(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK)), Names.MAGMA_CREAM_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.COLOR_CYAN).strength(0.3F, 0.5F).sound(SoundType.GLASS).lightLevel((lightValue) -> 5)), Names.PRISMARINE_CRYSTAL_BLOCK));
-            registry.register(setup(new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).sound(SoundType.BONE_BLOCK).strength(1.8F, 3.33F)), Names.WITHER_BONE_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.WOOL).strength(3.0F, 5.0F)), Names.WHITE_DYE_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).strength(3.0F, 5.0F)), Names.ORANGE_DYE_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_MAGENTA).strength(3.0F, 5.0F)), Names.MAGENTA_DYE_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_LIGHT_BLUE).strength(3.0F, 5.0F)), Names.LIGHT_BLUE_DYE_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_YELLOW).strength(3.0F, 5.0F)), Names.YELLOW_DYE_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_LIGHT_GREEN).strength(3.0F, 5.0F)), Names.LIME_DYE_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_PINK).strength(3.0F, 5.0F)), Names.PINK_DYE_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).strength(3.0F, 5.0F)), Names.GRAY_DYE_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F, 5.0F)), Names.LIGHT_GRAY_DYE_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_CYAN).strength(3.0F, 5.0F)), Names.CYAN_DYE_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_PURPLE).strength(3.0F, 5.0F)), Names.PURPLE_DYE_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLUE).strength(3.0F, 5.0F)), Names.BLUE_DYE_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BROWN).strength(3.0F, 5.0F)), Names.BROWN_DYE_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GREEN).strength(3.0F, 5.0F)), Names.GREEN_DYE_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_RED).strength(3.0F, 5.0F)), Names.RED_DYE_BLOCK));
-            registry.register(setup(new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).strength(3.0F, 5.0F)), Names.BLACK_DYE_BLOCK));
-
             //Glass
             registry.register(setup(new StainedGlassBlock(DyeColor.WHITE, BlockBehaviour.Properties.copy(Blocks.GLASS)), Names.SOUL_GLASS));
             registry.register(setup(new StainedGlassBlock(DyeColor.WHITE, BlockBehaviour.Properties.copy(Blocks.WHITE_STAINED_GLASS)), Names.WHITE_STAINED_SOUL_GLASS));
@@ -712,13 +472,6 @@ public class ModBlocks {
             //Misc
             registry.register(setup(new RainDetectorBlock(BlockBehaviour.Properties.copy(Blocks.DAYLIGHT_DETECTOR)), "rain_detector"));
             registry.register(setup(new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS)), Names.GOLD_BARS));
-            registry.register(setup(new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)), Names.SPRUCE_LADDER));
-            registry.register(setup(new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)), Names.BIRCH_LADDER));
-            registry.register(setup(new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)), Names.JUNGLE_LADDER));
-            registry.register(setup(new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)), Names.ACACIA_LADDER));
-            registry.register(setup(new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)), Names.DARK_OAK_LADDER));
-            registry.register(setup(new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)), Names.CRIMSON_LADDER));
-            registry.register(setup(new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)), Names.WARPED_LADDER));
             flowerBlock(registry, MobEffects.DIG_SPEED, 10, Names.ROSE);
             registry.register(setup(new TomatoPlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)), "tomato_plant"));
             registry.register(setup(new RicePlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)), "rice_plant"));
