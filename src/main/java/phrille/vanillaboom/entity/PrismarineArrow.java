@@ -6,6 +6,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.fmllegacy.network.FMLPlayMessages;
 import net.minecraftforge.fmllegacy.network.NetworkHooks;
 import phrille.vanillaboom.item.ModItems;
 
@@ -14,8 +15,8 @@ public class PrismarineArrow extends Arrow {
         super(entityType, world);
     }
 
-    public PrismarineArrow(Level world, double x, double y, double z) {
-        super(world, x, y, z);
+    public PrismarineArrow(FMLPlayMessages.SpawnEntity spawnPacket, Level world) {
+        super(world, 0, 0, 0);
     }
 
     public PrismarineArrow(Level world, LivingEntity shooter) {
@@ -24,7 +25,7 @@ public class PrismarineArrow extends Arrow {
 
     @Override
     public EntityType<?> getType() {
-        return ModEntities.PRISMARINE_ARROW;
+        return ModEntities.PRISMARINE_ARROW.get();
     }
 
     /**
@@ -53,6 +54,6 @@ public class PrismarineArrow extends Arrow {
 
     @Override
     protected ItemStack getPickupItem() {
-        return new ItemStack(ModItems.PRISMARINE_ARROW);
+        return new ItemStack(ModItems.PRISMARINE_ARROW.get());
     }
 }

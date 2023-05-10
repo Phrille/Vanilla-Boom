@@ -7,6 +7,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 
@@ -14,29 +15,30 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class VanillaBoomTab extends CreativeModeTab {
-    public static final List<Item> VANILLABOOM_TAB_LIST = new ArrayList<>();
-    public static final List<Item> VANILLABOOM_VARIANT_BLOCKS_TAB_LIST = new ArrayList<>();
+    public static final CreativeModeTab VANILLA_BOOM_TAB = new VanillaBoomTab(VanillaBoom.MOD_ID + "_tab", () -> new ItemStack(ModBlocks.MOSSY_COBBLESTONE_BRICKS.get()));
+    public static final CreativeModeTab VANILLA_BOOM_VARIANT_BLOCKS_TAB = new VanillaBoomTab(VanillaBoom.MOD_ID + "_variant_blocks_tab", () -> new ItemStack(ModBlocks.MAGMA_BRICK_STAIRS.get()));
 
-    public static final CreativeModeTab VANILLABOOM_TAB = new VanillaBoomTab(VanillaBoom.MOD_ID + "_tab", () -> new ItemStack(ModBlocks.MOSSY_COBBLESTONE_BRICKS.get()), VANILLABOOM_TAB_LIST);
-    public static final CreativeModeTab VANILLABOOM_VARIANT_BLOCKS_TAB = new VanillaBoomTab(VanillaBoom.MOD_ID + "_variant_blocks_tab", () -> new ItemStack(ModBlocks.MAGMA_BRICK_STAIRS.get()), VANILLABOOM_VARIANT_BLOCKS_TAB_LIST);
     private final Supplier<ItemStack> iconSupplier;
     private final List<Item> tabList;
 
-    public VanillaBoomTab(String name, Supplier<ItemStack> icon, List<Item> list) {
+    public VanillaBoomTab(String name, Supplier<ItemStack> icon) {
         super(name);
         iconSupplier = icon;
-        tabList = list;
+        tabList = ForgeRegistries.ITEMS.getValues().stream()
+                .filter(item -> item.getRegistryName().getNamespace().equals(VanillaBoom.MOD_ID))
+                .filter(item -> item.getCreativeTabs().contains(this))
+                .toList();
     }
 
-    @OnlyIn(Dist.CLIENT)
     @Override
     public void fillItemList(NonNullList<ItemStack> items) {
         super.fillItemList(items);
 
-        Comparator<ItemStack> tabSorter = Ordering.explicit(tabList).onResultOf(ItemStack::getItem);
-        items.sort(tabSorter);
+        //Comparator<ItemStack> tabSorter = Ordering.explicit(tabList).onResultOf(ItemStack::getItem);
+        //items.sort(tabSorter);
     }
 
     @Override

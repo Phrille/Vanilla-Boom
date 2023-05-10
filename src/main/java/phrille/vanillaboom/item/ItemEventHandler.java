@@ -61,7 +61,7 @@ public class ItemEventHandler {
 
     //TODO: replace item check with tags
     protected static boolean tryGrowNetherWart(Level world, Player player, BlockState state, BlockPos pos, ItemStack stack) {
-        if (state.getBlock() == Blocks.NETHER_WART && (stack.is(Items.BLAZE_POWDER) || stack.is(ModItems.WITHER_BONE_MEAL))) {
+        if (state.getBlock() == Blocks.NETHER_WART && (stack.is(Items.BLAZE_POWDER) || stack.is(ModItems.WITHER_BONE_MEAL.get()))) {
             int age = state.getValue(NetherWartBlock.AGE);
 
             if (age < NetherWartBlock.MAX_AGE) {
@@ -85,7 +85,7 @@ public class ItemEventHandler {
     }
 
     protected static boolean tryGrowWitherRose(Level world, Player player, BlockState state, BlockPos pos, ItemStack stack) {
-        if (state.getBlock() == ModBlocks.ROSE.get() && stack.is(ModItems.WITHER_BONE_MEAL)) {
+        if (state.getBlock() == ModBlocks.ROSE.get() && stack.is(ModItems.WITHER_BONE_MEAL.get())) {
             if (world.random.nextFloat() < 0.25F) {
                 world.setBlock(pos, Blocks.WITHER_ROSE.defaultBlockState(), 2);
             }

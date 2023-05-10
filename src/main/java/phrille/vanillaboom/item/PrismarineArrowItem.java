@@ -11,7 +11,7 @@ import phrille.vanillaboom.util.VanillaBoomTab;
 
 public class PrismarineArrowItem extends ArrowItem {
     public PrismarineArrowItem() {
-        super(new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB));
+        super(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB));
     }
 
     @Override

@@ -79,11 +79,11 @@ public class ModRenderers {
 
     @SubscribeEvent
     public static void registerLayer(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(ModEntities.PRISMARINE_ARROW, PrismarineArrowRenderer::new);
-        event.registerEntityRenderer(ModEntities.PERCH, context -> new FishRenderer(context, new PerchModel<>(context.bakeLayer(ModRenderers.PERCH_MODEL))));
-        event.registerEntityRenderer(ModEntities.TUNA, context -> new FishRenderer(context, new TunaModel<>(context.bakeLayer(ModRenderers.TUNA_MODEL))));
-        event.registerEntityRenderer(ModEntities.PIKE, context -> new FishRenderer(context, new SalmonModel<>(context.bakeLayer(ModelLayers.SALMON))));
-        event.registerEntityRenderer(ModEntities.EEL, context -> new FishRenderer(context, new EelModel<>(context.bakeLayer(ModRenderers.EEl_MODEL))));
+        event.registerEntityRenderer(ModEntities.PRISMARINE_ARROW.get(), PrismarineArrowRenderer::new);
+        event.registerEntityRenderer(ModEntities.PERCH.get(), context -> new FishRenderer(context, new PerchModel<>(context.bakeLayer(ModRenderers.PERCH_MODEL))));
+        event.registerEntityRenderer(ModEntities.TUNA.get(), context -> new FishRenderer(context, new TunaModel<>(context.bakeLayer(ModRenderers.TUNA_MODEL))));
+        event.registerEntityRenderer(ModEntities.PIKE.get(), context -> new FishRenderer(context, new SalmonModel<>(context.bakeLayer(ModelLayers.SALMON))));
+        event.registerEntityRenderer(ModEntities.EEL.get(), context -> new FishRenderer(context, new EelModel<>(context.bakeLayer(ModRenderers.EEl_MODEL))));
     }
 
     @SubscribeEvent

@@ -668,7 +668,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         BlockModelBuilder builder = models().withExistingParent(getCakeName(name(cake), bites), ModelProvider.BLOCK_FOLDER + getCakeName("/cake", bites))
                 .texture("side", extend(blockTexture(cake), "_side"))
                 .texture("top", extend(blockTexture(cake), "_top"))
-                .texture("bottom", extend(blockTexture(cake), "_bottom"));
+                .texture("bottom", extend(blockTexture(cake), "_bottom"))
+                .texture("particle", extend(blockTexture(cake), "_side"));
 
         return bites == 0 ? builder : builder.texture("inside", extend(blockTexture(cake), "_inner"));
     }

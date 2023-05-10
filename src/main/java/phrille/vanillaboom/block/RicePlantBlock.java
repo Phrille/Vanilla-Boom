@@ -55,7 +55,7 @@ public class RicePlantBlock extends CropBlock {
         if (!isMaxAge && stack.is(Items.BONE_MEAL)) {
             return InteractionResult.PASS;
         } else if (isMaxAge && stack.is(Items.BOWL)) {
-            fillBowl(stack, player, new ItemStack(ModItems.RICE_BOWL));
+            fillBowl(stack, player, new ItemStack(ModItems.RICE_BOWL.get()));
             world.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
             world.setBlock(pos, state.setValue(AGE, 5), 2);
 
@@ -72,7 +72,7 @@ public class RicePlantBlock extends CropBlock {
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return ModItems.RICE_SEEDS;
+        return ModItems.RICE_SEEDS.get();
     }
 
     @Override

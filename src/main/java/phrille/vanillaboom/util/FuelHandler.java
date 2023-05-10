@@ -22,9 +22,9 @@ public class FuelHandler {
         burnTimes.put(ModBlocks.CHARCOAL_BLOCK.get().asItem(), 16000);
         burnTimes.put(ModBlocks.BLAZE_POWDER_BLOCK.get().asItem(), 10800);
         burnTimes.put(ModBlocks.WITHER_BONE_BLOCK.get().asItem(), 10800);
-        burnTimes.put(ModItems.WITHER_BONE, 1200);
-        burnTimes.put(ModItems.WITHER_BONE_MEAL, 400);
-        burnTimes.put(ModItems.PINE_CONE, 100);
+        burnTimes.put(ModItems.WITHER_BONE.get(), 1200);
+        burnTimes.put(ModItems.WITHER_BONE_MEAL.get(), 400);
+        burnTimes.put(ModItems.PINE_CONE.get(), 100);
     }
 
     @SubscribeEvent

@@ -47,7 +47,7 @@ public class TomatoPlantBlock extends CropBlock {
         if (!isMaxAge && stack.is(Items.BONE_MEAL)) {
             return InteractionResult.PASS;
         } else if (isMaxAge) {
-            popResource(world, pos, new ItemStack(ModItems.TOMATO));
+            popResource(world, pos, new ItemStack(ModItems.TOMATO.get()));
             world.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
             world.setBlock(pos, state.setValue(AGE, 4), 2);
 
@@ -59,7 +59,7 @@ public class TomatoPlantBlock extends CropBlock {
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return ModItems.TOMATO_SEEDS;
+        return ModItems.TOMATO_SEEDS.get();
     }
 
     @Override

@@ -18,7 +18,7 @@ public class LootTableHandler {
     private static final RegistryObject<DropLootModifier.Serializer> PUMPKIN = GLM.register("pumpkin", DropLootModifier.Serializer::new);
     private static final RegistryObject<FishingLootModifier.Serializer> FISHING = GLM.register("fishing", FishingLootModifier.Serializer::new);
 
-    public static void init(IEventBus modEventBus) {
-        GLM.register(modEventBus);
+    public static void init(IEventBus eventBus) {
+        GLM.register(eventBus);
     }
 }

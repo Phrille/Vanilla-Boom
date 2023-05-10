@@ -35,11 +35,6 @@ public abstract class Fish extends AbstractSchoolingFish {
         return SoundEvents.COD_FLOP;
     }
 
-    @Override
-    public Packet<?> getAddEntityPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
-    }
-
     public abstract Size getSize();
 
     public enum Size {

@@ -13,7 +13,7 @@ public class ModBlockEntities {
 
     public static final RegistryObject<BlockEntityType<RainDetectorBlockEntity>> RAIN_DETECTOR = TILE_ENTITY_TYPES.register("rain_detector", () -> BlockEntityType.Builder.of(RainDetectorBlockEntity::new, ModBlocks.RAIN_DETECTOR.get()).build(null));
 
-    public static void init(IEventBus modEventBus) {
-        TILE_ENTITY_TYPES.register(modEventBus);
+    public static void init(IEventBus eventBus) {
+        TILE_ENTITY_TYPES.register(eventBus);
     }
 }

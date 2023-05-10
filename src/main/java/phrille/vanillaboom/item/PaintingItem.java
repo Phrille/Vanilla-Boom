@@ -27,7 +27,7 @@ public class PaintingItem extends Item {
     private final Motive motive;
 
     public PaintingItem(Motive motive) {
-        super(new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB));
+        super(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB));
         this.motive = motive;
     }
 

@@ -1,7 +1,9 @@
 package phrille.vanillaboom.block;
 
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -11,10 +13,12 @@ import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
+import phrille.vanillaboom.item.ModItems;
+import phrille.vanillaboom.util.VanillaBoomTab;
 
 public class ModBlocks {
 
-    private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, VanillaBoom.MOD_ID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, VanillaBoom.MOD_ID);
 
     //Bricks
     public static final RegistryObject<Block> COBBLESTONE_BRICKS = register("cobblestone_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE)));
@@ -461,7 +465,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> CHISELED_RED_NETHER_BRICK_WALL = register("chiseled_red_nether_brick_wall", new ModWallBlock(() -> CHISELED_RED_NETHER_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)));
     public static final RegistryObject<Block> CHISELED_PURPUR_BLOCK_WALL = register("chiseled_purpur_block_wall", new ModWallBlock(() -> CHISELED_PURPUR_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)));
     public static final RegistryObject<Block> CHISELED_OBSIDIAN_WALL = register("chiseled_obsidian_wall", new ModWallBlock(() -> CHISELED_OBSIDIAN.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
-    
+
     //Vanilla Walls
     public static final RegistryObject<Block> CRACKED_STONE_BRICK_WALL = register("cracked_stone_brick_wall", new ModWallBlock(Blocks.CRACKED_STONE_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> CHISELED_STONE_BRICK_WALL = register("chiseled_stone_brick_wall", new ModWallBlock(Blocks.CHISELED_STONE_BRICKS::defaultBlockState));
@@ -565,11 +569,25 @@ public class ModBlocks {
     public static final RegistryObject<Block> RED_NETHER_BRICK_FENCE_GATE = register("red_nether_brick_fence_gate", new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_BRICK_FENCE)));
 
     public static RegistryObject<Block> register(String name, Block block) {
-        //Register item blocks
+        registerBlockItem(name, block);
         return BLOCKS.register(name, () -> block);
     }
 
-    public static void init(IEventBus modEventBus) {
-        BLOCKS.register(modEventBus);
+    public static void registerBlockItem(String name, Block block) {
+        if (!hasNoBlockItem(block)) {
+            if (isVariantBlock(block)) {
+                ModItems.ITEMS.register(name, () -> new BlockItem(block, new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
+            } else {
+                ModItems.ITEMS.register(name, () -> new BlockItem(block, new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+            }
+        }
+    }
+
+    private static boolean hasNoBlockItem(Block block) {
+        return block instanceof FlowerPotBlock || block instanceof CropBlock || block instanceof CakeBlock || block instanceof CandleCakeBlock;
+    }
+
+    private static boolean isVariantBlock(Block block) {
+        return block instanceof SlabBlock || block instanceof StairBlock || block instanceof WallBlock || block instanceof FenceBlock || block instanceof FenceGateBlock;
     }
 }

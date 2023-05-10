@@ -13,13 +13,7 @@ import phrille.vanillaboom.block.ModCakeBlock;
 import phrille.vanillaboom.block.ModCandleCakeBlock;
 import phrille.vanillaboom.item.ModItems;
 
-import javax.annotation.Nonnull;
-
 public class Utils {
-    @Nonnull
-    public static <T> T _null() {
-        return null;
-    }
 
     public static void spawnParticles(SimpleParticleType particle, Level world, BlockPos pos) {
         if (!world.getBlockState(pos).isSolidRender(world, pos)) {
@@ -30,11 +24,11 @@ public class Utils {
     }
 
     public static void addCompostMaterials() {
-        ComposterBlock.COMPOSTABLES.put(ModItems.PINE_CONE, 0.35F);
-        ComposterBlock.COMPOSTABLES.put(ModItems.PUMPKIN_SLICE, 0.5F);
-        ComposterBlock.COMPOSTABLES.put(ModItems.TOMATO, 0.6F);
-        ComposterBlock.COMPOSTABLES.put(ModItems.TOMATO_SEEDS, 0.3F);
-        ComposterBlock.COMPOSTABLES.put(ModItems.RICE_SEEDS, 0.3F);
+        ComposterBlock.COMPOSTABLES.put(ModItems.PINE_CONE.get(), 0.35F);
+        ComposterBlock.COMPOSTABLES.put(ModItems.PUMPKIN_SLICE.get(), 0.5F);
+        ComposterBlock.COMPOSTABLES.put(ModItems.TOMATO.get(), 0.6F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.TOMATO_PLANT.get(), 0.3F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.RICE_PLANT.get(), 0.3F);
         ComposterBlock.COMPOSTABLES.put(ModBlocks.ROSE.get(), 0.6F);
     }
 

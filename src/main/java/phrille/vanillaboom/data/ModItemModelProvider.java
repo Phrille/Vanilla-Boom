@@ -16,7 +16,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        item(ModItems.APPLE_PIE);
+        item(ModItems.APPLE_PIE.get());
     }
 
     public void item(Item item) {
