@@ -11,7 +11,7 @@ import phrille.vanillaboom.block.ModBlocks;
 public class ModBlockEntities {
     private static final DeferredRegister<BlockEntityType<?>> TILE_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, VanillaBoom.MOD_ID);
 
-    public static final RegistryObject<BlockEntityType<RainDetectorBlockEntity>> RAIN_DETECTOR = TILE_ENTITY_TYPES.register("rain_detector", () -> BlockEntityType.Builder.of(RainDetectorBlockEntity::new, ModBlocks.RAIN_DETECTOR).build(null));
+    public static final RegistryObject<BlockEntityType<RainDetectorBlockEntity>> RAIN_DETECTOR = TILE_ENTITY_TYPES.register("rain_detector", () -> BlockEntityType.Builder.of(RainDetectorBlockEntity::new, ModBlocks.RAIN_DETECTOR.get()).build(null));
 
     public static void init(IEventBus modEventBus) {
         TILE_ENTITY_TYPES.register(modEventBus);

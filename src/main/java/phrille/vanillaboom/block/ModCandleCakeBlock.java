@@ -15,16 +15,20 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
+import java.util.function.Supplier;
+
 public class ModCandleCakeBlock extends CandleCakeBlock {
 
-    private final Block parent;
+    private final Supplier<Block> parent;
+    private final Supplier<Block> candle;
 
-    public ModCandleCakeBlock(Block parent) {
+    public ModCandleCakeBlock(Supplier<Block> candle, Supplier<Block> parent) {
         super(null, BlockBehaviour.Properties.copy(Blocks.CANDLE_CAKE));
+        this.candle = candle;
         this.parent = parent;
     }
 
-    private static boolean candleHit(BlockHitResult result) {
+    protected static boolean candleHit(BlockHitResult result) {
         return result.getLocation().y - (double) result.getBlockPos().getY() > 0.5D;
     }
 
@@ -38,7 +42,7 @@ public class ModCandleCakeBlock extends CandleCakeBlock {
 
                 return InteractionResult.sidedSuccess(world.isClientSide);
             } else {
-                InteractionResult interactionresult = ModCakeBlock.eat(world, pos, parent.defaultBlockState(), player);
+                InteractionResult interactionresult = ModCakeBlock.eat(world, pos, parent.get().defaultBlockState(), player);
 
                 if (interactionresult.consumesAction()) {
                     dropResources(state, world, pos);
@@ -53,6 +57,10 @@ public class ModCandleCakeBlock extends CandleCakeBlock {
 
     @Override
     public ItemStack getCloneItemStack(BlockGetter getter, BlockPos pos, BlockState state) {
-        return new ItemStack(parent);
+        return new ItemStack(parent.get());
+    }
+
+    public Block getCandle(){
+        return candle.get();
     }
 }

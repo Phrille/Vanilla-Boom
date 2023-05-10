@@ -19,9 +19,9 @@ public class FuelHandler {
 
     public static void registerBurnTimes() {
         burnTimes.put(Items.BLAZE_POWDER, 1200);
-        burnTimes.put(ModBlocks.CHARCOAL_BLOCK.asItem(), 16000);
-        burnTimes.put(ModBlocks.BLAZE_POWDER_BLOCK.asItem(), 10800);
-        burnTimes.put(ModBlocks.WITHER_BONE_BLOCK.asItem(), 10800);
+        burnTimes.put(ModBlocks.CHARCOAL_BLOCK.get().asItem(), 16000);
+        burnTimes.put(ModBlocks.BLAZE_POWDER_BLOCK.get().asItem(), 10800);
+        burnTimes.put(ModBlocks.WITHER_BONE_BLOCK.get().asItem(), 10800);
         burnTimes.put(ModItems.WITHER_BONE, 1200);
         burnTimes.put(ModItems.WITHER_BONE_MEAL, 400);
         burnTimes.put(ModItems.PINE_CONE, 100);

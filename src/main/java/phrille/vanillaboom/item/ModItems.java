@@ -126,8 +126,8 @@ public class ModItems {
             registerItem(registry, setup(new Item(new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "wither_bone_meal"));
             registerItem(registry, setup(new PrismarineArrowItem(), "prismarine_arrow"));
             registerItem(registry, setup(new Item(new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "polar_bear_fur"));
-            registerItem(registry, setup(new BlockItem(ModBlocks.TOMATO_PLANT, new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "tomato_seeds"));
-            registerItem(registry, setup(new BlockItem(ModBlocks.RICE_PLANT, new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "rice_seeds"));
+            registerItem(registry, setup(new BlockItem(ModBlocks.TOMATO_PLANT.get(), new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "tomato_seeds"));
+            registerItem(registry, setup(new BlockItem(ModBlocks.RICE_PLANT.get(), new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "rice_seeds"));
 
             /* TODO:
              * Fix fish foods - effects and amount
@@ -144,9 +144,9 @@ public class ModItems {
             registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.DROWNED_FLESH).tab(VanillaBoomTab.VANILLABOOM_TAB)), "drowned_flesh"));
             registerItem(registry, setup(new IceCreamItem(new Item.Properties().food(ModFoods.MELON_POPSICLE).tab(VanillaBoomTab.VANILLABOOM_TAB)), "melon_popsicle"));
             registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.CHOCOLATE).tab(VanillaBoomTab.VANILLABOOM_TAB)), "chocolate"));
-            registerItem(registry, setup(new BlockItem(ModBlocks.CHOCOLATE_CAKE, new Item.Properties().stacksTo(1).tab(VanillaBoomTab.VANILLABOOM_TAB)), "chocolate_cake"));
-            registerItem(registry, setup(new BlockItem(ModBlocks.BERRY_CAKE, new Item.Properties().stacksTo(1).tab(VanillaBoomTab.VANILLABOOM_TAB)), "berry_cake"));
-            registerItem(registry, setup(new BlockItem(ModBlocks.CARROT_CAKE, new Item.Properties().stacksTo(1).tab(VanillaBoomTab.VANILLABOOM_TAB)), "carrot_cake"));
+            registerItem(registry, setup(new BlockItem(ModBlocks.CHOCOLATE_CAKE.get(), new Item.Properties().stacksTo(1).tab(VanillaBoomTab.VANILLABOOM_TAB)), "chocolate_cake"));
+            registerItem(registry, setup(new BlockItem(ModBlocks.BERRY_CAKE.get(), new Item.Properties().stacksTo(1).tab(VanillaBoomTab.VANILLABOOM_TAB)), "berry_cake"));
+            registerItem(registry, setup(new BlockItem(ModBlocks.CARROT_CAKE.get(), new Item.Properties().stacksTo(1).tab(VanillaBoomTab.VANILLABOOM_TAB)), "carrot_cake"));
             registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.APPLE_PIE).tab(VanillaBoomTab.VANILLABOOM_TAB)), "apple_pie"));
             registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.BERRY_PIE).tab(VanillaBoomTab.VANILLABOOM_TAB)), "berry_pie"));
             registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.MONSTER_PIE).tab(VanillaBoomTab.VANILLABOOM_TAB)), "monster_pie"));

@@ -19,8 +19,8 @@ public class VanillaBoomTab extends CreativeModeTab {
     public static final List<Item> VANILLABOOM_TAB_LIST = new ArrayList<>();
     public static final List<Item> VANILLABOOM_VARIANT_BLOCKS_TAB_LIST = new ArrayList<>();
 
-    public static final CreativeModeTab VANILLABOOM_TAB = new VanillaBoomTab(VanillaBoom.MOD_ID + "_tab", () -> new ItemStack(ModBlocks.MOSSY_COBBLESTONE_BRICKS), VANILLABOOM_TAB_LIST);
-    public static final CreativeModeTab VANILLABOOM_VARIANT_BLOCKS_TAB = new VanillaBoomTab(VanillaBoom.MOD_ID + "_variant_blocks_tab", () -> new ItemStack(ModBlocks.MAGMA_BRICK_STAIRS), VANILLABOOM_VARIANT_BLOCKS_TAB_LIST);
+    public static final CreativeModeTab VANILLABOOM_TAB = new VanillaBoomTab(VanillaBoom.MOD_ID + "_tab", () -> new ItemStack(ModBlocks.MOSSY_COBBLESTONE_BRICKS.get()), VANILLABOOM_TAB_LIST);
+    public static final CreativeModeTab VANILLABOOM_VARIANT_BLOCKS_TAB = new VanillaBoomTab(VanillaBoom.MOD_ID + "_variant_blocks_tab", () -> new ItemStack(ModBlocks.MAGMA_BRICK_STAIRS.get()), VANILLABOOM_VARIANT_BLOCKS_TAB_LIST);
     private final Supplier<ItemStack> iconSupplier;
     private final List<Item> tabList;
 

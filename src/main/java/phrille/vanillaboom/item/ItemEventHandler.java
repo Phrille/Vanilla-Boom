@@ -85,7 +85,7 @@ public class ItemEventHandler {
     }
 
     protected static boolean tryGrowWitherRose(Level world, Player player, BlockState state, BlockPos pos, ItemStack stack) {
-        if (state.getBlock() == ModBlocks.ROSE && stack.is(ModItems.WITHER_BONE_MEAL)) {
+        if (state.getBlock() == ModBlocks.ROSE.get() && stack.is(ModItems.WITHER_BONE_MEAL)) {
             if (world.random.nextFloat() < 0.25F) {
                 world.setBlock(pos, Blocks.WITHER_ROSE.defaultBlockState(), 2);
             }

@@ -10,6 +10,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
@@ -33,8 +34,8 @@ public class RainDetectorBlock extends BaseEntityBlock {
     public static final BooleanProperty INVERTED = BlockStateProperties.INVERTED;
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D);
 
-    public RainDetectorBlock(BlockBehaviour.Properties builder) {
-        super(builder);
+    public RainDetectorBlock() {
+        super(BlockBehaviour.Properties.copy(Blocks.DAYLIGHT_DETECTOR));
         registerDefaultState(stateDefinition.any().setValue(INVERTED, false).setValue(POWER, 0));
     }
 

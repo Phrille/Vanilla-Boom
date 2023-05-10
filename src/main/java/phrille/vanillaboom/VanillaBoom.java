@@ -10,7 +10,7 @@ import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import phrille.vanillaboom.block.ModBlocks2;
+import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.entity.ModBlockEntities;
 import phrille.vanillaboom.config.ConfigHandler;
 import phrille.vanillaboom.entity.ModEntities;
@@ -31,7 +31,7 @@ public class VanillaBoom {
         eventBus.addListener(this::enqueueIMC);
         eventBus.addListener(this::processIMC);
 
-        ModBlocks2.init(eventBus);
+        ModBlocks.init(eventBus);
         LootTableHandler.init(eventBus);
         ModBlockEntities.init(eventBus);
 
@@ -45,6 +45,7 @@ public class VanillaBoom {
             FuelHandler.registerBurnTimes();
             Utils.registerFlowerPots();
             Utils.addCompostMaterials();
+            Utils.registerCandleCakes();
         });
     }
 
