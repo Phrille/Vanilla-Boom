@@ -4,6 +4,7 @@
     "side": "vanillaboom:block/chocolate_cake_side",
     "top": "vanillaboom:block/chocolate_cake_top",
     "bottom": "vanillaboom:block/chocolate_cake_bottom",
-    "inner": "vanillaboom:block/chocolate_cake_inner"
+    "particle": "vanillaboom:block/chocolate_cake_side",
+    "inside": "vanillaboom:block/chocolate_cake_inner"
   }
 }

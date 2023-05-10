@@ -3,6 +3,7 @@
   "textures": {
     "side": "vanillaboom:block/berry_cake_side",
     "top": "vanillaboom:block/berry_cake_top",
-    "bottom": "vanillaboom:block/berry_cake_bottom"
+    "bottom": "vanillaboom:block/berry_cake_bottom",
+    "particle": "vanillaboom:block/berry_cake_side"
   }
 }

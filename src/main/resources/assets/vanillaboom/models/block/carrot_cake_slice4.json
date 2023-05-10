@@ -4,6 +4,7 @@
     "side": "vanillaboom:block/carrot_cake_side",
     "top": "vanillaboom:block/carrot_cake_top",
     "bottom": "vanillaboom:block/carrot_cake_bottom",
-    "inner": "vanillaboom:block/carrot_cake_inner"
+    "particle": "vanillaboom:block/carrot_cake_side",
+    "inside": "vanillaboom:block/carrot_cake_inner"
   }
 }

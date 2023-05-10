@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "vanillaboom:item/polar_bear_steak"
-    }
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "vanillaboom:item/polar_bear_steak"
+  }
 }

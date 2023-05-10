@@ -4,6 +4,7 @@
     "side": "vanillaboom:block/berry_cake_side",
     "top": "vanillaboom:block/berry_cake_top",
     "bottom": "vanillaboom:block/berry_cake_bottom",
-    "inner": "vanillaboom:block/berry_cake_inner"
+    "particle": "vanillaboom:block/berry_cake_side",
+    "inside": "vanillaboom:block/berry_cake_inner"
   }
 }

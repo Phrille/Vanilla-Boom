@@ -9,6 +9,7 @@ import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.*;
+import phrille.vanillaboom.util.Utils;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +18,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     public ModBlockStateProvider(DataGenerator gen, ExistingFileHelper fileHelper) {
         super(gen, VanillaBoom.MOD_ID, fileHelper);
+        Utils.registerCandleCakes();
     }
 
     @Override
