@@ -33,7 +33,6 @@ public class ModEntities {
         return ENTITIES.register(name, () -> builder.build(name));
     }
 
-
     @SubscribeEvent
     public static void registerEntities(EntityAttributeCreationEvent event) {
         event.put(TUNA.get(), AbstractFish.createAttributes().build());
