@@ -649,7 +649,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         cakeBlock((CakeBlock) cake, files);
 
         for (Block candle : CANDLES) {
-            Block candleCake = ((ModCakeBlock) cake).byCandle(candle);
+            Block candleCake = ((ModCakeBlock) cake).byCandle((CandleBlock) candle);
             candleCakeBlock(cake, candleCake, candle);
         }
     }

@@ -60,7 +60,7 @@ public class ModCandleCakeBlock extends CandleCakeBlock {
         return new ItemStack(parent.get());
     }
 
-    public Block getCandle(){
+    public Block getCandle() {
         return candle.get();
     }
 }
