@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "vanillaboom:bone_sand"
+  },
+  "pattern": [
+    "xx",
+    "xx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:bone_meal"
+    }
+  }
+}

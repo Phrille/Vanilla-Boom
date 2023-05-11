@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "vanillaboom:andesite_pillar",
+    "count": 2
+  },
+  "pattern": [
+    "x",
+    "x"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:polished_andesite"
+    }
+  }
+}

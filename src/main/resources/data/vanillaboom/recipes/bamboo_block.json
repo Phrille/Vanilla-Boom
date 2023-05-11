@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "vanillaboom:bamboo_block"
+  },
+  "pattern": [
+    "xxx",
+    "xxx",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:bamboo"
+    }
+  }
+}

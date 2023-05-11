@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "vanillaboom:gold_bars",
+    "count": 16
+  },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "tag": "forge:ingots/gold"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "result": {
+    "item": "vanillaboom:wither_bone_meal",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:wither_bones"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

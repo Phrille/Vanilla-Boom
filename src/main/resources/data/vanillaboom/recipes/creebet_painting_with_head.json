@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "vanillaboom:creebet_painting",
+    "count": 64
+  },
+  "pattern": [
+    "xpy",
+    " s "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "p": {
+      "item": "vanillaboom:horizontal_painting"
+    },
+    "s": {
+      "item": "minecraft:creeper_head"
+    },
+    "x": {
+      "tag": "forge:dyes/blue"
+    },
+    "y": {
+      "tag": "forge:dyes/lime"
+    }
+  }
+}

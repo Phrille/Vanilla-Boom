@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "vanillaboom:burning_skull_painting",
+    "count": 64
+  },
+  "pattern": [
+    "xpy",
+    " s "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "p": {
+      "item": "vanillaboom:large_painting"
+    },
+    "s": {
+      "item": "minecraft:skeleton_skull"
+    },
+    "x": {
+      "tag": "forge:dyes/green"
+    },
+    "y": {
+      "tag": "forge:dyes/blue"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "vanillaboom:wanderer_painting"
+  },
+  "pattern": [
+    "xpy",
+    " s "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "p": {
+      "item": "vanillaboom:vertical_painting"
+    },
+    "s": {
+      "item": "minecraft:leather_boots"
+    },
+    "x": {
+      "tag": "forge:dyes/black"
+    },
+    "y": {
+      "tag": "forge:dyes/white"
+    }
+  }
+}

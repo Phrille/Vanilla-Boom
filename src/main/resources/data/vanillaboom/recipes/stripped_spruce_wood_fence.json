@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "vanillaboom:stripped_spruce_wood_fence",
+    "count": 3
+  },
+  "pattern": [
+    "xyx",
+    "xyx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:stripped_spruce_wood"
+    },
+    "y": {
+      "tag": "forge:rods/wooden"
+    }
+  }
+}

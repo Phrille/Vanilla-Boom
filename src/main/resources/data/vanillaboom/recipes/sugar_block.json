@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "vanillaboom:sugar_block"
+  },
+  "pattern": [
+    "xxx",
+    "xxx",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:sugar"
+    }
+  }
+}

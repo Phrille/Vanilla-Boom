@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "vanillaboom:chiseled_red_nether_bricks"
+  },
+  "result": "vanillaboom:chiseled_red_nether_brick_slab",
+  "count": 2
+}

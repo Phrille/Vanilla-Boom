@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "vanillaboom:red_nether_pillar",
+    "count": 2
+  },
+  "pattern": [
+    "x",
+    "x"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:red_nether_bricks"
+    }
+  }
+}

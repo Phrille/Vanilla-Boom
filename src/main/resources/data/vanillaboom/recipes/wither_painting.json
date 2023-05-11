@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "vanillaboom:wither_painting"
+  },
+  "pattern": [
+    "xpy",
+    " s "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "p": {
+      "item": "vanillaboom:medium_painting"
+    },
+    "s": {
+      "item": "vanillaboom:wither_bone"
+    },
+    "x": {
+      "tag": "forge:dyes/red"
+    },
+    "y": {
+      "tag": "forge:dyes/green"
+    }
+  }
+}

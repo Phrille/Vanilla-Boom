@@ -1,0 +1,12 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "vanillaboom:pink_dye_block"
+    }
+  ],
+  "result": {
+    "item": "minecraft:pink_dye",
+    "count": 9
+  }
+}

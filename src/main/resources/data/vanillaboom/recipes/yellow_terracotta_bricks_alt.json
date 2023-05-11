@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "vanillaboom:yellow_terracotta_bricks",
+    "count": 8
+  },
+  "pattern": [
+    "xxx",
+    "xyx",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "vanillaboom:terracotta_bricks"
+    },
+    "y": {
+      "tag": "forge:dyes/yellow"
+    }
+  }
+}

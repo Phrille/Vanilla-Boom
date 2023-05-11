@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "vanillaboom:yellow_concrete_slab",
+    "count": 6
+  },
+  "pattern": [
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:yellow_concrete"
+    }
+  }
+}

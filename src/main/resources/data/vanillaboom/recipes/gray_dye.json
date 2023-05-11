@@ -1,0 +1,12 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "vanillaboom:gray_dye_block"
+    }
+  ],
+  "result": {
+    "item": "minecraft:gray_dye",
+    "count": 9
+  }
+}

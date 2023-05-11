@@ -1,0 +1,12 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "vanillaboom:black_dye_block"
+    }
+  ],
+  "result": {
+    "item": "minecraft:black_dye",
+    "count": 9
+  }
+}

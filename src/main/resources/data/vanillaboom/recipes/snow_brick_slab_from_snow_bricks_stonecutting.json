@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "vanillaboom:snow_bricks"
+  },
+  "result": "vanillaboom:snow_brick_slab",
+  "count": 2
+}

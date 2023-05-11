@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "vanillaboom:birch_bookshelf"
+  },
+  "pattern": [
+    "xxx",
+    "yyy",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:birch_planks"
+    },
+    "y": {
+      "item": "minecraft:book"
+    }
+  }
+}

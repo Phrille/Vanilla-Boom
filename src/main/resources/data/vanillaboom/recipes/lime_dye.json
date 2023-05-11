@@ -1,0 +1,12 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "vanillaboom:lime_dye_block"
+    }
+  ],
+  "result": {
+    "item": "minecraft:lime_dye",
+    "count": 9
+  }
+}

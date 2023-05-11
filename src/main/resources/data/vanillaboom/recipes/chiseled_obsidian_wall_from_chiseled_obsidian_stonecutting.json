@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "vanillaboom:chiseled_obsidian"
+  },
+  "result": "vanillaboom:chiseled_obsidian_wall",
+  "count": 1
+}

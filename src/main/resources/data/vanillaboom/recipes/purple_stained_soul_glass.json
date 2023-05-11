@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "vanillaboom:purple_stained_soul_glass",
+    "count": 8
+  },
+  "pattern": [
+    "xxx",
+    "xyx",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "vanillaboom:soul_glass"
+    },
+    "y": {
+      "tag": "forge:dyes/purple"
+    }
+  }
+}

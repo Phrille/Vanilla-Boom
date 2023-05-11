@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "vanillaboom:chiseled_obsidian_wall",
+    "count": 6
+  },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "vanillaboom:chiseled_obsidian"
+    }
+  }
+}

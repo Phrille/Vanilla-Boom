@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "vanillaboom:dark_oak_wood_stairs",
+    "count": 4
+  },
+  "pattern": [
+    "x  ",
+    "xx ",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:dark_oak_wood"
+    }
+  }
+}

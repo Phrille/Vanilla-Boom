@@ -1,0 +1,12 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "vanillaboom:purple_dye_block"
+    }
+  ],
+  "result": {
+    "item": "minecraft:purple_dye",
+    "count": 9
+  }
+}

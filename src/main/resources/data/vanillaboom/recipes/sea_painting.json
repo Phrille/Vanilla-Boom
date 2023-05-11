@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "vanillaboom:sea_painting"
+  },
+  "pattern": [
+    "xpy",
+    " s "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "p": {
+      "item": "vanillaboom:horizontal_painting"
+    },
+    "s": {
+      "item": "minecraft:prismarine_shard"
+    },
+    "x": {
+      "tag": "forge:dyes/blue"
+    },
+    "y": {
+      "tag": "forge:dyes/lime"
+    }
+  }
+}

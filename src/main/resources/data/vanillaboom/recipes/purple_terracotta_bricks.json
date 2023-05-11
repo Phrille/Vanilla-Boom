@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "vanillaboom:purple_terracotta_bricks",
+    "count": 4
+  },
+  "pattern": [
+    "xx",
+    "xx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:purple_terracotta"
+    }
+  }
+}

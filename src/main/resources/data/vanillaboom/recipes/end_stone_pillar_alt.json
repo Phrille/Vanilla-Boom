@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "vanillaboom:end_stone_pillar",
+    "count": 2
+  },
+  "pattern": [
+    "x",
+    "x"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:end_stone_bricks"
+    }
+  }
+}

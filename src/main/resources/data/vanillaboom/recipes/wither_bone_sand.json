@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "vanillaboom:wither_bone_sand"
+  },
+  "pattern": [
+    "xx",
+    "xx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "vanillaboom:wither_bone_meal"
+    }
+  }
+}

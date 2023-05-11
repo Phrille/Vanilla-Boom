@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "HHH",
+    "WWW"
+  ],
+  "key": {
+    "H": {
+      "item": "vanillaboom:hydro_rock"
+    },
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "W": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "result": {
+    "item": "vanillaboom:rain_detector"
+  }
+}

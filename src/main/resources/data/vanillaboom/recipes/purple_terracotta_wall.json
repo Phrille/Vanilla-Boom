@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "vanillaboom:purple_terracotta_wall",
+    "count": 6
+  },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "minecraft:purple_terracotta"
+    }
+  }
+}
