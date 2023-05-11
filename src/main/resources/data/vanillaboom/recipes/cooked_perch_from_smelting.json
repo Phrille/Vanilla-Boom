@@ -1,9 +1,0 @@
-{
-  "type": "smelting",
-  "ingredient": {
-    "item": "vanillaboom:perch"
-  },
-  "result": "vanillaboom:cooked_perch",
-  "experience": 0.3,
-  "cookingtime": 200
-}

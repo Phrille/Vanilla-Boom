@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "vanillaboom:fine_gravel"
-  },
-  "result": "minecraft:sand",
-  "count": 1
-}

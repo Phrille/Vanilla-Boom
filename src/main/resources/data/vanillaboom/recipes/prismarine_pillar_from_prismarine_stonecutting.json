@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "minecraft:prismarine"
-  },
-  "result": "vanillaboom:prismarine_pillar",
-  "count": 1
-}
