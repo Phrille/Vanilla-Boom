@@ -12,7 +12,7 @@ public class Tuna extends Fish {
 
     @Override
     public ItemStack getBucketItemStack() {
-        return new ItemStack(ModItems.TUNA_BUCKET);
+        return new ItemStack(ModItems.TUNA_BUCKET.get());
     }
 
     @Override

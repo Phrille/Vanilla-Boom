@@ -10,9 +10,11 @@ import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.entity.ModBlockEntities;
 import phrille.vanillaboom.config.ConfigHandler;
 import phrille.vanillaboom.entity.ModEntities;
+import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.loot.LootTableHandler;
 import phrille.vanillaboom.util.FuelHandler;
 import phrille.vanillaboom.util.Utils;
@@ -24,14 +26,17 @@ public class VanillaBoom {
 
     public VanillaBoom() {
         ModLoadingContext modLoadingContext = ModLoadingContext.get();
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        modEventBus.addListener(this::setup);
-        modEventBus.addListener(this::enqueueIMC);
-        modEventBus.addListener(this::processIMC);
+        ModEntities.ENTITIES.register(eventBus);
+        ModBlocks.BLOCKS.register(eventBus);
+        ModItems.ITEMS.register(eventBus);
+        ModBlockEntities.BLOCK_ENTITIES.register(eventBus);
+        LootTableHandler.GLMS.register(eventBus);
 
-        LootTableHandler.init(modEventBus);
-        ModBlockEntities.init(modEventBus);
+        eventBus.addListener(this::setup);
+        eventBus.addListener(this::enqueueIMC);
+        eventBus.addListener(this::processIMC);
 
         modLoadingContext.registerConfig(ModConfig.Type.CLIENT, ConfigHandler.CLIENT_SPEC);
         modLoadingContext.registerConfig(ModConfig.Type.COMMON, ConfigHandler.COMMON_SPEC);
@@ -39,12 +44,11 @@ public class VanillaBoom {
 
     public void setup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            //LootConditionTypes.registerLootConditions();
-
-            ModEntities.RegistrationHandler.registerSpawnPlacements();
+            ModEntities.registerSpawnPlacements();
             FuelHandler.registerBurnTimes();
             Utils.registerFlowerPots();
             Utils.addCompostMaterials();
+            Utils.registerCandleCakes();
         });
     }
 

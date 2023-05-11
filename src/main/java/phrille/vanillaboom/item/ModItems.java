@@ -1,6 +1,5 @@
 package phrille.vanillaboom.item;
 
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.decoration.Motive;
@@ -10,251 +9,100 @@ import net.minecraft.world.item.BowlFoodItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fmllegacy.RegistryObject;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistryEntry;
-import net.minecraftforge.registries.ObjectHolder;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.entity.ModEntities;
-import phrille.vanillaboom.util.Names;
-import phrille.vanillaboom.util.Utils;
 import phrille.vanillaboom.util.VanillaBoomTab;
 
-@ObjectHolder(VanillaBoom.MOD_ID)
+import java.util.function.Supplier;
+
 public class ModItems {
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, VanillaBoom.MOD_ID);
+
     //Misc
-    public static final Item MAGMA_BRICK = Utils._null();
-    public static final Item WITHER_BONE = Utils._null();
-    public static final Item WITHER_BONE_MEAL = Utils._null();
-    public static final Item PRISMARINE_ARROW = Utils._null();
-    public static final Item POLAR_BEAR_FUR = Utils._null();
-    public static final Item TOMATO_SEEDS = Utils._null();
-    public static final Item RICE_SEEDS = Utils._null();
+    public static final RegistryObject<Item> MAGMA_BRICK = ITEMS.register("magma_brick", () -> new Item(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> WITHER_BONE = ITEMS.register("wither_bone", () -> new Item(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> WITHER_BONE_MEAL = ITEMS.register("wither_bone_meal", () -> new Item(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> PRISMARINE_ARROW = ITEMS.register("prismarine_arrow", () -> new PrismarineArrowItem());
+    public static final RegistryObject<Item> POLAR_BEAR_FUR = ITEMS.register("polar_bear_fur", () -> new Item(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds", () -> new BlockItem(ModBlocks.TOMATO_PLANT.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> RICE_SEEDS = ITEMS.register("rice_seeds", () -> new BlockItem(ModBlocks.RICE_PLANT.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
 
     //Food
-    public static final Item PINE_CONE = Utils._null();
-    public static final Item PUMPKIN_SLICE = Utils._null();
-    public static final Item TOMATO = Utils._null();
-    public static final Item COOKED_EGG = Utils._null();
-    public static final Item DROWNED_FLESH = Utils._null();
-    public static final Item MELON_POPSICLE = Utils._null();
-    public static final Item CHOCOLATE = Utils._null();
-    public static final Item CHOCOLATE_CAKE = Utils._null();
-    public static final Item BERRY_CAKE = Utils._null();
-    public static final Item CARROT_CAKE = Utils._null();
-    public static final Item APPLE_PIE = Utils._null();
-    public static final Item BERRY_PIE = Utils._null();
-    public static final Item MONSTER_PIE = Utils._null();
-    public static final Item RAW_POLAR_BEAR_MEAT = Utils._null();
-    public static final Item POLAR_BEAR_STEAK = Utils._null();
-    public static final Item POTATO_SOUP = Utils._null();
-    public static final Item MEAT_SOUP = Utils._null();
-    public static final Item FISH_SOUP = Utils._null();
-    public static final Item RICE_BOWL = Utils._null();
+    public static final RegistryObject<Item> PINE_CONE = ITEMS.register("pine_cone", () -> new Item(new Item.Properties().food(ModFoods.PINE_CONE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> PUMPKIN_SLICE = ITEMS.register("pumpkin_slice", () -> new Item(new Item.Properties().food(ModFoods.PUMPKIN_SLICE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> TOMATO = ITEMS.register("tomato", () -> new Item(new Item.Properties().food(ModFoods.TOMATO).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> COOKED_EGG = ITEMS.register("cooked_egg", () -> new Item(new Item.Properties().food(ModFoods.COOKED_EGG).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> DROWNED_FLESH = ITEMS.register("drowned_flesh", () -> new Item(new Item.Properties().food(ModFoods.DROWNED_FLESH).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> MELON_POPSICLE = ITEMS.register("melon_popsicle", () -> new IceCreamItem(new Item.Properties().food(ModFoods.MELON_POPSICLE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> CHOCOLATE = ITEMS.register("chocolate", () -> new Item(new Item.Properties().food(ModFoods.CHOCOLATE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> CHOCOLATE_CAKE = ITEMS.register("chocolate_cake", () -> new BlockItem(ModBlocks.CHOCOLATE_CAKE.get(), new Item.Properties().stacksTo(1).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> BERRY_CAKE = ITEMS.register("berry_cake", () -> new BlockItem(ModBlocks.BERRY_CAKE.get(), new Item.Properties().stacksTo(1).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> CARROT_CAKE = ITEMS.register("carrot_cake", () -> new BlockItem(ModBlocks.CARROT_CAKE.get(), new Item.Properties().stacksTo(1).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> APPLE_PIE = ITEMS.register("apple_pie", () -> new Item(new Item.Properties().food(ModFoods.APPLE_PIE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> BERRY_PIE = ITEMS.register("berry_pie", () -> new Item(new Item.Properties().food(ModFoods.BERRY_PIE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> MONSTER_PIE = ITEMS.register("monster_pie", () -> new Item(new Item.Properties().food(ModFoods.MONSTER_PIE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> RAW_POLAR_BEAR_MEAT = ITEMS.register("raw_polar_bear_meat", () -> new Item(new Item.Properties().food(ModFoods.RAW_POLAR_BEAR_MEAT).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> POLAR_BEAR_STEAK = ITEMS.register("polar_bear_steak", () -> new Item(new Item.Properties().food(ModFoods.POLAR_BEAR_STEAK).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> POTATO_SOUP = ITEMS.register("potato_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.PINE_CONE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> MEAT_SOUP = ITEMS.register("meat_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.PINE_CONE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> FISH_SOUP = ITEMS.register("fish_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.PINE_CONE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> RICE_BOWL = ITEMS.register("rice_bowl", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.PINE_CONE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
 
     //Fish
-    public static final Item TUNA = Utils._null();
-    public static final Item COOKED_TUNA = Utils._null();
-    public static final Item PERCH = Utils._null();
-    public static final Item COOKED_PERCH = Utils._null();
-    public static final Item PIKE = Utils._null();
-    public static final Item COOKED_PIKE = Utils._null();
-    public static final Item EEL = Utils._null();
-    public static final Item COOKED_EEL = Utils._null();
+    public static final RegistryObject<Item> TUNA = ITEMS.register("tuna", () -> new Item(new Item.Properties().food(ModFoods.TUNA).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> COOKED_TUNA = ITEMS.register("cooked_tuna", () -> new Item(new Item.Properties().food(ModFoods.COOKED_TUNA).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> PERCH = ITEMS.register("perch", () -> new Item(new Item.Properties().food(ModFoods.PERCH).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> COOKED_PERCH = ITEMS.register("cooked_perch", () -> new Item(new Item.Properties().food(ModFoods.COOKED_PERCH).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> PIKE = ITEMS.register("pike", () -> new Item(new Item.Properties().food(ModFoods.PIKE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> COOKED_PIKE = ITEMS.register("cooked_pike", () -> new Item(new Item.Properties().food(ModFoods.COOKED_PIKE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> EEL = ITEMS.register("eel", () -> new Item(new Item.Properties().food(ModFoods.EEL).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> COOKED_EEL = ITEMS.register("cooked_eel", () -> new Item(new Item.Properties().food(ModFoods.COOKED_EEL).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
 
     //Fish Buckets
-    public static final Item TUNA_BUCKET = Utils._null();
-    public static final Item PERCH_BUCKET = Utils._null();
-    public static final Item PIKE_BUCKET = Utils._null();
-    public static final Item EEL_BUCKET = Utils._null();
+    public static final RegistryObject<Item> TUNA_BUCKET = ITEMS.register("tuna_bucket", () -> new FishBucketItem(ModEntities.TUNA));
+    public static final RegistryObject<Item> PERCH_BUCKET = ITEMS.register("perch_bucket", () -> new FishBucketItem(ModEntities.PERCH));
+    public static final RegistryObject<Item> PIKE_BUCKET = ITEMS.register("pike_bucket", () -> new FishBucketItem(ModEntities.PIKE));
+    public static final RegistryObject<Item> EEL_BUCKET = ITEMS.register("eel_bucket", () -> new FishBucketItem(ModEntities.EEL));
 
     //Spawn Eggs
-    public static final Item TUNA_SPAWN_EGG = Utils._null();
-    public static final Item PERCH_SPAWN_EGG = Utils._null();
-    public static final Item PIKE_SPAWN_EGG = Utils._null();
-    public static final Item EEL_SPAWN_EGG = Utils._null();
+    public static final RegistryObject<Item> TUNA_SPAWN_EGG = ITEMS.register("tuna_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.PERCH, 0x464614, 0xFD5100, new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> PERCH_SPAWN_EGG = ITEMS.register("perch_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.TUNA, 0x33495E, 0xD7C376, new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> PIKE_SPAWN_EGG = ITEMS.register("pike_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.PIKE, 0x4C462A, 0xA0A169, new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> EEL_SPAWN_EGG = ITEMS.register("eel_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.EEL, 0x5F4F37, 0x312517, new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
 
-    //Painting Items
-    public static final Item CANVAS = Utils._null();
-    public static final Item SMALL_PAINTING = Utils._null();
-    public static final Item HORIZONTAL_PAINTING = Utils._null();
-    public static final Item VERTICAL_PAINTING = Utils._null();
-    public static final Item MEDIUM_PAINTING = Utils._null();
-    public static final Item LARGE_HORIZONTAL_PAINTING = Utils._null();
-    public static final Item LARGE_PAINTING = Utils._null();
-    public static final Item KEBAB_PAINTING = Utils._null();
-    public static final Item AZTEC_PAINTING = Utils._null();
-    public static final Item ALBAN_PAINTING = Utils._null();
-    public static final Item AZTEC2_PAINTING = Utils._null();
-    public static final Item BOMB_PAINTING = Utils._null();
-    public static final Item PLANT_PAINTING = Utils._null();
-    public static final Item WASTELAND_PAINTING = Utils._null();
-    public static final Item POOL_PAINTING = Utils._null();
-    public static final Item COURBET_PAINTING = Utils._null();
-    public static final Item SEA_PAINTING = Utils._null();
-    public static final Item SUNSET_PAINTING = Utils._null();
-    public static final Item CREEBET_PAINTING = Utils._null();
-    public static final Item WANDERER_PAINTING = Utils._null();
-    public static final Item GRAHAM_PAINTING = Utils._null();
-    public static final Item MATCH_PAINTING = Utils._null();
-    public static final Item BUST_PAINTING = Utils._null();
-    public static final Item STAGE_PAINTING = Utils._null();
-    public static final Item VOID_PAINTING = Utils._null();
-    public static final Item SKULL_AND_ROSES_PAINTING = Utils._null();
-    public static final Item WITHER_PAINTING = Utils._null();
-    public static final Item FIGHTERS_PAINTING = Utils._null();
-    public static final Item POINTER_PAINTING = Utils._null();
-    public static final Item PIGSCENE_PAINTING = Utils._null();
-    public static final Item BURNING_SKULL_PAINTING = Utils._null();
-    public static final Item SKELETON_PAINTING = Utils._null();
-    public static final Item DONKEY_KONG_PAINTING = Utils._null();
-
-    @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistrationHandler {
-        @SubscribeEvent
-        public static void onRegisterItems(RegistryEvent.Register<Item> event) {
-            IForgeRegistry<Item> registry = event.getRegistry();
-            registerItemBlocks(registry);
-
-            //Misc
-            registerItem(registry, setup(new Item(new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "magma_brick"));
-            registerItem(registry, setup(new Item(new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "wither_bone"));
-            registerItem(registry, setup(new Item(new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "wither_bone_meal"));
-            registerItem(registry, setup(new PrismarineArrowItem(), "prismarine_arrow"));
-            registerItem(registry, setup(new Item(new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "polar_bear_fur"));
-            registerItem(registry, setup(new BlockItem(ModBlocks.TOMATO_PLANT, new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "tomato_seeds"));
-            registerItem(registry, setup(new BlockItem(ModBlocks.RICE_PLANT, new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "rice_seeds"));
-
-            /* TODO:
-             * Fix fish foods - effects and amount
-             * Add tags to fish items
-             * Add furnace, smoker and campfire recipes
-             * Pie and popsicle recipe
-             */
-
-            //Foods
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.PINE_CONE).tab(VanillaBoomTab.VANILLABOOM_TAB)), "pine_cone"));
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.PUMPKIN_SLICE).tab(VanillaBoomTab.VANILLABOOM_TAB)), "pumpkin_slice"));
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.TOMATO).tab(VanillaBoomTab.VANILLABOOM_TAB)), "tomato"));
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.COOKED_EGG).tab(VanillaBoomTab.VANILLABOOM_TAB)), "cooked_egg"));
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.DROWNED_FLESH).tab(VanillaBoomTab.VANILLABOOM_TAB)), "drowned_flesh"));
-            registerItem(registry, setup(new IceCreamItem(new Item.Properties().food(ModFoods.MELON_POPSICLE).tab(VanillaBoomTab.VANILLABOOM_TAB)), "melon_popsicle"));
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.CHOCOLATE).tab(VanillaBoomTab.VANILLABOOM_TAB)), "chocolate"));
-            registerItem(registry, setup(new BlockItem(ModBlocks.CHOCOLATE_CAKE, new Item.Properties().stacksTo(1).tab(VanillaBoomTab.VANILLABOOM_TAB)), "chocolate_cake"));
-            registerItem(registry, setup(new BlockItem(ModBlocks.BERRY_CAKE, new Item.Properties().stacksTo(1).tab(VanillaBoomTab.VANILLABOOM_TAB)), "berry_cake"));
-            registerItem(registry, setup(new BlockItem(ModBlocks.CARROT_CAKE, new Item.Properties().stacksTo(1).tab(VanillaBoomTab.VANILLABOOM_TAB)), "carrot_cake"));
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.APPLE_PIE).tab(VanillaBoomTab.VANILLABOOM_TAB)), "apple_pie"));
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.BERRY_PIE).tab(VanillaBoomTab.VANILLABOOM_TAB)), "berry_pie"));
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.MONSTER_PIE).tab(VanillaBoomTab.VANILLABOOM_TAB)), "monster_pie"));
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.RAW_POLAR_BEAR_MEAT).tab(VanillaBoomTab.VANILLABOOM_TAB)), "raw_polar_bear_meat"));
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.POLAR_BEAR_STEAK).tab(VanillaBoomTab.VANILLABOOM_TAB)), "polar_bear_steak"));
-            registerItem(registry, setup(new BowlFoodItem(new Item.Properties().food(ModFoods.POLAR_BEAR_STEAK).tab(VanillaBoomTab.VANILLABOOM_TAB)), "potato_soup"));
-            registerItem(registry, setup(new BowlFoodItem(new Item.Properties().food(ModFoods.POLAR_BEAR_STEAK).tab(VanillaBoomTab.VANILLABOOM_TAB)), "meat_soup"));
-            registerItem(registry, setup(new BowlFoodItem(new Item.Properties().food(ModFoods.POLAR_BEAR_STEAK).tab(VanillaBoomTab.VANILLABOOM_TAB)), "fish_soup"));
-            registerItem(registry, setup(new BowlFoodItem(new Item.Properties().food(ModFoods.POLAR_BEAR_STEAK).tab(VanillaBoomTab.VANILLABOOM_TAB)), "rice_bowl"));
-
-            //Fish
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.TUNA).tab(VanillaBoomTab.VANILLABOOM_TAB)), "tuna"));
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.COOKED_TUNA).tab(VanillaBoomTab.VANILLABOOM_TAB)), "cooked_tuna"));
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.PERCH).tab(VanillaBoomTab.VANILLABOOM_TAB)), "perch"));
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.COOKED_PERCH).tab(VanillaBoomTab.VANILLABOOM_TAB)), "cooked_perch"));
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.PIKE).tab(VanillaBoomTab.VANILLABOOM_TAB)), "pike"));
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.COOKED_PIKE).tab(VanillaBoomTab.VANILLABOOM_TAB)), "cooked_pike"));
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.EEL).tab(VanillaBoomTab.VANILLABOOM_TAB)), "eel"));
-            registerItem(registry, setup(new Item(new Item.Properties().food(ModFoods.COOKED_EEL).tab(VanillaBoomTab.VANILLABOOM_TAB)), "cooked_eel"));
-
-            registerItem(registry, setup(new FishBucketItem(() -> ModEntities.PERCH), "perch_bucket"));
-            registerItem(registry, setup(new FishBucketItem(() -> ModEntities.TUNA), "tuna_bucket"));
-            registerItem(registry, setup(new FishBucketItem(() -> ModEntities.PIKE), "pike_bucket"));
-            registerItem(registry, setup(new FishBucketItem(() -> ModEntities.EEL), "eel_bucket"));
-
-            registerItem(registry, setup(new ForgeSpawnEggItem(() -> ModEntities.PERCH, 0x464614, 0xFD5100, new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "perch_spawn_egg"));
-            registerItem(registry, setup(new ForgeSpawnEggItem(() -> ModEntities.TUNA, 0x33495E, 0xD7C376, new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "tuna_spawn_egg"));
-            registerItem(registry, setup(new ForgeSpawnEggItem(() -> ModEntities.PIKE, 0x4C462A, 0xA0A169, new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "pike_spawn_egg"));
-            registerItem(registry, setup(new ForgeSpawnEggItem(() -> ModEntities.EEL, 0x5F4F37, 0x312517, new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), "eel_spawn_egg"));
-
-            //Paintings
-            registerItem(registry, setup(new Item(new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), Names.CANVAS));
-            registerItem(registry, setup(new Item(new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), Names.SMALL_PAINTING));
-            registerItem(registry, setup(new Item(new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), Names.HORIZONTAL_PAINTING));
-            registerItem(registry, setup(new Item(new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), Names.VERTICAL_PAINTING));
-            registerItem(registry, setup(new Item(new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), Names.MEDIUM_PAINTING));
-            registerItem(registry, setup(new Item(new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), Names.LARGE_HORIZONTAL_PAINTING));
-            registerItem(registry, setup(new Item(new Item.Properties().tab(VanillaBoomTab.VANILLABOOM_TAB)), Names.LARGE_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.KEBAB), Names.KEBAB_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.AZTEC), Names.AZTEC_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.ALBAN), Names.ALBAN_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.AZTEC2), Names.AZTEC2_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.BOMB), Names.BOMB_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.PLANT), Names.PLANT_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.WASTELAND), Names.WASTELAND_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.POOL), Names.POOL_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.COURBET), Names.COURBET_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.SEA), Names.SEA_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.SUNSET), Names.SUNSET_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.CREEBET), Names.CREEBET_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.WANDERER), Names.WANDERER_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.GRAHAM), Names.GRAHAM_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.MATCH), Names.MATCH_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.BUST), Names.BUST_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.STAGE), Names.STAGE_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.VOID), Names.VOID_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.SKULL_AND_ROSES), Names.SKULL_AND_ROSES_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.WITHER), Names.WITHER_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.FIGHTERS), Names.FIGHTERS_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.POINTER), Names.POINTER_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.PIGSCENE), Names.PIGSCENE_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.BURNING_SKULL), Names.BURNING_SKULL_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.SKELETON), Names.SKELETON_PAINTING));
-            registerItem(registry, setup(new PaintingItem(Motive.DONKEY_KONG), Names.DONKEY_KONG_PAINTING));
-        }
-
-        private static void registerItem(IForgeRegistry<Item> registry, Item item) {
-            registerItem(registry, item, false);
-        }
-
-        private static void registerItem(IForgeRegistry<Item> registry, Item item, boolean variantBlock) {
-            registry.register(item);
-
-            if (variantBlock) {
-                VanillaBoomTab.VANILLABOOM_VARIANT_BLOCKS_TAB_LIST.add(item);
-            } else {
-                VanillaBoomTab.VANILLABOOM_TAB_LIST.add(item);
-            }
-        }
-
-        private static void registerItemBlocks(IForgeRegistry<Item> registry) {
-            for (Block block : ForgeRegistries.BLOCKS.getValues()) {
-                ResourceLocation blockRegistryName = block.getRegistryName();
-
-                if (!blockRegistryName.getNamespace().equals(VanillaBoom.MOD_ID)) {
-                    continue;
-                }
-
-                boolean notAdd = block instanceof FlowerPotBlock || block instanceof BonemealableBlock || block instanceof CakeBlock || block instanceof CandleCakeBlock;
-
-                if (!notAdd) {
-                    boolean variantBlock = block instanceof SlabBlock || block instanceof StairBlock || block instanceof WallBlock || block instanceof FenceBlock || block instanceof FenceGateBlock;
-                    Item.Properties properties = new Item.Properties().tab(variantBlock ? VanillaBoomTab.VANILLABOOM_VARIANT_BLOCKS_TAB : VanillaBoomTab.VANILLABOOM_TAB);
-                    BlockItem blockItem = new BlockItem(block, properties);
-                    registerItem(registry, setup(blockItem, blockRegistryName), variantBlock);
-                }
-            }
-        }
-
-        public static <T extends IForgeRegistryEntry<T>> T setup(T entry, String name) {
-            return setup(entry, new ResourceLocation(VanillaBoom.MOD_ID, name));
-        }
-
-        public static <T extends IForgeRegistryEntry<T>> T setup(T entry, ResourceLocation registryName) {
-            entry.setRegistryName(registryName);
-            return entry;
-        }
-    }
+    //Paintings
+    public static final RegistryObject<Item> CANVAS = ITEMS.register("canvas", () -> new Item(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> KEBAB_PAINTING = ITEMS.register("kebab_painting", () -> new PaintingItem(Motive.KEBAB));
+    public static final RegistryObject<Item> AZTEC_PAINTING = ITEMS.register("aztec_painting", () -> new PaintingItem(Motive.AZTEC));
+    public static final RegistryObject<Item> ALBAN_PAINTING = ITEMS.register("alban_painting", () -> new PaintingItem(Motive.ALBAN));
+    public static final RegistryObject<Item> AZTEC2_PAINTING = ITEMS.register("aztec2_painting", () -> new PaintingItem(Motive.AZTEC2));
+    public static final RegistryObject<Item> BOMB_PAINTING = ITEMS.register("bomb_painting", () -> new PaintingItem(Motive.BOMB));
+    public static final RegistryObject<Item> PLANT_PAINTING = ITEMS.register("plant_painting", () -> new PaintingItem(Motive.PLANT));
+    public static final RegistryObject<Item> WASTELAND_PAINTING = ITEMS.register("wasteland_painting", () -> new PaintingItem(Motive.WASTELAND));
+    public static final RegistryObject<Item> POOL_PAINTING = ITEMS.register("pool_painting", () -> new PaintingItem(Motive.POOL));
+    public static final RegistryObject<Item> COURBET_PAINTING = ITEMS.register("courbet_painting", () -> new PaintingItem(Motive.COURBET));
+    public static final RegistryObject<Item> SEA_PAINTING = ITEMS.register("sea_painting", () -> new PaintingItem(Motive.SEA));
+    public static final RegistryObject<Item> SUNSET_PAINTING = ITEMS.register("sunset_painting", () -> new PaintingItem(Motive.SUNSET));
+    public static final RegistryObject<Item> CREEBET_PAINTING = ITEMS.register("creebet_painting", () -> new PaintingItem(Motive.CREEBET));
+    public static final RegistryObject<Item> WANDERER_PAINTING = ITEMS.register("wanderer_painting", () -> new PaintingItem(Motive.WANDERER));
+    public static final RegistryObject<Item> GRAHAM_PAINTING = ITEMS.register("graham_painting", () -> new PaintingItem(Motive.GRAHAM));
+    public static final RegistryObject<Item> MATCH_PAINTING = ITEMS.register("match_painting", () -> new PaintingItem(Motive.MATCH));
+    public static final RegistryObject<Item> BUST_PAINTING = ITEMS.register("bust_painting", () -> new PaintingItem(Motive.BUST));
+    public static final RegistryObject<Item> STAGE_PAINTING = ITEMS.register("stage_painting", () -> new PaintingItem(Motive.STAGE));
+    public static final RegistryObject<Item> VOID_PAINTING = ITEMS.register("void_painting", () -> new PaintingItem(Motive.VOID));
+    public static final RegistryObject<Item> SKULL_AND_ROSES_PAINTING = ITEMS.register("skull_and_roses_painting", () -> new PaintingItem(Motive.SKULL_AND_ROSES));
+    public static final RegistryObject<Item> WITHER_PAINTING = ITEMS.register("wither_painting", () -> new PaintingItem(Motive.WITHER));
+    public static final RegistryObject<Item> FIGHTERS_PAINTING = ITEMS.register("fighters_painting", () -> new PaintingItem(Motive.FIGHTERS));
+    public static final RegistryObject<Item> POINTER_PAINTING = ITEMS.register("pointer_painting", () -> new PaintingItem(Motive.POINTER));
+    public static final RegistryObject<Item> PIGSCENE_PAINTING = ITEMS.register("pigscene_painting", () -> new PaintingItem(Motive.PIGSCENE));
+    public static final RegistryObject<Item> BURNING_SKULL_PAINTING = ITEMS.register("burning_skull_painting", () -> new PaintingItem(Motive.BURNING_SKULL));
+    public static final RegistryObject<Item> SKELETON_PAINTING = ITEMS.register("skeleton_painting", () -> new PaintingItem(Motive.SKELETON));
+    public static final RegistryObject<Item> DONKEY_KONG_PAINTING = ITEMS.register("donkey_kong_painting", () -> new PaintingItem(Motive.DONKEY_KONG));
 
     public static class ModFoods {
         public static final FoodProperties RAW_POLAR_BEAR_MEAT = new FoodProperties.Builder().nutrition(3).saturationMod(0.3F).meat().build();

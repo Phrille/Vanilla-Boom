@@ -5,6 +5,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.function.Supplier;
@@ -13,12 +14,12 @@ public class ModSlabBlock extends SlabBlock {
     protected Supplier<BlockState> state;
 
     public ModSlabBlock(Supplier<BlockState> state) {
-        super(Properties.copy(state.get().getBlock()));
-        this.state = state;
+        this(state, BlockBehaviour.Properties.copy(state.get().getBlock()));
     }
 
-    public static String getSlabName(Block block) {
-        return block.getRegistryName().getPath().replace("bricks", "brick") + "_slab";
+    public ModSlabBlock(Supplier<BlockState> state, BlockBehaviour.Properties properties) {
+        super(properties);
+        this.state = state;
     }
 
     @Override

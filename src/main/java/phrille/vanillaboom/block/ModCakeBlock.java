@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class ModCakeBlock extends CakeBlock {
 
-    public static final Map<Block, Map<Block, CandleCakeBlock>> CANDLE_CAKES = Maps.newHashMap();
+    private final Map<CandleBlock, ModCandleCakeBlock> CANDLE_CAKES = Maps.newHashMap();
 
     public ModCakeBlock() {
         super(BlockBehaviour.Properties.copy(Blocks.CAKE));
@@ -37,14 +37,15 @@ public class ModCakeBlock extends CakeBlock {
         ItemStack stack = player.getItemInHand(hand);
 
         if (stack.is(ItemTags.CANDLES) && state.getValue(BITES) == 0) {
-            Block block = Block.byItem(stack.getItem());
-            if (block instanceof CandleBlock) {
+            Block candle = Block.byItem(stack.getItem());
+
+            if (candle instanceof CandleBlock) {
                 if (!player.isCreative()) {
                     stack.shrink(1);
                 }
 
                 world.playSound(null, pos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0F, 1.0F);
-                world.setBlockAndUpdate(pos, byCandle(block));
+                world.setBlockAndUpdate(pos, byCandle((CandleBlock) candle).defaultBlockState());
                 world.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
                 player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
                 return InteractionResult.SUCCESS;
@@ -64,7 +65,11 @@ public class ModCakeBlock extends CakeBlock {
         return CakeBlock.eat(world, pos, state, player);
     }
 
-    private BlockState byCandle(Block candle) {
-        return CANDLE_CAKES.get(this).get(candle).defaultBlockState();
+    public Block byCandle(CandleBlock candle) {
+        return CANDLE_CAKES.get(candle);
+    }
+
+    public void addCandleCake(ModCandleCakeBlock candleCake){
+        CANDLE_CAKES.put((CandleBlock) candleCake.getCandle(), candleCake);
     }
 }

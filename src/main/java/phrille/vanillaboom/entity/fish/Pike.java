@@ -12,7 +12,7 @@ public class Pike extends Fish {
 
     @Override
     public ItemStack getBucketItemStack() {
-        return new ItemStack(ModItems.PIKE_BUCKET);
+        return new ItemStack(ModItems.PIKE_BUCKET.get());
     }
 
     @Override

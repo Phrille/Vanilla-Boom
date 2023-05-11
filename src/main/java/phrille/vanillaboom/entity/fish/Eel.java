@@ -12,7 +12,7 @@ public class Eel extends Fish {
 
     @Override
     public ItemStack getBucketItemStack() {
-        return new ItemStack(ModItems.EEL_BUCKET);
+        return new ItemStack(ModItems.EEL_BUCKET.get());
     }
 
     @Override

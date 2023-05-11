@@ -22,7 +22,7 @@ import java.util.function.Supplier;
 public class FishBucketItem extends MobBucketItem {
 
     public FishBucketItem(Supplier<? extends EntityType<?>> entityType) {
-        super(entityType, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1).tab(VanillaBoomTab.VANILLABOOM_TAB));
+        super(entityType, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1).tab(VanillaBoomTab.VANILLA_BOOM_TAB));
     }
 
     @Override

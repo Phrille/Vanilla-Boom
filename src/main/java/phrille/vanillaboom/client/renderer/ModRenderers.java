@@ -28,62 +28,62 @@ public class ModRenderers {
 
     @SubscribeEvent
     public static void register(FMLClientSetupEvent event) {
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.MAGMA_CREAM_BLOCK, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SOUL_GLASS, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.WHITE_STAINED_SOUL_GLASS, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ORANGE_STAINED_SOUL_GLASS, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.MAGENTA_STAINED_SOUL_GLASS, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIGHT_BLUE_STAINED_SOUL_GLASS, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.YELLOW_STAINED_SOUL_GLASS, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIME_STAINED_SOUL_GLASS, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PINK_STAINED_SOUL_GLASS, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GRAY_STAINED_SOUL_GLASS, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIGHT_GRAY_STAINED_SOUL_GLASS, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CYAN_STAINED_SOUL_GLASS, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PURPLE_STAINED_SOUL_GLASS, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLUE_STAINED_SOUL_GLASS, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BROWN_STAINED_SOUL_GLASS, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GREEN_STAINED_SOUL_GLASS, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.RED_STAINED_SOUL_GLASS, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLACK_STAINED_SOUL_GLASS, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SOUL_GLASS_PANE, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.WHITE_STAINED_SOUL_GLASS_PANE, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ORANGE_STAINED_SOUL_GLASS_PANE, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.MAGENTA_STAINED_SOUL_GLASS_PANE, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIGHT_BLUE_STAINED_SOUL_GLASS_PANE, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.YELLOW_STAINED_SOUL_GLASS_PANE, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIME_STAINED_SOUL_GLASS_PANE, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PINK_STAINED_SOUL_GLASS_PANE, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GRAY_STAINED_SOUL_GLASS_PANE, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIGHT_GRAY_STAINED_SOUL_GLASS_PANE, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CYAN_STAINED_SOUL_GLASS_PANE, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PURPLE_STAINED_SOUL_GLASS_PANE, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLUE_STAINED_SOUL_GLASS_PANE, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BROWN_STAINED_SOUL_GLASS_PANE, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GREEN_STAINED_SOUL_GLASS_PANE, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.RED_STAINED_SOUL_GLASS_PANE, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE, RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SPRUCE_LADDER, RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BIRCH_LADDER, RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.JUNGLE_LADDER, RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ACACIA_LADDER, RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.DARK_OAK_LADDER, RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CRIMSON_LADDER, RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.WARPED_LADDER, RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GOLD_BARS, RenderType.cutoutMipped());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ROSE, RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_ROSE, RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TOMATO_PLANT, RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.RICE_PLANT, RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.MAGMA_CREAM_BLOCK.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SOUL_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.WHITE_STAINED_SOUL_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ORANGE_STAINED_SOUL_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.MAGENTA_STAINED_SOUL_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIGHT_BLUE_STAINED_SOUL_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.YELLOW_STAINED_SOUL_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIME_STAINED_SOUL_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PINK_STAINED_SOUL_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GRAY_STAINED_SOUL_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIGHT_GRAY_STAINED_SOUL_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CYAN_STAINED_SOUL_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PURPLE_STAINED_SOUL_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLUE_STAINED_SOUL_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BROWN_STAINED_SOUL_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GREEN_STAINED_SOUL_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.RED_STAINED_SOUL_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLACK_STAINED_SOUL_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SOUL_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.WHITE_STAINED_SOUL_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ORANGE_STAINED_SOUL_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.MAGENTA_STAINED_SOUL_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIGHT_BLUE_STAINED_SOUL_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.YELLOW_STAINED_SOUL_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIME_STAINED_SOUL_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PINK_STAINED_SOUL_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GRAY_STAINED_SOUL_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIGHT_GRAY_STAINED_SOUL_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CYAN_STAINED_SOUL_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PURPLE_STAINED_SOUL_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLUE_STAINED_SOUL_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BROWN_STAINED_SOUL_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GREEN_STAINED_SOUL_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.RED_STAINED_SOUL_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SPRUCE_LADDER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BIRCH_LADDER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.JUNGLE_LADDER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ACACIA_LADDER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.DARK_OAK_LADDER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CRIMSON_LADDER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.WARPED_LADDER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GOLD_BARS.get(), RenderType.cutoutMipped());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ROSE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_ROSE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TOMATO_PLANT.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.RICE_PLANT.get(), RenderType.cutout());
     }
 
     @SubscribeEvent
     public static void registerLayer(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(ModEntities.PRISMARINE_ARROW, PrismarineArrowRenderer::new);
-        event.registerEntityRenderer(ModEntities.PERCH, context -> new FishRenderer(context, new PerchModel<>(context.bakeLayer(ModRenderers.PERCH_MODEL))));
-        event.registerEntityRenderer(ModEntities.TUNA, context -> new FishRenderer(context, new TunaModel<>(context.bakeLayer(ModRenderers.TUNA_MODEL))));
-        event.registerEntityRenderer(ModEntities.PIKE, context -> new FishRenderer(context, new SalmonModel<>(context.bakeLayer(ModelLayers.SALMON))));
-        event.registerEntityRenderer(ModEntities.EEL, context -> new FishRenderer(context, new EelModel<>(context.bakeLayer(ModRenderers.EEl_MODEL))));
+        event.registerEntityRenderer(ModEntities.PRISMARINE_ARROW.get(), PrismarineArrowRenderer::new);
+        event.registerEntityRenderer(ModEntities.PERCH.get(), context -> new FishRenderer(context, new PerchModel<>(context.bakeLayer(ModRenderers.PERCH_MODEL))));
+        event.registerEntityRenderer(ModEntities.TUNA.get(), context -> new FishRenderer(context, new TunaModel<>(context.bakeLayer(ModRenderers.TUNA_MODEL))));
+        event.registerEntityRenderer(ModEntities.PIKE.get(), context -> new FishRenderer(context, new SalmonModel<>(context.bakeLayer(ModelLayers.SALMON))));
+        event.registerEntityRenderer(ModEntities.EEL.get(), context -> new FishRenderer(context, new EelModel<>(context.bakeLayer(ModRenderers.EEl_MODEL))));
     }
 
     @SubscribeEvent

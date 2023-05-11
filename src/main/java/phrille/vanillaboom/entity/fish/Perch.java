@@ -12,7 +12,7 @@ public class Perch extends Fish {
 
     @Override
     public ItemStack getBucketItemStack() {
-        return new ItemStack(ModItems.PERCH_BUCKET);
+        return new ItemStack(ModItems.PERCH_BUCKET.get());
     }
 
     @Override

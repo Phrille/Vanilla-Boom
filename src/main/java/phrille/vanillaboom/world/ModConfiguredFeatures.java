@@ -63,18 +63,18 @@ public class ModConfiguredFeatures {
 
     public static final class Configs {
         //Overworld
-        public static final OreConfiguration PERIDOTITE_CONFIG = new OreConfiguration(OreConfiguration.Predicates.NATURAL_STONE, ModBlocks.PERIDOTITE.defaultBlockState(), 33);
-        public static final RandomPatchConfiguration ROSE_CONFIG = new RandomPatchConfiguration.GrassConfigurationBuilder(new SimpleStateProvider(ModBlocks.ROSE.defaultBlockState()), SimpleBlockPlacer.INSTANCE).tries(32).build();
-        public static final DiskConfiguration HYDRO_ROCK_CONFIG = new DiskConfiguration(ModBlocks.HYDRO_ROCK.defaultBlockState(), UniformInt.of(1, 3), 2, ImmutableList.of(Blocks.STONE.defaultBlockState(), Blocks.GRAVEL.defaultBlockState()));
+        public static final OreConfiguration PERIDOTITE_CONFIG = new OreConfiguration(OreConfiguration.Predicates.NATURAL_STONE, ModBlocks.PERIDOTITE.get().defaultBlockState(), 33);
+        public static final RandomPatchConfiguration ROSE_CONFIG = new RandomPatchConfiguration.GrassConfigurationBuilder(new SimpleStateProvider(ModBlocks.ROSE.get().defaultBlockState()), SimpleBlockPlacer.INSTANCE).tries(32).build();
+        public static final DiskConfiguration HYDRO_ROCK_CONFIG = new DiskConfiguration(ModBlocks.HYDRO_ROCK.get().defaultBlockState(), UniformInt.of(1, 3), 2, ImmutableList.of(Blocks.STONE.defaultBlockState(), Blocks.GRAVEL.defaultBlockState()));
 
         //Nether
-        public static final OreConfiguration BONE_SAND_CONFIG = new OreConfiguration(Predicates.SOUL_SOIL, ModBlocks.BONE_SAND.defaultBlockState(), 29);
-        public static final OreConfiguration WITHER_BONE_SAND_CONFIG = new OreConfiguration(Predicates.BONE_SAND, ModBlocks.WITHER_BONE_SAND.defaultBlockState(), 18);
-        public static final OreConfiguration INFERNAL_ROCK_CONFIG = new OreConfiguration(OreConfiguration.Predicates.NETHERRACK, ModBlocks.INFERNAL_ROCK.defaultBlockState(), 33);
+        public static final OreConfiguration BONE_SAND_CONFIG = new OreConfiguration(Predicates.SOUL_SOIL, ModBlocks.BONE_SAND.get().defaultBlockState(), 29);
+        public static final OreConfiguration WITHER_BONE_SAND_CONFIG = new OreConfiguration(Predicates.BONE_SAND, ModBlocks.WITHER_BONE_SAND.get().defaultBlockState(), 18);
+        public static final OreConfiguration INFERNAL_ROCK_CONFIG = new OreConfiguration(OreConfiguration.Predicates.NETHERRACK, ModBlocks.INFERNAL_ROCK.get().defaultBlockState(), 33);
     }
 
     public static final class Predicates {
         public static final RuleTest SOUL_SOIL = new BlockMatchTest(Blocks.SOUL_SOIL);
-        public static final RuleTest BONE_SAND = new BlockMatchTest(ModBlocks.BONE_SAND);
+        public static final RuleTest BONE_SAND = new BlockMatchTest(ModBlocks.BONE_SAND.get());
     }
 }
