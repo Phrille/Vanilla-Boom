@@ -7,6 +7,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.BowlFoodItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -48,10 +49,10 @@ public class ModItems {
     public static final RegistryObject<Item> MONSTER_PIE = ITEMS.register("monster_pie", () -> new Item(new Item.Properties().food(ModFoods.MONSTER_PIE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> RAW_POLAR_BEAR_MEAT = ITEMS.register("raw_polar_bear_meat", () -> new Item(new Item.Properties().food(ModFoods.RAW_POLAR_BEAR_MEAT).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> POLAR_BEAR_STEAK = ITEMS.register("polar_bear_steak", () -> new Item(new Item.Properties().food(ModFoods.POLAR_BEAR_STEAK).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
-    public static final RegistryObject<Item> POTATO_SOUP = ITEMS.register("potato_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.PINE_CONE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
-    public static final RegistryObject<Item> MEAT_SOUP = ITEMS.register("meat_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.PINE_CONE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
-    public static final RegistryObject<Item> FISH_SOUP = ITEMS.register("fish_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.PINE_CONE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
-    public static final RegistryObject<Item> RICE_BOWL = ITEMS.register("rice_bowl", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.PINE_CONE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> POTATO_SOUP = ITEMS.register("potato_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.POTATO_SOUP).craftRemainder(Items.BOWL).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> MEAT_SOUP = ITEMS.register("meat_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.MEAT_SOUP).craftRemainder(Items.BOWL).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> FISH_SOUP = ITEMS.register("fish_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.FISH_SOUP).craftRemainder(Items.BOWL).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> RICE_BOWL = ITEMS.register("rice_bowl", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.RICE_BOWL).craftRemainder(Items.BOWL).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
 
     //Fish
     public static final RegistryObject<Item> TUNA = ITEMS.register("tuna", () -> new Item(new Item.Properties().food(ModFoods.TUNA).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
@@ -117,6 +118,10 @@ public class ModItems {
         public static final FoodProperties APPLE_PIE = new FoodProperties.Builder().nutrition(8).saturationMod(0.3F).build();
         public static final FoodProperties BERRY_PIE = new FoodProperties.Builder().nutrition(8).saturationMod(0.3F).build();
         public static final FoodProperties MONSTER_PIE = new FoodProperties.Builder().nutrition(10).saturationMod(0.2F).effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 1.0F).meat().build();
+        public static final FoodProperties POTATO_SOUP = new FoodProperties.Builder().nutrition(8).saturationMod(0.5F).build();
+        public static final FoodProperties MEAT_SOUP = new FoodProperties.Builder().nutrition(12).saturationMod(0.7F).build();
+        public static final FoodProperties FISH_SOUP = new FoodProperties.Builder().nutrition(10).saturationMod(0.6F).build();
+        public static final FoodProperties RICE_BOWL = new FoodProperties.Builder().nutrition(5).saturationMod(0.2F).build();
 
         public static final FoodProperties TUNA = new FoodProperties.Builder().nutrition(3).saturationMod(0.1F).build();
         public static final FoodProperties COOKED_TUNA = new FoodProperties.Builder().nutrition(7).saturationMod(0.6F).build();
