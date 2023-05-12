@@ -641,19 +641,13 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .texture("top", top);
     }
 
-    private static final Block[] CANDLES = {Blocks.CANDLE, Blocks.WHITE_CANDLE, Blocks.ORANGE_CANDLE, Blocks.MAGENTA_CANDLE, Blocks.LIGHT_BLUE_CANDLE, Blocks.YELLOW_CANDLE, Blocks.LIME_CANDLE, Blocks.PINK_CANDLE, Blocks.GRAY_CANDLE, Blocks.LIGHT_GRAY_CANDLE, Blocks.CYAN_CANDLE, Blocks.PURPLE_CANDLE, Blocks.BLUE_CANDLE, Blocks.BROWN_CANDLE, Blocks.GREEN_CANDLE, Blocks.RED_CANDLE, Blocks.BLACK_CANDLE};
-
     public void cakeBlock(Block cake) {
         List<ModelFile> files = CakeBlock.BITES.getAllValues()
                 .map(bites -> cakeModel(cake, bites.value()))
                 .collect(Collectors.toList());
 
         cakeBlock((CakeBlock) cake, files);
-
-        for (Block candle : CANDLES) {
-            Block candleCake = ((ModCakeBlock) cake).byCandle((CandleBlock) candle);
-            candleCakeBlock(cake, candleCake, candle);
-        }
+        Utils.CANDLES.forEach(candle -> candleCakeBlock(cake, ((ModCakeBlock) cake).byCandle((CandleBlock) candle), candle));
     }
 
     protected void cakeBlock(CakeBlock cake, List<ModelFile> files) {

@@ -6,6 +6,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import phrille.vanillaboom.VanillaBoom;
+import phrille.vanillaboom.data.tags.ModBlockTagsProvider;
+import phrille.vanillaboom.data.tags.ModItemTagsProvider;
 
 @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModDataGenerator {
@@ -13,12 +15,17 @@ public class ModDataGenerator {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
-        ExistingFileHelper fileHelper = event.getExistingFileHelper();
+        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
-        //generator.addProvider(new ModBlockStateProvider(generator, fileHelper));
-        //generator.addProvider(new ModItemModelProvider(generator, fileHelper));
+        //Assets
+        //generator.addProvider(new ModBlockStateProvider(generator, existingFileHelper));
+        //generator.addProvider(new ModItemModelProvider(generator, existingFileHelper));
         //generator.addProvider(new ModLanguageProvider(generator, "en_us"));
 
-        generator.addProvider(new ModRecipeProvider(generator));
+        //Data
+        ModBlockTagsProvider blockTags = new ModBlockTagsProvider(generator, existingFileHelper);
+        generator.addProvider(blockTags);
+        generator.addProvider(new ModItemTagsProvider(generator, blockTags, existingFileHelper));
+        //generator.addProvider(new ModRecipeProvider(generator));
     }
 }
