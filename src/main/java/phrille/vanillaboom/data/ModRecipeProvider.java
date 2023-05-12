@@ -3,6 +3,7 @@ package phrille.vanillaboom.data;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
 import net.minecraft.world.item.Item;
@@ -153,7 +154,65 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
         oneToOneShapeless(finishedRecipe, Items.RED_DYE, ModBlocks.ROSE.get(), 1);
         //TODO: check suspicious stew
+        //TODO: Block variants
 
+        //Items
+        smeltingAndBlasting(finishedRecipe, ModItems.MAGMA_BRICK.get(), Blocks.MAGMA_BLOCK, 0.1F);
+        oneToOneShapeless(finishedRecipe, ModItems.WITHER_BONE_MEAL.get(), ModItems.WITHER_BONE.get(), 3);
+        oneToOneShapeless(finishedRecipe, Items.BLACK_DYE, ModItems.WITHER_BONE_MEAL.get(), 1);
+        ShapedRecipeBuilder.shaped(ModItems.PRISMARINE_ARROW.get())
+                .define('x', Items.PRISMARINE_SHARD)
+                .define('y', Tags.Items.RODS_WOODEN)
+                .define('z', Tags.Items.FEATHERS)
+                .pattern("x")
+                .pattern("y")
+                .pattern("z")
+                .group(name(ModItems.PRISMARINE_ARROW.get()))
+                .unlockedBy(getHasName(Items.PRISMARINE_SHARD), has(Items.PRISMARINE_SHARD))
+                .unlockedBy(getHasName(Items.FEATHER), has(Items.FEATHER))
+                .save(finishedRecipe);
+        ShapelessRecipeBuilder.shapeless(ModItems.PRISMARINE_ARROW.get())
+                .requires(Items.ARROW)
+                .requires(Items.PRISMARINE_SHARD)
+                .group(name(ModItems.PRISMARINE_ARROW.get()))
+                .unlockedBy(getHasName(Items.PRISMARINE_SHARD), has(Items.PRISMARINE_SHARD))
+                .unlockedBy(getHasName(Items.FEATHER), has(Items.FEATHER))
+                .save(finishedRecipe, getConversionRecipeName(ModItems.PRISMARINE_ARROW.get(), Items.ARROW));
+        oneToOneShapeless(finishedRecipe, Items.LEATHER, ModItems.POLAR_BEAR_FUR.get(), 4);
+        surroundedShaped(finishedRecipe, Items.BOOK, Items.PAPER, ModItems.POLAR_BEAR_FUR.get(), 4);
+        surroundedShaped(finishedRecipe, Items.ITEM_FRAME, Tags.Items.RODS_WOODEN, ModItems.POLAR_BEAR_FUR.get(), 4);
+        oneToOneShapeless(finishedRecipe, ModItems.TOMATO_SEEDS.get(), ModItems.TOMATO.get(), 1);
+        oneToOneShapeless(finishedRecipe, ModItems.RICE_SEEDS.get(), ModItems.RICE_BOWL.get(), 1);
+        oneToOneShapeless(finishedRecipe, ModItems.PUMPKIN_SLICE.get(), Items.PUMPKIN_SEEDS, 1);
+        threeByThreeShaped(finishedRecipe, Blocks.PUMPKIN, ModItems.PUMPKIN_SLICE.get(), 1);
+        cooking(finishedRecipe, ModItems.COOKED_EGG.get(), Items.EGG, 0.3F);
+        ShapelessRecipeBuilder.shapeless(ModItems.MELON_POPSICLE.get(), 4)
+                .requires(Items.MELON)
+                .requires(Blocks.ICE)
+                .requires(Tags.Items.RODS_WOODEN)
+                .unlockedBy(getHasName(Items.MELON), has(Items.MELON))
+                .unlockedBy(getHasName(Blocks.ICE), has(Blocks.ICE))
+                .save(finishedRecipe);
+        ShapelessRecipeBuilder.shapeless(ModItems.CHOCOLATE.get(), 2)
+                .requires(Items.MILK_BUCKET)
+                .requires(Items.COCOA_BEANS)
+                .requires(Items.SUGAR)
+                .unlockedBy(getHasName(Items.MILK_BUCKET), has(Items.MILK_BUCKET))
+                .unlockedBy(getHasName(Items.COCOA_BEANS), has(Items.COCOA_BEANS))
+                .unlockedBy(getHasName(Items.SUGAR), has(Items.SUGAR))
+                .save(finishedRecipe);
+        cakeShaped(finishedRecipe, ModItems.CHOCOLATE_CAKE.get(), ModItems.CHOCOLATE.get());
+        cakeShaped(finishedRecipe, ModItems.BERRY_CAKE.get(), Items.SWEET_BERRIES);
+        cakeShaped(finishedRecipe, ModItems.CARROT_CAKE.get(), Items.CARROT);
+        pieShapeless(finishedRecipe, ModItems.APPLE_PIE.get(), Items.APPLE);
+        pieShapeless(finishedRecipe, ModItems.BERRY_PIE.get(), Items.SWEET_BERRIES);
+        pieShapeless(finishedRecipe, ModItems.MONSTER_PIE.get(), Items.ROTTEN_FLESH);
+        cooking(finishedRecipe, ModItems.POLAR_BEAR_STEAK.get(), ModItems.RAW_POLAR_BEAR_MEAT.get(), 0.35F);
+        //TODO: Soup recipes, need tags
+        cooking(finishedRecipe, ModItems.COOKED_TUNA.get(), ModItems.TUNA.get(), 0.35F);
+        cooking(finishedRecipe, ModItems.COOKED_PERCH.get(), ModItems.PERCH.get(), 0.35F);
+        cooking(finishedRecipe, ModItems.COOKED_PIKE.get(), ModItems.PIKE.get(), 0.35F);
+        cooking(finishedRecipe, ModItems.COOKED_EEL.get(), ModItems.EEL.get(), 0.35F);
 
     }
 
@@ -208,6 +267,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         blasting(finishedRecipe, result, ingredient, xp);
     }
 
+    public void cooking(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp){
+        smelting(finishedRecipe, result, ingredient, xp);
+        smoking(finishedRecipe, result, ingredient, xp);
+        campFire(finishedRecipe, result, ingredient, xp);
+    }
+
     //Shaped Recipe
     public void twoByTwoShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
         twoByTwoShaped(finishedRecipe, result, ingredient, 1);
@@ -231,6 +296,29 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("xxx")
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(finishedRecipe);
+    }
+
+    public void surroundedShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike surround, ItemLike middle, int amount) {
+        ShapedRecipeBuilder.shaped(result, amount)
+                .define('x', surround)
+                .define('y', middle)
+                .pattern("xxx")
+                .pattern("xyx")
+                .pattern("xxx")
+                .unlockedBy(getHasName(surround), has(surround))
+                .unlockedBy(getHasName(middle), has(middle))
+                .save(finishedRecipe, getConversionRecipeName(result, middle));
+    }
+
+    public void surroundedShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, Tag<Item> surround, ItemLike middle, int amount) {
+        ShapedRecipeBuilder.shaped(result, amount)
+                .define('x', surround)
+                .define('y', middle)
+                .pattern("xxx")
+                .pattern("xyx")
+                .pattern("xxx")
+                .unlockedBy(getHasName(middle), has(middle))
+                .save(finishedRecipe, getConversionRecipeName(result, middle));
     }
 
     public void dyeCenterShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, Tag<Item> dye, ResourceLocation name) {
@@ -288,6 +376,23 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
+    public void cakeShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+        ShapedRecipeBuilder.shaped(result)
+                .define('x', ingredient)
+                .define('y', Items.MILK_BUCKET)
+                .define('z', Items.SUGAR)
+                .define('i', Tags.Items.EGGS)
+                .define('j', Tags.Items.CROPS_WHEAT)
+                .pattern("xyx")
+                .pattern("ziz")
+                .pattern("jjj")
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .unlockedBy(getHasName(Items.MILK_BUCKET), has(Items.MILK_BUCKET))
+                .unlockedBy(getHasName(Items.SUGAR), has(Items.SUGAR))
+                .unlockedBy(getHasName(Items.EGG), has(Items.EGG))
+                .save(finishedRecipe);
+    }
+
     //Shapeless Recipe
     public void oneToOneShapeless(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, int amount) {
         ShapelessRecipeBuilder.shapeless(result, amount)
@@ -306,6 +411,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe, getConversionRecipeName(ModBlocks.MOSSY_COBBLESTONE_BRICKS.get(), ingredient));
     }
 
+    public void pieShapeless(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient){
+        ShapelessRecipeBuilder.shapeless(result)
+                .requires(Items.APPLE)
+                .requires(Tags.Items.EGGS)
+                .requires(Items.SUGAR)
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(finishedRecipe);
+    }
+
     //Smelting
     public void smelting(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), result, xp, 200).
@@ -315,6 +429,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     public void blasting(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
         SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredient), result, xp, 100)
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(finishedRecipe, extend(getConversionRecipeName(result, ingredient), "_from_blasting"));
+    }
+
+    public void smoking(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ingredient), result, xp, 100)
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(finishedRecipe, extend(getConversionRecipeName(result, ingredient), "_from_blasting"));
+    }
+
+    public void campFire(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ingredient), result, xp, 600)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(finishedRecipe, extend(getConversionRecipeName(result, ingredient), "_from_blasting"));
     }
