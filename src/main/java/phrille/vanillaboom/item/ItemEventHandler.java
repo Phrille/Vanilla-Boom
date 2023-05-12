@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.piston.PistonBaseBlock;
 import net.minecraft.world.level.block.piston.PistonHeadBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.PistonType;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -55,13 +56,12 @@ public class ItemEventHandler {
         }
 
         if (VanillaBoomConfig.removeSlimeBallPistons && tryRemoveSlimeBall(world, player, state, pos, stack, event.getHand())) {
-            return;
         }
     }
 
     //TODO: replace item check with tags
     protected static boolean tryGrowNetherWart(Level world, Player player, BlockState state, BlockPos pos, ItemStack stack) {
-        if (state.getBlock() == Blocks.NETHER_WART && (stack.is(Items.BLAZE_POWDER) || stack.is(ModItems.WITHER_BONE_MEAL.get()))) {
+        if (state.getBlock() == Blocks.NETHER_WART && stack.is(ModItems.WITHER_BONE_MEAL.get())) {
             int age = state.getValue(NetherWartBlock.AGE);
 
             if (age < NetherWartBlock.MAX_AGE) {
@@ -104,7 +104,7 @@ public class ItemEventHandler {
     }
 
     protected static boolean tryPlaceSlimeBall(Level world, Player player, BlockState state, BlockPos pos, ItemStack stack) {
-        if (stack.is(Items.SLIME_BALL)) {
+        if (stack.is(Tags.Items.SLIMEBALLS)) {
             if (state.getBlock() == Blocks.PISTON && !state.getValue(PistonBaseBlock.EXTENDED)) {
                 Direction direction = state.getValue(PistonBaseBlock.FACING);
                 world.setBlock(pos, Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, direction), 2);
