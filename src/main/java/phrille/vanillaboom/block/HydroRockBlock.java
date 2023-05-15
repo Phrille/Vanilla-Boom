@@ -1,6 +1,7 @@
 package phrille.vanillaboom.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -20,6 +21,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import phrille.vanillaboom.config.VanillaBoomConfig;
 import phrille.vanillaboom.util.Utils;
+
+import java.util.Random;
 
 public class HydroRockBlock extends Block {
     public HydroRockBlock() {
@@ -51,26 +54,48 @@ public class HydroRockBlock extends Block {
         return ItemUtils.createFilledResult(heldStack, player, newStack);
     }
 
-    /**
-     @Override public void animateTick(BlockState state, World world, BlockPos pos, Random rand) {
-     Direction direction = Direction.getRandomDirection(rand);
-     BlockPos blockpos = pos.offset(direction);
-     BlockState blockstate = world.getBlockState(blockpos);
+    @Override
+    public void animateTick(BlockState state, Level world, BlockPos pos, Random rand) {
+        Direction direction = Direction.getRandom(rand);
+        BlockPos blockpos = pos.relative(direction);
+        BlockState blockstate = world.getBlockState(blockpos);
+        double x = pos.getX();
+        double y = pos.getY();
+        double z = pos.getZ();
 
-     if (blockstate.getFluidState().isEmpty() && (!blockstate.isSolid() || !blockstate.isSolidSide(world, blockpos, direction.getOpposite()))) {
-     Direction.Axis direction$axis = direction.getAxis();
-     double d1 = direction.getXOffset() == 0 ? rand.nextDouble() : 0.5D + (double) direction.getXOffset() * 0.6D;
-     double d2 = direction.getYOffset() == 0 ? rand.nextDouble() : 0.5D + (double) direction.getYOffset() * 0.6D;
-     double d3 = direction.getZOffset() == 0 ? rand.nextDouble() : 0.5D + (double) direction.getZOffset() * 0.6D;
+        if (direction != Direction.UP && !world.dimensionType().ultraWarm()) {
+            if (!state.canOcclude() || !blockstate.isFaceSturdy(world, blockpos, direction.getOpposite())) {
+                if (direction == Direction.DOWN) {
+                    y = y - 0.05D;
+                    x += rand.nextDouble();
+                    z += rand.nextDouble();
+                } else {
+                    y = y + rand.nextDouble() * 0.8D;
+                    if (direction.getAxis() == Direction.Axis.X) {
+                        z += rand.nextDouble();
+                        if (direction == Direction.EAST) {
+                            x++;
+                        } else {
+                            x -= 0.03D;
+                        }
+                    } else {
+                        x += rand.nextDouble();
+                        if (direction == Direction.SOUTH) {
+                            z++;
+                        } else {
+                            z -= 0.03D;
+                        }
+                    }
+                }
 
-     if (rand.nextInt(2) == 0) {
-     if (world.getDimensionType().isUltrawarm() && direction != Direction.DOWN) {
-     world.addParticle(ParticleTypes.SMOKE, (double) pos.getX() + d1, (double) pos.getY() + d2, (double) pos.getZ() + d3, 0.0D, 0.0D, 0.0D);
-     } else if (direction != Direction.UP) {
-     world.addParticle(ParticleTypes.DRIPPING_WATER, (double) pos.getX() + d1, (double) pos.getY() + d2, (double) pos.getZ() + d3, 0.0D, 0.0D, 0.0D);
-     }
-     }
-     }
-     }
-     */
+                world.addParticle(ParticleTypes.DRIPPING_WATER, x, y, z, 0.0D, 0.0D, 0.0D);
+            }
+        } else if (world.dimensionType().ultraWarm()) {
+            y++;
+            x += rand.nextDouble();
+            z += rand.nextDouble();
+
+            world.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
+        }
+    }
 }

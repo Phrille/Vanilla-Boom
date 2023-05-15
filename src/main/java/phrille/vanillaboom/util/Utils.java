@@ -31,9 +31,9 @@ public class Utils {
         ComposterBlock.COMPOSTABLES.put(ModItems.PINE_CONE.get(), 0.35F);
         ComposterBlock.COMPOSTABLES.put(ModItems.PUMPKIN_SLICE.get(), 0.5F);
         ComposterBlock.COMPOSTABLES.put(ModItems.TOMATO.get(), 0.6F);
-        ComposterBlock.COMPOSTABLES.put(ModBlocks.TOMATO_PLANT.get(), 0.3F);
-        ComposterBlock.COMPOSTABLES.put(ModBlocks.RICE_PLANT.get(), 0.3F);
-        ComposterBlock.COMPOSTABLES.put(ModBlocks.ROSE.get(), 0.6F);
+        ComposterBlock.COMPOSTABLES.put(ModItems.TOMATO_SEEDS.get(), 0.3F);
+        ComposterBlock.COMPOSTABLES.put(ModItems.RICE_SEEDS.get(), 0.3F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.ROSE.get().asItem(), 0.6F);
     }
 
     public static void registerFlowerPots() {
