@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "vanillaboom:gold_bars",
+    "vanillaboom:gold_block_stairs",
+    "vanillaboom:gold_block_slab",
+    "vanillaboom:gold_block_wall"
+  ]
+}

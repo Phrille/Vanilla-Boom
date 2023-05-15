@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "vanillaboom:oak_wood_fence_gate",
+    "vanillaboom:spruce_wood_fence_gate",
+    "vanillaboom:birch_wood_fence_gate",
+    "vanillaboom:jungle_wood_fence_gate",
+    "vanillaboom:acacia_wood_fence_gate",
+    "vanillaboom:dark_oak_wood_fence_gate",
+    "vanillaboom:crimson_hyphae_fence_gate",
+    "vanillaboom:warped_hyphae_fence_gate",
+    "vanillaboom:stripped_oak_wood_fence_gate",
+    "vanillaboom:stripped_spruce_wood_fence_gate",
+    "vanillaboom:stripped_birch_wood_fence_gate",
+    "vanillaboom:stripped_jungle_wood_fence_gate",
+    "vanillaboom:stripped_acacia_wood_fence_gate",
+    "vanillaboom:stripped_dark_oak_wood_fence_gate",
+    "vanillaboom:stripped_crimson_hyphae_fence_gate",
+    "vanillaboom:stripped_warped_hyphae_fence_gate"
+  ]
+}

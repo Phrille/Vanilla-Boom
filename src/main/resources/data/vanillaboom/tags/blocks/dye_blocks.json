@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "vanillaboom:white_dye_block",
+    "vanillaboom:orange_dye_block",
+    "vanillaboom:magenta_dye_block",
+    "vanillaboom:light_blue_dye_block",
+    "vanillaboom:yellow_dye_block",
+    "vanillaboom:lime_dye_block",
+    "vanillaboom:pink_dye_block",
+    "vanillaboom:gray_dye_block",
+    "vanillaboom:light_gray_dye_block",
+    "vanillaboom:cyan_dye_block",
+    "vanillaboom:purple_dye_block",
+    "vanillaboom:blue_dye_block",
+    "vanillaboom:brown_dye_block",
+    "vanillaboom:green_dye_block",
+    "vanillaboom:red_dye_block",
+    "vanillaboom:black_dye_block"
+  ]
+}

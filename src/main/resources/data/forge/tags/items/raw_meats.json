@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:porkchop",
+    "minecraft:beef",
+    "minecraft:chicken",
+    "minecraft:mutton",
+    "minecraft:rabbit",
+    "vanillaboom:raw_polar_bear_meat"
+  ]
+}

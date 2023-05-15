@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "vanillaboom:sugar_cane_block",
+    "#vanillaboom:bookshelves",
+    "#vanillaboom:ladders"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "vanillaboom:soul_glass",
+    "vanillaboom:white_stained_soul_glass",
+    "vanillaboom:orange_stained_soul_glass",
+    "vanillaboom:magenta_stained_soul_glass",
+    "vanillaboom:light_blue_stained_soul_glass",
+    "vanillaboom:yellow_stained_soul_glass",
+    "vanillaboom:lime_stained_soul_glass",
+    "vanillaboom:pink_stained_soul_glass",
+    "vanillaboom:gray_stained_soul_glass",
+    "vanillaboom:light_gray_stained_soul_glass",
+    "vanillaboom:cyan_stained_soul_glass",
+    "vanillaboom:purple_stained_soul_glass",
+    "vanillaboom:blue_stained_soul_glass",
+    "vanillaboom:brown_stained_soul_glass",
+    "vanillaboom:green_stained_soul_glass",
+    "vanillaboom:red_stained_soul_glass",
+    "vanillaboom:black_stained_soul_glass"
+  ]
+}

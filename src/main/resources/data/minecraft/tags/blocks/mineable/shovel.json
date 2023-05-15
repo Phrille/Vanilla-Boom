@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "vanillaboom:bone_sand",
+    "vanillaboom:wither_bone_sand",
+    "vanillaboom:sugar_block",
+    "vanillaboom:gunpowder_block",
+    "vanillaboom:blaze_powder_block"
+  ]
+}

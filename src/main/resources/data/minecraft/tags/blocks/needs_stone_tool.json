@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:iron_bars",
+    "vanillaboom:iron_block_stairs",
+    "vanillaboom:iron_block_slab",
+    "vanillaboom:iron_block_wall"
+  ]
+}

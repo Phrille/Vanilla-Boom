@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "vanillaboom:granite_pillar",
+    "vanillaboom:diorite_pillar",
+    "vanillaboom:andesite_pillar",
+    "vanillaboom:peridotite_pillar",
+    "vanillaboom:prismarine_pillar",
+    "vanillaboom:dark_prismarine_pillar",
+    "vanillaboom:end_stone_pillar",
+    "vanillaboom:netherrack_pillar",
+    "vanillaboom:red_nether_pillar",
+    "vanillaboom:obsidian_pillar"
+  ]
+}

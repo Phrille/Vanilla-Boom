@@ -25,121 +25,73 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         /*
          * Forge tags
          */
-        tag(ModTags.ForgeTags.FENCE_GATES_NETHER_BRICK)
-                .add(ModBlocks.NETHER_BRICK_FENCE_GATE.get())
-                .add(ModBlocks.RED_NETHER_BRICK_FENCE_GATE.get());
-        tag(Tags.Blocks.FENCE_GATES_WOODEN)
-                .add(ModBlocks.OAK_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.SPRUCE_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.BIRCH_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.JUNGLE_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.ACACIA_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.DARK_OAK_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.CRIMSON_HYPHAE_FENCE_GATE.get())
-                .add(ModBlocks.WARPED_HYPHAE_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_OAK_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_SPRUCE_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_BIRCH_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_JUNGLE_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_ACACIA_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_DARK_OAK_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_CRIMSON_HYPHAE_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_FENCE_GATE.get());
-        tag(Tags.Blocks.FENCES_NETHER_BRICK).add(ModBlocks.RED_NETHER_BRICK_FENCE.get());
-        tag(Tags.Blocks.FENCES_WOODEN)
-                .add(ModBlocks.OAK_WOOD_FENCE.get())
-                .add(ModBlocks.SPRUCE_WOOD_FENCE.get())
-                .add(ModBlocks.BIRCH_WOOD_FENCE.get())
-                .add(ModBlocks.JUNGLE_WOOD_FENCE.get())
-                .add(ModBlocks.ACACIA_WOOD_FENCE.get())
-                .add(ModBlocks.DARK_OAK_WOOD_FENCE.get())
-                .add(ModBlocks.CRIMSON_HYPHAE_FENCE.get())
-                .add(ModBlocks.WARPED_HYPHAE_FENCE.get())
-                .add(ModBlocks.STRIPPED_OAK_WOOD_FENCE.get())
-                .add(ModBlocks.STRIPPED_SPRUCE_WOOD_FENCE.get())
-                .add(ModBlocks.STRIPPED_BIRCH_WOOD_FENCE.get())
-                .add(ModBlocks.STRIPPED_JUNGLE_WOOD_FENCE.get())
-                .add(ModBlocks.STRIPPED_ACACIA_WOOD_FENCE.get())
-                .add(ModBlocks.STRIPPED_DARK_OAK_WOOD_FENCE.get())
-                .add(ModBlocks.STRIPPED_CRIMSON_HYPHAE_FENCE.get())
-                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_FENCE.get())
-                .add(ModBlocks.RED_NETHER_BRICK_FENCE.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_CHARCOAL).add(ModBlocks.CHARCOAL_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_SUGAR).add(ModBlocks.SUGAR_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_SUGAR_CANE).add(ModBlocks.SUGAR_CANE_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_GUNPOWDER).add(ModBlocks.GUNPOWDER_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_BLAZE_POWDER).add(ModBlocks.BLAZE_POWDER_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_MAGMA_CREAM).add(ModBlocks.MAGMA_CREAM_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_PRISMARINE_CRYSTAL).add(ModBlocks.PRISMARINE_CRYSTAL_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_WITHER_BONE).add(ModBlocks.WITHER_BONE_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_WHITE_DYE).add(ModBlocks.WHITE_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_ORANGE_DYE).add(ModBlocks.ORANGE_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_MAGENTA_DYE).add(ModBlocks.MAGENTA_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_LIGHT_BLUE_DYE).add(ModBlocks.LIGHT_BLUE_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_YELLOW_DYE).add(ModBlocks.YELLOW_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_LIME_DYE).add(ModBlocks.LIME_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_PINK_DYE).add(ModBlocks.PINK_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_GRAY_DYE).add(ModBlocks.GRAY_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_LIGHT_GRAY_DYE).add(ModBlocks.LIGHT_GRAY_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_CYAN_DYE).add(ModBlocks.CYAN_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_PURPLE_DYE).add(ModBlocks.PURPLE_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_BLUE_DYE).add(ModBlocks.BLUE_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_BROWN_DYE).add(ModBlocks.BROWN_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_GREEN_DYE).add(ModBlocks.GREEN_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_RED_DYE).add(ModBlocks.RED_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.STORAGE_BLOCKS_BLACK_DYE).add(ModBlocks.BLACK_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.BOOKSHELVES)
-                .add(ModBlocks.SPRUCE_BOOKSHELF.get())
-                .add(ModBlocks.BIRCH_BOOKSHELF.get())
-                .add(ModBlocks.JUNGLE_BOOKSHELF.get())
-                .add(ModBlocks.ACACIA_BOOKSHELF.get())
-                .add(ModBlocks.DARK_OAK_BOOKSHELF.get())
-                .add(ModBlocks.CRIMSON_BOOKSHELF.get())
-                .add(ModBlocks.WARPED_BOOKSHELF.get());
-        tag(ModTags.ForgeTags.CAKES)
+        tag(ModTags.ForgeTags.Blocks.FENCE_GATES_NETHER_BRICK).addTags(ModTags.VanillaBoomTags.Blocks.FENCE_GATES);
+        tag(Tags.Blocks.FENCE_GATES_WOODEN).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCE_GATES);
+        tag(Tags.Blocks.FENCE_GATES).addTags(ModTags.ForgeTags.Blocks.FENCE_GATES_NETHER_BRICK);
+        tag(Tags.Blocks.FENCES_NETHER_BRICK).addTags(ModTags.VanillaBoomTags.Blocks.FENCES);
+        tag(Tags.Blocks.FENCES_WOODEN).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCES);
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_CHARCOAL).add(ModBlocks.CHARCOAL_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_SUGAR).add(ModBlocks.SUGAR_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_SUGAR_CANE).add(ModBlocks.SUGAR_CANE_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_GUNPOWDER).add(ModBlocks.GUNPOWDER_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BLAZE_POWDER).add(ModBlocks.BLAZE_POWDER_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_MAGMA_CREAM).add(ModBlocks.MAGMA_CREAM_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_PRISMARINE_CRYSTAL).add(ModBlocks.PRISMARINE_CRYSTAL_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_WITHER_BONE).add(ModBlocks.WITHER_BONE_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_WHITE_DYE).add(ModBlocks.WHITE_DYE_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_ORANGE_DYE).add(ModBlocks.ORANGE_DYE_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_MAGENTA_DYE).add(ModBlocks.MAGENTA_DYE_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_LIGHT_BLUE_DYE).add(ModBlocks.LIGHT_BLUE_DYE_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_YELLOW_DYE).add(ModBlocks.YELLOW_DYE_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_LIME_DYE).add(ModBlocks.LIME_DYE_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_PINK_DYE).add(ModBlocks.PINK_DYE_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_GRAY_DYE).add(ModBlocks.GRAY_DYE_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_LIGHT_GRAY_DYE).add(ModBlocks.LIGHT_GRAY_DYE_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_CYAN_DYE).add(ModBlocks.CYAN_DYE_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_PURPLE_DYE).add(ModBlocks.PURPLE_DYE_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BLUE_DYE).add(ModBlocks.BLUE_DYE_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BROWN_DYE).add(ModBlocks.BROWN_DYE_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_GREEN_DYE).add(ModBlocks.GREEN_DYE_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_RED_DYE).add(ModBlocks.RED_DYE_BLOCK.get());
+        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BLACK_DYE).add(ModBlocks.BLACK_DYE_BLOCK.get());
+        tag(Tags.Blocks.STORAGE_BLOCKS)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_CHARCOAL)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_SUGAR)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_SUGAR_CANE)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_GUNPOWDER)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BLAZE_POWDER)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_MAGMA_CREAM)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_PRISMARINE_CRYSTAL)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_WITHER_BONE)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_WHITE_DYE)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_ORANGE_DYE)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_MAGENTA_DYE)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_LIGHT_BLUE_DYE)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_YELLOW_DYE)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_LIME_DYE)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_PINK_DYE)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_GRAY_DYE)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_LIGHT_GRAY_DYE)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_CYAN_DYE)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_PURPLE_DYE)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BLUE_DYE)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BROWN_DYE)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_GREEN_DYE)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_RED_DYE)
+                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BLACK_DYE);
+        tag(ModTags.ForgeTags.Blocks.BOOKSHELVES)
+                .addTags(ModTags.VanillaBoomTags.Blocks.BOOKSHELVES);
+        tag(ModTags.ForgeTags.Blocks.CAKES)
                 .add(Blocks.CAKE)
                 .add(ModBlocks.CHOCOLATE_CAKE.get())
                 .add(ModBlocks.BERRY_CAKE.get())
                 .add(ModBlocks.CARROT_CAKE.get());
-        tag(Tags.Blocks.FENCE_GATES).addTags(ModTags.ForgeTags.FENCE_GATES_NETHER_BRICK);
-        tag(ModTags.ForgeTags.LADDERS)
-                .add(ModBlocks.SPRUCE_LADDER.get())
-                .add(ModBlocks.BIRCH_LADDER.get())
-                .add(ModBlocks.JUNGLE_LADDER.get())
-                .add(ModBlocks.ACACIA_LADDER.get())
-                .add(ModBlocks.DARK_OAK_LADDER.get())
-                .add(ModBlocks.CRIMSON_LADDER.get())
-                .add(ModBlocks.WARPED_LADDER.get());
-        tag(Tags.Blocks.STORAGE_BLOCKS)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_CHARCOAL)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_SUGAR)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_SUGAR_CANE)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_GUNPOWDER)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_BLAZE_POWDER)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_MAGMA_CREAM)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_PRISMARINE_CRYSTAL)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_WITHER_BONE)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_WHITE_DYE)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_ORANGE_DYE)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_MAGENTA_DYE)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_LIGHT_BLUE_DYE)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_YELLOW_DYE)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_LIME_DYE)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_PINK_DYE)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_GRAY_DYE)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_LIGHT_GRAY_DYE)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_CYAN_DYE)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_PURPLE_DYE)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_BLUE_DYE)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_BROWN_DYE)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_GREEN_DYE)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_RED_DYE)
-                .addTags(ModTags.ForgeTags.STORAGE_BLOCKS_BLACK_DYE);
+        tag(ModTags.ForgeTags.Blocks.LADDERS).addTags(ModTags.VanillaBoomTags.Blocks.LADDERS);
 
         /*
          * VanillaBoom tags
          */
-        tag(ModTags.VanillaBoomTags.BRICKS)
+        tag(ModTags.VanillaBoomTags.Blocks.BRICKS)
                 .add(ModBlocks.COBBLESTONE_BRICKS.get())
                 .add(ModBlocks.MOSSY_COBBLESTONE_BRICKS.get())
                 .add(ModBlocks.MAGMA_BRICKS.get())
@@ -162,13 +114,13 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.GREEN_TERRACOTTA_BRICKS.get())
                 .add(ModBlocks.RED_TERRACOTTA_BRICKS.get())
                 .add(ModBlocks.BLACK_TERRACOTTA_BRICKS.get());
-        tag(ModTags.VanillaBoomTags.POLISHED)
+        tag(ModTags.VanillaBoomTags.Blocks.POLISHED)
                 .add(ModBlocks.POLISHED_PERIDOTITE.get())
                 .add(ModBlocks.POLISHED_PRISMARINE.get())
                 .add(ModBlocks.POLISHED_DARK_PRISMARINE.get())
                 .add(ModBlocks.POLISHED_END_STONE.get())
                 .add(ModBlocks.POLISHED_NETHERRACK.get());
-        tag(ModTags.VanillaBoomTags.PILLARS)
+        tag(ModTags.VanillaBoomTags.Blocks.PILLARS)
                 .add(ModBlocks.GRANITE_PILLAR.get())
                 .add(ModBlocks.DIORITE_PILLAR.get())
                 .add(ModBlocks.ANDESITE_PILLAR.get())
@@ -179,7 +131,15 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.NETHERRACK_PILLAR.get())
                 .add(ModBlocks.RED_NETHER_PILLAR.get())
                 .add(ModBlocks.OBSIDIAN_PILLAR.get());
-        tag(ModTags.VanillaBoomTags.DYE_BLOCKS)
+        tag(ModTags.VanillaBoomTags.Blocks.BOOKSHELVES)
+                .add(ModBlocks.SPRUCE_BOOKSHELF.get())
+                .add(ModBlocks.BIRCH_BOOKSHELF.get())
+                .add(ModBlocks.JUNGLE_BOOKSHELF.get())
+                .add(ModBlocks.ACACIA_BOOKSHELF.get())
+                .add(ModBlocks.DARK_OAK_BOOKSHELF.get())
+                .add(ModBlocks.CRIMSON_BOOKSHELF.get())
+                .add(ModBlocks.WARPED_BOOKSHELF.get());
+        tag(ModTags.VanillaBoomTags.Blocks.DYE_BLOCKS)
                 .add(ModBlocks.WHITE_DYE_BLOCK.get())
                 .add(ModBlocks.ORANGE_DYE_BLOCK.get())
                 .add(ModBlocks.MAGENTA_DYE_BLOCK.get())
@@ -196,26 +156,22 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.GREEN_DYE_BLOCK.get())
                 .add(ModBlocks.RED_DYE_BLOCK.get())
                 .add(ModBlocks.BLACK_DYE_BLOCK.get());
-
-        /*
-         * Mineable and tool types tags
-         */
-        tag(BlockTags.MINEABLE_WITH_AXE)
-                .add(ModBlocks.SPRUCE_BOOKSHELF.get())
-                .add(ModBlocks.BIRCH_BOOKSHELF.get())
-                .add(ModBlocks.JUNGLE_BOOKSHELF.get())
-                .add(ModBlocks.ACACIA_BOOKSHELF.get())
-                .add(ModBlocks.DARK_OAK_BOOKSHELF.get())
-                .add(ModBlocks.CRIMSON_BOOKSHELF.get())
-                .add(ModBlocks.WARPED_BOOKSHELF.get())
+        tag(ModTags.VanillaBoomTags.Blocks.LADDERS)
                 .add(ModBlocks.SPRUCE_LADDER.get())
                 .add(ModBlocks.BIRCH_LADDER.get())
                 .add(ModBlocks.JUNGLE_LADDER.get())
                 .add(ModBlocks.ACACIA_LADDER.get())
                 .add(ModBlocks.DARK_OAK_LADDER.get())
                 .add(ModBlocks.CRIMSON_LADDER.get())
-                .add(ModBlocks.WARPED_LADDER.get())
-                .add(ModBlocks.SUGAR_CANE_BLOCK.get());
+                .add(ModBlocks.WARPED_LADDER.get());
+
+        /*
+         * Mineable and tool types tags
+         */
+        tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.SUGAR_CANE_BLOCK.get())
+                .addTags(ModTags.VanillaBoomTags.Blocks.BOOKSHELVES)
+                .addTags(ModTags.VanillaBoomTags.Blocks.LADDERS);
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.SUGAR_CANE_BLOCK.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
@@ -229,23 +185,44 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.CHARCOAL_BLOCK.get())
                 .add(ModBlocks.PRISMARINE_CRYSTAL_BLOCK.get())
                 .add(ModBlocks.WITHER_BONE_BLOCK.get())
-                .add(ModBlocks.RED_NETHER_BRICK_FENCE.get())
-                .add(ModBlocks.NETHER_BRICK_FENCE_GATE.get())
-                .add(ModBlocks.RED_NETHER_BRICK_FENCE_GATE.get())
-                .addTags(ModTags.VanillaBoomTags.BRICKS)
-                .addTags(ModTags.VanillaBoomTags.POLISHED)
-                .addTags(ModTags.VanillaBoomTags.PILLARS)
-                .addTags(ModTags.VanillaBoomTags.DYE_BLOCKS)
-                .addTags(ModTags.VanillaBoomTags.STAIRS)
-                .addTags(ModTags.VanillaBoomTags.SLABS);
+                .add(ModBlocks.GOLD_BARS.get())
+                .addTags(ModTags.VanillaBoomTags.Blocks.BRICKS)
+                .addTags(ModTags.VanillaBoomTags.Blocks.POLISHED)
+                .addTags(ModTags.VanillaBoomTags.Blocks.PILLARS)
+                .addTags(ModTags.VanillaBoomTags.Blocks.DYE_BLOCKS)
+                .addTags(ModTags.VanillaBoomTags.Blocks.STAIRS)
+                .addTags(ModTags.VanillaBoomTags.Blocks.SLABS)
+                .addTags(ModTags.VanillaBoomTags.Blocks.FENCES)
+                .addTags(ModTags.VanillaBoomTags.Blocks.FENCE_GATES);
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(ModBlocks.BONE_SAND.get())
                 .add(ModBlocks.WITHER_BONE_SAND.get())
                 .add(ModBlocks.SUGAR_BLOCK.get())
                 .add(ModBlocks.GUNPOWDER_BLOCK.get())
                 .add(ModBlocks.BLAZE_POWDER_BLOCK.get());
-
-        //TODO: diamond, iron, stone, wood levels. Check axe/pickaxe on fences
+        tag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(ModBlocks.OBSIDIAN_BRICKS.get())
+                .add(ModBlocks.OBSIDIAN_PILLAR.get())
+                .add(ModBlocks.CHISELED_OBSIDIAN.get())
+                .add(ModBlocks.OBSIDIAN_STAIRS.get())
+                .add(ModBlocks.OBSIDIAN_SLAB.get())
+                .add(ModBlocks.OBSIDIAN_WALL.get())
+                .add(ModBlocks.OBSIDIAN_BRICK_STAIRS.get())
+                .add(ModBlocks.OBSIDIAN_BRICK_SLAB.get())
+                .add(ModBlocks.OBSIDIAN_BRICK_WALL.get())
+                .add(ModBlocks.CHISELED_OBSIDIAN_STAIRS.get())
+                .add(ModBlocks.CHISELED_OBSIDIAN_SLAB.get())
+                .add(ModBlocks.CHISELED_OBSIDIAN_WALL.get());
+        tag(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.GOLD_BARS.get())
+                .add(ModBlocks.GOLD_BLOCK_STAIRS.get())
+                .add(ModBlocks.GOLD_BLOCK_SLAB.get())
+                .add(ModBlocks.GOLD_BLOCK_WALL.get());
+        tag(BlockTags.NEEDS_STONE_TOOL)
+                .add(Blocks.IRON_BARS)
+                .add(ModBlocks.IRON_BLOCK_STAIRS.get())
+                .add(ModBlocks.IRON_BLOCK_SLAB.get())
+                .add(ModBlocks.IRON_BLOCK_WALL.get());
 
         /*
          * Misc tags
@@ -254,14 +231,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         Utils.CANDLES.forEach(candle -> tag(BlockTags.CANDLE_CAKES).add(((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).byCandle((CandleBlock) candle)));
         Utils.CANDLES.forEach(candle -> tag(BlockTags.CANDLE_CAKES).add(((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).byCandle((CandleBlock) candle)));
         Utils.CANDLES.forEach(candle -> tag(BlockTags.CANDLE_CAKES).add(((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).byCandle((CandleBlock) candle)));
-        tag(BlockTags.CLIMBABLE)
-                .add(ModBlocks.SPRUCE_LADDER.get())
-                .add(ModBlocks.BIRCH_LADDER.get())
-                .add(ModBlocks.JUNGLE_LADDER.get())
-                .add(ModBlocks.ACACIA_LADDER.get())
-                .add(ModBlocks.DARK_OAK_LADDER.get())
-                .add(ModBlocks.CRIMSON_LADDER.get())
-                .add(ModBlocks.WARPED_LADDER.get());
+        tag(BlockTags.CLIMBABLE).addTags(ModTags.VanillaBoomTags.Blocks.LADDERS);
         tag(BlockTags.CROPS)
                 .add(ModBlocks.TOMATO_PLANT.get())
                 .add(ModBlocks.RICE_PLANT.get());
@@ -335,7 +305,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         /*
          * Stair tags
          */
-        tag(ModTags.VanillaBoomTags.STAIRS)
+        tag(ModTags.VanillaBoomTags.Blocks.STAIRS)
                 .add(ModBlocks.COBBLESTONE_BRICK_STAIRS.get())
                 .add(ModBlocks.MOSSY_COBBLESTONE_BRICK_STAIRS.get())
                 .add(ModBlocks.MAGMA_BRICK_STAIRS.get())
@@ -422,8 +392,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.CUT_SANDSTONE_STAIRS.get())
                 .add(ModBlocks.CUT_RED_SANDSTONE_STAIRS.get())
                 .add(ModBlocks.SMOOTH_STONE_STAIRS.get());
-        tag(BlockTags.STAIRS).addTags(ModTags.VanillaBoomTags.STAIRS);
-        tag(BlockTags.WOODEN_STAIRS)
+        tag(BlockTags.STAIRS).addTags(ModTags.VanillaBoomTags.Blocks.STAIRS);
+        tag(ModTags.VanillaBoomTags.Blocks.WOODEN_STAIRS)
                 .add(ModBlocks.OAK_WOOD_STAIRS.get())
                 .add(ModBlocks.SPRUCE_WOOD_STAIRS.get())
                 .add(ModBlocks.BIRCH_WOOD_STAIRS.get())
@@ -440,11 +410,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.STRIPPED_DARK_OAK_WOOD_STAIRS.get())
                 .add(ModBlocks.STRIPPED_CRIMSON_HYPHAE_STAIRS.get())
                 .add(ModBlocks.STRIPPED_WARPED_HYPHAE_STAIRS.get());
+        tag(BlockTags.WOODEN_STAIRS).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_STAIRS);
 
         /*
          * Slab tags
          */
-        tag(ModTags.VanillaBoomTags.SLABS)
+        tag(ModTags.VanillaBoomTags.Blocks.SLABS)
                 .add(ModBlocks.COBBLESTONE_BRICK_SLAB.get())
                 .add(ModBlocks.MOSSY_COBBLESTONE_BRICK_SLAB.get())
                 .add(ModBlocks.MAGMA_BRICK_SLAB.get())
@@ -528,8 +499,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.GREEN_CONCRETE_SLAB.get())
                 .add(ModBlocks.RED_CONCRETE_SLAB.get())
                 .add(ModBlocks.BLACK_CONCRETE_SLAB.get());
-        tag(BlockTags.SLABS).addTags(ModTags.VanillaBoomTags.SLABS);
-        tag(BlockTags.WOODEN_SLABS)
+        tag(BlockTags.SLABS).addTags(ModTags.VanillaBoomTags.Blocks.SLABS);
+        tag(ModTags.VanillaBoomTags.Blocks.WOODEN_SLABS)
                 .add(ModBlocks.OAK_WOOD_SLAB.get())
                 .add(ModBlocks.SPRUCE_WOOD_SLAB.get())
                 .add(ModBlocks.BIRCH_WOOD_SLAB.get())
@@ -546,11 +517,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.STRIPPED_DARK_OAK_WOOD_SLAB.get())
                 .add(ModBlocks.STRIPPED_CRIMSON_HYPHAE_SLAB.get())
                 .add(ModBlocks.STRIPPED_WARPED_HYPHAE_SLAB.get());
+        tag(BlockTags.WOODEN_SLABS).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_SLABS);
 
         /*
          * Wall tags
          */
-        tag(ModTags.VanillaBoomTags.WALLS)
+        tag(ModTags.VanillaBoomTags.Blocks.WALLS)
                 .add(ModBlocks.COBBLESTONE_BRICK_WALL.get())
                 .add(ModBlocks.MOSSY_COBBLESTONE_BRICK_WALL.get())
                 .add(ModBlocks.MAGMA_BRICK_WALL.get())
@@ -648,13 +620,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SMOOTH_QUARTZ_WALL.get())
                 .add(ModBlocks.PRISMARINE_BRICK_WALL.get())
                 .add(ModBlocks.DARK_PRISMARINE_WALL.get());
-        tag(BlockTags.WALLS).addTags(ModTags.VanillaBoomTags.WALLS);
+        tag(BlockTags.WALLS).addTags(ModTags.VanillaBoomTags.Blocks.WALLS);
 
         /*
          * Fence Tags
          */
-        tag(BlockTags.FENCES).add(ModBlocks.RED_NETHER_BRICK_FENCE.get());
-        tag(BlockTags.WOODEN_FENCES)
+        tag(ModTags.VanillaBoomTags.Blocks.FENCES).add(ModBlocks.RED_NETHER_BRICK_FENCE.get());
+        tag(BlockTags.FENCES).addTags(ModTags.VanillaBoomTags.Blocks.FENCES);
+        tag(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCES)
                 .add(ModBlocks.OAK_WOOD_FENCE.get())
                 .add(ModBlocks.SPRUCE_WOOD_FENCE.get())
                 .add(ModBlocks.BIRCH_WOOD_FENCE.get())
@@ -670,13 +643,16 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.STRIPPED_ACACIA_WOOD_FENCE.get())
                 .add(ModBlocks.STRIPPED_DARK_OAK_WOOD_FENCE.get())
                 .add(ModBlocks.STRIPPED_CRIMSON_HYPHAE_FENCE.get())
-                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_FENCE.get())
-                .add(ModBlocks.RED_NETHER_BRICK_FENCE.get());
+                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_FENCE.get());
+        tag(BlockTags.WOODEN_FENCES).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCES);
 
         /*
          * Fence Gate tags
          */
-        tag(BlockTags.FENCE_GATES)
+        tag(ModTags.VanillaBoomTags.Blocks.FENCE_GATES)
+                .add(ModBlocks.NETHER_BRICK_FENCE_GATE.get())
+                .add(ModBlocks.RED_NETHER_BRICK_FENCE_GATE.get());
+        tag(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCE_GATES)
                 .add(ModBlocks.OAK_WOOD_FENCE_GATE.get())
                 .add(ModBlocks.SPRUCE_WOOD_FENCE_GATE.get())
                 .add(ModBlocks.BIRCH_WOOD_FENCE_GATE.get())
@@ -692,8 +668,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.STRIPPED_ACACIA_WOOD_FENCE_GATE.get())
                 .add(ModBlocks.STRIPPED_DARK_OAK_WOOD_FENCE_GATE.get())
                 .add(ModBlocks.STRIPPED_CRIMSON_HYPHAE_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_FENCE_GATE.get())
-                .add(ModBlocks.NETHER_BRICK_FENCE_GATE.get())
-                .add(ModBlocks.RED_NETHER_BRICK_FENCE_GATE.get());
+                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_FENCE_GATE.get());
+        tag(BlockTags.FENCE_GATES).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCE_GATES);
     }
 }

@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "vanillaboom:cobblestone_bricks",
+    "vanillaboom:mossy_cobblestone_bricks",
+    "vanillaboom:magma_bricks",
+    "vanillaboom:obsidian_bricks",
+    "vanillaboom:snow_bricks",
+    "vanillaboom:terracotta_bricks",
+    "vanillaboom:white_terracotta_bricks",
+    "vanillaboom:orange_terracotta_bricks",
+    "vanillaboom:magenta_terracotta_bricks",
+    "vanillaboom:light_blue_terracotta_bricks",
+    "vanillaboom:yellow_terracotta_bricks",
+    "vanillaboom:lime_terracotta_bricks",
+    "vanillaboom:pink_terracotta_bricks",
+    "vanillaboom:gray_terracotta_bricks",
+    "vanillaboom:light_gray_terracotta_bricks",
+    "vanillaboom:cyan_terracotta_bricks",
+    "vanillaboom:purple_terracotta_bricks",
+    "vanillaboom:blue_terracotta_bricks",
+    "vanillaboom:brown_terracotta_bricks",
+    "vanillaboom:green_terracotta_bricks",
+    "vanillaboom:red_terracotta_bricks",
+    "vanillaboom:black_terracotta_bricks"
+  ]
+}
