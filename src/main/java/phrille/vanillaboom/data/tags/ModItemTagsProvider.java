@@ -7,7 +7,6 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import phrille.vanillaboom.VanillaBoom;
 
 public class ModItemTagsProvider extends ItemTagsProvider {
-
     public ModItemTagsProvider(DataGenerator generator, BlockTagsProvider blockTags, ExistingFileHelper existingFileHelper) {
         super(generator, blockTags, VanillaBoom.MOD_ID, existingFileHelper);
     }

@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.data.tags.ModBlockTagsProvider;
+import phrille.vanillaboom.data.tags.ModEntityTypeTagsProvider;
 import phrille.vanillaboom.data.tags.ModItemTagsProvider;
 
 @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -26,6 +27,7 @@ public class ModDataGenerator {
         ModBlockTagsProvider blockTags = new ModBlockTagsProvider(generator, existingFileHelper);
         generator.addProvider(blockTags);
         generator.addProvider(new ModItemTagsProvider(generator, blockTags, existingFileHelper));
+        generator.addProvider(new ModEntityTypeTagsProvider(generator, existingFileHelper));
         //generator.addProvider(new ModRecipeProvider(generator));
     }
 }
