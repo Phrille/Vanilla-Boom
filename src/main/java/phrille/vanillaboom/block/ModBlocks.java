@@ -24,9 +24,9 @@ public class ModBlocks {
     //Bricks
     public static final RegistryObject<Block> COBBLESTONE_BRICKS = register("cobblestone_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE)));
     public static final RegistryObject<Block> MOSSY_COBBLESTONE_BRICKS = register("mossy_cobblestone_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE)));
-    public static final RegistryObject<Block> MAGMA_BRICKS = register("magma_bricks", new MagmaBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK)));
+    public static final RegistryObject<Block> MAGMA_BRICKS = register("magma_bricks", new MagmaBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK).sound(SoundType.NETHER_BRICKS)));
     public static final RegistryObject<Block> OBSIDIAN_BRICKS = register("obsidian_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
-    public static final RegistryObject<Block> SNOW_BRICKS = register("snow_bricks", new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.SNOW).sound(SoundType.SNOW)));
+    public static final RegistryObject<Block> SNOW_BRICKS = register("snow_bricks", new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.SNOW).strength(1.5F).sound(SoundType.SNOW)));
     public static final RegistryObject<Block> TERRACOTTA_BRICKS = register("terracotta_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA)));
     public static final RegistryObject<Block> WHITE_TERRACOTTA_BRICKS = register("white_terracotta_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.WHITE_TERRACOTTA)));
     public static final RegistryObject<Block> ORANGE_TERRACOTTA_BRICKS = register("orange_terracotta_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.ORANGE_TERRACOTTA)));
