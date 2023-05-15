@@ -12,6 +12,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.lwjgl.system.CallbackI;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.VanillaBoomTab;
@@ -25,7 +26,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> MOSSY_COBBLESTONE_BRICKS = register("mossy_cobblestone_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE)));
     public static final RegistryObject<Block> MAGMA_BRICKS = register("magma_bricks", new MagmaBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK)));
     public static final RegistryObject<Block> OBSIDIAN_BRICKS = register("obsidian_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
-    public static final RegistryObject<Block> SNOW_BRICKS = register("snow_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.SNOW)));
+    public static final RegistryObject<Block> SNOW_BRICKS = register("snow_bricks", new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.SNOW).sound(SoundType.SNOW)));
     public static final RegistryObject<Block> TERRACOTTA_BRICKS = register("terracotta_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA)));
     public static final RegistryObject<Block> WHITE_TERRACOTTA_BRICKS = register("white_terracotta_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.WHITE_TERRACOTTA)));
     public static final RegistryObject<Block> ORANGE_TERRACOTTA_BRICKS = register("orange_terracotta_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.ORANGE_TERRACOTTA)));
@@ -50,8 +51,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> INFERNAL_ROCK = register("infernal_rock", new InfernalRockBlock());
 
     //Sand and Gravel
-    public static final RegistryObject<Block> BONE_SAND = register("bone_sand", new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.SNOW).strength(0.5F, 0.0F).sound(SoundType.SOUL_SAND).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> WITHER_BONE_SAND = register("wither_bone_sand", new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.COLOR_BLACK).strength(0.5F, 0.0F).sound(SoundType.SOUL_SAND).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> BONE_SAND = register("bone_sand", new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.SNOW).strength(0.5F).sound(SoundType.SOUL_SAND)));
+    public static final RegistryObject<Block> WITHER_BONE_SAND = register("wither_bone_sand", new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.COLOR_BLACK).strength(0.5F).sound(SoundType.SOUL_SAND)));
 
     //Polished
     public static final RegistryObject<Block> POLISHED_PERIDOTITE = register("polished_peridotite", new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
@@ -96,11 +97,11 @@ public class ModBlocks {
 
     //Storage
     public static final RegistryObject<Block> CHARCOAL_BLOCK = register("charcoal_block", new Block(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE)));
-    public static final RegistryObject<Block> SUGAR_BLOCK = register("sugar_block", new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.SNOW).strength(0.5F, 0.0F).sound(SoundType.SAND).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> SUGAR_CANE_BLOCK = register("sugar_cane_block", new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.GRASS).strength(0.5F, 0.0F)));
+    public static final RegistryObject<Block> SUGAR_BLOCK = register("sugar_block", new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.SNOW).strength(0.5F).sound(SoundType.SAND)));
+    public static final RegistryObject<Block> SUGAR_CANE_BLOCK = register("sugar_cane_block", new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.GRASS).strength(0.5F).sound(SoundType.GRASS)));
     public static final RegistryObject<Block> BAMBOO_BLOCK = register("bamboo_block", new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.BAMBOO, MaterialColor.PLANT).instabreak().strength(1.0F).sound(SoundType.BAMBOO)));
     public static final RegistryObject<Block> GUNPOWDER_BLOCK = register("gunpowder_block", new GunpowderBlock());
-    public static final RegistryObject<Block> BLAZE_POWDER_BLOCK = register("blaze_powder_block", new FallingBlock(BlockBehaviour.Properties.copy(Blocks.SAND).sound(SoundType.SNOW).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> BLAZE_POWDER_BLOCK = register("blaze_powder_block", new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.SNOW)));
     public static final RegistryObject<Block> MAGMA_CREAM_BLOCK = register("magma_cream_block", new SlimeBlock(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK)));
     public static final RegistryObject<Block> PRISMARINE_CRYSTAL_BLOCK = register("prismarine_crystal_block", new Block(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.COLOR_CYAN).strength(0.3F, 0.5F).sound(SoundType.GLASS).lightLevel((lightValue) -> 5)));
     public static final RegistryObject<Block> WITHER_BONE_BLOCK = register("wither_bone_block", new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).sound(SoundType.BONE_BLOCK).strength(1.8F, 3.33F)));

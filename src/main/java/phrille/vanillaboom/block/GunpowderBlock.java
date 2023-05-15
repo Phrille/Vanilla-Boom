@@ -17,6 +17,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.BlockHitResult;
 
 import javax.annotation.Nullable;
@@ -24,7 +26,7 @@ import javax.annotation.Nullable;
 public class GunpowderBlock extends FallingBlock {
 
     public GunpowderBlock() {
-        super(Properties.copy(Blocks.GRAVEL).sound(SoundType.SAND).requiresCorrectToolForDrops());
+        super(Properties.of(Material.SAND, MaterialColor.COLOR_LIGHT_GRAY).strength(0.5F).sound(SoundType.SAND));
     }
 
     @Override
