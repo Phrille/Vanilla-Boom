@@ -5,11 +5,13 @@ import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CandleBlock;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.ModCakeBlock;
+import phrille.vanillaboom.data.ModDataGenerator;
 import phrille.vanillaboom.util.ModTags;
 import phrille.vanillaboom.util.Utils;
 
@@ -19,6 +21,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         Utils.registerCandleCakes();
     }
 
+    /**
+     * Refactor.
+     */
     @Override
     @SuppressWarnings("unchecked")
     protected void addTags() {
@@ -302,373 +307,59 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.WITHER_BONE_SAND.get());
         tag(BlockTags.STONE_ORE_REPLACEABLES).add(ModBlocks.PERIDOTITE.get());
 
-        /*
-         * Stair tags
-         */
-        tag(ModTags.VanillaBoomTags.Blocks.STAIRS)
-                .add(ModBlocks.COBBLESTONE_BRICK_STAIRS.get())
-                .add(ModBlocks.MOSSY_COBBLESTONE_BRICK_STAIRS.get())
-                .add(ModBlocks.MAGMA_BRICK_STAIRS.get())
-                .add(ModBlocks.OBSIDIAN_BRICK_STAIRS.get())
-                .add(ModBlocks.SNOW_BRICK_STAIRS.get())
-                .add(ModBlocks.TERRACOTTA_BRICK_STAIRS.get())
-                .add(ModBlocks.WHITE_TERRACOTTA_BRICK_STAIRS.get())
-                .add(ModBlocks.ORANGE_TERRACOTTA_BRICK_STAIRS.get())
-                .add(ModBlocks.MAGENTA_TERRACOTTA_BRICK_STAIRS.get())
-                .add(ModBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_STAIRS.get())
-                .add(ModBlocks.YELLOW_TERRACOTTA_BRICK_STAIRS.get())
-                .add(ModBlocks.LIME_TERRACOTTA_BRICK_STAIRS.get())
-                .add(ModBlocks.PINK_TERRACOTTA_BRICK_STAIRS.get())
-                .add(ModBlocks.GRAY_TERRACOTTA_BRICK_STAIRS.get())
-                .add(ModBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_STAIRS.get())
-                .add(ModBlocks.CYAN_TERRACOTTA_BRICK_STAIRS.get())
-                .add(ModBlocks.PURPLE_TERRACOTTA_BRICK_STAIRS.get())
-                .add(ModBlocks.BLUE_TERRACOTTA_BRICK_STAIRS.get())
-                .add(ModBlocks.BROWN_TERRACOTTA_BRICK_STAIRS.get())
-                .add(ModBlocks.GREEN_TERRACOTTA_BRICK_STAIRS.get())
-                .add(ModBlocks.RED_TERRACOTTA_BRICK_STAIRS.get())
-                .add(ModBlocks.BLACK_TERRACOTTA_BRICK_STAIRS.get())
-                .add(ModBlocks.PERIDOTITE_STAIRS.get())
-                .add(ModBlocks.HYDRO_ROCK_STAIRS.get())
-                .add(ModBlocks.INFERNAL_ROCK_STAIRS.get())
-                .add(ModBlocks.POLISHED_PERIDOTITE_STAIRS.get())
-                .add(ModBlocks.POLISHED_PRISMARINE_STAIRS.get())
-                .add(ModBlocks.POLISHED_DARK_PRISMARINE_STAIRS.get())
-                .add(ModBlocks.POLISHED_END_STONE_STAIRS.get())
-                .add(ModBlocks.POLISHED_NETHERRACK_STAIRS.get())
-                .add(ModBlocks.CRACKED_RED_NETHER_BRICK_STAIRS.get())
-                .add(ModBlocks.CHISELED_RED_NETHER_BRICK_STAIRS.get())
-                .add(ModBlocks.CHISELED_PURPUR_BLOCK_STAIRS.get())
-                .add(ModBlocks.CHISELED_OBSIDIAN_STAIRS.get())
-                .add(ModBlocks.CRACKED_STONE_BRICK_STAIRS.get())
-                .add(ModBlocks.CHISELED_STONE_BRICK_STAIRS.get())
-                .add(ModBlocks.CHISELED_SANDSTONE_STAIRS.get())
-                .add(ModBlocks.CHISELED_RED_SANDSTONE_STAIRS.get())
-                .add(ModBlocks.IRON_BLOCK_STAIRS.get())
-                .add(ModBlocks.GOLD_BLOCK_STAIRS.get())
-                .add(ModBlocks.OBSIDIAN_STAIRS.get())
-                .add(ModBlocks.BEDROCK_STAIRS.get())
-                .add(ModBlocks.NETHERRACK_STAIRS.get())
-                .add(ModBlocks.CRACKED_NETHER_BRICK_STAIRS.get())
-                .add(ModBlocks.CHISELED_NETHER_BRICK_STAIRS.get())
-                .add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_STAIRS.get())
-                .add(ModBlocks.CHISELED_POLISHED_BLACKSTONE_STAIRS.get())
-                .add(ModBlocks.END_STONE_STAIRS.get())
-                .add(ModBlocks.CHISELED_QUARTZ_BLOCK_STAIRS.get())
-                .add(ModBlocks.QUARTZ_BRICK_STAIRS.get())
-                .add(ModBlocks.TERRACOTTA_STAIRS.get())
-                .add(ModBlocks.WHITE_TERRACOTTA_STAIRS.get())
-                .add(ModBlocks.ORANGE_TERRACOTTA_STAIRS.get())
-                .add(ModBlocks.MAGENTA_TERRACOTTA_STAIRS.get())
-                .add(ModBlocks.LIGHT_BLUE_TERRACOTTA_STAIRS.get())
-                .add(ModBlocks.YELLOW_TERRACOTTA_STAIRS.get())
-                .add(ModBlocks.LIME_TERRACOTTA_STAIRS.get())
-                .add(ModBlocks.PINK_TERRACOTTA_STAIRS.get())
-                .add(ModBlocks.GRAY_TERRACOTTA_STAIRS.get())
-                .add(ModBlocks.LIGHT_GRAY_TERRACOTTA_STAIRS.get())
-                .add(ModBlocks.CYAN_TERRACOTTA_STAIRS.get())
-                .add(ModBlocks.PURPLE_TERRACOTTA_STAIRS.get())
-                .add(ModBlocks.BLUE_TERRACOTTA_STAIRS.get())
-                .add(ModBlocks.BROWN_TERRACOTTA_STAIRS.get())
-                .add(ModBlocks.GREEN_TERRACOTTA_STAIRS.get())
-                .add(ModBlocks.RED_TERRACOTTA_STAIRS.get())
-                .add(ModBlocks.BLACK_TERRACOTTA_STAIRS.get())
-                .add(ModBlocks.WHITE_CONCRETE_STAIRS.get())
-                .add(ModBlocks.ORANGE_CONCRETE_STAIRS.get())
-                .add(ModBlocks.MAGENTA_CONCRETE_STAIRS.get())
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_STAIRS.get())
-                .add(ModBlocks.YELLOW_CONCRETE_STAIRS.get())
-                .add(ModBlocks.LIME_CONCRETE_STAIRS.get())
-                .add(ModBlocks.PINK_CONCRETE_STAIRS.get())
-                .add(ModBlocks.GRAY_CONCRETE_STAIRS.get())
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_STAIRS.get())
-                .add(ModBlocks.CYAN_CONCRETE_STAIRS.get())
-                .add(ModBlocks.PURPLE_CONCRETE_STAIRS.get())
-                .add(ModBlocks.BLUE_CONCRETE_STAIRS.get())
-                .add(ModBlocks.BROWN_CONCRETE_STAIRS.get())
-                .add(ModBlocks.GREEN_CONCRETE_STAIRS.get())
-                .add(ModBlocks.RED_CONCRETE_STAIRS.get())
-                .add(ModBlocks.BLACK_CONCRETE_STAIRS.get())
-                .add(ModBlocks.CUT_SANDSTONE_STAIRS.get())
-                .add(ModBlocks.CUT_RED_SANDSTONE_STAIRS.get())
-                .add(ModBlocks.SMOOTH_STONE_STAIRS.get());
+        //Stairs
+        ModDataGenerator.STAIRS.forEach(pair -> {
+            Material material = pair.getFirst().defaultBlockState().getMaterial();
+
+            if (material == Material.WOOD || material == Material.NETHER_WOOD) {
+                tag(ModTags.VanillaBoomTags.Blocks.WOODEN_STAIRS).add(pair.getFirst());
+            } else {
+                tag(ModTags.VanillaBoomTags.Blocks.STAIRS).add(pair.getFirst());
+            }
+        });
         tag(BlockTags.STAIRS).addTags(ModTags.VanillaBoomTags.Blocks.STAIRS);
-        tag(ModTags.VanillaBoomTags.Blocks.WOODEN_STAIRS)
-                .add(ModBlocks.OAK_WOOD_STAIRS.get())
-                .add(ModBlocks.SPRUCE_WOOD_STAIRS.get())
-                .add(ModBlocks.BIRCH_WOOD_STAIRS.get())
-                .add(ModBlocks.JUNGLE_WOOD_STAIRS.get())
-                .add(ModBlocks.ACACIA_WOOD_STAIRS.get())
-                .add(ModBlocks.DARK_OAK_WOOD_STAIRS.get())
-                .add(ModBlocks.CRIMSON_HYPHAE_STAIRS.get())
-                .add(ModBlocks.WARPED_HYPHAE_STAIRS.get())
-                .add(ModBlocks.STRIPPED_OAK_WOOD_STAIRS.get())
-                .add(ModBlocks.STRIPPED_SPRUCE_WOOD_STAIRS.get())
-                .add(ModBlocks.STRIPPED_BIRCH_WOOD_STAIRS.get())
-                .add(ModBlocks.STRIPPED_JUNGLE_WOOD_STAIRS.get())
-                .add(ModBlocks.STRIPPED_ACACIA_WOOD_STAIRS.get())
-                .add(ModBlocks.STRIPPED_DARK_OAK_WOOD_STAIRS.get())
-                .add(ModBlocks.STRIPPED_CRIMSON_HYPHAE_STAIRS.get())
-                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_STAIRS.get());
         tag(BlockTags.WOODEN_STAIRS).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_STAIRS);
 
-        /*
-         * Slab tags
-         */
-        tag(ModTags.VanillaBoomTags.Blocks.SLABS)
-                .add(ModBlocks.COBBLESTONE_BRICK_SLAB.get())
-                .add(ModBlocks.MOSSY_COBBLESTONE_BRICK_SLAB.get())
-                .add(ModBlocks.MAGMA_BRICK_SLAB.get())
-                .add(ModBlocks.OBSIDIAN_BRICK_SLAB.get())
-                .add(ModBlocks.SNOW_BRICK_SLAB.get())
-                .add(ModBlocks.TERRACOTTA_BRICK_SLAB.get())
-                .add(ModBlocks.WHITE_TERRACOTTA_BRICK_SLAB.get())
-                .add(ModBlocks.ORANGE_TERRACOTTA_BRICK_SLAB.get())
-                .add(ModBlocks.MAGENTA_TERRACOTTA_BRICK_SLAB.get())
-                .add(ModBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_SLAB.get())
-                .add(ModBlocks.YELLOW_TERRACOTTA_BRICK_SLAB.get())
-                .add(ModBlocks.LIME_TERRACOTTA_BRICK_SLAB.get())
-                .add(ModBlocks.PINK_TERRACOTTA_BRICK_SLAB.get())
-                .add(ModBlocks.GRAY_TERRACOTTA_BRICK_SLAB.get())
-                .add(ModBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_SLAB.get())
-                .add(ModBlocks.CYAN_TERRACOTTA_BRICK_SLAB.get())
-                .add(ModBlocks.PURPLE_TERRACOTTA_BRICK_SLAB.get())
-                .add(ModBlocks.BLUE_TERRACOTTA_BRICK_SLAB.get())
-                .add(ModBlocks.BROWN_TERRACOTTA_BRICK_SLAB.get())
-                .add(ModBlocks.GREEN_TERRACOTTA_BRICK_SLAB.get())
-                .add(ModBlocks.RED_TERRACOTTA_BRICK_SLAB.get())
-                .add(ModBlocks.BLACK_TERRACOTTA_BRICK_SLAB.get())
-                .add(ModBlocks.PERIDOTITE_SLAB.get())
-                .add(ModBlocks.HYDRO_ROCK_SLAB.get())
-                .add(ModBlocks.INFERNAL_ROCK_SLAB.get())
-                .add(ModBlocks.POLISHED_PERIDOTITE_SLAB.get())
-                .add(ModBlocks.POLISHED_PRISMARINE_SLAB.get())
-                .add(ModBlocks.POLISHED_DARK_PRISMARINE_SLAB.get())
-                .add(ModBlocks.POLISHED_END_STONE_SLAB.get())
-                .add(ModBlocks.POLISHED_NETHERRACK_SLAB.get())
-                .add(ModBlocks.CRACKED_RED_NETHER_BRICK_SLAB.get())
-                .add(ModBlocks.CHISELED_RED_NETHER_BRICK_SLAB.get())
-                .add(ModBlocks.CHISELED_PURPUR_BLOCK_SLAB.get())
-                .add(ModBlocks.CHISELED_OBSIDIAN_SLAB.get())
-                .add(ModBlocks.CRACKED_STONE_BRICK_SLAB.get())
-                .add(ModBlocks.CHISELED_STONE_BRICK_SLAB.get())
-                .add(ModBlocks.CHISELED_SANDSTONE_SLAB.get())
-                .add(ModBlocks.CHISELED_RED_SANDSTONE_SLAB.get())
-                .add(ModBlocks.IRON_BLOCK_SLAB.get())
-                .add(ModBlocks.GOLD_BLOCK_SLAB.get())
-                .add(ModBlocks.OBSIDIAN_SLAB.get())
-                .add(ModBlocks.BEDROCK_SLAB.get())
-                .add(ModBlocks.NETHERRACK_SLAB.get())
-                .add(ModBlocks.CRACKED_NETHER_BRICK_SLAB.get())
-                .add(ModBlocks.CHISELED_NETHER_BRICK_SLAB.get())
-                .add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_SLAB.get())
-                .add(ModBlocks.CHISELED_POLISHED_BLACKSTONE_SLAB.get())
-                .add(ModBlocks.END_STONE_SLAB.get())
-                .add(ModBlocks.CHISELED_QUARTZ_BLOCK_SLAB.get())
-                .add(ModBlocks.QUARTZ_BRICK_SLAB.get())
-                .add(ModBlocks.TERRACOTTA_SLAB.get())
-                .add(ModBlocks.WHITE_TERRACOTTA_SLAB.get())
-                .add(ModBlocks.ORANGE_TERRACOTTA_SLAB.get())
-                .add(ModBlocks.MAGENTA_TERRACOTTA_SLAB.get())
-                .add(ModBlocks.LIGHT_BLUE_TERRACOTTA_SLAB.get())
-                .add(ModBlocks.YELLOW_TERRACOTTA_SLAB.get())
-                .add(ModBlocks.LIME_TERRACOTTA_SLAB.get())
-                .add(ModBlocks.PINK_TERRACOTTA_SLAB.get())
-                .add(ModBlocks.GRAY_TERRACOTTA_SLAB.get())
-                .add(ModBlocks.LIGHT_GRAY_TERRACOTTA_SLAB.get())
-                .add(ModBlocks.CYAN_TERRACOTTA_SLAB.get())
-                .add(ModBlocks.PURPLE_TERRACOTTA_SLAB.get())
-                .add(ModBlocks.BLUE_TERRACOTTA_SLAB.get())
-                .add(ModBlocks.BROWN_TERRACOTTA_SLAB.get())
-                .add(ModBlocks.GREEN_TERRACOTTA_SLAB.get())
-                .add(ModBlocks.RED_TERRACOTTA_SLAB.get())
-                .add(ModBlocks.BLACK_TERRACOTTA_SLAB.get())
-                .add(ModBlocks.WHITE_CONCRETE_SLAB.get())
-                .add(ModBlocks.ORANGE_CONCRETE_SLAB.get())
-                .add(ModBlocks.MAGENTA_CONCRETE_SLAB.get())
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_SLAB.get())
-                .add(ModBlocks.YELLOW_CONCRETE_SLAB.get())
-                .add(ModBlocks.LIME_CONCRETE_SLAB.get())
-                .add(ModBlocks.PINK_CONCRETE_SLAB.get())
-                .add(ModBlocks.GRAY_CONCRETE_SLAB.get())
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_SLAB.get())
-                .add(ModBlocks.CYAN_CONCRETE_SLAB.get())
-                .add(ModBlocks.PURPLE_CONCRETE_SLAB.get())
-                .add(ModBlocks.BLUE_CONCRETE_SLAB.get())
-                .add(ModBlocks.BROWN_CONCRETE_SLAB.get())
-                .add(ModBlocks.GREEN_CONCRETE_SLAB.get())
-                .add(ModBlocks.RED_CONCRETE_SLAB.get())
-                .add(ModBlocks.BLACK_CONCRETE_SLAB.get());
+        //Slabs
+        ModDataGenerator.SLABS.forEach(pair -> {
+            Material material = pair.getFirst().defaultBlockState().getMaterial();
+
+            if (material == Material.WOOD || material == Material.NETHER_WOOD) {
+                tag(ModTags.VanillaBoomTags.Blocks.WOODEN_SLABS).add(pair.getFirst());
+            } else {
+                tag(ModTags.VanillaBoomTags.Blocks.SLABS).add(pair.getFirst());
+            }
+        });
         tag(BlockTags.SLABS).addTags(ModTags.VanillaBoomTags.Blocks.SLABS);
-        tag(ModTags.VanillaBoomTags.Blocks.WOODEN_SLABS)
-                .add(ModBlocks.OAK_WOOD_SLAB.get())
-                .add(ModBlocks.SPRUCE_WOOD_SLAB.get())
-                .add(ModBlocks.BIRCH_WOOD_SLAB.get())
-                .add(ModBlocks.JUNGLE_WOOD_SLAB.get())
-                .add(ModBlocks.ACACIA_WOOD_SLAB.get())
-                .add(ModBlocks.DARK_OAK_WOOD_SLAB.get())
-                .add(ModBlocks.CRIMSON_HYPHAE_SLAB.get())
-                .add(ModBlocks.WARPED_HYPHAE_SLAB.get())
-                .add(ModBlocks.STRIPPED_OAK_WOOD_SLAB.get())
-                .add(ModBlocks.STRIPPED_SPRUCE_WOOD_SLAB.get())
-                .add(ModBlocks.STRIPPED_BIRCH_WOOD_SLAB.get())
-                .add(ModBlocks.STRIPPED_JUNGLE_WOOD_SLAB.get())
-                .add(ModBlocks.STRIPPED_ACACIA_WOOD_SLAB.get())
-                .add(ModBlocks.STRIPPED_DARK_OAK_WOOD_SLAB.get())
-                .add(ModBlocks.STRIPPED_CRIMSON_HYPHAE_SLAB.get())
-                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_SLAB.get());
         tag(BlockTags.WOODEN_SLABS).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_SLABS);
 
-        /*
-         * Wall tags
-         */
-        tag(ModTags.VanillaBoomTags.Blocks.WALLS)
-                .add(ModBlocks.COBBLESTONE_BRICK_WALL.get())
-                .add(ModBlocks.MOSSY_COBBLESTONE_BRICK_WALL.get())
-                .add(ModBlocks.MAGMA_BRICK_WALL.get())
-                .add(ModBlocks.OBSIDIAN_BRICK_WALL.get())
-                .add(ModBlocks.SNOW_BRICK_WALL.get())
-                .add(ModBlocks.TERRACOTTA_BRICK_WALL.get())
-                .add(ModBlocks.WHITE_TERRACOTTA_BRICK_WALL.get())
-                .add(ModBlocks.ORANGE_TERRACOTTA_BRICK_WALL.get())
-                .add(ModBlocks.MAGENTA_TERRACOTTA_BRICK_WALL.get())
-                .add(ModBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_WALL.get())
-                .add(ModBlocks.YELLOW_TERRACOTTA_BRICK_WALL.get())
-                .add(ModBlocks.LIME_TERRACOTTA_BRICK_WALL.get())
-                .add(ModBlocks.PINK_TERRACOTTA_BRICK_WALL.get())
-                .add(ModBlocks.GRAY_TERRACOTTA_BRICK_WALL.get())
-                .add(ModBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_WALL.get())
-                .add(ModBlocks.CYAN_TERRACOTTA_BRICK_WALL.get())
-                .add(ModBlocks.PURPLE_TERRACOTTA_BRICK_WALL.get())
-                .add(ModBlocks.BLUE_TERRACOTTA_BRICK_WALL.get())
-                .add(ModBlocks.BROWN_TERRACOTTA_BRICK_WALL.get())
-                .add(ModBlocks.GREEN_TERRACOTTA_BRICK_WALL.get())
-                .add(ModBlocks.RED_TERRACOTTA_BRICK_WALL.get())
-                .add(ModBlocks.BLACK_TERRACOTTA_BRICK_WALL.get())
-                .add(ModBlocks.PERIDOTITE_WALL.get())
-                .add(ModBlocks.HYDRO_ROCK_WALL.get())
-                .add(ModBlocks.INFERNAL_ROCK_WALL.get())
-                .add(ModBlocks.POLISHED_PERIDOTITE_WALL.get())
-                .add(ModBlocks.POLISHED_PRISMARINE_WALL.get())
-                .add(ModBlocks.POLISHED_DARK_PRISMARINE_WALL.get())
-                .add(ModBlocks.POLISHED_END_STONE_WALL.get())
-                .add(ModBlocks.POLISHED_NETHERRACK_WALL.get())
-                .add(ModBlocks.CHISELED_PURPUR_BLOCK_WALL.get())
-                .add(ModBlocks.CRACKED_RED_NETHER_BRICK_WALL.get())
-                .add(ModBlocks.CHISELED_RED_NETHER_BRICK_WALL.get())
-                .add(ModBlocks.CHISELED_OBSIDIAN_WALL.get())
-                .add(ModBlocks.CRACKED_STONE_BRICK_WALL.get())
-                .add(ModBlocks.CHISELED_STONE_BRICK_WALL.get())
-                .add(ModBlocks.CHISELED_SANDSTONE_WALL.get())
-                .add(ModBlocks.CHISELED_RED_SANDSTONE_WALL.get())
-                .add(ModBlocks.IRON_BLOCK_WALL.get())
-                .add(ModBlocks.GOLD_BLOCK_WALL.get())
-                .add(ModBlocks.OBSIDIAN_WALL.get())
-                .add(ModBlocks.BEDROCK_WALL.get())
-                .add(ModBlocks.NETHERRACK_WALL.get())
-                .add(ModBlocks.CRACKED_NETHER_BRICK_WALL.get())
-                .add(ModBlocks.CHISELED_NETHER_BRICK_WALL.get())
-                .add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_WALL.get())
-                .add(ModBlocks.CHISELED_POLISHED_BLACKSTONE_WALL.get())
-                .add(ModBlocks.END_STONE_WALL.get())
-                .add(ModBlocks.CHISELED_QUARTZ_BLOCK_WALL.get())
-                .add(ModBlocks.QUARTZ_BRICK_WALL.get())
-                .add(ModBlocks.TERRACOTTA_WALL.get())
-                .add(ModBlocks.WHITE_TERRACOTTA_WALL.get())
-                .add(ModBlocks.ORANGE_TERRACOTTA_WALL.get())
-                .add(ModBlocks.MAGENTA_TERRACOTTA_WALL.get())
-                .add(ModBlocks.LIGHT_BLUE_TERRACOTTA_WALL.get())
-                .add(ModBlocks.YELLOW_TERRACOTTA_WALL.get())
-                .add(ModBlocks.LIME_TERRACOTTA_WALL.get())
-                .add(ModBlocks.PINK_TERRACOTTA_WALL.get())
-                .add(ModBlocks.GRAY_TERRACOTTA_WALL.get())
-                .add(ModBlocks.LIGHT_GRAY_TERRACOTTA_WALL.get())
-                .add(ModBlocks.CYAN_TERRACOTTA_WALL.get())
-                .add(ModBlocks.PURPLE_TERRACOTTA_WALL.get())
-                .add(ModBlocks.BLUE_TERRACOTTA_WALL.get())
-                .add(ModBlocks.BROWN_TERRACOTTA_WALL.get())
-                .add(ModBlocks.GREEN_TERRACOTTA_WALL.get())
-                .add(ModBlocks.RED_TERRACOTTA_WALL.get())
-                .add(ModBlocks.BLACK_TERRACOTTA_WALL.get())
-                .add(ModBlocks.WHITE_CONCRETE_WALL.get())
-                .add(ModBlocks.ORANGE_CONCRETE_WALL.get())
-                .add(ModBlocks.MAGENTA_CONCRETE_WALL.get())
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_WALL.get())
-                .add(ModBlocks.YELLOW_CONCRETE_WALL.get())
-                .add(ModBlocks.LIME_CONCRETE_WALL.get())
-                .add(ModBlocks.PINK_CONCRETE_WALL.get())
-                .add(ModBlocks.GRAY_CONCRETE_WALL.get())
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_WALL.get())
-                .add(ModBlocks.CYAN_CONCRETE_WALL.get())
-                .add(ModBlocks.PURPLE_CONCRETE_WALL.get())
-                .add(ModBlocks.BLUE_CONCRETE_WALL.get())
-                .add(ModBlocks.BROWN_CONCRETE_WALL.get())
-                .add(ModBlocks.GREEN_CONCRETE_WALL.get())
-                .add(ModBlocks.RED_CONCRETE_WALL.get())
-                .add(ModBlocks.BLACK_CONCRETE_WALL.get())
-                .add(ModBlocks.CUT_SANDSTONE_WALL.get())
-                .add(ModBlocks.CUT_RED_SANDSTONE_WALL.get())
-                .add(ModBlocks.SMOOTH_STONE_WALL.get())
-                .add(ModBlocks.STONE_WALL.get())
-                .add(ModBlocks.POLISHED_GRANITE_WALL.get())
-                .add(ModBlocks.POLISHED_DIORITE_WALL.get())
-                .add(ModBlocks.POLISHED_ANDESITE_WALL.get())
-                .add(ModBlocks.SMOOTH_SANDSTONE_WALL.get())
-                .add(ModBlocks.SMOOTH_RED_SANDSTONE_WALL.get())
-                .add(ModBlocks.PURPUR_BLOCK_WALL.get())
-                .add(ModBlocks.QUARTZ_BLOCK_WALL.get())
-                .add(ModBlocks.SMOOTH_QUARTZ_WALL.get())
-                .add(ModBlocks.PRISMARINE_BRICK_WALL.get())
-                .add(ModBlocks.DARK_PRISMARINE_WALL.get());
+        //Walls
+        ModDataGenerator.WALLS.forEach(block -> tag(ModTags.VanillaBoomTags.Blocks.WALLS).add(block));
         tag(BlockTags.WALLS).addTags(ModTags.VanillaBoomTags.Blocks.WALLS);
 
-        /*
-         * Fence Tags
-         */
-        tag(ModTags.VanillaBoomTags.Blocks.FENCES).add(ModBlocks.RED_NETHER_BRICK_FENCE.get());
+        //Fences
+        ModDataGenerator.FENCES.forEach(pair -> {
+            Material material = pair.getFirst().defaultBlockState().getMaterial();
+
+            if (material == Material.WOOD || material == Material.NETHER_WOOD) {
+                tag(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCES).add(pair.getFirst());
+            } else {
+                tag(ModTags.VanillaBoomTags.Blocks.FENCES).add(pair.getFirst());
+            }
+        });
         tag(BlockTags.FENCES).addTags(ModTags.VanillaBoomTags.Blocks.FENCES);
-        tag(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCES)
-                .add(ModBlocks.OAK_WOOD_FENCE.get())
-                .add(ModBlocks.SPRUCE_WOOD_FENCE.get())
-                .add(ModBlocks.BIRCH_WOOD_FENCE.get())
-                .add(ModBlocks.JUNGLE_WOOD_FENCE.get())
-                .add(ModBlocks.ACACIA_WOOD_FENCE.get())
-                .add(ModBlocks.DARK_OAK_WOOD_FENCE.get())
-                .add(ModBlocks.CRIMSON_HYPHAE_FENCE.get())
-                .add(ModBlocks.WARPED_HYPHAE_FENCE.get())
-                .add(ModBlocks.STRIPPED_OAK_WOOD_FENCE.get())
-                .add(ModBlocks.STRIPPED_SPRUCE_WOOD_FENCE.get())
-                .add(ModBlocks.STRIPPED_BIRCH_WOOD_FENCE.get())
-                .add(ModBlocks.STRIPPED_JUNGLE_WOOD_FENCE.get())
-                .add(ModBlocks.STRIPPED_ACACIA_WOOD_FENCE.get())
-                .add(ModBlocks.STRIPPED_DARK_OAK_WOOD_FENCE.get())
-                .add(ModBlocks.STRIPPED_CRIMSON_HYPHAE_FENCE.get())
-                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_FENCE.get());
         tag(BlockTags.WOODEN_FENCES).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCES);
 
-        /*
-         * Fence Gate tags
-         */
-        tag(ModTags.VanillaBoomTags.Blocks.FENCE_GATES)
-                .add(ModBlocks.NETHER_BRICK_FENCE_GATE.get())
-                .add(ModBlocks.RED_NETHER_BRICK_FENCE_GATE.get());
-        tag(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCE_GATES)
-                .add(ModBlocks.OAK_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.SPRUCE_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.BIRCH_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.JUNGLE_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.ACACIA_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.DARK_OAK_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.CRIMSON_HYPHAE_FENCE_GATE.get())
-                .add(ModBlocks.WARPED_HYPHAE_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_OAK_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_SPRUCE_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_BIRCH_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_JUNGLE_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_ACACIA_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_DARK_OAK_WOOD_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_CRIMSON_HYPHAE_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_FENCE_GATE.get());
+        //Fence Gates
+        ModDataGenerator.FENCE_GATES.forEach(pair -> {
+            Material material = pair.getFirst().defaultBlockState().getMaterial();
+
+            if (material == Material.WOOD || material == Material.NETHER_WOOD) {
+                tag(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCE_GATES).add(pair.getFirst());
+            } else {
+                tag(ModTags.VanillaBoomTags.Blocks.FENCE_GATES).add(pair.getFirst());
+            }
+        });
         tag(BlockTags.FENCE_GATES).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCE_GATES);
     }
 }

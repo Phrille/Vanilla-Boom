@@ -3,7 +3,6 @@ package phrille.vanillaboom.data;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
 import net.minecraft.world.item.Item;
@@ -16,6 +15,7 @@ import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.item.ModItems;
+import phrille.vanillaboom.util.ModTags;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -208,12 +208,33 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         pieShapeless(finishedRecipe, ModItems.BERRY_PIE.get(), Items.SWEET_BERRIES);
         pieShapeless(finishedRecipe, ModItems.MONSTER_PIE.get(), Items.ROTTEN_FLESH);
         cooking(finishedRecipe, ModItems.POLAR_BEAR_STEAK.get(), ModItems.RAW_POLAR_BEAR_MEAT.get(), 0.35F);
-        //TODO: Soup recipes, need tags
+        ShapelessRecipeBuilder.shapeless(ModItems.POTATO_SOUP.get())
+                .requires(Items.BOWL)
+                .requires(ModTags.VanillaBoomTags.Items.POTATO_SOUP_INGREDIENTS)
+                .requires(ModTags.VanillaBoomTags.Items.POTATO_SOUP_INGREDIENTS)
+                .unlockedBy(getHasName(Items.BOWL), has(Items.BOWL))
+                .unlockedBy(getHasName(Items.POTATO), has(Items.POTATO))
+                .unlockedBy(getHasName(Items.POISONOUS_POTATO), has(Items.POISONOUS_POTATO))
+                .save(finishedRecipe);
+        ShapelessRecipeBuilder.shapeless(ModItems.MEAT_SOUP.get())
+                .requires(Items.BOWL)
+                .requires(Tags.Items.CROPS_POTATO)
+                .requires(ModTags.ForgeTags.Items.COOKED_MEATS)
+                .requires(ModTags.ForgeTags.Items.COOKED_MEATS)
+                .unlockedBy(getHasName(Items.BOWL), has(Items.BOWL))
+                .save(finishedRecipe);
+        ShapelessRecipeBuilder.shapeless(ModItems.FISH_SOUP.get())
+                .requires(Items.BOWL)
+                .requires(Items.SEA_PICKLE)
+                .requires(ModTags.ForgeTags.Items.COOKED_FISHES)
+                .requires(ModTags.ForgeTags.Items.COOKED_FISHES)
+                .unlockedBy(getHasName(Items.BOWL), has(Items.BOWL))
+                .unlockedBy(getHasName(Items.SEA_PICKLE), has(Items.SEA_PICKLE))
+                .save(finishedRecipe);
         cooking(finishedRecipe, ModItems.COOKED_TUNA.get(), ModItems.TUNA.get(), 0.35F);
         cooking(finishedRecipe, ModItems.COOKED_PERCH.get(), ModItems.PERCH.get(), 0.35F);
         cooking(finishedRecipe, ModItems.COOKED_PIKE.get(), ModItems.PIKE.get(), 0.35F);
         cooking(finishedRecipe, ModItems.COOKED_EEL.get(), ModItems.EEL.get(), 0.35F);
-
     }
 
     //Templates
@@ -267,7 +288,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         blasting(finishedRecipe, result, ingredient, xp);
     }
 
-    public void cooking(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp){
+    public void cooking(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
         smelting(finishedRecipe, result, ingredient, xp);
         smoking(finishedRecipe, result, ingredient, xp);
         campFire(finishedRecipe, result, ingredient, xp);
@@ -379,7 +400,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     public void cakeShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
         ShapedRecipeBuilder.shaped(result)
                 .define('x', ingredient)
-                .define('y', Items.MILK_BUCKET)
+                .define('y', ModTags.ForgeTags.Items.MILK)
                 .define('z', Items.SUGAR)
                 .define('i', Tags.Items.EGGS)
                 .define('j', Tags.Items.CROPS_WHEAT)
@@ -411,7 +432,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe, getConversionRecipeName(ModBlocks.MOSSY_COBBLESTONE_BRICKS.get(), ingredient));
     }
 
-    public void pieShapeless(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient){
+    public void pieShapeless(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
         ShapelessRecipeBuilder.shapeless(result)
                 .requires(Items.APPLE)
                 .requires(Tags.Items.EGGS)
@@ -424,25 +445,25 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     public void smelting(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), result, xp, 200).
                 unlockedBy(getHasName(ingredient), has(ingredient)).
-                save(finishedRecipe, extend(getConversionRecipeName(result, ingredient), "_from_smelting"));
+                save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeName(result, ingredient), "_from_smelting"));
     }
 
     public void blasting(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
         SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredient), result, xp, 100)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(finishedRecipe, extend(getConversionRecipeName(result, ingredient), "_from_blasting"));
+                .save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeName(result, ingredient), "_from_blasting"));
     }
 
     public void smoking(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
         SimpleCookingRecipeBuilder.smoking(Ingredient.of(ingredient), result, xp, 100)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(finishedRecipe, extend(getConversionRecipeName(result, ingredient), "_from_blasting"));
+                .save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeName(result, ingredient), "_from_smoking"));
     }
 
     public void campFire(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
         SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ingredient), result, xp, 600)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(finishedRecipe, extend(getConversionRecipeName(result, ingredient), "_from_blasting"));
+                .save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeName(result, ingredient), "_from_campfire"));
     }
 
     //Stonecutting
@@ -453,15 +474,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     public void stonecutting(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, int amount) {
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(ingredient), result, amount)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(finishedRecipe, extend(getConversionRecipeName(result, ingredient), "_from_stonecutting"));
+                .save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeName(result, ingredient), "_from_stonecutting"));
     }
 
+    //Helper methods
     private static String getHasName(ItemLike item) {
         return "has_" + name(item);
     }
 
     /**
-     * Extends a recipe name with "from" an ingredient. Ignores
+     * ModDataGenerator.extends a recipe name with "from" an ingredient. Ignores
      * namespace and always adds modid as namespace.
      *
      * @param result     - the item to be crafted
@@ -469,11 +491,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
      * @return a modified ResourceLocation
      */
     private static ResourceLocation getConversionRecipeName(ItemLike result, ItemLike ingredient) {
-        return extend(modLoc(result), "_from_" + name(ingredient));
+        return ModDataGenerator.extend(modLoc(result), "_from_" + name(ingredient));
     }
 
     /**
-     * Extends a recipe name with "alt" to allow different recipes
+     * ModDataGenerator.extends a recipe name with "alt" to allow different recipes
      * for one item. Ignores namespace and always adds modid as
      * namespace. Use getConversionRecipeName when possible.
      *
@@ -481,18 +503,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
      * @return a modified ResourceLocation
      */
     private static ResourceLocation getAltName(ItemLike result) {
-        return extend(modLoc(result), "_alt");
-    }
-
-    /**
-     * Extends the path of a ResourceLocation with a chosen String.
-     *
-     * @param resLoc - the ResourceLocation to be extended
-     * @param extend - the String to be added to the path
-     * @return the new ResourceLocation
-     */
-    protected static ResourceLocation extend(ResourceLocation resLoc, String extend) {
-        return new ResourceLocation(resLoc.getNamespace(), resLoc.getPath() + extend);
+        return ModDataGenerator.extend(modLoc(result), "_alt");
     }
 
     /**

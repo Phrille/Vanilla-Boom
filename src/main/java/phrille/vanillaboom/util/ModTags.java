@@ -145,6 +145,7 @@ public class ModTags {
 
             public static final Tags.IOptionalNamedTag<Item> RAW_FISHES = modTag("raw_fishes");
             public static final Tags.IOptionalNamedTag<Item> COOKED_FISHES = modTag("cooked_fishes");
+            public static final Tags.IOptionalNamedTag<Item> POTATO_SOUP_INGREDIENTS = modTag("potato_soup_ingredients");
 
             private static Tags.IOptionalNamedTag<Item> modTag(String name) {
                 return ItemTags.createOptional(new ResourceLocation(VanillaBoom.MOD_ID, name));

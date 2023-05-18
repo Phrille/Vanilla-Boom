@@ -71,8 +71,16 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(Tags.Items.INGOTS).addTags(ModTags.ForgeTags.Items.INGOTS_MAGMA_BRICK);
         tag(ModTags.ForgeTags.Items.WITHER_BONES).add(ModItems.WITHER_BONE.get());
         tag(ModTags.ForgeTags.Items.WITHER_BONE_MEALS).add(ModItems.WITHER_BONE_MEAL.get());
-        tag(ModTags.ForgeTags.Items.RAW_FISHES).addTags(ModTags.VanillaBoomTags.Items.RAW_FISHES);
-        tag(ModTags.ForgeTags.Items.COOKED_FISHES).addTags(ModTags.VanillaBoomTags.Items.COOKED_FISHES);
+        tag(ModTags.ForgeTags.Items.RAW_FISHES)
+                .add(Items.COD)
+                .add(Items.SALMON)
+                .add(Items.PUFFERFISH)
+                .add(Items.TROPICAL_FISH)
+                .addTags(ModTags.VanillaBoomTags.Items.RAW_FISHES);
+        tag(ModTags.ForgeTags.Items.COOKED_FISHES)
+                .add(Items.COOKED_COD)
+                .add(Items.COOKED_SALMON)
+                .addTags(ModTags.VanillaBoomTags.Items.COOKED_FISHES);
         tag(ModTags.ForgeTags.Items.RAW_MEATS)
                 .add(Items.PORKCHOP)
                 .add(Items.BEEF)
@@ -118,6 +126,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.COOKED_PERCH.get())
                 .add(ModItems.COOKED_PIKE.get())
                 .add(ModItems.COOKED_EEL.get());
+        tag(ModTags.VanillaBoomTags.Items.POTATO_SOUP_INGREDIENTS)
+                .add(Items.POISONOUS_POTATO)
+                .addTags(Tags.Items.CROPS_POTATO);
 
         /*
          * Vanilla tags
