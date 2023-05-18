@@ -13,17 +13,17 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "vanillaboom:rice_plant",
+                  "block": "vanillaboom:tomato_plant",
                   "properties": {
-                    "age": "8"
+                    "age": "7"
                   }
                 }
               ],
-              "name": "vanillaboom:rice_seeds"
+              "name": "vanillaboom:tomato"
             },
             {
               "type": "minecraft:item",
-              "name": "vanillaboom:rice_seeds"
+              "name": "vanillaboom:tomato_seeds"
             }
           ]
         }
@@ -46,15 +46,15 @@
               }
             }
           ],
-          "name": "vanillaboom:rice_seeds"
+          "name": "vanillaboom:tomato_seeds"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "vanillaboom:rice_plant",
+          "block": "vanillaboom:tomato_plant",
           "properties": {
-            "age": "8"
+            "age": "7"
           }
         }
       ]

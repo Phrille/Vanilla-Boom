@@ -173,11 +173,8 @@ public class ModBlockLootTables extends BlockLoot {
 
         LootItemCondition.Builder tomatoCondition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.TOMATO_PLANT.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7));
         add(ModBlocks.TOMATO_PLANT.get(), createCropDrops(ModBlocks.TOMATO_PLANT.get(), ModItems.TOMATO.get(), ModItems.TOMATO_SEEDS.get(), tomatoCondition));
-        LootItemCondition.Builder riceCondition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.TOMATO_PLANT.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 8));
+        LootItemCondition.Builder riceCondition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.RICE_PLANT.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 8));
         add(ModBlocks.RICE_PLANT.get(), createCropDrops(ModBlocks.RICE_PLANT.get(), ModItems.RICE_SEEDS.get(), ModItems.RICE_SEEDS.get(), riceCondition));
-
-        dropSelf(ModBlocks.TOMATO_PLANT.get());
-        dropSelf(ModBlocks.RICE_PLANT.get());
 
         //Cakes
         add(ModBlocks.CHOCOLATE_CAKE.get(), noDrop());
