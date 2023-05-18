@@ -13,9 +13,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
+import phrille.vanillaboom.data.loot.ModLootTableProvider;
 import phrille.vanillaboom.data.tags.ModBlockTagsProvider;
 import phrille.vanillaboom.data.tags.ModEntityTypeTagsProvider;
 import phrille.vanillaboom.data.tags.ModItemTagsProvider;
+import phrille.vanillaboom.util.Utils;
 
 import java.util.List;
 
@@ -34,6 +36,7 @@ public class ModDataGenerator {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         init();
 
+        /*
         //Assets
         generator.addProvider(new ModBlockStateProvider(generator, existingFileHelper));
         generator.addProvider(new ModItemModelProvider(generator, existingFileHelper));
@@ -45,6 +48,9 @@ public class ModDataGenerator {
         generator.addProvider(new ModItemTagsProvider(generator, blockTags, existingFileHelper));
         generator.addProvider(new ModEntityTypeTagsProvider(generator, existingFileHelper));
         generator.addProvider(new ModRecipeProvider(generator));
+        */
+
+        generator.addProvider(new ModLootTableProvider(generator));
     }
 
     private static void init() {
@@ -53,6 +59,7 @@ public class ModDataGenerator {
         addWalls();
         addFences();
         addFenceGates();
+        Utils.registerCandleCakes();
     }
 
     private static void addStairs() {

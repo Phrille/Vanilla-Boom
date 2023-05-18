@@ -18,7 +18,6 @@ import phrille.vanillaboom.util.Utils;
 public class ModBlockTagsProvider extends BlockTagsProvider {
     public ModBlockTagsProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
         super(generator, VanillaBoom.MOD_ID, existingFileHelper);
-        Utils.registerCandleCakes();
     }
 
     /**
