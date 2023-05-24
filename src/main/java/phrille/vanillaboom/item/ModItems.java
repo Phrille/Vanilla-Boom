@@ -111,7 +111,7 @@ public class ModItems {
         public static final FoodProperties DROWNED_FLESH = new FoodProperties.Builder().nutrition(4).saturationMod(0.1F).effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 0.8F).effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 600, 0), 0.5F).meat().build();
         public static final FoodProperties MELON_POPSICLE = new FoodProperties.Builder().nutrition(3).saturationMod(0.3F).fast().build();
         public static final FoodProperties PINE_CONE = new FoodProperties.Builder().nutrition(3).saturationMod(0.2F).fast().build();
-        public static final FoodProperties CHOCOLATE = new FoodProperties.Builder().nutrition(5).saturationMod(0.3F).build();
+        public static final FoodProperties CHOCOLATE = new FoodProperties.Builder().nutrition(5).saturationMod(0.3F).effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 200, 0), 0.5F).build();
         public static final FoodProperties TOMATO = new FoodProperties.Builder().nutrition(4).saturationMod(0.2F).build();
         public static final FoodProperties APPLE_PIE = new FoodProperties.Builder().nutrition(8).saturationMod(0.3F).build();
         public static final FoodProperties BERRY_PIE = new FoodProperties.Builder().nutrition(8).saturationMod(0.3F).build();
