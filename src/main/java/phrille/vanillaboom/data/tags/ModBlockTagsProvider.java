@@ -20,9 +20,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         super(generator, VanillaBoom.MOD_ID, existingFileHelper);
     }
 
-    /**
-     * Refactor.
-     */
     @Override
     @SuppressWarnings("unchecked")
     protected void addTags() {

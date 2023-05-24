@@ -35,7 +35,6 @@ public class ModItems {
 
     //Food
     public static final RegistryObject<Item> PINE_CONE = ITEMS.register("pine_cone", () -> new Item(new Item.Properties().food(ModFoods.PINE_CONE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
-    public static final RegistryObject<Item> PUMPKIN_SLICE = ITEMS.register("pumpkin_slice", () -> new Item(new Item.Properties().food(ModFoods.PUMPKIN_SLICE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> TOMATO = ITEMS.register("tomato", () -> new Item(new Item.Properties().food(ModFoods.TOMATO).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> COOKED_EGG = ITEMS.register("cooked_egg", () -> new Item(new Item.Properties().food(ModFoods.COOKED_EGG).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> DROWNED_FLESH = ITEMS.register("drowned_flesh", () -> new Item(new Item.Properties().food(ModFoods.DROWNED_FLESH).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
@@ -108,7 +107,6 @@ public class ModItems {
     public static class ModFoods {
         public static final FoodProperties RAW_POLAR_BEAR_MEAT = new FoodProperties.Builder().nutrition(3).saturationMod(0.3F).meat().build();
         public static final FoodProperties POLAR_BEAR_STEAK = new FoodProperties.Builder().nutrition(8).saturationMod(0.8F).meat().build();
-        public static final FoodProperties PUMPKIN_SLICE = new FoodProperties.Builder().nutrition(2).saturationMod(0.3F).fast().build();
         public static final FoodProperties COOKED_EGG = new FoodProperties.Builder().nutrition(6).saturationMod(0.6F).build();
         public static final FoodProperties DROWNED_FLESH = new FoodProperties.Builder().nutrition(4).saturationMod(0.1F).effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 0.8F).effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 600, 0), 0.5F).meat().build();
         public static final FoodProperties MELON_POPSICLE = new FoodProperties.Builder().nutrition(3).saturationMod(0.3F).fast().build();

@@ -105,7 +105,6 @@ public class ModBlockLootTables extends BlockLoot {
         dropSelf(ModBlocks.CHARCOAL_BLOCK.get());
         dropSelf(ModBlocks.SUGAR_BLOCK.get());
         dropSelf(ModBlocks.SUGAR_CANE_BLOCK.get());
-        dropSelf(ModBlocks.BAMBOO_BLOCK.get());
         dropSelf(ModBlocks.GUNPOWDER_BLOCK.get());
         dropSelf(ModBlocks.BLAZE_POWDER_BLOCK.get());
         dropSelf(ModBlocks.MAGMA_CREAM_BLOCK.get());

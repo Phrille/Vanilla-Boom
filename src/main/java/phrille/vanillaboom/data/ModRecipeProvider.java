@@ -104,7 +104,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         storageBlock(finishedRecipe, ModBlocks.CHARCOAL_BLOCK.get(), Items.CHARCOAL);
         storageBlock(finishedRecipe, ModBlocks.SUGAR_BLOCK.get(), Items.SUGAR);
         storageBlock(finishedRecipe, ModBlocks.SUGAR_CANE_BLOCK.get(), Items.SUGAR_CANE);
-        storageBlock(finishedRecipe, ModBlocks.BAMBOO_BLOCK.get(), Items.BAMBOO);
         storageBlock(finishedRecipe, ModBlocks.GUNPOWDER_BLOCK.get(), Items.GUNPOWDER);
         storageBlock(finishedRecipe, ModBlocks.BLAZE_POWDER_BLOCK.get(), Items.BLAZE_POWDER);
         storageBlock(finishedRecipe, ModBlocks.MAGMA_CREAM_BLOCK.get(), Items.MAGMA_CREAM);
@@ -235,7 +234,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oneToOneShapeless(finishedRecipe, ModItems.RICE_SEEDS.get(), ModItems.RICE_BOWL.get(), 1);
         cooking(finishedRecipe, ModItems.COOKED_EGG.get(), Items.EGG, 0.3F);
         ShapelessRecipeBuilder.shapeless(ModItems.MELON_POPSICLE.get(), 4)
-                .requires(Items.MELON)
+                .requires(Items.MELON_SLICE)
                 .requires(Blocks.ICE)
                 .requires(Tags.Items.RODS_WOODEN)
                 .unlockedBy(getHasName(Items.MELON), has(Items.MELON))
@@ -614,7 +613,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     public void pieShapeless(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
         ShapelessRecipeBuilder.shapeless(result)
-                .requires(Items.APPLE)
+                .requires(ingredient)
                 .requires(Tags.Items.EGGS)
                 .requires(Items.SUGAR)
                 .unlockedBy(getHasName(ingredient), has(ingredient))

@@ -3,6 +3,7 @@ package phrille.vanillaboom.data;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
@@ -27,7 +28,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         item(ModItems.TOMATO_SEEDS.get());
         item(ModItems.RICE_SEEDS.get());
         item(ModItems.PINE_CONE.get());
-        item(ModItems.PUMPKIN_SLICE.get());
         item(ModItems.TOMATO.get());
         item(ModItems.COOKED_EGG.get());
         item(ModItems.DROWNED_FLESH.get());
@@ -61,7 +61,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         spawnEggItem(ModItems.PERCH_SPAWN_EGG.get());
         spawnEggItem(ModItems.PIKE_SPAWN_EGG.get());
         spawnEggItem(ModItems.EEL_SPAWN_EGG.get());
-        item(ModItems.CANVAS.get());
+        item(ModItems.CANVAS.get(), "generated").texture("layer0", itemTexture(Items.FLOWER_BANNER_PATTERN));
         item(ModItems.KEBAB_PAINTING.get());
         item(ModItems.AZTEC_PAINTING.get());
         item(ModItems.ALBAN_PAINTING.get());
@@ -167,7 +167,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModBlocks.CHARCOAL_BLOCK.get());
         blockItem(ModBlocks.SUGAR_BLOCK.get());
         blockItem(ModBlocks.SUGAR_CANE_BLOCK.get());
-        blockItem(ModBlocks.BAMBOO_BLOCK.get());
         blockItem(ModBlocks.GUNPOWDER_BLOCK.get());
         blockItem(ModBlocks.BLAZE_POWDER_BLOCK.get());
         blockItem(ModBlocks.MAGMA_CREAM_BLOCK.get());

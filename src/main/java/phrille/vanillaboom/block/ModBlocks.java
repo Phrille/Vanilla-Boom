@@ -99,7 +99,6 @@ public class ModBlocks {
     public static final RegistryObject<Block> CHARCOAL_BLOCK = register("charcoal_block", new Block(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE)));
     public static final RegistryObject<Block> SUGAR_BLOCK = register("sugar_block", new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.SNOW).strength(0.5F).sound(SoundType.SAND)));
     public static final RegistryObject<Block> SUGAR_CANE_BLOCK = register("sugar_cane_block", new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.GRASS).strength(0.5F).sound(SoundType.GRASS)));
-    public static final RegistryObject<Block> BAMBOO_BLOCK = register("bamboo_block", new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.BAMBOO, MaterialColor.PLANT).instabreak().strength(1.0F).sound(SoundType.BAMBOO)));
     public static final RegistryObject<Block> GUNPOWDER_BLOCK = register("gunpowder_block", new GunpowderBlock());
     public static final RegistryObject<Block> BLAZE_POWDER_BLOCK = register("blaze_powder_block", new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.SNOW)));
     public static final RegistryObject<Block> MAGMA_CREAM_BLOCK = register("magma_cream_block", new SlimeBlock(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK)));

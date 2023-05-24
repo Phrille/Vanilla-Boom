@@ -99,7 +99,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.CHARCOAL_BLOCK.get());
         simpleBlock(ModBlocks.SUGAR_BLOCK.get());
         pillarBlock(ModBlocks.SUGAR_CANE_BLOCK.get());
-        pillarBlock(ModBlocks.BAMBOO_BLOCK.get());
         simpleBlock(ModBlocks.GUNPOWDER_BLOCK.get());
         simpleBlock(ModBlocks.BLAZE_POWDER_BLOCK.get());
         sideBottomTopBlock(ModBlocks.MAGMA_CREAM_BLOCK.get());

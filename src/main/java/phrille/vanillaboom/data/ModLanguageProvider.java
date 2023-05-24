@@ -99,7 +99,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.CHARCOAL_BLOCK.get(), "Charcoal Block");
         add(ModBlocks.SUGAR_BLOCK.get(), "Sugar Block");
         add(ModBlocks.SUGAR_CANE_BLOCK.get(), "Sugar Cane Block");
-        add(ModBlocks.BAMBOO_BLOCK.get(), "Bamboo Block");
         add(ModBlocks.GUNPOWDER_BLOCK.get(), "Gunpowder Block");
         add(ModBlocks.BLAZE_POWDER_BLOCK.get(), "Blaze Powder Block");
         add(ModBlocks.MAGMA_CREAM_BLOCK.get(), "Magma Cream Block");
@@ -190,6 +189,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.HYDRO_ROCK_STAIRS.get(), "Hydro Rock Stairs");
         add(ModBlocks.INFERNAL_ROCK_STAIRS.get(), "Infernal Rock Stairs");
         add(ModBlocks.POLISHED_PERIDOTITE_STAIRS.get(), "Polished Peridotite Stairs");
+        add(ModBlocks.POLISHED_PRISMARINE_STAIRS.get(), "Polished Prismarine Stairs");
         add(ModBlocks.POLISHED_DARK_PRISMARINE_STAIRS.get(), "Polished Dark Prismarine Stairs");
         add(ModBlocks.POLISHED_END_STONE_STAIRS.get(), "Polished End Stone Stairs");
         add(ModBlocks.POLISHED_NETHERRACK_STAIRS.get(), "Polished Netherrack Stairs");
@@ -225,6 +225,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.HYDRO_ROCK_SLAB.get(), "Hydro Rock Slab");
         add(ModBlocks.INFERNAL_ROCK_SLAB.get(), "Infernal Rock Slab");
         add(ModBlocks.POLISHED_PERIDOTITE_SLAB.get(), "Polished Peridotite Slab");
+        add(ModBlocks.POLISHED_PRISMARINE_SLAB.get(), "Polished Prismarine Slab");
         add(ModBlocks.POLISHED_DARK_PRISMARINE_SLAB.get(), "Polished Dark Prismarine Slab");
         add(ModBlocks.POLISHED_END_STONE_SLAB.get(), "Polished End Stone Slab");
         add(ModBlocks.POLISHED_NETHERRACK_SLAB.get(), "Polished Netherrack Slab");
@@ -260,6 +261,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.HYDRO_ROCK_WALL.get(), "Hydro Rock Wall");
         add(ModBlocks.INFERNAL_ROCK_WALL.get(), "Infernal Rock Wall");
         add(ModBlocks.POLISHED_PERIDOTITE_WALL.get(), "Polished Peridotite Wall");
+        add(ModBlocks.POLISHED_PRISMARINE_WALL.get(), "Polished Prismarine Wall");
         add(ModBlocks.POLISHED_DARK_PRISMARINE_WALL.get(), "Polished Dark Prismarine Wall");
         add(ModBlocks.POLISHED_END_STONE_WALL.get(), "Polished End Stone Wall");
         add(ModBlocks.POLISHED_NETHERRACK_WALL.get(), "Polished Netherrack Wall");
@@ -515,7 +517,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.POLAR_BEAR_FUR.get(), "Polar Bear Fur");
         add(ModItems.RAW_POLAR_BEAR_MEAT.get(), "Raw Polar Bear Meat");
         add(ModItems.POLAR_BEAR_STEAK.get(), "Polar Bear Steak");
-        add(ModItems.PUMPKIN_SLICE.get(), "Pumpkin Slice");
         add(ModItems.COOKED_EGG.get(), "Cooked Egg");
         add(ModItems.DROWNED_FLESH.get(), "Drowned Flesh");
         add(ModItems.MELON_POPSICLE.get(), "Melon Popsicle");

@@ -15,6 +15,5 @@ public class LootTableHandler {
     private static final RegistryObject<DropLootModifier.Serializer> DROWNED = GLMS.register("drowned", DropLootModifier.Serializer::new);
     private static final RegistryObject<DropLootModifier.Serializer> POLAR_BEAR = GLMS.register("polar_bear", DropLootModifier.Serializer::new);
     private static final RegistryObject<DropLootModifier.Serializer> SPRUCE_LEAVES = GLMS.register("spruce_leaves", DropLootModifier.Serializer::new);
-    private static final RegistryObject<DropLootModifier.Serializer> PUMPKIN = GLMS.register("pumpkin", DropLootModifier.Serializer::new);
     private static final RegistryObject<FishingLootModifier.Serializer> FISHING = GLMS.register("fishing", FishingLootModifier.Serializer::new);
 }

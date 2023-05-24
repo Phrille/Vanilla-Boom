@@ -29,7 +29,6 @@ public class Utils {
 
     public static void addCompostMaterials() {
         ComposterBlock.COMPOSTABLES.put(ModItems.PINE_CONE.get(), 0.35F);
-        ComposterBlock.COMPOSTABLES.put(ModItems.PUMPKIN_SLICE.get(), 0.5F);
         ComposterBlock.COMPOSTABLES.put(ModItems.TOMATO.get(), 0.6F);
         ComposterBlock.COMPOSTABLES.put(ModItems.TOMATO_SEEDS.get(), 0.3F);
         ComposterBlock.COMPOSTABLES.put(ModItems.RICE_SEEDS.get(), 0.3F);
