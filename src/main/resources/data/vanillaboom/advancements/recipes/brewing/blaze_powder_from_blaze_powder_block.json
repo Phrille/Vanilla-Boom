@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:blaze_powder_from_blaze_powder_block"
+    ]
+  },
+  "criteria": {
+    "has_blaze_powder_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:blaze_powder_block"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:blaze_powder_from_blaze_powder_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_blaze_powder_block",
+      "has_the_recipe"
+    ]
+  ]
+}

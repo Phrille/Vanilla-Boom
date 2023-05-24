@@ -1,16 +1,16 @@
 {
-  "result": {
-    "item": "vanillaboom:bedrock_wall",
-    "count": 6
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "xxx",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "minecraft:bedrock"
     }
+  },
+  "result": {
+    "item": "vanillaboom:bedrock_wall",
+    "count": 6
   }
 }

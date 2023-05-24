@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:pink_dye_from_pink_dye_block"
+    ]
+  },
+  "criteria": {
+    "has_pink_dye_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:pink_dye_block"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:pink_dye_from_pink_dye_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_pink_dye_block",
+      "has_the_recipe"
+    ]
+  ]
+}

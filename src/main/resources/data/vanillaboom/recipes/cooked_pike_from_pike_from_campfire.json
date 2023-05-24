@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": {
+    "item": "vanillaboom:pike"
+  },
+  "result": "vanillaboom:cooked_pike",
+  "experience": 0.35,
+  "cookingtime": 600
+}

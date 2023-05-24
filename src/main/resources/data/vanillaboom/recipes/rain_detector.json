@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "GGG",
-    "HHH",
-    "WWW"
+    "xxx",
+    "yyy",
+    "zzz"
   ],
   "key": {
-    "H": {
-      "item": "vanillaboom:hydro_rock"
-    },
-    "G": {
+    "x": {
       "item": "minecraft:glass"
     },
-    "W": {
+    "y": {
+      "item": "vanillaboom:hydro_rock"
+    },
+    "z": {
       "tag": "minecraft:wooden_slabs"
     }
   },

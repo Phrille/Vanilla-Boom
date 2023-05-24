@@ -1,16 +1,16 @@
 {
-  "result": {
-    "item": "vanillaboom:gunpowder_block"
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "xxx",
     "xxx",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
-      "tag": "forge:gunpowder"
+      "item": "minecraft:gunpowder"
     }
+  },
+  "result": {
+    "item": "vanillaboom:gunpowder_block"
   }
 }

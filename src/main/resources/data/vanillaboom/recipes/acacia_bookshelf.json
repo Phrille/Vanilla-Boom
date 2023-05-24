@@ -1,13 +1,10 @@
 {
-  "result": {
-    "item": "vanillaboom:acacia_bookshelf"
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "xxx",
     "yyy",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "minecraft:acacia_planks"
@@ -15,5 +12,8 @@
     "y": {
       "item": "minecraft:book"
     }
+  },
+  "result": {
+    "item": "vanillaboom:acacia_bookshelf"
   }
 }

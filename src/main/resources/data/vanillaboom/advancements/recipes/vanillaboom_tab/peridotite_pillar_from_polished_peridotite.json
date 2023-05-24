@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:peridotite_pillar_from_polished_peridotite"
+    ]
+  },
+  "criteria": {
+    "has_polished_peridotite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:polished_peridotite"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:peridotite_pillar_from_polished_peridotite"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_polished_peridotite",
+      "has_the_recipe"
+    ]
+  ]
+}

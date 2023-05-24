@@ -1,15 +1,15 @@
 {
-  "type": "crafting_shaped",
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "yxy",
     "yxy"
   ],
   "key": {
-    "y": {
-      "item": "minecraft:stick"
-    },
     "x": {
       "item": "minecraft:red_nether_bricks"
+    },
+    "y": {
+      "tag": "forge:rods/wooden"
     }
   },
   "result": {

@@ -1,16 +1,17 @@
 {
-  "result": {
-    "item": "vanillaboom:snow_bricks",
-    "count": 4
-  },
+  "type": "minecraft:crafting_shaped",
+  "group": "snow_bricks",
   "pattern": [
     "xx",
     "xx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "minecraft:snow_block"
     }
+  },
+  "result": {
+    "item": "vanillaboom:snow_bricks",
+    "count": 4
   }
 }

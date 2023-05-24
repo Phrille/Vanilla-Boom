@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "diorite_pillar",
+  "pattern": [
+    "x",
+    "x"
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:polished_diorite"
+    }
+  },
+  "result": {
+    "item": "vanillaboom:diorite_pillar",
+    "count": 2
+  }
+}

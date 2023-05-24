@@ -1,15 +1,15 @@
 {
-  "result": {
-    "item": "vanillaboom:birch_wood_slab",
-    "count": 6
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "minecraft:birch_wood"
     }
+  },
+  "result": {
+    "item": "vanillaboom:birch_wood_slab",
+    "count": 6
   }
 }

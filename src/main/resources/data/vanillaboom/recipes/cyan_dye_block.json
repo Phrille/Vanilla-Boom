@@ -1,16 +1,16 @@
 {
-  "result": {
-    "item": "vanillaboom:cyan_dye_block"
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "xxx",
     "xxx",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
-      "tag": "forge:dyes/cyan"
+      "item": "minecraft:cyan_dye"
     }
+  },
+  "result": {
+    "item": "vanillaboom:cyan_dye_block"
   }
 }

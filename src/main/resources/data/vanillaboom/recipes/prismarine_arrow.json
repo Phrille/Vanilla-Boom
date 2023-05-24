@@ -1,13 +1,11 @@
 {
-  "result": {
-    "item": "vanillaboom:prismarine_arrow"
-  },
+  "type": "minecraft:crafting_shaped",
+  "group": "prismarine_arrow",
   "pattern": [
     "x",
     "y",
     "z"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "minecraft:prismarine_shard"
@@ -18,5 +16,8 @@
     "z": {
       "tag": "forge:feathers"
     }
+  },
+  "result": {
+    "item": "vanillaboom:prismarine_arrow"
   }
 }

@@ -1,18 +1,18 @@
 {
-  "result": {
-    "item": "vanillaboom:acacia_wood_fence_gate"
-  },
-  "pattern": [
-    "xyx",
-    "xyx"
-  ],
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "yxy",
+    "yxy"
+  ],
   "key": {
     "x": {
-      "tag": "forge:rods/wooden"
+      "item": "minecraft:acacia_wood"
     },
     "y": {
-      "item": "minecraft:acacia_wood"
+      "tag": "forge:rods/wooden"
     }
+  },
+  "result": {
+    "item": "vanillaboom:acacia_wood_fence_gate"
   }
 }

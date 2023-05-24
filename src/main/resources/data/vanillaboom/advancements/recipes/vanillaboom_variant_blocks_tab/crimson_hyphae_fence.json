@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:crimson_hyphae_fence"
+    ]
+  },
+  "criteria": {
+    "has_crimson_hyphae": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:crimson_hyphae"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:crimson_hyphae_fence"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_crimson_hyphae",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,16 +1,16 @@
 {
-  "result": {
-    "item": "vanillaboom:chiseled_quartz_block_wall",
-    "count": 6
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "xxx",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "minecraft:chiseled_quartz_block"
     }
+  },
+  "result": {
+    "item": "vanillaboom:chiseled_quartz_block_wall",
+    "count": 6
   }
 }

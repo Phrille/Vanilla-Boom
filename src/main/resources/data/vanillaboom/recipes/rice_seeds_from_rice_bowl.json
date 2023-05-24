@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "vanillaboom:rice_bowl"
+    }
+  ],
+  "result": {
+    "item": "vanillaboom:rice_seeds"
+  }
+}

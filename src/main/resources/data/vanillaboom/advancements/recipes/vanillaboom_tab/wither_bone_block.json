@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:wither_bone_block"
+    ]
+  },
+  "criteria": {
+    "has_wither_bone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:wither_bone"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:wither_bone_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_wither_bone",
+      "has_the_recipe"
+    ]
+  ]
+}

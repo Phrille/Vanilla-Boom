@@ -1,14 +1,11 @@
 {
-  "result": {
-    "item": "vanillaboom:red_terracotta_bricks",
-    "count": 8
-  },
+  "type": "minecraft:crafting_shaped",
+  "group": "red_terracotta_bricks",
   "pattern": [
     "xxx",
     "xyx",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "vanillaboom:terracotta_bricks"
@@ -16,5 +13,9 @@
     "y": {
       "tag": "forge:dyes/red"
     }
+  },
+  "result": {
+    "item": "vanillaboom:red_terracotta_bricks",
+    "count": 8
   }
 }

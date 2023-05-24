@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:dark_oak_wood"
+  },
+  "result": "vanillaboom:dark_oak_wood_stairs",
+  "count": 1
+}

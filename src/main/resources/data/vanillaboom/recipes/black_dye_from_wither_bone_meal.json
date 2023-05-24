@@ -1,11 +1,11 @@
 {
-  "result": {
-    "item": "minecraft:black_dye"
-  },
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
       "item": "vanillaboom:wither_bone_meal"
     }
   ],
-  "type": "minecraft:crafting_shapeless"
+  "result": {
+    "item": "minecraft:black_dye"
+  }
 }

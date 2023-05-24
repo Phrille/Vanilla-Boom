@@ -1,16 +1,16 @@
 {
-  "result": {
-    "item": "vanillaboom:magma_cream_block"
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "xxx",
     "xxx",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "minecraft:magma_cream"
     }
+  },
+  "result": {
+    "item": "vanillaboom:magma_cream_block"
   }
 }

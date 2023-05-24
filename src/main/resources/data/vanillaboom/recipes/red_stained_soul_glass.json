@@ -1,14 +1,11 @@
 {
-  "result": {
-    "item": "vanillaboom:red_stained_soul_glass",
-    "count": 8
-  },
+  "type": "minecraft:crafting_shaped",
+  "group": "red_stained_soul_glass",
   "pattern": [
     "xxx",
     "xyx",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "vanillaboom:soul_glass"
@@ -16,5 +13,9 @@
     "y": {
       "tag": "forge:dyes/red"
     }
+  },
+  "result": {
+    "item": "vanillaboom:red_stained_soul_glass",
+    "count": 8
   }
 }

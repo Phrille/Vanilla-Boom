@@ -1,16 +1,16 @@
 {
-  "result": {
-    "item": "vanillaboom:end_stone_wall",
-    "count": 6
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "xxx",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "minecraft:end_stone"
     }
+  },
+  "result": {
+    "item": "vanillaboom:end_stone_wall",
+    "count": 6
   }
 }

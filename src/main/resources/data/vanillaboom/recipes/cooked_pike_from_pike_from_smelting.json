@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "vanillaboom:pike"
+  },
+  "result": "vanillaboom:cooked_pike",
+  "experience": 0.35,
+  "cookingtime": 200
+}

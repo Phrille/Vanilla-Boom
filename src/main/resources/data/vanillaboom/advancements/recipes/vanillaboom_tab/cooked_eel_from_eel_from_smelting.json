@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:cooked_eel_from_eel_from_smelting"
+    ]
+  },
+  "criteria": {
+    "has_eel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:eel"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:cooked_eel_from_eel_from_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_eel",
+      "has_the_recipe"
+    ]
+  ]
+}

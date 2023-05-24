@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:blue_concrete_wall_from_blue_concrete_from_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_blue_concrete": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:blue_concrete"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:blue_concrete_wall_from_blue_concrete_from_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_blue_concrete",
+      "has_the_recipe"
+    ]
+  ]
+}

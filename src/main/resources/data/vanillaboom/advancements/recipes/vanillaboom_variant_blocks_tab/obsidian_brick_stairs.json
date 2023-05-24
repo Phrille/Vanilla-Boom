@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:obsidian_brick_stairs"
+    ]
+  },
+  "criteria": {
+    "has_obsidian_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:obsidian_bricks"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:obsidian_brick_stairs"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_obsidian_bricks",
+      "has_the_recipe"
+    ]
+  ]
+}

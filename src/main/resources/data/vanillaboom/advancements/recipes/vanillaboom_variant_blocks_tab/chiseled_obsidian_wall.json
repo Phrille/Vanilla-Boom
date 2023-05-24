@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:chiseled_obsidian_wall"
+    ]
+  },
+  "criteria": {
+    "has_chiseled_obsidian": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:chiseled_obsidian"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:chiseled_obsidian_wall"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_chiseled_obsidian",
+      "has_the_recipe"
+    ]
+  ]
+}

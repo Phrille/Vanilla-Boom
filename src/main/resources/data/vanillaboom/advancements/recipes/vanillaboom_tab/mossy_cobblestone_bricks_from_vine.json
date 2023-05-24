@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:mossy_cobblestone_bricks_from_vine"
+    ]
+  },
+  "criteria": {
+    "has_cobblestone_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:cobblestone_bricks"
+            ]
+          }
+        ]
+      }
+    },
+    "has_vine": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:vine"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:mossy_cobblestone_bricks_from_vine"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cobblestone_bricks",
+      "has_vine",
+      "has_the_recipe"
+    ]
+  ]
+}

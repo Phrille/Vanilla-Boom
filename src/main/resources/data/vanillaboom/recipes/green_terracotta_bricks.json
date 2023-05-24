@@ -1,16 +1,17 @@
 {
-  "result": {
-    "item": "vanillaboom:green_terracotta_bricks",
-    "count": 4
-  },
+  "type": "minecraft:crafting_shaped",
+  "group": "green_terracotta_bricks",
   "pattern": [
     "xx",
     "xx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "minecraft:green_terracotta"
     }
+  },
+  "result": {
+    "item": "vanillaboom:green_terracotta_bricks",
+    "count": 4
   }
 }

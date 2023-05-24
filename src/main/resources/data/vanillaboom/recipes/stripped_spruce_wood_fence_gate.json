@@ -1,18 +1,18 @@
 {
-  "result": {
-    "item": "vanillaboom:stripped_spruce_wood_fence_gate"
-  },
-  "pattern": [
-    "xyx",
-    "xyx"
-  ],
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "yxy",
+    "yxy"
+  ],
   "key": {
     "x": {
-      "tag": "forge:rods/wooden"
+      "item": "minecraft:stripped_spruce_wood"
     },
     "y": {
-      "item": "minecraft:stripped_spruce_wood"
+      "tag": "forge:rods/wooden"
     }
+  },
+  "result": {
+    "item": "vanillaboom:stripped_spruce_wood_fence_gate"
   }
 }

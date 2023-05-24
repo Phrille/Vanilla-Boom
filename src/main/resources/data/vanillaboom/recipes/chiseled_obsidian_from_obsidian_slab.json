@@ -1,15 +1,16 @@
 {
-  "result": {
-    "item": "vanillaboom:chiseled_obsidian"
-  },
+  "type": "minecraft:crafting_shaped",
+  "group": "chiseled_obsidian",
   "pattern": [
     "x",
     "x"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "vanillaboom:obsidian_slab"
     }
+  },
+  "result": {
+    "item": "vanillaboom:chiseled_obsidian"
   }
 }

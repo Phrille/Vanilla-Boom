@@ -1,17 +1,17 @@
 {
-  "result": {
-    "item": "vanillaboom:bedrock_stairs",
-    "count": 4
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "x  ",
     "xx ",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "minecraft:bedrock"
     }
+  },
+  "result": {
+    "item": "vanillaboom:bedrock_stairs",
+    "count": 4
   }
 }

@@ -1,17 +1,17 @@
 {
-  "result": {
-    "item": "vanillaboom:chiseled_polished_blackstone_stairs",
-    "count": 4
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "x  ",
     "xx ",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "minecraft:chiseled_polished_blackstone"
     }
+  },
+  "result": {
+    "item": "vanillaboom:chiseled_polished_blackstone_stairs",
+    "count": 4
   }
 }

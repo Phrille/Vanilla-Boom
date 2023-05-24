@@ -1,16 +1,17 @@
 {
-  "result": {
-    "item": "vanillaboom:prismarine_pillar",
-    "count": 2
-  },
+  "type": "minecraft:crafting_shaped",
+  "group": "prismarine_pillar",
   "pattern": [
     "x",
     "x"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "vanillaboom:polished_prismarine"
     }
+  },
+  "result": {
+    "item": "vanillaboom:prismarine_pillar",
+    "count": 2
   }
 }

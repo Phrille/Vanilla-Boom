@@ -1,16 +1,16 @@
 {
-  "result": {
-    "item": "vanillaboom:prismarine_crystal_block"
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "xxx",
     "xxx",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "minecraft:prismarine_crystals"
     }
+  },
+  "result": {
+    "item": "vanillaboom:prismarine_crystal_block"
   }
 }

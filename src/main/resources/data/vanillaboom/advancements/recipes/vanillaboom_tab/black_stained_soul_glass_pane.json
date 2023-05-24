@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:black_stained_soul_glass_pane"
+    ]
+  },
+  "criteria": {
+    "has_black_stained_soul_glass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:black_stained_soul_glass"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:black_stained_soul_glass_pane"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_black_stained_soul_glass",
+      "has_the_recipe"
+    ]
+  ]
+}

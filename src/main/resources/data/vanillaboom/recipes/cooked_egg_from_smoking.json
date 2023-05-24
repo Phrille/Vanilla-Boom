@@ -1,9 +1,0 @@
-{
-  "type": "smoking",
-  "ingredient": {
-    "item": "minecraft:egg"
-  },
-  "result": "vanillaboom:cooked_egg",
-  "experience": 0.3,
-  "cookingtime": 100
-}

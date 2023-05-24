@@ -1,16 +1,16 @@
 {
-  "result": {
-    "item": "vanillaboom:smooth_stone_wall",
-    "count": 6
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "xxx",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "minecraft:smooth_stone"
     }
+  },
+  "result": {
+    "item": "vanillaboom:smooth_stone_wall",
+    "count": 6
   }
 }

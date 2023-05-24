@@ -1,13 +1,9 @@
 {
-  "result": {
-    "item": "vanillaboom:oak_wood_fence",
-    "count": 3
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "xyx",
     "xyx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "minecraft:oak_wood"
@@ -15,5 +11,9 @@
     "y": {
       "tag": "forge:rods/wooden"
     }
+  },
+  "result": {
+    "item": "vanillaboom:oak_wood_fence",
+    "count": 3
   }
 }

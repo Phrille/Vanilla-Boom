@@ -1,15 +1,15 @@
 {
-  "type": "crafting_shaped",
+  "type": "minecraft:crafting_shaped",
   "pattern": [
-    "###",
-    "XXX",
-    "###"
+    "xxx",
+    "yyy",
+    "xxx"
   ],
   "key": {
-    "#": {
+    "x": {
       "item": "minecraft:oak_planks"
     },
-    "X": {
+    "y": {
       "item": "minecraft:book"
     }
   },

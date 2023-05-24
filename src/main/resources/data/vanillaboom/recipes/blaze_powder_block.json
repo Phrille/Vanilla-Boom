@@ -1,16 +1,16 @@
 {
-  "result": {
-    "item": "vanillaboom:blaze_powder_block"
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "xxx",
     "xxx",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "minecraft:blaze_powder"
     }
+  },
+  "result": {
+    "item": "vanillaboom:blaze_powder_block"
   }
 }

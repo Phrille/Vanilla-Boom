@@ -1,25 +1,25 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "DAD",
-    "BEB",
-    "CCC"
+    "xyx",
+    "ziz",
+    "jjj"
   ],
   "key": {
-    "A": {
-      "item": "minecraft:milk_bucket"
+    "x": {
+      "item": "vanillaboom:chocolate"
     },
-    "B": {
+    "y": {
+      "tag": "forge:milk"
+    },
+    "z": {
       "item": "minecraft:sugar"
     },
-    "C": {
-      "item": "minecraft:wheat"
+    "i": {
+      "tag": "forge:eggs"
     },
-    "E": {
-      "item": "minecraft:egg"
-    },
-    "D": {
-      "item": "vanillaboom:chocolate"
+    "j": {
+      "tag": "forge:crops/wheat"
     }
   },
   "result": {

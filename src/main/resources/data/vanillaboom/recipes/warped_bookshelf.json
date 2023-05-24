@@ -1,19 +1,19 @@
 {
-  "result": {
-    "item": "vanillaboom:warped_bookshelf"
-  },
-  "pattern": [
-    "XXX",
-    "YYY",
-    "XXX"
-  ],
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "yyy",
+    "xxx"
+  ],
   "key": {
-    "X": {
+    "x": {
       "item": "minecraft:warped_planks"
     },
-    "Y": {
+    "y": {
       "item": "minecraft:book"
     }
+  },
+  "result": {
+    "item": "vanillaboom:warped_bookshelf"
   }
 }

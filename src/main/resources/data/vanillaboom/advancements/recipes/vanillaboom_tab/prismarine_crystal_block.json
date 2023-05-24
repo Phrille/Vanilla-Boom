@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:prismarine_crystal_block"
+    ]
+  },
+  "criteria": {
+    "has_prismarine_crystals": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:prismarine_crystals"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:prismarine_crystal_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_prismarine_crystals",
+      "has_the_recipe"
+    ]
+  ]
+}

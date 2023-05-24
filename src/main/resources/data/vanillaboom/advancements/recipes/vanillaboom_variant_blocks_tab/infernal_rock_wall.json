@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:infernal_rock_wall"
+    ]
+  },
+  "criteria": {
+    "has_infernal_rock": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:infernal_rock"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:infernal_rock_wall"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_infernal_rock",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,16 +1,16 @@
 {
-  "result": {
-    "item": "vanillaboom:black_dye_block"
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "xxx",
     "xxx",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
-      "tag": "forge:dyes/black"
+      "item": "minecraft:black_dye"
     }
+  },
+  "result": {
+    "item": "vanillaboom:black_dye_block"
   }
 }

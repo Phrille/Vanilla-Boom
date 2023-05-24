@@ -9,11 +9,17 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
+import phrille.vanillaboom.block.ModSlabBlock;
+import phrille.vanillaboom.block.ModStairBlock;
+import phrille.vanillaboom.block.ModWallBlock;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.ModTags;
 
@@ -138,7 +144,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         stainedSoulGlass(finishedRecipe, ModBlocks.RED_STAINED_SOUL_GLASS.get(), ModBlocks.RED_STAINED_SOUL_GLASS_PANE.get(), Tags.Items.DYES_RED);
         stainedSoulGlass(finishedRecipe, ModBlocks.BLACK_STAINED_SOUL_GLASS.get(), ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get(), Tags.Items.DYES_BLACK);
         ShapedRecipeBuilder.shaped(ModBlocks.RAIN_DETECTOR.get())
-                .define('x', Tags.Items.GLASS)
+                .define('x', Blocks.GLASS)
                 .define('y', ModBlocks.HYDRO_ROCK.get())
                 .define('z', ItemTags.WOODEN_SLABS)
                 .pattern("xxx")
@@ -153,8 +159,52 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(finishedRecipe);
         oneToOneShapeless(finishedRecipe, Items.RED_DYE, ModBlocks.ROSE.get(), 1);
-        //TODO: check suspicious stew
-        //TODO: Block variants
+        ModDataGenerator.STAIRS.forEach(pair -> stair(finishedRecipe, (ModStairBlock) pair.getFirst()));
+        ModDataGenerator.SLABS.forEach(pair -> slab(finishedRecipe, (ModSlabBlock) pair.getFirst()));
+        ModDataGenerator.WALLS.forEach(block -> wall(finishedRecipe, (ModWallBlock) block));
+        ModDataGenerator.FENCES.forEach(pair -> fence(finishedRecipe, (FenceBlock) pair.getFirst(), pair.getSecond()));
+        ModDataGenerator.FENCE_GATES.forEach(pair -> fenceGate(finishedRecipe, (FenceGateBlock) pair.getFirst(), pair.getSecond()));
+        variants(finishedRecipe, ModBlocks.COBBLESTONE_BRICK_STAIRS.get(), ModBlocks.COBBLESTONE_BRICK_SLAB.get(), ModBlocks.COBBLESTONE_BRICK_WALL.get(), Blocks.COBBLESTONE);
+        variants(finishedRecipe, ModBlocks.MOSSY_COBBLESTONE_BRICK_STAIRS.get(), ModBlocks.MOSSY_COBBLESTONE_BRICK_SLAB.get(), ModBlocks.MOSSY_COBBLESTONE_BRICK_WALL.get(), Blocks.MOSSY_COBBLESTONE);
+        variants(finishedRecipe, ModBlocks.OBSIDIAN_BRICK_STAIRS.get(), ModBlocks.OBSIDIAN_BRICK_SLAB.get(), ModBlocks.OBSIDIAN_BRICK_WALL.get(), Blocks.OBSIDIAN);
+        variants(finishedRecipe, ModBlocks.SNOW_BRICK_STAIRS.get(), ModBlocks.SNOW_BRICK_SLAB.get(), ModBlocks.SNOW_BRICK_WALL.get(), Blocks.SNOW_BLOCK);
+        variants(finishedRecipe, ModBlocks.TERRACOTTA_BRICK_STAIRS.get(), ModBlocks.TERRACOTTA_BRICK_SLAB.get(), ModBlocks.TERRACOTTA_BRICK_WALL.get(), Blocks.TERRACOTTA);
+        variants(finishedRecipe, ModBlocks.WHITE_TERRACOTTA_BRICK_STAIRS.get(), ModBlocks.WHITE_TERRACOTTA_BRICK_SLAB.get(), ModBlocks.WHITE_TERRACOTTA_BRICK_WALL.get(), Blocks.WHITE_TERRACOTTA);
+        variants(finishedRecipe, ModBlocks.ORANGE_TERRACOTTA_BRICK_STAIRS.get(), ModBlocks.ORANGE_TERRACOTTA_BRICK_SLAB.get(), ModBlocks.ORANGE_TERRACOTTA_BRICK_WALL.get(), Blocks.ORANGE_TERRACOTTA);
+        variants(finishedRecipe, ModBlocks.MAGENTA_TERRACOTTA_BRICK_STAIRS.get(), ModBlocks.MAGENTA_TERRACOTTA_BRICK_SLAB.get(), ModBlocks.MAGENTA_TERRACOTTA_BRICK_WALL.get(), Blocks.MAGENTA_TERRACOTTA);
+        variants(finishedRecipe, ModBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_STAIRS.get(), ModBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_SLAB.get(), ModBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_WALL.get(), Blocks.LIGHT_BLUE_TERRACOTTA);
+        variants(finishedRecipe, ModBlocks.YELLOW_TERRACOTTA_BRICK_STAIRS.get(), ModBlocks.YELLOW_TERRACOTTA_BRICK_SLAB.get(), ModBlocks.YELLOW_TERRACOTTA_BRICK_WALL.get(), Blocks.YELLOW_TERRACOTTA);
+        variants(finishedRecipe, ModBlocks.LIME_TERRACOTTA_BRICK_STAIRS.get(), ModBlocks.LIME_TERRACOTTA_BRICK_SLAB.get(), ModBlocks.LIME_TERRACOTTA_BRICK_WALL.get(), Blocks.LIME_TERRACOTTA);
+        variants(finishedRecipe, ModBlocks.PINK_TERRACOTTA_BRICK_STAIRS.get(), ModBlocks.PINK_TERRACOTTA_BRICK_SLAB.get(), ModBlocks.PINK_TERRACOTTA_BRICK_WALL.get(), Blocks.PINK_TERRACOTTA);
+        variants(finishedRecipe, ModBlocks.GRAY_TERRACOTTA_BRICK_STAIRS.get(), ModBlocks.GRAY_TERRACOTTA_BRICK_SLAB.get(), ModBlocks.GRAY_TERRACOTTA_BRICK_WALL.get(), Blocks.GRAY_TERRACOTTA);
+        variants(finishedRecipe, ModBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_STAIRS.get(), ModBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_SLAB.get(), ModBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_WALL.get(), Blocks.LIGHT_GRAY_TERRACOTTA);
+        variants(finishedRecipe, ModBlocks.CYAN_TERRACOTTA_BRICK_STAIRS.get(), ModBlocks.CYAN_TERRACOTTA_BRICK_SLAB.get(), ModBlocks.CYAN_TERRACOTTA_BRICK_WALL.get(), Blocks.CYAN_TERRACOTTA);
+        variants(finishedRecipe, ModBlocks.PURPLE_TERRACOTTA_BRICK_STAIRS.get(), ModBlocks.PURPLE_TERRACOTTA_BRICK_SLAB.get(), ModBlocks.PURPLE_TERRACOTTA_BRICK_WALL.get(), Blocks.PURPLE_TERRACOTTA);
+        variants(finishedRecipe, ModBlocks.BLUE_TERRACOTTA_BRICK_STAIRS.get(), ModBlocks.BLUE_TERRACOTTA_BRICK_SLAB.get(), ModBlocks.BLUE_TERRACOTTA_BRICK_WALL.get(), Blocks.BLUE_TERRACOTTA);
+        variants(finishedRecipe, ModBlocks.BROWN_TERRACOTTA_BRICK_STAIRS.get(), ModBlocks.BROWN_TERRACOTTA_BRICK_SLAB.get(), ModBlocks.BROWN_TERRACOTTA_BRICK_WALL.get(), Blocks.BROWN_TERRACOTTA);
+        variants(finishedRecipe, ModBlocks.GREEN_TERRACOTTA_BRICK_STAIRS.get(), ModBlocks.GREEN_TERRACOTTA_BRICK_SLAB.get(), ModBlocks.GREEN_TERRACOTTA_BRICK_WALL.get(), Blocks.GREEN_TERRACOTTA);
+        variants(finishedRecipe, ModBlocks.RED_TERRACOTTA_BRICK_STAIRS.get(), ModBlocks.RED_TERRACOTTA_BRICK_SLAB.get(), ModBlocks.RED_TERRACOTTA_BRICK_WALL.get(), Blocks.RED_TERRACOTTA);
+        variants(finishedRecipe, ModBlocks.BLACK_TERRACOTTA_BRICK_STAIRS.get(), ModBlocks.BLACK_TERRACOTTA_BRICK_SLAB.get(), ModBlocks.BLACK_TERRACOTTA_BRICK_WALL.get(), Blocks.BLACK_TERRACOTTA);
+        variants(finishedRecipe, ModBlocks.POLISHED_PERIDOTITE_STAIRS.get(), ModBlocks.POLISHED_PERIDOTITE_SLAB.get(), ModBlocks.POLISHED_PERIDOTITE_WALL.get(), ModBlocks.PERIDOTITE.get());
+        variants(finishedRecipe, ModBlocks.POLISHED_PRISMARINE_STAIRS.get(), ModBlocks.POLISHED_PRISMARINE_SLAB.get(), ModBlocks.POLISHED_PRISMARINE_WALL.get(), List.of(Blocks.PRISMARINE, Blocks.PRISMARINE_BRICKS));
+        variants(finishedRecipe, ModBlocks.POLISHED_DARK_PRISMARINE_STAIRS.get(), ModBlocks.POLISHED_DARK_PRISMARINE_SLAB.get(), ModBlocks.POLISHED_DARK_PRISMARINE_WALL.get(), Blocks.DARK_PRISMARINE);
+        variants(finishedRecipe, ModBlocks.POLISHED_END_STONE_STAIRS.get(), ModBlocks.POLISHED_END_STONE_SLAB.get(), ModBlocks.POLISHED_END_STONE_WALL.get(), List.of(Blocks.END_STONE, Blocks.END_STONE_BRICKS));
+        variants(finishedRecipe, ModBlocks.POLISHED_NETHERRACK_STAIRS.get(), ModBlocks.POLISHED_NETHERRACK_SLAB.get(), ModBlocks.POLISHED_NETHERRACK_WALL.get(), Blocks.NETHERRACK);
+        variants(finishedRecipe, ModBlocks.CHISELED_RED_NETHER_BRICK_STAIRS.get(), ModBlocks.CHISELED_RED_NETHER_BRICK_SLAB.get(), ModBlocks.CHISELED_RED_NETHER_BRICK_WALL.get(), Blocks.RED_NETHER_BRICKS);
+        variants(finishedRecipe, ModBlocks.CHISELED_PURPUR_BLOCK_STAIRS.get(), ModBlocks.CHISELED_PURPUR_BLOCK_SLAB.get(), ModBlocks.CHISELED_PURPUR_BLOCK_WALL.get(), Blocks.PURPUR_BLOCK);
+        variants(finishedRecipe, ModBlocks.CHISELED_OBSIDIAN_STAIRS.get(), ModBlocks.CHISELED_OBSIDIAN_SLAB.get(), ModBlocks.CHISELED_OBSIDIAN_WALL.get(), List.of(Blocks.OBSIDIAN, ModBlocks.OBSIDIAN_BRICKS.get()));
+        variants(finishedRecipe, ModBlocks.CHISELED_STONE_BRICK_STAIRS.get(), ModBlocks.CHISELED_STONE_BRICK_SLAB.get(), ModBlocks.CHISELED_STONE_BRICK_WALL.get(), List.of(Blocks.STONE, Blocks.STONE_BRICKS));
+        variants(finishedRecipe, ModBlocks.CHISELED_SANDSTONE_STAIRS.get(), ModBlocks.CHISELED_SANDSTONE_SLAB.get(), ModBlocks.CHISELED_SANDSTONE_WALL.get(), Blocks.SANDSTONE);
+        variants(finishedRecipe, ModBlocks.CHISELED_RED_SANDSTONE_STAIRS.get(), ModBlocks.CHISELED_RED_SANDSTONE_SLAB.get(), ModBlocks.CHISELED_RED_SANDSTONE_WALL.get(), Blocks.RED_SANDSTONE);
+        variants(finishedRecipe, ModBlocks.CHISELED_NETHER_BRICK_STAIRS.get(), ModBlocks.CHISELED_NETHER_BRICK_SLAB.get(), ModBlocks.CHISELED_NETHER_BRICK_WALL.get(), Blocks.NETHER_BRICKS);
+        variants(finishedRecipe, ModBlocks.CHISELED_POLISHED_BLACKSTONE_STAIRS.get(), ModBlocks.CHISELED_POLISHED_BLACKSTONE_SLAB.get(), ModBlocks.CHISELED_POLISHED_BLACKSTONE_WALL.get(), List.of(Blocks.BLACKSTONE, Blocks.POLISHED_BLACKSTONE));
+        variants(finishedRecipe, ModBlocks.CHISELED_QUARTZ_BLOCK_STAIRS.get(), ModBlocks.CHISELED_QUARTZ_BLOCK_SLAB.get(), ModBlocks.CHISELED_QUARTZ_BLOCK_WALL.get(), Blocks.QUARTZ_BLOCK);
+        variants(finishedRecipe, ModBlocks.QUARTZ_BRICK_STAIRS.get(), ModBlocks.QUARTZ_BRICK_SLAB.get(), ModBlocks.QUARTZ_BRICK_WALL.get(), Blocks.QUARTZ_BLOCK);
+        variants(finishedRecipe, ModBlocks.CUT_SANDSTONE_STAIRS.get(), ModBlocks.CUT_SANDSTONE_WALL.get(), Blocks.SANDSTONE);
+        variants(finishedRecipe, ModBlocks.CUT_RED_SANDSTONE_STAIRS.get(), ModBlocks.CUT_RED_SANDSTONE_WALL.get(), Blocks.RED_SANDSTONE);
+        variants(finishedRecipe, ModBlocks.POLISHED_GRANITE_WALL.get(), Blocks.GRANITE);
+        variants(finishedRecipe, ModBlocks.POLISHED_DIORITE_WALL.get(), Blocks.DIORITE);
+        variants(finishedRecipe, ModBlocks.POLISHED_ANDESITE_WALL.get(), Blocks.ANDESITE);
 
         //Items
         smeltingAndBlasting(finishedRecipe, ModItems.MAGMA_BRICK.get(), Blocks.MAGMA_BLOCK, 0.1F);
@@ -183,8 +233,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         surroundedShaped(finishedRecipe, Items.ITEM_FRAME, Tags.Items.RODS_WOODEN, ModItems.POLAR_BEAR_FUR.get(), 4);
         oneToOneShapeless(finishedRecipe, ModItems.TOMATO_SEEDS.get(), ModItems.TOMATO.get(), 1);
         oneToOneShapeless(finishedRecipe, ModItems.RICE_SEEDS.get(), ModItems.RICE_BOWL.get(), 1);
-        oneToOneShapeless(finishedRecipe, ModItems.PUMPKIN_SLICE.get(), Items.PUMPKIN_SEEDS, 1);
-        threeByThreeShaped(finishedRecipe, Blocks.PUMPKIN, ModItems.PUMPKIN_SLICE.get(), 1);
         cooking(finishedRecipe, ModItems.COOKED_EGG.get(), Items.EGG, 0.3F);
         ShapelessRecipeBuilder.shapeless(ModItems.MELON_POPSICLE.get(), 4)
                 .requires(Items.MELON)
@@ -235,6 +283,35 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         cooking(finishedRecipe, ModItems.COOKED_PERCH.get(), ModItems.PERCH.get(), 0.35F);
         cooking(finishedRecipe, ModItems.COOKED_PIKE.get(), ModItems.PIKE.get(), 0.35F);
         cooking(finishedRecipe, ModItems.COOKED_EEL.get(), ModItems.EEL.get(), 0.35F);
+
+        //Altered recipes from vanilla
+        ShapedRecipeBuilder.shaped(Blocks.BONE_BLOCK)
+                .define('x', Items.BONE)
+                .pattern("xxx")
+                .pattern("xxx")
+                .pattern("xxx")
+                .unlockedBy(getHasName(Items.BONE), has(Items.BONE))
+                .save(finishedRecipe);
+        ShapelessRecipeBuilder.shapeless(Items.BONE, 9)
+                .requires(Blocks.BONE_BLOCK)
+                .unlockedBy(getHasName(Blocks.BONE_BLOCK), has(Blocks.BONE_BLOCK))
+                .save(finishedRecipe, "bone_meal_from_bone_block");
+        ShapedRecipeBuilder.shaped(Blocks.BOOKSHELF)
+                .define('x', Blocks.OAK_PLANKS)
+                .define('y', Items.BOOK)
+                .pattern("xxx")
+                .pattern("yyy")
+                .pattern("xxx")
+                .unlockedBy(getHasName(Blocks.BOOKSHELF), has(Blocks.BOOKSHELF))
+                .unlockedBy(getHasName(Items.BOOK), has(Items.BOOK))
+                .save(finishedRecipe);
+        ShapedRecipeBuilder.shaped(Blocks.NETHER_BRICK_FENCE, 3)
+                .define('x', Items.NETHER_BRICK)
+                .define('y', Tags.Items.RODS_WOODEN)
+                .pattern("xyx")
+                .pattern("xyx")
+                .unlockedBy(getHasName(Items.NETHER_BRICK), has(Items.NETHER_BRICK))
+                .save(finishedRecipe);
     }
 
     //Templates
@@ -292,6 +369,62 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         smelting(finishedRecipe, result, ingredient, xp);
         smoking(finishedRecipe, result, ingredient, xp);
         campFire(finishedRecipe, result, ingredient, xp);
+    }
+
+    public void stair(Consumer<FinishedRecipe> finishedRecipe, ModStairBlock stair) {
+        stairsShaped(finishedRecipe, stair.asItem(), stair.getParent().asItem());
+        stonecutting(finishedRecipe, stair.asItem(), stair.getParent().asItem());
+    }
+
+    public void slab(Consumer<FinishedRecipe> finishedRecipe, ModSlabBlock slab) {
+        slabShaped(finishedRecipe, slab.asItem(), slab.getParent().asItem());
+        stonecutting(finishedRecipe, slab.asItem(), slab.getParent().asItem(), 2);
+    }
+
+    public void wall(Consumer<FinishedRecipe> finishedRecipe, ModWallBlock wall) {
+        wallShaped(finishedRecipe, wall.asItem(), wall.getParent().asItem());
+        stonecutting(finishedRecipe, wall.asItem(), wall.getParent().asItem());
+    }
+
+    public void fence(Consumer<FinishedRecipe> finishedRecipe, FenceBlock fence, Block parent) {
+        fenceShaped(finishedRecipe, fence.asItem(), parent.asItem());
+    }
+
+    public void fenceGate(Consumer<FinishedRecipe> finishedRecipe, FenceGateBlock fenceGate, Block parent) {
+        fenceGateShaped(finishedRecipe, fenceGate.asItem(), parent.asItem());
+    }
+
+    public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike stair, ItemLike slab, ItemLike wall, ItemLike block) {
+        variants(finishedRecipe, stair, slab, wall, List.of(block));
+    }
+
+    public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike stair, ItemLike slab, ItemLike wall, List<ItemLike> blocks) {
+        blocks.forEach(block -> {
+            stonecutting(finishedRecipe, stair, block);
+            stonecutting(finishedRecipe, slab, block, 2);
+            stonecutting(finishedRecipe, wall, block);
+        });
+    }
+
+    public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike stair, ItemLike wall, ItemLike block) {
+        variants(finishedRecipe, stair, wall, List.of(block));
+    }
+
+    public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike stair, ItemLike wall, List<ItemLike> blocks) {
+        blocks.forEach(block -> {
+            stonecutting(finishedRecipe, stair, block);
+            stonecutting(finishedRecipe, wall, block);
+        });
+    }
+
+    public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike wall, ItemLike block) {
+        variants(finishedRecipe, wall, List.of(block));
+    }
+
+    public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike wall, List<ItemLike> blocks) {
+        blocks.forEach(block -> {
+            stonecutting(finishedRecipe, wall, block);
+        });
     }
 
     //Shaped Recipe
@@ -393,6 +526,53 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('x', ingredient)
                 .pattern("xxx")
                 .pattern("xxx")
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(finishedRecipe);
+    }
+
+    public void stairsShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+        ShapedRecipeBuilder.shaped(result, 4)
+                .define('x', ingredient)
+                .pattern("x  ")
+                .pattern("xx ")
+                .pattern("xxx")
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(finishedRecipe);
+    }
+
+    public void slabShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+        ShapedRecipeBuilder.shaped(result, 6)
+                .define('x', ingredient)
+                .pattern("xxx")
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(finishedRecipe);
+    }
+
+    public void wallShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+        ShapedRecipeBuilder.shaped(result, 6)
+                .define('x', ingredient)
+                .pattern("xxx")
+                .pattern("xxx")
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(finishedRecipe);
+    }
+
+    public void fenceShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+        ShapedRecipeBuilder.shaped(result, 3)
+                .define('x', ingredient)
+                .define('y', Tags.Items.RODS_WOODEN)
+                .pattern("xyx")
+                .pattern("xyx")
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(finishedRecipe);
+    }
+
+    public void fenceGateShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+        ShapedRecipeBuilder.shaped(result)
+                .define('x', ingredient)
+                .define('y', Tags.Items.RODS_WOODEN)
+                .pattern("yxy")
+                .pattern("yxy")
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(finishedRecipe);
     }

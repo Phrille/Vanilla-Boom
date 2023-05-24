@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "tag": "vanillaboom:potato_soup_ingredients"
+    },
+    {
+      "tag": "vanillaboom:potato_soup_ingredients"
+    }
+  ],
+  "result": {
+    "item": "vanillaboom:potato_soup"
+  }
+}

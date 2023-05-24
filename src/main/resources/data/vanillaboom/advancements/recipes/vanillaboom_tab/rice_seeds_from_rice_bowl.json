@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:rice_seeds_from_rice_bowl"
+    ]
+  },
+  "criteria": {
+    "has_rice_bowl": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:rice_bowl"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:rice_seeds_from_rice_bowl"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rice_bowl",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "type": "crafting_shaped",
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "yxy",
     "yxy"
@@ -9,7 +9,7 @@
       "item": "minecraft:nether_bricks"
     },
     "y": {
-      "item": "minecraft:stick"
+      "tag": "forge:rods/wooden"
     }
   },
   "result": {

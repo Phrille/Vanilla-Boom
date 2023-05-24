@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:chiseled_obsidian_slab_from_chiseled_obsidian_from_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_chiseled_obsidian": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:chiseled_obsidian"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:chiseled_obsidian_slab_from_chiseled_obsidian_from_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_chiseled_obsidian",
+      "has_the_recipe"
+    ]
+  ]
+}

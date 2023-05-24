@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:stripped_spruce_wood_slab"
+    ]
+  },
+  "criteria": {
+    "has_stripped_spruce_wood": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:stripped_spruce_wood"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:stripped_spruce_wood_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_stripped_spruce_wood",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,20 +1,20 @@
 {
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "y y",
+    "yxy",
+    "y y"
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:warped_slab"
+    },
+    "y": {
+      "tag": "forge:rods/wooden"
+    }
+  },
   "result": {
     "item": "vanillaboom:warped_ladder",
     "count": 3
-  },
-  "pattern": [
-    "x x",
-    "xyx",
-    "x x"
-  ],
-  "type": "minecraft:crafting_shaped",
-  "key": {
-    "x": {
-      "tag": "forge:rods/wooden"
-    },
-    "y": {
-      "item": "minecraft:warped_slab"
-    }
   }
 }

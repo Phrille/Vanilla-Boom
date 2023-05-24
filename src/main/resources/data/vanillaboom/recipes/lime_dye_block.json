@@ -1,16 +1,16 @@
 {
-  "result": {
-    "item": "vanillaboom:lime_dye_block"
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "xxx",
     "xxx",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
-      "tag": "forge:dyes/lime"
+      "item": "minecraft:lime_dye"
     }
+  },
+  "result": {
+    "item": "vanillaboom:lime_dye_block"
   }
 }

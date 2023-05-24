@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "tag": "forge:crops/potato"
+    },
+    {
+      "tag": "forge:cooked_meats"
+    },
+    {
+      "tag": "forge:cooked_meats"
+    }
+  ],
+  "result": {
+    "item": "vanillaboom:meat_soup"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:brown_dye_block"
+    ]
+  },
+  "criteria": {
+    "has_brown_dye": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:brown_dye"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:brown_dye_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_brown_dye",
+      "has_the_recipe"
+    ]
+  ]
+}

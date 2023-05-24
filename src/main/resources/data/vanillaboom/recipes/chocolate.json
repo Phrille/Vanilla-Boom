@@ -1,17 +1,18 @@
 {
-  "type": "crafting_shapeless",
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "minecraft:sugar"
+      "item": "minecraft:milk_bucket"
     },
     {
       "item": "minecraft:cocoa_beans"
     },
     {
-      "item": "minecraft:milk_bucket"
+      "item": "minecraft:sugar"
     }
   ],
   "result": {
-    "item": "vanillaboom:chocolate"
+    "item": "vanillaboom:chocolate",
+    "count": 2
   }
 }

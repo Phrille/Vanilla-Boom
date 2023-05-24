@@ -1,6 +1,5 @@
 {
-  "type": "crafting_shapeless",
-  "group": "red_dye",
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
       "item": "vanillaboom:rose"

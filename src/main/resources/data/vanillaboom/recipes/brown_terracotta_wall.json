@@ -1,16 +1,16 @@
 {
-  "result": {
-    "item": "vanillaboom:brown_terracotta_wall",
-    "count": 6
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "xxx",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "minecraft:brown_terracotta"
     }
+  },
+  "result": {
+    "item": "vanillaboom:brown_terracotta_wall",
+    "count": 6
   }
 }

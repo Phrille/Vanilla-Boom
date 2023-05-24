@@ -1,17 +1,20 @@
 {
-  "result": {
-    "item": "vanillaboom:fish_soup"
-  },
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
       "item": "minecraft:bowl"
     },
     {
-      "tag": "minecraft:fishes"
+      "item": "minecraft:sea_pickle"
     },
     {
-      "tag": "minecraft:fishes"
+      "tag": "forge:cooked_fishes"
+    },
+    {
+      "tag": "forge:cooked_fishes"
     }
-  ]
+  ],
+  "result": {
+    "item": "vanillaboom:fish_soup"
+  }
 }

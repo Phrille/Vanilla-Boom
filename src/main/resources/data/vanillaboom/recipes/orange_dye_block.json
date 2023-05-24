@@ -1,16 +1,16 @@
 {
-  "result": {
-    "item": "vanillaboom:orange_dye_block"
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "xxx",
     "xxx",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
-      "tag": "forge:dyes/orange"
+      "item": "minecraft:orange_dye"
     }
+  },
+  "result": {
+    "item": "vanillaboom:orange_dye_block"
   }
 }

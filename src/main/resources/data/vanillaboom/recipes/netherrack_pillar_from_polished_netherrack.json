@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "netherrack_pillar",
+  "pattern": [
+    "x",
+    "x"
+  ],
+  "key": {
+    "x": {
+      "item": "vanillaboom:polished_netherrack"
+    }
+  },
+  "result": {
+    "item": "vanillaboom:netherrack_pillar",
+    "count": 2
+  }
+}

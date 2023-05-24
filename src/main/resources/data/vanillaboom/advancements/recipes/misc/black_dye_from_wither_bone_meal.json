@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:black_dye_from_wither_bone_meal"
+    ]
+  },
+  "criteria": {
+    "has_wither_bone_meal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:wither_bone_meal"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:black_dye_from_wither_bone_meal"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_wither_bone_meal",
+      "has_the_recipe"
+    ]
+  ]
+}

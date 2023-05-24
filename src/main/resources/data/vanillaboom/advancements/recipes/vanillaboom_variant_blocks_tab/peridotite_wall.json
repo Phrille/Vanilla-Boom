@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:peridotite_wall"
+    ]
+  },
+  "criteria": {
+    "has_peridotite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:peridotite"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:peridotite_wall"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_peridotite",
+      "has_the_recipe"
+    ]
+  ]
+}

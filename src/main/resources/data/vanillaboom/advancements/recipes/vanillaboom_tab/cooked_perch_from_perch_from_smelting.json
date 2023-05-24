@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:cooked_perch_from_perch_from_smelting"
+    ]
+  },
+  "criteria": {
+    "has_perch": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:perch"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:cooked_perch_from_perch_from_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_perch",
+      "has_the_recipe"
+    ]
+  ]
+}

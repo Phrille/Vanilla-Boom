@@ -1,18 +1,18 @@
 {
-  "result": {
-    "item": "vanillaboom:oak_wood_fence_gate"
-  },
-  "pattern": [
-    "xyx",
-    "xyx"
-  ],
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "yxy",
+    "yxy"
+  ],
   "key": {
     "x": {
-      "tag": "forge:rods/wooden"
+      "item": "minecraft:oak_wood"
     },
     "y": {
-      "item": "minecraft:oak_wood"
+      "tag": "forge:rods/wooden"
     }
+  },
+  "result": {
+    "item": "vanillaboom:oak_wood_fence_gate"
   }
 }

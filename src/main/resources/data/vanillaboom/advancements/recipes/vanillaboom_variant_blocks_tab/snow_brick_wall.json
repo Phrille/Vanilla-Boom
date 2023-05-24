@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:snow_brick_wall"
+    ]
+  },
+  "criteria": {
+    "has_snow_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:snow_bricks"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:snow_brick_wall"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_snow_bricks",
+      "has_the_recipe"
+    ]
+  ]
+}

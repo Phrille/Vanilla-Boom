@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:item_frame_from_polar_bear_fur"
+    ]
+  },
+  "criteria": {
+    "has_polar_bear_fur": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:polar_bear_fur"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:item_frame_from_polar_bear_fur"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_polar_bear_fur",
+      "has_the_recipe"
+    ]
+  ]
+}

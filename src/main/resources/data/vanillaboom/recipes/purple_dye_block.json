@@ -1,16 +1,16 @@
 {
-  "result": {
-    "item": "vanillaboom:purple_dye_block"
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "xxx",
     "xxx",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
-      "tag": "forge:dyes/purple"
+      "item": "minecraft:purple_dye"
     }
+  },
+  "result": {
+    "item": "vanillaboom:purple_dye_block"
   }
 }

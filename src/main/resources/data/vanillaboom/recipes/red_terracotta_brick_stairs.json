@@ -1,17 +1,17 @@
 {
-  "result": {
-    "item": "vanillaboom:red_terracotta_brick_stairs",
-    "count": 4
-  },
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "x  ",
     "xx ",
     "xxx"
   ],
-  "type": "minecraft:crafting_shaped",
   "key": {
     "x": {
       "item": "vanillaboom:red_terracotta_bricks"
     }
+  },
+  "result": {
+    "item": "vanillaboom:red_terracotta_brick_stairs",
+    "count": 4
   }
 }

@@ -1,18 +1,18 @@
 {
-  "result": {
-    "item": "vanillaboom:stripped_warped_hyphae_fence_gate"
-  },
-  "pattern": [
-    "xyx",
-    "xyx"
-  ],
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "yxy",
+    "yxy"
+  ],
   "key": {
     "x": {
-      "tag": "forge:rods/wooden"
+      "item": "minecraft:stripped_warped_hyphae"
     },
     "y": {
-      "item": "minecraft:stripped_warped_hyphae"
+      "tag": "forge:rods/wooden"
     }
+  },
+  "result": {
+    "item": "vanillaboom:stripped_warped_hyphae_fence_gate"
   }
 }

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:bedrock_wall"
+    ]
+  },
+  "criteria": {
+    "has_bedrock": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:bedrock"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:bedrock_wall"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_bedrock",
+      "has_the_recipe"
+    ]
+  ]
+}

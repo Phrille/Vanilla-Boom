@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:polished_end_stone_wall"
+    ]
+  },
+  "criteria": {
+    "has_polished_end_stone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:polished_end_stone"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:polished_end_stone_wall"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_polished_end_stone",
+      "has_the_recipe"
+    ]
+  ]
+}

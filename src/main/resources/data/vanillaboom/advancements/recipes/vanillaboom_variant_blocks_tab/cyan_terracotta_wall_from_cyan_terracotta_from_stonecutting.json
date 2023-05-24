@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vanillaboom:cyan_terracotta_wall_from_cyan_terracotta_from_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_cyan_terracotta": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:cyan_terracotta"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vanillaboom:cyan_terracotta_wall_from_cyan_terracotta_from_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cyan_terracotta",
+      "has_the_recipe"
+    ]
+  ]
+}
