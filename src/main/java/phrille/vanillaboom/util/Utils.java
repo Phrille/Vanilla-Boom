@@ -32,7 +32,7 @@ public class Utils {
         ComposterBlock.COMPOSTABLES.put(ModItems.TOMATO.get(), 0.6F);
         ComposterBlock.COMPOSTABLES.put(ModItems.TOMATO_SEEDS.get(), 0.3F);
         ComposterBlock.COMPOSTABLES.put(ModItems.RICE_SEEDS.get(), 0.3F);
-        ComposterBlock.COMPOSTABLES.put(ModBlocks.ROSE.get().asItem(), 0.6F);
+        ComposterBlock.COMPOSTABLES.put(ModItems.ROSE.get(), 0.6F);
     }
 
     public static void registerFlowerPots() {

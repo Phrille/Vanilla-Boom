@@ -10,7 +10,6 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.item.ModItems;
 
 public class ModItemModelProvider extends ItemModelProvider {
@@ -90,153 +89,153 @@ public class ModItemModelProvider extends ItemModelProvider {
         item(ModItems.DONKEY_KONG_PAINTING.get());
 
         //Bricks
-        blockItem(ModBlocks.COBBLESTONE_BRICKS.get());
-        blockItem(ModBlocks.MOSSY_COBBLESTONE_BRICKS.get());
-        blockItem(ModBlocks.MAGMA_BRICKS.get());
-        blockItem(ModBlocks.OBSIDIAN_BRICKS.get());
-        blockItem(ModBlocks.SNOW_BRICKS.get());
-        blockItem(ModBlocks.TERRACOTTA_BRICKS.get());
-        blockItem(ModBlocks.WHITE_TERRACOTTA_BRICKS.get());
-        blockItem(ModBlocks.ORANGE_TERRACOTTA_BRICKS.get());
-        blockItem(ModBlocks.MAGENTA_TERRACOTTA_BRICKS.get());
-        blockItem(ModBlocks.LIGHT_BLUE_TERRACOTTA_BRICKS.get());
-        blockItem(ModBlocks.YELLOW_TERRACOTTA_BRICKS.get());
-        blockItem(ModBlocks.LIME_TERRACOTTA_BRICKS.get());
-        blockItem(ModBlocks.PINK_TERRACOTTA_BRICKS.get());
-        blockItem(ModBlocks.GRAY_TERRACOTTA_BRICKS.get());
-        blockItem(ModBlocks.LIGHT_GRAY_TERRACOTTA_BRICKS.get());
-        blockItem(ModBlocks.CYAN_TERRACOTTA_BRICKS.get());
-        blockItem(ModBlocks.PURPLE_TERRACOTTA_BRICKS.get());
-        blockItem(ModBlocks.BLUE_TERRACOTTA_BRICKS.get());
-        blockItem(ModBlocks.BROWN_TERRACOTTA_BRICKS.get());
-        blockItem(ModBlocks.GREEN_TERRACOTTA_BRICKS.get());
-        blockItem(ModBlocks.RED_TERRACOTTA_BRICKS.get());
-        blockItem(ModBlocks.BLACK_TERRACOTTA_BRICKS.get());
+        blockItem(ModItems.COBBLESTONE_BRICKS.get());
+        blockItem(ModItems.MOSSY_COBBLESTONE_BRICKS.get());
+        blockItem(ModItems.MAGMA_BRICKS.get());
+        blockItem(ModItems.OBSIDIAN_BRICKS.get());
+        blockItem(ModItems.SNOW_BRICKS.get());
+        blockItem(ModItems.TERRACOTTA_BRICKS.get());
+        blockItem(ModItems.WHITE_TERRACOTTA_BRICKS.get());
+        blockItem(ModItems.ORANGE_TERRACOTTA_BRICKS.get());
+        blockItem(ModItems.MAGENTA_TERRACOTTA_BRICKS.get());
+        blockItem(ModItems.LIGHT_BLUE_TERRACOTTA_BRICKS.get());
+        blockItem(ModItems.YELLOW_TERRACOTTA_BRICKS.get());
+        blockItem(ModItems.LIME_TERRACOTTA_BRICKS.get());
+        blockItem(ModItems.PINK_TERRACOTTA_BRICKS.get());
+        blockItem(ModItems.GRAY_TERRACOTTA_BRICKS.get());
+        blockItem(ModItems.LIGHT_GRAY_TERRACOTTA_BRICKS.get());
+        blockItem(ModItems.CYAN_TERRACOTTA_BRICKS.get());
+        blockItem(ModItems.PURPLE_TERRACOTTA_BRICKS.get());
+        blockItem(ModItems.BLUE_TERRACOTTA_BRICKS.get());
+        blockItem(ModItems.BROWN_TERRACOTTA_BRICKS.get());
+        blockItem(ModItems.GREEN_TERRACOTTA_BRICKS.get());
+        blockItem(ModItems.RED_TERRACOTTA_BRICKS.get());
+        blockItem(ModItems.BLACK_TERRACOTTA_BRICKS.get());
 
         //Rocks
-        blockItem(ModBlocks.PERIDOTITE.get());
-        blockItem(ModBlocks.HYDRO_ROCK.get());
-        blockItem(ModBlocks.INFERNAL_ROCK.get());
+        blockItem(ModItems.PERIDOTITE.get());
+        blockItem(ModItems.HYDRO_ROCK.get());
+        blockItem(ModItems.INFERNAL_ROCK.get());
 
         //Sand and Gravel
-        blockItem(ModBlocks.BONE_SAND.get());
-        blockItem(ModBlocks.WITHER_BONE_SAND.get());
+        blockItem(ModItems.BONE_SAND.get());
+        blockItem(ModItems.WITHER_BONE_SAND.get());
 
         //Polished
-        blockItem(ModBlocks.POLISHED_PERIDOTITE.get());
-        blockItem(ModBlocks.POLISHED_PRISMARINE.get());
-        blockItem(ModBlocks.POLISHED_DARK_PRISMARINE.get());
-        blockItem(ModBlocks.POLISHED_END_STONE.get());
-        blockItem(ModBlocks.POLISHED_NETHERRACK.get());
+        blockItem(ModItems.POLISHED_PERIDOTITE.get());
+        blockItem(ModItems.POLISHED_PRISMARINE.get());
+        blockItem(ModItems.POLISHED_DARK_PRISMARINE.get());
+        blockItem(ModItems.POLISHED_END_STONE.get());
+        blockItem(ModItems.POLISHED_NETHERRACK.get());
 
         //Chiseled and cracked
-        blockItem(ModBlocks.CRACKED_RED_NETHER_BRICKS.get());
-        blockItem(ModBlocks.CHISELED_RED_NETHER_BRICKS.get());
-        blockItem(ModBlocks.CHISELED_PURPUR_BLOCK.get());
-        blockItem(ModBlocks.CHISELED_OBSIDIAN.get());
+        blockItem(ModItems.CRACKED_RED_NETHER_BRICKS.get());
+        blockItem(ModItems.CHISELED_RED_NETHER_BRICKS.get());
+        blockItem(ModItems.CHISELED_PURPUR_BLOCK.get());
+        blockItem(ModItems.CHISELED_OBSIDIAN.get());
 
         //Pillars
-        blockItem(ModBlocks.GRANITE_PILLAR.get());
-        blockItem(ModBlocks.DIORITE_PILLAR.get());
-        blockItem(ModBlocks.ANDESITE_PILLAR.get());
-        blockItem(ModBlocks.PERIDOTITE_PILLAR.get());
-        blockItem(ModBlocks.PRISMARINE_PILLAR.get());
-        blockItem(ModBlocks.DARK_PRISMARINE_PILLAR.get());
-        blockItem(ModBlocks.END_STONE_PILLAR.get());
-        blockItem(ModBlocks.NETHERRACK_PILLAR.get());
-        blockItem(ModBlocks.RED_NETHER_PILLAR.get());
-        blockItem(ModBlocks.OBSIDIAN_PILLAR.get());
+        blockItem(ModItems.GRANITE_PILLAR.get());
+        blockItem(ModItems.DIORITE_PILLAR.get());
+        blockItem(ModItems.ANDESITE_PILLAR.get());
+        blockItem(ModItems.PERIDOTITE_PILLAR.get());
+        blockItem(ModItems.PRISMARINE_PILLAR.get());
+        blockItem(ModItems.DARK_PRISMARINE_PILLAR.get());
+        blockItem(ModItems.END_STONE_PILLAR.get());
+        blockItem(ModItems.NETHERRACK_PILLAR.get());
+        blockItem(ModItems.RED_NETHER_PILLAR.get());
+        blockItem(ModItems.OBSIDIAN_PILLAR.get());
 
         //Wood Variations
-        blockItem(ModBlocks.SPRUCE_BOOKSHELF.get());
-        blockItem(ModBlocks.BIRCH_BOOKSHELF.get());
-        blockItem(ModBlocks.JUNGLE_BOOKSHELF.get());
-        blockItem(ModBlocks.ACACIA_BOOKSHELF.get());
-        blockItem(ModBlocks.DARK_OAK_BOOKSHELF.get());
-        blockItem(ModBlocks.CRIMSON_BOOKSHELF.get());
-        blockItem(ModBlocks.WARPED_BOOKSHELF.get());
-        item(ModBlocks.SPRUCE_LADDER.get());
-        item(ModBlocks.BIRCH_LADDER.get());
-        item(ModBlocks.JUNGLE_LADDER.get());
-        item(ModBlocks.ACACIA_LADDER.get());
-        item(ModBlocks.DARK_OAK_LADDER.get());
-        item(ModBlocks.CRIMSON_LADDER.get());
-        item(ModBlocks.WARPED_LADDER.get());
+        blockItem(ModItems.SPRUCE_BOOKSHELF.get());
+        blockItem(ModItems.BIRCH_BOOKSHELF.get());
+        blockItem(ModItems.JUNGLE_BOOKSHELF.get());
+        blockItem(ModItems.ACACIA_BOOKSHELF.get());
+        blockItem(ModItems.DARK_OAK_BOOKSHELF.get());
+        blockItem(ModItems.CRIMSON_BOOKSHELF.get());
+        blockItem(ModItems.WARPED_BOOKSHELF.get());
+        item(ModItems.SPRUCE_LADDER.get());
+        item(ModItems.BIRCH_LADDER.get());
+        item(ModItems.JUNGLE_LADDER.get());
+        item(ModItems.ACACIA_LADDER.get());
+        item(ModItems.DARK_OAK_LADDER.get());
+        item(ModItems.CRIMSON_LADDER.get());
+        item(ModItems.WARPED_LADDER.get());
 
         //Storage Blocks
-        blockItem(ModBlocks.CHARCOAL_BLOCK.get());
-        blockItem(ModBlocks.SUGAR_BLOCK.get());
-        blockItem(ModBlocks.SUGAR_CANE_BLOCK.get());
-        blockItem(ModBlocks.GUNPOWDER_BLOCK.get());
-        blockItem(ModBlocks.BLAZE_POWDER_BLOCK.get());
-        blockItem(ModBlocks.MAGMA_CREAM_BLOCK.get());
-        blockItem(ModBlocks.PRISMARINE_CRYSTAL_BLOCK.get());
-        blockItem(ModBlocks.WITHER_BONE_BLOCK.get());
-        blockItem(ModBlocks.WHITE_DYE_BLOCK.get());
-        blockItem(ModBlocks.ORANGE_DYE_BLOCK.get());
-        blockItem(ModBlocks.MAGENTA_DYE_BLOCK.get());
-        blockItem(ModBlocks.LIGHT_BLUE_DYE_BLOCK.get());
-        blockItem(ModBlocks.YELLOW_DYE_BLOCK.get());
-        blockItem(ModBlocks.LIME_DYE_BLOCK.get());
-        blockItem(ModBlocks.PINK_DYE_BLOCK.get());
-        blockItem(ModBlocks.GRAY_DYE_BLOCK.get());
-        blockItem(ModBlocks.LIGHT_GRAY_DYE_BLOCK.get());
-        blockItem(ModBlocks.CYAN_DYE_BLOCK.get());
-        blockItem(ModBlocks.PURPLE_DYE_BLOCK.get());
-        blockItem(ModBlocks.BLUE_DYE_BLOCK.get());
-        blockItem(ModBlocks.BROWN_DYE_BLOCK.get());
-        blockItem(ModBlocks.GREEN_DYE_BLOCK.get());
-        blockItem(ModBlocks.RED_DYE_BLOCK.get());
-        blockItem(ModBlocks.BLACK_DYE_BLOCK.get());
+        blockItem(ModItems.CHARCOAL_BLOCK.get());
+        blockItem(ModItems.SUGAR_BLOCK.get());
+        blockItem(ModItems.SUGAR_CANE_BLOCK.get());
+        blockItem(ModItems.GUNPOWDER_BLOCK.get());
+        blockItem(ModItems.BLAZE_POWDER_BLOCK.get());
+        blockItem(ModItems.MAGMA_CREAM_BLOCK.get());
+        blockItem(ModItems.PRISMARINE_CRYSTAL_BLOCK.get());
+        blockItem(ModItems.WITHER_BONE_BLOCK.get());
+        blockItem(ModItems.WHITE_DYE_BLOCK.get());
+        blockItem(ModItems.ORANGE_DYE_BLOCK.get());
+        blockItem(ModItems.MAGENTA_DYE_BLOCK.get());
+        blockItem(ModItems.LIGHT_BLUE_DYE_BLOCK.get());
+        blockItem(ModItems.YELLOW_DYE_BLOCK.get());
+        blockItem(ModItems.LIME_DYE_BLOCK.get());
+        blockItem(ModItems.PINK_DYE_BLOCK.get());
+        blockItem(ModItems.GRAY_DYE_BLOCK.get());
+        blockItem(ModItems.LIGHT_GRAY_DYE_BLOCK.get());
+        blockItem(ModItems.CYAN_DYE_BLOCK.get());
+        blockItem(ModItems.PURPLE_DYE_BLOCK.get());
+        blockItem(ModItems.BLUE_DYE_BLOCK.get());
+        blockItem(ModItems.BROWN_DYE_BLOCK.get());
+        blockItem(ModItems.GREEN_DYE_BLOCK.get());
+        blockItem(ModItems.RED_DYE_BLOCK.get());
+        blockItem(ModItems.BLACK_DYE_BLOCK.get());
 
         //Glass
-        blockItem(ModBlocks.SOUL_GLASS.get());
-        blockItem(ModBlocks.WHITE_STAINED_SOUL_GLASS.get());
-        blockItem(ModBlocks.ORANGE_STAINED_SOUL_GLASS.get());
-        blockItem(ModBlocks.MAGENTA_STAINED_SOUL_GLASS.get());
-        blockItem(ModBlocks.LIGHT_BLUE_STAINED_SOUL_GLASS.get());
-        blockItem(ModBlocks.YELLOW_STAINED_SOUL_GLASS.get());
-        blockItem(ModBlocks.LIME_STAINED_SOUL_GLASS.get());
-        blockItem(ModBlocks.PINK_STAINED_SOUL_GLASS.get());
-        blockItem(ModBlocks.GRAY_STAINED_SOUL_GLASS.get());
-        blockItem(ModBlocks.LIGHT_GRAY_STAINED_SOUL_GLASS.get());
-        blockItem(ModBlocks.CYAN_STAINED_SOUL_GLASS.get());
-        blockItem(ModBlocks.PURPLE_STAINED_SOUL_GLASS.get());
-        blockItem(ModBlocks.BLUE_STAINED_SOUL_GLASS.get());
-        blockItem(ModBlocks.BROWN_STAINED_SOUL_GLASS.get());
-        blockItem(ModBlocks.GREEN_STAINED_SOUL_GLASS.get());
-        blockItem(ModBlocks.RED_STAINED_SOUL_GLASS.get());
-        blockItem(ModBlocks.BLACK_STAINED_SOUL_GLASS.get());
+        blockItem(ModItems.SOUL_GLASS.get());
+        blockItem(ModItems.WHITE_STAINED_SOUL_GLASS.get());
+        blockItem(ModItems.ORANGE_STAINED_SOUL_GLASS.get());
+        blockItem(ModItems.MAGENTA_STAINED_SOUL_GLASS.get());
+        blockItem(ModItems.LIGHT_BLUE_STAINED_SOUL_GLASS.get());
+        blockItem(ModItems.YELLOW_STAINED_SOUL_GLASS.get());
+        blockItem(ModItems.LIME_STAINED_SOUL_GLASS.get());
+        blockItem(ModItems.PINK_STAINED_SOUL_GLASS.get());
+        blockItem(ModItems.GRAY_STAINED_SOUL_GLASS.get());
+        blockItem(ModItems.LIGHT_GRAY_STAINED_SOUL_GLASS.get());
+        blockItem(ModItems.CYAN_STAINED_SOUL_GLASS.get());
+        blockItem(ModItems.PURPLE_STAINED_SOUL_GLASS.get());
+        blockItem(ModItems.BLUE_STAINED_SOUL_GLASS.get());
+        blockItem(ModItems.BROWN_STAINED_SOUL_GLASS.get());
+        blockItem(ModItems.GREEN_STAINED_SOUL_GLASS.get());
+        blockItem(ModItems.RED_STAINED_SOUL_GLASS.get());
+        blockItem(ModItems.BLACK_STAINED_SOUL_GLASS.get());
 
-        item(ModBlocks.SOUL_GLASS_PANE.get());
-        item(ModBlocks.WHITE_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.ORANGE_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.MAGENTA_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.LIGHT_BLUE_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.YELLOW_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.LIME_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.PINK_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.GRAY_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.LIGHT_GRAY_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.CYAN_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.PURPLE_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.BLUE_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.BROWN_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.GREEN_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.RED_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get());
+        item(ModItems.SOUL_GLASS_PANE.get());
+        item(ModItems.WHITE_STAINED_SOUL_GLASS_PANE.get());
+        item(ModItems.ORANGE_STAINED_SOUL_GLASS_PANE.get());
+        item(ModItems.MAGENTA_STAINED_SOUL_GLASS_PANE.get());
+        item(ModItems.LIGHT_BLUE_STAINED_SOUL_GLASS_PANE.get());
+        item(ModItems.YELLOW_STAINED_SOUL_GLASS_PANE.get());
+        item(ModItems.LIME_STAINED_SOUL_GLASS_PANE.get());
+        item(ModItems.PINK_STAINED_SOUL_GLASS_PANE.get());
+        item(ModItems.GRAY_STAINED_SOUL_GLASS_PANE.get());
+        item(ModItems.LIGHT_GRAY_STAINED_SOUL_GLASS_PANE.get());
+        item(ModItems.CYAN_STAINED_SOUL_GLASS_PANE.get());
+        item(ModItems.PURPLE_STAINED_SOUL_GLASS_PANE.get());
+        item(ModItems.BLUE_STAINED_SOUL_GLASS_PANE.get());
+        item(ModItems.BROWN_STAINED_SOUL_GLASS_PANE.get());
+        item(ModItems.GREEN_STAINED_SOUL_GLASS_PANE.get());
+        item(ModItems.RED_STAINED_SOUL_GLASS_PANE.get());
+        item(ModItems.BLACK_STAINED_SOUL_GLASS_PANE.get());
 
         //Misc
-        blockItem(ModBlocks.RAIN_DETECTOR.get());
-        item(ModBlocks.GOLD_BARS.get());
-        item(ModBlocks.ROSE.get());
+        blockItem(ModItems.RAIN_DETECTOR.get());
+        item(ModItems.GOLD_BARS.get());
+        item(ModItems.ROSE.get());
 
         //Variant Blocks
-        ModDataGenerator.STAIRS.forEach(pair -> blockItem(pair.getFirst()));
-        ModDataGenerator.SLABS.forEach(pair -> blockItem(pair.getFirst()));
+        ModDataGenerator.STAIRS.forEach(pair -> blockItem(pair.getFirst().asItem()));
+        ModDataGenerator.SLABS.forEach(pair -> blockItem(pair.getFirst().asItem()));
         ModDataGenerator.WALLS.forEach(this::inventoryBlockItem);
         ModDataGenerator.FENCES.forEach(pair -> inventoryBlockItem(pair.getFirst()));
-        ModDataGenerator.FENCE_GATES.forEach(pair -> blockItem(pair.getFirst()));
+        ModDataGenerator.FENCE_GATES.forEach(pair -> blockItem(pair.getFirst().asItem()));
     }
 
     public void item(Item item) {
@@ -247,9 +246,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         item(block.asItem(), "generated").texture("layer0", blockTexture(block));
     }
 
-    public void blockItem(Block block) {
-        ResourceLocation parent = block.getRegistryName();
-        withExistingParent(name(block.asItem()), new ResourceLocation(parent.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + parent.getPath()));
+    public void blockItem(Item blockItem) {
+        ResourceLocation parent = blockItem.getRegistryName();
+        withExistingParent(name(blockItem), new ResourceLocation(parent.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + parent.getPath()));
     }
 
     public void inventoryBlockItem(Block block) {

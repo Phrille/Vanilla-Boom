@@ -3,7 +3,7 @@ package phrille.vanillaboom.world;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
-import net.minecraft.data.worldgen.Features;
+import net.minecraft.data.worldgen.features.OreFeatures;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -11,7 +11,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.blockplacers.SimpleBlockPlacer;
 import net.minecraft.world.level.levelgen.feature.configurations.DiskConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
@@ -46,14 +45,15 @@ public class ModConfiguredFeatures {
         @SubscribeEvent(priority = EventPriority.LOW)
         public static void register(RegistryEvent.Register<Feature<?>> event) {
             //OverWorld
-            register(ORE_PERIDOTITE, Feature.ORE.configured(Configs.PERIDOTITE_CONFIG).rangeUniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(79)).squared().count(10));
-            register(DISK_HYDRO_ROCK, Feature.DISK.configured(Configs.HYDRO_ROCK_CONFIG).decorated(Features.Decorators.TOP_SOLID_HEIGHTMAP_SQUARE));
-            register(ROSE_PATCHES, Feature.FLOWER.configured(Configs.ROSE_CONFIG).decorated(Features.Decorators.ADD_32).decorated(Features.Decorators.HEIGHTMAP_SQUARE));
+            //register(ORE_PERIDOTITE, Feature.ORE.configuredC(Configs.PERIDOTITE_CONFIG).rangeUniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(79)).squared().count(10));
+            //register(DISK_HYDRO_ROCK, Feature.DISK.configured(Configs.HYDRO_ROCK_CONFIG).decorated(Features.Decorators.TOP_SOLID_HEIGHTMAP_SQUARE));
+            //register(ROSE_PATCHES, Feature.FLOWER.configured(Configs.ROSE_CONFIG).decorated(Features.Decorators.ADD_32).decorated(Features.Decorators.HEIGHTMAP_SQUARE));
+
 
             //Nether
-            register(ORE_INFERNAL_ROCK, Feature.ORE.configured(Configs.INFERNAL_ROCK_CONFIG).rangeUniform(VerticalAnchor.absolute(30), VerticalAnchor.absolute(41)).squared().count(2));
-            register(ORE_BONE_SAND, Feature.ORE.configured(Configs.BONE_SAND_CONFIG).rangeUniform(VerticalAnchor.absolute(40), VerticalAnchor.absolute(105)).squared().count(5));
-            register(ORE_WITHER_BONE_SAND, Feature.ORE.configured(Configs.WITHER_BONE_SAND_CONFIG).rangeUniform(VerticalAnchor.absolute(40), VerticalAnchor.absolute(105)).squared().count(30));
+            //register(ORE_INFERNAL_ROCK, Feature.ORE.configured(Configs.INFERNAL_ROCK_CONFIG).rangeUniform(VerticalAnchor.absolute(30), VerticalAnchor.absolute(41)).squared().count(2));
+            //register(ORE_BONE_SAND, Feature.ORE.configured(Configs.BONE_SAND_CONFIG).rangeUniform(VerticalAnchor.absolute(40), VerticalAnchor.absolute(105)).squared().count(5));
+            //register(ORE_WITHER_BONE_SAND, Feature.ORE.configured(Configs.WITHER_BONE_SAND_CONFIG).rangeUniform(VerticalAnchor.absolute(40), VerticalAnchor.absolute(105)).squared().count(30));
         }
 
         private static void register(ResourceKey<ConfiguredFeature<?, ?>> key, ConfiguredFeature<?, ?> configuredFeature) {
@@ -63,14 +63,14 @@ public class ModConfiguredFeatures {
 
     public static final class Configs {
         //Overworld
-        public static final OreConfiguration PERIDOTITE_CONFIG = new OreConfiguration(OreConfiguration.Predicates.NATURAL_STONE, ModBlocks.PERIDOTITE.get().defaultBlockState(), 33);
-        public static final RandomPatchConfiguration ROSE_CONFIG = new RandomPatchConfiguration.GrassConfigurationBuilder(new SimpleStateProvider(ModBlocks.ROSE.get().defaultBlockState()), SimpleBlockPlacer.INSTANCE).tries(32).build();
+        public static final OreConfiguration PERIDOTITE_CONFIG = new OreConfiguration(OreFeatures.NATURAL_STONE, ModBlocks.PERIDOTITE.get().defaultBlockState(), 33);
+        //public static final RandomPatchConfiguration ROSE_CONFIG = new RandomPatchConfiguration.GrassConfigurationBuilder(new SimpleStateProvider(ModBlocks.ROSE.get().defaultBlockState()), SimpleBlockPlacer.INSTANCE).tries(32).build();
         public static final DiskConfiguration HYDRO_ROCK_CONFIG = new DiskConfiguration(ModBlocks.HYDRO_ROCK.get().defaultBlockState(), UniformInt.of(1, 3), 2, ImmutableList.of(Blocks.STONE.defaultBlockState(), Blocks.GRAVEL.defaultBlockState()));
 
         //Nether
-        public static final OreConfiguration BONE_SAND_CONFIG = new OreConfiguration(Predicates.SOUL_SOIL, ModBlocks.BONE_SAND.get().defaultBlockState(), 29);
-        public static final OreConfiguration WITHER_BONE_SAND_CONFIG = new OreConfiguration(Predicates.BONE_SAND, ModBlocks.WITHER_BONE_SAND.get().defaultBlockState(), 18);
-        public static final OreConfiguration INFERNAL_ROCK_CONFIG = new OreConfiguration(OreConfiguration.Predicates.NETHERRACK, ModBlocks.INFERNAL_ROCK.get().defaultBlockState(), 33);
+        //public static final OreConfiguration BONE_SAND_CONFIG = new OreConfiguration(Predicates.SOUL_SOIL, ModBlocks.BONE_SAND.get().defaultBlockState(), 29);
+        //public static final OreConfiguration WITHER_BONE_SAND_CONFIG = new OreConfiguration(Predicates.BONE_SAND, ModBlocks.WITHER_BONE_SAND.get().defaultBlockState(), 18);
+        //public static final OreConfiguration INFERNAL_ROCK_CONFIG = new OreConfiguration(OreConfiguration.Predicates.NETHERRACK, ModBlocks.INFERNAL_ROCK.get().defaultBlockState(), 33);
     }
 
     public static final class Predicates {

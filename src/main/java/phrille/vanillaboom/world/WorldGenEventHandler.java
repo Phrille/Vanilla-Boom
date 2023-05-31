@@ -42,7 +42,7 @@ public class WorldGenEventHandler {
 
     public static void generate(BiomeLoadingEvent event, GenerationStep.Decoration decorationStage, ResourceKey<ConfiguredFeature<?, ?>> key, boolean config) {
         if (config) {
-            event.getGeneration().addFeature(decorationStage, getFeature(key));
+            //event.getGeneration().addFeature(decorationStage, getFeature(key));
         }
     }
 
