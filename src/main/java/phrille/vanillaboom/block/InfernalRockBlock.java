@@ -3,12 +3,11 @@ package phrille.vanillaboom.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-
-import java.util.Random;
 
 public class InfernalRockBlock extends Block {
     public InfernalRockBlock() {
@@ -16,7 +15,7 @@ public class InfernalRockBlock extends Block {
     }
 
     @Override
-    public void animateTick(BlockState state, Level world, BlockPos pos, Random rand) {
+    public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource rand) {
         Direction direction = Direction.getRandom(rand);
 
         if (direction != Direction.UP) {
