@@ -29,15 +29,13 @@ displayURL="https://www.curseforge.com/minecraft/mc-mods/vanilla-boom" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="vanillaboom_logo.png" #optional
 # A text field displayed in the mod UI
-credits="Phrille as mod author and maintainer. RetroPacifict as current texture artist. Special thanks to RatavierCreations." #optional
+credits="Phrille as mod author and maintainer. Special thanks to RatavierCreations and RetroPacifict." #optional
 # A text field displayed in the mod UI
 authors="Phrille" #optional
 # The description text for the mod (multi line!) (#mandatory)
-description='''
-Exploiting the potential of the game
-------------------------------------
-Vanilla Boom is a mod that aims to expand the vanilla experience. All things that are added, block, items, mobs and structures, are in the spirit of the vanilla game. This is a mod for those of you who love the essence of vanilla, but are just looking to add that little extra. Blocks that should be in the game but aren't, missing items and extra features to make the game a little bit more appealing, here they all are. Knock yourself out...
-'''
+description='''Exploiting the potential of the game
+--------------------------------------------
+Vanilla Boom is a mod that aims to expand the vanilla experience. All things that are added, block, items, mobs and structures, are in the spirit of the vanilla game.'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.examplemod]] #optional
     # the modid of the dependency
