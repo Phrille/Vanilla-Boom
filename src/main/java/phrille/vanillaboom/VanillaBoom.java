@@ -18,6 +18,7 @@ import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.loot.LootTableHandler;
 import phrille.vanillaboom.util.FuelHandler;
 import phrille.vanillaboom.util.Utils;
+import phrille.vanillaboom.world.ModFeatures;
 
 @Mod(VanillaBoom.MOD_ID)
 public class VanillaBoom {
@@ -32,13 +33,14 @@ public class VanillaBoom {
         ModBlocks.BLOCKS.register(eventBus);
         ModItems.ITEMS.register(eventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(eventBus);
+        ModFeatures.ConfiguredFeatures.CONFIGURED_FEATURES.register(eventBus);
+        ModFeatures.PlacedFeatures.PLACED_FEATURES.register(eventBus);
         LootTableHandler.GLMS.register(eventBus);
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::enqueueIMC);
         eventBus.addListener(this::processIMC);
 
-        modLoadingContext.registerConfig(ModConfig.Type.CLIENT, ConfigHandler.CLIENT_SPEC);
         modLoadingContext.registerConfig(ModConfig.Type.COMMON, ConfigHandler.COMMON_SPEC);
     }
 
