@@ -7,6 +7,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.*;
 import phrille.vanillaboom.util.Utils;
@@ -365,7 +366,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     protected ResourceLocation variantTexture(Block block) {
-        ResourceLocation name = block.getRegistryName();
+        ResourceLocation name = ForgeRegistries.BLOCKS.getKey(block);
 
         return new ResourceLocation(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath()
                 .replace("_wood", "_log")
@@ -379,7 +380,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     protected String name(Block block) {
-        return block.getRegistryName().getPath();
+        return ForgeRegistries.BLOCKS.getKey(block).getPath();
     }
 
     protected String getCakeName(String name, int bites) {

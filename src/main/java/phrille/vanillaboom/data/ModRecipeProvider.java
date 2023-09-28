@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModSlabBlock;
 import phrille.vanillaboom.block.ModStairBlock;
@@ -700,7 +701,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
      * @return the default ResourceLocation
      */
     private static ResourceLocation resLoc(ItemLike item) {
-        return item.asItem().getRegistryName();
+        return ForgeRegistries.ITEMS.getKey(item.asItem());
     }
 
     /**

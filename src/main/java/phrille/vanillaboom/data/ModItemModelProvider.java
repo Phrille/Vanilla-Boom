@@ -9,6 +9,7 @@ import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.item.ModItems;
 
@@ -247,12 +248,12 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     public void blockItem(Item blockItem) {
-        ResourceLocation parent = blockItem.getRegistryName();
+        ResourceLocation parent = ForgeRegistries.ITEMS.getKey(blockItem);
         withExistingParent(name(blockItem), new ResourceLocation(parent.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + parent.getPath()));
     }
 
     public void inventoryBlockItem(Block block) {
-        ResourceLocation parent = block.getRegistryName();
+        ResourceLocation parent = ForgeRegistries.BLOCKS.getKey(block);
         withExistingParent(name(block.asItem()), new ResourceLocation(parent.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + parent.getPath() + "_inventory"));
     }
 
@@ -265,16 +266,16 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     protected ResourceLocation itemTexture(Item item) {
-        ResourceLocation name = item.getRegistryName();
+        ResourceLocation name = ForgeRegistries.ITEMS.getKey(item);
         return new ResourceLocation(name.getNamespace(), ModelProvider.ITEM_FOLDER + "/" + name.getPath());
     }
 
     protected ResourceLocation blockTexture(Block block) {
-        ResourceLocation name = block.getRegistryName();
+        ResourceLocation name = ForgeRegistries.BLOCKS.getKey(block);
         return new ResourceLocation(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath().replace("_pane", ""));
     }
 
     protected String name(Item item) {
-        return item.getRegistryName().getPath();
+        return ForgeRegistries.ITEMS.getKey(item).getPath();
     }
 }

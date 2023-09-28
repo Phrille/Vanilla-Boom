@@ -8,9 +8,10 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.client.model.generators.ModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.data.loot.ModLootTableProvider;
@@ -36,19 +37,18 @@ public class ModDataGenerator {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         init();
 
-
         //Assets
-        //generator.addProvider(new ModBlockStateProvider(generator, existingFileHelper));
-        //generator.addProvider(new ModItemModelProvider(generator, existingFileHelper));
-        //generator.addProvider(new ModLanguageProvider(generator, "en_us"));
+        generator.addProvider(false, new ModBlockStateProvider(generator, existingFileHelper));
+        generator.addProvider(false, new ModItemModelProvider(generator, existingFileHelper));
+        generator.addProvider(false, new ModLanguageProvider(generator, "en_us"));
 
         //Data
         ModBlockTagsProvider blockTags = new ModBlockTagsProvider(generator, existingFileHelper);
-        generator.addProvider(blockTags);
-        generator.addProvider(new ModItemTagsProvider(generator, blockTags, existingFileHelper));
-        //generator.addProvider(new ModEntityTypeTagsProvider(generator, existingFileHelper));
-        generator.addProvider(new ModRecipeProvider(generator));
-        //generator.addProvider(new ModLootTableProvider(generator));
+        generator.addProvider(false, blockTags);
+        generator.addProvider(false, new ModItemTagsProvider(generator, blockTags, existingFileHelper));
+        generator.addProvider(false, new ModEntityTypeTagsProvider(generator, existingFileHelper));
+        generator.addProvider(false, new ModRecipeProvider(generator));
+        generator.addProvider(false, new ModLootTableProvider(generator));
     }
 
     private static void init() {
@@ -427,7 +427,7 @@ public class ModDataGenerator {
     }
 
     public static ResourceLocation blockTexture(Block block) {
-        ResourceLocation name = block.getRegistryName();
+        ResourceLocation name = ForgeRegistries.BLOCKS.getKey(block);
         return new ResourceLocation(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath());
     }
 

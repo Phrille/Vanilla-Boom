@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.entity.fish.Fish;
 
@@ -21,7 +22,7 @@ public class FishRenderer extends MobRenderer<Fish, EntityModel<Fish>> {
     @Override
     @Nonnull
     public ResourceLocation getTextureLocation(@Nonnull Fish fish) {
-        return new ResourceLocation(VanillaBoom.MOD_ID, "textures/entity/" + fish.getType().getRegistryName().getPath() + ".png");
+        return new ResourceLocation(VanillaBoom.MOD_ID, "textures/entity/" + ForgeRegistries.ENTITY_TYPES.getKey(fish.getType()).getPath() + ".png");
     }
 
     @Override
