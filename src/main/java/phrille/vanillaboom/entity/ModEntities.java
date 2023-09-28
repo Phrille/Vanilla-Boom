@@ -22,7 +22,7 @@ import phrille.vanillaboom.entity.fish.Tuna;
 @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEntities {
 
-    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, VanillaBoom.MOD_ID);
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, VanillaBoom.MOD_ID);
 
     public static final RegistryObject<EntityType<PrismarineArrow>> PRISMARINE_ARROW = register("prismarine_arrow", EntityType.Builder.<PrismarineArrow>of(PrismarineArrow::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20));
     public static final RegistryObject<EntityType<Tuna>> TUNA = register("tuna", EntityType.Builder.of(Tuna::new, MobCategory.WATER_AMBIENT).sized(0.6F, 0.6F).clientTrackingRange(4));
@@ -31,7 +31,7 @@ public class ModEntities {
     public static final RegistryObject<EntityType<Eel>> EEL = register("eel", EntityType.Builder.of(Eel::new, MobCategory.WATER_AMBIENT).sized(0.8F, 0.2F).clientTrackingRange(4));
 
     public static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> builder) {
-        return ENTITIES.register(name, () -> builder.build(name));
+        return ENTITY_TYPES.register(name, () -> builder.build(name));
     }
 
     @SubscribeEvent
