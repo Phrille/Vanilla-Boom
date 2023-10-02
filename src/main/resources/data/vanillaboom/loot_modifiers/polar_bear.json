@@ -10,7 +10,7 @@
       "entity": "this"
     }
   ],
-  "table": "vanillaboom:entities/polar_bear",
+  "table": "vanillaboom:minecraft/polar_bear",
   "overwrites":
   [
     {

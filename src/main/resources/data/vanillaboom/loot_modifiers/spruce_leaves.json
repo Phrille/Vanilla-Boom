@@ -6,7 +6,7 @@
       "block":"minecraft:spruce_leaves"
     }
   ],
-  "table": "vanillaboom:blocks/spruce_leaves",
+  "table": "vanillaboom:minecraft/spruce_leaves",
   "overwrites":
   [
   ]

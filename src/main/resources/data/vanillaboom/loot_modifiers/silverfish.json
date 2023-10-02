@@ -10,7 +10,7 @@
       "entity": "this"
     }
   ],
-  "table": "vanillaboom:entities/silverfish",
+  "table": "vanillaboom:minecraft/silverfish",
   "overwrites":
   [
   ]

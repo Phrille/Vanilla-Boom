@@ -10,7 +10,7 @@
       "entity": "this"
     }
   ],
-  "table": "vanillaboom:entities/drowned",
+  "table": "vanillaboom:minecraft/drowned",
   "overwrites":
   [
     {

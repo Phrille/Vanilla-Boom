@@ -7,6 +7,6 @@
       "loot_table_id": "minecraft:gameplay/fishing"
     }
   ],
-  "table": "vanillaboom:gameplay/fishing/fishing",
+  "table": "vanillaboom:minecraft/fishing",
   "chance": 0.3
 }
