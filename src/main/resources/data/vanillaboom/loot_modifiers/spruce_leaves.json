@@ -1,5 +1,5 @@
 {
-  "type": "vanillaboom:spruce_leaves",
+  "type": "vanillaboom:drop_loot_modifier",
   "conditions": [
     {
       "condition": "block_state_property",
@@ -7,7 +7,5 @@
     }
   ],
   "table": "vanillaboom:minecraft/spruce_leaves",
-  "overwrites":
-  [
-  ]
+  "overwrites": []
 }

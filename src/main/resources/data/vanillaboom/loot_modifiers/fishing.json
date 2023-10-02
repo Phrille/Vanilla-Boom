@@ -1,7 +1,6 @@
 {
-  "type": "vanillaboom:fishing",
-  "conditions": 
-  [    
+  "type": "vanillaboom:fishing_modifier",
+  "conditions": [
     {
       "condition": "forge:loot_table_id",
       "loot_table_id": "minecraft:gameplay/fishing"

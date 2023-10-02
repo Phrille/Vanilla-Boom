@@ -1,7 +1,6 @@
 {
-  "type": "vanillaboom:polar_bear",
-  "conditions": 
-  [    
+  "type": "vanillaboom:drop_loot_modifier",
+  "conditions": [
     {
       "condition": "minecraft:entity_properties",
       "predicate": {
@@ -11,13 +10,8 @@
     }
   ],
   "table": "vanillaboom:minecraft/polar_bear",
-  "overwrites":
-  [
-    {
-      "item": "minecraft:cod"
-    },
-    {
-      "item": "minecraft:salmon"
-    }
+  "overwrites": [
+    "minecraft:cod",
+    "minecraft:salmon"
   ]
 }
