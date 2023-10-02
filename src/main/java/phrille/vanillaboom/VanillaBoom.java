@@ -29,10 +29,10 @@ public class VanillaBoom {
         ModLoadingContext modLoadingContext = ModLoadingContext.get();
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        ModEntities.ENTITIES.register(eventBus);
+        ModEntities.ENTITY_TYPES.register(eventBus);
         ModBlocks.BLOCKS.register(eventBus);
         ModItems.ITEMS.register(eventBus);
-        ModBlockEntities.BLOCK_ENTITIES.register(eventBus);
+        ModBlockEntities.BLOCK_ENTITY_TYPES.register(eventBus);
         ModFeatures.ConfiguredFeatures.CONFIGURED_FEATURES.register(eventBus);
         ModFeatures.PlacedFeatures.PLACED_FEATURES.register(eventBus);
         LootTableHandler.GLMS.register(eventBus);
@@ -46,7 +46,6 @@ public class VanillaBoom {
 
     public void setup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            ModEntities.registerSpawnPlacements();
             FuelHandler.registerBurnTimes();
             Utils.registerFlowerPots();
             Utils.addCompostMaterials();

@@ -38,17 +38,17 @@ public class ModDataGenerator {
         init();
 
         //Assets
-        generator.addProvider(false, new ModBlockStateProvider(generator, existingFileHelper));
-        generator.addProvider(false, new ModItemModelProvider(generator, existingFileHelper));
-        generator.addProvider(false, new ModLanguageProvider(generator, "en_us"));
+        generator.addProvider(event.includeClient(), new ModBlockStateProvider(generator, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ModItemModelProvider(generator, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ModLanguageProvider(generator));
 
         //Data
         ModBlockTagsProvider blockTags = new ModBlockTagsProvider(generator, existingFileHelper);
-        generator.addProvider(false, blockTags);
-        generator.addProvider(false, new ModItemTagsProvider(generator, blockTags, existingFileHelper));
-        generator.addProvider(false, new ModEntityTypeTagsProvider(generator, existingFileHelper));
-        generator.addProvider(false, new ModRecipeProvider(generator));
-        generator.addProvider(false, new ModLootTableProvider(generator));
+        generator.addProvider(event.includeServer(), blockTags);
+        generator.addProvider(event.includeServer(), new ModItemTagsProvider(generator, blockTags, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ModEntityTypeTagsProvider(generator, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ModRecipeProvider(generator));
+        generator.addProvider(event.includeServer(), new ModLootTableProvider(generator));
     }
 
     private static void init() {
