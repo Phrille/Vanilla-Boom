@@ -1,19 +1,11 @@
 package phrille.vanillaboom.world;
 
-import net.minecraft.core.Holder;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
-import net.minecraftforge.event.world.BiomeLoadingEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.config.VanillaBoomConfig;
 
 @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID)
 public class WorldGenEventHandler {
-
+    /*
     @SubscribeEvent
     public static void onBiomeLoad(BiomeLoadingEvent event) {
         Biome.BiomeCategory category = event.getCategory();
@@ -41,4 +33,5 @@ public class WorldGenEventHandler {
             gen.addFeature(step, feature);
         }
     }
+    */
 }
