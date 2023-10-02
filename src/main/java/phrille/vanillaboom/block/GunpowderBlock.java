@@ -1,6 +1,7 @@
 package phrille.vanillaboom.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -36,7 +37,7 @@ public class GunpowderBlock extends FallingBlock {
         if (!stack.is(Items.FLINT_AND_STEEL) && !stack.is(Items.FIRE_CHARGE)) {
             return super.use(state, world, pos, player, hand, hit);
         } else {
-            catchFire(state, world, pos, hit.getDirection(), player);
+            onCaughtFire(state, world, pos, hit.getDirection(), player);
 
             Item item = stack.getItem();
             if (!player.isCreative()) {
@@ -54,7 +55,7 @@ public class GunpowderBlock extends FallingBlock {
 
     @Override
     public void wasExploded(Level world, BlockPos pos, Explosion explosion) {
-        catchFire(world.getBlockState(pos), world, pos, null, explosion.getSourceMob());
+        onCaughtFire(world.getBlockState(pos), world, pos, null, explosion.getSourceMob());
     }
 
     @Override
@@ -62,7 +63,7 @@ public class GunpowderBlock extends FallingBlock {
         if (!world.isClientSide) {
             if (projectile.isOnFire()) {
                 Entity owner = projectile.getOwner();
-                catchFire(state, world, hit.getBlockPos(), null, owner instanceof LivingEntity ? (LivingEntity) owner : null);
+                onCaughtFire(state, world, hit.getBlockPos(), null, owner instanceof LivingEntity ? (LivingEntity) owner : null);
             }
         }
     }
@@ -73,7 +74,7 @@ public class GunpowderBlock extends FallingBlock {
     }
 
     @Override
-    public void catchFire(BlockState state, Level world, BlockPos pos, @Nullable net.minecraft.core.Direction face, @Nullable LivingEntity igniter) {
+    public void onCaughtFire(BlockState state, Level world, BlockPos pos, @Nullable Direction face, @Nullable LivingEntity igniter) {
         explode(world, pos, igniter);
     }
 

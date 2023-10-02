@@ -7,7 +7,6 @@ import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.item.ModItems;
 
 import java.util.Map;
@@ -19,9 +18,9 @@ public class FuelHandler {
 
     public static void registerBurnTimes() {
         burnTimes.put(Items.BLAZE_POWDER, 1200);
-        burnTimes.put(ModBlocks.CHARCOAL_BLOCK.get().asItem(), 16000);
-        burnTimes.put(ModBlocks.BLAZE_POWDER_BLOCK.get().asItem(), 10800);
-        burnTimes.put(ModBlocks.WITHER_BONE_BLOCK.get().asItem(), 10800);
+        burnTimes.put(ModItems.CHARCOAL_BLOCK.get(), 16000);
+        burnTimes.put(ModItems.BLAZE_POWDER_BLOCK.get(), 10800);
+        burnTimes.put(ModItems.WITHER_BONE_BLOCK.get(), 10800);
         burnTimes.put(ModItems.WITHER_BONE.get(), 1200);
         burnTimes.put(ModItems.WITHER_BONE_MEAL.get(), 400);
         burnTimes.put(ModItems.PINE_CONE.get(), 100);

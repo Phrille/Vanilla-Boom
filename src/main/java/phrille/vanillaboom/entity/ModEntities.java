@@ -5,13 +5,14 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.animal.AbstractFish;
+import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.entity.fish.Eel;
 import phrille.vanillaboom.entity.fish.Perch;
@@ -23,7 +24,7 @@ public class ModEntities {
 
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, VanillaBoom.MOD_ID);
 
-    public static final RegistryObject<EntityType<PrismarineArrow>> PRISMARINE_ARROW = register("prismarine_arrow", EntityType.Builder.<PrismarineArrow>of(PrismarineArrow::new, MobCategory.MISC).setCustomClientFactory(PrismarineArrow::new).sized(0.5F, 0.5F));
+    public static final RegistryObject<EntityType<PrismarineArrow>> PRISMARINE_ARROW = register("prismarine_arrow", EntityType.Builder.<PrismarineArrow>of(PrismarineArrow::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20));
     public static final RegistryObject<EntityType<Tuna>> TUNA = register("tuna", EntityType.Builder.of(Tuna::new, MobCategory.WATER_AMBIENT).sized(0.6F, 0.6F).clientTrackingRange(4));
     public static final RegistryObject<EntityType<Perch>> PERCH = register("perch", EntityType.Builder.of(Perch::new, MobCategory.WATER_AMBIENT).sized(0.5F, 0.3F).clientTrackingRange(4));
     public static final RegistryObject<EntityType<Pike>> PIKE = register("pike", EntityType.Builder.of(Pike::new, MobCategory.WATER_AMBIENT).sized(0.7F, 0.4F).clientTrackingRange(4));
@@ -42,9 +43,9 @@ public class ModEntities {
     }
 
     public static void registerSpawnPlacements() {
-        SpawnPlacements.register(TUNA.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractFish::checkFishSpawnRules);
-        SpawnPlacements.register(PERCH.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractFish::checkFishSpawnRules);
-        SpawnPlacements.register(PIKE.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractFish::checkFishSpawnRules);
-        SpawnPlacements.register(EEL.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractFish::checkFishSpawnRules);
+        SpawnPlacements.register(TUNA.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules);
+        SpawnPlacements.register(PERCH.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules);
+        SpawnPlacements.register(PIKE.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules);
+        SpawnPlacements.register(EEL.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules);
     }
 }

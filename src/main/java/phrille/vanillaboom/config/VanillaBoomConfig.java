@@ -3,9 +3,6 @@ package phrille.vanillaboom.config;
 import net.minecraftforge.fml.config.ModConfig;
 
 public class VanillaBoomConfig {
-    //Client
-    public static boolean addFoodTooltips;
-
     //General
     public static boolean growNetherWarts;
     public static boolean growWitherRoses;
@@ -23,10 +20,6 @@ public class VanillaBoomConfig {
     public static boolean boneSandGenEnabled;
     public static boolean witherBoneSandGenEnabled;
 
-
-    public static void bakeClient(ModConfig config) {
-        addFoodTooltips = ConfigHandler.CLIENT.addFoodTooltips.get();
-    }
 
     public static void bakeCommon(ModConfig config) {
         growNetherWarts = ConfigHandler.COMMON.growNetherWarts.get();

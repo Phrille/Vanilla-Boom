@@ -16,7 +16,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePrope
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.minecraftforge.fmllegacy.RegistryObject;
+import net.minecraftforge.registries.RegistryObject;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.ModCakeBlock;
 import phrille.vanillaboom.data.ModDataGenerator;

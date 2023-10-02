@@ -148,9 +148,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .addTags(ModTags.VanillaBoomTags.Items.RAW_FISHES)
                 .addTags(ModTags.VanillaBoomTags.Items.COOKED_FISHES);
         tag(ItemTags.PIGLIN_LOVED)
-                .add(ModBlocks.GOLD_BARS.get().asItem())
-                .add(ModBlocks.GOLD_BLOCK_STAIRS.get().asItem())
-                .add(ModBlocks.GOLD_BLOCK_SLAB.get().asItem())
-                .add(ModBlocks.GOLD_BLOCK_WALL.get().asItem());
+                .add(ModItems.GOLD_BARS.get())
+                .add(ModItems.GOLD_BLOCK_STAIRS.get())
+                .add(ModItems.GOLD_BLOCK_SLAB.get())
+                .add(ModItems.GOLD_BLOCK_WALL.get());
     }
 }
