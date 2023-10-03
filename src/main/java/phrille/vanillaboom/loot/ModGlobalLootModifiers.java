@@ -9,11 +9,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import phrille.vanillaboom.VanillaBoom;
 
-public class LootTableHandler {
-    public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> GLMS = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, VanillaBoom.MOD_ID);
+public class ModGlobalLootModifiers {
+    public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> GLOBAL_LOOT_MODIFIERS = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, VanillaBoom.MOD_ID);
 
-    public static final RegistryObject<Codec<DropLootModifier>> DROP_LOOT_MODIFIER = GLMS.register("drop_loot_modifier", DropLootModifier.CODEC);
-    public static final RegistryObject<Codec<FishingLootModifier>> FISHING_MODIFIER = GLMS.register("fishing_modifier", FishingLootModifier.CODEC);
+    public static final RegistryObject<Codec<DropLootModifier>> DROP_LOOT_MODIFIER = GLOBAL_LOOT_MODIFIERS.register("drop_loot_modifier", DropLootModifier.CODEC);
+    public static final RegistryObject<Codec<FishingLootModifier>> FISHING_MODIFIER = GLOBAL_LOOT_MODIFIERS.register("fishing_modifier", FishingLootModifier.CODEC);
 
     public static LootTableReference getLootTableReference(String resLoc) {
         return (LootTableReference) LootTableReference.lootTableReference(new ResourceLocation(resLoc)).build();

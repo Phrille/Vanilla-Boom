@@ -4,7 +4,6 @@ import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -13,8 +12,8 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -22,7 +21,7 @@ public class DropLootModifier extends LootModifier {
     public static final Supplier<Codec<DropLootModifier>> CODEC = Suppliers.memoize(() ->
             RecordCodecBuilder.create(inst -> codecStart(inst).and(
                     inst.group(
-                            Codec.STRING.fieldOf("table").xmap(LootTableHandler::getLootTableReference, LootTableHandler::getString).forGetter(m -> m.lootTable),
+                            Codec.STRING.fieldOf("table").xmap(ModGlobalLootModifiers::getLootTableReference, ModGlobalLootModifiers::getString).forGetter(m -> m.lootTable),
                             ForgeRegistries.ITEMS.getCodec().listOf().fieldOf("overwrites").forGetter(m -> m.overwrites)
                     )).apply(inst, DropLootModifier::new)
             )
@@ -37,7 +36,7 @@ public class DropLootModifier extends LootModifier {
         this.overwrites = overwrites;
     }
 
-    @Nonnull
+    @NotNull
     @Override
     protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
         if (!overwrites.isEmpty()) {
