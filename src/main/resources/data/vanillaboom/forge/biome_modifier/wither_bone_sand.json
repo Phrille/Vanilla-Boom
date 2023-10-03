@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_nether",
+  "features": "vanillaboom:ore_wither_bone_sand",
+  "step": "underground_ores"
+}
