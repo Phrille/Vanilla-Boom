@@ -1,10 +1,10 @@
 {
   "type": "forge:add_spawns",
-  "biomes": "#minecraft:is_swamp",
+  "biomes": "minecraft:mangrove_swamp",
   "spawners":
   {
     "type": "vanillaboom:eel",
-    "weight": 40,
+    "weight": 80,
     "minCount": 1,
     "maxCount": 1
   }
