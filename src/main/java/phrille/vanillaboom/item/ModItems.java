@@ -17,6 +17,8 @@ import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.entity.ModEntities;
 import phrille.vanillaboom.util.VanillaBoomTab;
 
+import java.util.function.Supplier;
+
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, VanillaBoom.MOD_ID);
 
