@@ -17,6 +17,8 @@ import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.entity.ModEntities;
 import phrille.vanillaboom.util.VanillaBoomTab;
 
+import java.util.function.Supplier;
+
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, VanillaBoom.MOD_ID);
 
@@ -66,8 +68,8 @@ public class ModItems {
     public static final RegistryObject<Item> EEL_BUCKET = ITEMS.register("eel_bucket", () -> new FishBucketItem(ModEntities.EEL));
 
     //Spawn Eggs
-    public static final RegistryObject<Item> TUNA_SPAWN_EGG = ITEMS.register("tuna_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.TUNA, 0x464614, 0xFD5100, new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
-    public static final RegistryObject<Item> PERCH_SPAWN_EGG = ITEMS.register("perch_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.PERCH, 0x33495E, 0xD7C376, new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> TUNA_SPAWN_EGG = ITEMS.register("tuna_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.TUNA, 0x33495E, 0xD7C376, new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> PERCH_SPAWN_EGG = ITEMS.register("perch_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.PERCH, 0x464614, 0xFD5100, new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> PIKE_SPAWN_EGG = ITEMS.register("pike_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.PIKE, 0x4C462A, 0xA0A169, new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> EEL_SPAWN_EGG = ITEMS.register("eel_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.EEL, 0x5F4F37, 0x312517, new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
 
