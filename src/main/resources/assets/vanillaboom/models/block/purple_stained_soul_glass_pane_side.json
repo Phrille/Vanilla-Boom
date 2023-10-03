@@ -1,5 +1,6 @@
 {
   "parent": "minecraft:block/template_glass_pane_side",
+  "render_type": "minecraft:translucent",
   "textures": {
     "edge": "vanillaboom:block/purple_stained_soul_glass_pane_top",
     "pane": "vanillaboom:block/purple_stained_soul_glass"

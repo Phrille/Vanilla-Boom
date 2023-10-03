@@ -1,5 +1,6 @@
 {
   "parent": "minecraft:block/template_glass_pane_post",
+  "render_type": "minecraft:cutout_mipped",
   "textures": {
     "edge": "vanillaboom:block/gold_bars",
     "pane": "vanillaboom:block/gold_bars"

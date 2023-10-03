@@ -16,6 +16,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ModBlockStateProvider extends BlockStateProvider {
+    public static final String RENDER_TYPE_CUTOUT = "cutout";
+    public static final String RENDER_TYPE_CUTOUT_MIPPED = "cutout_mipped";
+    public static final String RENDER_TYPE_TRANSLUCENT = "translucent";
+
     public ModBlockStateProvider(DataGenerator gen, ExistingFileHelper fileHelper) {
         super(gen, VanillaBoom.MOD_ID, fileHelper);
     }
@@ -123,23 +127,23 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.BLACK_DYE_BLOCK.get());
 
         //Glass
-        simpleBlock(ModBlocks.SOUL_GLASS.get());
-        simpleBlock(ModBlocks.WHITE_STAINED_SOUL_GLASS.get());
-        simpleBlock(ModBlocks.ORANGE_STAINED_SOUL_GLASS.get());
-        simpleBlock(ModBlocks.MAGENTA_STAINED_SOUL_GLASS.get());
-        simpleBlock(ModBlocks.LIGHT_BLUE_STAINED_SOUL_GLASS.get());
-        simpleBlock(ModBlocks.YELLOW_STAINED_SOUL_GLASS.get());
-        simpleBlock(ModBlocks.LIME_STAINED_SOUL_GLASS.get());
-        simpleBlock(ModBlocks.PINK_STAINED_SOUL_GLASS.get());
-        simpleBlock(ModBlocks.GRAY_STAINED_SOUL_GLASS.get());
-        simpleBlock(ModBlocks.LIGHT_GRAY_STAINED_SOUL_GLASS.get());
-        simpleBlock(ModBlocks.CYAN_STAINED_SOUL_GLASS.get());
-        simpleBlock(ModBlocks.PURPLE_STAINED_SOUL_GLASS.get());
-        simpleBlock(ModBlocks.BLUE_STAINED_SOUL_GLASS.get());
-        simpleBlock(ModBlocks.BROWN_STAINED_SOUL_GLASS.get());
-        simpleBlock(ModBlocks.GREEN_STAINED_SOUL_GLASS.get());
-        simpleBlock(ModBlocks.RED_STAINED_SOUL_GLASS.get());
-        simpleBlock(ModBlocks.BLACK_STAINED_SOUL_GLASS.get());
+        glassBlock(ModBlocks.SOUL_GLASS.get());
+        glassBlock(ModBlocks.WHITE_STAINED_SOUL_GLASS.get());
+        glassBlock(ModBlocks.ORANGE_STAINED_SOUL_GLASS.get());
+        glassBlock(ModBlocks.MAGENTA_STAINED_SOUL_GLASS.get());
+        glassBlock(ModBlocks.LIGHT_BLUE_STAINED_SOUL_GLASS.get());
+        glassBlock(ModBlocks.YELLOW_STAINED_SOUL_GLASS.get());
+        glassBlock(ModBlocks.LIME_STAINED_SOUL_GLASS.get());
+        glassBlock(ModBlocks.PINK_STAINED_SOUL_GLASS.get());
+        glassBlock(ModBlocks.GRAY_STAINED_SOUL_GLASS.get());
+        glassBlock(ModBlocks.LIGHT_GRAY_STAINED_SOUL_GLASS.get());
+        glassBlock(ModBlocks.CYAN_STAINED_SOUL_GLASS.get());
+        glassBlock(ModBlocks.PURPLE_STAINED_SOUL_GLASS.get());
+        glassBlock(ModBlocks.BLUE_STAINED_SOUL_GLASS.get());
+        glassBlock(ModBlocks.BROWN_STAINED_SOUL_GLASS.get());
+        glassBlock(ModBlocks.GREEN_STAINED_SOUL_GLASS.get());
+        glassBlock(ModBlocks.RED_STAINED_SOUL_GLASS.get());
+        glassBlock(ModBlocks.BLACK_STAINED_SOUL_GLASS.get());
 
         glassPaneBlock(ModBlocks.SOUL_GLASS_PANE.get());
         glassPaneBlock(ModBlocks.WHITE_STAINED_SOUL_GLASS_PANE.get());
@@ -238,21 +242,25 @@ public class ModBlockStateProvider extends BlockStateProvider {
         fenceGateBlock((FenceGateBlock) fenceGate, variantTexture(parent));
     }
 
+    public void glassBlock(Block glass) {
+        simpleBlock(glass, models().cubeAll(name(glass), blockTexture(glass)).renderType(ModBlockStateProvider.RENDER_TYPE_TRANSLUCENT));
+    }
+
     public void glassPaneBlock(Block pane) {
-        paneBlock((IronBarsBlock) pane, ModDataGenerator.shrink(blockTexture(pane), "_pane"), ModDataGenerator.extend(blockTexture(pane), "_top"));
+        paneBlockWithRenderType((IronBarsBlock) pane, ModDataGenerator.shrink(blockTexture(pane), "_pane"), ModDataGenerator.extend(blockTexture(pane), "_top"), ModBlockStateProvider.RENDER_TYPE_TRANSLUCENT);
     }
 
     public void barsBlock(Block bars) {
-        paneBlock((IronBarsBlock) bars, blockTexture(bars), blockTexture(bars));
+        paneBlockWithRenderType((IronBarsBlock) bars, blockTexture(bars), blockTexture(bars), ModBlockStateProvider.RENDER_TYPE_CUTOUT_MIPPED);
     }
 
     public void flowerBlock(Block flower, Block pot) {
-        simpleBlock(flower, models().cross(name(flower), blockTexture(flower)));
-        simpleBlock(pot, models().withExistingParent(name(pot), ModelProvider.BLOCK_FOLDER + "/flower_pot_cross").texture("plant", blockTexture(flower)));
+        simpleBlock(flower, models().cross(name(flower), blockTexture(flower)).renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT));
+        simpleBlock(pot, models().withExistingParent(name(pot), ModelProvider.BLOCK_FOLDER + "/flower_pot_cross").texture("plant", blockTexture(flower)).renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT));
     }
 
     public void ladderBlock(Block ladder) {
-        ladderBlock((LadderBlock) ladder, models().withExistingParent(name(ladder), ModelProvider.BLOCK_FOLDER + "/ladder").texture("texture", blockTexture(ladder)));
+        ladderBlock((LadderBlock) ladder, models().withExistingParent(name(ladder), ModelProvider.BLOCK_FOLDER + "/ladder").texture("texture", blockTexture(ladder)).renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT));
     }
 
     protected void ladderBlock(LadderBlock ladder, ModelFile model) {
@@ -272,7 +280,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     public void cropBlock(Block crop, IntegerProperty ageProperty) {
         List<ModelFile> files = ageProperty.getAllValues()
-                .map(age -> models().withExistingParent(name(crop) + "_stage" + age.value(), ModelProvider.BLOCK_FOLDER + "/crop").texture("crop", ModDataGenerator.extend(blockTexture(crop), "_stage" + age.value())))
+                .map(age -> models().withExistingParent(name(crop) + "_stage" + age.value(), ModelProvider.BLOCK_FOLDER + "/crop").texture("crop", ModDataGenerator.extend(blockTexture(crop), "_stage" + age.value())).renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT))
                 .collect(Collectors.toList());
         cropBlock((CropBlock) crop, files, ageProperty);
     }

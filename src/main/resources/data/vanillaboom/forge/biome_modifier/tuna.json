@@ -4,8 +4,8 @@
   "spawners":
   {
     "type": "vanillaboom:tuna",
-    "weight": 100,
-    "minCount": 1,
-    "maxCount": 4
+    "weight": 30,
+    "minCount": 2,
+    "maxCount": 12
   }
 }

@@ -209,23 +209,23 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModItems.RED_STAINED_SOUL_GLASS.get());
         blockItem(ModItems.BLACK_STAINED_SOUL_GLASS.get());
 
-        item(ModBlocks.SOUL_GLASS_PANE.get());
-        item(ModBlocks.WHITE_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.ORANGE_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.MAGENTA_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.LIGHT_BLUE_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.YELLOW_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.LIME_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.PINK_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.GRAY_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.LIGHT_GRAY_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.CYAN_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.PURPLE_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.BLUE_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.BROWN_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.GREEN_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.RED_STAINED_SOUL_GLASS_PANE.get());
-        item(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.WHITE_STAINED_SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.ORANGE_STAINED_SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.MAGENTA_STAINED_SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.LIGHT_BLUE_STAINED_SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.YELLOW_STAINED_SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.LIME_STAINED_SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.PINK_STAINED_SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.GRAY_STAINED_SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.LIGHT_GRAY_STAINED_SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.CYAN_STAINED_SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.PURPLE_STAINED_SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.BLUE_STAINED_SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.BROWN_STAINED_SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.GREEN_STAINED_SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.RED_STAINED_SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get());
 
         //Misc
         blockItem(ModItems.RAIN_DETECTOR.get());
@@ -256,6 +256,10 @@ public class ModItemModelProvider extends ItemModelProvider {
     public void inventoryBlockItem(Block block) {
         ResourceLocation parent = ForgeRegistries.BLOCKS.getKey(block);
         withExistingParent(name(block.asItem()), new ResourceLocation(parent.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + parent.getPath() + "_inventory"));
+    }
+
+    public void glassPaneItem(Block block) {
+        item(block.asItem(), "generated").texture("layer0", blockTexture(block)).renderType(ModBlockStateProvider.RENDER_TYPE_TRANSLUCENT);
     }
 
     public void spawnEggItem(Item item) {
