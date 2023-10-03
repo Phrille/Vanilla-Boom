@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "peridotite_pillar",
-  "pattern": [
-    "x",
-    "x"
-  ],
   "key": {
     "x": {
       "item": "vanillaboom:polished_peridotite"
     }
   },
+  "pattern": [
+    "x",
+    "x"
+  ],
   "result": {
-    "item": "vanillaboom:peridotite_pillar",
-    "count": 2
+    "count": 2,
+    "item": "vanillaboom:peridotite_pillar"
   }
 }

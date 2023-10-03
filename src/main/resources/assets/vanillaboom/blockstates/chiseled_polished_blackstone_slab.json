@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "vanillaboom:block/chiseled_polished_blackstone_slab_top"
-    },
     "type=bottom": {
       "model": "vanillaboom:block/chiseled_polished_blackstone_slab"
     },
     "type=double": {
       "model": "minecraft:block/chiseled_polished_blackstone"
+    },
+    "type=top": {
+      "model": "vanillaboom:block/chiseled_polished_blackstone_slab_top"
     }
   }
 }

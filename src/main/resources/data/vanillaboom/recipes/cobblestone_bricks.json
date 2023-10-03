@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "cobblestone_bricks",
-  "pattern": [
-    "xx",
-    "xx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:cobblestone"
     }
   },
+  "pattern": [
+    "xx",
+    "xx"
+  ],
   "result": {
-    "item": "vanillaboom:cobblestone_bricks",
-    "count": 4
+    "count": 4,
+    "item": "vanillaboom:cobblestone_bricks"
   }
 }

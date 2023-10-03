@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.35,
   "ingredient": {
     "item": "vanillaboom:raw_polar_bear_meat"
   },
-  "result": "vanillaboom:polar_bear_steak",
-  "experience": 0.35,
-  "cookingtime": 200
+  "result": "vanillaboom:polar_bear_steak"
 }

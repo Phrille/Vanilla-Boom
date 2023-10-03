@@ -3,14 +3,14 @@
   "conditions": [
     {
       "condition": "minecraft:entity_properties",
+      "entity": "this",
       "predicate": {
         "type": "minecraft:drowned"
-      },
-      "entity": "this"
+      }
     }
   ],
-  "table": "vanillaboom:minecraft/drowned",
   "overwrites": [
     "minecraft:rotten_flesh"
-  ]
+  ],
+  "table": "vanillaboom:minecraft/drowned"
 }

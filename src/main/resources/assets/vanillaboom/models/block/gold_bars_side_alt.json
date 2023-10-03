@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/template_glass_pane_side_alt",
   "textures": {
-    "pane": "vanillaboom:block/gold_bars",
-    "edge": "vanillaboom:block/gold_bars"
+    "edge": "vanillaboom:block/gold_bars",
+    "pane": "vanillaboom:block/gold_bars"
   }
 }

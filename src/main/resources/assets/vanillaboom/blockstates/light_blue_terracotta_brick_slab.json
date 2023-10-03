@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "vanillaboom:block/light_blue_terracotta_brick_slab_top"
-    },
     "type=bottom": {
       "model": "vanillaboom:block/light_blue_terracotta_brick_slab"
     },
     "type=double": {
       "model": "vanillaboom:block/light_blue_terracotta_bricks"
+    },
+    "type=top": {
+      "model": "vanillaboom:block/light_blue_terracotta_brick_slab_top"
     }
   }
 }

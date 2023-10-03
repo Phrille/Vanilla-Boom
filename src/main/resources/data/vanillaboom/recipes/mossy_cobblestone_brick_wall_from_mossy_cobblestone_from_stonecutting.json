@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
+  "count": 1,
   "ingredient": {
     "item": "minecraft:mossy_cobblestone"
   },
-  "result": "vanillaboom:mossy_cobblestone_brick_wall",
-  "count": 1
+  "result": "vanillaboom:mossy_cobblestone_brick_wall"
 }

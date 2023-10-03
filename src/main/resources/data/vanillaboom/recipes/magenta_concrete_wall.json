@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:magenta_concrete"
     }
   },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:magenta_concrete_wall",
-    "count": 6
+    "count": 6,
+    "item": "vanillaboom:magenta_concrete_wall"
   }
 }

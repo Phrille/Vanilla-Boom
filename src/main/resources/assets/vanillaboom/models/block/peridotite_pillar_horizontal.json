@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column_horizontal",
   "textures": {
-    "side": "vanillaboom:block/peridotite_pillar_side",
-    "end": "vanillaboom:block/peridotite_pillar_top"
+    "end": "vanillaboom:block/peridotite_pillar_top",
+    "side": "vanillaboom:block/peridotite_pillar_side"
   }
 }

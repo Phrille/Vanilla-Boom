@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "vanillaboom:infernal_rock"
     }
   },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:infernal_rock_wall",
-    "count": 6
+    "count": 6,
+    "item": "vanillaboom:infernal_rock_wall"
   }
 }

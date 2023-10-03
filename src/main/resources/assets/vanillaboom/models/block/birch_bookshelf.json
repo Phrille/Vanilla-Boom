@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "side": "vanillaboom:block/birch_bookshelf",
-    "end": "minecraft:block/birch_planks"
+    "end": "minecraft:block/birch_planks",
+    "side": "vanillaboom:block/birch_bookshelf"
   }
 }

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "side": "vanillaboom:block/dark_prismarine_pillar_side",
-    "end": "vanillaboom:block/dark_prismarine_pillar_top"
+    "end": "vanillaboom:block/dark_prismarine_pillar_top",
+    "side": "vanillaboom:block/dark_prismarine_pillar_side"
   }
 }

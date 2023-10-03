@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "vanillaboom:block/magma_brick_slab_top"
-    },
     "type=bottom": {
       "model": "vanillaboom:block/magma_brick_slab"
     },
     "type=double": {
       "model": "vanillaboom:block/magma_bricks"
+    },
+    "type=top": {
+      "model": "vanillaboom:block/magma_brick_slab_top"
     }
   }
 }

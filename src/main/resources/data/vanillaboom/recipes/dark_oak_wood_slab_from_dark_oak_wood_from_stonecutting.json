@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
+  "count": 2,
   "ingredient": {
     "item": "minecraft:dark_oak_wood"
   },
-  "result": "vanillaboom:dark_oak_wood_slab",
-  "count": 2
+  "result": "vanillaboom:dark_oak_wood_slab"
 }

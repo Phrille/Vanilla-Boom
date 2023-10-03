@@ -1,15 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "magma_bricks",
-  "pattern": [
-    "xx",
-    "xx"
-  ],
   "key": {
     "x": {
       "item": "vanillaboom:magma_brick"
     }
   },
+  "pattern": [
+    "xx",
+    "xx"
+  ],
   "result": {
     "item": "vanillaboom:magma_bricks"
   }

@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "red_nether_pillar",
-  "pattern": [
-    "x",
-    "x"
-  ],
   "key": {
     "x": {
       "item": "minecraft:red_nether_bricks"
     }
   },
+  "pattern": [
+    "x",
+    "x"
+  ],
   "result": {
-    "item": "vanillaboom:red_nether_pillar",
-    "count": 2
+    "count": 2,
+    "item": "vanillaboom:red_nether_pillar"
   }
 }

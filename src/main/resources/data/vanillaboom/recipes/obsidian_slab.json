@@ -1,15 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:obsidian"
     }
   },
+  "pattern": [
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:obsidian_slab",
-    "count": 6
+    "count": 6,
+    "item": "vanillaboom:obsidian_slab"
   }
 }

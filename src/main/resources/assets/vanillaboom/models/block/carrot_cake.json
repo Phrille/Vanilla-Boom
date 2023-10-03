@@ -1,9 +1,9 @@
 {
   "parent": "minecraft:block/cake",
   "textures": {
-    "side": "vanillaboom:block/carrot_cake_side",
-    "top": "vanillaboom:block/carrot_cake_top",
     "bottom": "vanillaboom:block/carrot_cake_bottom",
-    "particle": "vanillaboom:block/carrot_cake_side"
+    "particle": "vanillaboom:block/carrot_cake_side",
+    "side": "vanillaboom:block/carrot_cake_side",
+    "top": "vanillaboom:block/carrot_cake_top"
   }
 }

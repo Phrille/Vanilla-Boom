@@ -1,10 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx",
-    "yyy",
-    "zzz"
-  ],
   "key": {
     "x": {
       "item": "minecraft:glass"
@@ -16,6 +11,11 @@
       "tag": "minecraft:wooden_slabs"
     }
   },
+  "pattern": [
+    "xxx",
+    "yyy",
+    "zzz"
+  ],
   "result": {
     "item": "vanillaboom:rain_detector"
   }

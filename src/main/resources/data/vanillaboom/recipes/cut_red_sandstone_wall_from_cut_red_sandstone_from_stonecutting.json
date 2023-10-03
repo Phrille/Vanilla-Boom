@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
+  "count": 1,
   "ingredient": {
     "item": "minecraft:cut_red_sandstone"
   },
-  "result": "vanillaboom:cut_red_sandstone_wall",
-  "count": 1
+  "result": "vanillaboom:cut_red_sandstone_wall"
 }

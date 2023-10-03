@@ -1,15 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:white_terracotta"
     }
   },
+  "pattern": [
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:white_terracotta_slab",
-    "count": 6
+    "count": 6,
+    "item": "vanillaboom:white_terracotta_slab"
   }
 }

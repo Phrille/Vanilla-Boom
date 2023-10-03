@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.3,
   "ingredient": {
     "item": "minecraft:egg"
   },
-  "result": "vanillaboom:cooked_egg",
-  "experience": 0.3,
-  "cookingtime": 200
+  "result": "vanillaboom:cooked_egg"
 }

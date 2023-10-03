@@ -1,9 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "yxy",
-    "yxy"
-  ],
   "key": {
     "x": {
       "item": "minecraft:spruce_wood"
@@ -12,6 +8,10 @@
       "tag": "forge:rods/wooden"
     }
   },
+  "pattern": [
+    "yxy",
+    "yxy"
+  ],
   "result": {
     "item": "vanillaboom:spruce_wood_fence_gate"
   }

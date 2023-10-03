@@ -15,6 +15,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.data.loot.ModGlobalLootModifierProvider;
+import phrille.vanillaboom.data.loot.ModLootTableProvider;
+import phrille.vanillaboom.data.tags.ModBlockTagsProvider;
+import phrille.vanillaboom.data.tags.ModEntityTypeTagsProvider;
+import phrille.vanillaboom.data.tags.ModItemTagsProvider;
 import phrille.vanillaboom.util.Utils;
 
 import java.util.List;
@@ -28,12 +32,14 @@ public class ModDataGenerator {
     public static final List<Pair<Block, Block>> FENCES = Lists.newArrayList();
     public static final List<Pair<Block, Block>> FENCE_GATES = Lists.newArrayList();
 
+
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+
         init();
-        /*
+
         //Assets
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(generator, existingFileHelper));
         generator.addProvider(event.includeClient(), new ModItemModelProvider(generator, existingFileHelper));
@@ -45,7 +51,7 @@ public class ModDataGenerator {
         generator.addProvider(event.includeServer(), new ModItemTagsProvider(generator, blockTags, existingFileHelper));
         generator.addProvider(event.includeServer(), new ModEntityTypeTagsProvider(generator, existingFileHelper));
         generator.addProvider(event.includeServer(), new ModRecipeProvider(generator));
-        generator.addProvider(event.includeServer(), new ModLootTableProvider(generator));*/
+        generator.addProvider(event.includeServer(), new ModLootTableProvider(generator));
         generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(generator));
     }
 

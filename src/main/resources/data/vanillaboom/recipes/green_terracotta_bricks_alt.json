@@ -1,11 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "green_terracotta_bricks",
-  "pattern": [
-    "xxx",
-    "xyx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "vanillaboom:terracotta_bricks"
@@ -14,8 +9,13 @@
       "tag": "forge:dyes/green"
     }
   },
+  "pattern": [
+    "xxx",
+    "xyx",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:green_terracotta_bricks",
-    "count": 8
+    "count": 8,
+    "item": "vanillaboom:green_terracotta_bricks"
   }
 }

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/template_glass_pane_post",
   "textures": {
-    "pane": "vanillaboom:block/cyan_stained_soul_glass",
-    "edge": "vanillaboom:block/cyan_stained_soul_glass_pane_top"
+    "edge": "vanillaboom:block/cyan_stained_soul_glass_pane_top",
+    "pane": "vanillaboom:block/cyan_stained_soul_glass"
   }
 }

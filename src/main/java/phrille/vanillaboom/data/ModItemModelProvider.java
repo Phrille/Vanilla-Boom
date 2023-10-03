@@ -11,6 +11,7 @@ import net.minecraftforge.client.model.generators.ModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
+import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.item.ModItems;
 
 public class ModItemModelProvider extends ItemModelProvider {
@@ -155,13 +156,13 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModItems.DARK_OAK_BOOKSHELF.get());
         blockItem(ModItems.CRIMSON_BOOKSHELF.get());
         blockItem(ModItems.WARPED_BOOKSHELF.get());
-        item(ModItems.SPRUCE_LADDER.get());
-        item(ModItems.BIRCH_LADDER.get());
-        item(ModItems.JUNGLE_LADDER.get());
-        item(ModItems.ACACIA_LADDER.get());
-        item(ModItems.DARK_OAK_LADDER.get());
-        item(ModItems.CRIMSON_LADDER.get());
-        item(ModItems.WARPED_LADDER.get());
+        item(ModBlocks.SPRUCE_LADDER.get());
+        item(ModBlocks.BIRCH_LADDER.get());
+        item(ModBlocks.JUNGLE_LADDER.get());
+        item(ModBlocks.ACACIA_LADDER.get());
+        item(ModBlocks.DARK_OAK_LADDER.get());
+        item(ModBlocks.CRIMSON_LADDER.get());
+        item(ModBlocks.WARPED_LADDER.get());
 
         //Storage Blocks
         blockItem(ModItems.CHARCOAL_BLOCK.get());
@@ -208,28 +209,28 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModItems.RED_STAINED_SOUL_GLASS.get());
         blockItem(ModItems.BLACK_STAINED_SOUL_GLASS.get());
 
-        item(ModItems.SOUL_GLASS_PANE.get());
-        item(ModItems.WHITE_STAINED_SOUL_GLASS_PANE.get());
-        item(ModItems.ORANGE_STAINED_SOUL_GLASS_PANE.get());
-        item(ModItems.MAGENTA_STAINED_SOUL_GLASS_PANE.get());
-        item(ModItems.LIGHT_BLUE_STAINED_SOUL_GLASS_PANE.get());
-        item(ModItems.YELLOW_STAINED_SOUL_GLASS_PANE.get());
-        item(ModItems.LIME_STAINED_SOUL_GLASS_PANE.get());
-        item(ModItems.PINK_STAINED_SOUL_GLASS_PANE.get());
-        item(ModItems.GRAY_STAINED_SOUL_GLASS_PANE.get());
-        item(ModItems.LIGHT_GRAY_STAINED_SOUL_GLASS_PANE.get());
-        item(ModItems.CYAN_STAINED_SOUL_GLASS_PANE.get());
-        item(ModItems.PURPLE_STAINED_SOUL_GLASS_PANE.get());
-        item(ModItems.BLUE_STAINED_SOUL_GLASS_PANE.get());
-        item(ModItems.BROWN_STAINED_SOUL_GLASS_PANE.get());
-        item(ModItems.GREEN_STAINED_SOUL_GLASS_PANE.get());
-        item(ModItems.RED_STAINED_SOUL_GLASS_PANE.get());
-        item(ModItems.BLACK_STAINED_SOUL_GLASS_PANE.get());
+        item(ModBlocks.SOUL_GLASS_PANE.get());
+        item(ModBlocks.WHITE_STAINED_SOUL_GLASS_PANE.get());
+        item(ModBlocks.ORANGE_STAINED_SOUL_GLASS_PANE.get());
+        item(ModBlocks.MAGENTA_STAINED_SOUL_GLASS_PANE.get());
+        item(ModBlocks.LIGHT_BLUE_STAINED_SOUL_GLASS_PANE.get());
+        item(ModBlocks.YELLOW_STAINED_SOUL_GLASS_PANE.get());
+        item(ModBlocks.LIME_STAINED_SOUL_GLASS_PANE.get());
+        item(ModBlocks.PINK_STAINED_SOUL_GLASS_PANE.get());
+        item(ModBlocks.GRAY_STAINED_SOUL_GLASS_PANE.get());
+        item(ModBlocks.LIGHT_GRAY_STAINED_SOUL_GLASS_PANE.get());
+        item(ModBlocks.CYAN_STAINED_SOUL_GLASS_PANE.get());
+        item(ModBlocks.PURPLE_STAINED_SOUL_GLASS_PANE.get());
+        item(ModBlocks.BLUE_STAINED_SOUL_GLASS_PANE.get());
+        item(ModBlocks.BROWN_STAINED_SOUL_GLASS_PANE.get());
+        item(ModBlocks.GREEN_STAINED_SOUL_GLASS_PANE.get());
+        item(ModBlocks.RED_STAINED_SOUL_GLASS_PANE.get());
+        item(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get());
 
         //Misc
         blockItem(ModItems.RAIN_DETECTOR.get());
-        item(ModItems.GOLD_BARS.get());
-        item(ModItems.ROSE.get());
+        item(ModBlocks.GOLD_BARS.get());
+        item(ModBlocks.ROSE.get());
 
         //Variant Blocks
         ModDataGenerator.STAIRS.forEach(pair -> blockItem(pair.getFirst().asItem()));

@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "vanillaboom:block/chiseled_obsidian_slab_top"
-    },
     "type=bottom": {
       "model": "vanillaboom:block/chiseled_obsidian_slab"
     },
     "type=double": {
       "model": "vanillaboom:block/chiseled_obsidian"
+    },
+    "type=top": {
+      "model": "vanillaboom:block/chiseled_obsidian_slab_top"
     }
   }
 }

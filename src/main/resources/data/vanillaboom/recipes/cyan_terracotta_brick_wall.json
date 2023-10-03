@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "vanillaboom:cyan_terracotta_bricks"
     }
   },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:cyan_terracotta_brick_wall",
-    "count": 6
+    "count": 6,
+    "item": "vanillaboom:cyan_terracotta_brick_wall"
   }
 }

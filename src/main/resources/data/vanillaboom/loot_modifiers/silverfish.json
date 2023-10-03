@@ -3,12 +3,12 @@
   "conditions": [
     {
       "condition": "minecraft:entity_properties",
+      "entity": "this",
       "predicate": {
         "type": "minecraft:silverfish"
-      },
-      "entity": "this"
+      }
     }
   ],
-  "table": "vanillaboom:minecraft/silverfish",
-  "overwrites": []
+  "overwrites": [],
+  "table": "vanillaboom:minecraft/silverfish"
 }

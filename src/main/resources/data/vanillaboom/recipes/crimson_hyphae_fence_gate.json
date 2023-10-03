@@ -1,9 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "yxy",
-    "yxy"
-  ],
   "key": {
     "x": {
       "item": "minecraft:crimson_hyphae"
@@ -12,6 +8,10 @@
       "tag": "forge:rods/wooden"
     }
   },
+  "pattern": [
+    "yxy",
+    "yxy"
+  ],
   "result": {
     "item": "vanillaboom:crimson_hyphae_fence_gate"
   }

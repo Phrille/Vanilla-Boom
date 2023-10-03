@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "mossy_cobblestone_bricks",
-  "pattern": [
-    "xx",
-    "xx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:mossy_cobblestone"
     }
   },
+  "pattern": [
+    "xx",
+    "xx"
+  ],
   "result": {
-    "item": "vanillaboom:mossy_cobblestone_bricks",
-    "count": 4
+    "count": 4,
+    "item": "vanillaboom:mossy_cobblestone_bricks"
   }
 }

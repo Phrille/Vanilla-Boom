@@ -1,15 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx",
-    "xxx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:pink_dye"
     }
   },
+  "pattern": [
+    "xxx",
+    "xxx",
+    "xxx"
+  ],
   "result": {
     "item": "vanillaboom:pink_dye_block"
   }

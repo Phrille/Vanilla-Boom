@@ -480,6 +480,7 @@ public class ModItems {
     public static final RegistryObject<Item> STRIPPED_WARPED_HYPHAE_SLAB = ITEMS.register("stripped_warped_hyphae_slab", () -> new BlockItem(ModBlocks.STRIPPED_WARPED_HYPHAE_SLAB.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
 
 
+    //VanillaBoom Walls
     public static final RegistryObject<Item> COBBLESTONE_BRICK_WALL = ITEMS.register("cobblestone_brick_wall", () -> new BlockItem(ModBlocks.COBBLESTONE_BRICK_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> MOSSY_COBBLESTONE_BRICK_WALL = ITEMS.register("mossy_cobblestone_brick_wall", () -> new BlockItem(ModBlocks.MOSSY_COBBLESTONE_BRICK_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> MAGMA_BRICK_WALL = ITEMS.register("magma_brick_wall", () -> new BlockItem(ModBlocks.MAGMA_BRICK_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
@@ -515,7 +516,7 @@ public class ModItems {
     public static final RegistryObject<Item> CHISELED_PURPUR_BLOCK_WALL = ITEMS.register("chiseled_purpur_block_wall", () -> new BlockItem(ModBlocks.CHISELED_PURPUR_BLOCK_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> CHISELED_OBSIDIAN_WALL = ITEMS.register("chiseled_obsidian_wall", () -> new BlockItem(ModBlocks.CHISELED_OBSIDIAN_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
 
-    //Vanilla Stairs
+    //Vanilla Walls
     public static final RegistryObject<Item> CRACKED_STONE_BRICK_WALL = ITEMS.register("cracked_stone_brick_wall", () -> new BlockItem(ModBlocks.CRACKED_STONE_BRICK_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> CHISELED_STONE_BRICK_WALL = ITEMS.register("chiseled_stone_brick_wall", () -> new BlockItem(ModBlocks.CHISELED_STONE_BRICK_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> CHISELED_SANDSTONE_WALL = ITEMS.register("chiseled_sandstone_wall", () -> new BlockItem(ModBlocks.CHISELED_SANDSTONE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
@@ -568,7 +569,7 @@ public class ModItems {
     public static final RegistryObject<Item> CUT_SANDSTONE_WALL = ITEMS.register("cut_sandstone_wall", () -> new BlockItem(ModBlocks.CUT_SANDSTONE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> CUT_RED_SANDSTONE_WALL = ITEMS.register("cut_red_sandstone_wall", () -> new BlockItem(ModBlocks.CUT_RED_SANDSTONE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> SMOOTH_STONE_WALL = ITEMS.register("smooth_stone_wall", () -> new BlockItem(ModBlocks.SMOOTH_STONE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
-    public static final RegistryObject<Item> STONE_WALL = ITEMS.register("stone_wall", () -> new BlockItem(ModBlocks.SMOOTH_STONE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
+    public static final RegistryObject<Item> STONE_WALL = ITEMS.register("stone_wall", () -> new BlockItem(ModBlocks.STONE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> POLISHED_GRANITE_WALL = ITEMS.register("polished_granite_wall", () -> new BlockItem(ModBlocks.POLISHED_GRANITE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> POLISHED_DIORITE_WALL = ITEMS.register("polished_diorite_wall", () -> new BlockItem(ModBlocks.POLISHED_DIORITE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> POLISHED_ANDESITE_WALL = ITEMS.register("polished_andesite_wall", () -> new BlockItem(ModBlocks.POLISHED_ANDESITE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));

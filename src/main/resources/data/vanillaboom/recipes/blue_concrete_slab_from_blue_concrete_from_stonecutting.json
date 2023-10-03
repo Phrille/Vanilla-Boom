@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
+  "count": 2,
   "ingredient": {
     "item": "minecraft:blue_concrete"
   },
-  "result": "vanillaboom:blue_concrete_slab",
-  "count": 2
+  "result": "vanillaboom:blue_concrete_slab"
 }

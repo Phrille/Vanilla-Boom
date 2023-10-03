@@ -1,11 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "cyan_terracotta_bricks",
-  "pattern": [
-    "xxx",
-    "xyx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "vanillaboom:terracotta_bricks"
@@ -14,8 +9,13 @@
       "tag": "forge:dyes/cyan"
     }
   },
+  "pattern": [
+    "xxx",
+    "xyx",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:cyan_terracotta_bricks",
-    "count": 8
+    "count": 8,
+    "item": "vanillaboom:cyan_terracotta_bricks"
   }
 }

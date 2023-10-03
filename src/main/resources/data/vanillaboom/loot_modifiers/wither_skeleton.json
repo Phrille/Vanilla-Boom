@@ -3,14 +3,14 @@
   "conditions": [
     {
       "condition": "minecraft:entity_properties",
+      "entity": "this",
       "predicate": {
         "type": "minecraft:wither_skeleton"
-      },
-      "entity": "this"
+      }
     }
   ],
-  "table": "vanillaboom:minecraft/wither_skeleton",
   "overwrites": [
     "minecraft:bone"
-  ]
+  ],
+  "table": "vanillaboom:minecraft/wither_skeleton"
 }

@@ -1,11 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "lime_stained_soul_glass",
-  "pattern": [
-    "xxx",
-    "xyx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "vanillaboom:soul_glass"
@@ -14,8 +9,13 @@
       "tag": "forge:dyes/lime"
     }
   },
+  "pattern": [
+    "xxx",
+    "xyx",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:lime_stained_soul_glass",
-    "count": 8
+    "count": 8,
+    "item": "vanillaboom:lime_stained_soul_glass"
   }
 }

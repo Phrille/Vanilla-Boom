@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "vanillaboom:hydro_rock"
     }
   },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:hydro_rock_wall",
-    "count": 6
+    "count": 6,
+    "item": "vanillaboom:hydro_rock_wall"
   }
 }

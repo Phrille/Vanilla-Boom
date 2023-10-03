@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "vanillaboom:peridotite"
     }
   },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:peridotite_wall",
-    "count": 6
+    "count": 6,
+    "item": "vanillaboom:peridotite_wall"
   }
 }

@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "vanillaboom:block/obsidian_slab_top"
-    },
     "type=bottom": {
       "model": "vanillaboom:block/obsidian_slab"
     },
     "type=double": {
       "model": "minecraft:block/obsidian"
+    },
+    "type=top": {
+      "model": "vanillaboom:block/obsidian_slab_top"
     }
   }
 }

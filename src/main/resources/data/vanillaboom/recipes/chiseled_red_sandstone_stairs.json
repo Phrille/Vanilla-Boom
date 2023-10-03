@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "x  ",
-    "xx ",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:chiseled_red_sandstone"
     }
   },
+  "pattern": [
+    "x  ",
+    "xx ",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:chiseled_red_sandstone_stairs",
-    "count": 4
+    "count": 4,
+    "item": "vanillaboom:chiseled_red_sandstone_stairs"
   }
 }

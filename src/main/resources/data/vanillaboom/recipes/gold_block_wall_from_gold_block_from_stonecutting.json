@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
+  "count": 1,
   "ingredient": {
     "item": "minecraft:gold_block"
   },
-  "result": "vanillaboom:gold_block_wall",
-  "count": 1
+  "result": "vanillaboom:gold_block_wall"
 }

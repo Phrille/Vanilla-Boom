@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "lime_terracotta_bricks",
-  "pattern": [
-    "xx",
-    "xx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:lime_terracotta"
     }
   },
+  "pattern": [
+    "xx",
+    "xx"
+  ],
   "result": {
-    "item": "vanillaboom:lime_terracotta_bricks",
-    "count": 4
+    "count": 4,
+    "item": "vanillaboom:lime_terracotta_bricks"
   }
 }

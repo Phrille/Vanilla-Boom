@@ -1,9 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "yxy",
-    "yxy"
-  ],
   "key": {
     "x": {
       "item": "minecraft:nether_bricks"
@@ -12,6 +8,10 @@
       "tag": "forge:rods/wooden"
     }
   },
+  "pattern": [
+    "yxy",
+    "yxy"
+  ],
   "result": {
     "item": "vanillaboom:nether_brick_fence_gate"
   }

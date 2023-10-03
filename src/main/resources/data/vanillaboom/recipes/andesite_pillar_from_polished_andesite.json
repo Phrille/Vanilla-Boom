@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "andesite_pillar",
-  "pattern": [
-    "x",
-    "x"
-  ],
   "key": {
     "x": {
       "item": "minecraft:polished_andesite"
     }
   },
+  "pattern": [
+    "x",
+    "x"
+  ],
   "result": {
-    "item": "vanillaboom:andesite_pillar",
-    "count": 2
+    "count": 2,
+    "item": "vanillaboom:andesite_pillar"
   }
 }

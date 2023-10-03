@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "vanillaboom:block/polished_netherrack_slab_top"
-    },
     "type=bottom": {
       "model": "vanillaboom:block/polished_netherrack_slab"
     },
     "type=double": {
       "model": "vanillaboom:block/polished_netherrack"
+    },
+    "type=top": {
+      "model": "vanillaboom:block/polished_netherrack_slab_top"
     }
   }
 }

@@ -1,15 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:crimson_hyphae"
     }
   },
+  "pattern": [
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:crimson_hyphae_slab",
-    "count": 6
+    "count": 6,
+    "item": "vanillaboom:crimson_hyphae_slab"
   }
 }

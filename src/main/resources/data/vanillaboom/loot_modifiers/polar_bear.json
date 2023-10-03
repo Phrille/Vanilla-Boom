@@ -3,15 +3,15 @@
   "conditions": [
     {
       "condition": "minecraft:entity_properties",
+      "entity": "this",
       "predicate": {
         "type": "minecraft:polar_bear"
-      },
-      "entity": "this"
+      }
     }
   ],
-  "table": "vanillaboom:minecraft/polar_bear",
   "overwrites": [
     "minecraft:cod",
     "minecraft:salmon"
-  ]
+  ],
+  "table": "vanillaboom:minecraft/polar_bear"
 }

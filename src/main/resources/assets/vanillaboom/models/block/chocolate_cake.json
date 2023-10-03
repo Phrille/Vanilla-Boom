@@ -1,9 +1,9 @@
 {
   "parent": "minecraft:block/cake",
   "textures": {
-    "side": "vanillaboom:block/chocolate_cake_side",
-    "top": "vanillaboom:block/chocolate_cake_top",
     "bottom": "vanillaboom:block/chocolate_cake_bottom",
-    "particle": "vanillaboom:block/chocolate_cake_side"
+    "particle": "vanillaboom:block/chocolate_cake_side",
+    "side": "vanillaboom:block/chocolate_cake_side",
+    "top": "vanillaboom:block/chocolate_cake_top"
   }
 }
