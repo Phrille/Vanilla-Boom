@@ -376,7 +376,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .replace("quartz_block", "quartz_block_side")
                 .replace("chiseled_quartz_block_side", "chiseled_quartz_block")
                 .replace("smooth_quartz", "quartz_block_bottom"));
-
     }
 
     protected String name(Block block) {
