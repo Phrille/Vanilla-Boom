@@ -561,6 +561,4 @@ public class ModBlocks {
     public static final RegistryObject<Block> STRIPPED_WARPED_HYPHAE_FENCE_GATE = BLOCKS.register("stripped_warped_hyphae_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_FENCE).sound(SoundType.STEM)));
     public static final RegistryObject<Block> NETHER_BRICK_FENCE_GATE = BLOCKS.register("nether_brick_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_BRICK_FENCE)));
     public static final RegistryObject<Block> RED_NETHER_BRICK_FENCE_GATE = BLOCKS.register("red_nether_brick_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_BRICK_FENCE)));
-
-
 }

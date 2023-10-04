@@ -17,8 +17,6 @@ import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.entity.ModEntities;
 import phrille.vanillaboom.util.VanillaBoomTab;
 
-import java.util.function.Supplier;
-
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, VanillaBoom.MOD_ID);
 
@@ -26,7 +24,7 @@ public class ModItems {
     public static final RegistryObject<Item> MAGMA_BRICK = ITEMS.register("magma_brick", () -> new Item(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> WITHER_BONE = ITEMS.register("wither_bone", () -> new Item(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> WITHER_BONE_MEAL = ITEMS.register("wither_bone_meal", () -> new Item(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
-    public static final RegistryObject<Item> PRISMARINE_ARROW = ITEMS.register("prismarine_arrow", () -> new PrismarineArrowItem());
+    public static final RegistryObject<Item> PRISMARINE_ARROW = ITEMS.register("prismarine_arrow", PrismarineArrowItem::new);
     public static final RegistryObject<Item> POLAR_BEAR_FUR = ITEMS.register("polar_bear_fur", () -> new Item(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds", () -> new BlockItem(ModBlocks.TOMATO_PLANT.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> RICE_SEEDS = ITEMS.register("rice_seeds", () -> new BlockItem(ModBlocks.RICE_PLANT.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
