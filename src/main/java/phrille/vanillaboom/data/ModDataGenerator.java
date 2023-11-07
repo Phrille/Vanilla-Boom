@@ -42,7 +42,7 @@ public class ModDataGenerator {
 
         //Assets
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(generator, existingFileHelper));
-        generator.addProvider(event.includeClient(), new ModItemModelProvider(generator, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ModItemModelProvider(generator, existingFileHelper));/*
         generator.addProvider(event.includeClient(), new ModLanguageProvider(generator));
 
         //Data
@@ -52,7 +52,7 @@ public class ModDataGenerator {
         generator.addProvider(event.includeServer(), new ModEntityTypeTagsProvider(generator, existingFileHelper));
         generator.addProvider(event.includeServer(), new ModRecipeProvider(generator));
         generator.addProvider(event.includeServer(), new ModLootTableProvider(generator));
-        generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(generator));
+        generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(generator));*/
     }
 
     private static void init() {

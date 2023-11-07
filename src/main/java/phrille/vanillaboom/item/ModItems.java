@@ -265,9 +265,9 @@ public class ModItems {
 
     //Misc
     public static final RegistryObject<Item> RAIN_DETECTOR = ITEMS.register("rain_detector", () -> new BlockItem(ModBlocks.RAIN_DETECTOR.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> RANDOMIZER = ITEMS.register("randomizer", () -> new BlockItem(ModBlocks.RANDOMIZER.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> GOLD_BARS = ITEMS.register("gold_bars", () -> new BlockItem(ModBlocks.GOLD_BARS.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> ROSE = ITEMS.register("rose", () -> new BlockItem(ModBlocks.ROSE.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
-
 
     //VanillaBoom Stairs
     public static final RegistryObject<Item> COBBLESTONE_BRICK_STAIRS = ITEMS.register("cobblestone_brick_stairs", () -> new BlockItem(ModBlocks.COBBLESTONE_BRICK_STAIRS.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
@@ -375,7 +375,6 @@ public class ModItems {
     public static final RegistryObject<Item> CUT_RED_SANDSTONE_STAIRS = ITEMS.register("cut_red_sandstone_stairs", () -> new BlockItem(ModBlocks.CUT_RED_SANDSTONE_STAIRS.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> SMOOTH_STONE_STAIRS = ITEMS.register("smooth_stone_stairs", () -> new BlockItem(ModBlocks.SMOOTH_STONE_STAIRS.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
 
-
     //VanillaBoom Slabs
     public static final RegistryObject<Item> COBBLESTONE_BRICK_SLAB = ITEMS.register("cobblestone_brick_slab", () -> new BlockItem(ModBlocks.COBBLESTONE_BRICK_SLAB.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> MOSSY_COBBLESTONE_BRICK_SLAB = ITEMS.register("mossy_cobblestone_brick_slab", () -> new BlockItem(ModBlocks.MOSSY_COBBLESTONE_BRICK_SLAB.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
@@ -478,7 +477,6 @@ public class ModItems {
     public static final RegistryObject<Item> STRIPPED_DARK_OAK_WOOD_SLAB = ITEMS.register("stripped_dark_oak_wood_slab", () -> new BlockItem(ModBlocks.STRIPPED_DARK_OAK_WOOD_SLAB.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> STRIPPED_CRIMSON_HYPHAE_SLAB = ITEMS.register("stripped_crimson_hyphae_slab", () -> new BlockItem(ModBlocks.STRIPPED_CRIMSON_HYPHAE_SLAB.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> STRIPPED_WARPED_HYPHAE_SLAB = ITEMS.register("stripped_warped_hyphae_slab", () -> new BlockItem(ModBlocks.STRIPPED_WARPED_HYPHAE_SLAB.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
-
 
     //VanillaBoom Walls
     public static final RegistryObject<Item> COBBLESTONE_BRICK_WALL = ITEMS.register("cobblestone_brick_wall", () -> new BlockItem(ModBlocks.COBBLESTONE_BRICK_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));

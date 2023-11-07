@@ -4,6 +4,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -25,7 +26,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     @Override
-    protected void registerStatesAndModels() {
+    protected void registerStatesAndModels() {/*
         //Bricks
         simpleBlock(ModBlocks.COBBLESTONE_BRICKS.get());
         simpleBlock(ModBlocks.MOSSY_COBBLESTONE_BRICKS.get());
@@ -192,7 +193,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         });
         ModDataGenerator.WALLS.forEach(this::wallBlock);
         ModDataGenerator.FENCES.forEach(pair -> fenceBlock(pair.getFirst(), pair.getSecond()));
-        ModDataGenerator.FENCE_GATES.forEach(pair -> fenceGateBlock(pair.getFirst(), pair.getSecond()));
+        ModDataGenerator.FENCE_GATES.forEach(pair -> fenceGateBlock(pair.getFirst(), pair.getSecond()));*/
+
+        randomizerBlock((RandomizerBlock) ModBlocks.RANDOMIZER.get());
     }
 
     public void pillarBlock(Block block) {
@@ -260,7 +263,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     public void ladderBlock(Block ladder) {
-        ladderBlock((LadderBlock) ladder, models().withExistingParent(name(ladder), ModelProvider.BLOCK_FOLDER + "/ladder").texture("texture", blockTexture(ladder)).renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT));
+        ladderBlock((LadderBlock) ladder,
+                models().withExistingParent(name(ladder), ModelProvider.BLOCK_FOLDER + "/ladder")
+                        .texture("texture", blockTexture(ladder))
+                        .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT));
     }
 
     protected void ladderBlock(LadderBlock ladder, ModelFile model) {
@@ -371,6 +377,73 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .texture("top", ModDataGenerator.extend(blockTexture(cake), "_top"))
                 .texture("bottom", ModDataGenerator.extend(blockTexture(cake), "_bottom"))
                 .texture("particle", ModDataGenerator.extend(blockTexture(cake), "_side"));
+    }
+
+    public void randomizerBlock(RandomizerBlock randomizer) {
+        ModelFile unlit = randomizerModel(randomizer, false);
+        ModelFile lit = randomizerModel(randomizer, true);
+
+        getVariantBuilder(randomizer).forAllStates(state -> {
+            Direction dir = state.getValue(RandomizerBlock.FACING);
+            boolean powered = state.getValue(RandomizerBlock.POWERED);
+
+            return ConfiguredModel.builder()
+                    .modelFile(powered ? lit : unlit)
+                    .rotationY((int) dir.toYRot())
+                    .build();
+        });
+    }
+
+    protected BlockModelBuilder randomizerModel(Block randomizer, boolean powered) {
+        ResourceLocation texture = powered ? ModDataGenerator.extend(blockTexture(randomizer), "_on") : blockTexture(randomizer);
+
+        return models().getBuilder("randomizer")
+                .ao(false)
+                .texture("particle", texture)
+                .texture("slab", blockTexture(Blocks.SMOOTH_STONE))
+                .texture("top", texture)
+                .texture("lit", blockTexture(Blocks.REDSTONE_TORCH))
+                .texture("unlit", ModDataGenerator.extend(blockTexture(Blocks.REDSTONE_TORCH), "_off"))
+                .element()
+                    .from(0, 0, 0)
+                    .to(16, 2, 16)
+                        .face(Direction.DOWN).uvs(0, 0, 16, 16).texture("#slab").cullface(Direction.DOWN).end()
+                        .face(Direction.UP).uvs(0, 0, 16, 16).texture("#top").end()
+                        .face(Direction.NORTH).uvs(0, 14, 16, 16).texture("#slab").cullface(Direction.NORTH).end()
+                        .face(Direction.SOUTH).uvs(0, 14, 16, 16).texture("#slab").cullface(Direction.SOUTH).end()
+                        .face(Direction.WEST).uvs(0, 14, 16, 16).texture("#slab").cullface(Direction.WEST).end()
+                        .face(Direction.EAST).uvs(0, 14, 16, 16).texture("#slab").cullface(Direction.EAST).end()
+                .end()
+                .element()
+                    .from(7, 2, 2)
+                    .to(9, 4, 4)
+                        .face(Direction.DOWN).uvs(7, 13, 9, 15).texture("#unlit").end()
+                        .face(Direction.UP).uvs(7, 6, 9, 8).texture("#unlit").end()
+                        .face(Direction.NORTH).uvs(7, 6, 9, 8).texture("#unlit").end()
+                        .face(Direction.SOUTH).uvs(7, 6, 9, 8).texture("#unlit").end()
+                        .face(Direction.WEST).uvs(7, 6, 9, 8).texture("#unlit").end()
+                        .face(Direction.EAST).uvs(7, 6, 9, 8).texture("#unlit").end()
+                .end()
+                .element()
+                    .from(2, 2, 7)
+                    .to(4, 4, 9)
+                        .face(Direction.DOWN).uvs(7, 13, 9, 15).texture("#unlit").end()
+                        .face(Direction.UP).uvs(7, 6, 9, 8).texture("#unlit").end()
+                        .face(Direction.NORTH).uvs(7, 6, 9, 8).texture("#unlit").end()
+                        .face(Direction.SOUTH).uvs(7, 6, 9, 8).texture("#unlit").end()
+                        .face(Direction.WEST).uvs(7, 6, 9, 8).texture("#unlit").end()
+                        .face(Direction.EAST).uvs(7, 6, 9, 8).texture("#unlit").end()
+                .end()
+                .element()
+                    .from(12, 2, 7)
+                    .to(14, 4, 9)
+                        .face(Direction.DOWN).uvs(7, 13, 9, 15).texture("#unlit").end()
+                        .face(Direction.UP).uvs(7, 6, 9, 8).texture("#unlit").end()
+                        .face(Direction.NORTH).uvs(7, 6, 9, 8).texture("#unlit").end()
+                        .face(Direction.SOUTH).uvs(7, 6, 9, 8).texture("#unlit").end()
+                        .face(Direction.WEST).uvs(7, 6, 9, 8).texture("#unlit").end()
+                        .face(Direction.EAST).uvs(7, 6, 9, 8).texture("#unlit").end()
+                .end();
     }
 
     protected ResourceLocation variantTexture(Block block) {

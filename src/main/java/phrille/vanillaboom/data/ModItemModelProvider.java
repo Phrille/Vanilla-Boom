@@ -20,7 +20,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     @Override
-    protected void registerModels() {
+    protected void registerModels() {/*
         item(ModItems.MAGMA_BRICK.get());
         item(ModItems.WITHER_BONE.get());
         item(ModItems.WITHER_BONE_MEAL.get());
@@ -225,10 +225,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         glassPaneItem(ModBlocks.BROWN_STAINED_SOUL_GLASS_PANE.get());
         glassPaneItem(ModBlocks.GREEN_STAINED_SOUL_GLASS_PANE.get());
         glassPaneItem(ModBlocks.RED_STAINED_SOUL_GLASS_PANE.get());
-        glassPaneItem(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get());
+        glassPaneItem(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get());*/
 
         //Misc
-        blockItem(ModItems.RAIN_DETECTOR.get());
+        item(ModItems.RANDOMIZER.get());
+        /*blockItem(ModItems.RAIN_DETECTOR.get());
         item(ModBlocks.GOLD_BARS.get());
         item(ModBlocks.ROSE.get());
 
@@ -237,7 +238,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         ModDataGenerator.SLABS.forEach(pair -> blockItem(pair.getFirst().asItem()));
         ModDataGenerator.WALLS.forEach(this::inventoryBlockItem);
         ModDataGenerator.FENCES.forEach(pair -> inventoryBlockItem(pair.getFirst()));
-        ModDataGenerator.FENCE_GATES.forEach(pair -> blockItem(pair.getFirst().asItem()));
+        ModDataGenerator.FENCE_GATES.forEach(pair -> blockItem(pair.getFirst().asItem()));*/
     }
 
     public void item(Item item) {

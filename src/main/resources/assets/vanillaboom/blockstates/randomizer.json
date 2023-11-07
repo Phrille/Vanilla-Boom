@@ -1,0 +1,244 @@
+{
+  "variants": {
+    "east_on=false,facing=east,north_on=false,powered=false,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 270
+    },
+    "east_on=false,facing=east,north_on=false,powered=false,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 270
+    },
+    "east_on=false,facing=east,north_on=false,powered=true,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 270
+    },
+    "east_on=false,facing=east,north_on=false,powered=true,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 270
+    },
+    "east_on=false,facing=east,north_on=true,powered=false,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 270
+    },
+    "east_on=false,facing=east,north_on=true,powered=false,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 270
+    },
+    "east_on=false,facing=east,north_on=true,powered=true,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 270
+    },
+    "east_on=false,facing=east,north_on=true,powered=true,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 270
+    },
+    "east_on=false,facing=north,north_on=false,powered=false,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 180
+    },
+    "east_on=false,facing=north,north_on=false,powered=false,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 180
+    },
+    "east_on=false,facing=north,north_on=false,powered=true,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 180
+    },
+    "east_on=false,facing=north,north_on=false,powered=true,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 180
+    },
+    "east_on=false,facing=north,north_on=true,powered=false,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 180
+    },
+    "east_on=false,facing=north,north_on=true,powered=false,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 180
+    },
+    "east_on=false,facing=north,north_on=true,powered=true,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 180
+    },
+    "east_on=false,facing=north,north_on=true,powered=true,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 180
+    },
+    "east_on=false,facing=south,north_on=false,powered=false,west_on=false": {
+      "model": "vanillaboom:block/randomizer"
+    },
+    "east_on=false,facing=south,north_on=false,powered=false,west_on=true": {
+      "model": "vanillaboom:block/randomizer"
+    },
+    "east_on=false,facing=south,north_on=false,powered=true,west_on=false": {
+      "model": "vanillaboom:block/randomizer"
+    },
+    "east_on=false,facing=south,north_on=false,powered=true,west_on=true": {
+      "model": "vanillaboom:block/randomizer"
+    },
+    "east_on=false,facing=south,north_on=true,powered=false,west_on=false": {
+      "model": "vanillaboom:block/randomizer"
+    },
+    "east_on=false,facing=south,north_on=true,powered=false,west_on=true": {
+      "model": "vanillaboom:block/randomizer"
+    },
+    "east_on=false,facing=south,north_on=true,powered=true,west_on=false": {
+      "model": "vanillaboom:block/randomizer"
+    },
+    "east_on=false,facing=south,north_on=true,powered=true,west_on=true": {
+      "model": "vanillaboom:block/randomizer"
+    },
+    "east_on=false,facing=west,north_on=false,powered=false,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 90
+    },
+    "east_on=false,facing=west,north_on=false,powered=false,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 90
+    },
+    "east_on=false,facing=west,north_on=false,powered=true,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 90
+    },
+    "east_on=false,facing=west,north_on=false,powered=true,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 90
+    },
+    "east_on=false,facing=west,north_on=true,powered=false,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 90
+    },
+    "east_on=false,facing=west,north_on=true,powered=false,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 90
+    },
+    "east_on=false,facing=west,north_on=true,powered=true,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 90
+    },
+    "east_on=false,facing=west,north_on=true,powered=true,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 90
+    },
+    "east_on=true,facing=east,north_on=false,powered=false,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 270
+    },
+    "east_on=true,facing=east,north_on=false,powered=false,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 270
+    },
+    "east_on=true,facing=east,north_on=false,powered=true,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 270
+    },
+    "east_on=true,facing=east,north_on=false,powered=true,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 270
+    },
+    "east_on=true,facing=east,north_on=true,powered=false,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 270
+    },
+    "east_on=true,facing=east,north_on=true,powered=false,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 270
+    },
+    "east_on=true,facing=east,north_on=true,powered=true,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 270
+    },
+    "east_on=true,facing=east,north_on=true,powered=true,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 270
+    },
+    "east_on=true,facing=north,north_on=false,powered=false,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 180
+    },
+    "east_on=true,facing=north,north_on=false,powered=false,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 180
+    },
+    "east_on=true,facing=north,north_on=false,powered=true,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 180
+    },
+    "east_on=true,facing=north,north_on=false,powered=true,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 180
+    },
+    "east_on=true,facing=north,north_on=true,powered=false,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 180
+    },
+    "east_on=true,facing=north,north_on=true,powered=false,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 180
+    },
+    "east_on=true,facing=north,north_on=true,powered=true,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 180
+    },
+    "east_on=true,facing=north,north_on=true,powered=true,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 180
+    },
+    "east_on=true,facing=south,north_on=false,powered=false,west_on=false": {
+      "model": "vanillaboom:block/randomizer"
+    },
+    "east_on=true,facing=south,north_on=false,powered=false,west_on=true": {
+      "model": "vanillaboom:block/randomizer"
+    },
+    "east_on=true,facing=south,north_on=false,powered=true,west_on=false": {
+      "model": "vanillaboom:block/randomizer"
+    },
+    "east_on=true,facing=south,north_on=false,powered=true,west_on=true": {
+      "model": "vanillaboom:block/randomizer"
+    },
+    "east_on=true,facing=south,north_on=true,powered=false,west_on=false": {
+      "model": "vanillaboom:block/randomizer"
+    },
+    "east_on=true,facing=south,north_on=true,powered=false,west_on=true": {
+      "model": "vanillaboom:block/randomizer"
+    },
+    "east_on=true,facing=south,north_on=true,powered=true,west_on=false": {
+      "model": "vanillaboom:block/randomizer"
+    },
+    "east_on=true,facing=south,north_on=true,powered=true,west_on=true": {
+      "model": "vanillaboom:block/randomizer"
+    },
+    "east_on=true,facing=west,north_on=false,powered=false,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 90
+    },
+    "east_on=true,facing=west,north_on=false,powered=false,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 90
+    },
+    "east_on=true,facing=west,north_on=false,powered=true,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 90
+    },
+    "east_on=true,facing=west,north_on=false,powered=true,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 90
+    },
+    "east_on=true,facing=west,north_on=true,powered=false,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 90
+    },
+    "east_on=true,facing=west,north_on=true,powered=false,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 90
+    },
+    "east_on=true,facing=west,north_on=true,powered=true,west_on=false": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 90
+    },
+    "east_on=true,facing=west,north_on=true,powered=true,west_on=true": {
+      "model": "vanillaboom:block/randomizer",
+      "y": 90
+    }
+  }
+}
