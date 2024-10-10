@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "vanillaboom:block/bedrock_slab_top"
-    },
     "type=bottom": {
       "model": "vanillaboom:block/bedrock_slab"
     },
     "type=double": {
       "model": "minecraft:block/bedrock"
+    },
+    "type=top": {
+      "model": "vanillaboom:block/bedrock_slab_top"
     }
   }
 }

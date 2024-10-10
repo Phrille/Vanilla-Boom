@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "x  ",
-    "xx ",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:warped_hyphae"
     }
   },
+  "pattern": [
+    "x  ",
+    "xx ",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:warped_hyphae_stairs",
-    "count": 4
+    "count": 4,
+    "item": "vanillaboom:warped_hyphae_stairs"
   }
 }

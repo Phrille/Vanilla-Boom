@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "side": "vanillaboom:block/acacia_bookshelf",
-    "end": "minecraft:block/acacia_planks"
+    "end": "minecraft:block/acacia_planks",
+    "side": "vanillaboom:block/acacia_bookshelf"
   }
 }

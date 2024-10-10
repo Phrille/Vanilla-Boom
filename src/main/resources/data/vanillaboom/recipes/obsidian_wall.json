@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:obsidian"
     }
   },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:obsidian_wall",
-    "count": 6
+    "count": 6,
+    "item": "vanillaboom:obsidian_wall"
   }
 }

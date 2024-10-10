@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
+  "count": 2,
   "ingredient": {
     "item": "minecraft:quartz_block"
   },
-  "result": "vanillaboom:quartz_brick_slab",
-  "count": 2
+  "result": "vanillaboom:quartz_brick_slab"
 }

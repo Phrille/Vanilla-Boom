@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:cut_sandstone"
     }
   },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:cut_sandstone_wall",
-    "count": 6
+    "count": 6,
+    "item": "vanillaboom:cut_sandstone_wall"
   }
 }

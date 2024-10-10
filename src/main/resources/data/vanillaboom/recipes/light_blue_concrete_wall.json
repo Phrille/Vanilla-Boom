@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:light_blue_concrete"
     }
   },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:light_blue_concrete_wall",
-    "count": 6
+    "count": 6,
+    "item": "vanillaboom:light_blue_concrete_wall"
   }
 }

@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "black_terracotta_bricks",
-  "pattern": [
-    "xx",
-    "xx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:black_terracotta"
     }
   },
+  "pattern": [
+    "xx",
+    "xx"
+  ],
   "result": {
-    "item": "vanillaboom:black_terracotta_bricks",
-    "count": 4
+    "count": 4,
+    "item": "vanillaboom:black_terracotta_bricks"
   }
 }

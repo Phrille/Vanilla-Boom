@@ -34,11 +34,11 @@ public class ItemEventHandler {
 
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        Level world = event.getWorld();
+        Level world = event.getLevel();
         BlockPos pos = event.getPos();
         BlockState state = world.getBlockState(pos);
         ItemStack stack = event.getItemStack();
-        Player player = event.getPlayer();
+        Player player = event.getEntity();
 
         if (event.isCanceled() || stack.isEmpty()) {
             return;

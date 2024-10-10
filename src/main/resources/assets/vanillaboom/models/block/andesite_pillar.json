@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "side": "vanillaboom:block/andesite_pillar_side",
-    "end": "vanillaboom:block/andesite_pillar_top"
+    "end": "vanillaboom:block/andesite_pillar_top",
+    "side": "vanillaboom:block/andesite_pillar_side"
   }
 }

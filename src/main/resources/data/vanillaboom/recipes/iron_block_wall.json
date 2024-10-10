@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:iron_block"
     }
   },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:iron_block_wall",
-    "count": 6
+    "count": 6,
+    "item": "vanillaboom:iron_block_wall"
   }
 }

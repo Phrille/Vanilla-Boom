@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
+  "count": 1,
   "ingredient": {
     "item": "minecraft:crimson_hyphae"
   },
-  "result": "vanillaboom:crimson_hyphae_stairs",
-  "count": 1
+  "result": "vanillaboom:crimson_hyphae_stairs"
 }

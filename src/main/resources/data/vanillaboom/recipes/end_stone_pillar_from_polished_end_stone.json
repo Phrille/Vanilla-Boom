@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "end_stone_pillar",
-  "pattern": [
-    "x",
-    "x"
-  ],
   "key": {
     "x": {
       "item": "vanillaboom:polished_end_stone"
     }
   },
+  "pattern": [
+    "x",
+    "x"
+  ],
   "result": {
-    "item": "vanillaboom:end_stone_pillar",
-    "count": 2
+    "count": 2,
+    "item": "vanillaboom:end_stone_pillar"
   }
 }

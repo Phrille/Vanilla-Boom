@@ -1,13 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "vanillaboom:tomato_seeds_from_tomato"
-    ]
-  },
   "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vanillaboom:tomato_seeds_from_tomato"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
     "has_tomato": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -16,13 +16,8 @@
             ]
           }
         ]
-      }
-    },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "vanillaboom:tomato_seeds_from_tomato"
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
@@ -30,5 +25,10 @@
       "has_tomato",
       "has_the_recipe"
     ]
-  ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vanillaboom:tomato_seeds_from_tomato"
+    ]
+  }
 }

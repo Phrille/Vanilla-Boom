@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "polished_netherrack",
-  "pattern": [
-    "xx",
-    "xx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:netherrack"
     }
   },
+  "pattern": [
+    "xx",
+    "xx"
+  ],
   "result": {
-    "item": "vanillaboom:polished_netherrack",
-    "count": 4
+    "count": 4,
+    "item": "vanillaboom:polished_netherrack"
   }
 }

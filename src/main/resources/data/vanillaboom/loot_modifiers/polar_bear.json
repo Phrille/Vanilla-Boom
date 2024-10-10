@@ -1,23 +1,17 @@
 {
-  "type": "vanillaboom:polar_bear",
-  "conditions": 
-  [    
+  "type": "vanillaboom:drop_loot_modifier",
+  "conditions": [
     {
       "condition": "minecraft:entity_properties",
+      "entity": "this",
       "predicate": {
         "type": "minecraft:polar_bear"
-      },
-      "entity": "this"
+      }
     }
   ],
-  "table": "vanillaboom:entities/polar_bear",
-  "overwrites":
-  [
-    {
-      "item": "minecraft:cod"
-    },
-    {
-      "item": "minecraft:salmon"
-    }
-  ]
+  "overwrites": [
+    "minecraft:cod",
+    "minecraft:salmon"
+  ],
+  "table": "vanillaboom:minecraft/polar_bear"
 }

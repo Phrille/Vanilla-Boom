@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:magenta_terracotta"
     }
   },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:magenta_terracotta_wall",
-    "count": 6
+    "count": 6,
+    "item": "vanillaboom:magenta_terracotta_wall"
   }
 }

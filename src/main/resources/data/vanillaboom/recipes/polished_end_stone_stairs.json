@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "x  ",
-    "xx ",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "vanillaboom:polished_end_stone"
     }
   },
+  "pattern": [
+    "x  ",
+    "xx ",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:polished_end_stone_stairs",
-    "count": 4
+    "count": 4,
+    "item": "vanillaboom:polished_end_stone_stairs"
   }
 }

@@ -1,20 +1,16 @@
 {
-  "type": "vanillaboom:wither_skeleton",
-  "conditions": 
-  [    
+  "type": "vanillaboom:drop_loot_modifier",
+  "conditions": [
     {
       "condition": "minecraft:entity_properties",
+      "entity": "this",
       "predicate": {
         "type": "minecraft:wither_skeleton"
-      },
-      "entity": "this"
+      }
     }
   ],
-  "table": "vanillaboom:entities/wither_skeleton",
-  "overwrites":
-  [
-    {
-      "item":  "minecraft:bone"   
-    }
-  ]
+  "overwrites": [
+    "minecraft:bone"
+  ],
+  "table": "vanillaboom:minecraft/wither_skeleton"
 }

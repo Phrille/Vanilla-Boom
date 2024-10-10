@@ -2,7 +2,7 @@ package phrille.vanillaboom.item;
 
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.decoration.Motive;
+import net.minecraft.world.entity.decoration.PaintingVariants;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.BowlFoodItem;
@@ -17,8 +17,6 @@ import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.entity.ModEntities;
 import phrille.vanillaboom.util.VanillaBoomTab;
 
-import java.util.function.Supplier;
-
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, VanillaBoom.MOD_ID);
 
@@ -26,7 +24,7 @@ public class ModItems {
     public static final RegistryObject<Item> MAGMA_BRICK = ITEMS.register("magma_brick", () -> new Item(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> WITHER_BONE = ITEMS.register("wither_bone", () -> new Item(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> WITHER_BONE_MEAL = ITEMS.register("wither_bone_meal", () -> new Item(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
-    public static final RegistryObject<Item> PRISMARINE_ARROW = ITEMS.register("prismarine_arrow", () -> new PrismarineArrowItem());
+    public static final RegistryObject<Item> PRISMARINE_ARROW = ITEMS.register("prismarine_arrow", PrismarineArrowItem::new);
     public static final RegistryObject<Item> POLAR_BEAR_FUR = ITEMS.register("polar_bear_fur", () -> new Item(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds", () -> new BlockItem(ModBlocks.TOMATO_PLANT.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> RICE_SEEDS = ITEMS.register("rice_seeds", () -> new BlockItem(ModBlocks.RICE_PLANT.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
@@ -75,32 +73,32 @@ public class ModItems {
 
     //Paintings
     public static final RegistryObject<Item> CANVAS = ITEMS.register("canvas", () -> new Item(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
-    public static final RegistryObject<Item> KEBAB_PAINTING = ITEMS.register("kebab_painting", () -> new PaintingItem(Motive.KEBAB));
-    public static final RegistryObject<Item> AZTEC_PAINTING = ITEMS.register("aztec_painting", () -> new PaintingItem(Motive.AZTEC));
-    public static final RegistryObject<Item> ALBAN_PAINTING = ITEMS.register("alban_painting", () -> new PaintingItem(Motive.ALBAN));
-    public static final RegistryObject<Item> AZTEC2_PAINTING = ITEMS.register("aztec2_painting", () -> new PaintingItem(Motive.AZTEC2));
-    public static final RegistryObject<Item> BOMB_PAINTING = ITEMS.register("bomb_painting", () -> new PaintingItem(Motive.BOMB));
-    public static final RegistryObject<Item> PLANT_PAINTING = ITEMS.register("plant_painting", () -> new PaintingItem(Motive.PLANT));
-    public static final RegistryObject<Item> WASTELAND_PAINTING = ITEMS.register("wasteland_painting", () -> new PaintingItem(Motive.WASTELAND));
-    public static final RegistryObject<Item> POOL_PAINTING = ITEMS.register("pool_painting", () -> new PaintingItem(Motive.POOL));
-    public static final RegistryObject<Item> COURBET_PAINTING = ITEMS.register("courbet_painting", () -> new PaintingItem(Motive.COURBET));
-    public static final RegistryObject<Item> SEA_PAINTING = ITEMS.register("sea_painting", () -> new PaintingItem(Motive.SEA));
-    public static final RegistryObject<Item> SUNSET_PAINTING = ITEMS.register("sunset_painting", () -> new PaintingItem(Motive.SUNSET));
-    public static final RegistryObject<Item> CREEBET_PAINTING = ITEMS.register("creebet_painting", () -> new PaintingItem(Motive.CREEBET));
-    public static final RegistryObject<Item> WANDERER_PAINTING = ITEMS.register("wanderer_painting", () -> new PaintingItem(Motive.WANDERER));
-    public static final RegistryObject<Item> GRAHAM_PAINTING = ITEMS.register("graham_painting", () -> new PaintingItem(Motive.GRAHAM));
-    public static final RegistryObject<Item> MATCH_PAINTING = ITEMS.register("match_painting", () -> new PaintingItem(Motive.MATCH));
-    public static final RegistryObject<Item> BUST_PAINTING = ITEMS.register("bust_painting", () -> new PaintingItem(Motive.BUST));
-    public static final RegistryObject<Item> STAGE_PAINTING = ITEMS.register("stage_painting", () -> new PaintingItem(Motive.STAGE));
-    public static final RegistryObject<Item> VOID_PAINTING = ITEMS.register("void_painting", () -> new PaintingItem(Motive.VOID));
-    public static final RegistryObject<Item> SKULL_AND_ROSES_PAINTING = ITEMS.register("skull_and_roses_painting", () -> new PaintingItem(Motive.SKULL_AND_ROSES));
-    public static final RegistryObject<Item> WITHER_PAINTING = ITEMS.register("wither_painting", () -> new PaintingItem(Motive.WITHER));
-    public static final RegistryObject<Item> FIGHTERS_PAINTING = ITEMS.register("fighters_painting", () -> new PaintingItem(Motive.FIGHTERS));
-    public static final RegistryObject<Item> POINTER_PAINTING = ITEMS.register("pointer_painting", () -> new PaintingItem(Motive.POINTER));
-    public static final RegistryObject<Item> PIGSCENE_PAINTING = ITEMS.register("pigscene_painting", () -> new PaintingItem(Motive.PIGSCENE));
-    public static final RegistryObject<Item> BURNING_SKULL_PAINTING = ITEMS.register("burning_skull_painting", () -> new PaintingItem(Motive.BURNING_SKULL));
-    public static final RegistryObject<Item> SKELETON_PAINTING = ITEMS.register("skeleton_painting", () -> new PaintingItem(Motive.SKELETON));
-    public static final RegistryObject<Item> DONKEY_KONG_PAINTING = ITEMS.register("donkey_kong_painting", () -> new PaintingItem(Motive.DONKEY_KONG));
+    public static final RegistryObject<Item> KEBAB_PAINTING = ITEMS.register("kebab_painting", () -> new PaintingItem(PaintingVariants.KEBAB));
+    public static final RegistryObject<Item> AZTEC_PAINTING = ITEMS.register("aztec_painting", () -> new PaintingItem(PaintingVariants.AZTEC));
+    public static final RegistryObject<Item> ALBAN_PAINTING = ITEMS.register("alban_painting", () -> new PaintingItem(PaintingVariants.ALBAN));
+    public static final RegistryObject<Item> AZTEC2_PAINTING = ITEMS.register("aztec2_painting", () -> new PaintingItem(PaintingVariants.AZTEC2));
+    public static final RegistryObject<Item> BOMB_PAINTING = ITEMS.register("bomb_painting", () -> new PaintingItem(PaintingVariants.BOMB));
+    public static final RegistryObject<Item> PLANT_PAINTING = ITEMS.register("plant_painting", () -> new PaintingItem(PaintingVariants.PLANT));
+    public static final RegistryObject<Item> WASTELAND_PAINTING = ITEMS.register("wasteland_painting", () -> new PaintingItem(PaintingVariants.WASTELAND));
+    public static final RegistryObject<Item> POOL_PAINTING = ITEMS.register("pool_painting", () -> new PaintingItem(PaintingVariants.POOL));
+    public static final RegistryObject<Item> COURBET_PAINTING = ITEMS.register("courbet_painting", () -> new PaintingItem(PaintingVariants.COURBET));
+    public static final RegistryObject<Item> SEA_PAINTING = ITEMS.register("sea_painting", () -> new PaintingItem(PaintingVariants.SEA));
+    public static final RegistryObject<Item> SUNSET_PAINTING = ITEMS.register("sunset_painting", () -> new PaintingItem(PaintingVariants.SUNSET));
+    public static final RegistryObject<Item> CREEBET_PAINTING = ITEMS.register("creebet_painting", () -> new PaintingItem(PaintingVariants.CREEBET));
+    public static final RegistryObject<Item> WANDERER_PAINTING = ITEMS.register("wanderer_painting", () -> new PaintingItem(PaintingVariants.WANDERER));
+    public static final RegistryObject<Item> GRAHAM_PAINTING = ITEMS.register("graham_painting", () -> new PaintingItem(PaintingVariants.GRAHAM));
+    public static final RegistryObject<Item> MATCH_PAINTING = ITEMS.register("match_painting", () -> new PaintingItem(PaintingVariants.MATCH));
+    public static final RegistryObject<Item> BUST_PAINTING = ITEMS.register("bust_painting", () -> new PaintingItem(PaintingVariants.BUST));
+    public static final RegistryObject<Item> STAGE_PAINTING = ITEMS.register("stage_painting", () -> new PaintingItem(PaintingVariants.STAGE));
+    public static final RegistryObject<Item> VOID_PAINTING = ITEMS.register("void_painting", () -> new PaintingItem(PaintingVariants.VOID));
+    public static final RegistryObject<Item> SKULL_AND_ROSES_PAINTING = ITEMS.register("skull_and_roses_painting", () -> new PaintingItem(PaintingVariants.SKULL_AND_ROSES));
+    public static final RegistryObject<Item> WITHER_PAINTING = ITEMS.register("wither_painting", () -> new PaintingItem(PaintingVariants.WITHER));
+    public static final RegistryObject<Item> FIGHTERS_PAINTING = ITEMS.register("fighters_painting", () -> new PaintingItem(PaintingVariants.FIGHTERS));
+    public static final RegistryObject<Item> POINTER_PAINTING = ITEMS.register("pointer_painting", () -> new PaintingItem(PaintingVariants.POINTER));
+    public static final RegistryObject<Item> PIGSCENE_PAINTING = ITEMS.register("pigscene_painting", () -> new PaintingItem(PaintingVariants.PIGSCENE));
+    public static final RegistryObject<Item> BURNING_SKULL_PAINTING = ITEMS.register("burning_skull_painting", () -> new PaintingItem(PaintingVariants.BURNING_SKULL));
+    public static final RegistryObject<Item> SKELETON_PAINTING = ITEMS.register("skeleton_painting", () -> new PaintingItem(PaintingVariants.SKELETON));
+    public static final RegistryObject<Item> DONKEY_KONG_PAINTING = ITEMS.register("donkey_kong_painting", () -> new PaintingItem(PaintingVariants.DONKEY_KONG));
 
     public static class ModFoods {
         public static final FoodProperties RAW_POLAR_BEAR_MEAT = new FoodProperties.Builder().nutrition(3).saturationMod(0.3F).meat().build();
@@ -482,6 +480,7 @@ public class ModItems {
     public static final RegistryObject<Item> STRIPPED_WARPED_HYPHAE_SLAB = ITEMS.register("stripped_warped_hyphae_slab", () -> new BlockItem(ModBlocks.STRIPPED_WARPED_HYPHAE_SLAB.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
 
 
+    //VanillaBoom Walls
     public static final RegistryObject<Item> COBBLESTONE_BRICK_WALL = ITEMS.register("cobblestone_brick_wall", () -> new BlockItem(ModBlocks.COBBLESTONE_BRICK_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> MOSSY_COBBLESTONE_BRICK_WALL = ITEMS.register("mossy_cobblestone_brick_wall", () -> new BlockItem(ModBlocks.MOSSY_COBBLESTONE_BRICK_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> MAGMA_BRICK_WALL = ITEMS.register("magma_brick_wall", () -> new BlockItem(ModBlocks.MAGMA_BRICK_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
@@ -517,7 +516,7 @@ public class ModItems {
     public static final RegistryObject<Item> CHISELED_PURPUR_BLOCK_WALL = ITEMS.register("chiseled_purpur_block_wall", () -> new BlockItem(ModBlocks.CHISELED_PURPUR_BLOCK_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> CHISELED_OBSIDIAN_WALL = ITEMS.register("chiseled_obsidian_wall", () -> new BlockItem(ModBlocks.CHISELED_OBSIDIAN_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
 
-    //Vanilla Stairs
+    //Vanilla Walls
     public static final RegistryObject<Item> CRACKED_STONE_BRICK_WALL = ITEMS.register("cracked_stone_brick_wall", () -> new BlockItem(ModBlocks.CRACKED_STONE_BRICK_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> CHISELED_STONE_BRICK_WALL = ITEMS.register("chiseled_stone_brick_wall", () -> new BlockItem(ModBlocks.CHISELED_STONE_BRICK_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> CHISELED_SANDSTONE_WALL = ITEMS.register("chiseled_sandstone_wall", () -> new BlockItem(ModBlocks.CHISELED_SANDSTONE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
@@ -570,7 +569,7 @@ public class ModItems {
     public static final RegistryObject<Item> CUT_SANDSTONE_WALL = ITEMS.register("cut_sandstone_wall", () -> new BlockItem(ModBlocks.CUT_SANDSTONE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> CUT_RED_SANDSTONE_WALL = ITEMS.register("cut_red_sandstone_wall", () -> new BlockItem(ModBlocks.CUT_RED_SANDSTONE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> SMOOTH_STONE_WALL = ITEMS.register("smooth_stone_wall", () -> new BlockItem(ModBlocks.SMOOTH_STONE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
-    public static final RegistryObject<Item> STONE_WALL = ITEMS.register("stone_wall", () -> new BlockItem(ModBlocks.SMOOTH_STONE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
+    public static final RegistryObject<Item> STONE_WALL = ITEMS.register("stone_wall", () -> new BlockItem(ModBlocks.STONE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> POLISHED_GRANITE_WALL = ITEMS.register("polished_granite_wall", () -> new BlockItem(ModBlocks.POLISHED_GRANITE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> POLISHED_DIORITE_WALL = ITEMS.register("polished_diorite_wall", () -> new BlockItem(ModBlocks.POLISHED_DIORITE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));
     public static final RegistryObject<Item> POLISHED_ANDESITE_WALL = ITEMS.register("polished_andesite_wall", () -> new BlockItem(ModBlocks.POLISHED_ANDESITE_WALL.get(), new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_VARIANT_BLOCKS_TAB)));

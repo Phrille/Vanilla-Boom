@@ -1,13 +1,11 @@
 {
-  "type": "vanillaboom:spruce_leaves",
+  "type": "vanillaboom:drop_loot_modifier",
   "conditions": [
     {
-      "condition": "block_state_property",
-      "block":"minecraft:spruce_leaves"
+      "block": "minecraft:spruce_leaves",
+      "condition": "minecraft:block_state_property"
     }
   ],
-  "table": "vanillaboom:blocks/spruce_leaves",
-  "overwrites":
-  [
-  ]
+  "overwrites": [],
+  "table": "vanillaboom:minecraft/spruce_leaves"
 }

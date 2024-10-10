@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "x  ",
-    "xx ",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "vanillaboom:polished_dark_prismarine"
     }
   },
+  "pattern": [
+    "x  ",
+    "xx ",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:polished_dark_prismarine_stairs",
-    "count": 4
+    "count": 4,
+    "item": "vanillaboom:polished_dark_prismarine_stairs"
   }
 }

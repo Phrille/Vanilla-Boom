@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:cracked_nether_bricks"
     }
   },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:cracked_nether_brick_wall",
-    "count": 6
+    "count": 6,
+    "item": "vanillaboom:cracked_nether_brick_wall"
   }
 }

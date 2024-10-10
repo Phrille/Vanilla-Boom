@@ -1,11 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xyx",
-    "ziz",
-    "jjj"
-  ],
   "key": {
+    "i": {
+      "tag": "forge:eggs"
+    },
+    "j": {
+      "tag": "forge:crops/wheat"
+    },
     "x": {
       "item": "minecraft:sweet_berries"
     },
@@ -14,14 +15,13 @@
     },
     "z": {
       "item": "minecraft:sugar"
-    },
-    "i": {
-      "tag": "forge:eggs"
-    },
-    "j": {
-      "tag": "forge:crops/wheat"
     }
   },
+  "pattern": [
+    "xyx",
+    "ziz",
+    "jjj"
+  ],
   "result": {
     "item": "vanillaboom:berry_cake"
   }

@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "granite_pillar",
-  "pattern": [
-    "x",
-    "x"
-  ],
   "key": {
     "x": {
       "item": "minecraft:polished_granite"
     }
   },
+  "pattern": [
+    "x",
+    "x"
+  ],
   "result": {
-    "item": "vanillaboom:granite_pillar",
-    "count": 2
+    "count": 2,
+    "item": "vanillaboom:granite_pillar"
   }
 }

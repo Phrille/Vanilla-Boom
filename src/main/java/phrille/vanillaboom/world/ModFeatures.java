@@ -8,6 +8,7 @@ import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.DiskConfiguration;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguratio
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockStateProvider;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
@@ -67,7 +69,7 @@ public class ModFeatures {
     public static final class Configs {
         public static final OreConfiguration PERIDOTITE_CONFIG = new OreConfiguration(OreFeatures.NATURAL_STONE, ModBlocks.PERIDOTITE.get().defaultBlockState(), 33);
         public static final RandomPatchConfiguration ROSE_CONFIG = new RandomPatchConfiguration(32, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.ROSE.get()))));
-        public static final DiskConfiguration HYDRO_ROCK_CONFIG = new DiskConfiguration(ModBlocks.HYDRO_ROCK.get().defaultBlockState(), UniformInt.of(1, 3), 2, ImmutableList.of(Blocks.STONE.defaultBlockState(), Blocks.GRAVEL.defaultBlockState()));
+        public static final DiskConfiguration HYDRO_ROCK_CONFIG = new DiskConfiguration(RuleBasedBlockStateProvider.simple(ModBlocks.HYDRO_ROCK.get()), BlockPredicate.matchesBlocks(List.of(Blocks.STONE, Blocks.GRAVEL)), UniformInt.of(1, 3), 2);
         public static final OreConfiguration INFERNAL_ROCK_CONFIG = new OreConfiguration(Predicates.NETHERRACK, ModBlocks.INFERNAL_ROCK.get().defaultBlockState(), 33);
         public static final OreConfiguration BONE_SAND_CONFIG = new OreConfiguration(Predicates.SOUL_SOIL, ModBlocks.BONE_SAND.get().defaultBlockState(), 29);
         public static final OreConfiguration WITHER_BONE_SAND_CONFIG = new OreConfiguration(Predicates.BONE_SAND, ModBlocks.WITHER_BONE_SAND.get().defaultBlockState(), 18);

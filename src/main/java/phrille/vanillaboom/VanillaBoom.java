@@ -15,7 +15,7 @@ import phrille.vanillaboom.block.entity.ModBlockEntities;
 import phrille.vanillaboom.config.ConfigHandler;
 import phrille.vanillaboom.entity.ModEntities;
 import phrille.vanillaboom.item.ModItems;
-import phrille.vanillaboom.loot.LootTableHandler;
+import phrille.vanillaboom.loot.ModGlobalLootModifiers;
 import phrille.vanillaboom.util.FuelHandler;
 import phrille.vanillaboom.util.Utils;
 import phrille.vanillaboom.world.ModFeatures;
@@ -29,13 +29,13 @@ public class VanillaBoom {
         ModLoadingContext modLoadingContext = ModLoadingContext.get();
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        ModEntities.ENTITIES.register(eventBus);
+        ModEntities.ENTITY_TYPES.register(eventBus);
         ModBlocks.BLOCKS.register(eventBus);
         ModItems.ITEMS.register(eventBus);
-        ModBlockEntities.BLOCK_ENTITIES.register(eventBus);
+        ModBlockEntities.BLOCK_ENTITY_TYPES.register(eventBus);
         ModFeatures.ConfiguredFeatures.CONFIGURED_FEATURES.register(eventBus);
         ModFeatures.PlacedFeatures.PLACED_FEATURES.register(eventBus);
-        LootTableHandler.GLMS.register(eventBus);
+        ModGlobalLootModifiers.GLOBAL_LOOT_MODIFIERS.register(eventBus);
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::enqueueIMC);
@@ -46,7 +46,6 @@ public class VanillaBoom {
 
     public void setup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            ModEntities.registerSpawnPlacements();
             FuelHandler.registerBurnTimes();
             Utils.registerFlowerPots();
             Utils.addCompostMaterials();

@@ -1,10 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "y y",
-    "yxy",
-    "y y"
-  ],
   "key": {
     "x": {
       "item": "minecraft:jungle_slab"
@@ -13,8 +8,13 @@
       "tag": "forge:rods/wooden"
     }
   },
+  "pattern": [
+    "y y",
+    "yxy",
+    "y y"
+  ],
   "result": {
-    "item": "vanillaboom:jungle_ladder",
-    "count": 3
+    "count": 3,
+    "item": "vanillaboom:jungle_ladder"
   }
 }

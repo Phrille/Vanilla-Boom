@@ -1,20 +1,16 @@
 {
-  "type": "vanillaboom:drowned",
-  "conditions": 
-  [    
+  "type": "vanillaboom:drop_loot_modifier",
+  "conditions": [
     {
       "condition": "minecraft:entity_properties",
+      "entity": "this",
       "predicate": {
         "type": "minecraft:drowned"
-      },
-      "entity": "this"
+      }
     }
   ],
-  "table": "vanillaboom:entities/drowned",
-  "overwrites":
-  [
-    {
-      "item":  "minecraft:rotten_flesh"   
-    }
-  ]
+  "overwrites": [
+    "minecraft:rotten_flesh"
+  ],
+  "table": "vanillaboom:minecraft/drowned"
 }

@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
+  "count": 1,
   "ingredient": {
     "item": "minecraft:green_terracotta"
   },
-  "result": "vanillaboom:green_terracotta_wall",
-  "count": 1
+  "result": "vanillaboom:green_terracotta_wall"
 }

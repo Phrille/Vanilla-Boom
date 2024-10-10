@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
+  "count": 2,
   "ingredient": {
     "item": "vanillaboom:brown_terracotta_bricks"
   },
-  "result": "vanillaboom:brown_terracotta_brick_slab",
-  "count": 2
+  "result": "vanillaboom:brown_terracotta_brick_slab"
 }

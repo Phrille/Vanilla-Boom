@@ -6,7 +6,7 @@
     }
   ],
   "result": {
-    "item": "minecraft:prismarine_crystals",
-    "count": 9
+    "count": 9,
+    "item": "minecraft:prismarine_crystals"
   }
 }

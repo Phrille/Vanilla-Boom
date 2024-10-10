@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "x  ",
-    "xx ",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:stripped_oak_wood"
     }
   },
+  "pattern": [
+    "x  ",
+    "xx ",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:stripped_oak_wood_stairs",
-    "count": 4
+    "count": 4,
+    "item": "vanillaboom:stripped_oak_wood_stairs"
   }
 }

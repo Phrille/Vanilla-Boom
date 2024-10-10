@@ -1,13 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "vanillaboom:yellow_terracotta_brick_slab_from_yellow_terracotta_bricks_from_stonecutting"
-    ]
-  },
   "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vanillaboom:yellow_terracotta_brick_slab_from_yellow_terracotta_bricks_from_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
     "has_yellow_terracotta_bricks": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -16,13 +16,8 @@
             ]
           }
         ]
-      }
-    },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "vanillaboom:yellow_terracotta_brick_slab_from_yellow_terracotta_bricks_from_stonecutting"
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
@@ -30,5 +25,10 @@
       "has_yellow_terracotta_bricks",
       "has_the_recipe"
     ]
-  ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vanillaboom:yellow_terracotta_brick_slab_from_yellow_terracotta_bricks_from_stonecutting"
+    ]
+  }
 }

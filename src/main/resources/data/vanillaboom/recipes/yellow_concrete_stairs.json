@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "x  ",
-    "xx ",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:yellow_concrete"
     }
   },
+  "pattern": [
+    "x  ",
+    "xx ",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:yellow_concrete_stairs",
-    "count": 4
+    "count": 4,
+    "item": "vanillaboom:yellow_concrete_stairs"
   }
 }

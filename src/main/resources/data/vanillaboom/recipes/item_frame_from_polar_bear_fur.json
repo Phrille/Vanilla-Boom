@@ -1,10 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx",
-    "xyx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "tag": "forge:rods/wooden"
@@ -13,8 +8,13 @@
       "item": "vanillaboom:polar_bear_fur"
     }
   },
+  "pattern": [
+    "xxx",
+    "xyx",
+    "xxx"
+  ],
   "result": {
-    "item": "minecraft:item_frame",
-    "count": 4
+    "count": 4,
+    "item": "minecraft:item_frame"
   }
 }

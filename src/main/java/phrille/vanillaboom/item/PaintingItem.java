@@ -3,14 +3,16 @@ package phrille.vanillaboom.item;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.HangingEntity;
-import net.minecraft.world.entity.decoration.Motive;
 import net.minecraft.world.entity.decoration.Painting;
+import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -20,15 +22,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import phrille.vanillaboom.util.VanillaBoomTab;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class PaintingItem extends Item {
-    private final Motive motive;
+    private final Holder<PaintingVariant> paintingVariant;
 
-    public PaintingItem(Motive motive) {
+    public PaintingItem(ResourceKey<PaintingVariant> paintingVariant) {
         super(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB));
-        this.motive = motive;
+        this.paintingVariant = Registry.PAINTING_VARIANT.getHolderOrThrow(paintingVariant);
     }
 
     @Override
@@ -43,7 +44,7 @@ public class PaintingItem extends Item {
             return InteractionResult.FAIL;
         } else {
             Level level = context.getLevel();
-            HangingEntity hangingentity = new Painting(level, relative, direction, motive);
+            HangingEntity hangingentity = new Painting(level, relative, direction, paintingVariant);
 
             CompoundTag compoundtag = stack.getTag();
             if (compoundtag != null) {
@@ -66,8 +67,8 @@ public class PaintingItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(new TranslatableComponent(getDescriptionId() + ".desc").withStyle(ChatFormatting.BLUE));
+    public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flag) {
+        tooltip.add(Component.translatable(getDescriptionId() + ".desc").withStyle(ChatFormatting.BLUE));
     }
 
     protected boolean mayPlace(Player player, Direction direction, ItemStack stack, BlockPos pos) {

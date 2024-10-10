@@ -1,10 +1,10 @@
 {
   "parent": "minecraft:block/template_cake_with_candle",
   "textures": {
-    "candle": "minecraft:block/gray_candle_lit",
-    "side": "vanillaboom:block/chocolate_cake_side",
-    "top": "vanillaboom:block/chocolate_cake_top",
     "bottom": "vanillaboom:block/chocolate_cake_bottom",
-    "particle": "vanillaboom:block/chocolate_cake_side"
+    "candle": "minecraft:block/gray_candle_lit",
+    "particle": "vanillaboom:block/chocolate_cake_side",
+    "side": "vanillaboom:block/chocolate_cake_side",
+    "top": "vanillaboom:block/chocolate_cake_top"
   }
 }

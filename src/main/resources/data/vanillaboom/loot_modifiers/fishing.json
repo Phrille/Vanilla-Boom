@@ -1,12 +1,11 @@
 {
-  "type": "vanillaboom:fishing",
-  "conditions": 
-  [    
+  "type": "vanillaboom:fishing_modifier",
+  "chance": 0.3,
+  "conditions": [
     {
       "condition": "forge:loot_table_id",
       "loot_table_id": "minecraft:gameplay/fishing"
     }
   ],
-  "table": "vanillaboom:gameplay/fishing/fishing",
-  "chance": 0.3
+  "table": "vanillaboom:fishing"
 }

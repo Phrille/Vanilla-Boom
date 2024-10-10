@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModSlabBlock;
 import phrille.vanillaboom.block.ModStairBlock;
@@ -655,11 +656,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeResourceLocation(result, ingredient), "_from_stonecutting"));
     }
 
-    //Helper methods
-
-
     /**
-     * ModDataGenerator.extends a recipe name with "from" an ingredient. Ignores
+     * Extends a recipe name with "from" an ingredient. Ignores
      * namespace and always adds modid as namespace.
      *
      * @param result     - the item to be crafted
@@ -671,7 +669,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     /**
-     * ModDataGenerator.extends a recipe name with "alt" to allow different recipes
+     * Extends a recipe name with "alt" to allow different recipes
      * for one item. Ignores namespace and always adds modid as
      * namespace. Use getConversionRecipeResourceLocation when possible.
      *
@@ -700,7 +698,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
      * @return the default ResourceLocation
      */
     private static ResourceLocation resLoc(ItemLike item) {
-        return item.asItem().getRegistryName();
+        return ForgeRegistries.ITEMS.getKey(item.asItem());
     }
 
     /**

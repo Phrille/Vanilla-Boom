@@ -1,15 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "vanillaboom:mossy_cobblestone_bricks"
     }
   },
+  "pattern": [
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:mossy_cobblestone_brick_slab",
-    "count": 6
+    "count": 6,
+    "item": "vanillaboom:mossy_cobblestone_brick_slab"
   }
 }

@@ -1,9 +1,9 @@
 {
   "type": "minecraft:campfire_cooking",
+  "cookingtime": 600,
+  "experience": 0.35,
   "ingredient": {
     "item": "vanillaboom:eel"
   },
-  "result": "vanillaboom:cooked_eel",
-  "experience": 0.35,
-  "cookingtime": 600
+  "result": "vanillaboom:cooked_eel"
 }

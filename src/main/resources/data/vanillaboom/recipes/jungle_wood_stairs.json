@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "x  ",
-    "xx ",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:jungle_wood"
     }
   },
+  "pattern": [
+    "x  ",
+    "xx ",
+    "xxx"
+  ],
   "result": {
-    "item": "vanillaboom:jungle_wood_stairs",
-    "count": 4
+    "count": 4,
+    "item": "vanillaboom:jungle_wood_stairs"
   }
 }

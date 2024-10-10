@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "vanillaboom:block/end_stone_slab_top"
-    },
     "type=bottom": {
       "model": "vanillaboom:block/end_stone_slab"
     },
     "type=double": {
       "model": "minecraft:block/end_stone"
+    },
+    "type=top": {
+      "model": "vanillaboom:block/end_stone_slab_top"
     }
   }
 }

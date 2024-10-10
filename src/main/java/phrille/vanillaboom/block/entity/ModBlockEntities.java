@@ -8,7 +8,7 @@ import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 
 public class ModBlockEntities {
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, VanillaBoom.MOD_ID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, VanillaBoom.MOD_ID);
 
-    public static final RegistryObject<BlockEntityType<RainDetectorBlockEntity>> RAIN_DETECTOR = BLOCK_ENTITIES.register("rain_detector", () -> BlockEntityType.Builder.of(RainDetectorBlockEntity::new, ModBlocks.RAIN_DETECTOR.get()).build(null));
+    public static final RegistryObject<BlockEntityType<RainDetectorBlockEntity>> RAIN_DETECTOR = BLOCK_ENTITY_TYPES.register("rain_detector", () -> BlockEntityType.Builder.of(RainDetectorBlockEntity::new, ModBlocks.RAIN_DETECTOR.get()).build(null));
 }

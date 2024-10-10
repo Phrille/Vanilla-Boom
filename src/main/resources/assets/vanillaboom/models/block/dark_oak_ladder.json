@@ -1,5 +1,6 @@
 {
   "parent": "minecraft:block/ladder",
+  "render_type": "minecraft:cutout",
   "textures": {
     "texture": "vanillaboom:block/dark_oak_ladder"
   }

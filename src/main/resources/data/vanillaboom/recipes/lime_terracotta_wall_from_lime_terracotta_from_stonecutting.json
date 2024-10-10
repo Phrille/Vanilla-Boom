@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
+  "count": 1,
   "ingredient": {
     "item": "minecraft:lime_terracotta"
   },
-  "result": "vanillaboom:lime_terracotta_wall",
-  "count": 1
+  "result": "vanillaboom:lime_terracotta_wall"
 }

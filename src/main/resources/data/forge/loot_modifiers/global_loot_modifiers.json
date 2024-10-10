@@ -1,11 +1,11 @@
 {
-  "replace": false,
   "entries": [
-    "vanillaboom:spruce_leaves",
-    "vanillaboom:polar_bear",
+    "vanillaboom:fishing",
     "vanillaboom:silverfish",
-    "vanillaboom:drowned",
     "vanillaboom:wither_skeleton",
-    "vanillaboom:fishing"
-  ]
+    "vanillaboom:spruce_leaves",
+    "vanillaboom:drowned",
+    "vanillaboom:polar_bear"
+  ],
+  "replace": false
 }

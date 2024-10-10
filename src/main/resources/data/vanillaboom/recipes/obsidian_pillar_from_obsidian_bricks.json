@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "obsidian_pillar",
-  "pattern": [
-    "x",
-    "x"
-  ],
   "key": {
     "x": {
       "item": "vanillaboom:obsidian_bricks"
     }
   },
+  "pattern": [
+    "x",
+    "x"
+  ],
   "result": {
-    "item": "vanillaboom:obsidian_pillar",
-    "count": 2
+    "count": 2,
+    "item": "vanillaboom:obsidian_pillar"
   }
 }

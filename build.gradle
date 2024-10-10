@@ -16,7 +16,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 
 
-version = '1.18.2-1.8.1.0'
+version = '1.19.2-1.8.2.0'
 group = 'phrille.vanillabooom' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'vanillaboom'
 
@@ -38,7 +38,7 @@ minecraft {
     //
     // Use non-default mappings at your own risk. They may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'official', version: '1.18.2'
+    mappings channel: 'official', version: '1.19.2'
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg') // Currently, this location cannot be changed from the default.
 
@@ -61,7 +61,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'vanillaboom'
 
             mods {
                 vanillaboom {
@@ -154,11 +154,11 @@ dependencies {
     // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.18.2-40.2.0'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.3.0'
 
-    compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
+    compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
     // at runtime, use the full JEI jar
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
