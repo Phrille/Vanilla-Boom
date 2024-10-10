@@ -4,7 +4,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -20,7 +19,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
-import phrille.vanillaboom.util.VanillaBoomTab;
+import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -28,8 +28,8 @@ public class PaintingItem extends Item {
     private final Holder<PaintingVariant> paintingVariant;
 
     public PaintingItem(ResourceKey<PaintingVariant> paintingVariant) {
-        super(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB));
-        this.paintingVariant = Registry.PAINTING_VARIANT.getHolderOrThrow(paintingVariant);
+        super(new Item.Properties());
+        this.paintingVariant = ForgeRegistries.PAINTING_VARIANTS.getDelegateOrThrow(paintingVariant);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class PaintingItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(@NotNull ItemStack stack, Level world, List<Component> tooltip, @NotNull TooltipFlag flag) {
         tooltip.add(Component.translatable(getDescriptionId() + ".desc").withStyle(ChatFormatting.BLUE));
     }
 

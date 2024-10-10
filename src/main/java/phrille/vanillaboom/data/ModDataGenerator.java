@@ -2,10 +2,14 @@ package phrille.vanillaboom.data;
 
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraftforge.client.model.generators.ModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -14,14 +18,17 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
+import phrille.vanillaboom.data.loot.ModBlockLootTables;
 import phrille.vanillaboom.data.loot.ModGlobalLootModifierProvider;
-import phrille.vanillaboom.data.loot.ModLootTableProvider;
 import phrille.vanillaboom.data.tags.ModBlockTagsProvider;
 import phrille.vanillaboom.data.tags.ModEntityTypeTagsProvider;
 import phrille.vanillaboom.data.tags.ModItemTagsProvider;
 import phrille.vanillaboom.util.Utils;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 
 @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModDataGenerator {
@@ -36,23 +43,26 @@ public class ModDataGenerator {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
+        PackOutput output = generator.getPackOutput();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
         init();
 
         //Assets
-        generator.addProvider(event.includeClient(), new ModBlockStateProvider(generator, existingFileHelper));
-        generator.addProvider(event.includeClient(), new ModItemModelProvider(generator, existingFileHelper));
-        generator.addProvider(event.includeClient(), new ModLanguageProvider(generator));
+        generator.addProvider(event.includeClient(), new ModBlockStateProvider(output, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ModItemModelProvider(output, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ModLanguageProvider(output));
 
         //Data
-        ModBlockTagsProvider blockTags = new ModBlockTagsProvider(generator, existingFileHelper);
+        ModBlockTagsProvider blockTags = new ModBlockTagsProvider(output, lookupProvider, existingFileHelper);
         generator.addProvider(event.includeServer(), blockTags);
-        generator.addProvider(event.includeServer(), new ModItemTagsProvider(generator, blockTags, existingFileHelper));
-        generator.addProvider(event.includeServer(), new ModEntityTypeTagsProvider(generator, existingFileHelper));
-        generator.addProvider(event.includeServer(), new ModRecipeProvider(generator));
-        generator.addProvider(event.includeServer(), new ModLootTableProvider(generator));
-        generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(generator));
+        generator.addProvider(event.includeServer(), new ModItemTagsProvider(output, lookupProvider, blockTags, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ModEntityTypeTagsProvider(output, lookupProvider, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ModRecipeProvider(output));
+        List<LootTableProvider.SubProviderEntry> subProviders = List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTables::new, LootContextParamSets.BLOCK));
+        generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(), subProviders));
+        generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(output));
     }
 
     private static void init() {
@@ -431,7 +441,7 @@ public class ModDataGenerator {
     }
 
     public static ResourceLocation blockTexture(Block block) {
-        ResourceLocation name = ForgeRegistries.BLOCKS.getKey(block);
+        ResourceLocation name = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block));
         return new ResourceLocation(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath());
     }
 

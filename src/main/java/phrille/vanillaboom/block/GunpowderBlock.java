@@ -54,7 +54,7 @@ public class GunpowderBlock extends FallingBlock {
 
     @Override
     public void wasExploded(Level world, BlockPos pos, Explosion explosion) {
-        onCaughtFire(world.getBlockState(pos), world, pos, null, explosion.getSourceMob());
+        onCaughtFire(world.getBlockState(pos), world, pos, null, explosion.getIndirectSourceEntity());
     }
 
     @Override
@@ -79,7 +79,7 @@ public class GunpowderBlock extends FallingBlock {
 
     private void explode(Level world, BlockPos pos, Entity entity) {
         if (!world.isClientSide) {
-            world.explode(entity, pos.getX(), pos.getY(), pos.getZ(), 1.0F, true, Explosion.BlockInteraction.DESTROY);
+            world.explode(entity, pos.getX(), pos.getY(), pos.getZ(), 1.0F, true, Level.ExplosionInteraction.BLOCK);
         }
     }
 }
