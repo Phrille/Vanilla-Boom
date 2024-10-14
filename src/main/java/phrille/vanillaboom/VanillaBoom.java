@@ -1,7 +1,6 @@
 package phrille.vanillaboom;
 
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -25,9 +24,8 @@ public class VanillaBoom {
     public static final String MOD_ID = "vanillaboom";
     public static final Logger LOGGER = LogManager.getLogger();
 
-    public VanillaBoom() {
-        ModLoadingContext modLoadingContext = ModLoadingContext.get();
-        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public VanillaBoom(FMLJavaModLoadingContext context) {
+        IEventBus eventBus = context.getModEventBus();
 
         ModEntities.ENTITY_TYPES.register(eventBus);
         ModBlocks.BLOCKS.register(eventBus);
@@ -41,7 +39,7 @@ public class VanillaBoom {
 
         eventBus.register(CreativeTabHandler.class);
 
-        modLoadingContext.registerConfig(ModConfig.Type.COMMON, ConfigHandler.COMMON_SPEC);
+        context.registerConfig(ModConfig.Type.COMMON, ConfigHandler.COMMON_SPEC);
     }
 
     public void setup(FMLCommonSetupEvent event) {
