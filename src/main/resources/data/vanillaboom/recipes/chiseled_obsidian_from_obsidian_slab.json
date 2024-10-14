@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "group": "chiseled_obsidian",
   "key": {
     "x": {

@@ -373,16 +373,25 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     public void stair(Consumer<FinishedRecipe> finishedRecipe, ModStairBlock stair) {
         stairsShaped(finishedRecipe, stair.asItem(), stair.getParent().asItem());
+        if (name(stair).contains("wood") || name(stair).contains("hyphae")) {
+            return;
+        }
         stonecutting(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, stair.asItem(), stair.getParent().asItem());
     }
 
     public void slab(Consumer<FinishedRecipe> finishedRecipe, ModSlabBlock slab) {
         slabShaped(finishedRecipe, slab.asItem(), slab.getParent().asItem());
+        if (name(slab).contains("wood") || name(slab).contains("hyphae")) {
+            return;
+        }
         stonecutting(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, slab.asItem(), slab.getParent().asItem(), 2);
     }
 
     public void wall(Consumer<FinishedRecipe> finishedRecipe, ModWallBlock wall) {
         wallShaped(finishedRecipe, wall.asItem(), wall.getParent().asItem());
+        if (name(wall).contains("wood") || name(wall).contains("hyphae")) {
+            return;
+        }
         stonecutting(finishedRecipe, RecipeCategory.DECORATIONS, wall.asItem(), wall.getParent().asItem());
     }
 

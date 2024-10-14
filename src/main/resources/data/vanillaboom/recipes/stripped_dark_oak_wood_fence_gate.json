@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "redstone",
   "key": {
     "x": {
       "item": "minecraft:stripped_dark_oak_wood"

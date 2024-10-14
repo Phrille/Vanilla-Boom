@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "group": "purple_stained_soul_glass",
   "key": {
     "x": {
