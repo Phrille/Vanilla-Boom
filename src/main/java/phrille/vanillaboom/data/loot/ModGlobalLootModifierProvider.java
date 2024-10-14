@@ -2,12 +2,11 @@ package phrille.vanillaboom.data.loot;
 
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.EntityTypePredicate;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
@@ -24,8 +23,8 @@ import java.util.List;
 
 public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
 
-    public ModGlobalLootModifierProvider(DataGenerator gen) {
-        super(gen, VanillaBoom.MOD_ID);
+    public ModGlobalLootModifierProvider(PackOutput output) {
+        super(output, VanillaBoom.MOD_ID);
     }
 
     @Override
@@ -34,7 +33,9 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
         entityLootModifier("polar_bear", EntityType.POLAR_BEAR, List.of(Items.COD, Items.SALMON));
         entityLootModifier("silverfish", EntityType.SILVERFISH, List.of());
         entityLootModifier("wither_skeleton", EntityType.WITHER_SKELETON, List.of(Items.BONE));
-        blockLootModifier("spruce_leaves", Blocks.SPRUCE_LEAVES, List.of());
+        dropLootModifier("spruce_leaves", new LootItemCondition[]{
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SPRUCE_LEAVES).build()
+        }, List.of());
         add("fishing", new FishingLootModifier(new LootItemCondition[]{
                 LootTableIdCondition.builder(new ResourceLocation("minecraft", "gameplay/fishing")).build()
         }, ModGlobalLootModifiers.getLootTableReference("vanillaboom:fishing"), 0.3F));
@@ -43,12 +44,6 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
     private void entityLootModifier(String name, EntityType<?> entityType, List<Item> overwrites) {
         dropLootModifier(name, new LootItemCondition[]{
                 LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(entityType))).build()
-        }, overwrites);
-    }
-
-    private void blockLootModifier(String name, Block block, List<Item> overwrites) {
-        dropLootModifier(name, new LootItemCondition[]{
-                LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).build()
         }, overwrites);
     }
 

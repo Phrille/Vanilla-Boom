@@ -1,7 +1,8 @@
 package phrille.vanillaboom.data.loot;
 
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
-import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
@@ -17,16 +18,23 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.ModCakeBlock;
 import phrille.vanillaboom.data.ModDataGenerator;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.Utils;
 
-public class ModBlockLootTables extends BlockLoot {
+import java.util.Set;
+
+public class ModBlockLootTables extends BlockLootSubProvider {
+
+    public ModBlockLootTables() {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+    }
 
     @Override
-    protected void addTables() {
+    protected void generate() {
         //Bricks
         dropSelf(ModBlocks.COBBLESTONE_BRICKS.get());
         dropSelf(ModBlocks.MOSSY_COBBLESTONE_BRICKS.get());
@@ -192,11 +200,11 @@ public class ModBlockLootTables extends BlockLoot {
     }
 
     @Override
-    protected Iterable<Block> getKnownBlocks() {
+    protected @NotNull Iterable<Block> getKnownBlocks() {
         return ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
     }
 
-    protected static LootTable.Builder createBoneSandDrops(Block block, ItemLike item) {
+    protected LootTable.Builder createBoneSandDrops(Block block, ItemLike item) {
         return createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(item)
                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 5.0F)))
                 .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))));

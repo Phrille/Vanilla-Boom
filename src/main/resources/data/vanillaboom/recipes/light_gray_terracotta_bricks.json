@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "group": "light_gray_terracotta_bricks",
   "key": {
     "x": {

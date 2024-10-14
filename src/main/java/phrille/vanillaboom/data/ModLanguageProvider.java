@@ -1,6 +1,6 @@
 package phrille.vanillaboom.data;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.data.LanguageProvider;
 import phrille.vanillaboom.VanillaBoom;
@@ -8,8 +8,8 @@ import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.item.ModItems;
 
 public class ModLanguageProvider extends LanguageProvider {
-    public ModLanguageProvider(DataGenerator gen) {
-        super(gen, VanillaBoom.MOD_ID, "en_us");
+    public ModLanguageProvider(PackOutput output) {
+        super(output, VanillaBoom.MOD_ID, "en_us");
     }
 
     @Override
@@ -17,9 +17,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add("language.name", "English");
         add("language.region", "United States");
         add("language.locale", "en_us");
-
-        add("itemGroup.vanillaboom_tab", "Vanilla Boom");
-        add("itemGroup.vanillaboom_variant_blocks_tab", "Vanilla Boom: Variant Blocks");
 
         //Bricks
         add(ModBlocks.COBBLESTONE_BRICKS.get(), "Cobblestone Bricks");

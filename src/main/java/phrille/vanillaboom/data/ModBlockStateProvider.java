@@ -1,7 +1,7 @@
 package phrille.vanillaboom.data;
 
 import net.minecraft.core.Direction;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -13,6 +13,7 @@ import phrille.vanillaboom.block.*;
 import phrille.vanillaboom.util.Utils;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class ModBlockStateProvider extends BlockStateProvider {
@@ -20,8 +21,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
     public static final String RENDER_TYPE_CUTOUT_MIPPED = "cutout_mipped";
     public static final String RENDER_TYPE_TRANSLUCENT = "translucent";
 
-    public ModBlockStateProvider(DataGenerator gen, ExistingFileHelper fileHelper) {
-        super(gen, VanillaBoom.MOD_ID, fileHelper);
+    public ModBlockStateProvider(PackOutput output, ExistingFileHelper fileHelper) {
+        super(output, VanillaBoom.MOD_ID, fileHelper);
     }
 
     @Override
@@ -374,7 +375,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     protected ResourceLocation variantTexture(Block block) {
-        ResourceLocation name = ForgeRegistries.BLOCKS.getKey(block);
+        ResourceLocation name = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block));
 
         return new ResourceLocation(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath()
                 .replace("_wood", "_log")
@@ -387,7 +388,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     protected String name(Block block) {
-        return ForgeRegistries.BLOCKS.getKey(block).getPath();
+        return Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)).getPath();
     }
 
     protected String getCakeName(String name, int bites) {

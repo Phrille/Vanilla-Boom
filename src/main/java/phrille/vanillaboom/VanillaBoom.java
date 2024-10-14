@@ -16,9 +16,9 @@ import phrille.vanillaboom.config.ConfigHandler;
 import phrille.vanillaboom.entity.ModEntities;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.loot.ModGlobalLootModifiers;
+import phrille.vanillaboom.util.CreativeTabHandler;
 import phrille.vanillaboom.util.FuelHandler;
 import phrille.vanillaboom.util.Utils;
-import phrille.vanillaboom.world.ModFeatures;
 
 @Mod(VanillaBoom.MOD_ID)
 public class VanillaBoom {
@@ -33,13 +33,13 @@ public class VanillaBoom {
         ModBlocks.BLOCKS.register(eventBus);
         ModItems.ITEMS.register(eventBus);
         ModBlockEntities.BLOCK_ENTITY_TYPES.register(eventBus);
-        ModFeatures.ConfiguredFeatures.CONFIGURED_FEATURES.register(eventBus);
-        ModFeatures.PlacedFeatures.PLACED_FEATURES.register(eventBus);
         ModGlobalLootModifiers.GLOBAL_LOOT_MODIFIERS.register(eventBus);
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::enqueueIMC);
         eventBus.addListener(this::processIMC);
+
+        eventBus.register(CreativeTabHandler.class);
 
         modLoadingContext.registerConfig(ModConfig.Type.COMMON, ConfigHandler.COMMON_SPEC);
     }

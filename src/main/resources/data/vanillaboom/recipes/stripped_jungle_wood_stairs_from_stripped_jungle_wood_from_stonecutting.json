@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "minecraft:stripped_jungle_wood"
-  },
-  "result": "vanillaboom:stripped_jungle_wood_stairs"
-}

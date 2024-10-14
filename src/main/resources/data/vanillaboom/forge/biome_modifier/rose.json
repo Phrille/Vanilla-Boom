@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_forest",
+  "features": "vanillaboom:patch_roses",
+  "step": "vegetal_decoration"
+}

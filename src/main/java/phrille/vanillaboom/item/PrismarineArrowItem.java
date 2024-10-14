@@ -7,11 +7,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import phrille.vanillaboom.entity.PrismarineArrow;
-import phrille.vanillaboom.util.VanillaBoomTab;
 
 public class PrismarineArrowItem extends ArrowItem {
     public PrismarineArrowItem() {
-        super(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB));
+        super(new Item.Properties());
     }
 
     @Override

@@ -1,7 +1,7 @@
 package phrille.vanillaboom.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -27,7 +27,7 @@ public class FishRenderer extends MobRenderer<Fish, EntityModel<Fish>> {
         super.setupRotations(fish, matrix, ageInTicks, rotationYaw, partialTicks);
 
         float rotation = 4.3F * Mth.sin(0.6F * ageInTicks);
-        matrix.mulPose(Vector3f.YP.rotationDegrees(rotation));
+        matrix.mulPose(Axis.YP.rotationDegrees(rotation));
 
         if (fish.getSize() == Fish.Size.LARGE) {
             matrix.translate(0.0F, 0.0F, -0.4F);
@@ -38,7 +38,7 @@ public class FishRenderer extends MobRenderer<Fish, EntityModel<Fish>> {
                 matrix.translate(0.2F, 0.1F, 0.0F);
             }
 
-            matrix.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
+            matrix.mulPose(Axis.ZP.rotationDegrees(90.0F));
         }
     }
 }

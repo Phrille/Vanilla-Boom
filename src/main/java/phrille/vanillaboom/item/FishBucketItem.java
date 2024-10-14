@@ -14,7 +14,6 @@ import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluids;
-import phrille.vanillaboom.util.VanillaBoomTab;
 
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
@@ -22,7 +21,7 @@ import java.util.function.Supplier;
 public class FishBucketItem extends MobBucketItem {
 
     public FishBucketItem(Supplier<? extends EntityType<?>> entityType) {
-        super(entityType, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1).tab(VanillaBoomTab.VANILLA_BOOM_TAB));
+        super(entityType, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1));
     }
 
     @Override

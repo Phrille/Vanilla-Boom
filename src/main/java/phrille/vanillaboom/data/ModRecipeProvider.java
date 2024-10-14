@@ -1,6 +1,6 @@
 package phrille.vanillaboom.data;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -16,6 +16,7 @@ import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModSlabBlock;
 import phrille.vanillaboom.block.ModStairBlock;
@@ -27,17 +28,17 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    public ModRecipeProvider(DataGenerator dataGenerator) {
-        super(dataGenerator);
+    public ModRecipeProvider(PackOutput output) {
+        super(output);
     }
 
     @Override
-    protected void buildCraftingRecipes(Consumer<FinishedRecipe> finishedRecipe) {
+    protected void buildRecipes(@NotNull Consumer<FinishedRecipe> finishedRecipe) {
         bricks(finishedRecipe, ModItems.COBBLESTONE_BRICKS.get(), Blocks.COBBLESTONE);
         bricks(finishedRecipe, ModItems.MOSSY_COBBLESTONE_BRICKS.get(), Blocks.MOSSY_COBBLESTONE);
         mossyCobblestoneBricksShapeless(finishedRecipe, Blocks.MOSS_BLOCK);
         mossyCobblestoneBricksShapeless(finishedRecipe, Blocks.VINE);
-        twoByTwoShaped(finishedRecipe, ModItems.MAGMA_BRICKS.get(), ModItems.MAGMA_BRICK.get());
+        twoByTwoShaped(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, ModItems.MAGMA_BRICKS.get(), ModItems.MAGMA_BRICK.get());
         bricks(finishedRecipe, ModItems.OBSIDIAN_BRICKS.get(), Blocks.OBSIDIAN);
         bricks(finishedRecipe, ModItems.SNOW_BRICKS.get(), Blocks.SNOW_BLOCK);
         bricks(finishedRecipe, ModItems.TERRACOTTA_BRICKS.get(), Blocks.TERRACOTTA);
@@ -57,9 +58,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         terracottaBricks(finishedRecipe, ModItems.GREEN_TERRACOTTA_BRICKS.get(), Blocks.GREEN_TERRACOTTA, Tags.Items.DYES_GREEN);
         terracottaBricks(finishedRecipe, ModItems.RED_TERRACOTTA_BRICKS.get(), Blocks.RED_TERRACOTTA, Tags.Items.DYES_RED);
         terracottaBricks(finishedRecipe, ModItems.BLACK_TERRACOTTA_BRICKS.get(), Blocks.BLACK_TERRACOTTA, Tags.Items.DYES_BLACK);
-        twoByTwoShaped(finishedRecipe, ModItems.BONE_SAND.get(), Items.BONE_MEAL);
-        twoByTwoShaped(finishedRecipe, ModItems.WITHER_BONE_SAND.get(), ModItems.WITHER_BONE_MEAL.get());
-        ShapelessRecipeBuilder.shapeless(ModItems.PERIDOTITE.get(), 2)
+        twoByTwoShaped(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, ModItems.BONE_SAND.get(), Items.BONE_MEAL);
+        twoByTwoShaped(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, ModItems.WITHER_BONE_SAND.get(), ModItems.WITHER_BONE_MEAL.get());
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.PERIDOTITE.get(), 2)
                 .requires(Blocks.DIORITE)
                 .requires(Blocks.PRISMARINE)
                 .unlockedBy(getHasName(Blocks.DIORITE), has(Blocks.DIORITE))
@@ -70,7 +71,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         polishedBlock(finishedRecipe, ModItems.POLISHED_DARK_PRISMARINE.get(), Blocks.DARK_PRISMARINE);
         polishedBlock(finishedRecipe, ModItems.POLISHED_END_STONE.get(), Blocks.END_STONE_BRICKS, List.of(Blocks.END_STONE));
         polishedBlock(finishedRecipe, ModItems.POLISHED_NETHERRACK.get(), Blocks.NETHERRACK);
-        smelting(finishedRecipe, ModItems.CRACKED_RED_NETHER_BRICKS.get(), Blocks.RED_NETHER_BRICKS, 0.1F);
+        smelting(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, ModItems.CRACKED_RED_NETHER_BRICKS.get(), Blocks.RED_NETHER_BRICKS, 0.1F);
         chiseledBlock(finishedRecipe, ModItems.CHISELED_RED_NETHER_BRICKS.get(), Blocks.RED_NETHER_BRICK_SLAB, List.of(Blocks.RED_NETHER_BRICKS));
         chiseledBlock(finishedRecipe, ModItems.CHISELED_PURPUR_BLOCK.get(), Blocks.PURPUR_SLAB, List.of(Blocks.PURPUR_BLOCK));
         chiseledBlock(finishedRecipe, ModItems.CHISELED_OBSIDIAN.get(), ModItems.OBSIDIAN_SLAB.get(), List.of(Blocks.OBSIDIAN, ModItems.OBSIDIAN_BRICKS.get()));
@@ -124,8 +125,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         storageBlock(finishedRecipe, ModItems.GREEN_DYE_BLOCK.get(), Items.GREEN_DYE);
         storageBlock(finishedRecipe, ModItems.RED_DYE_BLOCK.get(), Items.RED_DYE);
         storageBlock(finishedRecipe, ModItems.BLACK_DYE_BLOCK.get(), Items.BLACK_DYE);
-        smeltingAndBlasting(finishedRecipe, ModItems.SOUL_GLASS.get(), Blocks.SOUL_SAND, 0.1F);
-        smeltingAndBlasting(finishedRecipe, ModItems.SOUL_GLASS.get(), Blocks.SOUL_SOIL, 0.1F);
+        smeltingAndBlasting(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, ModItems.SOUL_GLASS.get(), Blocks.SOUL_SAND, 0.1F);
+        smeltingAndBlasting(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, ModItems.SOUL_GLASS.get(), Blocks.SOUL_SOIL, 0.1F);
         stainedSoulGlass(finishedRecipe, ModItems.WHITE_STAINED_SOUL_GLASS.get(), ModItems.WHITE_STAINED_SOUL_GLASS_PANE.get(), Tags.Items.DYES_WHITE);
         stainedSoulGlass(finishedRecipe, ModItems.ORANGE_STAINED_SOUL_GLASS.get(), ModItems.ORANGE_STAINED_SOUL_GLASS_PANE.get(), Tags.Items.DYES_ORANGE);
         stainedSoulGlass(finishedRecipe, ModItems.MAGENTA_STAINED_SOUL_GLASS.get(), ModItems.MAGENTA_STAINED_SOUL_GLASS_PANE.get(), Tags.Items.DYES_MAGENTA);
@@ -142,7 +143,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         stainedSoulGlass(finishedRecipe, ModItems.GREEN_STAINED_SOUL_GLASS.get(), ModItems.GREEN_STAINED_SOUL_GLASS_PANE.get(), Tags.Items.DYES_GREEN);
         stainedSoulGlass(finishedRecipe, ModItems.RED_STAINED_SOUL_GLASS.get(), ModItems.RED_STAINED_SOUL_GLASS_PANE.get(), Tags.Items.DYES_RED);
         stainedSoulGlass(finishedRecipe, ModItems.BLACK_STAINED_SOUL_GLASS.get(), ModItems.BLACK_STAINED_SOUL_GLASS_PANE.get(), Tags.Items.DYES_BLACK);
-        ShapedRecipeBuilder.shaped(ModItems.RAIN_DETECTOR.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModItems.RAIN_DETECTOR.get())
                 .define('x', Blocks.GLASS)
                 .define('y', ModItems.HYDRO_ROCK.get())
                 .define('z', ItemTags.WOODEN_SLABS)
@@ -151,13 +152,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("zzz")
                 .unlockedBy(getHasName(ModItems.HYDRO_ROCK.get()), has(ModItems.HYDRO_ROCK.get()))
                 .save(finishedRecipe);
-        ShapedRecipeBuilder.shaped(ModItems.GOLD_BARS.get(), 16)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModItems.GOLD_BARS.get(), 16)
                 .define('x', Tags.Items.INGOTS_GOLD)
                 .pattern("xxx")
                 .pattern("xxx")
                 .unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(finishedRecipe);
-        oneToOneShapeless(finishedRecipe, Items.RED_DYE, ModItems.ROSE.get(), 1);
+        oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, Items.RED_DYE, ModItems.ROSE.get(), 1);
         ModDataGenerator.STAIRS.forEach(pair -> stair(finishedRecipe, (ModStairBlock) pair.getFirst()));
         ModDataGenerator.SLABS.forEach(pair -> slab(finishedRecipe, (ModSlabBlock) pair.getFirst()));
         ModDataGenerator.WALLS.forEach(block -> wall(finishedRecipe, (ModWallBlock) block));
@@ -201,15 +202,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         variants(finishedRecipe, ModItems.QUARTZ_BRICK_STAIRS.get(), ModItems.QUARTZ_BRICK_SLAB.get(), ModItems.QUARTZ_BRICK_WALL.get(), Blocks.QUARTZ_BLOCK);
         variants(finishedRecipe, ModItems.CUT_SANDSTONE_STAIRS.get(), ModItems.CUT_SANDSTONE_WALL.get(), Blocks.SANDSTONE);
         variants(finishedRecipe, ModItems.CUT_RED_SANDSTONE_STAIRS.get(), ModItems.CUT_RED_SANDSTONE_WALL.get(), Blocks.RED_SANDSTONE);
-        variants(finishedRecipe, ModItems.POLISHED_GRANITE_WALL.get(), Blocks.GRANITE);
-        variants(finishedRecipe, ModItems.POLISHED_DIORITE_WALL.get(), Blocks.DIORITE);
-        variants(finishedRecipe, ModItems.POLISHED_ANDESITE_WALL.get(), Blocks.ANDESITE);
+        variants(finishedRecipe, RecipeCategory.DECORATIONS, ModItems.POLISHED_GRANITE_WALL.get(), Blocks.GRANITE);
+        variants(finishedRecipe, RecipeCategory.DECORATIONS, ModItems.POLISHED_DIORITE_WALL.get(), Blocks.DIORITE);
+        variants(finishedRecipe, RecipeCategory.DECORATIONS, ModItems.POLISHED_ANDESITE_WALL.get(), Blocks.ANDESITE);
 
         //Items
-        smeltingAndBlasting(finishedRecipe, ModItems.MAGMA_BRICK.get(), Blocks.MAGMA_BLOCK, 0.1F);
-        oneToOneShapeless(finishedRecipe, ModItems.WITHER_BONE_MEAL.get(), ModItems.WITHER_BONE.get(), 3);
-        oneToOneShapeless(finishedRecipe, Items.BLACK_DYE, ModItems.WITHER_BONE_MEAL.get(), 1);
-        ShapedRecipeBuilder.shaped(ModItems.PRISMARINE_ARROW.get())
+        smeltingAndBlasting(finishedRecipe, RecipeCategory.MISC, ModItems.MAGMA_BRICK.get(), Blocks.MAGMA_BLOCK, 0.1F);
+        oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, ModItems.WITHER_BONE_MEAL.get(), ModItems.WITHER_BONE.get(), 3);
+        oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, Items.BLACK_DYE, ModItems.WITHER_BONE_MEAL.get(), 1);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.PRISMARINE_ARROW.get())
                 .define('x', Items.PRISMARINE_SHARD)
                 .define('y', Tags.Items.RODS_WOODEN)
                 .define('z', Tags.Items.FEATHERS)
@@ -220,27 +221,27 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.PRISMARINE_SHARD), has(Items.PRISMARINE_SHARD))
                 .unlockedBy(getHasName(Items.FEATHER), has(Items.FEATHER))
                 .save(finishedRecipe);
-        ShapelessRecipeBuilder.shapeless(ModItems.PRISMARINE_ARROW.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.PRISMARINE_ARROW.get())
                 .requires(Items.ARROW)
                 .requires(Items.PRISMARINE_SHARD)
                 .group(name(ModItems.PRISMARINE_ARROW.get()))
                 .unlockedBy(getHasName(Items.PRISMARINE_SHARD), has(Items.PRISMARINE_SHARD))
                 .unlockedBy(getHasName(Items.FEATHER), has(Items.FEATHER))
                 .save(finishedRecipe, getConversionRecipeResourceLocation(ModItems.PRISMARINE_ARROW.get(), Items.ARROW));
-        oneToOneShapeless(finishedRecipe, Items.LEATHER, ModItems.POLAR_BEAR_FUR.get(), 4);
-        surroundedShaped(finishedRecipe, Items.BOOK, Items.PAPER, ModItems.POLAR_BEAR_FUR.get(), 4);
-        surroundedShaped(finishedRecipe, Items.ITEM_FRAME, Tags.Items.RODS_WOODEN, ModItems.POLAR_BEAR_FUR.get(), 4);
-        oneToOneShapeless(finishedRecipe, ModItems.TOMATO_SEEDS.get(), ModItems.TOMATO.get(), 1);
-        oneToOneShapeless(finishedRecipe, ModItems.RICE_SEEDS.get(), ModItems.RICE_BOWL.get(), 1);
+        oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, Items.LEATHER, ModItems.POLAR_BEAR_FUR.get(), 4);
+        surroundedShaped(finishedRecipe, RecipeCategory.MISC, Items.BOOK, Items.PAPER, ModItems.POLAR_BEAR_FUR.get(), 4);
+        surroundedShaped(finishedRecipe, RecipeCategory.DECORATIONS, Items.ITEM_FRAME, Tags.Items.RODS_WOODEN, ModItems.POLAR_BEAR_FUR.get(), 4);
+        oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, ModItems.TOMATO_SEEDS.get(), ModItems.TOMATO.get(), 1);
+        oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, ModItems.RICE_SEEDS.get(), ModItems.RICE_BOWL.get(), 1);
         cooking(finishedRecipe, ModItems.COOKED_EGG.get(), Items.EGG, 0.3F);
-        ShapelessRecipeBuilder.shapeless(ModItems.MELON_POPSICLE.get(), 4)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.MELON_POPSICLE.get(), 4)
                 .requires(Items.MELON_SLICE)
                 .requires(Blocks.ICE)
                 .requires(Tags.Items.RODS_WOODEN)
                 .unlockedBy(getHasName(Items.MELON_SLICE), has(Items.MELON))
                 .unlockedBy(getHasName(Blocks.ICE), has(Blocks.ICE))
                 .save(finishedRecipe);
-        ShapelessRecipeBuilder.shapeless(ModItems.CHOCOLATE.get(), 2)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.CHOCOLATE.get(), 2)
                 .requires(Items.MILK_BUCKET)
                 .requires(Items.COCOA_BEANS)
                 .requires(Items.SUGAR)
@@ -255,7 +256,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         pieShapeless(finishedRecipe, ModItems.BERRY_PIE.get(), Items.SWEET_BERRIES);
         pieShapeless(finishedRecipe, ModItems.MONSTER_PIE.get(), Items.ROTTEN_FLESH);
         cooking(finishedRecipe, ModItems.POLAR_BEAR_STEAK.get(), ModItems.RAW_POLAR_BEAR_MEAT.get(), 0.35F);
-        ShapelessRecipeBuilder.shapeless(ModItems.POTATO_SOUP.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.POTATO_SOUP.get())
                 .requires(Items.BOWL)
                 .requires(ModTags.VanillaBoomTags.Items.POTATO_SOUP_INGREDIENTS)
                 .requires(ModTags.VanillaBoomTags.Items.POTATO_SOUP_INGREDIENTS)
@@ -263,14 +264,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.POTATO), has(Items.POTATO))
                 .unlockedBy(getHasName(Items.POISONOUS_POTATO), has(Items.POISONOUS_POTATO))
                 .save(finishedRecipe);
-        ShapelessRecipeBuilder.shapeless(ModItems.MEAT_SOUP.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.MEAT_SOUP.get())
                 .requires(Items.BOWL)
                 .requires(Tags.Items.CROPS_POTATO)
                 .requires(ModTags.ForgeTags.Items.COOKED_MEATS)
                 .requires(ModTags.ForgeTags.Items.COOKED_MEATS)
                 .unlockedBy(getHasName(Items.BOWL), has(Items.BOWL))
                 .save(finishedRecipe);
-        ShapelessRecipeBuilder.shapeless(ModItems.FISH_SOUP.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.FISH_SOUP.get())
                 .requires(Items.BOWL)
                 .requires(Items.SEA_PICKLE)
                 .requires(ModTags.ForgeTags.Items.COOKED_FISHES)
@@ -284,18 +285,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         cooking(finishedRecipe, ModItems.COOKED_EEL.get(), ModItems.EEL.get(), 0.35F);
 
         //Altered recipes from vanilla
-        ShapedRecipeBuilder.shaped(Blocks.BONE_BLOCK)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.BONE_BLOCK)
                 .define('x', Items.BONE)
                 .pattern("xxx")
                 .pattern("xxx")
                 .pattern("xxx")
                 .unlockedBy(getHasName(Items.BONE), has(Items.BONE))
                 .save(finishedRecipe);
-        ShapelessRecipeBuilder.shapeless(Items.BONE, 9)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BONE, 9)
                 .requires(Blocks.BONE_BLOCK)
                 .unlockedBy(getHasName(Blocks.BONE_BLOCK), has(Blocks.BONE_BLOCK))
                 .save(finishedRecipe, "bone_meal_from_bone_block");
-        ShapedRecipeBuilder.shaped(Blocks.BOOKSHELF)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.BOOKSHELF)
                 .define('x', Blocks.OAK_PLANKS)
                 .define('y', Items.BOOK)
                 .pattern("xxx")
@@ -304,7 +305,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Blocks.BOOKSHELF), has(Blocks.BOOKSHELF))
                 .unlockedBy(getHasName(Items.BOOK), has(Items.BOOK))
                 .save(finishedRecipe);
-        ShapedRecipeBuilder.shaped(Blocks.NETHER_BRICK_FENCE, 3)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.NETHER_BRICK_FENCE, 3)
                 .define('x', Items.NETHER_BRICK)
                 .define('y', Tags.Items.RODS_WOODEN)
                 .pattern("xyx")
@@ -315,13 +316,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     //Templates
     public void bricks(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
-        twoByTwoShaped(finishedRecipe, result, ingredient, 4);
-        stonecutting(finishedRecipe, result, ingredient);
+        twoByTwoShaped(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, result, ingredient, 4);
+        stonecutting(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, result, ingredient);
     }
 
     public void terracottaBricks(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, TagKey<Item> dye) {
         bricks(finishedRecipe, result, ingredient);
-        dyeCenterShaped(finishedRecipe, result, ModItems.TERRACOTTA_BRICKS.get(), dye, getAltName(result));
+        dyeCenterShaped(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, result, ModItems.TERRACOTTA_BRICKS.get(), dye, getAltName(result));
     }
 
     public void polishedBlock(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
@@ -329,14 +330,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void polishedBlock(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, List<ItemLike> variants) {
-        twoByTwoShaped(finishedRecipe, result, ingredient, 4);
-        stonecutting(finishedRecipe, result, ingredient);
-        variants.forEach(variant -> stonecutting(finishedRecipe, result, variant));
+        twoByTwoShaped(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, result, ingredient, 4);
+        stonecutting(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, result, ingredient);
+        variants.forEach(variant -> stonecutting(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, result, variant));
     }
 
     public void chiseledBlock(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, List<ItemLike> variants) {
-        stackedShaped(finishedRecipe, result, ingredient, 1);
-        variants.forEach(variant -> stonecutting(finishedRecipe, result, variant));
+        stackedShaped(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, result, ingredient, 1);
+        variants.forEach(variant -> stonecutting(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, result, variant));
     }
 
     public void pillarBlock(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
@@ -344,45 +345,54 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void pillarBlock(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, List<ItemLike> variants) {
-        stackedShaped(finishedRecipe, result, ingredient, 2);
-        stonecutting(finishedRecipe, result, ingredient);
-        variants.forEach(variant -> stonecutting(finishedRecipe, result, variant));
+        stackedShaped(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, result, ingredient, 2);
+        stonecutting(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, result, ingredient);
+        variants.forEach(variant -> stonecutting(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, result, variant));
     }
 
     public void storageBlock(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
-        threeByThreeShaped(finishedRecipe, result, ingredient, 1);
-        oneToOneShapeless(finishedRecipe, ingredient, result, 9);
+        threeByThreeShaped(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, result, ingredient, 1);
+        oneToOneShapeless(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, ingredient, result, 9);
     }
 
     public void stainedSoulGlass(Consumer<FinishedRecipe> finishedRecipe, ItemLike glass, ItemLike pane, TagKey<Item> dye) {
-        dyeCenterShaped(finishedRecipe, glass, ModItems.SOUL_GLASS.get(), dye, modLoc(glass));
+        dyeCenterShaped(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, glass, ModItems.SOUL_GLASS.get(), dye, modLoc(glass));
         paneShaped(finishedRecipe, pane, glass);
     }
 
-    public void smeltingAndBlasting(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
-        smelting(finishedRecipe, result, ingredient, xp);
-        blasting(finishedRecipe, result, ingredient, xp);
+    public void smeltingAndBlasting(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, ItemLike ingredient, float xp) {
+        smelting(finishedRecipe, category, result, ingredient, xp);
+        blasting(finishedRecipe, category, result, ingredient, xp);
     }
 
     public void cooking(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
-        smelting(finishedRecipe, result, ingredient, xp);
-        smoking(finishedRecipe, result, ingredient, xp);
-        campFire(finishedRecipe, result, ingredient, xp);
+        smelting(finishedRecipe, RecipeCategory.FOOD, result, ingredient, xp);
+        smoking(finishedRecipe, RecipeCategory.FOOD, result, ingredient, xp);
+        campFire(finishedRecipe, RecipeCategory.FOOD, result, ingredient, xp);
     }
 
     public void stair(Consumer<FinishedRecipe> finishedRecipe, ModStairBlock stair) {
         stairsShaped(finishedRecipe, stair.asItem(), stair.getParent().asItem());
-        stonecutting(finishedRecipe, stair.asItem(), stair.getParent().asItem());
+        if (name(stair).contains("wood") || name(stair).contains("hyphae")) {
+            return;
+        }
+        stonecutting(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, stair.asItem(), stair.getParent().asItem());
     }
 
     public void slab(Consumer<FinishedRecipe> finishedRecipe, ModSlabBlock slab) {
         slabShaped(finishedRecipe, slab.asItem(), slab.getParent().asItem());
-        stonecutting(finishedRecipe, slab.asItem(), slab.getParent().asItem(), 2);
+        if (name(slab).contains("wood") || name(slab).contains("hyphae")) {
+            return;
+        }
+        stonecutting(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, slab.asItem(), slab.getParent().asItem(), 2);
     }
 
     public void wall(Consumer<FinishedRecipe> finishedRecipe, ModWallBlock wall) {
         wallShaped(finishedRecipe, wall.asItem(), wall.getParent().asItem());
-        stonecutting(finishedRecipe, wall.asItem(), wall.getParent().asItem());
+        if (name(wall).contains("wood") || name(wall).contains("hyphae")) {
+            return;
+        }
+        stonecutting(finishedRecipe, RecipeCategory.DECORATIONS, wall.asItem(), wall.getParent().asItem());
     }
 
     public void fence(Consumer<FinishedRecipe> finishedRecipe, FenceBlock fence, Block parent) {
@@ -399,9 +409,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike stair, ItemLike slab, ItemLike wall, List<ItemLike> blocks) {
         blocks.forEach(block -> {
-            stonecutting(finishedRecipe, stair, block);
-            stonecutting(finishedRecipe, slab, block, 2);
-            stonecutting(finishedRecipe, wall, block);
+            stonecutting(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, stair, block);
+            stonecutting(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, slab, block, 2);
+            stonecutting(finishedRecipe, RecipeCategory.DECORATIONS, wall, block);
         });
     }
 
@@ -411,28 +421,26 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike stair, ItemLike wall, List<ItemLike> blocks) {
         blocks.forEach(block -> {
-            stonecutting(finishedRecipe, stair, block);
-            stonecutting(finishedRecipe, wall, block);
+            stonecutting(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, stair, block);
+            stonecutting(finishedRecipe, RecipeCategory.DECORATIONS, wall, block);
         });
     }
 
-    public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike wall, ItemLike block) {
-        variants(finishedRecipe, wall, List.of(block));
+    public void variants(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike wall, ItemLike block) {
+        variants(finishedRecipe, category, wall, List.of(block));
     }
 
-    public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike wall, List<ItemLike> blocks) {
-        blocks.forEach(block -> {
-            stonecutting(finishedRecipe, wall, block);
-        });
+    public void variants(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike wall, List<ItemLike> blocks) {
+        blocks.forEach(block -> stonecutting(finishedRecipe, category, wall, block));
     }
 
     //Shaped Recipe
-    public void twoByTwoShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
-        twoByTwoShaped(finishedRecipe, result, ingredient, 1);
+    public void twoByTwoShaped(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, ItemLike ingredient) {
+        twoByTwoShaped(finishedRecipe, category, result, ingredient, 1);
     }
 
-    public void twoByTwoShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, int amount) {
-        ShapedRecipeBuilder.shaped(result, amount)
+    public void twoByTwoShaped(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, ItemLike ingredient, int amount) {
+        ShapedRecipeBuilder.shaped(category, result, amount)
                 .define('x', ingredient)
                 .pattern("xx")
                 .pattern("xx")
@@ -441,8 +449,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
-    public void threeByThreeShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, int amount) {
-        ShapedRecipeBuilder.shaped(result, amount)
+    public void threeByThreeShaped(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, ItemLike ingredient, int amount) {
+        ShapedRecipeBuilder.shaped(category, result, amount)
                 .define('x', ingredient)
                 .pattern("xxx")
                 .pattern("xxx")
@@ -451,8 +459,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
-    public void surroundedShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike surround, ItemLike middle, int amount) {
-        ShapedRecipeBuilder.shaped(result, amount)
+    public void surroundedShaped(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, ItemLike surround, ItemLike middle, int amount) {
+        ShapedRecipeBuilder.shaped(category, result, amount)
                 .define('x', surround)
                 .define('y', middle)
                 .pattern("xxx")
@@ -463,8 +471,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe, getConversionRecipeResourceLocation(result, middle));
     }
 
-    public void surroundedShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, TagKey<Item> surround, ItemLike middle, int amount) {
-        ShapedRecipeBuilder.shaped(result, amount)
+    public void surroundedShaped(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, TagKey<Item> surround, ItemLike middle, int amount) {
+        ShapedRecipeBuilder.shaped(category, result, amount)
                 .define('x', surround)
                 .define('y', middle)
                 .pattern("xxx")
@@ -474,8 +482,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe, getConversionRecipeResourceLocation(result, middle));
     }
 
-    public void dyeCenterShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, TagKey<Item> dye, ResourceLocation name) {
-        ShapedRecipeBuilder.shaped(result, 8)
+    public void dyeCenterShaped(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, ItemLike ingredient, TagKey<Item> dye, ResourceLocation name) {
+        ShapedRecipeBuilder.shaped(category, result, 8)
                 .define('x', ingredient)
                 .define('y', dye)
                 .pattern("xxx")
@@ -486,8 +494,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe, name);
     }
 
-    public void stackedShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, int amount) {
-        ShapedRecipeBuilder.shaped(result, amount)
+    public void stackedShaped(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, ItemLike ingredient, int amount) {
+        ShapedRecipeBuilder.shaped(category, result, amount)
                 .define('x', ingredient)
                 .pattern("x")
                 .pattern("x")
@@ -497,7 +505,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void bookshelfShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike planks) {
-        ShapedRecipeBuilder.shaped(result)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
                 .define('x', planks)
                 .define('y', Items.BOOK)
                 .pattern("xxx")
@@ -509,7 +517,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void ladderShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike slab) {
-        ShapedRecipeBuilder.shaped(result, 3)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result, 3)
                 .define('x', slab)
                 .define('y', Tags.Items.RODS_WOODEN)
                 .pattern("y y")
@@ -521,7 +529,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void paneShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
-        ShapedRecipeBuilder.shaped(result, 16)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result, 16)
                 .define('x', ingredient)
                 .pattern("xxx")
                 .pattern("xxx")
@@ -530,7 +538,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void stairsShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
-        ShapedRecipeBuilder.shaped(result, 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, result, 4)
                 .define('x', ingredient)
                 .pattern("x  ")
                 .pattern("xx ")
@@ -540,7 +548,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void slabShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
-        ShapedRecipeBuilder.shaped(result, 6)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, result, 6)
                 .define('x', ingredient)
                 .pattern("xxx")
                 .unlockedBy(getHasName(ingredient), has(ingredient))
@@ -548,7 +556,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void wallShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
-        ShapedRecipeBuilder.shaped(result, 6)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result, 6)
                 .define('x', ingredient)
                 .pattern("xxx")
                 .pattern("xxx")
@@ -557,7 +565,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void fenceShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
-        ShapedRecipeBuilder.shaped(result, 3)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result, 3)
                 .define('x', ingredient)
                 .define('y', Tags.Items.RODS_WOODEN)
                 .pattern("xyx")
@@ -567,7 +575,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void fenceGateShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
-        ShapedRecipeBuilder.shaped(result)
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, result)
                 .define('x', ingredient)
                 .define('y', Tags.Items.RODS_WOODEN)
                 .pattern("yxy")
@@ -577,7 +585,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void cakeShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
-        ShapedRecipeBuilder.shaped(result)
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, result)
                 .define('x', ingredient)
                 .define('y', ModTags.ForgeTags.Items.MILK)
                 .define('z', Items.SUGAR)
@@ -594,15 +602,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     //Shapeless Recipe
-    public void oneToOneShapeless(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, int amount) {
-        ShapelessRecipeBuilder.shapeless(result, amount)
+    public void oneToOneShapeless(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, ItemLike ingredient, int amount) {
+        ShapelessRecipeBuilder.shapeless(category, result, amount)
                 .requires(ingredient)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(finishedRecipe, getConversionRecipeResourceLocation(result, ingredient));
     }
 
     public void mossyCobblestoneBricksShapeless(Consumer<FinishedRecipe> finishedRecipe, ItemLike ingredient) {
-        ShapelessRecipeBuilder.shapeless(ModItems.MOSSY_COBBLESTONE_BRICKS.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.MOSSY_COBBLESTONE_BRICKS.get())
                 .requires(ModItems.COBBLESTONE_BRICKS.get())
                 .requires(ingredient)
                 .group(name(ModItems.MOSSY_COBBLESTONE_BRICKS.get()))
@@ -612,7 +620,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void pieShapeless(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
-        ShapelessRecipeBuilder.shapeless(result)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, result)
                 .requires(ingredient)
                 .requires(Tags.Items.EGGS)
                 .requires(Items.SUGAR)
@@ -621,37 +629,37 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     //Smelting
-    public void smelting(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), result, xp, 200).
+    public void smelting(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, ItemLike ingredient, float xp) {
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), category, result, xp, 200).
                 unlockedBy(getHasName(ingredient), has(ingredient)).
                 save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeResourceLocation(result, ingredient), "_from_smelting"));
     }
 
-    public void blasting(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredient), result, xp, 100)
+    public void blasting(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, ItemLike ingredient, float xp) {
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredient), category, result, xp, 100)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeResourceLocation(result, ingredient), "_from_blasting"));
     }
 
-    public void smoking(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
-        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ingredient), result, xp, 100)
+    public void smoking(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, ItemLike ingredient, float xp) {
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ingredient), category, result, xp, 100)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeResourceLocation(result, ingredient), "_from_smoking"));
     }
 
-    public void campFire(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
-        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ingredient), result, xp, 600)
+    public void campFire(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, ItemLike ingredient, float xp) {
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ingredient), category, result, xp, 600)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeResourceLocation(result, ingredient), "_from_campfire"));
     }
 
     //Stonecutting
-    public void stonecutting(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
-        stonecutting(finishedRecipe, result, ingredient, 1);
+    public void stonecutting(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, ItemLike ingredient) {
+        stonecutting(finishedRecipe, category, result, ingredient, 1);
     }
 
-    public void stonecutting(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, int amount) {
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ingredient), result, amount)
+    public void stonecutting(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, ItemLike ingredient, int amount) {
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ingredient), category, result, amount)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeResourceLocation(result, ingredient), "_from_stonecutting"));
     }

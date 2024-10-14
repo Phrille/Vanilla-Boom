@@ -1,13 +1,15 @@
 package phrille.vanillaboom.data.tags;
 
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CandleBlock;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.NotNull;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.ModCakeBlock;
@@ -15,14 +17,16 @@ import phrille.vanillaboom.data.ModDataGenerator;
 import phrille.vanillaboom.util.ModTags;
 import phrille.vanillaboom.util.Utils;
 
+import java.util.concurrent.CompletableFuture;
+
 public class ModBlockTagsProvider extends BlockTagsProvider {
-    public ModBlockTagsProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-        super(generator, VanillaBoom.MOD_ID, existingFileHelper);
+    public ModBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper) {
+        super(output, lookupProvider, VanillaBoom.MOD_ID, existingFileHelper);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    protected void addTags() {
+    protected void addTags(HolderLookup.@NotNull Provider provider) {
         /*
          * Forge tags
          */
@@ -276,27 +280,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.INFERNAL_ROCK.get())
                 .add(ModBlocks.POLISHED_NETHERRACK.get())
                 .add(ModBlocks.NETHERRACK_PILLAR.get());
-        tag(BlockTags.NON_FLAMMABLE_WOOD)
-                .add(ModBlocks.CRIMSON_BOOKSHELF.get())
-                .add(ModBlocks.WARPED_BOOKSHELF.get())
-                .add(ModBlocks.CRIMSON_LADDER.get())
-                .add(ModBlocks.WARPED_LADDER.get())
-                .add(ModBlocks.CRIMSON_HYPHAE_STAIRS.get())
-                .add(ModBlocks.WARPED_HYPHAE_STAIRS.get())
-                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_STAIRS.get())
-                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_STAIRS.get())
-                .add(ModBlocks.CRIMSON_HYPHAE_SLAB.get())
-                .add(ModBlocks.WARPED_HYPHAE_SLAB.get())
-                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_SLAB.get())
-                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_SLAB.get())
-                .add(ModBlocks.CRIMSON_HYPHAE_FENCE.get())
-                .add(ModBlocks.WARPED_HYPHAE_FENCE.get())
-                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_FENCE.get())
-                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_FENCE.get())
-                .add(ModBlocks.CRIMSON_HYPHAE_FENCE_GATE.get())
-                .add(ModBlocks.WARPED_HYPHAE_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_FENCE_GATE.get())
-                .add(ModBlocks.STRIPPED_WARPED_HYPHAE_FENCE_GATE.get());
         tag(BlockTags.SMALL_FLOWERS).add(ModBlocks.ROSE.get());
         tag(BlockTags.SOUL_FIRE_BASE_BLOCKS)
                 .add(ModBlocks.BONE_SAND.get())
