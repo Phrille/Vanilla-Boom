@@ -16,7 +16,6 @@ import phrille.vanillaboom.entity.ModEntities;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.loot.ModGlobalLootModifiers;
 import phrille.vanillaboom.util.CreativeTabHandler;
-import phrille.vanillaboom.util.FuelHandler;
 import phrille.vanillaboom.util.Utils;
 
 @Mod(VanillaBoom.MOD_ID)
@@ -44,7 +43,7 @@ public class VanillaBoom {
 
     public void setup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            FuelHandler.registerBurnTimes();
+            Utils.registerBurnTimes();
             Utils.registerFlowerPots();
             Utils.addCompostMaterials();
             Utils.registerTrellisCrops();

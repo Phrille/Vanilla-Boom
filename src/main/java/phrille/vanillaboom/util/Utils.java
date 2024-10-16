@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -48,7 +49,17 @@ public class Utils {
         ComposterBlock.COMPOSTABLES.put(ModItems.TOMATO.get(), 0.6F);
         ComposterBlock.COMPOSTABLES.put(ModItems.TOMATO_SEEDS.get(), 0.3F);
         ComposterBlock.COMPOSTABLES.put(ModItems.RICE_SEEDS.get(), 0.3F);
-        ComposterBlock.COMPOSTABLES.put(ModItems.ROSE.get(), 0.6F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.ROSE.get(), 0.6F);
+    }
+
+    public static void registerBurnTimes() {
+        FuelHandler.registerBurnTime(Items.BLAZE_POWDER, 1200);
+        FuelHandler.registerBurnTime(ModBlocks.CHARCOAL_BLOCK.get(), 16000);
+        FuelHandler.registerBurnTime(ModBlocks.BLAZE_POWDER_BLOCK.get(), 10800);
+        FuelHandler.registerBurnTime(ModBlocks.WITHER_BONE_BLOCK.get(), 10800);
+        FuelHandler.registerBurnTime(ModItems.WITHER_BONE.get(), 1200);
+        FuelHandler.registerBurnTime(ModItems.WITHER_BONE_MEAL.get(), 400);
+        FuelHandler.registerBurnTime(ModItems.PINE_CONE.get(), 100);
     }
 
     public static void registerFlowerPots() {
