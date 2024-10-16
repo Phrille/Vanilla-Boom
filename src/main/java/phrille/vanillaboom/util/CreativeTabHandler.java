@@ -624,7 +624,8 @@ public class CreativeTabHandler {
                     ModItems.ACACIA_LADDER.get(),
                     ModItems.DARK_OAK_LADDER.get(),
                     ModItems.CRIMSON_LADDER.get(),
-                    ModItems.WARPED_LADDER.get()
+                    ModItems.WARPED_LADDER.get(),
+                    ModItems.TRELLIS.get()
             ));
             putAfter(entries, Items.PAINTING, List.of(
                     ModItems.KEBAB_PAINTING.get(),

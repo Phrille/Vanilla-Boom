@@ -3,15 +3,18 @@ package phrille.vanillaboom.util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.material.Fluids;
 import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.block.ModBlocks;
-import phrille.vanillaboom.block.ModCakeBlock;
-import phrille.vanillaboom.block.ModCandleCakeBlock;
+import phrille.vanillaboom.block.*;
 import phrille.vanillaboom.item.ModItems;
 
 import java.util.List;
@@ -27,6 +30,19 @@ public class Utils {
         }
     }
 
+    public static void preventCreativeDropFromBottomPart(Level level, BlockPos pos, BlockState state, Player player, EnumProperty<DoubleBlockHalf> halfProperty) {
+        DoubleBlockHalf half = state.getValue(halfProperty);
+        if (half == DoubleBlockHalf.UPPER) {
+            BlockPos below = pos.below();
+            BlockState belowState = level.getBlockState(below);
+            if (belowState.is(state.getBlock()) && belowState.getValue(halfProperty) == DoubleBlockHalf.LOWER) {
+                BlockState fluidState = belowState.getFluidState().is(Fluids.WATER) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
+                level.setBlock(below, fluidState, 35);
+                level.levelEvent(player, 2001, below, Block.getId(belowState));
+            }
+        }
+    }
+
     public static void addCompostMaterials() {
         ComposterBlock.COMPOSTABLES.put(ModItems.PINE_CONE.get(), 0.35F);
         ComposterBlock.COMPOSTABLES.put(ModItems.TOMATO.get(), 0.6F);
@@ -37,6 +53,10 @@ public class Utils {
 
     public static void registerFlowerPots() {
         ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(new ResourceLocation(VanillaBoom.MOD_ID, "rose"), ModBlocks.POTTED_ROSE);
+    }
+
+    public static void registerTrellisCrops() {
+        ((TrellisBlock) ModBlocks.TRELLIS.get()).registerTrellisCrop((ITrellisCrop) ModBlocks.TOMATO.get());
     }
 
     public static void registerCandleCakes() {

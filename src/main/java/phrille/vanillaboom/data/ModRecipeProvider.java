@@ -18,6 +18,7 @@ import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import phrille.vanillaboom.VanillaBoom;
+import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.ModSlabBlock;
 import phrille.vanillaboom.block.ModStairBlock;
 import phrille.vanillaboom.block.ModWallBlock;
@@ -159,6 +160,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(finishedRecipe);
         oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, Items.RED_DYE, ModItems.ROSE.get(), 1);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.TRELLIS.get(), 4)
+                .define('x', Items.BAMBOO)
+                .pattern("x x")
+                .pattern("x x")
+                .pattern("x x")
+                .unlockedBy(getHasName(Items.BAMBOO), has(Items.BAMBOO))
+                .save(finishedRecipe);
         ModDataGenerator.STAIRS.forEach(pair -> stair(finishedRecipe, (ModStairBlock) pair.getFirst()));
         ModDataGenerator.SLABS.forEach(pair -> slab(finishedRecipe, (ModSlabBlock) pair.getFirst()));
         ModDataGenerator.WALLS.forEach(block -> wall(finishedRecipe, (ModWallBlock) block));

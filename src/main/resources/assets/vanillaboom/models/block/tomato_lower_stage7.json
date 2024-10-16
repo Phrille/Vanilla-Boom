@@ -1,0 +1,7 @@
+{
+  "parent": "vanillaboom:block/crop_with_trellis",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "crop": "vanillaboom:block/tomato_lower_stage7"
+  }
+}

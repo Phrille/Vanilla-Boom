@@ -233,6 +233,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModItems.RAIN_DETECTOR.get());
         item(ModBlocks.GOLD_BARS.get());
         item(ModBlocks.ROSE.get());
+        item(ModBlocks.TRELLIS.get());
 
         //Variant Blocks
         ModDataGenerator.STAIRS.forEach(pair -> blockItem(pair.getFirst().asItem()));

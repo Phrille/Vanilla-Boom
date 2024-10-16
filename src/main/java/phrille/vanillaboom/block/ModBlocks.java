@@ -157,7 +157,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> GOLD_BARS = BLOCKS.register("gold_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS)));
     public static final RegistryObject<Block> ROSE = BLOCKS.register("rose", () -> new FlowerBlock(() -> MobEffects.DIG_SPEED, 10, BlockBehaviour.Properties.copy(Blocks.POPPY)));
     public static final RegistryObject<Block> POTTED_ROSE = BLOCKS.register("potted_rose", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, ROSE, BlockBehaviour.Properties.copy(Blocks.POTTED_POPPY)));
-    public static final RegistryObject<Block> TOMATO_PLANT = BLOCKS.register("tomato_plant", () -> new TomatoPlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
+    public static final RegistryObject<Block> TRELLIS = BLOCKS.register("trellis", () -> new TrellisBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> TOMATO = BLOCKS.register("tomato", () -> new TomatoBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
     public static final RegistryObject<Block> RICE_PLANT = BLOCKS.register("rice_plant", () -> new RicePlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
 
     //Cakes

@@ -238,7 +238,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         Utils.CANDLES.forEach(candle -> tag(BlockTags.CANDLE_CAKES).add(((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).byCandle((CandleBlock) candle)));
         tag(BlockTags.CLIMBABLE).addTags(ModTags.VanillaBoomTags.Blocks.LADDERS);
         tag(BlockTags.CROPS)
-                .add(ModBlocks.TOMATO_PLANT.get())
+                .add(ModBlocks.TOMATO.get())
                 .add(ModBlocks.RICE_PLANT.get());
         tag(BlockTags.DRAGON_IMMUNE)
                 .add(ModBlocks.OBSIDIAN_BRICKS.get())

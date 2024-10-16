@@ -158,6 +158,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.RAIN_DETECTOR.get(), "Rain Detector");
         add(ModBlocks.GOLD_BARS.get(), "Gold Bars");
         add(ModBlocks.ROSE.get(), "Rose");
+        add(ModBlocks.TRELLIS.get(), "Trellis");
 
         //VanillaBoom Stairs
         add(ModBlocks.COBBLESTONE_BRICK_STAIRS.get(), "Cobblestone Brick Stairs");
