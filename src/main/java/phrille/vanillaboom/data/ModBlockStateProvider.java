@@ -1,15 +1,14 @@
 package phrille.vanillaboom.data;
 
-import net.minecraft.core.Direction;
+import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.state.IntegerProperty;
+import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.*;
-import phrille.vanillaboom.util.Utils;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -238,11 +237,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     public void glassPaneBlock(Block pane) {
-        paneBlock((IronBarsBlock) pane, ModDataGenerator.shrink(blockTexture(pane), "_pane"), ModDataGenerator.extend(blockTexture(pane), "_top"));
+        paneBlock((PaneBlock) pane, ModDataGenerator.shrink(blockTexture(pane), "_pane"), ModDataGenerator.extend(blockTexture(pane), "_top"));
     }
 
     public void barsBlock(Block bars) {
-        paneBlock((IronBarsBlock) bars, blockTexture(bars), blockTexture(bars));
+        paneBlock((PaneBlock) bars, blockTexture(bars), blockTexture(bars));
     }
 
     public void flowerBlock(Block flower, Block pot) {
@@ -266,17 +265,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     public void cropBlock(Block crop) {
-        cropBlock(crop, CropBlock.AGE);
+        cropBlock(crop, CropsBlock.AGE);
     }
 
     public void cropBlock(Block crop, IntegerProperty ageProperty) {
         List<ModelFile> files = ageProperty.getAllValues()
                 .map(age -> models().withExistingParent(name(crop) + "_stage" + age.value(), ModelProvider.BLOCK_FOLDER + "/crop").texture("crop", ModDataGenerator.extend(blockTexture(crop), "_stage" + age.value())))
                 .collect(Collectors.toList());
-        cropBlock((CropBlock) crop, files, ageProperty);
+        cropBlock((CropsBlock) crop, files, ageProperty);
     }
 
-    protected void cropBlock(CropBlock crop, List<ModelFile> files, IntegerProperty ageProperty) {
+    protected void cropBlock(CropsBlock crop, List<ModelFile> files, IntegerProperty ageProperty) {
         getVariantBuilder(crop).forAllStates(state -> {
             int age = state.getValue(ageProperty);
 
@@ -315,7 +314,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .collect(Collectors.toList());
 
         cakeBlock((CakeBlock) cake, files);
-        Utils.CANDLES.forEach(candle -> candleCakeBlock(cake, ((ModCakeBlock) cake).byCandle((CandleBlock) candle), candle));
     }
 
     protected void cakeBlock(CakeBlock cake, List<ModelFile> files) {
@@ -336,32 +334,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .texture("particle", ModDataGenerator.extend(blockTexture(cake), "_side"));
 
         return bites == 0 ? builder : builder.texture("inside", ModDataGenerator.extend(blockTexture(cake), "_inner"));
-    }
-
-    public void candleCakeBlock(Block cake, Block candleCake, Block candle) {
-        ModelFile defaultModel = candleCakeModel(cake, name(candleCake), blockTexture(candle));
-        ModelFile litModel = candleCakeModel(cake, name(candleCake) + "_lit", ModDataGenerator.extend(blockTexture(candle), "_lit"));
-
-        candleCakeBlock((CandleCakeBlock) candleCake, defaultModel, litModel);
-    }
-
-    protected void candleCakeBlock(CandleCakeBlock candleCake, ModelFile defaultModel, ModelFile litModel) {
-        getVariantBuilder(candleCake).forAllStates(state -> {
-            boolean lit = state.getValue(CandleCakeBlock.LIT);
-
-            return ConfiguredModel.builder()
-                    .modelFile(lit ? litModel : defaultModel)
-                    .build();
-        });
-    }
-
-    protected BlockModelBuilder candleCakeModel(Block cake, String name, ResourceLocation candle) {
-        return models().withExistingParent(name, ModelProvider.BLOCK_FOLDER + "/template_cake_with_candle")
-                .texture("candle", candle)
-                .texture("side", ModDataGenerator.extend(blockTexture(cake), "_side"))
-                .texture("top", ModDataGenerator.extend(blockTexture(cake), "_top"))
-                .texture("bottom", ModDataGenerator.extend(blockTexture(cake), "_bottom"))
-                .texture("particle", ModDataGenerator.extend(blockTexture(cake), "_side"));
     }
 
     protected ResourceLocation variantTexture(Block block) {

@@ -2,22 +2,21 @@ package phrille.vanillaboom.data;
 
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.data.loot.ModLootTableProvider;
 import phrille.vanillaboom.data.tags.ModBlockTagsProvider;
 import phrille.vanillaboom.data.tags.ModEntityTypeTagsProvider;
 import phrille.vanillaboom.data.tags.ModItemTagsProvider;
-import phrille.vanillaboom.util.Utils;
 
 import java.util.List;
 
@@ -38,17 +37,17 @@ public class ModDataGenerator {
 
 
         //Assets
-        //generator.addProvider(new ModBlockStateProvider(generator, existingFileHelper));
-        //generator.addProvider(new ModItemModelProvider(generator, existingFileHelper));
-        //generator.addProvider(new ModLanguageProvider(generator, "en_us"));
+        generator.addProvider(new ModBlockStateProvider(generator, existingFileHelper));
+        generator.addProvider(new ModItemModelProvider(generator, existingFileHelper));
+        generator.addProvider(new ModLanguageProvider(generator, "en_us"));
 
         //Data
         ModBlockTagsProvider blockTags = new ModBlockTagsProvider(generator, existingFileHelper);
         generator.addProvider(blockTags);
         generator.addProvider(new ModItemTagsProvider(generator, blockTags, existingFileHelper));
-        //generator.addProvider(new ModEntityTypeTagsProvider(generator, existingFileHelper));
+        generator.addProvider(new ModEntityTypeTagsProvider(generator, existingFileHelper));
         generator.addProvider(new ModRecipeProvider(generator));
-        //generator.addProvider(new ModLootTableProvider(generator));
+        generator.addProvider(new ModLootTableProvider(generator));
     }
 
     private static void init() {
@@ -57,7 +56,6 @@ public class ModDataGenerator {
         addWalls();
         addFences();
         addFenceGates();
-        Utils.registerCandleCakes();
     }
 
     private static void addStairs() {

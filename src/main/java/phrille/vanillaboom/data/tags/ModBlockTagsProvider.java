@@ -1,19 +1,16 @@
 package phrille.vanillaboom.data.tags;
 
+import net.minecraft.block.Blocks;
+import net.minecraft.block.material.Material;
+import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CandleBlock;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
-import phrille.vanillaboom.block.ModCakeBlock;
 import phrille.vanillaboom.data.ModDataGenerator;
 import phrille.vanillaboom.util.ModTags;
-import phrille.vanillaboom.util.Utils;
 
 public class ModBlockTagsProvider extends BlockTagsProvider {
     public ModBlockTagsProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
@@ -167,71 +164,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.WARPED_LADDER.get());
 
         /*
-         * Mineable and tool types tags
-         */
-        tag(BlockTags.MINEABLE_WITH_AXE)
-                .add(ModBlocks.SUGAR_CANE_BLOCK.get())
-                .addTags(ModTags.VanillaBoomTags.Blocks.BOOKSHELVES)
-                .addTags(ModTags.VanillaBoomTags.Blocks.LADDERS);
-        tag(BlockTags.MINEABLE_WITH_HOE)
-                .add(ModBlocks.SUGAR_CANE_BLOCK.get());
-        tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.PERIDOTITE.get())
-                .add(ModBlocks.HYDRO_ROCK.get())
-                .add(ModBlocks.INFERNAL_ROCK.get())
-                .add(ModBlocks.CRACKED_RED_NETHER_BRICKS.get())
-                .add(ModBlocks.CHISELED_RED_NETHER_BRICKS.get())
-                .add(ModBlocks.CHISELED_PURPUR_BLOCK.get())
-                .add(ModBlocks.CHISELED_OBSIDIAN.get())
-                .add(ModBlocks.CHARCOAL_BLOCK.get())
-                .add(ModBlocks.PRISMARINE_CRYSTAL_BLOCK.get())
-                .add(ModBlocks.WITHER_BONE_BLOCK.get())
-                .add(ModBlocks.GOLD_BARS.get())
-                .addTags(ModTags.VanillaBoomTags.Blocks.BRICKS)
-                .addTags(ModTags.VanillaBoomTags.Blocks.POLISHED)
-                .addTags(ModTags.VanillaBoomTags.Blocks.PILLARS)
-                .addTags(ModTags.VanillaBoomTags.Blocks.DYE_BLOCKS)
-                .addTags(ModTags.VanillaBoomTags.Blocks.STAIRS)
-                .addTags(ModTags.VanillaBoomTags.Blocks.SLABS)
-                .addTags(ModTags.VanillaBoomTags.Blocks.FENCES)
-                .addTags(ModTags.VanillaBoomTags.Blocks.FENCE_GATES);
-        tag(BlockTags.MINEABLE_WITH_SHOVEL)
-                .add(ModBlocks.BONE_SAND.get())
-                .add(ModBlocks.WITHER_BONE_SAND.get())
-                .add(ModBlocks.SUGAR_BLOCK.get())
-                .add(ModBlocks.GUNPOWDER_BLOCK.get())
-                .add(ModBlocks.BLAZE_POWDER_BLOCK.get());
-        tag(BlockTags.NEEDS_DIAMOND_TOOL)
-                .add(ModBlocks.OBSIDIAN_BRICKS.get())
-                .add(ModBlocks.OBSIDIAN_PILLAR.get())
-                .add(ModBlocks.CHISELED_OBSIDIAN.get())
-                .add(ModBlocks.OBSIDIAN_STAIRS.get())
-                .add(ModBlocks.OBSIDIAN_SLAB.get())
-                .add(ModBlocks.OBSIDIAN_WALL.get())
-                .add(ModBlocks.OBSIDIAN_BRICK_STAIRS.get())
-                .add(ModBlocks.OBSIDIAN_BRICK_SLAB.get())
-                .add(ModBlocks.OBSIDIAN_BRICK_WALL.get())
-                .add(ModBlocks.CHISELED_OBSIDIAN_STAIRS.get())
-                .add(ModBlocks.CHISELED_OBSIDIAN_SLAB.get())
-                .add(ModBlocks.CHISELED_OBSIDIAN_WALL.get());
-        tag(BlockTags.NEEDS_IRON_TOOL)
-                .add(ModBlocks.GOLD_BARS.get())
-                .add(ModBlocks.GOLD_BLOCK_STAIRS.get())
-                .add(ModBlocks.GOLD_BLOCK_SLAB.get())
-                .add(ModBlocks.GOLD_BLOCK_WALL.get());
-        tag(BlockTags.NEEDS_STONE_TOOL)
-                .add(Blocks.IRON_BARS)
-                .add(ModBlocks.IRON_BLOCK_STAIRS.get())
-                .add(ModBlocks.IRON_BLOCK_SLAB.get())
-                .add(ModBlocks.IRON_BLOCK_WALL.get());
-
-        /*
          * Misc tags
          */
         tag(BlockTags.BASE_STONE_OVERWORLD).add(ModBlocks.PERIDOTITE.get());
-        Utils.CANDLES.forEach(candle -> tag(BlockTags.CANDLE_CAKES).add(((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).byCandle((CandleBlock) candle)));
-        Utils.CANDLES.forEach(candle -> tag(BlockTags.CANDLE_CAKES).add(((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).byCandle((CandleBlock) candle)));
-        Utils.CANDLES.forEach(candle -> tag(BlockTags.CANDLE_CAKES).add(((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).byCandle((CandleBlock) candle)));
         tag(BlockTags.CLIMBABLE).addTags(ModTags.VanillaBoomTags.Blocks.LADDERS);
         tag(BlockTags.CROPS)
                 .add(ModBlocks.TOMATO_PLANT.get())
@@ -301,7 +236,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.SOUL_FIRE_BASE_BLOCKS)
                 .add(ModBlocks.BONE_SAND.get())
                 .add(ModBlocks.WITHER_BONE_SAND.get());
-        tag(BlockTags.STONE_ORE_REPLACEABLES).add(ModBlocks.PERIDOTITE.get());
 
         //Stairs
         ModDataGenerator.STAIRS.forEach(pair -> {

@@ -1,18 +1,18 @@
 package phrille.vanillaboom.data;
 
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.recipes.*;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.FenceBlock;
+import net.minecraft.block.FenceGateBlock;
+import net.minecraft.data.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
+import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FenceBlock;
-import net.minecraft.world.level.block.FenceGateBlock;
+import net.minecraft.util.IItemProvider;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import phrille.vanillaboom.VanillaBoom;
@@ -23,19 +23,20 @@ import phrille.vanillaboom.block.ModWallBlock;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.ModTags;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.function.Consumer;
 
+@ParametersAreNonnullByDefault
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     public ModRecipeProvider(DataGenerator dataGenerator) {
         super(dataGenerator);
     }
 
     @Override
-    protected void buildCraftingRecipes(Consumer<FinishedRecipe> finishedRecipe) {
+    protected void buildShapelessRecipes(Consumer<IFinishedRecipe> finishedRecipe) {
         bricks(finishedRecipe, ModBlocks.COBBLESTONE_BRICKS.get(), Blocks.COBBLESTONE);
         bricks(finishedRecipe, ModBlocks.MOSSY_COBBLESTONE_BRICKS.get(), Blocks.MOSSY_COBBLESTONE);
-        mossyCobblestoneBricksShapeless(finishedRecipe, Blocks.MOSS_BLOCK);
         mossyCobblestoneBricksShapeless(finishedRecipe, Blocks.VINE);
         twoByTwoShaped(finishedRecipe, ModBlocks.MAGMA_BRICKS.get(), ModItems.MAGMA_BRICK.get());
         bricks(finishedRecipe, ModBlocks.OBSIDIAN_BRICKS.get(), Blocks.OBSIDIAN);
@@ -314,90 +315,90 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     //Templates
-    public void bricks(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+    public void bricks(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient) {
         twoByTwoShaped(finishedRecipe, result, ingredient, 4);
         stonecutting(finishedRecipe, result, ingredient);
     }
 
-    public void terracottaBricks(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, Tag<Item> dye) {
+    public void terracottaBricks(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient, ITag<Item> dye) {
         bricks(finishedRecipe, result, ingredient);
         dyeCenterShaped(finishedRecipe, result, ModBlocks.TERRACOTTA_BRICKS.get(), dye, getAltName(result));
     }
 
-    public void polishedBlock(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+    public void polishedBlock(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient) {
         polishedBlock(finishedRecipe, result, ingredient, List.of());
     }
 
-    public void polishedBlock(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, List<ItemLike> variants) {
+    public void polishedBlock(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient, List<IItemProvider> variants) {
         twoByTwoShaped(finishedRecipe, result, ingredient, 4);
         stonecutting(finishedRecipe, result, ingredient);
         variants.forEach(variant -> stonecutting(finishedRecipe, result, variant));
     }
 
-    public void chiseledBlock(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, List<ItemLike> variants) {
+    public void chiseledBlock(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient, List<IItemProvider> variants) {
         stackedShaped(finishedRecipe, result, ingredient, 1);
         variants.forEach(variant -> stonecutting(finishedRecipe, result, variant));
     }
 
-    public void pillarBlock(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+    public void pillarBlock(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient) {
         pillarBlock(finishedRecipe, result, ingredient, List.of());
     }
 
-    public void pillarBlock(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, List<ItemLike> variants) {
+    public void pillarBlock(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient, List<IItemProvider> variants) {
         stackedShaped(finishedRecipe, result, ingredient, 2);
         stonecutting(finishedRecipe, result, ingredient);
         variants.forEach(variant -> stonecutting(finishedRecipe, result, variant));
     }
 
-    public void storageBlock(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+    public void storageBlock(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient) {
         threeByThreeShaped(finishedRecipe, result, ingredient, 1);
         oneToOneShapeless(finishedRecipe, ingredient, result, 9);
     }
 
-    public void stainedSoulGlass(Consumer<FinishedRecipe> finishedRecipe, ItemLike glass, ItemLike pane, Tag<Item> dye) {
+    public void stainedSoulGlass(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider glass, IItemProvider pane, ITag<Item> dye) {
         dyeCenterShaped(finishedRecipe, glass, ModBlocks.SOUL_GLASS.get(), dye, modLoc(glass));
         paneShaped(finishedRecipe, pane, glass);
     }
 
-    public void smeltingAndBlasting(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
+    public void smeltingAndBlasting(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient, float xp) {
         smelting(finishedRecipe, result, ingredient, xp);
         blasting(finishedRecipe, result, ingredient, xp);
     }
 
-    public void cooking(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
+    public void cooking(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient, float xp) {
         smelting(finishedRecipe, result, ingredient, xp);
         smoking(finishedRecipe, result, ingredient, xp);
         campFire(finishedRecipe, result, ingredient, xp);
     }
 
-    public void stair(Consumer<FinishedRecipe> finishedRecipe, ModStairBlock stair) {
+    public void stair(Consumer<IFinishedRecipe> finishedRecipe, ModStairBlock stair) {
         stairsShaped(finishedRecipe, stair.asItem(), stair.getParent().asItem());
         stonecutting(finishedRecipe, stair.asItem(), stair.getParent().asItem());
     }
 
-    public void slab(Consumer<FinishedRecipe> finishedRecipe, ModSlabBlock slab) {
+    public void slab(Consumer<IFinishedRecipe> finishedRecipe, ModSlabBlock slab) {
         slabShaped(finishedRecipe, slab.asItem(), slab.getParent().asItem());
         stonecutting(finishedRecipe, slab.asItem(), slab.getParent().asItem(), 2);
     }
 
-    public void wall(Consumer<FinishedRecipe> finishedRecipe, ModWallBlock wall) {
+    public void wall(Consumer<IFinishedRecipe> finishedRecipe, ModWallBlock wall) {
         wallShaped(finishedRecipe, wall.asItem(), wall.getParent().asItem());
         stonecutting(finishedRecipe, wall.asItem(), wall.getParent().asItem());
     }
 
-    public void fence(Consumer<FinishedRecipe> finishedRecipe, FenceBlock fence, Block parent) {
+    public void fence(Consumer<IFinishedRecipe> finishedRecipe, FenceBlock fence, Block parent) {
         fenceShaped(finishedRecipe, fence.asItem(), parent.asItem());
     }
 
-    public void fenceGate(Consumer<FinishedRecipe> finishedRecipe, FenceGateBlock fenceGate, Block parent) {
+    public void fenceGate(Consumer<IFinishedRecipe> finishedRecipe, FenceGateBlock fenceGate, Block parent) {
         fenceGateShaped(finishedRecipe, fenceGate.asItem(), parent.asItem());
     }
 
-    public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike stair, ItemLike slab, ItemLike wall, ItemLike block) {
+    public void variants(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider stair, IItemProvider slab, IItemProvider wall, IItemProvider block) {
         variants(finishedRecipe, stair, slab, wall, List.of(block));
     }
 
-    public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike stair, ItemLike slab, ItemLike wall, List<ItemLike> blocks) {
+    public void variants(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider stair, IItemProvider slab, IItemProvider wall, List<IItemProvider> blocks) {
         blocks.forEach(block -> {
             stonecutting(finishedRecipe, stair, block);
             stonecutting(finishedRecipe, slab, block, 2);
@@ -405,33 +406,33 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         });
     }
 
-    public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike stair, ItemLike wall, ItemLike block) {
+    public void variants(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider stair, IItemProvider wall, IItemProvider block) {
         variants(finishedRecipe, stair, wall, List.of(block));
     }
 
-    public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike stair, ItemLike wall, List<ItemLike> blocks) {
+    public void variants(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider stair, IItemProvider wall, List<IItemProvider> blocks) {
         blocks.forEach(block -> {
             stonecutting(finishedRecipe, stair, block);
             stonecutting(finishedRecipe, wall, block);
         });
     }
 
-    public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike wall, ItemLike block) {
+    public void variants(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider wall, IItemProvider block) {
         variants(finishedRecipe, wall, List.of(block));
     }
 
-    public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike wall, List<ItemLike> blocks) {
+    public void variants(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider wall, List<IItemProvider> blocks) {
         blocks.forEach(block -> {
             stonecutting(finishedRecipe, wall, block);
         });
     }
 
     //Shaped Recipe
-    public void twoByTwoShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+    public void twoByTwoShaped(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient) {
         twoByTwoShaped(finishedRecipe, result, ingredient, 1);
     }
 
-    public void twoByTwoShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, int amount) {
+    public void twoByTwoShaped(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient, int amount) {
         ShapedRecipeBuilder.shaped(result, amount)
                 .define('x', ingredient)
                 .pattern("xx")
@@ -441,7 +442,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
-    public void threeByThreeShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, int amount) {
+    public void threeByThreeShaped(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient, int amount) {
         ShapedRecipeBuilder.shaped(result, amount)
                 .define('x', ingredient)
                 .pattern("xxx")
@@ -451,7 +452,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
-    public void surroundedShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike surround, ItemLike middle, int amount) {
+    public void surroundedShaped(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider surround, IItemProvider middle, int amount) {
         ShapedRecipeBuilder.shaped(result, amount)
                 .define('x', surround)
                 .define('y', middle)
@@ -463,7 +464,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe, getConversionRecipeName(result, middle));
     }
 
-    public void surroundedShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, Tag<Item> surround, ItemLike middle, int amount) {
+    public void surroundedShaped(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, ITag<Item> surround, IItemProvider middle, int amount) {
         ShapedRecipeBuilder.shaped(result, amount)
                 .define('x', surround)
                 .define('y', middle)
@@ -474,7 +475,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe, getConversionRecipeName(result, middle));
     }
 
-    public void dyeCenterShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, Tag<Item> dye, ResourceLocation name) {
+    public void dyeCenterShaped(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient, ITag<Item> dye, ResourceLocation name) {
         ShapedRecipeBuilder.shaped(result, 8)
                 .define('x', ingredient)
                 .define('y', dye)
@@ -486,7 +487,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe, name);
     }
 
-    public void stackedShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, int amount) {
+    public void stackedShaped(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient, int amount) {
         ShapedRecipeBuilder.shaped(result, amount)
                 .define('x', ingredient)
                 .pattern("x")
@@ -496,7 +497,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe, getConversionRecipeName(result, ingredient));
     }
 
-    public void bookshelfShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike planks) {
+    public void bookshelfShaped(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider planks) {
         ShapedRecipeBuilder.shaped(result)
                 .define('x', planks)
                 .define('y', Items.BOOK)
@@ -508,7 +509,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
-    public void ladderShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike slab) {
+    public void ladderShaped(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider slab) {
         ShapedRecipeBuilder.shaped(result, 3)
                 .define('x', slab)
                 .define('y', Tags.Items.RODS_WOODEN)
@@ -520,7 +521,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
-    public void paneShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+    public void paneShaped(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient) {
         ShapedRecipeBuilder.shaped(result, 16)
                 .define('x', ingredient)
                 .pattern("xxx")
@@ -529,7 +530,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
-    public void stairsShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+    public void stairsShaped(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient) {
         ShapedRecipeBuilder.shaped(result, 4)
                 .define('x', ingredient)
                 .pattern("x  ")
@@ -539,7 +540,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
-    public void slabShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+    public void slabShaped(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient) {
         ShapedRecipeBuilder.shaped(result, 6)
                 .define('x', ingredient)
                 .pattern("xxx")
@@ -547,7 +548,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
-    public void wallShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+    public void wallShaped(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient) {
         ShapedRecipeBuilder.shaped(result, 6)
                 .define('x', ingredient)
                 .pattern("xxx")
@@ -556,7 +557,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
-    public void fenceShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+    public void fenceShaped(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient) {
         ShapedRecipeBuilder.shaped(result, 3)
                 .define('x', ingredient)
                 .define('y', Tags.Items.RODS_WOODEN)
@@ -566,7 +567,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
-    public void fenceGateShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+    public void fenceGateShaped(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient) {
         ShapedRecipeBuilder.shaped(result)
                 .define('x', ingredient)
                 .define('y', Tags.Items.RODS_WOODEN)
@@ -576,7 +577,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
-    public void cakeShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+    public void cakeShaped(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient) {
         ShapedRecipeBuilder.shaped(result)
                 .define('x', ingredient)
                 .define('y', ModTags.ForgeTags.Items.MILK)
@@ -594,14 +595,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     //Shapeless Recipe
-    public void oneToOneShapeless(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, int amount) {
+    public void oneToOneShapeless(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient, int amount) {
         ShapelessRecipeBuilder.shapeless(result, amount)
                 .requires(ingredient)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(finishedRecipe, getConversionRecipeName(result, ingredient));
     }
 
-    public void mossyCobblestoneBricksShapeless(Consumer<FinishedRecipe> finishedRecipe, ItemLike ingredient) {
+    public void mossyCobblestoneBricksShapeless(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider ingredient) {
         ShapelessRecipeBuilder.shapeless(ModBlocks.MOSSY_COBBLESTONE_BRICKS.get())
                 .requires(ModBlocks.COBBLESTONE_BRICKS.get())
                 .requires(ingredient)
@@ -611,7 +612,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe, getConversionRecipeName(ModBlocks.MOSSY_COBBLESTONE_BRICKS.get(), ingredient));
     }
 
-    public void pieShapeless(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+    public void pieShapeless(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient) {
         ShapelessRecipeBuilder.shapeless(result)
                 .requires(ingredient)
                 .requires(Tags.Items.EGGS)
@@ -621,43 +622,43 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     //Smelting
-    public void smelting(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), result, xp, 200).
+    public void smelting(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient, float xp) {
+        CookingRecipeBuilder.smelting(Ingredient.of(ingredient), result, xp, 200).
                 unlockedBy(getHasName(ingredient), has(ingredient)).
                 save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeName(result, ingredient), "_from_smelting"));
     }
 
-    public void blasting(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredient), result, xp, 100)
+    public void blasting(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient, float xp) {
+        CookingRecipeBuilder.blasting(Ingredient.of(ingredient), result, xp, 100)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeName(result, ingredient), "_from_blasting"));
     }
 
-    public void smoking(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
-        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ingredient), result, xp, 100)
+    public void smoking(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient, float xp) {
+        CookingRecipeBuilder.cooking(Ingredient.of(ingredient), result, xp, 100, IRecipeSerializer.SMOKING_RECIPE)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeName(result, ingredient), "_from_smoking"));
     }
 
-    public void campFire(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
-        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ingredient), result, xp, 600)
+    public void campFire(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient, float xp) {
+        CookingRecipeBuilder.cooking(Ingredient.of(ingredient), result, xp, 600, IRecipeSerializer.CAMPFIRE_COOKING_RECIPE)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeName(result, ingredient), "_from_campfire"));
     }
 
     //Stonecutting
-    public void stonecutting(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
+    public void stonecutting(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient) {
         stonecutting(finishedRecipe, result, ingredient, 1);
     }
 
-    public void stonecutting(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, int amount) {
+    public void stonecutting(Consumer<IFinishedRecipe> finishedRecipe, IItemProvider result, IItemProvider ingredient, int amount) {
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(ingredient), result, amount)
-                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .unlocks(getHasName(ingredient), has(ingredient))
                 .save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeName(result, ingredient), "_from_stonecutting"));
     }
 
     //Helper methods
-    private static String getHasName(ItemLike item) {
+    private static String getHasName(IItemProvider item) {
         return "has_" + name(item);
     }
 
@@ -669,7 +670,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
      * @param ingredient - the ingredient in the recipe
      * @return a modified ResourceLocation
      */
-    private static ResourceLocation getConversionRecipeName(ItemLike result, ItemLike ingredient) {
+    private static ResourceLocation getConversionRecipeName(IItemProvider result, IItemProvider ingredient) {
         return ModDataGenerator.extend(modLoc(result), "_from_" + name(ingredient));
     }
 
@@ -681,7 +682,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
      * @param result - the item to be crafted
      * @return a modified ResourceLocation
      */
-    private static ResourceLocation getAltName(ItemLike result) {
+    private static ResourceLocation getAltName(IItemProvider result) {
         return ModDataGenerator.extend(modLoc(result), "_alt");
     }
 
@@ -692,17 +693,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
      * @param item - the item
      * @return a ResourceLocation with modid namespace
      */
-    private static ResourceLocation modLoc(ItemLike item) {
+    private static ResourceLocation modLoc(IItemProvider item) {
         return new ResourceLocation(VanillaBoom.MOD_ID, name(item));
     }
 
     /**
-     * Returns the default ResourceLocation for an ItemLike.
+     * Returns the default ResourceLocation for an IItemProvider.
      *
      * @param item - the item
      * @return the default ResourceLocation
      */
-    private static ResourceLocation resLoc(ItemLike item) {
+    private static ResourceLocation resLoc(IItemProvider item) {
         return item.asItem().getRegistryName();
     }
 
@@ -712,7 +713,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
      * @param item - the item
      * @return the item's registry name
      */
-    private static String name(ItemLike item) {
+    private static String name(IItemProvider item) {
         return resLoc(item).getPath();
     }
 }

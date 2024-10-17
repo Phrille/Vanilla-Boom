@@ -1,29 +1,27 @@
 package phrille.vanillaboom.data.loot;
 
-import net.minecraft.advancements.critereon.StatePropertiesPredicate;
-import net.minecraft.data.loot.BlockLoot;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.CandleBlock;
-import net.minecraft.world.level.block.CropBlock;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
-import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.minecraftforge.fmllegacy.RegistryObject;
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.advancements.criterion.StatePropertiesPredicate;
+import net.minecraft.block.Block;
+import net.minecraft.block.CropsBlock;
+import net.minecraft.data.loot.BlockLootTables;
+import net.minecraft.enchantment.Enchantments;
+import net.minecraft.item.Items;
+import net.minecraft.loot.ConstantRange;
+import net.minecraft.loot.ItemLootEntry;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.RandomValueRange;
+import net.minecraft.loot.conditions.BlockStateProperty;
+import net.minecraft.loot.functions.ApplyBonus;
+import net.minecraft.loot.functions.SetCount;
+import net.minecraft.util.IItemProvider;
+import net.minecraftforge.fml.RegistryObject;
 import phrille.vanillaboom.block.ModBlocks;
-import phrille.vanillaboom.block.ModCakeBlock;
 import phrille.vanillaboom.data.ModDataGenerator;
 import phrille.vanillaboom.item.ModItems;
-import phrille.vanillaboom.util.Utils;
 
-public class ModBlockLootTables extends BlockLoot {
+@MethodsReturnNonnullByDefault
+public class ModBlockLootTables extends BlockLootTables {
 
     @Override
     protected void addTables() {
@@ -86,13 +84,13 @@ public class ModBlockLootTables extends BlockLoot {
         dropSelf(ModBlocks.OBSIDIAN_PILLAR.get());
 
         //Wood Variations
-        add(ModBlocks.SPRUCE_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.BIRCH_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.JUNGLE_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.ACACIA_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.DARK_OAK_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.CRIMSON_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.WARPED_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
+        add(ModBlocks.SPRUCE_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantRange.exactly(3)));
+        add(ModBlocks.BIRCH_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantRange.exactly(3)));
+        add(ModBlocks.JUNGLE_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantRange.exactly(3)));
+        add(ModBlocks.ACACIA_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantRange.exactly(3)));
+        add(ModBlocks.DARK_OAK_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantRange.exactly(3)));
+        add(ModBlocks.CRIMSON_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantRange.exactly(3)));
+        add(ModBlocks.WARPED_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantRange.exactly(3)));
         dropSelf(ModBlocks.SPRUCE_LADDER.get());
         dropSelf(ModBlocks.BIRCH_LADDER.get());
         dropSelf(ModBlocks.JUNGLE_LADDER.get());
@@ -170,19 +168,15 @@ public class ModBlockLootTables extends BlockLoot {
         dropSelf(ModBlocks.ROSE.get());
         dropPottedContents(ModBlocks.POTTED_ROSE.get());
 
-        LootItemCondition.Builder tomatoCondition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.TOMATO_PLANT.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7));
+        BlockStateProperty.Builder tomatoCondition = BlockStateProperty.hasBlockStateProperties(ModBlocks.TOMATO_PLANT.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropsBlock.AGE, 7));
         add(ModBlocks.TOMATO_PLANT.get(), createCropDrops(ModBlocks.TOMATO_PLANT.get(), ModItems.TOMATO.get(), ModItems.TOMATO_SEEDS.get(), tomatoCondition));
-        LootItemCondition.Builder riceCondition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.RICE_PLANT.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 8));
+        BlockStateProperty.Builder riceCondition = BlockStateProperty.hasBlockStateProperties(ModBlocks.RICE_PLANT.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropsBlock.AGE, 8));
         add(ModBlocks.RICE_PLANT.get(), createCropDrops(ModBlocks.RICE_PLANT.get(), ModItems.RICE_SEEDS.get(), ModItems.RICE_SEEDS.get(), riceCondition));
 
         //Cakes
         add(ModBlocks.CHOCOLATE_CAKE.get(), noDrop());
         add(ModBlocks.CARROT_CAKE.get(), noDrop());
         add(ModBlocks.BERRY_CAKE.get(), noDrop());
-        Utils.CANDLES.forEach(candle -> add(((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).byCandle((CandleBlock) candle), createCandleCakeDrops(candle)));
-        Utils.CANDLES.forEach(candle -> add(((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).byCandle((CandleBlock) candle), createCandleCakeDrops(candle)));
-        Utils.CANDLES.forEach(candle -> add(((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).byCandle((CandleBlock) candle), createCandleCakeDrops(candle)));
-
 
         ModDataGenerator.STAIRS.forEach(pair -> dropSelf(pair.getFirst()));
         ModDataGenerator.SLABS.forEach(pair -> dropSelf(pair.getFirst()));
@@ -196,9 +190,9 @@ public class ModBlockLootTables extends BlockLoot {
         return ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
     }
 
-    protected static LootTable.Builder createBoneSandDrops(Block block, ItemLike item) {
-        return createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(item)
-                .apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 5.0F)))
-                .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))));
+    protected static LootTable.Builder createBoneSandDrops(Block block, IItemProvider item) {
+        return createSilkTouchDispatchTable(block, applyExplosionDecay(block, ItemLootEntry.lootTableItem(item)
+                .apply(SetCount.setCount(RandomValueRange.between(4.0F, 5.0F)))
+                .apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))));
     }
 }

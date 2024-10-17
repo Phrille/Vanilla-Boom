@@ -1,7 +1,7 @@
 package phrille.vanillaboom.data;
 
 import net.minecraft.data.DataGenerator;
-import net.minecraft.world.item.Item;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.data.LanguageProvider;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
