@@ -11,6 +11,9 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.*;
+import phrille.vanillaboom.block.crop.RicePlantBlock;
+import phrille.vanillaboom.block.crop.TomatoBlock;
+import phrille.vanillaboom.block.crop.TrellisBlock;
 import phrille.vanillaboom.util.Utils;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package phrille.vanillaboom.block;
+package phrille.vanillaboom.block.crop;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ItemLike;

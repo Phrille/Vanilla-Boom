@@ -16,6 +16,8 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.Fluids;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.*;
+import phrille.vanillaboom.block.crop.ITrellisCrop;
+import phrille.vanillaboom.block.crop.TrellisBlock;
 import phrille.vanillaboom.item.ModItems;
 
 import java.util.List;

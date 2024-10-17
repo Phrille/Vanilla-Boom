@@ -1,4 +1,4 @@
-package phrille.vanillaboom.block;
+package phrille.vanillaboom.block.crop;
 
 import com.google.common.collect.Maps;
 import net.minecraft.core.BlockPos;
@@ -79,21 +79,14 @@ public class TrellisBlock extends Block {
     @Override
     @SuppressWarnings("deprecation")
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        BlockPos below = pos.below();
-        BlockState belowState = level.getBlockState(below);
-
-        if (state.getValue(HALF) != DoubleBlockHalf.UPPER) {
-            return mayPlaceOn(belowState, level, below);
-        }
-        if (state.getBlock() != this) {
-            // Called during world gen and placement, before this block is set,
-            // so if we are not 'here' then assume it's the pre-check.
-            return mayPlaceOn(belowState, level, below);
+        BlockState belowState = level.getBlockState(pos.below());
+        if (state.getValue(HALF) != DoubleBlockHalf.UPPER || state.getBlock() != this) {
+            return mayPlaceOn(belowState);
         }
         return belowState.is(this) && belowState.getValue(HALF) == DoubleBlockHalf.LOWER;
     }
 
-    protected boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {
+    protected boolean mayPlaceOn(BlockState state) {
         return state.is(Blocks.FARMLAND);
     }
 

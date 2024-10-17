@@ -11,6 +11,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import phrille.vanillaboom.VanillaBoom;
+import phrille.vanillaboom.block.crop.RicePlantBlock;
+import phrille.vanillaboom.block.crop.TomatoBlock;
+import phrille.vanillaboom.block.crop.TrellisBlock;
 
 public class ModBlocks {
 
