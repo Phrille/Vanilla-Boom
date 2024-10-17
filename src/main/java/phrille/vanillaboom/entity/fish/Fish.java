@@ -1,17 +1,20 @@
 package phrille.vanillaboom.entity.fish;
 
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.animal.AbstractSchoolingFish;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.fmllegacy.network.NetworkHooks;
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.passive.fish.AbstractGroupFishEntity;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.SoundEvents;
+import net.minecraft.world.World;
 
-public abstract class Fish extends AbstractSchoolingFish {
+import javax.annotation.ParametersAreNonnullByDefault;
 
-    public Fish(EntityType<? extends Fish> type, Level world) {
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
+public abstract class Fish extends AbstractGroupFishEntity {
+
+    public Fish(EntityType<? extends Fish> type, World world) {
         super(type, world);
     }
 

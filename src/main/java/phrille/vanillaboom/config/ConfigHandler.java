@@ -4,7 +4,6 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
 import org.apache.commons.lang3.tuple.Pair;
 import phrille.vanillaboom.VanillaBoom;
 
@@ -28,7 +27,7 @@ public final class ConfigHandler {
     }
 
     @SubscribeEvent
-    public static void onModConfigEvent(ModConfigEvent event) {
+    public static void onModConfigEvent(ModConfig.ModConfigEvent event) {
         ModConfig config = event.getConfig();
 
         if (config.getSpec() == CLIENT_SPEC) {

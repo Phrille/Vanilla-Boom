@@ -1,12 +1,14 @@
 package phrille.vanillaboom.entity.fish;
 
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.entity.EntityType;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import phrille.vanillaboom.item.ModItems;
 
+@MethodsReturnNonnullByDefault
 public class Perch extends Fish {
-    public Perch(EntityType<? extends Perch> type, Level world) {
+    public Perch(EntityType<? extends Perch> type, World world) {
         super(type, world);
     }
 
