@@ -3,26 +3,30 @@ package phrille.vanillaboom.loot;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.entries.LootTableReference;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.loot.LootContext;
+import net.minecraft.loot.TableLootEntry;
+import net.minecraft.loot.conditions.ILootCondition;
+import net.minecraft.util.JSONUtils;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class DropLootModifier extends LootModifier {
-    protected final LootTableReference lootTable;
+    protected final TableLootEntry lootTable;
     protected final Item[] overwrites;
 
-    public DropLootModifier(LootItemCondition[] conditions, LootTableReference lootTable, Item... overwrites) {
+    public DropLootModifier(ILootCondition[] conditions, TableLootEntry lootTable, Item... overwrites) {
         super(conditions);
         this.lootTable = lootTable;
         this.overwrites = overwrites;
@@ -32,7 +36,7 @@ public class DropLootModifier extends LootModifier {
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
         for (Item item : overwrites) {
-            generatedLoot = generatedLoot.stream().filter(stack -> !stack.is(item)).collect(Collectors.toList());
+            generatedLoot = generatedLoot.stream().filter(stack -> stack.getItem() != item).collect(Collectors.toList());
         }
 
         lootTable.createItemStack(generatedLoot::add, context);
@@ -43,10 +47,10 @@ public class DropLootModifier extends LootModifier {
     public static class Serializer extends GlobalLootModifierSerializer<DropLootModifier> {
 
         @Override
-        public DropLootModifier read(ResourceLocation location, JsonObject object, LootItemCondition[] lootConditions) {
-            String resLoc = GsonHelper.getAsString(object, "table");
-            LootTableReference table = (LootTableReference) LootTableReference.lootTableReference(new ResourceLocation(resLoc)).build();
-            JsonArray overwrites = GsonHelper.getAsJsonArray(object, "overwrites");
+        public DropLootModifier read(ResourceLocation location, JsonObject object, ILootCondition[] lootConditions) {
+            String resLoc = JSONUtils.getAsString(object, "table");
+            TableLootEntry table = (TableLootEntry) TableLootEntry.lootTableReference(new ResourceLocation(resLoc)).build();
+            JsonArray overwrites = JSONUtils.getAsJsonArray(object, "overwrites");
             Item[] items = new Item[overwrites.size()];
 
             for (int i = 0; i < items.length; i++) {
@@ -54,7 +58,7 @@ public class DropLootModifier extends LootModifier {
 
                 if (element.isJsonObject()) {
                     JsonObject obj = element.getAsJsonObject();
-                    items[i] = ForgeRegistries.ITEMS.getValue(new ResourceLocation(GsonHelper.getAsString(obj, "item")));
+                    items[i] = ForgeRegistries.ITEMS.getValue(new ResourceLocation(JSONUtils.getAsString(obj, "item")));
                 }
             }
 
