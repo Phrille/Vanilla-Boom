@@ -19,20 +19,19 @@ public class TunaModel<T extends Entity> extends ListModel<T> {
     private final ModelPart bodyBack;
     private final ModelPart head;
     private final ModelPart jaw;
-    private final ModelPart finTop;
-    private final ModelPart finBottom;
     private final ModelPart finRight;
     private final ModelPart finLeft;
     private final ModelPart tail;
 
+    @SuppressWarnings("unused")
     public TunaModel(ModelPart part) {
         body = part.getChild("body");
         bodyFront = part.getChild("body_front");
         bodyBack = part.getChild("body_back");
         head = part.getChild("head");
         jaw = head.getChild("jaw");
-        finTop = body.getChild("fin_top");
-        finBottom = body.getChild("fin_bottom");
+        ModelPart finTop = body.getChild("fin_top");
+        ModelPart finBottom = body.getChild("fin_bottom");
         finRight = part.getChild("fin_right");
         finLeft = part.getChild("fin_left");
         tail = bodyBack.getChild("tail");

@@ -1,6 +1,7 @@
 package phrille.vanillaboom.block;
 
 import com.google.common.collect.Maps;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -18,22 +19,24 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Map;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class ModCakeBlock extends CakeBlock {
-
     private final Map<CandleBlock, ModCandleCakeBlock> CANDLE_CAKES = Maps.newHashMap();
 
     public ModCakeBlock() {
         super(BlockBehaviour.Properties.copy(Blocks.CAKE));
     }
 
-    public static InteractionResult eat(LevelAccessor world, BlockPos pos, BlockState state, Player player) {
-        return CakeBlock.eat(world, pos, state, player);
+    public static InteractionResult eat(LevelAccessor level, BlockPos pos, BlockState state, Player player) {
+        return CakeBlock.eat(level, pos, state, player);
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
 
         if (stack.is(ItemTags.CANDLES) && state.getValue(BITES) == 0) {
@@ -44,16 +47,16 @@ public class ModCakeBlock extends CakeBlock {
                     stack.shrink(1);
                 }
 
-                world.playSound(null, pos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0F, 1.0F);
-                world.setBlockAndUpdate(pos, byCandle((CandleBlock) candle).defaultBlockState());
-                world.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+                level.playSound(null, pos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.setBlockAndUpdate(pos, byCandle((CandleBlock) candle).defaultBlockState());
+                level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
                 player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
                 return InteractionResult.SUCCESS;
             }
         }
 
-        if (world.isClientSide) {
-            if (CakeBlock.eat(world, pos, state, player).consumesAction()) {
+        if (level.isClientSide) {
+            if (CakeBlock.eat(level, pos, state, player).consumesAction()) {
                 return InteractionResult.SUCCESS;
             }
 
@@ -62,7 +65,7 @@ public class ModCakeBlock extends CakeBlock {
             }
         }
 
-        return CakeBlock.eat(world, pos, state, player);
+        return CakeBlock.eat(level, pos, state, player);
     }
 
     public Block byCandle(CandleBlock candle) {

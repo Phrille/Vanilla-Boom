@@ -20,6 +20,7 @@ import phrille.vanillaboom.data.tags.ModItemTagsProvider;
 import phrille.vanillaboom.util.Utils;
 
 import java.util.List;
+import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModDataGenerator {
@@ -38,17 +39,17 @@ public class ModDataGenerator {
 
 
         //Assets
-        //generator.addProvider(new ModBlockStateProvider(generator, existingFileHelper));
-        //generator.addProvider(new ModItemModelProvider(generator, existingFileHelper));
-        //generator.addProvider(new ModLanguageProvider(generator, "en_us"));
+        generator.addProvider(new ModBlockStateProvider(generator, existingFileHelper));
+        generator.addProvider(new ModItemModelProvider(generator, existingFileHelper));
+        generator.addProvider(new ModLanguageProvider(generator, "en_us"));
 
         //Data
         ModBlockTagsProvider blockTags = new ModBlockTagsProvider(generator, existingFileHelper);
         generator.addProvider(blockTags);
         generator.addProvider(new ModItemTagsProvider(generator, blockTags, existingFileHelper));
-        //generator.addProvider(new ModEntityTypeTagsProvider(generator, existingFileHelper));
+        generator.addProvider(new ModEntityTypeTagsProvider(generator, existingFileHelper));
         generator.addProvider(new ModRecipeProvider(generator));
-        //generator.addProvider(new ModLootTableProvider(generator));
+        generator.addProvider(new ModLootTableProvider(generator));
     }
 
     private static void init() {
@@ -427,7 +428,7 @@ public class ModDataGenerator {
     }
 
     public static ResourceLocation blockTexture(Block block) {
-        ResourceLocation name = block.getRegistryName();
+        ResourceLocation name = Objects.requireNonNull(block.getRegistryName());
         return new ResourceLocation(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath());
     }
 

@@ -14,8 +14,8 @@ public class ModStairBlock extends StairBlock {
         this(state, BlockBehaviour.Properties.copy(state.get().getBlock()));
     }
 
-    public ModStairBlock(Supplier<BlockState> state, BlockBehaviour.Properties properties) {
-        super(state, properties);
+    public ModStairBlock(Supplier<BlockState> state, BlockBehaviour.Properties builder) {
+        super(state, builder);
         this.state = state;
     }
 

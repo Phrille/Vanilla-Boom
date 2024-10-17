@@ -1,5 +1,6 @@
 package phrille.vanillaboom.block;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -19,8 +20,11 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import phrille.vanillaboom.item.ModItems;
 
-public class TomatoPlantBlock extends CropBlock {
+import javax.annotation.ParametersAreNonnullByDefault;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
+public class TomatoPlantBlock extends CropBlock {
     private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
             Block.box(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D),
             Block.box(7.0D, 0.0D, 7.0D, 9.0D, 6.0D, 9.0D),
@@ -29,8 +33,8 @@ public class TomatoPlantBlock extends CropBlock {
             Block.box(3.0D, 0.0D, 3.0D, 14.0D, 16.0D, 14.0D)
     };
 
-    public TomatoPlantBlock(Properties properties) {
-        super(properties);
+    public TomatoPlantBlock(Properties builder) {
+        super(builder);
     }
 
     @Override
@@ -39,7 +43,8 @@ public class TomatoPlantBlock extends CropBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    @SuppressWarnings("deprecation")
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         int age = state.getValue(AGE);
         boolean isMaxAge = age == getMaxAge();
         ItemStack stack = player.getItemInHand(hand);
@@ -47,14 +52,14 @@ public class TomatoPlantBlock extends CropBlock {
         if (!isMaxAge && stack.is(Items.BONE_MEAL)) {
             return InteractionResult.PASS;
         } else if (isMaxAge) {
-            popResource(world, pos, new ItemStack(ModItems.TOMATO.get()));
-            world.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
-            world.setBlock(pos, state.setValue(AGE, 4), 2);
+            popResource(level, pos, new ItemStack(ModItems.TOMATO.get()));
+            level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
+            level.setBlock(pos, state.setValue(AGE, 4), 2);
 
-            return InteractionResult.sidedSuccess(world.isClientSide);
+            return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        return super.use(state, world, pos, player, hand, hit);
+        return super.use(state, level, pos, player, hand, hit);
     }
 
     @Override
@@ -63,7 +68,7 @@ public class TomatoPlantBlock extends CropBlock {
     }
 
     @Override
-    protected int getBonemealAgeIncrease(Level world) {
-        return world.random.nextInt(2) + 1;
+    protected int getBonemealAgeIncrease(Level level) {
+        return level.random.nextInt(2) + 1;
     }
 }

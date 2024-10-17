@@ -1,6 +1,7 @@
 package phrille.vanillaboom.item;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -21,8 +22,11 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import phrille.vanillaboom.util.VanillaBoomTab;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class PaintingItem extends Item {
     private final Motive motive;
 
@@ -66,7 +70,7 @@ public class PaintingItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(new TranslatableComponent(getDescriptionId() + ".desc").withStyle(ChatFormatting.BLUE));
     }
 

@@ -34,9 +34,9 @@ public class ItemEventHandler {
 
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        Level world = event.getWorld();
+        Level level = event.getWorld();
         BlockPos pos = event.getPos();
-        BlockState state = world.getBlockState(pos);
+        BlockState state = level.getBlockState(pos);
         ItemStack stack = event.getItemStack();
         Player player = event.getPlayer();
 
@@ -44,34 +44,34 @@ public class ItemEventHandler {
             return;
         }
 
-        if (VanillaBoomConfig.growNetherWarts && tryGrowNetherWart(world, player, state, pos, stack)) {
+        if (VanillaBoomConfig.growNetherWarts && tryGrowNetherWart(level, player, state, pos, stack)) {
             return;
         }
 
-        if (VanillaBoomConfig.growWitherRoses && tryGrowWitherRose(world, player, state, pos, stack)) {
+        if (VanillaBoomConfig.growWitherRoses && tryGrowWitherRose(level, player, state, pos, stack)) {
             return;
         }
 
-        if (VanillaBoomConfig.placeSlimeBallPistons && tryPlaceSlimeBall(world, player, state, pos, stack)) {
+        if (VanillaBoomConfig.placeSlimeBallPistons && tryPlaceSlimeBall(level, player, state, pos, stack)) {
             return;
         }
 
-        if (VanillaBoomConfig.removeSlimeBallPistons && tryRemoveSlimeBall(world, player, state, pos, stack, event.getHand())) {
+        if (VanillaBoomConfig.removeSlimeBallPistons && tryRemoveSlimeBall(level, player, state, pos, stack, event.getHand())) {
             return;
         }
     }
 
-    protected static boolean tryGrowNetherWart(Level world, Player player, BlockState state, BlockPos pos, ItemStack stack) {
+    protected static boolean tryGrowNetherWart(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack) {
         if (state.getBlock() == Blocks.NETHER_WART  && stack.is(ModTags.ForgeTags.Items.WITHER_BONE_MEALS)) {
             int age = state.getValue(NetherWartBlock.AGE);
 
             if (age < NetherWartBlock.MAX_AGE) {
-                if (world.random.nextFloat() < 0.625F) {
+                if (level.random.nextFloat() < 0.625F) {
                     state = state.setValue(NetherWartBlock.AGE, age + 1);
-                    world.setBlock(pos, state, 2);
+                    level.setBlock(pos, state, 2);
                 }
 
-                Utils.spawnParticles(ParticleTypes.FLAME, world, pos);
+                Utils.spawnParticles(ParticleTypes.FLAME, level, pos);
                 player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
 
                 if (!player.isCreative()) {
@@ -85,13 +85,13 @@ public class ItemEventHandler {
         return false;
     }
 
-    protected static boolean tryGrowWitherRose(Level world, Player player, BlockState state, BlockPos pos, ItemStack stack) {
+    protected static boolean tryGrowWitherRose(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack) {
         if (state.getBlock() == ModBlocks.ROSE.get() && stack.is(ModTags.ForgeTags.Items.WITHER_BONE_MEALS)) {
-            if (world.random.nextFloat() < 0.25F) {
-                world.setBlock(pos, Blocks.WITHER_ROSE.defaultBlockState(), 2);
+            if (level.random.nextFloat() < 0.25F) {
+                level.setBlock(pos, Blocks.WITHER_ROSE.defaultBlockState(), 2);
             }
 
-            Utils.spawnParticles(ParticleTypes.SMOKE, world, pos);
+            Utils.spawnParticles(ParticleTypes.SMOKE, level, pos);
             player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
 
             if (!player.isCreative()) {
@@ -104,19 +104,19 @@ public class ItemEventHandler {
         return false;
     }
 
-    protected static boolean tryPlaceSlimeBall(Level world, Player player, BlockState state, BlockPos pos, ItemStack stack) {
+    protected static boolean tryPlaceSlimeBall(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack) {
         if (stack.is(Tags.Items.SLIMEBALLS)) {
             if (state.getBlock() == Blocks.PISTON && !state.getValue(PistonBaseBlock.EXTENDED)) {
                 Direction direction = state.getValue(PistonBaseBlock.FACING);
-                world.setBlock(pos, Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, direction), 2);
-                onPlace(world, pos, player, stack);
+                level.setBlock(pos, Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, direction), 2);
+                onPlace(level, pos, player, stack);
 
                 return true;
             } else if (state.getBlock() == Blocks.PISTON_HEAD && state.getValue(PistonHeadBlock.TYPE) == PistonType.DEFAULT) {
                 Direction direction = state.getValue(PistonBaseBlock.FACING);
-                world.setBlock(pos, Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.TYPE, PistonType.STICKY).setValue(PistonHeadBlock.FACING, direction), 2);
-                world.setBlock(pos.relative(direction, -1), Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.EXTENDED, true).setValue(PistonBaseBlock.FACING, direction), 2);
-                onPlace(world, pos, player, stack);
+                level.setBlock(pos, Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.TYPE, PistonType.STICKY).setValue(PistonHeadBlock.FACING, direction), 2);
+                level.setBlock(pos.relative(direction, -1), Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.EXTENDED, true).setValue(PistonBaseBlock.FACING, direction), 2);
+                onPlace(level, pos, player, stack);
 
                 return true;
             }
@@ -125,28 +125,28 @@ public class ItemEventHandler {
         return false;
     }
 
-    protected static void onPlace(Level world, BlockPos pos, Player player, ItemStack stack) {
+    protected static void onPlace(Level level, BlockPos pos, Player player, ItemStack stack) {
         if (!player.isCreative()) {
             stack.shrink(1);
         }
 
         player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-        world.playSound(null, pos, SoundEvents.SLIME_BLOCK_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+        level.playSound(null, pos, SoundEvents.SLIME_BLOCK_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
     }
 
-    protected static boolean tryRemoveSlimeBall(Level world, Player player, BlockState state, BlockPos pos, ItemStack stack, InteractionHand hand) {
+    protected static boolean tryRemoveSlimeBall(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack, InteractionHand hand) {
         if (stack.getItem() instanceof ShovelItem && player.isCrouching()) {
             if (state.getBlock() == Blocks.STICKY_PISTON && !state.getValue(PistonBaseBlock.EXTENDED)) {
                 Direction direction = state.getValue(PistonBaseBlock.FACING);
-                world.setBlock(pos, Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, direction), 2);
-                onRemove(world, pos, player, stack, hand, direction);
+                level.setBlock(pos, Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, direction), 2);
+                onRemove(level, pos, player, stack, hand, direction);
 
                 return true;
             } else if (state.getBlock() == Blocks.PISTON_HEAD && state.getValue(PistonHeadBlock.TYPE) == PistonType.STICKY) {
                 Direction direction = state.getValue(PistonHeadBlock.FACING);
-                world.setBlock(pos, Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.TYPE, PistonType.DEFAULT).setValue(PistonHeadBlock.FACING, direction), 2);
-                world.setBlock(pos.relative(direction, -1), Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.EXTENDED, true).setValue(PistonBaseBlock.FACING, direction), 2);
-                onRemove(world, pos, player, stack, hand, direction);
+                level.setBlock(pos, Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.TYPE, PistonType.DEFAULT).setValue(PistonHeadBlock.FACING, direction), 2);
+                level.setBlock(pos.relative(direction, -1), Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.EXTENDED, true).setValue(PistonBaseBlock.FACING, direction), 2);
+                onRemove(level, pos, player, stack, hand, direction);
 
                 return true;
             }
@@ -155,13 +155,13 @@ public class ItemEventHandler {
         return false;
     }
 
-    protected static void onRemove(Level world, BlockPos pos, Player player, ItemStack stack, InteractionHand hand, Direction direction) {
+    protected static void onRemove(Level level, BlockPos pos, Player player, ItemStack stack, InteractionHand hand, Direction direction) {
         if (!player.isCreative()) {
             stack.hurtAndBreak(1, player, (entity) -> entity.broadcastBreakEvent(hand));
         }
 
-        Block.popResourceFromFace(world, pos, direction, new ItemStack(Items.SLIME_BALL));
+        Block.popResourceFromFace(level, pos, direction, new ItemStack(Items.SLIME_BALL));
         player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-        world.playSound(null, pos, SoundEvents.CHICKEN_EGG, SoundSource.BLOCKS, 1.0F, 1.0F);
+        level.playSound(null, pos, SoundEvents.CHICKEN_EGG, SoundSource.BLOCKS, 1.0F, 1.0F);
     }
 }

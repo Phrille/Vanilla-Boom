@@ -2,6 +2,7 @@ package phrille.vanillaboom.config;
 
 import net.minecraftforge.fml.config.ModConfig;
 
+@SuppressWarnings("unused")
 public class VanillaBoomConfig {
     //Client
     public static boolean addFoodTooltips;

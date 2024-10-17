@@ -1,5 +1,6 @@
 package phrille.vanillaboom.entity;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -10,17 +11,19 @@ import net.minecraftforge.fmllegacy.network.FMLPlayMessages;
 import net.minecraftforge.fmllegacy.network.NetworkHooks;
 import phrille.vanillaboom.item.ModItems;
 
+@MethodsReturnNonnullByDefault
 public class PrismarineArrow extends Arrow {
-    public PrismarineArrow(EntityType<? extends PrismarineArrow> entityType, Level world) {
-        super(entityType, world);
+    public PrismarineArrow(EntityType<? extends PrismarineArrow> entityType, Level level) {
+        super(entityType, level);
     }
 
-    public PrismarineArrow(FMLPlayMessages.SpawnEntity spawnPacket, Level world) {
-        super(world, 0, 0, 0);
+    @SuppressWarnings("unused")
+    public PrismarineArrow(FMLPlayMessages.SpawnEntity spawnPacket, Level level) {
+        super(level, 0, 0, 0);
     }
 
-    public PrismarineArrow(Level world, LivingEntity shooter) {
-        super(world, shooter);
+    public PrismarineArrow(Level level, LivingEntity shooter) {
+        super(level, shooter);
     }
 
     @Override
@@ -29,7 +32,6 @@ public class PrismarineArrow extends Arrow {
     }
 
     /**
-    @Override
     protected void onEntityHit(EntityRayTraceResult raytrace) {
         if (raytrace.getType() == RayTraceResult.Type.ENTITY) {
             Entity entity = ((EntityRayTraceResult) raytrace).getEntity();

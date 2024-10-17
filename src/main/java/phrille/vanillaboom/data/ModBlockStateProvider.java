@@ -12,6 +12,7 @@ import phrille.vanillaboom.block.*;
 import phrille.vanillaboom.util.Utils;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class ModBlockStateProvider extends BlockStateProvider {
@@ -365,7 +366,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     protected ResourceLocation variantTexture(Block block) {
-        ResourceLocation name = block.getRegistryName();
+        ResourceLocation name = Objects.requireNonNull(block.getRegistryName());
 
         return new ResourceLocation(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath()
                 .replace("_wood", "_log")
@@ -379,7 +380,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     protected String name(Block block) {
-        return block.getRegistryName().getPath();
+        return Objects.requireNonNull(block.getRegistryName()).getPath();
     }
 
     protected String getCakeName(String name, int bites) {

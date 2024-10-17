@@ -31,6 +31,7 @@ public class FishingLootModifier extends LootModifier {
 
     @Nonnull
     @Override
+    @SuppressWarnings("unchecked")
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
         try {
             Set<LootTable> set = (Set<LootTable>) LOOT_FIELD.get(context);
