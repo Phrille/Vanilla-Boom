@@ -1,75 +1,88 @@
 package phrille.vanillaboom.client.model;
 
 import com.google.common.collect.ImmutableList;
-import net.minecraft.client.model.ListModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.client.renderer.entity.model.SegmentedModel;
+import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
 
-import javax.annotation.Nonnull;
+@MethodsReturnNonnullByDefault
+public class TunaModel<T extends Entity> extends SegmentedModel<T> {
+    public ModelRenderer finLeft;
+    public ModelRenderer finRight;
+    public ModelRenderer bodyFront;
+    public ModelRenderer body;
+    public ModelRenderer head;
+    public ModelRenderer bodyBack;
+    public ModelRenderer finTop;
+    public ModelRenderer finBottom;
+    public ModelRenderer jaw;
+    public ModelRenderer finTail;
 
-public class TunaModel<T extends Entity> extends ListModel<T> {
-    private final ModelPart body;
-    private final ModelPart bodyFront;
-    private final ModelPart bodyBack;
-    private final ModelPart head;
-    private final ModelPart jaw;
-    private final ModelPart finTop;
-    private final ModelPart finBottom;
-    private final ModelPart finRight;
-    private final ModelPart finLeft;
-    private final ModelPart tail;
+    public TunaModel()
+    {
+        texWidth = 32;
+        texHeight = 32;
 
-    public TunaModel(ModelPart part) {
-        body = part.getChild("body");
-        bodyFront = part.getChild("body_front");
-        bodyBack = part.getChild("body_back");
-        head = part.getChild("head");
-        jaw = head.getChild("jaw");
-        finTop = body.getChild("fin_top");
-        finBottom = body.getChild("fin_bottom");
-        finRight = part.getChild("fin_right");
-        finLeft = part.getChild("fin_left");
-        tail = bodyBack.getChild("tail");
-    }
+        head = new ModelRenderer(this, 22, 0);
+        head.setPos(0.0F, 19.0F, 0.0F);
+        head.addBox(-1.0F, -2.0F, -3.0F, 2.0F, 3.0F, 3.0F, 0.0F, 0.0F, 0.0F);
+        jaw = new ModelRenderer(this, 24, 6);
+        jaw.setPos(0.0F, 1.0F, 0.0F);
+        jaw.addBox(-1.0F, 0.0F, -2.0F, 2.0F, 1.0F, 2.0F, 0.0F, 0.0F, 0.0F);
 
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition modelDefinition = new MeshDefinition();
-        PartDefinition def = modelDefinition.getRoot();
+        body = new ModelRenderer(this, 0, 0);
+        body.setPos(0.0F, 18.5F, 2.0F);
+        body.addBox(-1.5F, -3.5F, 0.0F, 3.0F, 7.0F, 8.0F, 0.0F, 0.0F, 0.0F);
 
-        PartDefinition bodyPart = def.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-1.5F, -3.5F, 0.0F, 3.0F, 7.0F, 8.0F), PartPose.offset(0.0F, 18.5F, 2.0F));
-        def.addOrReplaceChild("body_front", CubeListBuilder.create().texOffs(0, 15).addBox(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 2.0F), PartPose.offset(0.0F, 18.5F, 0.0F));
-        PartDefinition bodyBackPart = def.addOrReplaceChild("body_back", CubeListBuilder.create().texOffs(0, 22).addBox(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 3.0F), PartPose.offset(0.0F, 18.5F, 10.0F));
-        PartDefinition headPart = def.addOrReplaceChild("head", CubeListBuilder.create().texOffs(22, 0).addBox(-1.0F, -2.0F, -3.0F, 2.0F, 3.0F, 3.0F), PartPose.offset(0.0F, 19.0F, 0.0F));
-        headPart.addOrReplaceChild("jaw", CubeListBuilder.create().texOffs(24, 6).addBox(-1.0F, 0.0F, -2.0F, 2.0F, 1.0F, 2.0F), PartPose.offset(0.0F, 1.0F, 0.0F));
-        bodyPart.addOrReplaceChild("fin_top", CubeListBuilder.create().texOffs(26, 19).addBox(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 3.0F), PartPose.offset(0.0F, -5.5F, 4.0F));
-        bodyPart.addOrReplaceChild("fin_bottom", CubeListBuilder.create().texOffs(26, 21).addBox(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 3.0F), PartPose.offset(0.0F, 3.5F, 3.0F));
-        def.addOrReplaceChild("fin_right", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), PartPose.offset(1.5F, 19.0F, 4.0F));
-        def.addOrReplaceChild("fin_left", CubeListBuilder.create().texOffs(0, 2).addBox(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), PartPose.offset(-1.5F, 19.0F, 4.0F));
-        bodyBackPart.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(22, 22).addBox(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 5.0F), PartPose.offset(0.0F, 0.0F, 3.0F));
+        bodyFront = new ModelRenderer(this, 0, 15);
+        bodyFront.setPos(0.0F, 18.5F, 0.0F);
+        bodyFront.addBox(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 2.0F, 0.0F, 0.0F, 0.0F);
 
-        return LayerDefinition.create(modelDefinition, 32, 32);
+        bodyBack = new ModelRenderer(this, 0, 22);
+        bodyBack.setPos(0.0F, 18.5F, 10.0F);
+        bodyBack.addBox(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 3.0F, 0.0F, 0.0F, 0.0F);
+
+        finLeft = new ModelRenderer(this, 0, 2);
+        finLeft.setPos(-1.5F, 19.0F, 4.0F);
+        finLeft.addBox(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F, 0.0F, 0.0F, 0.0F);
+
+        finRight = new ModelRenderer(this, 0, 0);
+        finRight.setPos(1.5F, 19.0F, 4.0F);
+        finRight.addBox(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F, 0.0F, 0.0F, 0.0F);
+
+        finTail = new ModelRenderer(this, 22, 22);
+        finTail.setPos(0.0F, 0.0F, 3.0F);
+        finTail.addBox(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 5.0F, 0.0F, 0.0F, 0.0F);
+
+        finTop = new ModelRenderer(this, 26, 19);
+        finTop.setPos(0.0F, -5.5F, 4.0F);
+        finTop.addBox(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 3.0F, 0.0F, 0.0F, 0.0F);
+
+        finBottom = new ModelRenderer(this, 26, 21);
+        finBottom.setPos(0.0F, 3.5F, 3.0F);
+        finBottom.addBox(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 3.0F, 0.0F, 0.0F, 0.0F);
+
+        head.addChild(jaw);
+        body.addChild(finBottom);
+        body.addChild(finTop);
+        bodyBack.addChild(finTail);
     }
 
     @Override
-    @Nonnull
-    public Iterable<ModelPart> parts() {
-        return ImmutableList.of(body, bodyFront, bodyBack, head, finRight, finLeft);
+    public Iterable<ModelRenderer> parts()
+    {
+        return ImmutableList.of(head, body, bodyBack, finLeft, bodyFront, finRight);
     }
-
     @Override
     public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         float movement = entity.isInWater() ? 1.0F : 1.5F;
-        float f1 = -movement * 0.45F * Mth.sin(0.6F * ageInTicks);
+        float finMovement = -movement * 0.45F * MathHelper.sin(0.6F * ageInTicks);
 
-        jaw.xRot = Math.abs(movement * 0.45F * Mth.sin(0.2F * ageInTicks));
-        finLeft.zRot = -Math.abs(f1) * 1.2F;
-        finRight.zRot = Math.abs(f1) * 1.2F;
-        tail.yRot = f1;
+        jaw.xRot = Math.abs(movement * 0.45F * MathHelper.sin(0.2F * ageInTicks));
+        finLeft.zRot = -Math.abs(finMovement) * 1.2F;
+        finRight.zRot = Math.abs(finMovement) * 1.2F;
+        finTail.yRot = finMovement;
     }
 }
