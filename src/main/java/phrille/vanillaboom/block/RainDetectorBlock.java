@@ -36,7 +36,7 @@ public class RainDetectorBlock extends ContainerBlock {
 
     @Override
     @SuppressWarnings("deprecation")
-    public VoxelShape getShape(BlockState state, IBlockReader getter, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
         return SHAPE;
     }
 
@@ -75,7 +75,7 @@ public class RainDetectorBlock extends ContainerBlock {
 
     @Override
     @SuppressWarnings("deprecation")
-    public int getSignal(BlockState state, IBlockReader world, BlockPos pos, Direction direction) {
+    public int getSignal(BlockState state, IBlockReader reader, BlockPos pos, Direction direction) {
         return state.getValue(POWER);
     }
 
@@ -97,7 +97,7 @@ public class RainDetectorBlock extends ContainerBlock {
     }
 
     @Override
-    public TileEntity newBlockEntity(IBlockReader world) {
+    public TileEntity newBlockEntity(IBlockReader reader) {
         return new RainDetectorTileEntity();
     }
 

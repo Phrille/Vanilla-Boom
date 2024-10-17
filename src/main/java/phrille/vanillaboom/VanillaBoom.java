@@ -31,7 +31,7 @@ public class VanillaBoom {
         ModEntities.ENTITIES.register(eventBus);
         ModBlocks.BLOCKS.register(eventBus);
         ModItems.ITEMS.register(eventBus);
-        ModTileEntities.BLOCK_ENTITIES.register(eventBus);
+        ModTileEntities.TILE_ENTITIES.register(eventBus);
         LootTableHandler.GLMS.register(eventBus);
 
         eventBus.addListener(this::setup);

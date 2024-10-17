@@ -7,6 +7,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.DyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Effects;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -23,7 +24,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> MOSSY_COBBLESTONE_BRICKS = register("mossy_cobblestone_bricks", new Block(AbstractBlock.Properties.copy(Blocks.MOSSY_COBBLESTONE)));
     public static final RegistryObject<Block> MAGMA_BRICKS = register("magma_bricks", new MagmaBlock(AbstractBlock.Properties.copy(Blocks.MAGMA_BLOCK).sound(SoundType.NETHER_BRICKS)));
     public static final RegistryObject<Block> OBSIDIAN_BRICKS = register("obsidian_bricks", new Block(AbstractBlock.Properties.copy(Blocks.OBSIDIAN)));
-    public static final RegistryObject<Block> SNOW_BRICKS = register("snow_bricks", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SNOW).strength(1.5F).sound(SoundType.SNOW)));
+    public static final RegistryObject<Block> SNOW_BRICKS = register("snow_bricks", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SNOW).harvestTool(ToolType.SHOVEL).strength(1.5F).sound(SoundType.SNOW)));
     public static final RegistryObject<Block> TERRACOTTA_BRICKS = register("terracotta_bricks", new Block(AbstractBlock.Properties.copy(Blocks.TERRACOTTA)));
     public static final RegistryObject<Block> WHITE_TERRACOTTA_BRICKS = register("white_terracotta_bricks", new Block(AbstractBlock.Properties.copy(Blocks.WHITE_TERRACOTTA)));
     public static final RegistryObject<Block> ORANGE_TERRACOTTA_BRICKS = register("orange_terracotta_bricks", new Block(AbstractBlock.Properties.copy(Blocks.ORANGE_TERRACOTTA)));
@@ -48,8 +49,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> INFERNAL_ROCK = register("infernal_rock", new InfernalRockBlock());
 
     //Sand and Gravel
-    public static final RegistryObject<Block> BONE_SAND = register("bone_sand", new FallingBlock(AbstractBlock.Properties.of(Material.SAND, MaterialColor.SNOW).strength(0.5F).sound(SoundType.SOUL_SAND)));
-    public static final RegistryObject<Block> WITHER_BONE_SAND = register("wither_bone_sand", new FallingBlock(AbstractBlock.Properties.of(Material.SAND, MaterialColor.COLOR_BLACK).strength(0.5F).sound(SoundType.SOUL_SAND)));
+    public static final RegistryObject<Block> BONE_SAND = register("bone_sand", new FallingBlock(AbstractBlock.Properties.of(Material.SAND, MaterialColor.SNOW).harvestTool(ToolType.SHOVEL).strength(0.5F).sound(SoundType.SOUL_SAND)));
+    public static final RegistryObject<Block> WITHER_BONE_SAND = register("wither_bone_sand", new FallingBlock(AbstractBlock.Properties.of(Material.SAND, MaterialColor.COLOR_BLACK).harvestTool(ToolType.SHOVEL).strength(0.5F).sound(SoundType.SOUL_SAND)));
 
     //Polished
     public static final RegistryObject<Block> POLISHED_PERIDOTITE = register("polished_peridotite", new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
@@ -94,10 +95,10 @@ public class ModBlocks {
 
     //Storage
     public static final RegistryObject<Block> CHARCOAL_BLOCK = register("charcoal_block", new Block(AbstractBlock.Properties.copy(Blocks.COBBLESTONE)));
-    public static final RegistryObject<Block> SUGAR_BLOCK = register("sugar_block", new FallingBlock(AbstractBlock.Properties.of(Material.SAND, MaterialColor.SNOW).strength(0.5F).sound(SoundType.SAND)));
+    public static final RegistryObject<Block> SUGAR_BLOCK = register("sugar_block", new FallingBlock(AbstractBlock.Properties.of(Material.SAND, MaterialColor.SNOW).harvestTool(ToolType.SHOVEL).strength(0.5F).sound(SoundType.SAND)));
     public static final RegistryObject<Block> SUGAR_CANE_BLOCK = register("sugar_cane_block", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.PLANT, MaterialColor.GRASS).strength(0.5F).sound(SoundType.GRASS)));
     public static final RegistryObject<Block> GUNPOWDER_BLOCK = register("gunpowder_block", new GunpowderBlock());
-    public static final RegistryObject<Block> BLAZE_POWDER_BLOCK = register("blaze_powder_block", new FallingBlock(AbstractBlock.Properties.of(Material.SAND, MaterialColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.SNOW)));
+    public static final RegistryObject<Block> BLAZE_POWDER_BLOCK = register("blaze_powder_block", new FallingBlock(AbstractBlock.Properties.of(Material.SAND, MaterialColor.COLOR_ORANGE).harvestTool(ToolType.SHOVEL).strength(0.5F).sound(SoundType.SNOW)));
     public static final RegistryObject<Block> MAGMA_CREAM_BLOCK = register("magma_cream_block", new SlimeBlock(AbstractBlock.Properties.copy(Blocks.SLIME_BLOCK)));
     public static final RegistryObject<Block> PRISMARINE_CRYSTAL_BLOCK = register("prismarine_crystal_block", new Block(AbstractBlock.Properties.of(Material.GLASS, MaterialColor.COLOR_CYAN).strength(0.3F, 0.5F).sound(SoundType.GLASS).lightLevel((lightValue) -> 5)));
     public static final RegistryObject<Block> WITHER_BONE_BLOCK = register("wither_bone_block", new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).sound(SoundType.BONE_BLOCK).strength(1.8F, 3.33F)));
@@ -163,9 +164,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> RICE_PLANT = register("rice_plant", new RicePlantBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
 
     //Cakes
-    public static final RegistryObject<Block> CHOCOLATE_CAKE = register("chocolate_cake", new ModCakeBlock());
-    public static final RegistryObject<Block> BERRY_CAKE = register("berry_cake", new ModCakeBlock());
-    public static final RegistryObject<Block> CARROT_CAKE = register("carrot_cake", new ModCakeBlock());
+    public static final RegistryObject<Block> CHOCOLATE_CAKE = register("chocolate_cake", new CakeBlock(AbstractBlock.Properties.copy(Blocks.CAKE)));
+    public static final RegistryObject<Block> BERRY_CAKE = register("berry_cake", new CakeBlock(AbstractBlock.Properties.copy(Blocks.CAKE)));
+    public static final RegistryObject<Block> CARROT_CAKE = register("carrot_cake", new CakeBlock(AbstractBlock.Properties.copy(Blocks.CAKE)));
 
     //VanillaBoom Stairs
     public static final RegistryObject<Block> COBBLESTONE_BRICK_STAIRS = register("cobblestone_brick_stairs", new ModStairBlock(() -> COBBLESTONE_BRICKS.get().defaultBlockState(), AbstractBlock.Properties.copy(Blocks.COBBLESTONE)));

@@ -24,6 +24,7 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -35,6 +36,7 @@ public class GunpowderBlock extends FallingBlock {
     public GunpowderBlock() {
         super(AbstractBlock.Properties
                 .of(Material.SAND, MaterialColor.COLOR_LIGHT_GRAY)
+                .harvestTool(ToolType.SHOVEL)
                 .strength(0.5F)
                 .sound(SoundType.SAND));
     }
@@ -76,7 +78,7 @@ public class GunpowderBlock extends FallingBlock {
     }
 
     @Override
-    public boolean isFlammable(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
+    public boolean isFlammable(BlockState state, IBlockReader reader, BlockPos pos, Direction face) {
         return true;
     }
 

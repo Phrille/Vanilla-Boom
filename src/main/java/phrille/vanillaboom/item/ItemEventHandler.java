@@ -62,8 +62,9 @@ public class ItemEventHandler {
 
             if (age < 3) {
                 if (world.random.nextFloat() < 0.625F) {
-                    state = state.setValue(NetherWartBlock.AGE, age + 1);
-                    world.setBlock(pos, state, 2);
+                    if (!world.isClientSide) {
+                        world.setBlock(pos, state.setValue(NetherWartBlock.AGE, age + 1), 2);
+                    }
                 }
 
                 Utils.spawnParticles(ParticleTypes.FLAME, world, pos);
@@ -83,7 +84,9 @@ public class ItemEventHandler {
     protected static boolean tryGrowWitherRose(World world, PlayerEntity player, BlockState state, BlockPos pos, ItemStack stack) {
         if (state.getBlock() == ModBlocks.ROSE.get() && stack.getItem().is(ModTags.ForgeTags.Items.WITHER_BONE_MEALS)) {
             if (world.random.nextFloat() < 0.25F) {
-                world.setBlock(pos, Blocks.WITHER_ROSE.defaultBlockState(), 2);
+                if (!world.isClientSide) {
+                    world.setBlock(pos, Blocks.WITHER_ROSE.defaultBlockState(), 2);
+                }
             }
 
             Utils.spawnParticles(ParticleTypes.SMOKE, world, pos);
@@ -103,14 +106,18 @@ public class ItemEventHandler {
         if (stack.getItem().is(Tags.Items.SLIMEBALLS)) {
             if (state.getBlock() == Blocks.PISTON && !state.getValue(PistonBlock.EXTENDED)) {
                 Direction direction = state.getValue(PistonBlock.FACING);
-                world.setBlock(pos, Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBlock.FACING, direction), 2);
+                if (!world.isClientSide) {
+                    world.setBlock(pos, Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBlock.FACING, direction), 2);
+                }
                 onPlace(world, pos, player, stack);
 
                 return true;
             } else if (state.getBlock() == Blocks.PISTON_HEAD && state.getValue(PistonHeadBlock.TYPE) == PistonType.DEFAULT) {
                 Direction direction = state.getValue(PistonBlock.FACING);
-                world.setBlock(pos, Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.TYPE, PistonType.STICKY).setValue(PistonHeadBlock.FACING, direction), 2);
-                world.setBlock(pos.relative(direction, -1), Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBlock.EXTENDED, true).setValue(PistonBlock.FACING, direction), 2);
+                if (!world.isClientSide) {
+                    world.setBlock(pos, Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.TYPE, PistonType.STICKY).setValue(PistonHeadBlock.FACING, direction), 2);
+                    world.setBlock(pos.relative(direction, -1), Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBlock.EXTENDED, true).setValue(PistonBlock.FACING, direction), 2);
+                }
                 onPlace(world, pos, player, stack);
 
                 return true;
@@ -133,14 +140,18 @@ public class ItemEventHandler {
         if (stack.getItem() instanceof ShovelItem && player.isCrouching()) {
             if (state.getBlock() == Blocks.STICKY_PISTON && !state.getValue(PistonBlock.EXTENDED)) {
                 Direction direction = state.getValue(PistonBlock.FACING);
-                world.setBlock(pos, Blocks.PISTON.defaultBlockState().setValue(PistonBlock.FACING, direction), 2);
+                if (!world.isClientSide) {
+                    world.setBlock(pos, Blocks.PISTON.defaultBlockState().setValue(PistonBlock.FACING, direction), 2);
+                }
                 onRemove(world, pos, player, stack, hand, direction);
 
                 return true;
             } else if (state.getBlock() == Blocks.PISTON_HEAD && state.getValue(PistonHeadBlock.TYPE) == PistonType.STICKY) {
                 Direction direction = state.getValue(PistonHeadBlock.FACING);
-                world.setBlock(pos, Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.TYPE, PistonType.DEFAULT).setValue(PistonHeadBlock.FACING, direction), 2);
-                world.setBlock(pos.relative(direction, -1), Blocks.PISTON.defaultBlockState().setValue(PistonBlock.EXTENDED, true).setValue(PistonBlock.FACING, direction), 2);
+                if (!world.isClientSide) {
+                    world.setBlock(pos, Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.TYPE, PistonType.DEFAULT).setValue(PistonHeadBlock.FACING, direction), 2);
+                    world.setBlock(pos.relative(direction, -1), Blocks.PISTON.defaultBlockState().setValue(PistonBlock.EXTENDED, true).setValue(PistonBlock.FACING, direction), 2);
+                }
                 onRemove(world, pos, player, stack, hand, direction);
 
                 return true;
