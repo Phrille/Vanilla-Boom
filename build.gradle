@@ -18,7 +18,7 @@ version = '1.16.5-1.7.1.0'
 group = 'phrille.vanillaboom' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'vanillaboom'
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
+java.toolchain.languageVersion = JavaLanguageVersion.of(9) // Mojang ships Java 8 to end users, so your mod should target Java 8.
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
