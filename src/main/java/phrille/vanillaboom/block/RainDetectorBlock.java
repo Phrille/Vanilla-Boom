@@ -1,74 +1,64 @@
 package phrille.vanillaboom.block;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import phrille.vanillaboom.block.entity.ModBlockEntities;
-import phrille.vanillaboom.block.entity.RainDetectorBlockEntity;
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.block.*;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.state.BooleanProperty;
+import net.minecraft.state.IntegerProperty;
+import net.minecraft.state.StateContainer;
+import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Direction;
+import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
+import phrille.vanillaboom.block.tile.RainDetectorTileEntity;
 
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class RainDetectorBlock extends BaseEntityBlock {
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
+public class RainDetectorBlock extends ContainerBlock {
     public static final IntegerProperty POWER = BlockStateProperties.POWER;
     public static final BooleanProperty INVERTED = BlockStateProperties.INVERTED;
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D);
 
     public RainDetectorBlock() {
-        super(BlockBehaviour.Properties.copy(Blocks.DAYLIGHT_DETECTOR));
+        super(Properties.copy(Blocks.DAYLIGHT_DETECTOR));
         registerDefaultState(stateDefinition.any().setValue(INVERTED, false).setValue(POWER, 0));
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    @SuppressWarnings("deprecation")
+    public VoxelShape getShape(BlockState state, IBlockReader getter, BlockPos pos, ISelectionContext context) {
+        return SHAPE;
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
         if (player.mayBuild()) {
             if (world.isClientSide) {
-                return InteractionResult.SUCCESS;
+                return ActionResultType.SUCCESS;
             } else {
                 BlockState blockstate = state.cycle(INVERTED);
                 world.setBlock(pos, blockstate, 4);
                 updateSignalStrength(blockstate, world, pos);
 
-                return InteractionResult.CONSUME;
+                return ActionResultType.CONSUME;
             }
         } else {
             return super.use(state, world, pos, player, hand, hit);
         }
     }
 
-    @Override
-    @Nullable
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> entityType) {
-        return !world.isClientSide && world.dimensionType().hasSkyLight() ? createTickerHelper(entityType, ModBlockEntities.RAIN_DETECTOR.get(), RainDetectorBlock::tickEntity) : null;
-    }
-
-    private static void tickEntity(Level world, BlockPos pos, BlockState state, RainDetectorBlockEntity blockEntity) {
-        if (world.getGameTime() % 20L == 0L) {
-            updateSignalStrength(state, world, pos);
-        }
-    }
-
-    private static void updateSignalStrength(BlockState state, Level world, BlockPos pos) {
+    public static void updateSignalStrength(BlockState state, World world, BlockPos pos) {
         if (world.dimensionType().hasSkyLight()) {
             boolean inverted = state.getValue(INVERTED);
             int power = world.isThundering() ? 2 : world.isRaining() ? 1 : 0;
@@ -78,43 +68,41 @@ public class RainDetectorBlock extends BaseEntityBlock {
             }
 
             if (state.getValue(POWER) != power) {
-                world.setBlock(pos, state.setValue(POWER, Mth.clamp(power, 0, 15)), 3);
+                world.setBlock(pos, state.setValue(POWER, MathHelper.clamp(power, 0, 15)), 3);
             }
         }
     }
 
     @Override
-    public int getSignal(BlockState state, BlockGetter getter, BlockPos pos, Direction direction) {
+    @SuppressWarnings("deprecation")
+    public int getSignal(BlockState state, IBlockReader world, BlockPos pos, Direction direction) {
         return state.getValue(POWER);
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public boolean isSignalSource(BlockState state) {
         return true;
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
-        return SHAPE;
+    public BlockRenderType getRenderShape(BlockState state) {
+        return BlockRenderType.MODEL;
     }
 
     @Override
-    public RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
-    }
-
-    @Override
+    @SuppressWarnings("deprecation")
     public boolean useShapeForLightOcclusion(BlockState state) {
         return true;
     }
 
     @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new RainDetectorBlockEntity(pos, state);
+    public TileEntity newBlockEntity(IBlockReader world) {
+        return new RainDetectorTileEntity();
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(POWER, INVERTED);
     }
 }

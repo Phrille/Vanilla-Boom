@@ -1,25 +1,12 @@
 package phrille.vanillaboom.util;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraft.world.level.block.FlowerPotBlock;
-import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.block.ModBlocks;
-import phrille.vanillaboom.block.ModCakeBlock;
-import phrille.vanillaboom.block.ModCandleCakeBlock;
-import phrille.vanillaboom.item.ModItems;
-
-import java.util.List;
+import net.minecraft.particles.BasicParticleType;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class Utils {
-    public static final List<Block> CANDLES = List.of(Blocks.CANDLE, Blocks.WHITE_CANDLE, Blocks.ORANGE_CANDLE, Blocks.MAGENTA_CANDLE, Blocks.LIGHT_BLUE_CANDLE, Blocks.YELLOW_CANDLE, Blocks.LIME_CANDLE, Blocks.PINK_CANDLE, Blocks.GRAY_CANDLE, Blocks.LIGHT_GRAY_CANDLE, Blocks.CYAN_CANDLE, Blocks.PURPLE_CANDLE, Blocks.BLUE_CANDLE, Blocks.BROWN_CANDLE, Blocks.GREEN_CANDLE, Blocks.RED_CANDLE, Blocks.BLACK_CANDLE);
 
-    public static void spawnParticles(SimpleParticleType particle, Level world, BlockPos pos) {
+    public static void spawnParticles(BasicParticleType particle, World world, BlockPos pos) {
         if (!world.getBlockState(pos).isSolidRender(world, pos)) {
             for (int l = 0; l < 8; ++l) {
                 world.addParticle(particle, (double) pos.getX() + Math.random(), (double) pos.getY() + Math.random(), (double) pos.getZ() + Math.random(), 0.0D, 0.0D, 0.0D);

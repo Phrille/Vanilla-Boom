@@ -11,7 +11,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import phrille.vanillaboom.block.ModBlocks;
-import phrille.vanillaboom.block.entity.ModBlockEntities;
+import phrille.vanillaboom.block.tile.ModTileEntities;
 import phrille.vanillaboom.config.ConfigHandler;
 import phrille.vanillaboom.entity.ModEntities;
 import phrille.vanillaboom.item.ModItems;
@@ -31,7 +31,7 @@ public class VanillaBoom {
         ModEntities.ENTITIES.register(eventBus);
         ModBlocks.BLOCKS.register(eventBus);
         ModItems.ITEMS.register(eventBus);
-        ModBlockEntities.BLOCK_ENTITIES.register(eventBus);
+        ModTileEntities.BLOCK_ENTITIES.register(eventBus);
         LootTableHandler.GLMS.register(eventBus);
 
         eventBus.addListener(this::setup);

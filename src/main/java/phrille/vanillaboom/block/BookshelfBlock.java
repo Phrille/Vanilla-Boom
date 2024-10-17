@@ -1,19 +1,19 @@
 package phrille.vanillaboom.block;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IWorldReader;
 
 public class BookshelfBlock extends Block {
 
-    public BookshelfBlock(BlockBehaviour.Properties builder) {
+    public BookshelfBlock(AbstractBlock.Properties builder) {
         super(builder);
     }
 
     @Override
-    public float getEnchantPowerBonus(BlockState state, LevelReader world, BlockPos pos) {
-        return 1.0F;
+    public float getEnchantPowerBonus(BlockState state, IWorldReader world, BlockPos pos) {
+        return 1;
     }
 }

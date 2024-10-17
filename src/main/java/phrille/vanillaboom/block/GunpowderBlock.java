@@ -1,46 +1,58 @@
 package phrille.vanillaboom.block;
 
-import net.minecraft.core.BlockPos;
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.FallingBlock;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.item.FlintAndSteelItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FallingBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
-import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Direction;
+import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.world.Explosion;
+import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class GunpowderBlock extends FallingBlock {
 
     public GunpowderBlock() {
-        super(Properties.of(Material.SAND, MaterialColor.COLOR_LIGHT_GRAY).strength(0.5F).sound(SoundType.SAND));
+        super(AbstractBlock.Properties
+                .of(Material.SAND, MaterialColor.COLOR_LIGHT_GRAY)
+                .strength(0.5F)
+                .sound(SoundType.SAND));
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    @SuppressWarnings("deprecation")
+    public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
         ItemStack stack = player.getItemInHand(hand);
+        boolean isFlintAndSteel = stack.getItem() instanceof FlintAndSteelItem;
 
-        if (!stack.is(Items.FLINT_AND_STEEL) && !stack.is(Items.FIRE_CHARGE)) {
+        if (stack.isEmpty() || (!isFlintAndSteel && stack.getItem() != Items.FIRE_CHARGE)) {
             return super.use(state, world, pos, player, hand, hit);
         } else {
             catchFire(state, world, pos, hit.getDirection(), player);
 
             Item item = stack.getItem();
             if (!player.isCreative()) {
-                if (stack.is(Items.FLINT_AND_STEEL)) {
+                if (isFlintAndSteel) {
                     stack.hurtAndBreak(1, player, (entity) -> entity.broadcastBreakEvent(hand));
                 } else {
                     stack.shrink(1);
@@ -48,17 +60,13 @@ public class GunpowderBlock extends FallingBlock {
             }
 
             player.awardStat(Stats.ITEM_USED.get(item));
-            return InteractionResult.SUCCESS;
+            return ActionResultType.SUCCESS;
         }
     }
 
     @Override
-    public void wasExploded(Level world, BlockPos pos, Explosion explosion) {
-        catchFire(world.getBlockState(pos), world, pos, null, explosion.getSourceMob());
-    }
-
-    @Override
-    public void onProjectileHit(Level world, BlockState state, BlockHitResult hit, Projectile projectile) {
+    @SuppressWarnings("deprecation")
+    public void onProjectileHit(World world, BlockState state, BlockRayTraceResult hit, ProjectileEntity projectile) {
         if (!world.isClientSide) {
             if (projectile.isOnFire()) {
                 Entity owner = projectile.getOwner();
@@ -68,18 +76,29 @@ public class GunpowderBlock extends FallingBlock {
     }
 
     @Override
+    public boolean isFlammable(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
+        return true;
+    }
+
+    @Override
+    public void catchFire(BlockState state, World world, BlockPos pos, @Nullable Direction face, @Nullable LivingEntity igniter) {
+        explode(world, pos, igniter);
+    }
+
+    @Override
+    public void wasExploded(World world, BlockPos pos, Explosion explosion) {
+        catchFire(world.getBlockState(pos), world, pos, null, explosion.getSourceMob());
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
     public boolean dropFromExplosion(Explosion explosion) {
         return false;
     }
 
-    @Override
-    public void catchFire(BlockState state, Level world, BlockPos pos, @Nullable net.minecraft.core.Direction face, @Nullable LivingEntity igniter) {
-        explode(world, pos, igniter);
-    }
-
-    private void explode(Level world, BlockPos pos, Entity entity) {
+    protected void explode(World world, BlockPos pos, @Nullable Entity entity) {
         if (!world.isClientSide) {
-            world.explode(entity, pos.getX(), pos.getY(), pos.getZ(), 1.0F, true, Explosion.BlockInteraction.DESTROY);
+            world.explode(entity, pos.getX(), pos.getY(), pos.getZ(), 1.0F, true, Explosion.Mode.DESTROY);
         }
     }
 }

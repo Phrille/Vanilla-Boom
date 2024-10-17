@@ -1,30 +1,32 @@
 package phrille.vanillaboom.block;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.SlabBlock;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.function.Supplier;
 
+@ParametersAreNonnullByDefault
 public class ModSlabBlock extends SlabBlock {
     protected Supplier<BlockState> state;
 
     public ModSlabBlock(Supplier<BlockState> state) {
-        this(state, BlockBehaviour.Properties.copy(state.get().getBlock()));
+        this(state, AbstractBlock.Properties.copy(state.get().getBlock()));
     }
 
-    public ModSlabBlock(Supplier<BlockState> state, BlockBehaviour.Properties properties) {
+    public ModSlabBlock(Supplier<BlockState> state, AbstractBlock.Properties properties) {
         super(properties);
         this.state = state;
     }
 
     @Override
-    public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {
-        getParent().stepOn(world, pos, state, entity);
+    public void stepOn(World world, BlockPos pos, Entity entity) {
+        getParent().stepOn(world, pos, entity);
     }
 
     public Block getParent() {

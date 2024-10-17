@@ -1,61 +1,61 @@
 package phrille.vanillaboom.block;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.particles.ParticleTypes;
+import net.minecraft.potion.PotionUtils;
+import net.minecraft.potion.Potions;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUtils;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.util.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.world.World;
 import phrille.vanillaboom.config.VanillaBoomConfig;
 import phrille.vanillaboom.util.Utils;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Random;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class HydroRockBlock extends Block {
     public HydroRockBlock() {
         super(Properties.copy(Blocks.PRISMARINE));
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    @SuppressWarnings("deprecation")
+    public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
         ItemStack stack = player.getItemInHand(hand);
 
-        if (VanillaBoomConfig.fillWaterBottleHydroRock && stack.is(Items.GLASS_BOTTLE)) {
+        if (VanillaBoomConfig.fillWaterBottleHydroRock && !stack.isEmpty() && stack.getItem() == Items.GLASS_BOTTLE) {
             if (world.dimensionType().ultraWarm()) {
-                world.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, 1.0F);
+                world.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 Utils.spawnParticles(ParticleTypes.SMOKE, world, pos.above());
             } else {
                 fillBottle(stack, player, PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER));
-                world.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+                world.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 Utils.spawnParticles(ParticleTypes.SPLASH, world, pos.above());
             }
 
-            return InteractionResult.sidedSuccess(world.isClientSide);
+            return ActionResultType.sidedSuccess(world.isClientSide);
         }
 
         return super.use(state, world, pos, player, hand, hit);
     }
 
-    protected ItemStack fillBottle(ItemStack heldStack, Player player, ItemStack newStack) {
+    protected void fillBottle(ItemStack heldStack, PlayerEntity player, ItemStack newStack) {
         player.awardStat(Stats.ITEM_USED.get(heldStack.getItem()));
-        return ItemUtils.createFilledResult(heldStack, player, newStack);
+        DrinkHelper.createFilledResult(heldStack, player, newStack);
     }
 
     @Override
-    public void animateTick(BlockState state, Level world, BlockPos pos, Random rand) {
+    public void animateTick(BlockState state, World world, BlockPos pos, Random rand) {
         Direction direction = Direction.getRandom(rand);
         BlockPos blockpos = pos.relative(direction);
         BlockState blockstate = world.getBlockState(blockpos);
