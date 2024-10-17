@@ -1,21 +1,26 @@
 package phrille.vanillaboom.item;
 
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.ArrowItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.projectile.AbstractArrowEntity;
+import net.minecraft.item.ArrowItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import phrille.vanillaboom.entity.PrismarineArrow;
 import phrille.vanillaboom.util.VanillaBoomTab;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class PrismarineArrowItem extends ArrowItem {
     public PrismarineArrowItem() {
         super(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB));
     }
 
     @Override
-    public AbstractArrow createArrow(Level world, ItemStack stack, LivingEntity shooter) {
+    public AbstractArrowEntity createArrow(World world, ItemStack stack, LivingEntity shooter) {
         return new PrismarineArrow(world, shooter);
     }
 }

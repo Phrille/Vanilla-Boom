@@ -1,76 +1,79 @@
 package phrille.vanillaboom.item;
 
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.decoration.HangingEntity;
-import net.minecraft.world.entity.decoration.Motive;
-import net.minecraft.world.entity.decoration.Painting;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.item.HangingEntity;
+import net.minecraft.entity.item.PaintingEntity;
+import net.minecraft.entity.item.PaintingType;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUseContext;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Direction;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.World;
 import phrille.vanillaboom.util.VanillaBoomTab;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class PaintingItem extends Item {
-    private final Motive motive;
+    private final PaintingType motive;
 
-    public PaintingItem(Motive motive) {
+    public PaintingItem(PaintingType motive) {
         super(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB));
         this.motive = motive;
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext context) {
+    public ActionResultType useOn(ItemUseContext context) {
         BlockPos pos = context.getClickedPos();
         Direction direction = context.getClickedFace();
         BlockPos relative = pos.relative(direction);
-        Player player = context.getPlayer();
+        PlayerEntity player = context.getPlayer();
         ItemStack stack = context.getItemInHand();
 
-        if (player != null && !this.mayPlace(player, direction, stack, relative)) {
-            return InteractionResult.FAIL;
+        if (player != null && !mayPlace(player, direction, stack, relative)) {
+            return ActionResultType.FAIL;
         } else {
-            Level level = context.getLevel();
-            HangingEntity hangingentity = new Painting(level, relative, direction, motive);
+            World world = context.getLevel();
+            HangingEntity hangingentity = new PaintingEntity(world, relative, direction, motive);
 
-            CompoundTag compoundtag = stack.getTag();
-            if (compoundtag != null) {
-                EntityType.updateCustomEntityTag(level, player, hangingentity, compoundtag);
+            CompoundNBT nbt = stack.getTag();
+            if (nbt != null) {
+                EntityType.updateCustomEntityTag(world, player, hangingentity, nbt);
             }
 
             if (hangingentity.survives()) {
-                if (!level.isClientSide) {
+                if (!world.isClientSide) {
                     hangingentity.playPlacementSound();
-                    level.gameEvent(player, GameEvent.ENTITY_PLACE, pos);
-                    level.addFreshEntity(hangingentity);
+                    //world.gameEvent(player, GameEvent.ENTITY_PLACE, pos);
+                    world.addFreshEntity(hangingentity);
                 }
 
                 stack.shrink(1);
-                return InteractionResult.sidedSuccess(level.isClientSide);
+                return ActionResultType.sidedSuccess(world.isClientSide);
             } else {
-                return InteractionResult.CONSUME;
+                return ActionResultType.CONSUME;
             }
         }
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(new TranslatableComponent(getDescriptionId() + ".desc").withStyle(ChatFormatting.BLUE));
+    public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
+        tooltip.add(new TranslationTextComponent(getDescriptionId() + ".desc").withStyle(TextFormatting.BLUE));
     }
 
-    protected boolean mayPlace(Player player, Direction direction, ItemStack stack, BlockPos pos) {
+    protected boolean mayPlace(PlayerEntity player, Direction direction, ItemStack stack, BlockPos pos) {
         return !direction.getAxis().isVertical() && player.mayUseItemAt(pos, direction, stack);
     }
 }

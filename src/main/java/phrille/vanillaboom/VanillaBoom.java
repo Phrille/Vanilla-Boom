@@ -48,7 +48,6 @@ public class VanillaBoom {
             FuelHandler.registerBurnTimes();
             Utils.registerFlowerPots();
             Utils.addCompostMaterials();
-            Utils.registerCandleCakes();
         });
     }
 

@@ -1,15 +1,12 @@
 package phrille.vanillaboom.item;
 
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.decoration.Motive;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.BowlFoodItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import net.minecraft.entity.item.PaintingType;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.item.*;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.common.ForgeSpawnEggItem;
-import net.minecraftforge.fmllegacy.RegistryObject;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
@@ -44,10 +41,10 @@ public class ModItems {
     public static final RegistryObject<Item> MONSTER_PIE = ITEMS.register("monster_pie", () -> new Item(new Item.Properties().food(ModFoods.MONSTER_PIE).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> RAW_POLAR_BEAR_MEAT = ITEMS.register("raw_polar_bear_meat", () -> new Item(new Item.Properties().food(ModFoods.RAW_POLAR_BEAR_MEAT).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
     public static final RegistryObject<Item> POLAR_BEAR_STEAK = ITEMS.register("polar_bear_steak", () -> new Item(new Item.Properties().food(ModFoods.POLAR_BEAR_STEAK).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
-    public static final RegistryObject<Item> POTATO_SOUP = ITEMS.register("potato_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.POTATO_SOUP).stacksTo(1).craftRemainder(Items.BOWL).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
-    public static final RegistryObject<Item> MEAT_SOUP = ITEMS.register("meat_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.MEAT_SOUP).stacksTo(1).craftRemainder(Items.BOWL).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
-    public static final RegistryObject<Item> FISH_SOUP = ITEMS.register("fish_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.FISH_SOUP).stacksTo(1).craftRemainder(Items.BOWL).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
-    public static final RegistryObject<Item> RICE_BOWL = ITEMS.register("rice_bowl", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.RICE_BOWL).stacksTo(1).craftRemainder(Items.BOWL).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> POTATO_SOUP = ITEMS.register("potato_soup", () -> new SoupItem(new Item.Properties().food(ModFoods.POTATO_SOUP).stacksTo(1).craftRemainder(Items.BOWL).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> MEAT_SOUP = ITEMS.register("meat_soup", () -> new SoupItem(new Item.Properties().food(ModFoods.MEAT_SOUP).stacksTo(1).craftRemainder(Items.BOWL).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> FISH_SOUP = ITEMS.register("fish_soup", () -> new SoupItem(new Item.Properties().food(ModFoods.FISH_SOUP).stacksTo(1).craftRemainder(Items.BOWL).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> RICE_BOWL = ITEMS.register("rice_bowl", () -> new SoupItem(new Item.Properties().food(ModFoods.RICE_BOWL).stacksTo(1).craftRemainder(Items.BOWL).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
 
     //Fish
     public static final RegistryObject<Item> TUNA = ITEMS.register("tuna", () -> new Item(new Item.Properties().food(ModFoods.TUNA).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
@@ -60,10 +57,10 @@ public class ModItems {
     public static final RegistryObject<Item> COOKED_EEL = ITEMS.register("cooked_eel", () -> new Item(new Item.Properties().food(ModFoods.COOKED_EEL).tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
 
     //Fish Buckets
-    public static final RegistryObject<Item> TUNA_BUCKET = ITEMS.register("tuna_bucket", () -> new FishBucketItem(ModEntities.TUNA));
-    public static final RegistryObject<Item> PERCH_BUCKET = ITEMS.register("perch_bucket", () -> new FishBucketItem(ModEntities.PERCH));
-    public static final RegistryObject<Item> PIKE_BUCKET = ITEMS.register("pike_bucket", () -> new FishBucketItem(ModEntities.PIKE));
-    public static final RegistryObject<Item> EEL_BUCKET = ITEMS.register("eel_bucket", () -> new FishBucketItem(ModEntities.EEL));
+    public static final RegistryObject<Item> TUNA_BUCKET = ITEMS.register("tuna_bucket", () -> new FishBucketItem(ModEntities.TUNA, () -> Fluids.WATER, new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> PERCH_BUCKET = ITEMS.register("perch_bucket", () -> new FishBucketItem(ModEntities.PERCH, () -> Fluids.WATER, new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> PIKE_BUCKET = ITEMS.register("pike_bucket", () -> new FishBucketItem(ModEntities.PIKE, () -> Fluids.WATER, new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
+    public static final RegistryObject<Item> EEL_BUCKET = ITEMS.register("eel_bucket", () -> new FishBucketItem(ModEntities.EEL, () -> Fluids.WATER, new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
 
     //Spawn Eggs
     public static final RegistryObject<Item> TUNA_SPAWN_EGG = ITEMS.register("tuna_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.TUNA, 0x33495E, 0xD7C376, new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
@@ -73,57 +70,72 @@ public class ModItems {
 
     //Paintings
     public static final RegistryObject<Item> CANVAS = ITEMS.register("canvas", () -> new Item(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB)));
-    public static final RegistryObject<Item> KEBAB_PAINTING = ITEMS.register("kebab_painting", () -> new PaintingItem(Motive.KEBAB));
-    public static final RegistryObject<Item> AZTEC_PAINTING = ITEMS.register("aztec_painting", () -> new PaintingItem(Motive.AZTEC));
-    public static final RegistryObject<Item> ALBAN_PAINTING = ITEMS.register("alban_painting", () -> new PaintingItem(Motive.ALBAN));
-    public static final RegistryObject<Item> AZTEC2_PAINTING = ITEMS.register("aztec2_painting", () -> new PaintingItem(Motive.AZTEC2));
-    public static final RegistryObject<Item> BOMB_PAINTING = ITEMS.register("bomb_painting", () -> new PaintingItem(Motive.BOMB));
-    public static final RegistryObject<Item> PLANT_PAINTING = ITEMS.register("plant_painting", () -> new PaintingItem(Motive.PLANT));
-    public static final RegistryObject<Item> WASTELAND_PAINTING = ITEMS.register("wasteland_painting", () -> new PaintingItem(Motive.WASTELAND));
-    public static final RegistryObject<Item> POOL_PAINTING = ITEMS.register("pool_painting", () -> new PaintingItem(Motive.POOL));
-    public static final RegistryObject<Item> COURBET_PAINTING = ITEMS.register("courbet_painting", () -> new PaintingItem(Motive.COURBET));
-    public static final RegistryObject<Item> SEA_PAINTING = ITEMS.register("sea_painting", () -> new PaintingItem(Motive.SEA));
-    public static final RegistryObject<Item> SUNSET_PAINTING = ITEMS.register("sunset_painting", () -> new PaintingItem(Motive.SUNSET));
-    public static final RegistryObject<Item> CREEBET_PAINTING = ITEMS.register("creebet_painting", () -> new PaintingItem(Motive.CREEBET));
-    public static final RegistryObject<Item> WANDERER_PAINTING = ITEMS.register("wanderer_painting", () -> new PaintingItem(Motive.WANDERER));
-    public static final RegistryObject<Item> GRAHAM_PAINTING = ITEMS.register("graham_painting", () -> new PaintingItem(Motive.GRAHAM));
-    public static final RegistryObject<Item> MATCH_PAINTING = ITEMS.register("match_painting", () -> new PaintingItem(Motive.MATCH));
-    public static final RegistryObject<Item> BUST_PAINTING = ITEMS.register("bust_painting", () -> new PaintingItem(Motive.BUST));
-    public static final RegistryObject<Item> STAGE_PAINTING = ITEMS.register("stage_painting", () -> new PaintingItem(Motive.STAGE));
-    public static final RegistryObject<Item> VOID_PAINTING = ITEMS.register("void_painting", () -> new PaintingItem(Motive.VOID));
-    public static final RegistryObject<Item> SKULL_AND_ROSES_PAINTING = ITEMS.register("skull_and_roses_painting", () -> new PaintingItem(Motive.SKULL_AND_ROSES));
-    public static final RegistryObject<Item> WITHER_PAINTING = ITEMS.register("wither_painting", () -> new PaintingItem(Motive.WITHER));
-    public static final RegistryObject<Item> FIGHTERS_PAINTING = ITEMS.register("fighters_painting", () -> new PaintingItem(Motive.FIGHTERS));
-    public static final RegistryObject<Item> POINTER_PAINTING = ITEMS.register("pointer_painting", () -> new PaintingItem(Motive.POINTER));
-    public static final RegistryObject<Item> PIGSCENE_PAINTING = ITEMS.register("pigscene_painting", () -> new PaintingItem(Motive.PIGSCENE));
-    public static final RegistryObject<Item> BURNING_SKULL_PAINTING = ITEMS.register("burning_skull_painting", () -> new PaintingItem(Motive.BURNING_SKULL));
-    public static final RegistryObject<Item> SKELETON_PAINTING = ITEMS.register("skeleton_painting", () -> new PaintingItem(Motive.SKELETON));
-    public static final RegistryObject<Item> DONKEY_KONG_PAINTING = ITEMS.register("donkey_kong_painting", () -> new PaintingItem(Motive.DONKEY_KONG));
+    public static final RegistryObject<Item> KEBAB_PAINTING = ITEMS.register("kebab_painting", () -> new PaintingItem(PaintingType.KEBAB));
+    public static final RegistryObject<Item> AZTEC_PAINTING = ITEMS.register("aztec_painting", () -> new PaintingItem(PaintingType.AZTEC));
+    public static final RegistryObject<Item> ALBAN_PAINTING = ITEMS.register("alban_painting", () -> new PaintingItem(PaintingType.ALBAN));
+    public static final RegistryObject<Item> AZTEC2_PAINTING = ITEMS.register("aztec2_painting", () -> new PaintingItem(PaintingType.AZTEC2));
+    public static final RegistryObject<Item> BOMB_PAINTING = ITEMS.register("bomb_painting", () -> new PaintingItem(PaintingType.BOMB));
+    public static final RegistryObject<Item> PLANT_PAINTING = ITEMS.register("plant_painting", () -> new PaintingItem(PaintingType.PLANT));
+    public static final RegistryObject<Item> WASTELAND_PAINTING = ITEMS.register("wasteland_painting", () -> new PaintingItem(PaintingType.WASTELAND));
+    public static final RegistryObject<Item> POOL_PAINTING = ITEMS.register("pool_painting", () -> new PaintingItem(PaintingType.POOL));
+    public static final RegistryObject<Item> COURBET_PAINTING = ITEMS.register("courbet_painting", () -> new PaintingItem(PaintingType.COURBET));
+    public static final RegistryObject<Item> SEA_PAINTING = ITEMS.register("sea_painting", () -> new PaintingItem(PaintingType.SEA));
+    public static final RegistryObject<Item> SUNSET_PAINTING = ITEMS.register("sunset_painting", () -> new PaintingItem(PaintingType.SUNSET));
+    public static final RegistryObject<Item> CREEBET_PAINTING = ITEMS.register("creebet_painting", () -> new PaintingItem(PaintingType.CREEBET));
+    public static final RegistryObject<Item> WANDERER_PAINTING = ITEMS.register("wanderer_painting", () -> new PaintingItem(PaintingType.WANDERER));
+    public static final RegistryObject<Item> GRAHAM_PAINTING = ITEMS.register("graham_painting", () -> new PaintingItem(PaintingType.GRAHAM));
+    public static final RegistryObject<Item> MATCH_PAINTING = ITEMS.register("match_painting", () -> new PaintingItem(PaintingType.MATCH));
+    public static final RegistryObject<Item> BUST_PAINTING = ITEMS.register("bust_painting", () -> new PaintingItem(PaintingType.BUST));
+    public static final RegistryObject<Item> STAGE_PAINTING = ITEMS.register("stage_painting", () -> new PaintingItem(PaintingType.STAGE));
+    public static final RegistryObject<Item> VOID_PAINTING = ITEMS.register("void_painting", () -> new PaintingItem(PaintingType.VOID));
+    public static final RegistryObject<Item> SKULL_AND_ROSES_PAINTING = ITEMS.register("skull_and_roses_painting", () -> new PaintingItem(PaintingType.SKULL_AND_ROSES));
+    public static final RegistryObject<Item> WITHER_PAINTING = ITEMS.register("wither_painting", () -> new PaintingItem(PaintingType.WITHER));
+    public static final RegistryObject<Item> FIGHTERS_PAINTING = ITEMS.register("fighters_painting", () -> new PaintingItem(PaintingType.FIGHTERS));
+    public static final RegistryObject<Item> POINTER_PAINTING = ITEMS.register("pointer_painting", () -> new PaintingItem(PaintingType.POINTER));
+    public static final RegistryObject<Item> PIGSCENE_PAINTING = ITEMS.register("pigscene_painting", () -> new PaintingItem(PaintingType.PIGSCENE));
+    public static final RegistryObject<Item> BURNING_SKULL_PAINTING = ITEMS.register("burning_skull_painting", () -> new PaintingItem(PaintingType.BURNING_SKULL));
+    public static final RegistryObject<Item> SKELETON_PAINTING = ITEMS.register("skeleton_painting", () -> new PaintingItem(PaintingType.SKELETON));
+    public static final RegistryObject<Item> DONKEY_KONG_PAINTING = ITEMS.register("donkey_kong_painting", () -> new PaintingItem(PaintingType.DONKEY_KONG));
 
     public static class ModFoods {
-        public static final FoodProperties RAW_POLAR_BEAR_MEAT = new FoodProperties.Builder().nutrition(3).saturationMod(0.3F).meat().build();
-        public static final FoodProperties POLAR_BEAR_STEAK = new FoodProperties.Builder().nutrition(8).saturationMod(0.8F).meat().build();
-        public static final FoodProperties COOKED_EGG = new FoodProperties.Builder().nutrition(6).saturationMod(0.6F).build();
-        public static final FoodProperties DROWNED_FLESH = new FoodProperties.Builder().nutrition(4).saturationMod(0.1F).effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 0.8F).effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 600, 0), 0.5F).meat().build();
-        public static final FoodProperties MELON_POPSICLE = new FoodProperties.Builder().nutrition(3).saturationMod(0.3F).fast().build();
-        public static final FoodProperties PINE_CONE = new FoodProperties.Builder().nutrition(3).saturationMod(0.2F).fast().build();
-        public static final FoodProperties CHOCOLATE = new FoodProperties.Builder().nutrition(5).saturationMod(0.3F).effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 200, 0), 0.5F).build();
-        public static final FoodProperties TOMATO = new FoodProperties.Builder().nutrition(4).saturationMod(0.2F).build();
-        public static final FoodProperties APPLE_PIE = new FoodProperties.Builder().nutrition(8).saturationMod(0.3F).build();
-        public static final FoodProperties BERRY_PIE = new FoodProperties.Builder().nutrition(8).saturationMod(0.3F).build();
-        public static final FoodProperties MONSTER_PIE = new FoodProperties.Builder().nutrition(10).saturationMod(0.2F).effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 1.0F).meat().build();
-        public static final FoodProperties POTATO_SOUP = new FoodProperties.Builder().nutrition(8).saturationMod(0.5F).build();
-        public static final FoodProperties MEAT_SOUP = new FoodProperties.Builder().nutrition(12).saturationMod(0.7F).build();
-        public static final FoodProperties FISH_SOUP = new FoodProperties.Builder().nutrition(10).saturationMod(0.6F).build();
-        public static final FoodProperties RICE_BOWL = new FoodProperties.Builder().nutrition(5).saturationMod(0.2F).build();
+        public static final Food RAW_POLAR_BEAR_MEAT = new Food.Builder().nutrition(3).saturationMod(0.3F).meat().build();
+        public static final Food POLAR_BEAR_STEAK = new Food.Builder().nutrition(8).saturationMod(0.8F).meat().build();
+        public static final Food COOKED_EGG = new Food.Builder().nutrition(6).saturationMod(0.6F).build();
+        public static final Food DROWNED_FLESH = new Food.Builder()
+                .nutrition(4)
+                .saturationMod(0.1F)
+                .effect(() -> new EffectInstance(Effects.HUNGER, 600, 0), 0.8F)
+                .effect(() -> new EffectInstance(Effects.WATER_BREATHING, 600, 0), 0.5F)
+                .meat()
+                .build();
+        public static final Food MELON_POPSICLE = new Food.Builder().nutrition(3).saturationMod(0.3F).fast().build();
+        public static final Food PINE_CONE = new Food.Builder().nutrition(3).saturationMod(0.2F).fast().build();
+        public static final Food CHOCOLATE = new Food.Builder()
+                .nutrition(5)
+                .saturationMod(0.3F)
+                .effect(() -> new EffectInstance(Effects.ABSORPTION, 200, 0), 0.5F)
+                .build();
+        public static final Food TOMATO = new Food.Builder().nutrition(4).saturationMod(0.2F).build();
+        public static final Food APPLE_PIE = new Food.Builder().nutrition(8).saturationMod(0.3F).build();
+        public static final Food BERRY_PIE = new Food.Builder().nutrition(8).saturationMod(0.3F).build();
+        public static final Food MONSTER_PIE = new Food.Builder()
+                .nutrition(10)
+                .saturationMod(0.2F)
+                .effect(() -> new EffectInstance(Effects.HUNGER, 600, 0), 1.0F)
+                .meat()
+                .build();
+        public static final Food POTATO_SOUP = new Food.Builder().nutrition(8).saturationMod(0.5F).build();
+        public static final Food MEAT_SOUP = new Food.Builder().nutrition(12).saturationMod(0.7F).build();
+        public static final Food FISH_SOUP = new Food.Builder().nutrition(10).saturationMod(0.6F).build();
+        public static final Food RICE_BOWL = new Food.Builder().nutrition(5).saturationMod(0.2F).build();
 
-        public static final FoodProperties TUNA = new FoodProperties.Builder().nutrition(3).saturationMod(0.1F).build();
-        public static final FoodProperties COOKED_TUNA = new FoodProperties.Builder().nutrition(7).saturationMod(0.6F).build();
-        public static final FoodProperties PERCH = new FoodProperties.Builder().nutrition(2).saturationMod(0.1F).build();
-        public static final FoodProperties COOKED_PERCH = new FoodProperties.Builder().nutrition(6).saturationMod(0.6F).build();
-        public static final FoodProperties PIKE = new FoodProperties.Builder().nutrition(2).saturationMod(0.1F).build();
-        public static final FoodProperties COOKED_PIKE = new FoodProperties.Builder().nutrition(7).saturationMod(0.6F).build();
-        public static final FoodProperties EEL = new FoodProperties.Builder().nutrition(2).saturationMod(0.1F).build();
-        public static final FoodProperties COOKED_EEL = new FoodProperties.Builder().nutrition(6).saturationMod(0.6F).build();
+        public static final Food TUNA = new Food.Builder().nutrition(3).saturationMod(0.1F).build();
+        public static final Food COOKED_TUNA = new Food.Builder().nutrition(7).saturationMod(0.6F).build();
+        public static final Food PERCH = new Food.Builder().nutrition(2).saturationMod(0.1F).build();
+        public static final Food COOKED_PERCH = new Food.Builder().nutrition(6).saturationMod(0.6F).build();
+        public static final Food PIKE = new Food.Builder().nutrition(2).saturationMod(0.1F).build();
+        public static final Food COOKED_PIKE = new Food.Builder().nutrition(7).saturationMod(0.6F).build();
+        public static final Food EEL = new Food.Builder().nutrition(2).saturationMod(0.1F).build();
+        public static final Food COOKED_EEL = new Food.Builder().nutrition(6).saturationMod(0.6F).build();
     }
 }

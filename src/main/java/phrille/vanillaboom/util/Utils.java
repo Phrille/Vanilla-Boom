@@ -1,8 +1,15 @@
 package phrille.vanillaboom.util;
 
+import net.minecraft.block.Blocks;
+import net.minecraft.block.ComposterBlock;
+import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.particles.BasicParticleType;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import phrille.vanillaboom.VanillaBoom;
+import phrille.vanillaboom.block.ModBlocks;
+import phrille.vanillaboom.item.ModItems;
 
 public class Utils {
 
@@ -24,59 +31,5 @@ public class Utils {
 
     public static void registerFlowerPots() {
         ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(new ResourceLocation(VanillaBoom.MOD_ID, "rose"), ModBlocks.POTTED_ROSE);
-    }
-
-    public static void registerCandleCakes() {
-        ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.CANDLE_CHOCOLATE_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.WHITE_CANDLE_CHOCOLATE_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.ORANGE_CANDLE_CHOCOLATE_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.MAGENTA_CANDLE_CHOCOLATE_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.LIGHT_BLUE_CANDLE_CHOCOLATE_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.YELLOW_CANDLE_CHOCOLATE_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.LIME_CANDLE_CHOCOLATE_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.PINK_CANDLE_CHOCOLATE_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.GRAY_CANDLE_CHOCOLATE_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.LIGHT_GRAY_CANDLE_CHOCOLATE_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.CYAN_CANDLE_CHOCOLATE_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.PURPLE_CANDLE_CHOCOLATE_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.BLUE_CANDLE_CHOCOLATE_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.BROWN_CANDLE_CHOCOLATE_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.GREEN_CANDLE_CHOCOLATE_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.RED_CANDLE_CHOCOLATE_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.BLACK_CANDLE_CHOCOLATE_CAKE.get());
-        ((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.CANDLE_BERRY_CAKE.get());
-        ((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.WHITE_CANDLE_BERRY_CAKE.get());
-        ((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.ORANGE_CANDLE_BERRY_CAKE.get());
-        ((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.MAGENTA_CANDLE_BERRY_CAKE.get());
-        ((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.LIGHT_BLUE_CANDLE_BERRY_CAKE.get());
-        ((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.YELLOW_CANDLE_BERRY_CAKE.get());
-        ((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.LIME_CANDLE_BERRY_CAKE.get());
-        ((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.PINK_CANDLE_BERRY_CAKE.get());
-        ((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.GRAY_CANDLE_BERRY_CAKE.get());
-        ((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.LIGHT_GRAY_CANDLE_BERRY_CAKE.get());
-        ((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.CYAN_CANDLE_BERRY_CAKE.get());
-        ((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.PURPLE_CANDLE_BERRY_CAKE.get());
-        ((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.BLUE_CANDLE_BERRY_CAKE.get());
-        ((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.BROWN_CANDLE_BERRY_CAKE.get());
-        ((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.GREEN_CANDLE_BERRY_CAKE.get());
-        ((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.RED_CANDLE_BERRY_CAKE.get());
-        ((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.BLACK_CANDLE_BERRY_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.CANDLE_CARROT_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.WHITE_CANDLE_CARROT_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.ORANGE_CANDLE_CARROT_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.MAGENTA_CANDLE_CARROT_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.LIGHT_BLUE_CANDLE_CARROT_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.YELLOW_CANDLE_CARROT_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.LIME_CANDLE_CARROT_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.PINK_CANDLE_CARROT_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.GRAY_CANDLE_CARROT_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.LIGHT_GRAY_CANDLE_CARROT_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.CYAN_CANDLE_CARROT_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.PURPLE_CANDLE_CARROT_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.BLUE_CANDLE_CARROT_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.BROWN_CANDLE_CARROT_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.GREEN_CANDLE_CARROT_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.RED_CANDLE_CARROT_CAKE.get());
-        ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).addCandleCake((ModCandleCakeBlock) ModBlocks.BLACK_CANDLE_CARROT_CAKE.get());
     }
 }
