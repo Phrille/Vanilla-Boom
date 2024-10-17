@@ -1,11 +1,11 @@
 modLoader="javafml"
-loaderVersion="[37,)"
+loaderVersion="[36,)"
 license="GNU General Public License v3.0"
 issueTrackerURL="https://github.com/Phrille/Vanilla-Boom/issues"
 
 [[mods]]
 modId="vanillaboom"
-version="1.17.1-1.8.0.3"
+version="1.16.5-1.7.1.0"
 displayName="Vanilla Boom"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/vanilla-boom"
 logoFile="vanillaboom_logo.png"
@@ -18,13 +18,13 @@ Vanilla Boom is a mod that aims to expand the vanilla experience. All the things
 [[dependencies.vanillaboom]]
     modId="forge"
     mandatory=true
-    versionRange="[37,)"
+    versionRange="[36,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.vanillaboom]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.17.1,1.18)"
+    versionRange="[1.16.5,1.17)"
     ordering="NONE"
     side="BOTH"
