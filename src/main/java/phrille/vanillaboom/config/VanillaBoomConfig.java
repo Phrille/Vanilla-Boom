@@ -3,19 +3,19 @@ package phrille.vanillaboom.config;
 import net.minecraftforge.fml.config.ModConfig;
 
 public class VanillaBoomConfig {
-    //General
+    // General
     public static boolean growNetherWarts;
     public static boolean growWitherRoses;
     public static boolean placeSlimeBallPistons;
     public static boolean removeSlimeBallPistons;
     public static boolean fillWaterBottleHydroRock;
 
-    //Worldgen Overworld
+    // Worldgen Overworld
     public static boolean peridotiteGenEnabled;
     public static boolean hydroRockGenEnabled;
     public static boolean roseGenEnabled;
 
-    //Worldgen Nether
+    // Worldgen Nether
     public static boolean infernalRockGenEnabled;
     public static boolean boneSandGenEnabled;
     public static boolean witherBoneSandGenEnabled;

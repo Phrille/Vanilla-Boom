@@ -1,5 +1,6 @@
 package phrille.vanillaboom.data.loot;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.item.Items;
@@ -23,6 +24,7 @@ import phrille.vanillaboom.data.ModDataGenerator;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.Utils;
 
+@MethodsReturnNonnullByDefault
 public class ModBlockLootTables extends BlockLoot {
 
     @Override

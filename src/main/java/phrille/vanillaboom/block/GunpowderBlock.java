@@ -1,5 +1,6 @@
 package phrille.vanillaboom.block;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.stats.Stats;
@@ -14,7 +15,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,21 +23,24 @@ import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.BlockHitResult;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class GunpowderBlock extends FallingBlock {
-
     public GunpowderBlock() {
         super(Properties.of(Material.SAND, MaterialColor.COLOR_LIGHT_GRAY).strength(0.5F).sound(SoundType.SAND));
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    @SuppressWarnings("deprecation")
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
 
         if (!stack.is(Items.FLINT_AND_STEEL) && !stack.is(Items.FIRE_CHARGE)) {
-            return super.use(state, world, pos, player, hand, hit);
+            return super.use(state, level, pos, player, hand, hit);
         } else {
-            onCaughtFire(state, world, pos, hit.getDirection(), player);
+            onCaughtFire(state, level, pos, hit.getDirection(), player);
 
             Item item = stack.getItem();
             if (!player.isCreative()) {
@@ -54,33 +57,35 @@ public class GunpowderBlock extends FallingBlock {
     }
 
     @Override
-    public void wasExploded(Level world, BlockPos pos, Explosion explosion) {
-        onCaughtFire(world.getBlockState(pos), world, pos, null, explosion.getSourceMob());
+    public void wasExploded(Level level, BlockPos pos, Explosion explosion) {
+        onCaughtFire(level.getBlockState(pos), level, pos, null, explosion.getSourceMob());
     }
 
     @Override
-    public void onProjectileHit(Level world, BlockState state, BlockHitResult hit, Projectile projectile) {
-        if (!world.isClientSide) {
+    @SuppressWarnings("deprecation")
+    public void onProjectileHit(Level level, BlockState state, BlockHitResult hit, Projectile projectile) {
+        if (!level.isClientSide) {
             if (projectile.isOnFire()) {
                 Entity owner = projectile.getOwner();
-                onCaughtFire(state, world, hit.getBlockPos(), null, owner instanceof LivingEntity ? (LivingEntity) owner : null);
+                onCaughtFire(state, level, hit.getBlockPos(), null, owner instanceof LivingEntity ? (LivingEntity) owner : null);
             }
         }
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public boolean dropFromExplosion(Explosion explosion) {
         return false;
     }
 
     @Override
-    public void onCaughtFire(BlockState state, Level world, BlockPos pos, @Nullable Direction face, @Nullable LivingEntity igniter) {
-        explode(world, pos, igniter);
+    public void onCaughtFire(BlockState state, Level level, BlockPos pos, @Nullable Direction face, @Nullable LivingEntity igniter) {
+        explode(level, pos, igniter);
     }
 
-    private void explode(Level world, BlockPos pos, Entity entity) {
-        if (!world.isClientSide) {
-            world.explode(entity, pos.getX(), pos.getY(), pos.getZ(), 1.0F, true, Explosion.BlockInteraction.DESTROY);
+    private void explode(Level level, BlockPos pos, @Nullable Entity entity) {
+        if (!level.isClientSide) {
+            level.explode(entity, pos.getX(), pos.getY(), pos.getZ(), 1.0F, true, Explosion.BlockInteraction.DESTROY);
         }
     }
 }

@@ -22,12 +22,14 @@ import phrille.vanillaboom.block.ModWallBlock;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.ModTags;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.function.Consumer;
 
+@ParametersAreNonnullByDefault
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    public ModRecipeProvider(DataGenerator dataGenerator) {
-        super(dataGenerator);
+    public ModRecipeProvider(DataGenerator generator) {
+        super(generator);
     }
 
     @Override
@@ -420,9 +422,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike wall, List<ItemLike> blocks) {
-        blocks.forEach(block -> {
-            stonecutting(finishedRecipe, wall, block);
-        });
+        blocks.forEach(block -> stonecutting(finishedRecipe, wall, block));
     }
 
     //Shaped Recipe

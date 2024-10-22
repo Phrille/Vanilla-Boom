@@ -7,6 +7,7 @@ import net.minecraftforge.registries.RegistryObject;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 
+@SuppressWarnings("ConstantConditions")
 public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, VanillaBoom.MOD_ID);
 

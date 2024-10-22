@@ -8,22 +8,24 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Random;
 
+@ParametersAreNonnullByDefault
 public class InfernalRockBlock extends Block {
     public InfernalRockBlock() {
         super(Properties.copy(Blocks.NETHERRACK));
     }
 
     @Override
-    public void animateTick(BlockState state, Level world, BlockPos pos, Random rand) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, Random rand) {
         Direction direction = Direction.getRandom(rand);
 
         if (direction != Direction.UP) {
             BlockPos blockpos = pos.relative(direction);
-            BlockState blockstate = world.getBlockState(blockpos);
+            BlockState blockstate = level.getBlockState(blockpos);
 
-            if (!state.canOcclude() || !blockstate.isFaceSturdy(world, blockpos, direction.getOpposite())) {
+            if (!state.canOcclude() || !blockstate.isFaceSturdy(level, blockpos, direction.getOpposite())) {
                 double x = pos.getX();
                 double y = pos.getY();
                 double z = pos.getZ();
@@ -51,7 +53,7 @@ public class InfernalRockBlock extends Block {
                     }
                 }
 
-                world.addParticle(ParticleTypes.DRIPPING_LAVA, x, y, z, 0.0D, 0.0D, 0.0D);
+                level.addParticle(ParticleTypes.DRIPPING_LAVA, x, y, z, 0.0D, 0.0D, 0.0D);
             }
         }
     }

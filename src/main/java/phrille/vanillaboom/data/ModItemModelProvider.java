@@ -12,6 +12,8 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.item.ModItems;
 
+import java.util.Objects;
+
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
         super(generator, VanillaBoom.MOD_ID, existingFileHelper);
@@ -247,12 +249,12 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     public void blockItem(Item blockItem) {
-        ResourceLocation parent = blockItem.getRegistryName();
+        ResourceLocation parent = Objects.requireNonNull(blockItem.getRegistryName());
         withExistingParent(name(blockItem), new ResourceLocation(parent.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + parent.getPath()));
     }
 
     public void inventoryBlockItem(Block block) {
-        ResourceLocation parent = block.getRegistryName();
+        ResourceLocation parent = Objects.requireNonNull(block.getRegistryName());
         withExistingParent(name(block.asItem()), new ResourceLocation(parent.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + parent.getPath() + "_inventory"));
     }
 
@@ -265,16 +267,16 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     protected ResourceLocation itemTexture(Item item) {
-        ResourceLocation name = item.getRegistryName();
+        ResourceLocation name = Objects.requireNonNull(item.getRegistryName());
         return new ResourceLocation(name.getNamespace(), ModelProvider.ITEM_FOLDER + "/" + name.getPath());
     }
 
     protected ResourceLocation blockTexture(Block block) {
-        ResourceLocation name = block.getRegistryName();
+        ResourceLocation name = Objects.requireNonNull(block.getRegistryName());
         return new ResourceLocation(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath().replace("_pane", ""));
     }
 
     protected String name(Item item) {
-        return item.getRegistryName().getPath();
+        return Objects.requireNonNull(item.getRegistryName()).getPath();
     }
 }

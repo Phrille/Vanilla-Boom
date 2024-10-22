@@ -6,6 +6,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import phrille.vanillaboom.VanillaBoom;
 
+@SuppressWarnings("unused")
 public class LootTableHandler {
     public static final DeferredRegister<GlobalLootModifierSerializer<?>> GLMS = DeferredRegister.create(ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS, VanillaBoom.MOD_ID);
 

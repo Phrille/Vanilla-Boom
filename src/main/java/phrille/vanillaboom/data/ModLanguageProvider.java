@@ -8,8 +8,8 @@ import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.item.ModItems;
 
 public class ModLanguageProvider extends LanguageProvider {
-    public ModLanguageProvider(DataGenerator gen, String locale) {
-        super(gen, VanillaBoom.MOD_ID, locale);
+    public ModLanguageProvider(DataGenerator generator, String locale) {
+        super(generator, VanillaBoom.MOD_ID, locale);
     }
 
     @Override

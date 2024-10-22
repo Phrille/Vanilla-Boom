@@ -17,8 +17,10 @@ import net.minecraft.world.level.material.Fluids;
 import phrille.vanillaboom.util.VanillaBoomTab;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.function.Supplier;
 
+@ParametersAreNonnullByDefault
 public class FishBucketItem extends MobBucketItem {
 
     public FishBucketItem(Supplier<? extends EntityType<?>> entityType) {
@@ -26,15 +28,15 @@ public class FishBucketItem extends MobBucketItem {
     }
 
     @Override
-    public void checkExtraContent(@Nullable Player player, Level world, ItemStack stack, BlockPos pos) {
-        if (world instanceof ServerLevel) {
-            spawn((ServerLevel) world, stack, pos);
-            world.gameEvent(player, GameEvent.ENTITY_PLACE, pos);
+    public void checkExtraContent(@Nullable Player player, Level level, ItemStack stack, BlockPos pos) {
+        if (level instanceof ServerLevel) {
+            spawn((ServerLevel) level, stack, pos);
+            level.gameEvent(player, GameEvent.ENTITY_PLACE, pos);
         }
     }
 
-    private void spawn(ServerLevel world, ItemStack stack, BlockPos pos) {
-        Entity entity = getFishType().spawn(world, stack, null, pos, MobSpawnType.BUCKET, true, false);
+    private void spawn(ServerLevel level, ItemStack stack, BlockPos pos) {
+        Entity entity = getFishType().spawn(level, stack, null, pos, MobSpawnType.BUCKET, true, false);
 
         if (entity instanceof Bucketable bucketable) {
             bucketable.loadFromBucketTag(stack.getOrCreateTag());

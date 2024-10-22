@@ -8,8 +8,10 @@ import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.function.Supplier;
 
+@ParametersAreNonnullByDefault
 public class ModSlabBlock extends SlabBlock {
     protected Supplier<BlockState> state;
 
@@ -17,14 +19,14 @@ public class ModSlabBlock extends SlabBlock {
         this(state, BlockBehaviour.Properties.copy(state.get().getBlock()));
     }
 
-    public ModSlabBlock(Supplier<BlockState> state, BlockBehaviour.Properties properties) {
-        super(properties);
+    public ModSlabBlock(Supplier<BlockState> state, BlockBehaviour.Properties builder) {
+        super(builder);
         this.state = state;
     }
 
     @Override
-    public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {
-        getParent().stepOn(world, pos, state, entity);
+    public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
+        getParent().stepOn(level, pos, state, entity);
     }
 
     public Block getParent() {

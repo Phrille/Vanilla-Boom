@@ -16,6 +16,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class DropLootModifier extends LootModifier {
@@ -68,7 +69,7 @@ public class DropLootModifier extends LootModifier {
 
             for (int i = 0; i < instance.overwrites.length; i++) {
                 JsonObject obj = new JsonObject();
-                obj.addProperty("item", ForgeRegistries.ITEMS.getKey(instance.overwrites[i]).toString());
+                obj.addProperty("item", Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(instance.overwrites[i])).toString());
                 overwrites.add(obj);
             }
 
