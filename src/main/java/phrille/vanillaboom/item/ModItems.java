@@ -43,10 +43,10 @@ public class ModItems {
     public static final RegistryObject<Item> MONSTER_PIE = ITEMS.register("monster_pie", () -> new Item(new Item.Properties().food(ModFoods.MONSTER_PIE)));
     public static final RegistryObject<Item> RAW_POLAR_BEAR_MEAT = ITEMS.register("raw_polar_bear_meat", () -> new Item(new Item.Properties().food(ModFoods.RAW_POLAR_BEAR_MEAT)));
     public static final RegistryObject<Item> POLAR_BEAR_STEAK = ITEMS.register("polar_bear_steak", () -> new Item(new Item.Properties().food(ModFoods.POLAR_BEAR_STEAK)));
-    public static final RegistryObject<Item> POTATO_SOUP = ITEMS.register("potato_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.POTATO_SOUP).craftRemainder(Items.BOWL)));
-    public static final RegistryObject<Item> MEAT_SOUP = ITEMS.register("meat_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.MEAT_SOUP).craftRemainder(Items.BOWL)));
-    public static final RegistryObject<Item> FISH_SOUP = ITEMS.register("fish_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.FISH_SOUP).craftRemainder(Items.BOWL)));
-    public static final RegistryObject<Item> RICE_BOWL = ITEMS.register("rice_bowl", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.RICE_BOWL).craftRemainder(Items.BOWL)));
+    public static final RegistryObject<Item> POTATO_SOUP = ITEMS.register("potato_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.POTATO_SOUP).stacksTo(1).craftRemainder(Items.BOWL)));
+    public static final RegistryObject<Item> MEAT_SOUP = ITEMS.register("meat_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.MEAT_SOUP).stacksTo(1).craftRemainder(Items.BOWL)));
+    public static final RegistryObject<Item> FISH_SOUP = ITEMS.register("fish_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.FISH_SOUP).stacksTo(1).craftRemainder(Items.BOWL)));
+    public static final RegistryObject<Item> RICE_BOWL = ITEMS.register("rice_bowl", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.RICE_BOWL).stacksTo(1).craftRemainder(Items.BOWL)));
 
     // Fish
     public static final RegistryObject<Item> TUNA = ITEMS.register("tuna", () -> new Item(new Item.Properties().food(ModFoods.TUNA)));
