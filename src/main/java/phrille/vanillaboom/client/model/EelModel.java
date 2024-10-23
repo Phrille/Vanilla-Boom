@@ -1,5 +1,6 @@
 package phrille.vanillaboom.client.model;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -10,32 +11,28 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 
+@MethodsReturnNonnullByDefault
 public class EelModel<T extends Entity> extends HierarchicalModel<T> {
-
     private final ModelPart head;
     private final ModelPart bodyFront;
     private final ModelPart bodyMiddle;
     private final ModelPart bodyBack;
-    private final ModelPart finFront;
-    private final ModelPart finMiddle;
-    private final ModelPart finBack;
-    private final ModelPart finRight;
-    private final ModelPart finLeft;
     private final ModelPart tail;
 
+    @SuppressWarnings("unused")
     public EelModel(ModelPart part) {
         head = part.getChild("head");
 
         bodyFront = head.getChild("body_front");
-        finFront = bodyFront.getChild("fin_front");
-        finRight = bodyFront.getChild("fin_right");
-        finLeft = bodyFront.getChild("fin_left");
+        ModelPart finFront = bodyFront.getChild("fin_front");
+        ModelPart finRight = bodyFront.getChild("fin_right");
+        ModelPart finLeft = bodyFront.getChild("fin_left");
 
         bodyMiddle = bodyFront.getChild("body_middle");
-        finMiddle = bodyMiddle.getChild("fin_middle");
+        ModelPart finMiddle = bodyMiddle.getChild("fin_middle");
 
         bodyBack = bodyMiddle.getChild("body_back");
-        finBack = bodyBack.getChild("fin_back");
+        ModelPart finBack = bodyBack.getChild("fin_back");
         tail = bodyBack.getChild("tail");
     }
 

@@ -1,5 +1,6 @@
 package phrille.vanillaboom.block;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
@@ -28,7 +29,10 @@ import phrille.vanillaboom.block.entity.ModBlockEntities;
 import phrille.vanillaboom.block.entity.RainDetectorBlockEntity;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
 public class RainDetectorBlock extends BaseEntityBlock {
     public static final IntegerProperty POWER = BlockStateProperties.POWER;
     public static final BooleanProperty INVERTED = BlockStateProperties.INVERTED;
@@ -40,60 +44,7 @@ public class RainDetectorBlock extends BaseEntityBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (player.mayBuild()) {
-            if (world.isClientSide) {
-                return InteractionResult.SUCCESS;
-            } else {
-                BlockState blockstate = state.cycle(INVERTED);
-                world.setBlock(pos, blockstate, 4);
-                updateSignalStrength(blockstate, world, pos);
-
-                return InteractionResult.CONSUME;
-            }
-        } else {
-            return super.use(state, world, pos, player, hand, hit);
-        }
-    }
-
-    @Override
-    @Nullable
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> entityType) {
-        return !world.isClientSide && world.dimensionType().hasSkyLight() ? createTickerHelper(entityType, ModBlockEntities.RAIN_DETECTOR.get(), RainDetectorBlock::tickEntity) : null;
-    }
-
-    private static void tickEntity(Level world, BlockPos pos, BlockState state, RainDetectorBlockEntity blockEntity) {
-        if (world.getGameTime() % 20L == 0L) {
-            updateSignalStrength(state, world, pos);
-        }
-    }
-
-    private static void updateSignalStrength(BlockState state, Level world, BlockPos pos) {
-        if (world.dimensionType().hasSkyLight()) {
-            boolean inverted = state.getValue(INVERTED);
-            int power = world.isThundering() ? 2 : world.isRaining() ? 1 : 0;
-
-            if (inverted) {
-                power = 15 - power;
-            }
-
-            if (state.getValue(POWER) != power) {
-                world.setBlock(pos, state.setValue(POWER, Mth.clamp(power, 0, 15)), 3);
-            }
-        }
-    }
-
-    @Override
-    public int getSignal(BlockState state, BlockGetter getter, BlockPos pos, Direction direction) {
-        return state.getValue(POWER);
-    }
-
-    @Override
-    public boolean isSignalSource(BlockState state) {
-        return true;
-    }
-
-    @Override
+    @SuppressWarnings("deprecation")
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
@@ -104,6 +55,64 @@ public class RainDetectorBlock extends BaseEntityBlock {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (player.mayBuild()) {
+            if (level.isClientSide) {
+                return InteractionResult.SUCCESS;
+            } else {
+                BlockState blockstate = state.cycle(INVERTED);
+                level.setBlock(pos, blockstate, 4);
+                updateSignalStrength(blockstate, level, pos);
+
+                return InteractionResult.CONSUME;
+            }
+        } else {
+            return super.use(state, level, pos, player, hand, hit);
+        }
+    }
+
+    @Override
+    @Nullable
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> entityType) {
+        return !level.isClientSide && level.dimensionType().hasSkyLight() ? createTickerHelper(entityType, ModBlockEntities.RAIN_DETECTOR.get(), RainDetectorBlock::tickEntity) : null;
+    }
+
+    private static void tickEntity(Level level, BlockPos pos, BlockState state, RainDetectorBlockEntity blockEntity) {
+        if (level.getGameTime() % 20L == 0L) {
+            updateSignalStrength(state, level, pos);
+        }
+    }
+
+    private static void updateSignalStrength(BlockState state, Level level, BlockPos pos) {
+        if (level.dimensionType().hasSkyLight()) {
+            boolean inverted = state.getValue(INVERTED);
+            int power = level.isThundering() ? 2 : level.isRaining() ? 1 : 0;
+
+            if (inverted) {
+                power = 15 - power;
+            }
+
+            if (state.getValue(POWER) != power) {
+                level.setBlock(pos, state.setValue(POWER, Mth.clamp(power, 0, 15)), 3);
+            }
+        }
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public int getSignal(BlockState state, BlockGetter getter, BlockPos pos, Direction direction) {
+        return state.getValue(POWER);
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public boolean isSignalSource(BlockState state) {
+        return true;
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
     public boolean useShapeForLightOcclusion(BlockState state) {
         return true;
     }

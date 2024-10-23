@@ -1,14 +1,13 @@
 package phrille.vanillaboom.block;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
@@ -22,7 +21,12 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import phrille.vanillaboom.item.ModItems;
+import phrille.vanillaboom.util.Utils;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
 public class RicePlantBlock extends CropBlock {
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 8);
     private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
@@ -47,7 +51,8 @@ public class RicePlantBlock extends CropBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    @SuppressWarnings("deprecation")
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         int age = state.getValue(AGE);
         boolean isMaxAge = age == getMaxAge();
         ItemStack stack = player.getItemInHand(hand);
@@ -55,19 +60,14 @@ public class RicePlantBlock extends CropBlock {
         if (!isMaxAge && stack.is(Items.BONE_MEAL)) {
             return InteractionResult.PASS;
         } else if (isMaxAge && stack.is(Items.BOWL)) {
-            fillBowl(stack, player, new ItemStack(ModItems.RICE_BOWL.get()));
-            world.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
-            world.setBlock(pos, state.setValue(AGE, 5), 2);
+            Utils.fillAndAwardStat(stack, player, new ItemStack(ModItems.RICE_BOWL.get()));
+            level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
+            level.setBlock(pos, state.setValue(AGE, 5), 2);
 
-            return InteractionResult.sidedSuccess(world.isClientSide);
+            return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        return super.use(state, world, pos, player, hand, hit);
-    }
-
-    protected ItemStack fillBowl(ItemStack heldStack, Player player, ItemStack newStack) {
-        player.awardStat(Stats.ITEM_USED.get(heldStack.getItem()));
-        return ItemUtils.createFilledResult(heldStack, player, newStack);
+        return super.use(state, level, pos, player, hand, hit);
     }
 
     @Override
