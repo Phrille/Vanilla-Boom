@@ -1,5 +1,6 @@
 package phrille.vanillaboom.data.loot;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
@@ -18,7 +19,6 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
-import org.jetbrains.annotations.NotNull;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.ModCakeBlock;
 import phrille.vanillaboom.data.ModDataGenerator;
@@ -27,15 +27,15 @@ import phrille.vanillaboom.util.Utils;
 
 import java.util.Set;
 
+@MethodsReturnNonnullByDefault
 public class ModBlockLootTables extends BlockLootSubProvider {
-
     public ModBlockLootTables() {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags());
     }
 
     @Override
     protected void generate() {
-        //Bricks
+        // Bricks
         dropSelf(ModBlocks.COBBLESTONE_BRICKS.get());
         dropSelf(ModBlocks.MOSSY_COBBLESTONE_BRICKS.get());
         dropSelf(ModBlocks.MAGMA_BRICKS.get());
@@ -59,29 +59,29 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.RED_TERRACOTTA_BRICKS.get());
         dropSelf(ModBlocks.BLACK_TERRACOTTA_BRICKS.get());
 
-        //Rocks
+        // Rocks
         dropSelf(ModBlocks.PERIDOTITE.get());
         dropSelf(ModBlocks.HYDRO_ROCK.get());
         dropSelf(ModBlocks.INFERNAL_ROCK.get());
 
-        //Sand and Gravel
+        // Sand and Gravel
         add(ModBlocks.BONE_SAND.get(), block -> createBoneSandDrops(block, Items.BONE_MEAL));
         add(ModBlocks.WITHER_BONE_SAND.get(), block -> createBoneSandDrops(block, ModItems.WITHER_BONE_MEAL.get()));
 
-        //Polished
+        // Polished
         dropSelf(ModBlocks.POLISHED_PERIDOTITE.get());
         dropSelf(ModBlocks.POLISHED_PRISMARINE.get());
         dropSelf(ModBlocks.POLISHED_DARK_PRISMARINE.get());
         dropSelf(ModBlocks.POLISHED_END_STONE.get());
         dropSelf(ModBlocks.POLISHED_NETHERRACK.get());
 
-        //Chiseled and cracked
+        // Chiseled and cracked
         dropSelf(ModBlocks.CRACKED_RED_NETHER_BRICKS.get());
         dropSelf(ModBlocks.CHISELED_RED_NETHER_BRICKS.get());
         dropSelf(ModBlocks.CHISELED_PURPUR_BLOCK.get());
         dropSelf(ModBlocks.CHISELED_OBSIDIAN.get());
 
-        //Pillars
+        // Pillars
         dropSelf(ModBlocks.GRANITE_PILLAR.get());
         dropSelf(ModBlocks.DIORITE_PILLAR.get());
         dropSelf(ModBlocks.ANDESITE_PILLAR.get());
@@ -93,7 +93,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.RED_NETHER_PILLAR.get());
         dropSelf(ModBlocks.OBSIDIAN_PILLAR.get());
 
-        //Wood Variations
+        // Wood Variations
         add(ModBlocks.SPRUCE_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
         add(ModBlocks.BIRCH_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
         add(ModBlocks.JUNGLE_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
@@ -109,7 +109,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.CRIMSON_LADDER.get());
         dropSelf(ModBlocks.WARPED_LADDER.get());
 
-        //Storage Blocks
+        // Storage Blocks
         dropSelf(ModBlocks.CHARCOAL_BLOCK.get());
         dropSelf(ModBlocks.SUGAR_BLOCK.get());
         dropSelf(ModBlocks.SUGAR_CANE_BLOCK.get());
@@ -135,7 +135,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.RED_DYE_BLOCK.get());
         dropSelf(ModBlocks.BLACK_DYE_BLOCK.get());
 
-        //Glass
+        // Glass
         dropWhenSilkTouch(ModBlocks.SOUL_GLASS.get());
         dropWhenSilkTouch(ModBlocks.WHITE_STAINED_SOUL_GLASS.get());
         dropWhenSilkTouch(ModBlocks.ORANGE_STAINED_SOUL_GLASS.get());
@@ -172,7 +172,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropWhenSilkTouch(ModBlocks.RED_STAINED_SOUL_GLASS_PANE.get());
         dropWhenSilkTouch(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get());
 
-        //Misc
+        // Misc
         dropSelf(ModBlocks.RAIN_DETECTOR.get());
         dropSelf(ModBlocks.GOLD_BARS.get());
         dropSelf(ModBlocks.ROSE.get());
@@ -183,7 +183,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         LootItemCondition.Builder riceCondition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.RICE_PLANT.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 8));
         add(ModBlocks.RICE_PLANT.get(), createCropDrops(ModBlocks.RICE_PLANT.get(), ModItems.RICE_SEEDS.get(), ModItems.RICE_SEEDS.get(), riceCondition));
 
-        //Cakes
+        // Cakes
         add(ModBlocks.CHOCOLATE_CAKE.get(), noDrop());
         add(ModBlocks.CARROT_CAKE.get(), noDrop());
         add(ModBlocks.BERRY_CAKE.get(), noDrop());
@@ -200,7 +200,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     }
 
     @Override
-    protected @NotNull Iterable<Block> getKnownBlocks() {
+    protected Iterable<Block> getKnownBlocks() {
         return ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
     }
 

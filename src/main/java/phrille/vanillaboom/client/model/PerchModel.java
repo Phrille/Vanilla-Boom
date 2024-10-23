@@ -14,7 +14,6 @@ import net.minecraft.world.entity.Entity;
 import javax.annotation.Nonnull;
 
 public class PerchModel<T extends Entity> extends ListModel<T> {
-
     private final ModelPart body;
     private final ModelPart head;
     private final ModelPart headFront;

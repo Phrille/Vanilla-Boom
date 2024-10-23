@@ -16,7 +16,7 @@ public class ModBlocks {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, VanillaBoom.MOD_ID);
 
-    //Bricks
+    // Bricks
     public static final RegistryObject<Block> COBBLESTONE_BRICKS = BLOCKS.register("cobblestone_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE)));
     public static final RegistryObject<Block> MOSSY_COBBLESTONE_BRICKS = BLOCKS.register("mossy_cobblestone_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE)));
     public static final RegistryObject<Block> MAGMA_BRICKS = BLOCKS.register("magma_bricks", () -> new MagmaBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK).sound(SoundType.NETHER_BRICKS)));
@@ -40,29 +40,29 @@ public class ModBlocks {
     public static final RegistryObject<Block> RED_TERRACOTTA_BRICKS = BLOCKS.register("red_terracotta_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_TERRACOTTA)));
     public static final RegistryObject<Block> BLACK_TERRACOTTA_BRICKS = BLOCKS.register("black_terracotta_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BLACK_TERRACOTTA)));
 
-    //Rocks
+    // Rocks
     public static final RegistryObject<Block> PERIDOTITE = BLOCKS.register("peridotite", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
     public static final RegistryObject<Block> HYDRO_ROCK = BLOCKS.register("hydro_rock", HydroRockBlock::new);
     public static final RegistryObject<Block> INFERNAL_ROCK = BLOCKS.register("infernal_rock", InfernalRockBlock::new);
 
-    //Sand and Gravel
+    // Sand and Gravel
     public static final RegistryObject<Block> BONE_SAND = BLOCKS.register("bone_sand", () -> new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.SNOW).strength(0.5F).sound(SoundType.SOUL_SAND)));
     public static final RegistryObject<Block> WITHER_BONE_SAND = BLOCKS.register("wither_bone_sand", () -> new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.COLOR_BLACK).strength(0.5F).sound(SoundType.SOUL_SAND)));
 
-    //Polished
+    // Polished
     public static final RegistryObject<Block> POLISHED_PERIDOTITE = BLOCKS.register("polished_peridotite", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
     public static final RegistryObject<Block> POLISHED_PRISMARINE = BLOCKS.register("polished_prismarine", () -> new Block(BlockBehaviour.Properties.copy(Blocks.PRISMARINE)));
     public static final RegistryObject<Block> POLISHED_DARK_PRISMARINE = BLOCKS.register("polished_dark_prismarine", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DARK_PRISMARINE)));
     public static final RegistryObject<Block> POLISHED_END_STONE = BLOCKS.register("polished_end_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE)));
     public static final RegistryObject<Block> POLISHED_NETHERRACK = BLOCKS.register("polished_netherrack", () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERRACK)));
 
-    //Chiseled and cracked
+    // Chiseled and cracked
     public static final RegistryObject<Block> CRACKED_RED_NETHER_BRICKS = BLOCKS.register("cracked_red_nether_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)));
     public static final RegistryObject<Block> CHISELED_RED_NETHER_BRICKS = BLOCKS.register("chiseled_red_nether_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)));
     public static final RegistryObject<Block> CHISELED_PURPUR_BLOCK = BLOCKS.register("chiseled_purpur_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)));
     public static final RegistryObject<Block> CHISELED_OBSIDIAN = BLOCKS.register("chiseled_obsidian", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
 
-    //Pillars
+    // Pillars
     public static final RegistryObject<Block> GRANITE_PILLAR = BLOCKS.register("granite_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_GRANITE)));
     public static final RegistryObject<Block> DIORITE_PILLAR = BLOCKS.register("diorite_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_DIORITE)));
     public static final RegistryObject<Block> ANDESITE_PILLAR = BLOCKS.register("andesite_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE)));
@@ -74,7 +74,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> RED_NETHER_PILLAR = BLOCKS.register("red_nether_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)));
     public static final RegistryObject<Block> OBSIDIAN_PILLAR = BLOCKS.register("obsidian_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
 
-    //Wood Variations
+    // Wood Variations
     public static final RegistryObject<Block> SPRUCE_BOOKSHELF = BLOCKS.register("spruce_bookshelf", () -> new BookshelfBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_PLANKS)));
     public static final RegistryObject<Block> BIRCH_BOOKSHELF = BLOCKS.register("birch_bookshelf", () -> new BookshelfBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_PLANKS)));
     public static final RegistryObject<Block> JUNGLE_BOOKSHELF = BLOCKS.register("jungle_bookshelf", () -> new BookshelfBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_PLANKS)));
@@ -90,7 +90,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> CRIMSON_LADDER = BLOCKS.register("crimson_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)));
     public static final RegistryObject<Block> WARPED_LADDER = BLOCKS.register("warped_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)));
 
-    //Storage
+    // Storage
     public static final RegistryObject<Block> CHARCOAL_BLOCK = BLOCKS.register("charcoal_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE)));
     public static final RegistryObject<Block> SUGAR_BLOCK = BLOCKS.register("sugar_block", () -> new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.SNOW).strength(0.5F).sound(SoundType.SAND)));
     public static final RegistryObject<Block> SUGAR_CANE_BLOCK = BLOCKS.register("sugar_cane_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.GRASS).strength(0.5F).sound(SoundType.GRASS)));
@@ -116,7 +116,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> RED_DYE_BLOCK = BLOCKS.register("red_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_RED).strength(3.0F, 5.0F)));
     public static final RegistryObject<Block> BLACK_DYE_BLOCK = BLOCKS.register("black_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).strength(3.0F, 5.0F)));
 
-    //Glass
+    // Glass
     public static final RegistryObject<Block> SOUL_GLASS = BLOCKS.register("soul_glass", () -> new StainedGlassBlock(DyeColor.WHITE, BlockBehaviour.Properties.copy(Blocks.GLASS)));
     public static final RegistryObject<Block> WHITE_STAINED_SOUL_GLASS = BLOCKS.register("white_stained_soul_glass", () -> new StainedGlassBlock(DyeColor.WHITE, BlockBehaviour.Properties.copy(Blocks.WHITE_STAINED_GLASS)));
     public static final RegistryObject<Block> ORANGE_STAINED_SOUL_GLASS = BLOCKS.register("orange_stained_soul_glass", () -> new StainedGlassBlock(DyeColor.WHITE, BlockBehaviour.Properties.copy(Blocks.ORANGE_STAINED_GLASS)));
@@ -152,15 +152,15 @@ public class ModBlocks {
     public static final RegistryObject<Block> RED_STAINED_SOUL_GLASS_PANE = BLOCKS.register("red_stained_soul_glass_pane", () -> new StainedGlassPaneBlock(DyeColor.RED, BlockBehaviour.Properties.copy(Blocks.RED_STAINED_GLASS_PANE)));
     public static final RegistryObject<Block> BLACK_STAINED_SOUL_GLASS_PANE = BLOCKS.register("black_stained_soul_glass_pane", () -> new StainedGlassPaneBlock(DyeColor.BLACK, BlockBehaviour.Properties.copy(Blocks.BLACK_STAINED_GLASS_PANE)));
 
-    //Misc
+    // Misc
     public static final RegistryObject<Block> RAIN_DETECTOR = BLOCKS.register("rain_detector", RainDetectorBlock::new);
     public static final RegistryObject<Block> GOLD_BARS = BLOCKS.register("gold_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS)));
-    public static final RegistryObject<Block> ROSE = BLOCKS.register("rose", () -> new FlowerBlock(MobEffects.DIG_SPEED, 10, BlockBehaviour.Properties.copy(Blocks.POPPY)));
+    public static final RegistryObject<Block> ROSE = BLOCKS.register("rose", () -> new FlowerBlock(() -> MobEffects.DIG_SPEED, 10, BlockBehaviour.Properties.copy(Blocks.POPPY)));
     public static final RegistryObject<Block> POTTED_ROSE = BLOCKS.register("potted_rose", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, ROSE, BlockBehaviour.Properties.copy(Blocks.POTTED_POPPY)));
     public static final RegistryObject<Block> TOMATO_PLANT = BLOCKS.register("tomato_plant", () -> new TomatoPlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
     public static final RegistryObject<Block> RICE_PLANT = BLOCKS.register("rice_plant", () -> new RicePlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
 
-    //Cakes
+    // Cakes
     public static final RegistryObject<Block> CHOCOLATE_CAKE = BLOCKS.register("chocolate_cake", ModCakeBlock::new);
     public static final RegistryObject<Block> CANDLE_CHOCOLATE_CAKE = BLOCKS.register("candle_chocolate_cake", () -> new ModCandleCakeBlock(() -> Blocks.CANDLE, CHOCOLATE_CAKE));
     public static final RegistryObject<Block> WHITE_CANDLE_CHOCOLATE_CAKE = BLOCKS.register("white_candle_chocolate_cake", () -> new ModCandleCakeBlock(() -> Blocks.WHITE_CANDLE, CHOCOLATE_CAKE));
@@ -216,7 +216,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> RED_CANDLE_CARROT_CAKE = BLOCKS.register("red_candle_carrot_cake", () -> new ModCandleCakeBlock(() -> Blocks.RED_CANDLE, CARROT_CAKE));
     public static final RegistryObject<Block> BLACK_CANDLE_CARROT_CAKE = BLOCKS.register("black_candle_carrot_cake", () -> new ModCandleCakeBlock(() -> Blocks.BLACK_CANDLE, CARROT_CAKE));
 
-    //VanillaBoom Stairs
+    // VanillaBoom Stairs
     public static final RegistryObject<Block> COBBLESTONE_BRICK_STAIRS = BLOCKS.register("cobblestone_brick_stairs", () -> new ModStairBlock(() -> COBBLESTONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.COBBLESTONE)));
     public static final RegistryObject<Block> MOSSY_COBBLESTONE_BRICK_STAIRS = BLOCKS.register("mossy_cobblestone_brick_stairs", () -> new ModStairBlock(() -> MOSSY_COBBLESTONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE)));
     public static final RegistryObject<Block> MAGMA_BRICK_STAIRS = BLOCKS.register("magma_brick_stairs", () -> new ModStairBlock(() -> MAGMA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK)));
@@ -252,7 +252,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> CHISELED_PURPUR_BLOCK_STAIRS = BLOCKS.register("chiseled_purpur_block_stairs", () -> new ModStairBlock(() -> CHISELED_PURPUR_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)));
     public static final RegistryObject<Block> CHISELED_OBSIDIAN_STAIRS = BLOCKS.register("chiseled_obsidian_stairs", () -> new ModStairBlock(() -> CHISELED_OBSIDIAN.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
 
-    //Vanilla Stairs
+    // Vanilla Stairs
     public static final RegistryObject<Block> CRACKED_STONE_BRICK_STAIRS = BLOCKS.register("cracked_stone_brick_stairs", () -> new ModStairBlock(Blocks.CRACKED_STONE_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> CHISELED_STONE_BRICK_STAIRS = BLOCKS.register("chiseled_stone_brick_stairs", () -> new ModStairBlock(Blocks.CHISELED_STONE_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> CHISELED_SANDSTONE_STAIRS = BLOCKS.register("chiseled_sandstone_stairs", () -> new ModStairBlock(Blocks.CHISELED_SANDSTONE::defaultBlockState));
@@ -322,7 +322,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> CUT_RED_SANDSTONE_STAIRS = BLOCKS.register("cut_red_sandstone_stairs", () -> new ModStairBlock(Blocks.CUT_RED_SANDSTONE::defaultBlockState));
     public static final RegistryObject<Block> SMOOTH_STONE_STAIRS = BLOCKS.register("smooth_stone_stairs", () -> new ModStairBlock(Blocks.SMOOTH_STONE::defaultBlockState));
 
-    //VanillaBoom Slabs
+    // VanillaBoom Slabs
     public static final RegistryObject<Block> COBBLESTONE_BRICK_SLAB = BLOCKS.register("cobblestone_brick_slab", () -> new ModSlabBlock(() -> COBBLESTONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.COBBLESTONE)));
     public static final RegistryObject<Block> MOSSY_COBBLESTONE_BRICK_SLAB = BLOCKS.register("mossy_cobblestone_brick_slab", () -> new ModSlabBlock(() -> MOSSY_COBBLESTONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE)));
     public static final RegistryObject<Block> MAGMA_BRICK_SLAB = BLOCKS.register("magma_brick_slab", () -> new ModSlabBlock(() -> MAGMA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK)));
@@ -358,7 +358,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> CHISELED_PURPUR_BLOCK_SLAB = BLOCKS.register("chiseled_purpur_block_slab", () -> new ModSlabBlock(() -> CHISELED_PURPUR_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)));
     public static final RegistryObject<Block> CHISELED_OBSIDIAN_SLAB = BLOCKS.register("chiseled_obsidian_slab", () -> new ModSlabBlock(() -> CHISELED_OBSIDIAN.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
 
-    //Vanilla Slabs
+    // Vanilla Slabs
     public static final RegistryObject<Block> CRACKED_STONE_BRICK_SLAB = BLOCKS.register("cracked_stone_brick_slab", () -> new ModSlabBlock(Blocks.CRACKED_STONE_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> CHISELED_STONE_BRICK_SLAB = BLOCKS.register("chiseled_stone_brick_slab", () -> new ModSlabBlock(Blocks.CHISELED_STONE_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> CHISELED_SANDSTONE_SLAB = BLOCKS.register("chiseled_sandstone_slab", () -> new ModSlabBlock(Blocks.CHISELED_SANDSTONE::defaultBlockState));
@@ -425,7 +425,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> STRIPPED_CRIMSON_HYPHAE_SLAB = BLOCKS.register("stripped_crimson_hyphae_slab", () -> new ModSlabBlock(Blocks.STRIPPED_CRIMSON_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_WARPED_HYPHAE_SLAB = BLOCKS.register("stripped_warped_hyphae_slab", () -> new ModSlabBlock(Blocks.STRIPPED_WARPED_HYPHAE::defaultBlockState));
 
-    //VanillaBoom Walls
+    // VanillaBoom Walls
     public static final RegistryObject<Block> COBBLESTONE_BRICK_WALL = BLOCKS.register("cobblestone_brick_wall", () -> new ModWallBlock(() -> COBBLESTONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.COBBLESTONE)));
     public static final RegistryObject<Block> MOSSY_COBBLESTONE_BRICK_WALL = BLOCKS.register("mossy_cobblestone_brick_wall", () -> new ModWallBlock(() -> MOSSY_COBBLESTONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE)));
     public static final RegistryObject<Block> MAGMA_BRICK_WALL = BLOCKS.register("magma_brick_wall", () -> new ModWallBlock(() -> MAGMA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK)));
@@ -461,7 +461,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> CHISELED_PURPUR_BLOCK_WALL = BLOCKS.register("chiseled_purpur_block_wall", () -> new ModWallBlock(() -> CHISELED_PURPUR_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)));
     public static final RegistryObject<Block> CHISELED_OBSIDIAN_WALL = BLOCKS.register("chiseled_obsidian_wall", () -> new ModWallBlock(() -> CHISELED_OBSIDIAN.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
 
-    //Vanilla Walls
+    // Vanilla Walls
     public static final RegistryObject<Block> CRACKED_STONE_BRICK_WALL = BLOCKS.register("cracked_stone_brick_wall", () -> new ModWallBlock(Blocks.CRACKED_STONE_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> CHISELED_STONE_BRICK_WALL = BLOCKS.register("chiseled_stone_brick_wall", () -> new ModWallBlock(Blocks.CHISELED_STONE_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> CHISELED_SANDSTONE_WALL = BLOCKS.register("chiseled_sandstone_wall", () -> new ModWallBlock(Blocks.CHISELED_SANDSTONE::defaultBlockState));
@@ -526,7 +526,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> PRISMARINE_BRICK_WALL = BLOCKS.register("prismarine_brick_wall", () -> new ModWallBlock(Blocks.PRISMARINE_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> DARK_PRISMARINE_WALL = BLOCKS.register("dark_prismarine_wall", () -> new ModWallBlock(Blocks.DARK_PRISMARINE::defaultBlockState));
 
-    //Vanilla Fences
+    // Vanilla Fences
     public static final RegistryObject<Block> OAK_WOOD_FENCE = BLOCKS.register("oak_wood_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)));
     public static final RegistryObject<Block> SPRUCE_WOOD_FENCE = BLOCKS.register("spruce_wood_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_FENCE)));
     public static final RegistryObject<Block> BIRCH_WOOD_FENCE = BLOCKS.register("birch_wood_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_FENCE)));
