@@ -22,16 +22,15 @@ import phrille.vanillaboom.data.tags.ModItemTagsProvider;
 import phrille.vanillaboom.util.Utils;
 
 import java.util.List;
+import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModDataGenerator {
-
     public static final List<Pair<Block, ResourceLocation>> STAIRS = Lists.newArrayList();
     public static final List<Pair<Block, ResourceLocation>> SLABS = Lists.newArrayList();
     public static final List<Block> WALLS = Lists.newArrayList();
     public static final List<Pair<Block, Block>> FENCES = Lists.newArrayList();
     public static final List<Pair<Block, Block>> FENCE_GATES = Lists.newArrayList();
-
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
@@ -40,12 +39,12 @@ public class ModDataGenerator {
 
         init();
 
-        //Assets
+        // Assets
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(generator, existingFileHelper));
         generator.addProvider(event.includeClient(), new ModItemModelProvider(generator, existingFileHelper));
         generator.addProvider(event.includeClient(), new ModLanguageProvider(generator));
 
-        //Data
+        // Data
         ModBlockTagsProvider blockTags = new ModBlockTagsProvider(generator, existingFileHelper);
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new ModItemTagsProvider(generator, blockTags, existingFileHelper));
@@ -65,7 +64,7 @@ public class ModDataGenerator {
     }
 
     private static void addStairs() {
-        //Stairs
+        // Stairs
         addStair(ModBlocks.COBBLESTONE_BRICK_STAIRS.get());
         addStair(ModBlocks.MOSSY_COBBLESTONE_BRICK_STAIRS.get());
         addStair(ModBlocks.MAGMA_BRICK_STAIRS.get());
@@ -101,8 +100,7 @@ public class ModDataGenerator {
         addStair(ModBlocks.CHISELED_PURPUR_BLOCK_STAIRS.get());
         addStair(ModBlocks.CHISELED_OBSIDIAN_STAIRS.get());
 
-
-        //Vanilla Stairs
+        // Vanilla Stairs
         addStair(ModBlocks.CRACKED_STONE_BRICK_STAIRS.get());
         addStair(ModBlocks.CHISELED_STONE_BRICK_STAIRS.get());
         addStair(ModBlocks.CHISELED_SANDSTONE_STAIRS.get(), extend(blockTexture(Blocks.SANDSTONE), "_top"));
@@ -174,7 +172,7 @@ public class ModDataGenerator {
     }
 
     private static void addSlabs() {
-        //Slabs
+        // Slabs
         addSlab(ModBlocks.COBBLESTONE_BRICK_SLAB.get());
         addSlab(ModBlocks.MOSSY_COBBLESTONE_BRICK_SLAB.get());
         addSlab(ModBlocks.MAGMA_BRICK_SLAB.get());
@@ -210,7 +208,7 @@ public class ModDataGenerator {
         addSlab(ModBlocks.CHISELED_PURPUR_BLOCK_SLAB.get());
         addSlab(ModBlocks.CHISELED_OBSIDIAN_SLAB.get());
 
-        //Vanilla Slabs
+        // Vanilla Slabs
         addSlab(ModBlocks.CRACKED_STONE_BRICK_SLAB.get());
         addSlab(ModBlocks.CHISELED_STONE_BRICK_SLAB.get());
         addSlab(ModBlocks.CHISELED_SANDSTONE_SLAB.get(), ModDataGenerator.extend(blockTexture(Blocks.SANDSTONE), "_top"));
@@ -279,7 +277,7 @@ public class ModDataGenerator {
     }
 
     private static void addWalls() {
-        //VanillaBoom Walls
+        // VanillaBoom Walls
         addWall(ModBlocks.COBBLESTONE_BRICK_WALL.get());
         addWall(ModBlocks.MOSSY_COBBLESTONE_BRICK_WALL.get());
         addWall(ModBlocks.MAGMA_BRICK_WALL.get());
@@ -315,7 +313,7 @@ public class ModDataGenerator {
         addWall(ModBlocks.CHISELED_RED_NETHER_BRICK_WALL.get());
         addWall(ModBlocks.CHISELED_OBSIDIAN_WALL.get());
 
-        //Vanilla Walls
+        // Vanilla Walls
         addWall(ModBlocks.CRACKED_STONE_BRICK_WALL.get());
         addWall(ModBlocks.CHISELED_STONE_BRICK_WALL.get());
         addWall(ModBlocks.CHISELED_SANDSTONE_WALL.get());
@@ -431,7 +429,7 @@ public class ModDataGenerator {
     }
 
     public static ResourceLocation blockTexture(Block block) {
-        ResourceLocation name = ForgeRegistries.BLOCKS.getKey(block);
+        ResourceLocation name = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block));
         return new ResourceLocation(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath());
     }
 

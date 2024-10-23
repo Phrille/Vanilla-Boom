@@ -8,8 +8,8 @@ import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.item.ModItems;
 
 public class ModLanguageProvider extends LanguageProvider {
-    public ModLanguageProvider(DataGenerator gen) {
-        super(gen, VanillaBoom.MOD_ID, "en_us");
+    public ModLanguageProvider(DataGenerator generator) {
+        super(generator, VanillaBoom.MOD_ID, "en_us");
     }
 
     @Override
@@ -21,7 +21,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add("itemGroup.vanillaboom_tab", "Vanilla Boom");
         add("itemGroup.vanillaboom_variant_blocks_tab", "Vanilla Boom: Variant Blocks");
 
-        //Bricks
+        // Bricks
         add(ModBlocks.COBBLESTONE_BRICKS.get(), "Cobblestone Bricks");
         add(ModBlocks.MOSSY_COBBLESTONE_BRICKS.get(), "Mossy Cobblestone Bricks");
         add(ModBlocks.MAGMA_BRICKS.get(), "Magma Bricks");
@@ -45,29 +45,29 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.RED_TERRACOTTA_BRICKS.get(), "Red Terracotta Bricks");
         add(ModBlocks.BLACK_TERRACOTTA_BRICKS.get(), "Black Terracotta Bricks");
 
-        //Rocks
+        // Rocks
         add(ModBlocks.PERIDOTITE.get(), "Peridotite");
         add(ModBlocks.HYDRO_ROCK.get(), "Hydro Rock");
         add(ModBlocks.INFERNAL_ROCK.get(), "Infernal Rock");
 
-        //Sand and Gravel
+        // Sand and Gravel
         add(ModBlocks.BONE_SAND.get(), "Bone Sand");
         add(ModBlocks.WITHER_BONE_SAND.get(), "Wither Bone Sand");
 
-        //Polished 
+        // Polished
         add(ModBlocks.POLISHED_PERIDOTITE.get(), "Polished Peridotite");
         add(ModBlocks.POLISHED_PRISMARINE.get(), "Polished Prismarine");
         add(ModBlocks.POLISHED_DARK_PRISMARINE.get(), "Polished Dark Prismarine");
         add(ModBlocks.POLISHED_END_STONE.get(), "Polished End Stone");
         add(ModBlocks.POLISHED_NETHERRACK.get(), "Polished Netherrack");
 
-        //Chiseled and Cracked
+        // Chiseled and Cracked
         add(ModBlocks.CRACKED_RED_NETHER_BRICKS.get(), "Cracked Red Nether Bricks");
         add(ModBlocks.CHISELED_RED_NETHER_BRICKS.get(), "Chiseled Red Nether Bricks");
         add(ModBlocks.CHISELED_PURPUR_BLOCK.get(), "Chiseled Purpur Block");
         add(ModBlocks.CHISELED_OBSIDIAN.get(), "Chiseled Obsidian");
 
-        //Pillars
+        // Pillars
         add(ModBlocks.GRANITE_PILLAR.get(), "Granite Pillar");
         add(ModBlocks.DIORITE_PILLAR.get(), "Diorite Pillar");
         add(ModBlocks.ANDESITE_PILLAR.get(), "Andesite Pillar");
@@ -79,7 +79,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.RED_NETHER_PILLAR.get(), "Red Nether Pillar");
         add(ModBlocks.OBSIDIAN_PILLAR.get(), "Obsidian Pillar");
 
-        //Wood Variants
+        // Wood Variants
         add(ModBlocks.SPRUCE_BOOKSHELF.get(), "Spruce Bookshelf");
         add(ModBlocks.BIRCH_BOOKSHELF.get(), "Birch Bookshelf");
         add(ModBlocks.JUNGLE_BOOKSHELF.get(), "Jungle Bookshelf");
@@ -95,7 +95,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.CRIMSON_LADDER.get(), "Crimson Ladder");
         add(ModBlocks.WARPED_LADDER.get(), "Warped Ladder");
 
-        //Storage
+        // Storage
         add(ModBlocks.CHARCOAL_BLOCK.get(), "Charcoal Block");
         add(ModBlocks.SUGAR_BLOCK.get(), "Sugar Block");
         add(ModBlocks.SUGAR_CANE_BLOCK.get(), "Sugar Cane Block");
@@ -121,7 +121,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.RED_DYE_BLOCK.get(), "Red Dye Block");
         add(ModBlocks.BLACK_DYE_BLOCK.get(), "Black Dye Block");
 
-        //Glass
+        // Glass
         add(ModBlocks.SOUL_GLASS.get(), "Soul Glass");
         add(ModBlocks.WHITE_STAINED_SOUL_GLASS.get(), "White Stained Soul Glass");
         add(ModBlocks.ORANGE_STAINED_SOUL_GLASS.get(), "Orange Stained Soul Glass");
@@ -157,12 +157,12 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.RED_STAINED_SOUL_GLASS_PANE.get(), "Red Stained Soul Glass Pane");
         add(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get(), "Black Stained Soul Glass Pane");
 
-        //Misc
+        // Misc
         add(ModBlocks.RAIN_DETECTOR.get(), "Rain Detector");
         add(ModBlocks.GOLD_BARS.get(), "Gold Bars");
         add(ModBlocks.ROSE.get(), "Rose");
 
-        //VanillaBoom Stairs
+        // VanillaBoom Stairs
         add(ModBlocks.COBBLESTONE_BRICK_STAIRS.get(), "Cobblestone Brick Stairs");
         add(ModBlocks.MOSSY_COBBLESTONE_BRICK_STAIRS.get(), "Mossy Cobblestone Brick Stairs");
         add(ModBlocks.MAGMA_BRICK_STAIRS.get(), "Magma Brick Stairs");
@@ -198,7 +198,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.CHISELED_RED_NETHER_BRICK_STAIRS.get(), "Chiseled Red Nether Brick Stairs");
         add(ModBlocks.CHISELED_PURPUR_BLOCK_STAIRS.get(), "Chiseled Purpur Block Stairs");
 
-        //VanillaBoom Slabs
+        // VanillaBoom Slabs
         add(ModBlocks.COBBLESTONE_BRICK_SLAB.get(), "Cobblestone Brick Slab");
         add(ModBlocks.MOSSY_COBBLESTONE_BRICK_SLAB.get(), "Mossy Cobblestone Brick Slab");
         add(ModBlocks.MAGMA_BRICK_SLAB.get(), "Magma Brick Slab");
@@ -234,7 +234,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.CHISELED_RED_NETHER_BRICK_SLAB.get(), "Chiseled Red Nether Brick Slab");
         add(ModBlocks.CHISELED_PURPUR_BLOCK_SLAB.get(), "Chiseled Purpur Block Slab");
 
-        //VanillaBoom Walls
+        // VanillaBoom Walls
         add(ModBlocks.COBBLESTONE_BRICK_WALL.get(), "Cobblestone Brick Wall");
         add(ModBlocks.MOSSY_COBBLESTONE_BRICK_WALL.get(), "Mossy Cobblestone Brick Wall");
         add(ModBlocks.MAGMA_BRICK_WALL.get(), "Magma Brick Wall");
@@ -270,7 +270,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.CHISELED_RED_NETHER_BRICK_WALL.get(), "Chiseled Red Nether Brick Wall");
         add(ModBlocks.CHISELED_PURPUR_BLOCK_WALL.get(), "Chiseled Purpur Block Wall");
 
-        //Vanilla Stairs
+        // Vanilla Stairs
         add(ModBlocks.CRACKED_STONE_BRICK_STAIRS.get(), "Cracked Stone Brick Stairs");
         add(ModBlocks.CHISELED_STONE_BRICK_STAIRS.get(), "Chiseled Stone Brick Stairs");
         add(ModBlocks.CHISELED_SANDSTONE_STAIRS.get(), "Chiseled Sandstone Stairs");
@@ -340,7 +340,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.CUT_RED_SANDSTONE_STAIRS.get(), "Cut Red Sandstone Stairs");
         add(ModBlocks.SMOOTH_STONE_STAIRS.get(), "Smooth Stone Stairs");
 
-        //Vanilla Slabs
+        // Vanilla Slabs
         add(ModBlocks.CRACKED_STONE_BRICK_SLAB.get(), "Cracked Stone Brick Slab");
         add(ModBlocks.CHISELED_STONE_BRICK_SLAB.get(), "Chiseled Stone Brick Slab");
         add(ModBlocks.CHISELED_SANDSTONE_SLAB.get(), "Chiseled Sandstone Slab");
@@ -407,7 +407,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.STRIPPED_CRIMSON_HYPHAE_SLAB.get(), "Stripped Crimson Hyphae Slab");
         add(ModBlocks.STRIPPED_WARPED_HYPHAE_SLAB.get(), "Stripped Warped Hyphae Slab");
 
-        //Vanilla Walls
+        // Vanilla Walls
         add(ModBlocks.CRACKED_STONE_BRICK_WALL.get(), "Cracked Stone Brick Wall");
         add(ModBlocks.CHISELED_STONE_BRICK_WALL.get(), "Chiseled Stone Brick Wall");
         add(ModBlocks.CHISELED_SANDSTONE_WALL.get(), "Chiseled Sandstone Wall");
@@ -472,7 +472,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.PRISMARINE_BRICK_WALL.get(), "Prismarine Brick Wall");
         add(ModBlocks.DARK_PRISMARINE_WALL.get(), "Dark Prismarine Wall");
 
-        //Vanilla Fences
+        // Vanilla Fences
         add(ModBlocks.OAK_WOOD_FENCE.get(), "Oak Wood Fence");
         add(ModBlocks.SPRUCE_WOOD_FENCE.get(), "Spruce Wood Fence");
         add(ModBlocks.BIRCH_WOOD_FENCE.get(), "Birch Wood Fence");
@@ -509,7 +509,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.NETHER_BRICK_FENCE_GATE.get(), "Nether Brick Fence Gate");
         add(ModBlocks.RED_NETHER_BRICK_FENCE_GATE.get(), "Red Nether Brick Fence Gate");
 
-        //Items
+        // Items
         add(ModItems.MAGMA_BRICK.get(), "Magma Brick");
         add(ModItems.WITHER_BONE.get(), "Wither Bone");
         add(ModItems.WITHER_BONE_MEAL.get(), "Wither Bone Meal");

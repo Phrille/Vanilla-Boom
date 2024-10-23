@@ -1,6 +1,7 @@
 package phrille.vanillaboom.item;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -22,11 +23,16 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import phrille.vanillaboom.util.VanillaBoomTab;
 
+import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
 public class PaintingItem extends Item {
     private final Holder<PaintingVariant> paintingVariant;
 
+    @SuppressWarnings("deprecation")
     public PaintingItem(ResourceKey<PaintingVariant> paintingVariant) {
         super(new Item.Properties().tab(VanillaBoomTab.VANILLA_BOOM_TAB));
         this.paintingVariant = Registry.PAINTING_VARIANT.getHolderOrThrow(paintingVariant);
@@ -67,7 +73,7 @@ public class PaintingItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable(getDescriptionId() + ".desc").withStyle(ChatFormatting.BLUE));
     }
 

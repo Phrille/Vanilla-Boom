@@ -23,9 +23,8 @@ import phrille.vanillaboom.loot.ModGlobalLootModifiers;
 import java.util.List;
 
 public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
-
-    public ModGlobalLootModifierProvider(DataGenerator gen) {
-        super(gen, VanillaBoom.MOD_ID);
+    public ModGlobalLootModifierProvider(DataGenerator generator) {
+        super(generator, VanillaBoom.MOD_ID);
     }
 
     @Override
@@ -46,6 +45,7 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
         }, overwrites);
     }
 
+    @SuppressWarnings("SameParameterValue")
     private void blockLootModifier(String name, Block block, List<Item> overwrites) {
         dropLootModifier(name, new LootItemCondition[]{
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).build()

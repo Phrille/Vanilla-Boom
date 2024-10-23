@@ -23,12 +23,14 @@ import phrille.vanillaboom.block.ModWallBlock;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.ModTags;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.function.Consumer;
 
+@ParametersAreNonnullByDefault
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    public ModRecipeProvider(DataGenerator dataGenerator) {
-        super(dataGenerator);
+    public ModRecipeProvider(DataGenerator generator) {
+        super(generator);
     }
 
     @Override
@@ -205,7 +207,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         variants(finishedRecipe, ModItems.POLISHED_DIORITE_WALL.get(), Blocks.DIORITE);
         variants(finishedRecipe, ModItems.POLISHED_ANDESITE_WALL.get(), Blocks.ANDESITE);
 
-        //Items
+        // Items
         smeltingAndBlasting(finishedRecipe, ModItems.MAGMA_BRICK.get(), Blocks.MAGMA_BLOCK, 0.1F);
         oneToOneShapeless(finishedRecipe, ModItems.WITHER_BONE_MEAL.get(), ModItems.WITHER_BONE.get(), 3);
         oneToOneShapeless(finishedRecipe, Items.BLACK_DYE, ModItems.WITHER_BONE_MEAL.get(), 1);
@@ -283,7 +285,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         cooking(finishedRecipe, ModItems.COOKED_PIKE.get(), ModItems.PIKE.get(), 0.35F);
         cooking(finishedRecipe, ModItems.COOKED_EEL.get(), ModItems.EEL.get(), 0.35F);
 
-        //Altered recipes from vanilla
+        // Altered recipes from vanilla
         ShapedRecipeBuilder.shaped(Blocks.BONE_BLOCK)
                 .define('x', Items.BONE)
                 .pattern("xxx")
@@ -313,7 +315,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
-    //Templates
+    // Templates
     public void bricks(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
         twoByTwoShaped(finishedRecipe, result, ingredient, 4);
         stonecutting(finishedRecipe, result, ingredient);
@@ -421,9 +423,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike wall, List<ItemLike> blocks) {
-        blocks.forEach(block -> {
-            stonecutting(finishedRecipe, wall, block);
-        });
+        blocks.forEach(block ->  stonecutting(finishedRecipe, wall, block));
     }
 
     //Shaped Recipe
@@ -620,7 +620,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
-    //Smelting
+    // Smelting
     public void smelting(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient, float xp) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), result, xp, 200).
                 unlockedBy(getHasName(ingredient), has(ingredient)).
@@ -645,7 +645,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeResourceLocation(result, ingredient), "_from_campfire"));
     }
 
-    //Stonecutting
+    // Stonecutting
     public void stonecutting(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
         stonecutting(finishedRecipe, result, ingredient, 1);
     }

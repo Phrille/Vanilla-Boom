@@ -14,6 +14,8 @@ import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.item.ModItems;
 
+import java.util.Objects;
+
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
         super(generator, VanillaBoom.MOD_ID, existingFileHelper);
@@ -90,7 +92,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         item(ModItems.SKELETON_PAINTING.get());
         item(ModItems.DONKEY_KONG_PAINTING.get());
 
-        //Bricks
+        // Bricks
         blockItem(ModItems.COBBLESTONE_BRICKS.get());
         blockItem(ModItems.MOSSY_COBBLESTONE_BRICKS.get());
         blockItem(ModItems.MAGMA_BRICKS.get());
@@ -114,29 +116,29 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModItems.RED_TERRACOTTA_BRICKS.get());
         blockItem(ModItems.BLACK_TERRACOTTA_BRICKS.get());
 
-        //Rocks
+        // Rocks
         blockItem(ModItems.PERIDOTITE.get());
         blockItem(ModItems.HYDRO_ROCK.get());
         blockItem(ModItems.INFERNAL_ROCK.get());
 
-        //Sand and Gravel
+        // Sand and Gravel
         blockItem(ModItems.BONE_SAND.get());
         blockItem(ModItems.WITHER_BONE_SAND.get());
 
-        //Polished
+        // Polished
         blockItem(ModItems.POLISHED_PERIDOTITE.get());
         blockItem(ModItems.POLISHED_PRISMARINE.get());
         blockItem(ModItems.POLISHED_DARK_PRISMARINE.get());
         blockItem(ModItems.POLISHED_END_STONE.get());
         blockItem(ModItems.POLISHED_NETHERRACK.get());
 
-        //Chiseled and cracked
+        // Chiseled and cracked
         blockItem(ModItems.CRACKED_RED_NETHER_BRICKS.get());
         blockItem(ModItems.CHISELED_RED_NETHER_BRICKS.get());
         blockItem(ModItems.CHISELED_PURPUR_BLOCK.get());
         blockItem(ModItems.CHISELED_OBSIDIAN.get());
 
-        //Pillars
+        // Pillars
         blockItem(ModItems.GRANITE_PILLAR.get());
         blockItem(ModItems.DIORITE_PILLAR.get());
         blockItem(ModItems.ANDESITE_PILLAR.get());
@@ -148,7 +150,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModItems.RED_NETHER_PILLAR.get());
         blockItem(ModItems.OBSIDIAN_PILLAR.get());
 
-        //Wood Variations
+        // Wood Variations
         blockItem(ModItems.SPRUCE_BOOKSHELF.get());
         blockItem(ModItems.BIRCH_BOOKSHELF.get());
         blockItem(ModItems.JUNGLE_BOOKSHELF.get());
@@ -164,7 +166,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         item(ModBlocks.CRIMSON_LADDER.get());
         item(ModBlocks.WARPED_LADDER.get());
 
-        //Storage Blocks
+        // Storage Blocks
         blockItem(ModItems.CHARCOAL_BLOCK.get());
         blockItem(ModItems.SUGAR_BLOCK.get());
         blockItem(ModItems.SUGAR_CANE_BLOCK.get());
@@ -190,7 +192,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModItems.RED_DYE_BLOCK.get());
         blockItem(ModItems.BLACK_DYE_BLOCK.get());
 
-        //Glass
+        // Glass
         blockItem(ModItems.SOUL_GLASS.get());
         blockItem(ModItems.WHITE_STAINED_SOUL_GLASS.get());
         blockItem(ModItems.ORANGE_STAINED_SOUL_GLASS.get());
@@ -227,12 +229,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         glassPaneItem(ModBlocks.RED_STAINED_SOUL_GLASS_PANE.get());
         glassPaneItem(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get());
 
-        //Misc
+        // Misc
         blockItem(ModItems.RAIN_DETECTOR.get());
         item(ModBlocks.GOLD_BARS.get());
         item(ModBlocks.ROSE.get());
 
-        //Variant Blocks
+        // Variant Blocks
         ModDataGenerator.STAIRS.forEach(pair -> blockItem(pair.getFirst().asItem()));
         ModDataGenerator.SLABS.forEach(pair -> blockItem(pair.getFirst().asItem()));
         ModDataGenerator.WALLS.forEach(this::inventoryBlockItem);
@@ -249,12 +251,12 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     public void blockItem(Item blockItem) {
-        ResourceLocation parent = ForgeRegistries.ITEMS.getKey(blockItem);
+        ResourceLocation parent = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(blockItem));
         withExistingParent(name(blockItem), new ResourceLocation(parent.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + parent.getPath()));
     }
 
     public void inventoryBlockItem(Block block) {
-        ResourceLocation parent = ForgeRegistries.BLOCKS.getKey(block);
+        ResourceLocation parent = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block));
         withExistingParent(name(block.asItem()), new ResourceLocation(parent.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + parent.getPath() + "_inventory"));
     }
 
@@ -271,16 +273,16 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     protected ResourceLocation itemTexture(Item item) {
-        ResourceLocation name = ForgeRegistries.ITEMS.getKey(item);
+        ResourceLocation name = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item));
         return new ResourceLocation(name.getNamespace(), ModelProvider.ITEM_FOLDER + "/" + name.getPath());
     }
 
     protected ResourceLocation blockTexture(Block block) {
-        ResourceLocation name = ForgeRegistries.BLOCKS.getKey(block);
+        ResourceLocation name = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block));
         return new ResourceLocation(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath().replace("_pane", ""));
     }
 
     protected String name(Item item) {
-        return ForgeRegistries.ITEMS.getKey(item).getPath();
+        return Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)).getPath();
     }
 }

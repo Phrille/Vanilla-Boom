@@ -39,6 +39,7 @@ public class ModFeatures {
         public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_WITHER_BONE_SAND = CONFIGURED_FEATURES.register("ore_wither_bone_sand", () -> new ConfiguredFeature<>(Feature.ORE, Configs.WITHER_BONE_SAND_CONFIG));
     }
 
+    @SuppressWarnings("unused")
     public static final class PlacedFeatures {
         public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, VanillaBoom.MOD_ID);
 
@@ -57,12 +58,14 @@ public class ModFeatures {
             return List.of(InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());
         }
 
+        @SuppressWarnings("SameParameterValue")
         private static List<PlacementModifier> makeFlowerPlacement(int chance) {
             return List.of(RarityFilter.onAverageOnceEvery(chance), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
         }
 
+        @SuppressWarnings("unchecked")
         private static RegistryObject<PlacedFeature> register(String name, RegistryObject<? extends ConfiguredFeature<?, ?>> feature, List<PlacementModifier> placementModifiers) {
-            return PLACED_FEATURES.register(name, () -> new PlacedFeature((Holder<ConfiguredFeature<?, ?>>) feature.getHolder().get(), ImmutableList.copyOf(placementModifiers)));
+            return PLACED_FEATURES.register(name, () -> new PlacedFeature((Holder<ConfiguredFeature<?, ?>>) feature.getHolder().orElseThrow(), ImmutableList.copyOf(placementModifiers)));
         }
     }
 

@@ -2,6 +2,7 @@ package phrille.vanillaboom.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -11,15 +12,19 @@ import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.entity.fish.Fish;
 
-public class FishRenderer extends MobRenderer<Fish, EntityModel<Fish>> {
+import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Objects;
 
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
+public class FishRenderer extends MobRenderer<Fish, EntityModel<Fish>> {
     public FishRenderer(EntityRendererProvider.Context context, EntityModel<Fish> model) {
         super(context, model, 0.3F);
     }
 
     @Override
     public ResourceLocation getTextureLocation(Fish fish) {
-        return new ResourceLocation(VanillaBoom.MOD_ID, "textures/entity/" + ForgeRegistries.ENTITY_TYPES.getKey(fish.getType()).getPath() + ".png");
+        return new ResourceLocation(VanillaBoom.MOD_ID, "textures/entity/" + Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.getKey(fish.getType())).getPath() + ".png");
     }
 
     @Override
