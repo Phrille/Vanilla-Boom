@@ -1,5 +1,6 @@
 package phrille.vanillaboom.entity;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.entity.EntityType;
@@ -10,13 +11,14 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkHooks;
 import phrille.vanillaboom.item.ModItems;
 
+@MethodsReturnNonnullByDefault
 public class PrismarineArrow extends Arrow {
-    public PrismarineArrow(EntityType<? extends PrismarineArrow> entityType, Level world) {
-        super(entityType, world);
+    public PrismarineArrow(EntityType<? extends PrismarineArrow> entityType, Level level) {
+        super(entityType, level);
     }
 
-    public PrismarineArrow(Level world, LivingEntity shooter) {
-        super(world, shooter);
+    public PrismarineArrow(Level level, LivingEntity shooter) {
+        super(level, shooter);
     }
 
     @Override
@@ -25,7 +27,6 @@ public class PrismarineArrow extends Arrow {
     }
 
     /**
-    @Override
     protected void onEntityHit(EntityRayTraceResult raytrace) {
         if (raytrace.getType() == RayTraceResult.Type.ENTITY) {
             Entity entity = ((EntityRayTraceResult) raytrace).getEntity();

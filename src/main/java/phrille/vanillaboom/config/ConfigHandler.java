@@ -30,7 +30,6 @@ public final class ConfigHandler {
     }
 
     public static class Common {
-        //General
         public final ForgeConfigSpec.BooleanValue growNetherWarts;
         public final ForgeConfigSpec.BooleanValue growWitherRoses;
         public final ForgeConfigSpec.BooleanValue placeSlimeBallPistons;

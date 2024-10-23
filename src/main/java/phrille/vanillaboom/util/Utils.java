@@ -3,6 +3,10 @@ package phrille.vanillaboom.util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.stats.Stats;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -19,12 +23,17 @@ import java.util.List;
 public class Utils {
     public static final List<Block> CANDLES = List.of(Blocks.CANDLE, Blocks.WHITE_CANDLE, Blocks.ORANGE_CANDLE, Blocks.MAGENTA_CANDLE, Blocks.LIGHT_BLUE_CANDLE, Blocks.YELLOW_CANDLE, Blocks.LIME_CANDLE, Blocks.PINK_CANDLE, Blocks.GRAY_CANDLE, Blocks.LIGHT_GRAY_CANDLE, Blocks.CYAN_CANDLE, Blocks.PURPLE_CANDLE, Blocks.BLUE_CANDLE, Blocks.BROWN_CANDLE, Blocks.GREEN_CANDLE, Blocks.RED_CANDLE, Blocks.BLACK_CANDLE);
 
-    public static void spawnParticles(SimpleParticleType particle, Level world, BlockPos pos) {
-        if (!world.getBlockState(pos).isSolidRender(world, pos)) {
+    public static void spawnParticles(SimpleParticleType particle, Level level, BlockPos pos) {
+        if (!level.getBlockState(pos).isSolidRender(level, pos)) {
             for (int l = 0; l < 8; ++l) {
-                world.addParticle(particle, (double) pos.getX() + Math.random(), (double) pos.getY() + Math.random(), (double) pos.getZ() + Math.random(), 0.0D, 0.0D, 0.0D);
+                level.addParticle(particle, (double) pos.getX() + Math.random(), (double) pos.getY() + Math.random(), (double) pos.getZ() + Math.random(), 0.0D, 0.0D, 0.0D);
             }
         }
+    }
+
+    public static void fillAndAwardStat(ItemStack heldStack, Player player, ItemStack newStack) {
+        player.awardStat(Stats.ITEM_USED.get(heldStack.getItem()));
+        ItemUtils.createFilledResult(heldStack, player, newStack);
     }
 
     public static void addCompostMaterials() {

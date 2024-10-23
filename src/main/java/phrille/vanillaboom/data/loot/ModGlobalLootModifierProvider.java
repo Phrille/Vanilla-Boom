@@ -22,7 +22,6 @@ import phrille.vanillaboom.loot.ModGlobalLootModifiers;
 import java.util.List;
 
 public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
-
     public ModGlobalLootModifierProvider(PackOutput output) {
         super(output, VanillaBoom.MOD_ID);
     }
