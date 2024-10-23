@@ -16,7 +16,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 
 
-version = '1.19.2-1.8.2.0'
+version = '1.19.2-1.8.3.0'
 group = 'phrille.vanillabooom' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'vanillaboom'
 
