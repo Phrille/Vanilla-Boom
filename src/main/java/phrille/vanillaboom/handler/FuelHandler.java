@@ -1,4 +1,4 @@
-package phrille.vanillaboom.util;
+package phrille.vanillaboom.handler;
 
 import com.google.common.collect.Maps;
 import net.minecraft.world.item.Item;

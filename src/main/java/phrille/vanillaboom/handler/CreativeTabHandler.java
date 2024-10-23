@@ -1,4 +1,4 @@
-package phrille.vanillaboom.util;
+package phrille.vanillaboom.handler;
 
 import com.google.common.collect.Lists;
 import net.minecraft.world.item.CreativeModeTab;
@@ -16,7 +16,7 @@ import phrille.vanillaboom.item.ModItems;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID)
+@Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CreativeTabHandler {
 
     @SubscribeEvent

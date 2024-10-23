@@ -1,4 +1,4 @@
-package phrille.vanillaboom.item;
+package phrille.vanillaboom.handler;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

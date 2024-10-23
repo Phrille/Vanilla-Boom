@@ -23,6 +23,7 @@ import phrille.vanillaboom.block.ModCakeBlock;
 import phrille.vanillaboom.block.ModCandleCakeBlock;
 import phrille.vanillaboom.block.crop.ITrellisCrop;
 import phrille.vanillaboom.block.crop.TrellisBlock;
+import phrille.vanillaboom.handler.FuelHandler;
 import phrille.vanillaboom.item.ModItems;
 
 import java.util.List;

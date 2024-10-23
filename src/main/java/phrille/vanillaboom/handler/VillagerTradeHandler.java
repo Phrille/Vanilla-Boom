@@ -1,4 +1,4 @@
-package phrille.vanillaboom.util;
+package phrille.vanillaboom.handler;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.resources.ResourceLocation;
@@ -45,6 +45,7 @@ public class VillagerTradeHandler {
         return new BasicItemListing(new ItemStack(item, amount), new ItemStack(Items.EMERALD), maxTrades, xp, 0.05F);
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static BasicItemListing emeraldsToItem(int amount, ItemLike item, int maxTrades, int xp) {
         return new BasicItemListing(amount, new ItemStack(item), maxTrades, xp, 0.05F);
     }

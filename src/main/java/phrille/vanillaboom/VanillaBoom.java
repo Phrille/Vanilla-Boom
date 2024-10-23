@@ -15,7 +15,6 @@ import phrille.vanillaboom.config.ConfigHandler;
 import phrille.vanillaboom.entity.ModEntities;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.loot.ModGlobalLootModifiers;
-import phrille.vanillaboom.util.CreativeTabHandler;
 import phrille.vanillaboom.util.Utils;
 
 @Mod(VanillaBoom.MOD_ID)
@@ -35,8 +34,6 @@ public class VanillaBoom {
         eventBus.addListener(this::setup);
         eventBus.addListener(this::enqueueIMC);
         eventBus.addListener(this::processIMC);
-
-        eventBus.register(CreativeTabHandler.class);
 
         context.registerConfig(ModConfig.Type.COMMON, ConfigHandler.COMMON_SPEC);
     }
