@@ -175,6 +175,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         rainDetectorBlock(ModBlocks.RAIN_DETECTOR.get());
         barsBlock(ModBlocks.GOLD_BARS.get());
         flowerBlock(ModBlocks.ROSE.get(), ModBlocks.POTTED_ROSE.get());
+        doublePlantBlock(ModBlocks.SHEARED_ROSE_BUSH.get());
         trellisBlock(ModBlocks.TRELLIS.get());
         tomatoBlock(ModBlocks.TOMATO.get());
         cropBlock(ModBlocks.RICE_PLANT.get(), RicePlantBlock.AGE);
@@ -426,6 +427,25 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .face(Direction.NORTH).uvs(16, 0, 0, 16).texture("#trellis").end()
                 .face(Direction.SOUTH).uvs(0, 0, 16, 16).texture("#trellis").end()
                 .end();
+    }
+
+    public void doublePlantBlock(Block plant) {
+        ModelFile upperModel = models()
+                .withExistingParent(name(plant) + "_top", ModelProvider.BLOCK_FOLDER + "/cross")
+                .texture("cross", ModDataGenerator.extend(blockTexture(plant), "_top"))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT);
+        ModelFile lowerModel = models()
+                .withExistingParent(name(plant) + "_bottom", ModelProvider.BLOCK_FOLDER + "/cross")
+                .texture("cross", ModDataGenerator.extend(blockTexture(plant), "_bottom"))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT);
+
+        getVariantBuilder(plant).forAllStates(state -> {
+            DoubleBlockHalf doubleBlock = state.getValue(DoublePlantBlock.HALF);
+
+            return ConfiguredModel.builder()
+                    .modelFile(doubleBlock == DoubleBlockHalf.UPPER ? upperModel : lowerModel)
+                    .build();
+        });
     }
 
     public void rainDetectorBlock(Block rainDetector) {

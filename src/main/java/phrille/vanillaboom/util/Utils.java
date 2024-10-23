@@ -9,10 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
@@ -54,6 +51,14 @@ public class Utils {
                 level.setBlock(below, fluidState, 35);
                 level.levelEvent(player, 2001, below, Block.getId(belowState));
             }
+        }
+    }
+
+    public static void setDoubleBlock(Level level, BlockState state, BlockPos pos, EnumProperty<DoubleBlockHalf> halfProperty) {
+        if (!level.isClientSide) {
+            level.setBlock(pos.above(), Blocks.AIR.defaultBlockState(), 20);
+            level.setBlock(pos, state.setValue(halfProperty, DoubleBlockHalf.LOWER), 2);
+            level.setBlock(pos.above(), state.setValue(halfProperty, DoubleBlockHalf.UPPER), 2);
         }
     }
 

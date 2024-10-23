@@ -612,6 +612,7 @@ public class CreativeTabHandler {
             putAfter(entries, Blocks.SOUL_SOIL, List.of(ModItems.BONE_SAND.get(), ModItems.WITHER_BONE_SAND.get()));
             putAfter(entries, Blocks.SMOOTH_BASALT, ModItems.INFERNAL_ROCK.get());
             putAfter(entries, Blocks.LILY_OF_THE_VALLEY, ModItems.ROSE.get());
+            putAfter(entries, Blocks.ROSE_BUSH, ModItems.SHEARED_ROSE_BUSH.get());
             putAfter(entries, Items.BEETROOT_SEEDS, List.of(ModItems.TOMATO_SEEDS.get(), ModItems.RICE_SEEDS.get()));
         }
 

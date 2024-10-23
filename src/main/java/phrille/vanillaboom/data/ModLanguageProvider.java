@@ -158,6 +158,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.RAIN_DETECTOR.get(), "Rain Detector");
         add(ModBlocks.GOLD_BARS.get(), "Gold Bars");
         add(ModBlocks.ROSE.get(), "Rose");
+        add(ModBlocks.SHEARED_ROSE_BUSH.get(), "Sheared Rose Bush");
         add(ModBlocks.TRELLIS.get(), "Trellis");
 
         // VanillaBoom Stairs

@@ -35,6 +35,7 @@ public final class ConfigHandler {
         public final ForgeConfigSpec.BooleanValue placeSlimeBallPistons;
         public final ForgeConfigSpec.BooleanValue removeSlimeBallPistons;
         public final ForgeConfigSpec.BooleanValue fillWaterBottleHydroRock;
+        public final ForgeConfigSpec.BooleanValue shearRoseBushes;
 
         public Common(ForgeConfigSpec.Builder builder) {
             builder.push("general");
@@ -43,6 +44,7 @@ public final class ConfigHandler {
             placeSlimeBallPistons = builder.comment("\n Set this to false to disable placing Slime Balls on Sticky Pistons when right clicking with a Slime Ball.").define("place_slime_ball_pistons", true);
             removeSlimeBallPistons = builder.comment("\n Set this to false to disable removing Slime Balls from Sticky Pistons when right clicking and crouching with an Axe.").define("remove_slime_ball_pistons", true);
             fillWaterBottleHydroRock = builder.comment("\n Set this to false to disable Glass Bottles being able to be filled up when right clicking a Hydro Rock block.").define("fill_water_bottle_hydro_rock", true);
+            shearRoseBushes = builder.comment("\n Set this to false to disable shearing Rose Bushed to obtain Roses.").define("shear_rose_bushes", true);
             builder.pop();
         }
     }

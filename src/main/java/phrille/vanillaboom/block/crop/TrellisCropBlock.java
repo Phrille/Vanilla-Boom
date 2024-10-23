@@ -15,7 +15,6 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
@@ -24,6 +23,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import phrille.vanillaboom.util.Utils;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -48,9 +48,7 @@ public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrell
 
     @Override
     public void placeAt(Level level, BlockPos pos) {
-        level.setBlock(pos.above(), Blocks.AIR.defaultBlockState(), 20);
-        level.setBlock(pos, getStateForAge(0).setValue(HALF, DoubleBlockHalf.LOWER), 2);
-        level.setBlock(pos.above(), getStateForAge(0).setValue(HALF, DoubleBlockHalf.UPPER), 2);
+        Utils.setDoubleBlock(level, getStateForAge(0), pos, HALF);
     }
 
     @Override

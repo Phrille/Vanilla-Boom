@@ -8,6 +8,7 @@ public class VanillaBoomConfig {
     public static boolean placeSlimeBallPistons;
     public static boolean removeSlimeBallPistons;
     public static boolean fillWaterBottleHydroRock;
+    public static boolean shearRoseBushes;
 
     @SuppressWarnings("unused")
     public static void bakeCommon(ModConfig config) {
@@ -16,5 +17,6 @@ public class VanillaBoomConfig {
         placeSlimeBallPistons = ConfigHandler.COMMON.placeSlimeBallPistons.get();
         removeSlimeBallPistons = ConfigHandler.COMMON.removeSlimeBallPistons.get();
         fillWaterBottleHydroRock = ConfigHandler.COMMON.fillWaterBottleHydroRock.get();
+        shearRoseBushes = ConfigHandler.COMMON.shearRoseBushes.get();
     }
 }

@@ -15,9 +15,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.NetherWartBlock;
+import net.minecraft.world.level.block.TallFlowerBlock;
 import net.minecraft.world.level.block.piston.PistonBaseBlock;
 import net.minecraft.world.level.block.piston.PistonHeadBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.PistonType;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -40,6 +42,7 @@ public class ItemEventHandler {
         BlockState state = level.getBlockState(pos);
         ItemStack stack = event.getItemStack();
         Player player = event.getEntity();
+        InteractionHand hand = event.getHand();
 
         if (event.isCanceled() || stack.isEmpty()) {
             return;
@@ -52,7 +55,9 @@ public class ItemEventHandler {
         } else if (stack.is(Tags.Items.SLIMEBALLS)) {
             result = useSlimeBall(level, player, state, pos, stack);
         } else if (stack.is(ItemTags.AXES) && player.isCrouching()) {
-            result = removeSlimeBall(level, player, state, pos, stack, event.getHand());
+            result = removeSlimeBall(level, player, state, pos, stack, hand);
+        } else if (stack.is(Tags.Items.SHEARS)) {
+            result = shearRoseBush(level, player, state, pos, stack, hand);
         }
 
         event.setUseBlock(result);
@@ -150,6 +155,31 @@ public class ItemEventHandler {
         Block.popResource(level, pos, new ItemStack(Items.SLIME_BALL));
         player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
         level.playSound(null, pos, SoundEvents.CHICKEN_EGG, SoundSource.BLOCKS, 1.0F, 1.0F);
+        if (!player.isCreative()) {
+            stack.hurtAndBreak(1, player, entity -> entity.broadcastBreakEvent(hand));
+        }
+
+        return Event.Result.DENY;
+    }
+
+    protected static Event.Result shearRoseBush(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack, InteractionHand hand) {
+        if (!VanillaBoomConfig.shearRoseBushes) {
+            return Event.Result.DEFAULT;
+        }
+
+        if (state.getBlock() == Blocks.ROSE_BUSH) {
+            DoubleBlockHalf half = state.getValue(TallFlowerBlock.HALF);
+            if (half == DoubleBlockHalf.UPPER) {
+                pos = pos.below();
+            }
+            Utils.setDoubleBlock(level, ModBlocks.SHEARED_ROSE_BUSH.get().defaultBlockState(), pos, TallFlowerBlock.HALF);
+        } else {
+            return Event.Result.DEFAULT;
+        }
+
+        Block.popResource(level, pos, new ItemStack(ModBlocks.ROSE.get()));
+        player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
+        level.playSound(null, pos, SoundEvents.SHEEP_SHEAR, SoundSource.BLOCKS, 1.0F, 1.0F);
         if (!player.isCreative()) {
             stack.hurtAndBreak(1, player, entity -> entity.broadcastBreakEvent(hand));
         }

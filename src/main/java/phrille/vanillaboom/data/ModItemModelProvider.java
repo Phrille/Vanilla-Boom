@@ -233,6 +233,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModItems.RAIN_DETECTOR.get());
         item(ModBlocks.GOLD_BARS.get());
         item(ModBlocks.ROSE.get());
+        item(ModBlocks.SHEARED_ROSE_BUSH.get().asItem(), "generated")
+                .texture("layer0", ModDataGenerator.extend(blockTexture(ModBlocks.SHEARED_ROSE_BUSH.get()), "_top"));
         item(ModBlocks.TRELLIS.get());
 
         // Variant Blocks
