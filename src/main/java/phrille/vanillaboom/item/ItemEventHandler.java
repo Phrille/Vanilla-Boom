@@ -10,7 +10,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -21,6 +20,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.PistonType;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import phrille.vanillaboom.VanillaBoom;
@@ -34,9 +34,9 @@ public class ItemEventHandler {
 
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        Level world = event.getLevel();
+        Level level = event.getLevel();
         BlockPos pos = event.getPos();
-        BlockState state = world.getBlockState(pos);
+        BlockState state = level.getBlockState(pos);
         ItemStack stack = event.getItemStack();
         Player player = event.getEntity();
 
@@ -44,124 +44,115 @@ public class ItemEventHandler {
             return;
         }
 
-        if (VanillaBoomConfig.growNetherWarts && tryGrowNetherWart(world, player, state, pos, stack)) {
-            return;
+        Event.Result result = Event.Result.DEFAULT;
+
+        if (stack.is(ModTags.ForgeTags.Items.WITHER_BONE_MEALS)) {
+            result = useWitherBoneMeal(level, player, state, pos, stack);
+        } else if (stack.is(Tags.Items.SLIMEBALLS)) {
+            result = useSlimeBall(level, player, state, pos, stack);
+        } else if (stack.is(Tags.Items.TOOLS_AXES) && player.isCrouching()) {
+            result = removeSlimeBall(level, player, state, pos, stack, event.getHand());
         }
 
-        if (VanillaBoomConfig.growWitherRoses && tryGrowWitherRose(world, player, state, pos, stack)) {
-            return;
-        }
-
-        if (VanillaBoomConfig.placeSlimeBallPistons && tryPlaceSlimeBall(world, player, state, pos, stack)) {
-            return;
-        }
-
-        if (VanillaBoomConfig.removeSlimeBallPistons && tryRemoveSlimeBall(world, player, state, pos, stack, event.getHand())) {
-            return;
-        }
+        event.setUseBlock(result);
     }
 
-    protected static boolean tryGrowNetherWart(Level world, Player player, BlockState state, BlockPos pos, ItemStack stack) {
-        if (state.getBlock() == Blocks.NETHER_WART  && stack.is(ModTags.ForgeTags.Items.WITHER_BONE_MEALS)) {
+    protected static Event.Result useWitherBoneMeal(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack) {
+        if (state.getBlock() == Blocks.NETHER_WART) {
+            if (!VanillaBoomConfig.growNetherWarts) {
+                return Event.Result.DEFAULT;
+            }
+
             int age = state.getValue(NetherWartBlock.AGE);
 
-            if (age < NetherWartBlock.MAX_AGE) {
-                if (world.random.nextFloat() < 0.625F) {
-                    state = state.setValue(NetherWartBlock.AGE, age + 1);
-                    world.setBlock(pos, state, 2);
+            if (age < 3) {
+                if (!level.isClientSide) {
+                    if (level.random.nextFloat() < 0.625F) {
+                        level.setBlock(pos, state.setValue(NetherWartBlock.AGE, age + 1), 2);
+                    }
                 }
+            } else {
+                return Event.Result.DEFAULT;
+            }
+        } else if (state.getBlock() == ModBlocks.ROSE.get()) {
+            if (!VanillaBoomConfig.growWitherRoses) {
+                return Event.Result.DEFAULT;
+            }
 
-                Utils.spawnParticles(ParticleTypes.FLAME, world, pos);
-                player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-
-                if (!player.isCreative()) {
-                    stack.shrink(1);
+            if (!level.isClientSide) {
+                if (level.random.nextFloat() < 0.25F) {
+                    level.setBlock(pos, Blocks.WITHER_ROSE.defaultBlockState(), 2);
                 }
-
-                return true;
             }
+        } else {
+            return Event.Result.DEFAULT;
         }
 
-        return false;
-    }
-
-    protected static boolean tryGrowWitherRose(Level world, Player player, BlockState state, BlockPos pos, ItemStack stack) {
-        if (state.getBlock() == ModBlocks.ROSE.get() && stack.is(ModTags.ForgeTags.Items.WITHER_BONE_MEALS)) {
-            if (world.random.nextFloat() < 0.25F) {
-                world.setBlock(pos, Blocks.WITHER_ROSE.defaultBlockState(), 2);
-            }
-
-            Utils.spawnParticles(ParticleTypes.SMOKE, world, pos);
-            player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-
-            if (!player.isCreative()) {
-                stack.shrink(1);
-            }
-
-            return true;
-        }
-
-        return false;
-    }
-
-    protected static boolean tryPlaceSlimeBall(Level world, Player player, BlockState state, BlockPos pos, ItemStack stack) {
-        if (stack.is(Tags.Items.SLIMEBALLS)) {
-            if (state.getBlock() == Blocks.PISTON && !state.getValue(PistonBaseBlock.EXTENDED)) {
-                Direction direction = state.getValue(PistonBaseBlock.FACING);
-                world.setBlock(pos, Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, direction), 2);
-                onPlace(world, pos, player, stack);
-
-                return true;
-            } else if (state.getBlock() == Blocks.PISTON_HEAD && state.getValue(PistonHeadBlock.TYPE) == PistonType.DEFAULT) {
-                Direction direction = state.getValue(PistonBaseBlock.FACING);
-                world.setBlock(pos, Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.TYPE, PistonType.STICKY).setValue(PistonHeadBlock.FACING, direction), 2);
-                world.setBlock(pos.relative(direction, -1), Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.EXTENDED, true).setValue(PistonBaseBlock.FACING, direction), 2);
-                onPlace(world, pos, player, stack);
-
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    protected static void onPlace(Level world, BlockPos pos, Player player, ItemStack stack) {
+        Utils.spawnParticles(ParticleTypes.SMOKE, level, pos);
+        player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
         if (!player.isCreative()) {
             stack.shrink(1);
         }
 
-        player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-        world.playSound(null, pos, SoundEvents.SLIME_BLOCK_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+        return Event.Result.DENY;
     }
 
-    protected static boolean tryRemoveSlimeBall(Level world, Player player, BlockState state, BlockPos pos, ItemStack stack, InteractionHand hand) {
-        if (stack.getItem() instanceof ShovelItem && player.isCrouching()) {
-            if (state.getBlock() == Blocks.STICKY_PISTON && !state.getValue(PistonBaseBlock.EXTENDED)) {
-                Direction direction = state.getValue(PistonBaseBlock.FACING);
-                world.setBlock(pos, Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, direction), 2);
-                onRemove(world, pos, player, stack, hand, direction);
+    protected static Event.Result useSlimeBall(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack) {
+        if (!VanillaBoomConfig.placeSlimeBallPistons) {
+            return Event.Result.DEFAULT;
+        }
 
-                return true;
-            } else if (state.getBlock() == Blocks.PISTON_HEAD && state.getValue(PistonHeadBlock.TYPE) == PistonType.STICKY) {
-                Direction direction = state.getValue(PistonHeadBlock.FACING);
-                world.setBlock(pos, Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.TYPE, PistonType.DEFAULT).setValue(PistonHeadBlock.FACING, direction), 2);
-                world.setBlock(pos.relative(direction, -1), Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.EXTENDED, true).setValue(PistonBaseBlock.FACING, direction), 2);
-                onRemove(world, pos, player, stack, hand, direction);
-
-                return true;
+        if (state.getBlock() == Blocks.PISTON && !state.getValue(PistonBaseBlock.EXTENDED)) {
+            Direction direction = state.getValue(PistonBaseBlock.FACING);
+            if (!level.isClientSide) {
+                level.setBlock(pos, Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, direction), 2);
             }
+        } else if (state.getBlock() == Blocks.PISTON_HEAD && state.getValue(PistonHeadBlock.TYPE) == PistonType.DEFAULT) {
+            Direction direction = state.getValue(PistonBaseBlock.FACING);
+            if (!level.isClientSide) {
+                level.setBlock(pos, Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.TYPE, PistonType.STICKY).setValue(PistonHeadBlock.FACING, direction), 2);
+                level.setBlock(pos.relative(direction, -1), Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.EXTENDED, true).setValue(PistonBaseBlock.FACING, direction), 2);
+            }
+        } else {
+            return Event.Result.DEFAULT;
         }
 
-        return false;
+        player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
+        level.playSound(null, pos, SoundEvents.SLIME_BLOCK_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+        if (!player.isCreative()) {
+            stack.shrink(1);
+        }
+
+        return Event.Result.DENY;
     }
 
-    protected static void onRemove(Level world, BlockPos pos, Player player, ItemStack stack, InteractionHand hand, Direction direction) {
-        if (!player.isCreative()) {
-            stack.hurtAndBreak(1, player, (entity) -> entity.broadcastBreakEvent(hand));
+    protected static Event.Result removeSlimeBall(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack, InteractionHand hand) {
+        if (!VanillaBoomConfig.removeSlimeBallPistons) {
+            return Event.Result.DEFAULT;
         }
 
-        Block.popResourceFromFace(world, pos, direction, new ItemStack(Items.SLIME_BALL));
+        if (state.getBlock() == Blocks.STICKY_PISTON && !state.getValue(PistonBaseBlock.EXTENDED)) {
+            Direction direction = state.getValue(PistonBaseBlock.FACING);
+            if (!level.isClientSide) {
+                level.setBlock(pos, Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, direction), 2);
+            }
+        } else if (state.getBlock() == Blocks.PISTON_HEAD && state.getValue(PistonHeadBlock.TYPE) == PistonType.STICKY) {
+            Direction direction = state.getValue(PistonHeadBlock.FACING);
+            if (!level.isClientSide) {
+                level.setBlock(pos, Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.TYPE, PistonType.DEFAULT).setValue(PistonHeadBlock.FACING, direction), 2);
+                level.setBlock(pos.relative(direction, -1), Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.EXTENDED, true).setValue(PistonBaseBlock.FACING, direction), 2);
+            }
+        } else {
+            return Event.Result.DEFAULT;
+        }
+
+        Block.popResource(level, pos, new ItemStack(Items.SLIME_BALL));
         player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-        world.playSound(null, pos, SoundEvents.CHICKEN_EGG, SoundSource.BLOCKS, 1.0F, 1.0F);
+        level.playSound(null, pos, SoundEvents.CHICKEN_EGG, SoundSource.BLOCKS, 1.0F, 1.0F);
+        if (!player.isCreative()) {
+            stack.hurtAndBreak(1, player, entity -> entity.broadcastBreakEvent(hand));
+        }
+
+        return Event.Result.DENY;
     }
 }
