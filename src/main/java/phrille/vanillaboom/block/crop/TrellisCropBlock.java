@@ -1,5 +1,6 @@
 package phrille.vanillaboom.block.crop;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -24,9 +25,9 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
+@MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrellisCrop {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
@@ -41,7 +42,6 @@ public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrell
     }
 
     @Override
-    @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         return null;
     }
@@ -86,6 +86,7 @@ public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrell
         growToAge(level, state, pos, newAge, 2);
     }
 
+    @SuppressWarnings("SameParameterValue")
     protected void growToAge(Level level, BlockState oldState, BlockPos pos, int age, int flag) {
         if (age >= oldState.getValue(getAgeProperty())) {
             level.setBlock(pos, getStateForAge(age).setValue(HALF, DoubleBlockHalf.LOWER), flag);
@@ -112,7 +113,7 @@ public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrell
 
     @Override
     @SuppressWarnings("deprecation")
-    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         int age = state.getValue(AGE);
         boolean isMaxAge = age == getMaxAge();
         ItemStack stack = player.getItemInHand(hand);
@@ -134,7 +135,7 @@ public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrell
     }
 
     @Override
-    protected @NotNull ItemLike getBaseSeedId() {
+    protected ItemLike getBaseSeedId() {
         return getSeed();
     }
 }

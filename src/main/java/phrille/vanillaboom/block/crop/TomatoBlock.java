@@ -4,9 +4,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import phrille.vanillaboom.item.ModItems;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@ParametersAreNonnullByDefault
 public class TomatoBlock extends TrellisCropBlock {
     public TomatoBlock(Properties builder) {
         super(builder);

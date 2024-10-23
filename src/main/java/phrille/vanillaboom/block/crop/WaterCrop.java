@@ -1,5 +1,6 @@
 package phrille.vanillaboom.block.crop;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -17,11 +18,10 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
+@MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class WaterCrop extends DoubleCropBlock implements LiquidBlockContainer {
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
@@ -31,12 +31,11 @@ public class WaterCrop extends DoubleCropBlock implements LiquidBlockContainer {
     }
 
     @Override
-    public @NotNull VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 
     @Override
-    @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
         return fluidState.is(FluidTags.WATER) && fluidState.getAmount() == 8 ? defaultBlockState() : null;
@@ -70,7 +69,7 @@ public class WaterCrop extends DoubleCropBlock implements LiquidBlockContainer {
 
     @Override
     @SuppressWarnings("deprecation")
-    public @NotNull FluidState getFluidState(BlockState state) {
+    public FluidState getFluidState(BlockState state) {
         return Fluids.WATER.getSource(false);
     }
 
