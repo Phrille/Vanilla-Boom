@@ -31,7 +31,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-
         // Models
         cropWithTrellisModel();
 
@@ -59,29 +58,29 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.RED_TERRACOTTA_BRICKS.get());
         simpleBlock(ModBlocks.BLACK_TERRACOTTA_BRICKS.get());
 
-        //Rocks
+        // Rocks
         simpleBlock(ModBlocks.PERIDOTITE.get());
         simpleBlock(ModBlocks.HYDRO_ROCK.get());
         simpleBlock(ModBlocks.INFERNAL_ROCK.get());
 
-        //Sand and Gravel
+        // Sand and Gravel
         simpleBlock(ModBlocks.BONE_SAND.get());
         simpleBlock(ModBlocks.WITHER_BONE_SAND.get());
 
-        //Polished
+        // Polished
         simpleBlock(ModBlocks.POLISHED_PERIDOTITE.get());
         simpleBlock(ModBlocks.POLISHED_PRISMARINE.get());
         simpleBlock(ModBlocks.POLISHED_DARK_PRISMARINE.get());
         simpleBlock(ModBlocks.POLISHED_END_STONE.get());
         simpleBlock(ModBlocks.POLISHED_NETHERRACK.get());
 
-        //Chiseled and cracked
+        // Chiseled and cracked
         simpleBlock(ModBlocks.CRACKED_RED_NETHER_BRICKS.get());
         simpleBlock(ModBlocks.CHISELED_RED_NETHER_BRICKS.get());
         simpleBlock(ModBlocks.CHISELED_PURPUR_BLOCK.get());
         simpleBlock(ModBlocks.CHISELED_OBSIDIAN.get());
 
-        //Pillars
+        // Pillars
         pillarBlock(ModBlocks.GRANITE_PILLAR.get());
         pillarBlock(ModBlocks.DIORITE_PILLAR.get());
         pillarBlock(ModBlocks.ANDESITE_PILLAR.get());
@@ -93,7 +92,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         pillarBlock(ModBlocks.RED_NETHER_PILLAR.get());
         pillarBlock(ModBlocks.OBSIDIAN_PILLAR.get());
 
-        //Wood Variations
+        // Wood Variations
         bookshelfBlock(ModBlocks.SPRUCE_BOOKSHELF.get(), Blocks.SPRUCE_PLANKS);
         bookshelfBlock(ModBlocks.BIRCH_BOOKSHELF.get(), Blocks.BIRCH_PLANKS);
         bookshelfBlock(ModBlocks.JUNGLE_BOOKSHELF.get(), Blocks.JUNGLE_PLANKS);
@@ -109,7 +108,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ladderBlock(ModBlocks.CRIMSON_LADDER.get());
         ladderBlock(ModBlocks.WARPED_LADDER.get());
 
-        //Storage Blocks
+        // Storage Blocks
         simpleBlock(ModBlocks.CHARCOAL_BLOCK.get());
         simpleBlock(ModBlocks.SUGAR_BLOCK.get());
         pillarBlock(ModBlocks.SUGAR_CANE_BLOCK.get());
@@ -135,7 +134,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.RED_DYE_BLOCK.get());
         simpleBlock(ModBlocks.BLACK_DYE_BLOCK.get());
 
-        //Glass
+        // Glass
         glassBlock(ModBlocks.SOUL_GLASS.get());
         glassBlock(ModBlocks.WHITE_STAINED_SOUL_GLASS.get());
         glassBlock(ModBlocks.ORANGE_STAINED_SOUL_GLASS.get());
@@ -172,7 +171,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         glassPaneBlock(ModBlocks.RED_STAINED_SOUL_GLASS_PANE.get());
         glassPaneBlock(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get());
 
-        //Misc
+        // Misc
         rainDetectorBlock(ModBlocks.RAIN_DETECTOR.get());
         barsBlock(ModBlocks.GOLD_BARS.get());
         flowerBlock(ModBlocks.ROSE.get(), ModBlocks.POTTED_ROSE.get());
@@ -180,12 +179,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
         tomatoBlock(ModBlocks.TOMATO.get());
         cropBlock(ModBlocks.RICE_PLANT.get(), RicePlantBlock.AGE);
 
-        //Cakes
+        // Cakes
         cakeBlock(ModBlocks.CHOCOLATE_CAKE.get());
         cakeBlock(ModBlocks.CARROT_CAKE.get());
         cakeBlock(ModBlocks.BERRY_CAKE.get());
 
-        //Variant Blocks
+        // Variant Blocks
         ModDataGenerator.STAIRS.forEach(pair -> {
             if (pair.getSecond() == null) {
                 stairsBlock(pair.getFirst());

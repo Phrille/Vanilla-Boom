@@ -1,5 +1,6 @@
 package phrille.vanillaboom.data.loot;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
@@ -20,7 +21,6 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
-import org.jetbrains.annotations.NotNull;
 import phrille.vanillaboom.block.*;
 import phrille.vanillaboom.block.crop.ITrellisCrop;
 import phrille.vanillaboom.block.crop.TrellisBlock;
@@ -31,8 +31,8 @@ import phrille.vanillaboom.util.Utils;
 
 import java.util.Set;
 
+@MethodsReturnNonnullByDefault
 public class ModBlockLootTables extends BlockLootSubProvider {
-
     public ModBlockLootTables() {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags());
     }
@@ -202,7 +202,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     }
 
     @Override
-    protected @NotNull Iterable<Block> getKnownBlocks() {
+    protected Iterable<Block> getKnownBlocks() {
         return ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
     }
 

@@ -12,7 +12,6 @@ import java.util.Map;
 
 @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID)
 public class FuelHandler {
-
     private static final Map<Item, Integer> burnTimes = Maps.newHashMap();
 
     public static void registerBurnTime(ItemLike item, int burnTime) {

@@ -1,69 +1,69 @@
 package phrille.vanillaboom.block;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import phrille.vanillaboom.config.VanillaBoomConfig;
 import phrille.vanillaboom.util.Utils;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
 public class HydroRockBlock extends Block {
     public HydroRockBlock() {
-        super(Properties.copy(Blocks.PRISMARINE));
+        super(BlockBehaviour.Properties.copy(Blocks.PRISMARINE));
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    @SuppressWarnings("deprecation")
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
 
         if (VanillaBoomConfig.fillWaterBottleHydroRock && stack.is(Items.GLASS_BOTTLE)) {
-            if (world.dimensionType().ultraWarm()) {
-                world.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, 1.0F);
-                Utils.spawnParticles(ParticleTypes.SMOKE, world, pos.above());
+            if (level.dimensionType().ultraWarm()) {
+                level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, 1.0F);
+                Utils.spawnParticles(ParticleTypes.SMOKE, level, pos.above());
             } else {
-                fillBottle(stack, player, PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER));
-                world.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                Utils.spawnParticles(ParticleTypes.SPLASH, world, pos.above());
+                Utils.fillAndAwardStat(stack, player, PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER));
+                level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+                Utils.spawnParticles(ParticleTypes.SPLASH, level, pos.above());
             }
 
-            return InteractionResult.sidedSuccess(world.isClientSide);
+            return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        return super.use(state, world, pos, player, hand, hit);
-    }
-
-    protected ItemStack fillBottle(ItemStack heldStack, Player player, ItemStack newStack) {
-        player.awardStat(Stats.ITEM_USED.get(heldStack.getItem()));
-        return ItemUtils.createFilledResult(heldStack, player, newStack);
+        return super.use(state, level, pos, player, hand, hit);
     }
 
     @Override
-    public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource rand) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
         Direction direction = Direction.getRandom(rand);
         BlockPos blockpos = pos.relative(direction);
-        BlockState blockstate = world.getBlockState(blockpos);
+        BlockState blockstate = level.getBlockState(blockpos);
         double x = pos.getX();
         double y = pos.getY();
         double z = pos.getZ();
 
-        if (direction != Direction.UP && !world.dimensionType().ultraWarm()) {
-            if (!state.canOcclude() || !blockstate.isFaceSturdy(world, blockpos, direction.getOpposite())) {
+        if (direction != Direction.UP && !level.dimensionType().ultraWarm()) {
+            if (!state.canOcclude() || !blockstate.isFaceSturdy(level, blockpos, direction.getOpposite())) {
                 if (direction == Direction.DOWN) {
                     y = y - 0.05D;
                     x += rand.nextDouble();
@@ -87,14 +87,14 @@ public class HydroRockBlock extends Block {
                     }
                 }
 
-                world.addParticle(ParticleTypes.DRIPPING_WATER, x, y, z, 0.0D, 0.0D, 0.0D);
+                level.addParticle(ParticleTypes.DRIPPING_WATER, x, y, z, 0.0D, 0.0D, 0.0D);
             }
-        } else if (world.dimensionType().ultraWarm()) {
+        } else if (level.dimensionType().ultraWarm()) {
             y++;
             x += rand.nextDouble();
             z += rand.nextDouble();
 
-            world.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
+            level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
         }
     }
 }

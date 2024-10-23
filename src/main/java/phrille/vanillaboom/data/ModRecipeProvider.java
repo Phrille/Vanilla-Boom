@@ -16,7 +16,6 @@ import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.registries.ForgeRegistries;
-import org.jetbrains.annotations.NotNull;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.ModSlabBlock;
@@ -25,16 +24,18 @@ import phrille.vanillaboom.block.ModWallBlock;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.ModTags;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.function.Consumer;
 
+@ParametersAreNonnullByDefault
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     public ModRecipeProvider(PackOutput output) {
         super(output);
     }
 
     @Override
-    protected void buildRecipes(@NotNull Consumer<FinishedRecipe> finishedRecipe) {
+    protected void buildRecipes(Consumer<FinishedRecipe> finishedRecipe) {
         bricks(finishedRecipe, ModItems.COBBLESTONE_BRICKS.get(), Blocks.COBBLESTONE);
         bricks(finishedRecipe, ModItems.MOSSY_COBBLESTONE_BRICKS.get(), Blocks.MOSSY_COBBLESTONE);
         mossyCobblestoneBricksShapeless(finishedRecipe, Blocks.MOSS_BLOCK);
@@ -214,7 +215,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         variants(finishedRecipe, RecipeCategory.DECORATIONS, ModItems.POLISHED_DIORITE_WALL.get(), Blocks.DIORITE);
         variants(finishedRecipe, RecipeCategory.DECORATIONS, ModItems.POLISHED_ANDESITE_WALL.get(), Blocks.ANDESITE);
 
-        //Items
+        // Items
         smeltingAndBlasting(finishedRecipe, RecipeCategory.MISC, ModItems.MAGMA_BRICK.get(), Blocks.MAGMA_BLOCK, 0.1F);
         oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, ModItems.WITHER_BONE_MEAL.get(), ModItems.WITHER_BONE.get(), 3);
         oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, Items.BLACK_DYE, ModItems.WITHER_BONE_MEAL.get(), 1);
@@ -292,7 +293,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         cooking(finishedRecipe, ModItems.COOKED_PIKE.get(), ModItems.PIKE.get(), 0.35F);
         cooking(finishedRecipe, ModItems.COOKED_EEL.get(), ModItems.EEL.get(), 0.35F);
 
-        //Altered recipes from vanilla
+        // Altered recipes from vanilla
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.BONE_BLOCK)
                 .define('x', Items.BONE)
                 .pattern("xxx")
@@ -322,7 +323,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
-    //Templates
+    // Templates
     public void bricks(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike ingredient) {
         twoByTwoShaped(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, result, ingredient, 4);
         stonecutting(finishedRecipe, RecipeCategory.BUILDING_BLOCKS, result, ingredient);
@@ -609,7 +610,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
-    //Shapeless Recipe
+    // Shapeless Recipe
     public void oneToOneShapeless(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, ItemLike ingredient, int amount) {
         ShapelessRecipeBuilder.shapeless(category, result, amount)
                 .requires(ingredient)
@@ -636,7 +637,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
     }
 
-    //Smelting
+    // Smelting
     public void smelting(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, ItemLike ingredient, float xp) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), category, result, xp, 200).
                 unlockedBy(getHasName(ingredient), has(ingredient)).
@@ -661,7 +662,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeResourceLocation(result, ingredient), "_from_campfire"));
     }
 
-    //Stonecutting
+    // Stonecutting
     public void stonecutting(Consumer<FinishedRecipe> finishedRecipe, RecipeCategory category, ItemLike result, ItemLike ingredient) {
         stonecutting(finishedRecipe, category, result, ingredient, 1);
     }
