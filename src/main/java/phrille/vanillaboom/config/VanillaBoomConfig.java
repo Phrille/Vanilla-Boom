@@ -3,6 +3,7 @@ package phrille.vanillaboom.config;
 import net.minecraftforge.fml.config.ModConfig;
 
 public class VanillaBoomConfig {
+    public static boolean witherBoneMealEnabled;
     public static boolean growNetherWarts;
     public static boolean growWitherRoses;
     public static boolean placeSlimeBallPistons;
@@ -12,6 +13,7 @@ public class VanillaBoomConfig {
 
     @SuppressWarnings("unused")
     public static void bakeCommon(ModConfig config) {
+        witherBoneMealEnabled = ConfigHandler.COMMON.witherBoneMealEnabled.get();
         growNetherWarts = ConfigHandler.COMMON.growNetherWarts.get();
         growWitherRoses = ConfigHandler.COMMON.growWitherRoses.get();
         placeSlimeBallPistons = ConfigHandler.COMMON.placeSlimeBallPistons.get();

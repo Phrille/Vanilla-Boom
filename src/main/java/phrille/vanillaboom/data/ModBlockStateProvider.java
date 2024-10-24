@@ -179,6 +179,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         trellisBlock(ModBlocks.TRELLIS.get());
         tomatoBlock(ModBlocks.TOMATO.get());
         cropBlock(ModBlocks.RICE_PLANT.get(), RicePlantBlock.AGE);
+        vineBlock(ModBlocks.WITHERED_VINE.get());
 
         // Cakes
         cakeBlock(ModBlocks.CHOCOLATE_CAKE.get());
@@ -446,6 +447,25 @@ public class ModBlockStateProvider extends BlockStateProvider {
                     .modelFile(doubleBlock == DoubleBlockHalf.UPPER ? upperModel : lowerModel)
                     .build();
         });
+    }
+
+    public void vineBlock(Block vineBlock) {
+        ModelFile vineModel = models()
+                .withExistingParent(name(vineBlock), ModelProvider.BLOCK_FOLDER + "/vine")
+                .texture("particle", blockTexture(vineBlock))
+                .texture("vine", blockTexture(vineBlock))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT);
+
+        MultiPartBlockStateBuilder builder = getMultipartBuilder(vineBlock).part().modelFile(vineModel).addModel().end();
+
+        Direction.stream()
+                .filter(direction -> direction != Direction.DOWN)
+                .forEach(direction -> builder.part()
+                        .rotationY((((int) direction.toYRot()) + 180) % 360)
+                        .uvLock(true)
+                        .addModel()
+                        .condition(VineBlock.getPropertyForFace(direction), true)
+        );
     }
 
     public void rainDetectorBlock(Block rainDetector) {

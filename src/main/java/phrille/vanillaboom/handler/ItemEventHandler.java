@@ -2,7 +2,6 @@ package phrille.vanillaboom.handler;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -14,7 +13,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.NetherWartBlock;
 import net.minecraft.world.level.block.TallFlowerBlock;
 import net.minecraft.world.level.block.piston.PistonBaseBlock;
 import net.minecraft.world.level.block.piston.PistonHeadBlock;
@@ -29,7 +27,6 @@ import net.minecraftforge.fml.common.Mod;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.config.VanillaBoomConfig;
-import phrille.vanillaboom.util.ModTags;
 import phrille.vanillaboom.util.Utils;
 
 @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID)
@@ -50,9 +47,7 @@ public class ItemEventHandler {
 
         Event.Result result = Event.Result.DEFAULT;
 
-        if (stack.is(ModTags.ForgeTags.Items.WITHER_BONE_MEALS)) {
-            result = useWitherBoneMeal(level, player, state, pos, stack);
-        } else if (stack.is(Tags.Items.SLIMEBALLS)) {
+        if (stack.is(Tags.Items.SLIMEBALLS)) {
             result = useSlimeBall(level, player, state, pos, stack);
         } else if (stack.is(ItemTags.AXES) && player.isCrouching()) {
             result = removeSlimeBall(level, player, state, pos, stack, hand);
@@ -61,46 +56,6 @@ public class ItemEventHandler {
         }
 
         event.setUseBlock(result);
-    }
-
-    protected static Event.Result useWitherBoneMeal(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack) {
-        if (state.getBlock() == Blocks.NETHER_WART) {
-            if (!VanillaBoomConfig.growNetherWarts) {
-                return Event.Result.DEFAULT;
-            }
-
-            int age = state.getValue(NetherWartBlock.AGE);
-
-            if (age < 3) {
-                if (!level.isClientSide) {
-                    if (level.random.nextFloat() < 0.625F) {
-                        level.setBlock(pos, state.setValue(NetherWartBlock.AGE, age + 1), 2);
-                    }
-                }
-            } else {
-                return Event.Result.DEFAULT;
-            }
-        } else if (state.getBlock() == ModBlocks.ROSE.get()) {
-            if (!VanillaBoomConfig.growWitherRoses) {
-                return Event.Result.DEFAULT;
-            }
-
-            if (!level.isClientSide) {
-                if (level.random.nextFloat() < 0.25F) {
-                    level.setBlock(pos, Blocks.WITHER_ROSE.defaultBlockState(), 2);
-                }
-            }
-        } else {
-            return Event.Result.DEFAULT;
-        }
-
-        Utils.spawnParticles(ParticleTypes.SMOKE, level, pos);
-        player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-        if (!player.isCreative()) {
-            stack.shrink(1);
-        }
-
-        return Event.Result.DENY;
     }
 
     protected static Event.Result useSlimeBall(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack) {
