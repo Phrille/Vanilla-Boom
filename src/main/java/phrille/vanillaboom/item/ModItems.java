@@ -26,12 +26,13 @@ public class ModItems {
     public static final RegistryObject<Item> PRISMARINE_ARROW = ITEMS.register("prismarine_arrow", PrismarineArrowItem::new);
     public static final RegistryObject<Item> POLAR_BEAR_FUR = ITEMS.register("polar_bear_fur", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> RICE_SEEDS = ITEMS.register("rice_seeds", () -> new BlockItem(ModBlocks.RICE_PLANT.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CHILI_SEEDS = ITEMS.register("chili_seeds", () -> new Item(new Item.Properties()));
 
     // Food
     public static final RegistryObject<Item> PINE_CONE = ITEMS.register("pine_cone", () -> new Item(new Item.Properties().food(ModFoods.PINE_CONE)));
     public static final RegistryObject<Item> TOMATO = ITEMS.register("tomato", () -> new Item(new Item.Properties().food(ModFoods.TOMATO)));
-    public static final RegistryObject<Item> COOKED_EGG = ITEMS.register("cooked_egg", () -> new Item(new Item.Properties().food(ModFoods.COOKED_EGG)));
+    public static final RegistryObject<Item> CHILI = ITEMS.register("chili", () -> new Item(new Item.Properties().food(ModFoods.CHILI)));
+    public static final RegistryObject<Item> FRIED_EGG = ITEMS.register("fried_egg", () -> new Item(new Item.Properties().food(ModFoods.FRIED_EGG)));
     public static final RegistryObject<Item> DROWNED_FLESH = ITEMS.register("drowned_flesh", () -> new Item(new Item.Properties().food(ModFoods.DROWNED_FLESH)));
     public static final RegistryObject<Item> MELON_POPSICLE = ITEMS.register("melon_popsicle", () -> new IceCreamItem(new Item.Properties().food(ModFoods.MELON_POPSICLE)));
     public static final RegistryObject<Item> CHOCOLATE = ITEMS.register("chocolate", () -> new Item(new Item.Properties().food(ModFoods.CHOCOLATE)));
@@ -102,15 +103,21 @@ public class ModItems {
     public static class ModFoods {
         public static final FoodProperties RAW_POLAR_BEAR_MEAT = new FoodProperties.Builder().nutrition(3).saturationMod(0.3F).meat().build();
         public static final FoodProperties POLAR_BEAR_STEAK = new FoodProperties.Builder().nutrition(8).saturationMod(0.8F).meat().build();
-        public static final FoodProperties COOKED_EGG = new FoodProperties.Builder().nutrition(6).saturationMod(0.6F).build();
-        public static final FoodProperties DROWNED_FLESH = new FoodProperties.Builder().nutrition(4).saturationMod(0.1F).effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 0.8F).effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 600, 0), 0.5F).meat().build();
+        public static final FoodProperties FRIED_EGG = new FoodProperties.Builder().nutrition(6).saturationMod(0.6F).build();
+        public static final FoodProperties DROWNED_FLESH = new FoodProperties.Builder().nutrition(4).saturationMod(0.1F)
+                .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 0.8F)
+                .effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 600, 0), 0.5F).meat().build();
         public static final FoodProperties MELON_POPSICLE = new FoodProperties.Builder().nutrition(3).saturationMod(0.3F).fast().build();
         public static final FoodProperties PINE_CONE = new FoodProperties.Builder().nutrition(3).saturationMod(0.2F).fast().build();
-        public static final FoodProperties CHOCOLATE = new FoodProperties.Builder().nutrition(5).saturationMod(0.3F).effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 200, 0), 0.5F).build();
+        public static final FoodProperties CHOCOLATE = new FoodProperties.Builder().nutrition(5).saturationMod(0.3F)
+                .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 200, 0), 0.5F).build();
         public static final FoodProperties TOMATO = new FoodProperties.Builder().nutrition(4).saturationMod(0.2F).build();
+        public static final FoodProperties CHILI = new FoodProperties.Builder().nutrition(3).saturationMod(0.1F)
+                .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 600, 0), 1.0F).build();
         public static final FoodProperties APPLE_PIE = new FoodProperties.Builder().nutrition(8).saturationMod(0.3F).build();
         public static final FoodProperties BERRY_PIE = new FoodProperties.Builder().nutrition(8).saturationMod(0.3F).build();
-        public static final FoodProperties MONSTER_PIE = new FoodProperties.Builder().nutrition(10).saturationMod(0.2F).effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 1.0F).meat().build();
+        public static final FoodProperties MONSTER_PIE = new FoodProperties.Builder().nutrition(10).saturationMod(0.2F)
+                .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 1200, 0), 1.0F).meat().build();
         public static final FoodProperties POTATO_SOUP = new FoodProperties.Builder().nutrition(8).saturationMod(0.5F).build();
         public static final FoodProperties MEAT_SOUP = new FoodProperties.Builder().nutrition(12).saturationMod(0.7F).build();
         public static final FoodProperties FISH_SOUP = new FoodProperties.Builder().nutrition(10).saturationMod(0.6F).build();

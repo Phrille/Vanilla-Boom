@@ -517,7 +517,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.POLAR_BEAR_FUR.get(), "Polar Bear Fur");
         add(ModItems.RAW_POLAR_BEAR_MEAT.get(), "Raw Polar Bear Meat");
         add(ModItems.POLAR_BEAR_STEAK.get(), "Polar Bear Steak");
-        add(ModItems.COOKED_EGG.get(), "Cooked Egg");
+        add(ModItems.FRIED_EGG.get(), "Fried Egg");
         add(ModItems.DROWNED_FLESH.get(), "Drowned Flesh");
         add(ModItems.MELON_POPSICLE.get(), "Melon Popsicle");
         add(ModItems.PINE_CONE.get(), "Pine Cone");
@@ -530,8 +530,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.MONSTER_PIE.get(), "Monster Pie");
         add(ModItems.TOMATO.get(), "Tomato");
         add(ModItems.TOMATO_SEEDS.get(), "Tomato Seeds");
-        add(ModItems.RICE_BOWL.get(), "Rice Bowl");
-        add(ModItems.RICE_SEEDS.get(), "Rice Seeds");
+        add(ModItems.CHILI.get(), "Chili");
+        add(ModItems.CHILI_SEEDS.get(), "Chili Seeds");
+        add(ModItems.RICE_BOWL.get(), "Bowl of Rice");
         add(ModItems.POTATO_SOUP.get(), "Potato Soup");
         add(ModItems.FISH_SOUP.get(), "Fish Soup");
         add(ModItems.MEAT_SOUP.get(), "Meat Soup");

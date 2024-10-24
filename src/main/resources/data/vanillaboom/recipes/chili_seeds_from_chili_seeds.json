@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "vanillaboom:chili_seeds"
+    }
+  ],
+  "result": {
+    "item": "vanillaboom:chili_seeds"
+  }
+}

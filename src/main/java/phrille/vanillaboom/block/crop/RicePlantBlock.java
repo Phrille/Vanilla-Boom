@@ -72,7 +72,7 @@ public class RicePlantBlock extends CropBlock {
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return ModItems.RICE_SEEDS.get();
+        return ModItems.RICE_BOWL.get();
     }
 
     @Override

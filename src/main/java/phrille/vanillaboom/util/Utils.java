@@ -81,7 +81,8 @@ public class Utils {
         ComposterBlock.COMPOSTABLES.put(ModItems.PINE_CONE.get(), 0.35F);
         ComposterBlock.COMPOSTABLES.put(ModItems.TOMATO.get(), 0.6F);
         ComposterBlock.COMPOSTABLES.put(ModItems.TOMATO_SEEDS.get(), 0.3F);
-        ComposterBlock.COMPOSTABLES.put(ModItems.RICE_SEEDS.get(), 0.3F);
+        ComposterBlock.COMPOSTABLES.put(ModItems.CHILI.get(), 0.6F);
+        ComposterBlock.COMPOSTABLES.put(ModItems.CHILI_SEEDS.get(), 0.3F);
         ComposterBlock.COMPOSTABLES.put(ModBlocks.ROSE.get(), 0.6F);
     }
 
@@ -101,6 +102,7 @@ public class Utils {
 
     public static void registerTrellisCrops() {
         ((TrellisBlock) ModBlocks.TRELLIS.get()).registerTrellisCrop((ITrellisCrop) ModBlocks.TOMATO.get());
+        ((TrellisBlock) ModBlocks.TRELLIS.get()).registerTrellisCrop((ITrellisCrop) ModBlocks.CHILI.get());
     }
 
     public static void registerCandleCakes() {

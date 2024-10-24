@@ -613,7 +613,7 @@ public class CreativeTabHandler {
             putAfter(entries, Blocks.SMOOTH_BASALT, ModItems.INFERNAL_ROCK.get());
             putAfter(entries, Blocks.LILY_OF_THE_VALLEY, ModItems.ROSE.get());
             putAfter(entries, Blocks.ROSE_BUSH, ModItems.SHEARED_ROSE_BUSH.get());
-            putAfter(entries, Items.BEETROOT_SEEDS, List.of(ModItems.TOMATO_SEEDS.get(), ModItems.RICE_SEEDS.get()));
+            putAfter(entries, Items.BEETROOT_SEEDS, List.of(ModItems.TOMATO_SEEDS.get(), ModItems.CHILI_SEEDS.get()));
             putAfter(entries, Blocks.VINE, ModItems.WITHERED_VINE.get());
         }
 
@@ -691,7 +691,7 @@ public class CreativeTabHandler {
 
         // Food & Drinks
         if (tab == CreativeModeTabs.FOOD_AND_DRINKS) {
-            putAfter(entries, Items.BEETROOT, List.of(ModItems.TOMATO.get(), ModItems.PINE_CONE.get()));
+            putAfter(entries, Items.BEETROOT, List.of(ModItems.TOMATO.get(), ModItems.CHILI.get(), ModItems.PINE_CONE.get()));
             putAfter(entries, Items.COOKED_PORKCHOP, List.of(ModItems.RAW_POLAR_BEAR_MEAT.get(), ModItems.POLAR_BEAR_STEAK.get()));
             putAfter(entries, Items.COOKED_SALMON, List.of(
                     ModItems.PERCH.get(),
@@ -703,7 +703,7 @@ public class CreativeTabHandler {
                     ModItems.EEL.get(),
                     ModItems.COOKED_EEL.get()
             ));
-            putBefore(entries, Items.BREAD, ModItems.COOKED_EGG.get());
+            putBefore(entries, Items.BREAD, ModItems.FRIED_EGG.get());
             putAfter(entries, Items.COOKIE, List.of(ModItems.CHOCOLATE.get(), ModItems.MELON_POPSICLE.get()));
             putAfter(entries, Items.CAKE, List.of(ModItems.CHOCOLATE_CAKE.get(), ModItems.BERRY_CAKE.get(), ModItems.CARROT_CAKE.get()));
             putAfter(entries, Items.PUMPKIN_PIE, List.of(ModItems.APPLE_PIE.get(), ModItems.BERRY_PIE.get(), ModItems.MONSTER_PIE.get()));

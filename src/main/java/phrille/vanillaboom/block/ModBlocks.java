@@ -160,7 +160,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> SHEARED_ROSE_BUSH = BLOCKS.register("sheared_rose_bush", () -> new ShearedRoseBushBlock(BlockBehaviour.Properties.copy(Blocks.ROSE_BUSH)));
     public static final RegistryObject<Block> TRELLIS = BLOCKS.register("trellis", () -> new TrellisBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.WOOD)));
     public static final RegistryObject<Block> TOMATO = BLOCKS.register("tomato", () -> new TomatoBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
-    public static final RegistryObject<Block> RICE_PLANT = BLOCKS.register("rice_plant", () -> new RicePlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
+    public static final RegistryObject<Block> CHILI = BLOCKS.register("chili", () -> new ChiliBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
+    public static final RegistryObject<Block> RICE = BLOCKS.register("rice", () -> new RicePlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
     public static final RegistryObject<Block> WITHERED_VINE = BLOCKS.register("withered_vine", WitheredVineBlock::new);
     public static final RegistryObject<Block> WITHERED_BAMBOO = BLOCKS.register("withered_bamboo", WitheredVineBlock::new);
 

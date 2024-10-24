@@ -186,8 +186,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         add(ModBlocks.SHEARED_ROSE_BUSH.get(), shearedRoseBush -> createSinglePropConditionTable(shearedRoseBush, ShearedRoseBushBlock.HALF, DoubleBlockHalf.LOWER));
         add(ModBlocks.TRELLIS.get(), trellis -> createSinglePropConditionTable(trellis, TrellisBlock.HALF, DoubleBlockHalf.LOWER));
         add(ModBlocks.TOMATO.get(), this::createTrellisCropDrops);
-        LootItemCondition.Builder riceCondition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.RICE_PLANT.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 8));
-        add(ModBlocks.RICE_PLANT.get(), createCropDrops(ModBlocks.RICE_PLANT.get(), ModItems.RICE_SEEDS.get(), ModItems.RICE_SEEDS.get(), riceCondition));
+        add(ModBlocks.CHILI.get(), this::createTrellisCropDrops);
+        LootItemCondition.Builder riceCondition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.RICE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 8));
+        //TODO: Fix loot table
+        add(ModBlocks.RICE.get(), createCropDrops(ModBlocks.RICE.get(), ModItems.RICE_BOWL.get(), ModItems.RICE_BOWL.get(), riceCondition));
         add(ModBlocks.WITHERED_VINE.get(), BlockLootSubProvider::createShearsOnlyDrop);
         dropSelf(ModBlocks.WITHERED_BAMBOO.get());
 

@@ -38,7 +38,7 @@ public class VillagerTradeHandler {
     public static void onWandererTrade(WandererTradesEvent event) {
         List<VillagerTrades.ItemListing> trades = event.getGenericTrades();
         trades.add(emeraldsToItem(1, ModItems.TOMATO_SEEDS.get(), 1, 10));
-        trades.add(emeraldsToItem(1, ModItems.RICE_SEEDS.get(), 1, 10));
+        trades.add(emeraldsToItem(1, ModItems.CHILI_SEEDS.get(), 1, 10));
     }
 
     private static BasicItemListing itemToEmeralds(ItemLike item, int amount, int maxTrades, int xp) {

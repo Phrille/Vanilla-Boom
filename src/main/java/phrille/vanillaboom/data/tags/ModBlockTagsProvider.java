@@ -239,7 +239,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.CLIMBABLE).addTags(ModTags.VanillaBoomTags.Blocks.LADDERS);
         tag(BlockTags.CROPS)
                 .add(ModBlocks.TOMATO.get())
-                .add(ModBlocks.RICE_PLANT.get());
+                .add(ModBlocks.CHILI.get())
+                .add(ModBlocks.RICE.get());
         tag(BlockTags.DRAGON_IMMUNE)
                 .add(ModBlocks.OBSIDIAN_BRICKS.get())
                 .add(ModBlocks.OBSIDIAN_PILLAR.get())

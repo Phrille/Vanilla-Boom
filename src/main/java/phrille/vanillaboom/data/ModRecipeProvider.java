@@ -241,8 +241,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         surroundedShaped(finishedRecipe, RecipeCategory.MISC, Items.BOOK, Items.PAPER, ModItems.POLAR_BEAR_FUR.get(), 4);
         surroundedShaped(finishedRecipe, RecipeCategory.DECORATIONS, Items.ITEM_FRAME, Tags.Items.RODS_WOODEN, ModItems.POLAR_BEAR_FUR.get(), 4);
         oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, ModItems.TOMATO_SEEDS.get(), ModItems.TOMATO.get(), 1);
-        oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, ModItems.RICE_SEEDS.get(), ModItems.RICE_BOWL.get(), 1);
-        cooking(finishedRecipe, ModItems.COOKED_EGG.get(), Items.EGG, 0.3F);
+        oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, ModItems.CHILI_SEEDS.get(), ModItems.CHILI_SEEDS.get(), 1);
+        cooking(finishedRecipe, ModItems.FRIED_EGG.get(), Items.EGG, 0.3F);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.MELON_POPSICLE.get(), 4)
                 .requires(Items.MELON_SLICE)
                 .requires(Blocks.ICE)

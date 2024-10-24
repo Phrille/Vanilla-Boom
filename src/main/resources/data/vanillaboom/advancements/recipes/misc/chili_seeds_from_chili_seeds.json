@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chili_seeds": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanillaboom:chili_seeds"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vanillaboom:chili_seeds_from_chili_seeds"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_chili_seeds",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vanillaboom:chili_seeds_from_chili_seeds"
+    ]
+  }
+}

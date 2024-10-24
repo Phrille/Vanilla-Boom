@@ -12,8 +12,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.*;
 import phrille.vanillaboom.block.crop.RicePlantBlock;
-import phrille.vanillaboom.block.crop.TomatoBlock;
 import phrille.vanillaboom.block.crop.TrellisBlock;
+import phrille.vanillaboom.block.crop.TrellisCropBlock;
 import phrille.vanillaboom.util.Utils;
 
 import java.util.List;
@@ -32,7 +32,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         // Models
-        cropWithTrellisModel();
+        trellisCropModel();
 
         // Bricks
         simpleBlock(ModBlocks.COBBLESTONE_BRICKS.get());
@@ -177,8 +177,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         flowerBlock(ModBlocks.ROSE.get(), ModBlocks.POTTED_ROSE.get());
         doublePlantBlock(ModBlocks.SHEARED_ROSE_BUSH.get());
         trellisBlock(ModBlocks.TRELLIS.get());
-        tomatoBlock(ModBlocks.TOMATO.get());
-        cropBlock(ModBlocks.RICE_PLANT.get(), RicePlantBlock.AGE);
+        trellisCropBlock(ModBlocks.TOMATO.get());
+        trellisCropBlock(ModBlocks.CHILI.get());
+        cropBlock(ModBlocks.RICE.get(), RicePlantBlock.AGE);
         vineBlock(ModBlocks.WITHERED_VINE.get());
 
         // Cakes
@@ -352,26 +353,26 @@ public class ModBlockStateProvider extends BlockStateProvider {
         });
     }
 
-    protected void tomatoBlock(Block tomato) {
-        List<ModelFile> filesLower = TomatoBlock.AGE.getAllValues()
+    protected void trellisCropBlock(Block trellisCrop) {
+        List<ModelFile> filesLower = TrellisCropBlock.AGE.getAllValues()
                 .map(age -> models()
-                        .withExistingParent(name(tomato) + "_lower_stage" + age.value(), modLoc(ModelProvider.BLOCK_FOLDER + "/crop_with_trellis"))
-                        .texture("crop", ModDataGenerator.extend(blockTexture(tomato), "_lower_stage" + age.value()))
+                        .withExistingParent(name(trellisCrop) + "_lower_stage" + age.value(), modLoc(ModelProvider.BLOCK_FOLDER + "/crop_with_trellis"))
+                        .texture("crop", ModDataGenerator.extend(blockTexture(trellisCrop), "_lower_stage" + age.value()))
                         .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT))
                 .collect(Collectors.toList());
-        List<ModelFile> filesUpper = TomatoBlock.AGE.getAllValues()
+        List<ModelFile> filesUpper = TrellisCropBlock.AGE.getAllValues()
                 .map(age -> models()
-                        .withExistingParent(name(tomato) + "_upper_stage" + age.value(), modLoc(ModelProvider.BLOCK_FOLDER + "/crop_with_trellis"))
-                        .texture("crop", ModDataGenerator.extend(blockTexture(tomato), "_upper_stage" + age.value()))
+                        .withExistingParent(name(trellisCrop) + "_upper_stage" + age.value(), modLoc(ModelProvider.BLOCK_FOLDER + "/crop_with_trellis"))
+                        .texture("crop", ModDataGenerator.extend(blockTexture(trellisCrop), "_upper_stage" + age.value()))
                         .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT))
                 .collect(Collectors.toList());
-        tomatoBlock((TomatoBlock) tomato, filesLower, filesUpper);
+        trellisCropBlock((TrellisCropBlock) trellisCrop, filesLower, filesUpper);
     }
 
-    protected void tomatoBlock(TomatoBlock tomato, List<ModelFile> filesLower, List<ModelFile> filesUpper) {
-        getVariantBuilder(tomato).forAllStates(state -> {
-            DoubleBlockHalf doubleBlock = state.getValue(TomatoBlock.HALF);
-            int age = state.getValue(TomatoBlock.AGE);
+    protected void trellisCropBlock(TrellisCropBlock trellisCrop, List<ModelFile> filesLower, List<ModelFile> filesUpper) {
+        getVariantBuilder(trellisCrop).forAllStates(state -> {
+            DoubleBlockHalf doubleBlock = state.getValue(TrellisCropBlock.HALF);
+            int age = state.getValue(TrellisCropBlock.AGE);
 
             return ConfiguredModel.builder()
                     .modelFile(doubleBlock == DoubleBlockHalf.UPPER ? filesUpper.get(age) : filesLower.get(age))
@@ -379,7 +380,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         });
     }
 
-    protected void cropWithTrellisModel() {
+    protected void trellisCropModel() {
         models().getBuilder("crop_with_trellis")
                 .ao(false)
                 .texture("particle", "#crop")
