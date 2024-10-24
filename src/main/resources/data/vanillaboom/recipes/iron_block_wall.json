@@ -13,5 +13,6 @@
   "result": {
     "count": 6,
     "item": "vanillaboom:iron_block_wall"
-  }
+  },
+  "show_notification": true
 }

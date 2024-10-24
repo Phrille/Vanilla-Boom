@@ -13,5 +13,6 @@
   ],
   "result": {
     "item": "vanillaboom:blue_dye_block"
-  }
+  },
+  "show_notification": true
 }

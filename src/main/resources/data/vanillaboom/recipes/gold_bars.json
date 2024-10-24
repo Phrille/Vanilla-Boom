@@ -13,5 +13,6 @@
   "result": {
     "count": 16,
     "item": "vanillaboom:gold_bars"
-  }
+  },
+  "show_notification": true
 }

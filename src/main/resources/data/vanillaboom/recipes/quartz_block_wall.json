@@ -13,5 +13,6 @@
   "result": {
     "count": 6,
     "item": "vanillaboom:quartz_block_wall"
-  }
+  },
+  "show_notification": true
 }

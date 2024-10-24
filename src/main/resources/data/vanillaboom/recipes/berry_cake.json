@@ -25,5 +25,6 @@
   ],
   "result": {
     "item": "vanillaboom:berry_cake"
-  }
+  },
+  "show_notification": true
 }

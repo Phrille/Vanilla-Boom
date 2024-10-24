@@ -13,5 +13,6 @@
   "result": {
     "count": 6,
     "item": "vanillaboom:chiseled_polished_blackstone_wall"
-  }
+  },
+  "show_notification": true
 }

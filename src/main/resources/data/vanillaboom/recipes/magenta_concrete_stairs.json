@@ -14,5 +14,6 @@
   "result": {
     "count": 4,
     "item": "vanillaboom:magenta_concrete_stairs"
-  }
+  },
+  "show_notification": true
 }

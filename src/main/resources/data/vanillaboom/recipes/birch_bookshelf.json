@@ -16,5 +16,6 @@
   ],
   "result": {
     "item": "vanillaboom:birch_bookshelf"
-  }
+  },
+  "show_notification": true
 }
