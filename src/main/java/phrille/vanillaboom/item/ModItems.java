@@ -22,7 +22,7 @@ public class ModItems {
     // Misc
     public static final RegistryObject<Item> MAGMA_BRICK = ITEMS.register("magma_brick", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WITHER_BONE = ITEMS.register("wither_bone", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> WITHER_BONE_MEAL = ITEMS.register("wither_bone_meal", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> WITHER_BONE_MEAL = ITEMS.register("wither_bone_meal", WitherBoneMealItem::new);
     public static final RegistryObject<Item> PRISMARINE_ARROW = ITEMS.register("prismarine_arrow", PrismarineArrowItem::new);
     public static final RegistryObject<Item> POLAR_BEAR_FUR = ITEMS.register("polar_bear_fur", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds", () -> new Item(new Item.Properties()));
@@ -268,7 +268,7 @@ public class ModItems {
     public static final RegistryObject<Item> ROSE = ITEMS.register("rose", () -> new BlockItem(ModBlocks.ROSE.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHEARED_ROSE_BUSH = ITEMS.register("sheared_rose_bush", () -> new BlockItem(ModBlocks.SHEARED_ROSE_BUSH.get(), new Item.Properties()));
     public static final RegistryObject<Item> TRELLIS = ITEMS.register("trellis", () -> new BlockItem(ModBlocks.TRELLIS.get(), new Item.Properties()));
-
+    public static final RegistryObject<Item> WITHERED_VINE = ITEMS.register("withered_vine", () -> new BlockItem(ModBlocks.WITHERED_VINE.get(), new Item.Properties()));
 
     // VanillaBoom Stairs
     public static final RegistryObject<Item> COBBLESTONE_BRICK_STAIRS = ITEMS.register("cobblestone_brick_stairs", () -> new BlockItem(ModBlocks.COBBLESTONE_BRICK_STAIRS.get(), new Item.Properties()));

@@ -160,6 +160,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.ROSE.get(), "Rose");
         add(ModBlocks.SHEARED_ROSE_BUSH.get(), "Sheared Rose Bush");
         add(ModBlocks.TRELLIS.get(), "Trellis");
+        add(ModBlocks.WITHERED_VINE.get(), "Withered Vine");
 
         // VanillaBoom Stairs
         add(ModBlocks.COBBLESTONE_BRICK_STAIRS.get(), "Cobblestone Brick Stairs");

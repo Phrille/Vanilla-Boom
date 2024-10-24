@@ -15,6 +15,7 @@ import phrille.vanillaboom.config.ConfigHandler;
 import phrille.vanillaboom.entity.ModEntities;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.loot.ModGlobalLootModifiers;
+import phrille.vanillaboom.util.ModDispenserBehavior;
 import phrille.vanillaboom.util.Utils;
 
 @Mod(VanillaBoom.MOD_ID)
@@ -45,6 +46,7 @@ public class VanillaBoom {
             Utils.addCompostMaterials();
             Utils.registerTrellisCrops();
             Utils.registerCandleCakes();
+            ModDispenserBehavior.registerWitherBonemealBehavior();
         });
     }
 

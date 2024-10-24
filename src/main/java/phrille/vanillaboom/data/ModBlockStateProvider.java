@@ -179,6 +179,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         trellisBlock(ModBlocks.TRELLIS.get());
         tomatoBlock(ModBlocks.TOMATO.get());
         cropBlock(ModBlocks.RICE_PLANT.get(), RicePlantBlock.AGE);
+        vineBlock(ModBlocks.WITHERED_VINE.get());
 
         // Cakes
         cakeBlock(ModBlocks.CHOCOLATE_CAKE.get());
@@ -446,6 +447,40 @@ public class ModBlockStateProvider extends BlockStateProvider {
                     .modelFile(doubleBlock == DoubleBlockHalf.UPPER ? upperModel : lowerModel)
                     .build();
         });
+    }
+
+    public void vineBlock(Block vineBlock) {
+        ModelFile vineModel = models()
+                .withExistingParent(name(vineBlock), ModelProvider.BLOCK_FOLDER + "/vine")
+                .texture("particle", blockTexture(vineBlock))
+                .texture("vine", blockTexture(vineBlock))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT);
+        ModelFile vineModelUpper = models()
+                .withExistingParent(name(vineBlock) + "_upper", ModelProvider.BLOCK_FOLDER + "/vine")
+                .texture("particle", blockTexture(Blocks.VINE))
+                .texture("vine", blockTexture(Blocks.VINE))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT);
+
+        MultiPartBlockStateBuilder builder = getMultipartBuilder(vineBlock);
+        Direction.stream()
+                .filter(direction -> direction != Direction.DOWN)
+                .forEach(direction -> {
+                    for (int i = 0; i < 2; i++) {
+                        MultiPartBlockStateBuilder.PartBuilder partBuilder = builder.part()
+                                .modelFile(direction == Direction.UP ? vineModelUpper : vineModel)
+                                .rotationY(direction == Direction.UP ? 0 : (((int) direction.toYRot()) + 180) % 360)
+                                .rotationX(direction == Direction.UP ? 270 : 0)
+                                .uvLock(direction != Direction.NORTH)
+                                .addModel();
+                        if (i == 0) {
+                            partBuilder.condition(VineBlock.getPropertyForFace(direction), true);
+                        } else {
+                            Direction.stream()
+                                    .filter(dir -> dir != Direction.DOWN)
+                                    .forEach(dir -> partBuilder.condition(VineBlock.getPropertyForFace(dir), false));
+                        }
+                    }
+                });
     }
 
     public void rainDetectorBlock(Block rainDetector) {

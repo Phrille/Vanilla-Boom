@@ -9,10 +9,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.Fluids;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
@@ -60,6 +64,17 @@ public class Utils {
             level.setBlock(pos, state.setValue(halfProperty, DoubleBlockHalf.LOWER), 2);
             level.setBlock(pos.above(), state.setValue(halfProperty, DoubleBlockHalf.UPPER), 2);
         }
+    }
+
+    public static BlockState copyState(BlockState from, BlockState to) {
+        for (Property<?> property : from.getProperties()) {
+            to = copyState(from, to, property);
+        }
+        return to;
+    }
+
+    public static <T extends Comparable<T>> BlockState copyState(BlockState from, BlockState to, Property<T> property) {
+        return to.setValue(property, from.getValue(property));
     }
 
     public static void addCompostMaterials() {

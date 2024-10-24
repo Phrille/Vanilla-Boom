@@ -236,6 +236,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         item(ModBlocks.SHEARED_ROSE_BUSH.get().asItem(), "generated")
                 .texture("layer0", ModDataGenerator.extend(blockTexture(ModBlocks.SHEARED_ROSE_BUSH.get()), "_top"));
         item(ModBlocks.TRELLIS.get());
+        item(ModBlocks.WITHERED_VINE.get());
 
         // Variant Blocks
         ModDataGenerator.STAIRS.forEach(pair -> blockItem(pair.getFirst().asItem()));

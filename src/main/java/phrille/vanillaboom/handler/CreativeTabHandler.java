@@ -614,6 +614,7 @@ public class CreativeTabHandler {
             putAfter(entries, Blocks.LILY_OF_THE_VALLEY, ModItems.ROSE.get());
             putAfter(entries, Blocks.ROSE_BUSH, ModItems.SHEARED_ROSE_BUSH.get());
             putAfter(entries, Items.BEETROOT_SEEDS, List.of(ModItems.TOMATO_SEEDS.get(), ModItems.RICE_SEEDS.get()));
+            putAfter(entries, Blocks.VINE, ModItems.WITHERED_VINE.get());
         }
 
         // Functional Blocks
