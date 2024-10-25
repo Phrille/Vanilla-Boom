@@ -3,14 +3,21 @@ package phrille.vanillaboom.data;
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.damagesource.DamageEffects;
+import net.minecraft.world.damagesource.DamageScaling;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraftforge.client.model.generators.ModelProvider;
+import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,11 +30,13 @@ import phrille.vanillaboom.data.loot.ModGlobalLootModifierProvider;
 import phrille.vanillaboom.data.tags.ModBlockTagsProvider;
 import phrille.vanillaboom.data.tags.ModEntityTypeTagsProvider;
 import phrille.vanillaboom.data.tags.ModItemTagsProvider;
+import phrille.vanillaboom.util.ModDamageTypes;
 import phrille.vanillaboom.util.Utils;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -37,6 +46,9 @@ public class ModDataGenerator {
     public static final List<Block> WALLS = Lists.newArrayList();
     public static final List<Pair<Block, Block>> FENCES = Lists.newArrayList();
     public static final List<Pair<Block, Block>> FENCE_GATES = Lists.newArrayList();
+
+    private static final RegistrySetBuilder REGISTRY_SET_BUILDER = new RegistrySetBuilder()
+            .add(Registries.DAMAGE_TYPE, ModDataGenerator::bootstrap);
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
@@ -61,6 +73,11 @@ public class ModDataGenerator {
         List<LootTableProvider.SubProviderEntry> subProviders = List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTables::new, LootContextParamSets.BLOCK));
         generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(), subProviders));
         generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(output));
+        generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(output, event.getLookupProvider(), REGISTRY_SET_BUILDER, Set.of(VanillaBoom.MOD_ID)));
+    }
+
+    public static void bootstrap(BootstapContext<DamageType> context) {
+        context.register(ModDamageTypes.CHILI, new DamageType("vanillaboom.chili", DamageScaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER, 0.3F, DamageEffects.BURNING));
     }
 
     private static void init() {

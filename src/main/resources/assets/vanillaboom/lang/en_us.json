@@ -459,6 +459,7 @@
   "block.vanillaboom.yellow_terracotta_slab": "Yellow Terracotta Slab",
   "block.vanillaboom.yellow_terracotta_stairs": "Yellow Terracotta Stairs",
   "block.vanillaboom.yellow_terracotta_wall": "Yellow Terracotta Wall",
+  "death.attack.vanillaboom.chili": "%s couldn't handle the spice",
   "item.vanillaboom.alban_painting": "Small Painting",
   "item.vanillaboom.alban_painting.desc": "Alban",
   "item.vanillaboom.apple_pie": "Apple Pie",

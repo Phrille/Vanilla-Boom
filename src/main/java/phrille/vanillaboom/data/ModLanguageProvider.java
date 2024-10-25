@@ -18,6 +18,8 @@ public class ModLanguageProvider extends LanguageProvider {
         add("language.region", "United States");
         add("language.locale", "en_us");
 
+        add("death.attack.vanillaboom.chili", "%s couldn't handle the spice");
+
         // Bricks
         add(ModBlocks.COBBLESTONE_BRICKS.get(), "Cobblestone Bricks");
         add(ModBlocks.MOSSY_COBBLESTONE_BRICKS.get(), "Mossy Cobblestone Bricks");
