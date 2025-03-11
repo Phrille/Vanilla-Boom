@@ -52,7 +52,7 @@ public class ItemEventHandler {
         } else if (stack.is(ItemTags.AXES) && player.isCrouching()) {
             result = removeSlimeBall(level, player, state, pos, stack, hand);
         } else if (stack.is(Tags.Items.SHEARS)) {
-            result = shearRoseBush(level, player, state, pos, stack, hand);
+            result = shearTallFlower(level, player, state, pos, stack, hand);
         }
 
         event.setUseBlock(result);
@@ -117,7 +117,7 @@ public class ItemEventHandler {
         return Event.Result.DENY;
     }
 
-    protected static Event.Result shearRoseBush(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack, InteractionHand hand) {
+    protected static Event.Result shearTallFlower(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack, InteractionHand hand) {
         ShearedTallFlowerBlock shearedTallFlower;
 
         if (!VanillaBoomConfig.shearTallFlowers) {

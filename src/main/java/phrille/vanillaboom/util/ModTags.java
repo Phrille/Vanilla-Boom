@@ -1,9 +1,11 @@
 package phrille.vanillaboom.util;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import phrille.vanillaboom.VanillaBoom;
@@ -151,6 +153,15 @@ public class ModTags {
 
             private static TagKey<Item> modTag(String name) {
                 return ItemTags.create(new ResourceLocation(VanillaBoom.MOD_ID, name));
+            }
+        }
+
+        public static class Entities {
+            public static final TagKey<EntityType<?>> PRISMARINE_EXTRA_HURT = modTag("prismarine_arrow_hurts_extra_types");
+
+            @SuppressWarnings("SameParameterValue")
+            private static TagKey<EntityType<?>> modTag(String name) {
+                return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(VanillaBoom.MOD_ID, name));
             }
         }
     }
