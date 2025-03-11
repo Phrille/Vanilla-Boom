@@ -157,6 +157,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get(), "Black Stained Soul Glass Pane");
 
         // Misc
+        add(ModBlocks.EASEL.get(), "Easel");
         add(ModBlocks.RAIN_DETECTOR.get(), "Rain Detector");
         add(ModBlocks.GOLD_BARS.get(), "Gold Bars");
         add(ModBlocks.ROSE.get(), "Rose");

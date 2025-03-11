@@ -621,6 +621,7 @@ public class CreativeTabHandler {
 
         // Functional Blocks
         if (tab == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            putAfter(entries, Blocks.LOOM, ModItems.EASEL.get());
             putAfter(entries, Blocks.LADDER, List.of(
                     ModItems.SPRUCE_LADDER.get(),
                     ModItems.BIRCH_LADDER.get(),

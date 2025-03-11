@@ -154,6 +154,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> BLACK_STAINED_SOUL_GLASS_PANE = BLOCKS.register("black_stained_soul_glass_pane", () -> new StainedGlassPaneBlock(DyeColor.BLACK, BlockBehaviour.Properties.copy(Blocks.BLACK_STAINED_GLASS_PANE)));
 
     // Misc
+    public static final RegistryObject<Block> EASEL = BLOCKS.register("easel", EaselBlock::new);
     public static final RegistryObject<Block> RAIN_DETECTOR = BLOCKS.register("rain_detector", RainDetectorBlock::new);
     public static final RegistryObject<Block> GOLD_BARS = BLOCKS.register("gold_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS)));
     public static final RegistryObject<Block> ROSE = BLOCKS.register("rose", RoseBlock::new);

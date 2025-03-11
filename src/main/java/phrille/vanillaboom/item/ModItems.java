@@ -270,6 +270,7 @@ public class ModItems {
     public static final RegistryObject<Item> BLACK_STAINED_SOUL_GLASS_PANE = ITEMS.register("black_stained_soul_glass_pane", () -> new BlockItem(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get(), new Item.Properties()));
 
     // Misc
+    public static final RegistryObject<Item> EASEL = ITEMS.register("easel", () -> new BlockItem(ModBlocks.EASEL.get(), new Item.Properties()));
     public static final RegistryObject<Item> RAIN_DETECTOR = ITEMS.register("rain_detector", () -> new BlockItem(ModBlocks.RAIN_DETECTOR.get(), new Item.Properties()));
     public static final RegistryObject<Item> GOLD_BARS = ITEMS.register("gold_bars", () -> new BlockItem(ModBlocks.GOLD_BARS.get(), new Item.Properties()));
     public static final RegistryObject<Item> ROSE = ITEMS.register("rose", () -> new BlockItem(ModBlocks.ROSE.get(), new Item.Properties()));

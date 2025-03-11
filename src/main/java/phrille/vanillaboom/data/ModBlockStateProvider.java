@@ -172,6 +172,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         glassPaneBlock(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get());
 
         // Misc
+        easelBlock(ModBlocks.EASEL.get());
         rainDetectorBlock(ModBlocks.RAIN_DETECTOR.get());
         barsBlock(ModBlocks.GOLD_BARS.get());
         flowerBlock(ModBlocks.ROSE.get(), ModBlocks.POTTED_ROSE.get());
@@ -564,6 +565,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .texture("top", ModDataGenerator.extend(blockTexture(cake), "_top"))
                 .texture("bottom", ModDataGenerator.extend(blockTexture(cake), "_bottom"))
                 .texture("particle", ModDataGenerator.extend(blockTexture(cake), "_side"));
+    }
+
+    public void easelBlock(Block easel) {
+        simpleBlock(easel, models().withExistingParent(name(easel), "cube")
+                .texture("up", blockTexture(Blocks.SPRUCE_PLANKS))
+                .texture("down", blockTexture(Blocks.SPRUCE_PLANKS))
+                .texture("north", blockTexture(Blocks.SPRUCE_PLANKS))
+                .texture("east", blockTexture(Blocks.SPRUCE_PLANKS))
+                .texture("west", blockTexture(Blocks.SPRUCE_PLANKS))
+                .texture("south", blockTexture(Blocks.SPRUCE_PLANKS))
+                .texture("particle", blockTexture(Blocks.SPRUCE_PLANKS)));
     }
 
     protected ResourceLocation variantTexture(Block block) {

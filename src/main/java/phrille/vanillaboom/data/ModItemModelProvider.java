@@ -231,6 +231,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         glassPaneItem(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get());
 
         // Misc
+        blockItem(ModItems.EASEL.get());
         blockItem(ModItems.RAIN_DETECTOR.get());
         item(ModBlocks.GOLD_BARS.get());
         item(ModBlocks.ROSE.get());

@@ -179,6 +179,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropWhenSilkTouch(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get());
 
         // Misc
+        dropSelf(ModBlocks.EASEL.get());
         dropSelf(ModBlocks.RAIN_DETECTOR.get());
         dropSelf(ModBlocks.GOLD_BARS.get());
         dropSelf(ModBlocks.ROSE.get());
