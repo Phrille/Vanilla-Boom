@@ -161,6 +161,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(finishedRecipe);
         oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, Items.RED_DYE, ModItems.ROSE.get(), 1);
+        oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, Items.PINK_DYE, ModItems.PEONY.get(), 1);
+        oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, Items.MAGENTA_DYE, ModItems.LILAC.get(), 1);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.TRELLIS.get(), 4)
                 .define('x', Items.BAMBOO)
                 .pattern("x x")
@@ -241,7 +243,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         surroundedShaped(finishedRecipe, RecipeCategory.MISC, Items.BOOK, Items.PAPER, ModItems.POLAR_BEAR_FUR.get(), 4);
         surroundedShaped(finishedRecipe, RecipeCategory.DECORATIONS, Items.ITEM_FRAME, Tags.Items.RODS_WOODEN, ModItems.POLAR_BEAR_FUR.get(), 4);
         oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, ModItems.TOMATO_SEEDS.get(), ModItems.TOMATO.get(), 1);
-        oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, ModItems.CHILI_SEEDS.get(), ModItems.CHILI_SEEDS.get(), 1);
+        oneToOneShapeless(finishedRecipe, RecipeCategory.MISC, ModItems.CHILI_SEEDS.get(), ModItems.CHILI.get(), 1);
         cooking(finishedRecipe, ModItems.FRIED_EGG.get(), Items.EGG, 0.3F);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.MELON_POPSICLE.get(), 4)
                 .requires(Items.MELON_SLICE)

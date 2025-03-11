@@ -56,7 +56,6 @@ public class ModDataGenerator {
         PackOutput output = generator.getPackOutput();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-
         init();
 
         // Assets
@@ -73,7 +72,7 @@ public class ModDataGenerator {
         List<LootTableProvider.SubProviderEntry> subProviders = List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTables::new, LootContextParamSets.BLOCK));
         generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(), subProviders));
         generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(output));
-        generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(output, event.getLookupProvider(), REGISTRY_SET_BUILDER, Set.of(VanillaBoom.MOD_ID)));
+        generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(output, lookupProvider, REGISTRY_SET_BUILDER, Set.of(VanillaBoom.MOD_ID)));
     }
 
     public static void bootstrap(BootstapContext<DamageType> context) {

@@ -257,7 +257,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.BEDROCK_STAIRS.get())
                 .add(ModBlocks.BEDROCK_SLAB.get())
                 .add(ModBlocks.BEDROCK_WALL.get());
-        tag(BlockTags.FLOWER_POTS).add(ModBlocks.POTTED_ROSE.get());
+        tag(BlockTags.FLOWER_POTS)
+                .add(ModBlocks.POTTED_ROSE.get())
+                .add(ModBlocks.POTTED_PEONY.get())
+                .add(ModBlocks.POTTED_LILAC.get());
         tag(BlockTags.IMPERMEABLE)
                 .add(ModBlocks.SOUL_GLASS.get())
                 .add(ModBlocks.WHITE_STAINED_SOUL_GLASS.get())
@@ -281,7 +284,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.INFERNAL_ROCK.get())
                 .add(ModBlocks.POLISHED_NETHERRACK.get())
                 .add(ModBlocks.NETHERRACK_PILLAR.get());
-        tag(BlockTags.SMALL_FLOWERS).add(ModBlocks.ROSE.get());
+        tag(BlockTags.SMALL_FLOWERS)
+                .add(ModBlocks.ROSE.get())
+                .add(ModBlocks.PEONY.get())
+                .add(ModBlocks.LILAC.get());
         tag(BlockTags.SOUL_FIRE_BASE_BLOCKS)
                 .add(ModBlocks.BONE_SAND.get())
                 .add(ModBlocks.WITHER_BONE_SAND.get());

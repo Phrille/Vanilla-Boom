@@ -25,7 +25,7 @@ import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.block.ModBlocks;
+import phrille.vanillaboom.block.crop.ShearedTallFlowerBlock;
 import phrille.vanillaboom.config.VanillaBoomConfig;
 import phrille.vanillaboom.util.Utils;
 
@@ -118,21 +118,24 @@ public class ItemEventHandler {
     }
 
     protected static Event.Result shearRoseBush(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack, InteractionHand hand) {
-        if (!VanillaBoomConfig.shearRoseBushes) {
+        ShearedTallFlowerBlock shearedTallFlower;
+
+        if (!VanillaBoomConfig.shearTallFlowers) {
             return Event.Result.DEFAULT;
         }
 
-        if (state.getBlock() == Blocks.ROSE_BUSH) {
+        if (state.getBlock() instanceof TallFlowerBlock tallFlower && ShearedTallFlowerBlock.getShearedFlowerBlocks().containsKey(tallFlower)) {
             DoubleBlockHalf half = state.getValue(TallFlowerBlock.HALF);
             if (half == DoubleBlockHalf.UPPER) {
                 pos = pos.below();
             }
-            Utils.setDoubleBlock(level, ModBlocks.SHEARED_ROSE_BUSH.get().defaultBlockState(), pos, TallFlowerBlock.HALF);
+            shearedTallFlower = ShearedTallFlowerBlock.getShearedFlowerBlocks().get(tallFlower);
+            Utils.setDoubleBlock(level, shearedTallFlower.defaultBlockState(), pos, TallFlowerBlock.HALF);
         } else {
             return Event.Result.DEFAULT;
         }
 
-        Block.popResource(level, pos, new ItemStack(ModBlocks.ROSE.get()));
+        Block.popResource(level, pos, new ItemStack(shearedTallFlower.getFlower()));
         player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
         level.playSound(null, pos, SoundEvents.SHEEP_SHEAR, SoundSource.BLOCKS, 1.0F, 1.0F);
         if (!player.isCreative()) {

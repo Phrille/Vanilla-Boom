@@ -161,6 +161,10 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.GOLD_BARS.get(), "Gold Bars");
         add(ModBlocks.ROSE.get(), "Rose");
         add(ModBlocks.SHEARED_ROSE_BUSH.get(), "Sheared Rose Bush");
+        add(ModBlocks.PEONY.get(), "Peony");
+        add(ModBlocks.SHEARED_PEONY.get(), "Sheared Peony");
+        add(ModBlocks.LILAC.get(), "Lilac");
+        add(ModBlocks.SHEARED_LILAC.get(), "Sheared Lilac");
         add(ModBlocks.TRELLIS.get(), "Trellis");
         add(ModBlocks.WITHERED_VINE.get(), "Withered Vine");
 

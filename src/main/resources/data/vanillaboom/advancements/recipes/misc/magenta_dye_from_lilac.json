@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_chili_seeds": {
+    "has_lilac": {
       "conditions": {
         "items": [
           {
             "items": [
-              "vanillaboom:chili_seeds"
+              "vanillaboom:lilac"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "vanillaboom:chili_seeds_from_chili_seeds"
+        "recipe": "vanillaboom:magenta_dye_from_lilac"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_chili_seeds",
+      "has_lilac",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "vanillaboom:chili_seeds_from_chili_seeds"
+      "vanillaboom:magenta_dye_from_lilac"
     ]
   }
 }

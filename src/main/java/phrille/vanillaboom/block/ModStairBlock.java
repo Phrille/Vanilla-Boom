@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.function.Supplier;
 
 public class ModStairBlock extends StairBlock implements IVariantBlock {
-    protected Supplier<BlockState> state;
+    protected final Supplier<BlockState> state;
 
     public ModStairBlock(Supplier<BlockState> state) {
         this(state, BlockBehaviour.Properties.copy(state.get().getBlock()));

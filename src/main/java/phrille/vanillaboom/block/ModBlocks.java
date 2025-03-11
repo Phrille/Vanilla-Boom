@@ -1,6 +1,7 @@
 package phrille.vanillaboom.block;
 
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -157,7 +158,13 @@ public class ModBlocks {
     public static final RegistryObject<Block> GOLD_BARS = BLOCKS.register("gold_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS)));
     public static final RegistryObject<Block> ROSE = BLOCKS.register("rose", RoseBlock::new);
     public static final RegistryObject<Block> POTTED_ROSE = BLOCKS.register("potted_rose", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, ROSE, BlockBehaviour.Properties.copy(Blocks.POTTED_POPPY)));
-    public static final RegistryObject<Block> SHEARED_ROSE_BUSH = BLOCKS.register("sheared_rose_bush", () -> new ShearedRoseBushBlock(BlockBehaviour.Properties.copy(Blocks.ROSE_BUSH)));
+    public static final RegistryObject<Block> SHEARED_ROSE_BUSH = BLOCKS.register("sheared_rose_bush", () -> new ShearedTallFlowerBlock(BlockBehaviour.Properties.copy(Blocks.ROSE_BUSH), ROSE));
+    public static final RegistryObject<Block> PEONY = BLOCKS.register("peony", () -> new FlowerBlock(() -> MobEffects.HEALTH_BOOST, 2, BlockBehaviour.Properties.copy(Blocks.POPPY)));
+    public static final RegistryObject<Block> POTTED_PEONY = BLOCKS.register("potted_peony", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, PEONY, BlockBehaviour.Properties.copy(Blocks.POTTED_POPPY)));
+    public static final RegistryObject<Block> SHEARED_PEONY = BLOCKS.register("sheared_peony", () -> new ShearedTallFlowerBlock(BlockBehaviour.Properties.copy(Blocks.PEONY), PEONY));
+    public static final RegistryObject<Block> LILAC = BLOCKS.register("lilac", () -> new FlowerBlock(() -> MobEffects.MOVEMENT_SPEED, 10, BlockBehaviour.Properties.copy(Blocks.POPPY)));
+    public static final RegistryObject<Block> POTTED_LILAC = BLOCKS.register("potted_lilac", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, LILAC, BlockBehaviour.Properties.copy(Blocks.POTTED_POPPY)));
+    public static final RegistryObject<Block> SHEARED_LILAC = BLOCKS.register("sheared_lilac", () -> new ShearedTallFlowerBlock(BlockBehaviour.Properties.copy(Blocks.LILAC), LILAC));
     public static final RegistryObject<Block> TRELLIS = BLOCKS.register("trellis", () -> new TrellisBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.WOOD)));
     public static final RegistryObject<Block> TOMATO = BLOCKS.register("tomato", () -> new TomatoBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
     public static final RegistryObject<Block> CHILI = BLOCKS.register("chili", () -> new ChiliBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));

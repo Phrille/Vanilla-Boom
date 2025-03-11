@@ -176,6 +176,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         barsBlock(ModBlocks.GOLD_BARS.get());
         flowerBlock(ModBlocks.ROSE.get(), ModBlocks.POTTED_ROSE.get());
         doublePlantBlock(ModBlocks.SHEARED_ROSE_BUSH.get());
+        flowerBlock(ModBlocks.PEONY.get(), ModBlocks.POTTED_PEONY.get());
+        doublePlantBlock(ModBlocks.SHEARED_PEONY.get());
+        flowerBlock(ModBlocks.LILAC.get(), ModBlocks.POTTED_LILAC.get());
+        doublePlantBlock(ModBlocks.SHEARED_LILAC.get());
         trellisBlock(ModBlocks.TRELLIS.get());
         trellisCropBlock(ModBlocks.TOMATO.get());
         trellisCropBlock(ModBlocks.CHILI.get());

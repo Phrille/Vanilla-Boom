@@ -41,9 +41,10 @@ public class VanillaBoom {
 
     public void setup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
+            Utils.addCompostMaterials();
             Utils.registerBurnTimes();
             Utils.registerFlowerPots();
-            Utils.addCompostMaterials();
+            Utils.registerShearedTallFlowers();
             Utils.registerTrellisCrops();
             Utils.registerCandleCakes();
             ModDispenserBehavior.registerWitherBonemealBehavior();

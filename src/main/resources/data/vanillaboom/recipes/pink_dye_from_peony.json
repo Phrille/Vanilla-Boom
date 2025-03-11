@@ -3,10 +3,10 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "vanillaboom:chili_seeds"
+      "item": "vanillaboom:peony"
     }
   ],
   "result": {
-    "item": "vanillaboom:chili_seeds"
+    "item": "minecraft:pink_dye"
   }
 }

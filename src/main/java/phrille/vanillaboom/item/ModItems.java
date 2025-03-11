@@ -274,6 +274,10 @@ public class ModItems {
     public static final RegistryObject<Item> GOLD_BARS = ITEMS.register("gold_bars", () -> new BlockItem(ModBlocks.GOLD_BARS.get(), new Item.Properties()));
     public static final RegistryObject<Item> ROSE = ITEMS.register("rose", () -> new BlockItem(ModBlocks.ROSE.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHEARED_ROSE_BUSH = ITEMS.register("sheared_rose_bush", () -> new BlockItem(ModBlocks.SHEARED_ROSE_BUSH.get(), new Item.Properties()));
+    public static final RegistryObject<Item> PEONY = ITEMS.register("peony", () -> new BlockItem(ModBlocks.PEONY.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHEARED_PEONY = ITEMS.register("sheared_peony", () -> new BlockItem(ModBlocks.SHEARED_PEONY.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LILAC = ITEMS.register("lilac", () -> new BlockItem(ModBlocks.LILAC.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHEARED_LILAC = ITEMS.register("sheared_lilac", () -> new BlockItem(ModBlocks.SHEARED_LILAC.get(), new Item.Properties()));
     public static final RegistryObject<Item> TRELLIS = ITEMS.register("trellis", () -> new BlockItem(ModBlocks.TRELLIS.get(), new Item.Properties()));
     public static final RegistryObject<Item> WITHERED_VINE = ITEMS.register("withered_vine", () -> new BlockItem(ModBlocks.WITHERED_VINE.get(), new Item.Properties()));
 

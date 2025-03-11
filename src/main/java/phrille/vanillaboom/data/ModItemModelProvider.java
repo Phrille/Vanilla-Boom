@@ -236,6 +236,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         item(ModBlocks.ROSE.get());
         item(ModBlocks.SHEARED_ROSE_BUSH.get().asItem(), "generated")
                 .texture("layer0", ModDataGenerator.extend(blockTexture(ModBlocks.SHEARED_ROSE_BUSH.get()), "_top"));
+        item(ModBlocks.PEONY.get());
+        item(ModBlocks.SHEARED_PEONY.get().asItem(), "generated")
+                .texture("layer0", ModDataGenerator.extend(blockTexture(ModBlocks.SHEARED_PEONY.get()), "_top"));
+        item(ModBlocks.LILAC.get());
+        item(ModBlocks.SHEARED_LILAC.get().asItem(), "generated")
+                .texture("layer0", ModDataGenerator.extend(blockTexture(ModBlocks.SHEARED_LILAC.get()), "_top"));
         item(ModBlocks.TRELLIS.get());
         item(ModBlocks.WITHERED_VINE.get());
 

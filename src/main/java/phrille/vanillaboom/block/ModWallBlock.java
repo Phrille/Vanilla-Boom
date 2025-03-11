@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 
 @ParametersAreNonnullByDefault
 public class ModWallBlock extends WallBlock implements IVariantBlock {
-    protected Supplier<BlockState> state;
+    protected final Supplier<BlockState> state;
 
     public ModWallBlock(Supplier<BlockState> state) {
         this(state, BlockBehaviour.Properties.copy(state.get().getBlock()));

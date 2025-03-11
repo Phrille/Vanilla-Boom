@@ -48,7 +48,6 @@ public class WitherBoneMealItem extends Item {
         if (level instanceof ServerLevel) {
             return applyWitherBoneMeal(level, pos, stack);
         }
-
         return false;
     }
 

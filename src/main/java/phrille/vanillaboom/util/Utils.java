@@ -9,10 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
@@ -23,6 +20,7 @@ import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.ModCakeBlock;
 import phrille.vanillaboom.block.ModCandleCakeBlock;
 import phrille.vanillaboom.block.crop.ITrellisCrop;
+import phrille.vanillaboom.block.crop.ShearedTallFlowerBlock;
 import phrille.vanillaboom.block.crop.TrellisBlock;
 import phrille.vanillaboom.handler.FuelHandler;
 import phrille.vanillaboom.item.ModItems;
@@ -98,6 +96,14 @@ public class Utils {
 
     public static void registerFlowerPots() {
         ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(new ResourceLocation(VanillaBoom.MOD_ID, "rose"), ModBlocks.POTTED_ROSE);
+        ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(new ResourceLocation(VanillaBoom.MOD_ID, "peony"), ModBlocks.POTTED_PEONY);
+        ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(new ResourceLocation(VanillaBoom.MOD_ID, "lilac"), ModBlocks.POTTED_LILAC);
+    }
+
+    public static void registerShearedTallFlowers() {
+        ShearedTallFlowerBlock.registerShearedTallFlowerBlock((TallFlowerBlock) Blocks.ROSE_BUSH, (ShearedTallFlowerBlock) ModBlocks.SHEARED_ROSE_BUSH.get());
+        ShearedTallFlowerBlock.registerShearedTallFlowerBlock((TallFlowerBlock) Blocks.PEONY, (ShearedTallFlowerBlock) ModBlocks.SHEARED_PEONY.get());
+        ShearedTallFlowerBlock.registerShearedTallFlowerBlock((TallFlowerBlock) Blocks.LILAC, (ShearedTallFlowerBlock) ModBlocks.SHEARED_LILAC.get());
     }
 
     public static void registerTrellisCrops() {

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "vanillaboom:block/sheared_lilac_bottom"
+    },
+    "half=upper": {
+      "model": "vanillaboom:block/sheared_lilac_top"
+    }
+  }
+}
