@@ -2,9 +2,12 @@ package phrille.vanillaboom.data;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.decoration.PaintingVariant;
+import net.minecraft.world.entity.decoration.PaintingVariants;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -16,16 +19,19 @@ import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.ModSlabBlock;
 import phrille.vanillaboom.block.ModStairBlock;
 import phrille.vanillaboom.block.ModWallBlock;
+import phrille.vanillaboom.inventory.recipe.PaintingRecipeBuilder;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.ModTags;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 @ParametersAreNonnullByDefault
@@ -323,6 +329,34 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("xyx")
                 .unlockedBy(getHasName(Items.NETHER_BRICK), has(Items.NETHER_BRICK))
                 .save(finishedRecipe);
+
+        // Paintings
+        painting(finishedRecipe, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_LIME), PaintingVariants.KEBAB);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_LIGHT_GRAY), PaintingVariants.AZTEC);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_GREEN), PaintingVariants.ALBAN);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN), PaintingVariants.AZTEC2);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_LIME), PaintingVariants.BOMB);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_GREEN, Tags.Items.DYES_WHITE), PaintingVariants.PLANT);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_BROWN), PaintingVariants.WASTELAND);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_BROWN), PaintingVariants.POOL);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_BLACK, Tags.Items.DYES_LIGHT_GRAY), PaintingVariants.COURBET);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_LIME), PaintingVariants.SEA);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BLACK), PaintingVariants.SUNSET);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_LIME), PaintingVariants.CREEBET);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_PINK, Tags.Items.DYES_BLACK), PaintingVariants.WANDERER);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_YELLOW), PaintingVariants.GRAHAM);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN, Tags.Items.DYES_ORANGE), PaintingVariants.MATCH);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_LIME, Tags.Items.DYES_BLACK, Tags.Items.DYES_ORANGE), PaintingVariants.BUST);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_WHITE), PaintingVariants.STAGE);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_MAGENTA), PaintingVariants.VOID);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_CYAN, Tags.Items.DYES_GREEN, Tags.Items.DYES_RED), PaintingVariants.SKULL_AND_ROSES);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_GREEN, Tags.Items.DYES_RED), PaintingVariants.WITHER);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN, Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN), PaintingVariants.FIGHTERS);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_WHITE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BLACK), PaintingVariants.POINTER);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_PINK, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BROWN, Tags.Items.DYES_BLACK), PaintingVariants.PIGSCENE);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN, Tags.Items.DYES_BLACK, Tags.Items.DYES_WHITE), PaintingVariants.BURNING_SKULL);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_ORANGE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_WHITE, Tags.Items.DYES_GRAY), PaintingVariants.SKELETON);
+        painting(finishedRecipe, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_BLACK, Tags.Items.DYES_PINK, Tags.Items.DYES_RED), PaintingVariants.DONKEY_KONG);
     }
 
     // Templates
@@ -673,6 +707,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(ingredient), category, result, amount)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeResourceLocation(result, ingredient), "_from_stonecutting"));
+    }
+
+    public void painting(Consumer<FinishedRecipe> finishedRecipe, List<TagKey<Item>> dyes, ResourceKey<PaintingVariant> variant) {
+        painting(finishedRecipe, dyes, ForgeRegistries.PAINTING_VARIANTS.getHolder(variant).orElseThrow().get());
+    }
+
+    public void painting(Consumer<FinishedRecipe> finishedRecipe, List<TagKey<Item>> dyes, PaintingVariant variant) {
+        List<Ingredient> ingredientDyes = Lists.newArrayList();
+        dyes.forEach(dye -> ingredientDyes.add(Ingredient.of(dye)));
+        PaintingRecipeBuilder.painting(ingredientDyes, RecipeCategory.DECORATIONS, variant)
+                .unlockedBy(getHasName(ModItems.CANVAS.get()), has(ModItems.CANVAS.get()))
+                .save(finishedRecipe, new ResourceLocation(VanillaBoom.MOD_ID, Objects.requireNonNull(ForgeRegistries.PAINTING_VARIANTS.getKey(variant)).getPath() + "_from_painting"));
     }
 
     /**

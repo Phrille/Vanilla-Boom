@@ -16,6 +16,7 @@ import phrille.vanillaboom.client.ClientUtils;
 import phrille.vanillaboom.config.ConfigHandler;
 import phrille.vanillaboom.entity.ModEntities;
 import phrille.vanillaboom.inventory.ModMenuTypes;
+import phrille.vanillaboom.inventory.recipe.ModRecipes;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.loot.ModGlobalLootModifiers;
 import phrille.vanillaboom.util.ModDispenserBehavior;
@@ -33,6 +34,8 @@ public class VanillaBoom {
         ModBlocks.BLOCKS.register(eventBus);
         ModItems.ITEMS.register(eventBus);
         ModBlockEntities.BLOCK_ENTITY_TYPES.register(eventBus);
+        ModRecipes.RECIPE_SERIALIZERS.register(eventBus);
+        ModRecipes.RECIPE_TYPES.register(eventBus);
         ModMenuTypes.MENU_TYPES.register(eventBus);
         ModGlobalLootModifiers.GLOBAL_LOOT_MODIFIERS.register(eventBus);
 

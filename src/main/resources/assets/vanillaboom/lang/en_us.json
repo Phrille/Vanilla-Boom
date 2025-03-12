@@ -560,5 +560,6 @@
   "item.vanillaboom.wither_painting.desc": "Wither",
   "language.locale": "en_us",
   "language.name": "English",
-  "language.region": "United States"
+  "language.region": "United States",
+  "vanillaboom.container.easel": "Easel"
 }

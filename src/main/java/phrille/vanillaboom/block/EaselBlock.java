@@ -36,6 +36,7 @@ public class EaselBlock extends Block {
             return InteractionResult.SUCCESS;
         } else {
             player.openMenu(state.getMenuProvider(level, pos));
+            // TODO: award stat
             // player.awardStat(Stats.INTERACT_WITH_CARTOGRAPHY_TABLE);
             return InteractionResult.CONSUME;
         }
