@@ -18,7 +18,11 @@ public class ModLanguageProvider extends LanguageProvider {
         add("language.region", "United States");
         add("language.locale", "en_us");
 
+        // Damage Sources
         add("death.attack.vanillaboom.chili", "%s couldn't handle the spice");
+
+        // Containers
+        add("vanillaboom.container.easel", "Easel");
 
         // Bricks
         add(ModBlocks.COBBLESTONE_BRICKS.get(), "Cobblestone Bricks");
