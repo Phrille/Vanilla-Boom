@@ -113,7 +113,7 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
             }
 
             json.add("canvas", canvas.toJson());
-            JsonArray jsonDyes = new JsonArray(4);
+            JsonArray jsonDyes = new JsonArray(PaintingRecipe.MAX_DYES);
 
             for (Ingredient dye : dyes) {
                 jsonDyes.add(dye.toJson());

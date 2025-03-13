@@ -1,6 +1,5 @@
 package phrille.vanillaboom.inventory.recipe;
 
-import com.google.common.collect.Sets;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
@@ -19,39 +18,43 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.inventory.EaselMenu;
-import phrille.vanillaboom.util.ModTags;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.Set;
+import java.util.List;
 
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public record PaintingRecipe(ResourceLocation recipeId, String group, Ingredient canvas, NonNullList<Ingredient> dyes,
                              ItemStack result) implements Recipe<Container> {
+    public static final int MAX_DYES = 7;
+
     @Override
     public boolean matches(Container container, Level level) {
-        //TODO: Update to include canvas ingredient
-        if (!container.getItem(EaselMenu.CANVAS_SLOT).is(ModTags.ForgeTags.Items.CANVAS)) {
+        if (!canvas.test(container.getItem(EaselMenu.CANVAS_SLOT))) {
             return false;
         }
 
-        Set<Integer> usedSlots = Sets.newHashSet();
+        List<ItemStack> dyeStacks = Lists.newArrayList();
+        for (int i = EaselMenu.DYE_SLOT_START; i < EaselMenu.DYE_SLOT_END + 1; i++) {
+            dyeStacks.add(container.getItem(i).copy());
+        }
+
         for (Ingredient ingredient : dyes) {
             boolean foundMatch = false;
-            for (int i = 0; i < container.getContainerSize() - 1; i++) {
-                if (usedSlots.contains(i)) continue;
-
-                if (ingredient.test(container.getItem(i))) {
-                    usedSlots.add(i);
+            for (ItemStack dyeStack : dyeStacks) {
+                if (ingredient.test(dyeStack)) {
+                    dyeStack.shrink(1);
                     foundMatch = true;
                     break;
                 }
             }
             if (!foundMatch) return false;
         }
+
         return true;
     }
 
@@ -109,8 +112,8 @@ public record PaintingRecipe(ResourceLocation recipeId, String group, Ingredient
 
             if (jsonDyes.isEmpty()) {
                 throw new JsonSyntaxException("List of dye ingredients can not be empty");
-            } else if (jsonDyes.size() > 4) {
-                throw new JsonSyntaxException("List of dye ingredients can not exceed 4 items");
+            } else if (jsonDyes.size() > MAX_DYES) {
+                throw new JsonSyntaxException("List of dye ingredients can not exceed " + MAX_DYES + " items");
             }
 
             jsonDyes.asList().forEach((jsonDye) -> dyes.add(Ingredient.fromJson(jsonDye)));

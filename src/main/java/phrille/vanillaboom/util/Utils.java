@@ -79,7 +79,7 @@ public class Utils {
         return to.setValue(property, from.getValue(property));
     }
 
-    public static Optional<ResourceLocation> resLocFromStack(ItemStack stack) {
+    public static Optional<ResourceLocation> resLocFromPaintingStack(ItemStack stack) {
         if (stack.getTag() != null && stack.getTag().contains("EntityTag")) {
             CompoundTag entityTag = stack.getTag().getCompound("EntityTag");
             String variant = entityTag.getString("variant");
@@ -90,7 +90,7 @@ public class Utils {
     }
 
     public static Optional<PaintingVariant> paintingVariantFromStack(ItemStack stack) {
-        Optional<ResourceLocation> resLoc = resLocFromStack(stack);
+        Optional<ResourceLocation> resLoc = resLocFromPaintingStack(stack);
         if (resLoc.isPresent()) {
             return paintVariantFromResLoc(resLoc.get());
         }

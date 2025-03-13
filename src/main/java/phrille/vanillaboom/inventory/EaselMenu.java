@@ -10,6 +10,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.Tags;
 import phrille.vanillaboom.block.ModBlocks;
@@ -18,15 +19,17 @@ import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
 import phrille.vanillaboom.util.ModTags;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class EaselMenu extends AbstractContainerMenu {
     public static final int DYE_SLOT_START = 0;
-    public static final int DYE_SLOT_END = 3;
-    public static final int CANVAS_SLOT = 4;
-    public static final int RESULT_SLOT = 5;
+    public static final int DYE_SLOT_END = 6;
+    public static final int CANVAS_SLOT = 7;
+    public static final int RESULT_SLOT = 8;
 
     private final ContainerLevelAccess access;
     private final Level level;
@@ -39,7 +42,7 @@ public class EaselMenu extends AbstractContainerMenu {
     private final List<ItemStack> dyeStacks = Lists.newArrayList();
     private final Slot canvasSlot;
     private ItemStack canvasStack = ItemStack.EMPTY;
-    private final Container inputContainer = new SimpleContainer(5) {
+    private final Container inputContainer = new SimpleContainer(CANVAS_SLOT + 1) {
         public void setChanged() {
             super.setChanged();
             EaselMenu.this.slotsChanged(this);
@@ -65,7 +68,7 @@ public class EaselMenu extends AbstractContainerMenu {
         level = inventory.player.getLevel();
 
         for (int i = DYE_SLOT_START; i < DYE_SLOT_END + 1; i++) {
-            dyeSlots.add(i, addSlot(new Slot(inputContainer, i, 8, 15 + i * 18) {
+            dyeSlots.add(i, addSlot(new Slot(inputContainer, i, 8 + (i % 2) * 18, 16 + (i / 2) * 18) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return stack.is(Tags.Items.DYES);
@@ -74,7 +77,7 @@ public class EaselMenu extends AbstractContainerMenu {
             dyeStacks.add(i, ItemStack.EMPTY);
         }
 
-        canvasSlot = addSlot(new Slot(inputContainer, CANVAS_SLOT, 30, 42) {
+        canvasSlot = addSlot(new Slot(inputContainer, CANVAS_SLOT, 26, 70) {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return stack.is(ModTags.ForgeTags.Items.CANVAS);
@@ -90,20 +93,28 @@ public class EaselMenu extends AbstractContainerMenu {
             @Override
             public void onTake(Player player, ItemStack stack) {
                 stack.onCraftedBy(player.level, player, stack.getCount());
+                PaintingRecipe recipe = Objects.requireNonNull((PaintingRecipe) EaselMenu.this.resultContainer.getRecipeUsed());
 
-                //TODO: check which slots should shrink.
-                EaselMenu.this.canvasSlot.remove(1);
-                EaselMenu.this.dyeSlots.stream()
-                        .filter(Slot::hasItem)
-                        .forEach(slot -> slot.remove(1));
+                for (Ingredient ingredient : recipe.getIngredients()) {
+                    boolean success = false;
+                    for (int i = 0; i < EaselMenu.this.inputContainer.getContainerSize(); i++) {
+                        ItemStack ingredientStack = EaselMenu.this.inputContainer.getItem(i);
+                        if (ingredient.test(ingredientStack)) {
+                            ingredientStack.shrink(1);
+                            success = true;
+                            break;
+                        }
+                    }
+                    if (!success) {
+                        throw new IllegalStateException("Missing expected ingredient in EaselMenu inputContainer!");
+                    }
+                }
 
-                // This resets the used recipe which should be used by the code above to determine which items
-                // should shrink.
                 EaselMenu.this.resultContainer.awardUsedRecipes(player);
-
-                if (!EaselMenu.this.canvasSlot.hasItem() || EaselMenu.this.dyeStacksChanged()) {
+                if (!EaselMenu.this.canvasSlot.hasItem()) {
                     EaselMenu.this.selectedPaintingIndex.set(-1);
                 } else {
+                    EaselMenu.this.setupRecipeList(EaselMenu.this.inputContainer);
                     EaselMenu.this.setupResultSlot();
                 }
 
@@ -133,6 +144,16 @@ public class EaselMenu extends AbstractContainerMenu {
     }
 
     @Override
+    public boolean clickMenuButton(Player player, int index) {
+        if (isValidPaintingIndex(index)) {
+            selectedPaintingIndex.set(index);
+            setupResultSlot();
+        }
+
+        return true;
+    }
+
+    @Override
     public void slotsChanged(Container container) {
         ItemStack canvas = canvasSlot.getItem();
 
@@ -153,10 +174,14 @@ public class EaselMenu extends AbstractContainerMenu {
 
     private void setupRecipeList(Container container) {
         recipes.clear();
-        resultSlot.set(ItemStack.EMPTY);
-        selectedPaintingIndex.set(-1);
         recipes = level.getRecipeManager().getRecipesFor(ModRecipes.PAINTING.get(), container, level);
-        System.out.println(recipes.hashCode());
+        // Badness? Hacky way to ensure same hashCode for recipes on server and client.
+        recipes.sort(Comparator.comparing(PaintingRecipe::recipeId));
+
+        if (recipes.isEmpty()) {
+            resultSlot.set(ItemStack.EMPTY);
+            selectedPaintingIndex.set(-1);
+        }
     }
 
     private void setupResultSlot() {
@@ -199,26 +224,12 @@ public class EaselMenu extends AbstractContainerMenu {
         access.execute((remover, container) -> clearContainer(player, inputContainer));
     }
 
-    @Override
-    public boolean clickMenuButton(Player player, int index) {
-        if (isValidPaintingIndex(index)) {
-            selectedPaintingIndex.set(index);
-            setupResultSlot();
-        }
-
-        return true;
-    }
-
     public List<PaintingRecipe> getRecipes() {
         return recipes;
     }
 
     public List<PaintingRecipe> getAllRecipes() {
         return level.getRecipeManager().getAllRecipesFor(ModRecipes.PAINTING.get());
-    }
-
-    public int getSelectedPaintingIndex() {
-        return selectedPaintingIndex.get();
     }
 
     public boolean isValidPaintingIndex(int index) {
@@ -243,6 +254,9 @@ public class EaselMenu extends AbstractContainerMenu {
         for (int i = DYE_SLOT_START; i < DYE_SLOT_END + 1; i++) {
             ItemStack stack = changedStacks.get(i);
             if (!stack.is(dyeStacks.get(i).getItem())) {
+                flag = true;
+                break;
+            } else if (dyeStacks.get(i).getCount() != stack.getCount()) {
                 flag = true;
                 break;
             }
