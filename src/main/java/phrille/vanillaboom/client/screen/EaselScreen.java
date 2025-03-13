@@ -6,24 +6,32 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.world.inventory.Slot;
+import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.inventory.EaselMenu;
+import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
+import phrille.vanillaboom.util.Utils;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
+import java.util.Optional;
 
 @ParametersAreNonnullByDefault
 public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
+    private static final ResourceLocation BG_LOCATION = new ResourceLocation(VanillaBoom.MOD_ID, "textures/gui/container/easel.png");
+
+    /* Screen coords */
     public static final int SCREEN_WIDTH = 176;
     public static final int SCREEN_HEIGHT = 184;
+    public static final int SCROLL_BUTTON_WIDTH = 12;
+    public static final int SCROLL_BUTTON_HEIGHT = 15;
     public static final int SCROLL_X = 126;
     public static final int SCROLL_Y = 15;
     public static final int SCROLL_HEIGHT = 72;
@@ -31,11 +39,14 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
     public static final int LIST_Y = 15;
     public static final int BUTTON_SIZE = 18;
     public static final int MAX_ITEMS = 16;
-    private static final ResourceLocation BG_LOCATION = new ResourceLocation(VanillaBoom.MOD_ID, "textures/gui/container/easel.png");
-    private boolean displayRecipes;
+
+    /* Buttons */
+    private final List<Button> buttonList;
+    private int startIndex;
+
+    /* Scrolling */
     private float scrollOffset;
     private boolean scrolling;
-    private int startIndex;
 
     public EaselScreen(EaselMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
@@ -44,6 +55,17 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         imageHeight = SCREEN_HEIGHT;
         --titleLabelY;
         inventoryLabelY += 19;
+
+        List<PaintingRecipe> recipeList = menu.getAllRecipes();
+        buttonList = Lists.newArrayList();
+        for (int buttonId = 0; buttonId < recipeList.size(); buttonId++) {
+            PaintingRecipe recipe = recipeList.get(buttonId);
+            Optional<PaintingVariant> variant = Utils.paintingVariantFromStack(recipe.result());
+            if (variant.isPresent()) {
+                buttonList.add(buttonId, new Button(recipe, variant.get(), false));
+            }
+        }
+        buttonList.sort((a, b) -> a.area == b.area ? b.variant.getWidth() - a.variant.getWidth() : a.area - b.area);
     }
 
     @Override
@@ -58,84 +80,107 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         RenderSystem.setShaderTexture(0, BG_LOCATION);
         int x = leftPos;
         int y = topPos;
-        blit(pose, x, y, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        int scrollY = (int) (41.0F * scrollOffset);
-        blit(pose, x + SCROLL_X, y + SCROLL_Y + scrollY, SCREEN_WIDTH + (isScrollBarActive() ? 0 : 12), 0, 12, 15);
 
+        // Background
+        blit(pose, x, y, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+        // Scrollbar
+        int scrollY = (int) ((float) (SCROLL_HEIGHT - SCROLL_BUTTON_HEIGHT) * scrollOffset);
+        blit(pose, x + SCROLL_X, y + SCROLL_Y + scrollY, SCREEN_WIDTH + (isScrollBarActive() ? 0 : SCROLL_BUTTON_WIDTH), 0, SCROLL_BUTTON_WIDTH, SCROLL_BUTTON_HEIGHT);
+
+        // Dye slots
+        menu.getDyeSlots().stream()
+                .filter(slot -> !slot.hasItem())
+                .forEach(slot -> blit(pose, x + slot.x, y + slot.y, SCREEN_WIDTH, 15, 16, 16));
+
+        // Canvas slot
+        Slot canvasSlot = menu.getCanvasSlot();
+        if (!canvasSlot.hasItem()) {
+            blit(pose, x + canvasSlot.x, y + canvasSlot.y, SCREEN_WIDTH + 16, 15, 16, 16);
+        }
+
+        // Buttons
         renderButtons(pose, x + LIST_X, y + LIST_Y, mouseX, mouseY);
-        renderRecipes(pose, x + LIST_X, y + LIST_Y);
     }
 
     private void renderButtons(PoseStack pose, int x, int y, int mouseX, int mouseY) {
         int max = startIndex + MAX_ITEMS;
 
-        for (int buttonId = startIndex; buttonId < max && buttonId < menu.getRecipes().size(); buttonId++) {
+        for (int buttonId = startIndex; buttonId < max && buttonId < buttonList.size(); buttonId++) {
+            Button button = buttonList.get(buttonId);
             int i = buttonId - startIndex;
-            int buttonX = x + i % 4 * BUTTON_SIZE;
-            int buttonY = y + i / 4 * BUTTON_SIZE;
+            int buttonX = x + i % 4 * button.width;
+            int buttonY = y + i / 4 * button.height;
 
             int textureX = SCREEN_WIDTH;
-            int textureY = 15;
-            if (buttonId == menu.getSelectedPaintingIndex()) {
-                textureX += BUTTON_SIZE;
-            } else if (mouseX >= buttonX && mouseY >= buttonY && mouseX < buttonX + BUTTON_SIZE && mouseY < buttonY + BUTTON_SIZE) {
-                textureX += BUTTON_SIZE * 2;
+            if (button.selected) {
+                textureX += button.width;
+            } else if (mouseX >= buttonX && mouseY >= buttonY && mouseX < buttonX + button.width && mouseY < buttonY + button.height) {
+                textureX += button.width * 2;
             }
 
-            blit(pose, buttonX, buttonY, textureX, textureY, BUTTON_SIZE, BUTTON_SIZE);
-        }
-    }
+            blit(pose, buttonX, buttonY, textureX, 31, button.width, button.height);
 
-    private void renderRecipes(PoseStack pose, int x, int y) {
-        int max = startIndex + MAX_ITEMS;
-
-        for (int buttonId = startIndex; buttonId < max && buttonId < menu.getRecipes().size(); buttonId++) {
-            int i = buttonId - startIndex;
-            int buttonX = x + i % 4 * BUTTON_SIZE;
-            int buttonY = y + i / 4 * BUTTON_SIZE;
-
-            PaintingVariant variant = getPaintingVariant(menu.getRecipes().get(buttonId).result());
-            if (variant == null) {
-                continue;
+            if (!button.enabled) {
+                RenderSystem.enableBlend();
+                RenderSystem.defaultBlendFunc();
+                RenderSystem.setShaderColor(0.3F, 0.3F, 0.3F, 1.0F);
             }
 
-            TextureAtlasSprite sprite = Minecraft.getInstance().getPaintingTextures().get(variant);
-            RenderSystem.setShaderTexture(0, sprite.atlasLocation());
-            blit(pose, buttonX + 1, buttonY + 1, 0, BUTTON_SIZE - 2, BUTTON_SIZE - 2, sprite);
+            RenderSystem.setShaderTexture(0, button.sprite.atlasLocation());
+            blit(pose, buttonX + 1, buttonY + 1, 0, button.width - 2, button.height - 2, button.sprite);
+            RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+            RenderSystem.disableBlend();
             RenderSystem.setShaderTexture(0, BG_LOCATION);
         }
     }
 
     @Override
     @SuppressWarnings("ConstantConditions")
-    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+    public boolean mouseClicked(double mouseX, double mouseY, int buttonCode) {
         scrolling = false;
 
-        if (displayRecipes) {
-            int x = leftPos + LIST_X;
-            int y = topPos + LIST_Y;
-            int max = startIndex + MAX_ITEMS;
+        int x = leftPos + LIST_X;
+        int y = topPos + LIST_Y;
+        int max = startIndex + MAX_ITEMS;
+        boolean clicked = false;
 
-            for (int index = startIndex; index < max; ++index) {
-                int i = index - startIndex;
-                double buttonX = mouseX - (double) (x + i % 4 * BUTTON_SIZE);
-                double buttonY = mouseY - (double) (y + i / 4 * BUTTON_SIZE);
+        for (int buttonId = startIndex; buttonId < max && buttonId < buttonList.size(); buttonId++) {
+            Button button = buttonList.get(buttonId);
 
-                if (buttonX >= 0.0D && buttonY >= 0.0D && buttonX < (double) BUTTON_SIZE && buttonY < (double) BUTTON_SIZE && menu.clickMenuButton(minecraft.player, index)) {
-                    Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_LOOM_SELECT_PATTERN, 1.0F));
-                    minecraft.gameMode.handleInventoryButtonClick(menu.containerId, index);
-                    return true;
-                }
+            if (!button.enabled) {
+                button.selected = false;
+                continue;
             }
 
-            x = leftPos + SCROLL_X;
-            y = topPos + SCROLL_Y;
-            if (mouseX >= (double) x && mouseX < (double) (x + 12) && mouseY >= (double) y && mouseY < (double) (y + 72)) {
-                scrolling = true;
+            int i = buttonId - startIndex;
+            double buttonX = mouseX - (double) (x + i % 4 * button.width);
+            double buttonY = mouseY - (double) (y + i / 4 * button.height);
+
+            if (!clicked && buttonX >= 0.0D && buttonY >= 0.0D && buttonX < (double) button.width && buttonY < (double) button.height) {
+                int recipeIndex = menu.getRecipes().indexOf(button.recipe);
+                if (menu.clickMenuButton(minecraft.player, recipeIndex)) {
+                    Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_LOOM_SELECT_PATTERN, 1.0F));
+                    minecraft.gameMode.handleInventoryButtonClick(menu.containerId, recipeIndex);
+                    button.selected = true;
+                    clicked = true;
+                }
+            } else {
+                button.selected = false;
             }
         }
 
-        return super.mouseClicked(mouseX, mouseY, button);
+        if (clicked) {
+            return true;
+        }
+
+        x = leftPos + SCROLL_X;
+        y = topPos + SCROLL_Y;
+        if (mouseX >= (double) x && mouseX < (double) (x + SCROLL_BUTTON_WIDTH) && mouseY >= (double) y && mouseY < (double) (y + SCROLL_HEIGHT)) {
+            scrolling = true;
+        }
+
+        return super.mouseClicked(mouseX, mouseY, buttonCode);
     }
 
     @Override
@@ -154,8 +199,8 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
 
     @Override
     public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
-        if (this.isScrollBarActive()) {
-            int rows = this.getOffscreenRows();
+        if (isScrollBarActive()) {
+            int rows = getOffscreenRows();
             float f = (float) delta / (float) rows;
             scrollOffset = Mth.clamp(scrollOffset - f, 0.0F, 1.0F);
             startIndex = (int) ((double) (scrollOffset * (float) rows) + 0.5D) * 4;
@@ -164,29 +209,65 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         return true;
     }
 
+    @Override
+    protected void renderTooltip(PoseStack pose, int mouseX, int mouseY) {
+        super.renderTooltip(pose, mouseX, mouseY);
+
+        int x = leftPos + LIST_X;
+        int y = topPos + LIST_Y;
+        int max = startIndex + MAX_ITEMS;
+
+        for (int buttonId = startIndex; buttonId < max && buttonId < buttonList.size(); buttonId++) {
+            Button button = buttonList.get(buttonId);
+            int i = buttonId - startIndex;
+            int buttonX = x + i % 4 * BUTTON_SIZE;
+            int buttonY = y + i / 4 * BUTTON_SIZE;
+            if (mouseX >= buttonX && mouseX < buttonX + 16 && mouseY >= buttonY && mouseY < buttonY + 18) {
+                renderTooltip(pose, button.recipe.result(), mouseX, mouseY);
+            }
+        }
+    }
+
     private boolean isScrollBarActive() {
-        return displayRecipes && menu.getRecipes().size() > MAX_ITEMS;
+        return buttonList.size() > MAX_ITEMS;
     }
 
     protected int getOffscreenRows() {
-        return ((menu.getRecipes().size() + 3) / 4) - 4;
+        return ((buttonList.size() + 3) / 4) - 4;
     }
 
     private void containerChanged() {
-        displayRecipes = menu.getRecipes().size() > 0;
-        if (!displayRecipes) {
+        buttonList.forEach(button -> {
+            button.enabled = menu.getRecipes().contains(button.recipe);
+            button.selected = false;
+        });
+
+        if (!isScrollBarActive()) {
             scrollOffset = 0.0F;
             startIndex = 0;
         }
     }
 
-    private PaintingVariant getPaintingVariant(ItemStack paintingStack) {
-        if (paintingStack.getTag() != null && paintingStack.getTag().contains("EntityTag")) {
-            CompoundTag entityTag = paintingStack.getTag().getCompound("EntityTag");
-            String variant = entityTag.getString("variant");
-            return ForgeRegistries.PAINTING_VARIANTS.getValue(new ResourceLocation(variant));
-        }
+    private static class Button {
+        public final PaintingRecipe recipe;
+        public final PaintingVariant variant;
+        public final TextureAtlasSprite sprite;
+        public final int width;
+        public final int height;
+        public final int area;
+        public boolean enabled;
+        public boolean selected;
 
-        return null;
+        public Button(PaintingRecipe recipe, PaintingVariant variant, boolean enabled) {
+            this.recipe = recipe;
+            this.variant = variant;
+            this.sprite = Minecraft.getInstance().getPaintingTextures().get(variant);
+            this.enabled = enabled;
+            // this.width = (variant.getWidth() / 16) * BUTTON_SIZE;
+            // this.height = (variant.getHeight() / 16) * BUTTON_SIZE;
+            this.width = BUTTON_SIZE;
+            this.height = BUTTON_SIZE;
+            this.area = variant.getWidth() * variant.getHeight();
+        }
     }
 }

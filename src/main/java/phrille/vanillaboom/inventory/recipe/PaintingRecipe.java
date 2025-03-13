@@ -19,6 +19,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.inventory.EaselMenu;
 import phrille.vanillaboom.util.ModTags;
 
@@ -32,6 +33,7 @@ public record PaintingRecipe(ResourceLocation recipeId, String group, Ingredient
                              ItemStack result) implements Recipe<Container> {
     @Override
     public boolean matches(Container container, Level level) {
+        //TODO: Update to include canvas ingredient
         if (!container.getItem(EaselMenu.CANVAS_SLOT).is(ModTags.ForgeTags.Items.CANVAS)) {
             return false;
         }
@@ -91,6 +93,11 @@ public record PaintingRecipe(ResourceLocation recipeId, String group, Ingredient
         return ingredients;
     }
 
+    @Override
+    public ItemStack getToastSymbol() {
+        return new ItemStack(ModBlocks.EASEL.get());
+    }
+
     public static class PaintingRecipeSerializer implements RecipeSerializer<PaintingRecipe> {
         @Override
         public PaintingRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
@@ -136,9 +143,11 @@ public record PaintingRecipe(ResourceLocation recipeId, String group, Ingredient
             buffer.writeUtf(paintingRecipe.group());
             buffer.writeVarInt(paintingRecipe.getIngredients().size());
             paintingRecipe.canvas().toNetwork(buffer);
+
             for (Ingredient ingredient : paintingRecipe.dyes()) {
                 ingredient.toNetwork(buffer);
             }
+
             buffer.writeItem(paintingRecipe.result());
         }
     }

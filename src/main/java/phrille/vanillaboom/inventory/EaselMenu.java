@@ -31,6 +31,7 @@ public class EaselMenu extends AbstractContainerMenu {
     private final ContainerLevelAccess access;
     private final Level level;
     private long lastSoundTime;
+
     /* Input */
     private Runnable slotUpdateListener = () -> {
     };
@@ -45,9 +46,11 @@ public class EaselMenu extends AbstractContainerMenu {
             EaselMenu.this.slotUpdateListener.run();
         }
     };
+
     /* Result */
     private final Slot resultSlot;
     private final ResultContainer resultContainer = new ResultContainer();
+
     /* Recipe list */
     private List<PaintingRecipe> recipes = Lists.newArrayList();
     private final DataSlot selectedPaintingIndex = DataSlot.standalone();
@@ -90,7 +93,9 @@ public class EaselMenu extends AbstractContainerMenu {
 
                 //TODO: check which slots should shrink.
                 EaselMenu.this.canvasSlot.remove(1);
-                EaselMenu.this.getFilledDyeSlots().forEach(slot -> slot.remove(1));
+                EaselMenu.this.dyeSlots.stream()
+                        .filter(Slot::hasItem)
+                        .forEach(slot -> slot.remove(1));
 
                 // This resets the used recipe which should be used by the code above to determine which items
                 // should shrink.
@@ -124,6 +129,7 @@ public class EaselMenu extends AbstractContainerMenu {
         }
 
         addDataSlot(selectedPaintingIndex);
+        selectedPaintingIndex.set(-1);
     }
 
     @Override
@@ -150,6 +156,7 @@ public class EaselMenu extends AbstractContainerMenu {
         resultSlot.set(ItemStack.EMPTY);
         selectedPaintingIndex.set(-1);
         recipes = level.getRecipeManager().getRecipesFor(ModRecipes.PAINTING.get(), container, level);
+        System.out.println(recipes.hashCode());
     }
 
     private void setupResultSlot() {
@@ -197,18 +204,17 @@ public class EaselMenu extends AbstractContainerMenu {
         if (isValidPaintingIndex(index)) {
             selectedPaintingIndex.set(index);
             setupResultSlot();
-            return true;
         }
 
-        return false;
+        return true;
     }
 
     public List<PaintingRecipe> getRecipes() {
         return recipes;
     }
 
-    public List<Slot> getFilledDyeSlots() {
-        return dyeSlots.stream().filter(Slot::hasItem).toList();
+    public List<PaintingRecipe> getAllRecipes() {
+        return level.getRecipeManager().getAllRecipesFor(ModRecipes.PAINTING.get());
     }
 
     public int getSelectedPaintingIndex() {
@@ -223,12 +229,16 @@ public class EaselMenu extends AbstractContainerMenu {
         slotUpdateListener = updateListener;
     }
 
-    private List<ItemStack> getDyeStacks() {
-        return dyeSlots.stream().map(Slot::getItem).toList();
+    public List<Slot> getDyeSlots() {
+        return dyeSlots;
+    }
+
+    public Slot getCanvasSlot() {
+        return canvasSlot;
     }
 
     private boolean dyeStacksChanged() {
-        List<ItemStack> changedStacks = getDyeStacks();
+        List<ItemStack> changedStacks = dyeSlots.stream().map(Slot::getItem).toList();
         boolean flag = false;
         for (int i = DYE_SLOT_START; i < DYE_SLOT_END + 1; i++) {
             ItemStack stack = changedStacks.get(i);

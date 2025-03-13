@@ -2,8 +2,10 @@ package phrille.vanillaboom.util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.stats.Stats;
+import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
@@ -15,6 +17,7 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.ModCakeBlock;
@@ -26,6 +29,7 @@ import phrille.vanillaboom.handler.FuelHandler;
 import phrille.vanillaboom.item.ModItems;
 
 import java.util.List;
+import java.util.Optional;
 
 public class Utils {
     public static final List<Block> CANDLES = List.of(Blocks.CANDLE, Blocks.WHITE_CANDLE, Blocks.ORANGE_CANDLE, Blocks.MAGENTA_CANDLE, Blocks.LIGHT_BLUE_CANDLE, Blocks.YELLOW_CANDLE, Blocks.LIME_CANDLE, Blocks.PINK_CANDLE, Blocks.GRAY_CANDLE, Blocks.LIGHT_GRAY_CANDLE, Blocks.CYAN_CANDLE, Blocks.PURPLE_CANDLE, Blocks.BLUE_CANDLE, Blocks.BROWN_CANDLE, Blocks.GREEN_CANDLE, Blocks.RED_CANDLE, Blocks.BLACK_CANDLE);
@@ -73,6 +77,29 @@ public class Utils {
 
     public static <T extends Comparable<T>> BlockState copyState(BlockState from, BlockState to, Property<T> property) {
         return to.setValue(property, from.getValue(property));
+    }
+
+    public static Optional<ResourceLocation> resLocFromStack(ItemStack stack) {
+        if (stack.getTag() != null && stack.getTag().contains("EntityTag")) {
+            CompoundTag entityTag = stack.getTag().getCompound("EntityTag");
+            String variant = entityTag.getString("variant");
+            return Optional.of(new ResourceLocation(variant));
+        }
+
+        return Optional.empty();
+    }
+
+    public static Optional<PaintingVariant> paintingVariantFromStack(ItemStack stack) {
+        Optional<ResourceLocation> resLoc = resLocFromStack(stack);
+        if (resLoc.isPresent()) {
+            return paintVariantFromResLoc(resLoc.get());
+        }
+
+        return Optional.empty();
+    }
+
+    public static Optional<PaintingVariant> paintVariantFromResLoc(ResourceLocation paintingVariant) {
+        return Optional.ofNullable(ForgeRegistries.PAINTING_VARIANTS.getValue(paintingVariant));
     }
 
     public static void addCompostMaterials() {
