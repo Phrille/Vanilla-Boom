@@ -19,6 +19,7 @@ import phrille.vanillaboom.inventory.recipe.ModRecipes;
 import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
 import phrille.vanillaboom.util.ModTags;
 
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Comparator;
 import java.util.List;
@@ -58,6 +59,7 @@ public class EaselMenu extends AbstractContainerMenu {
     /* Recipe list */
     private List<PaintingRecipe> recipes = Lists.newArrayList();
     private final DataSlot selectedPaintingIndex = DataSlot.standalone();
+    @Nullable
     private PaintingRecipe currentRecipe;
 
     public EaselMenu(int containerId, Inventory inventory) {
@@ -71,25 +73,15 @@ public class EaselMenu extends AbstractContainerMenu {
 
         // Dye slots
         for (int i = DYE_SLOT_START; i < DYE_SLOT_END + 1; i++) {
-            dyeSlots.add(i, addSlot(new Slot(inputContainer, i, 8 + (i % 2) * 18, 16 + (i / 2) * 18) {
-                @Override
-                public boolean mayPlace(ItemStack stack) {
-                    return stack.is(Tags.Items.DYES);
-                }
-            }));
+            dyeSlots.add(i, addSlot(new Slot(inputContainer, i, 8 + (i % 2) * 18, 16 + (i / 2) * 18)));
             dyeStacks.add(i, ItemStack.EMPTY);
         }
 
         // Canvas slot
-        canvasSlot = addSlot(new Slot(inputContainer, CANVAS_SLOT, 26, 70) {
-            @Override
-            public boolean mayPlace(ItemStack stack) {
-                return stack.is(ModTags.ForgeTags.Items.CANVAS);
-            }
-        });
+        canvasSlot = addSlot(new Slot(inputContainer, CANVAS_SLOT, 26, 70));
 
         // Result slot
-        resultSlot = addSlot(new Slot(resultContainer, RESULT_SLOT - inputContainer.getContainerSize(), 147, 42) {
+        resultSlot = addSlot(new Slot(resultContainer, RESULT_SLOT - inputContainer.getContainerSize(), 147, 43) {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return false;

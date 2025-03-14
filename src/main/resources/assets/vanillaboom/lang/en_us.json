@@ -509,5 +509,6 @@
   "language.locale": "en_us",
   "language.name": "English",
   "language.region": "United States",
-  "vanillaboom.container.easel": "Easel"
+  "vanillaboom.container.easel": "Easel",
+  "vanillaboom.recipe.category.painting": "Painting"
 }

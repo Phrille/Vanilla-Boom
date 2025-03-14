@@ -239,7 +239,7 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
             float maxSize = BUTTON_SIZE - 2;
             float scaleFactor = Math.min(maxSize / variant.getWidth(), maxSize / variant.getHeight());
             if (variant.getWidth() <= 16 && variant.getHeight() <= 16) {
-                scaleFactor *= 0.60F;
+                scaleFactor *= 0.6F;
             } else if (variant.getWidth() <= 32 && variant.getHeight() <= 32) {
                 scaleFactor *= 0.85F;
             }
@@ -255,16 +255,16 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         }
 
         public void render(PoseStack pose, int x, int y, int mouseX, int mouseY) {
-            int textureX = 0;
+            int textureY = 31;
             if (!enabled) {
-                textureX = BUTTON_SIZE;
+                textureY += BUTTON_SIZE;
             } else if (selected) {
-                textureX = BUTTON_SIZE * 3;
+                textureY += BUTTON_SIZE * 3;
             } else if (mouseX >= x && mouseY >= y && mouseX < x + BUTTON_SIZE && mouseY < y + BUTTON_SIZE) {
-                textureX = BUTTON_SIZE * 2;
+                textureY += BUTTON_SIZE * 2;
             }
 
-            blit(pose, x, y, textureX, SCREEN_HEIGHT, BUTTON_SIZE, BUTTON_SIZE);
+            blit(pose, x, y, SCREEN_WIDTH, textureY, BUTTON_SIZE, BUTTON_SIZE);
 
             RenderSystem.setShaderTexture(0, sprite.atlasLocation());
             blit(pose, x + 1 + xOffset, y + 1 + yOffset, 0, paintingWidth, paintingHeight, sprite);
