@@ -26,7 +26,6 @@ import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
 import phrille.vanillaboom.util.Utils;
 
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.Optional;
 
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
@@ -78,10 +77,9 @@ public class PaintingRecipeCategory implements IRecipeCategory<PaintingRecipe> {
 
     @Override
     public void draw(PaintingRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack pose, double mouseX, double mouseY) {
-        Optional<PaintingVariant> paintingVariant = Utils.paintingVariantFromStack(recipe.result());
+        PaintingVariant variant = Utils.paintingVariantFromStack(recipe.result());
 
-        if (paintingVariant.isPresent()) {
-            PaintingVariant variant = paintingVariant.get();
+        if (variant != null) {
             TextureAtlasSprite sprite = Minecraft.getInstance().getPaintingTextures().get(variant);
             float maxSize = PAINTING_BOX_SIZE;
             float scaleFactor = Math.min(maxSize / variant.getWidth(), maxSize / variant.getHeight());

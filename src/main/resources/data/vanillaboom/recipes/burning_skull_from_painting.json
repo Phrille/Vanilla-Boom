@@ -16,6 +16,12 @@
     },
     {
       "tag": "forge:dyes/white"
+    },
+    {
+      "tag": "forge:dyes/orange"
+    },
+    {
+      "tag": "forge:dyes/light_gray"
     }
   ],
   "variant": "minecraft:burning_skull"

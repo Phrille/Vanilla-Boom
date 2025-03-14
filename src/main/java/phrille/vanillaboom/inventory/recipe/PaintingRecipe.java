@@ -6,13 +6,11 @@ import com.google.gson.JsonSyntaxException;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -21,6 +19,7 @@ import net.minecraft.world.level.Level;
 import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.inventory.EaselMenu;
+import phrille.vanillaboom.util.Utils;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -117,11 +116,7 @@ public record PaintingRecipe(ResourceLocation recipeId, String group, Ingredient
             }
 
             jsonDyes.asList().forEach((jsonDye) -> dyes.add(Ingredient.fromJson(jsonDye)));
-
-            ItemStack result = new ItemStack(Items.PAINTING, GsonHelper.getAsInt(json, "count", 1));
-            CompoundTag entityTag = new CompoundTag();
-            entityTag.putString("variant", GsonHelper.getAsString(json, "variant"));
-            result.getOrCreateTag().put("EntityTag", entityTag);
+            ItemStack result = Utils.stackFromPaintingVariant(new ResourceLocation(GsonHelper.getAsString(json, "variant")));
 
             return new PaintingRecipe(recipeId, group, canvas, dyes, result);
         }

@@ -12,19 +12,16 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 import phrille.vanillaboom.util.ModTags;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Consumer;
 
 @MethodsReturnNonnullByDefault
@@ -33,13 +30,13 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
     private final RecipeCategory category;
     private final Ingredient canvas;
     private final List<Ingredient> dyes;
-    private final PaintingVariant variant;
+    private final ResourceLocation variant;
     private final Item result;
     private final int count;
     private final Advancement.Builder advancement = Advancement.Builder.advancement();
     private String group;
 
-    public PaintingRecipeBuilder(RecipeCategory category, Ingredient canvas, List<Ingredient> dyes, PaintingVariant variant, ItemLike result, int count) {
+    public PaintingRecipeBuilder(RecipeCategory category, Ingredient canvas, List<Ingredient> dyes, ResourceLocation variant, ItemLike result, int count) {
         this.category = category;
         this.canvas = canvas;
         this.dyes = dyes;
@@ -48,11 +45,11 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
         this.count = count;
     }
 
-    public static PaintingRecipeBuilder painting(Ingredient canvas, List<Ingredient> dyes, RecipeCategory category, PaintingVariant variant, ItemLike result, int count) {
+    public static PaintingRecipeBuilder painting(Ingredient canvas, List<Ingredient> dyes, RecipeCategory category, ResourceLocation variant, ItemLike result, int count) {
         return new PaintingRecipeBuilder(category, canvas, dyes, variant, result, count);
     }
 
-    public static PaintingRecipeBuilder painting(List<Ingredient> dyes, RecipeCategory category, PaintingVariant variant) {
+    public static PaintingRecipeBuilder painting(List<Ingredient> dyes, RecipeCategory category, ResourceLocation variant) {
         return new PaintingRecipeBuilder(category, Ingredient.of(ModTags.ForgeTags.Items.CANVAS), dyes, variant, Items.PAINTING, 1);
     }
 
@@ -91,12 +88,12 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
         private final String group;
         private final Ingredient canvas;
         private final List<Ingredient> dyes;
-        private final PaintingVariant variant;
+        private final ResourceLocation variant;
         private final int count;
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementId;
 
-        public Result(ResourceLocation recipeId, String group, Ingredient canvas, List<Ingredient> dyes, PaintingVariant variant, int count, Advancement.Builder advancement, ResourceLocation advancementId) {
+        public Result(ResourceLocation recipeId, String group, Ingredient canvas, List<Ingredient> dyes, ResourceLocation variant, int count, Advancement.Builder advancement, ResourceLocation advancementId) {
             this.recipeId = recipeId;
             this.group = group;
             this.canvas = canvas;
@@ -120,7 +117,7 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
             }
 
             json.add("dyes", jsonDyes);
-            json.addProperty("variant", Objects.requireNonNull(ForgeRegistries.PAINTING_VARIANTS.getKey(variant)).toString());
+            json.addProperty("variant", variant.toString());
             json.addProperty("count", count);
         }
 

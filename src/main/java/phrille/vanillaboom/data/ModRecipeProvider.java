@@ -28,10 +28,10 @@ import phrille.vanillaboom.block.ModWallBlock;
 import phrille.vanillaboom.inventory.recipe.PaintingRecipeBuilder;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.ModTags;
+import phrille.vanillaboom.util.Utils;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Consumer;
 
 @ParametersAreNonnullByDefault
@@ -331,32 +331,37 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
 
         // Paintings
-        painting(finishedRecipe, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_LIME), PaintingVariants.KEBAB);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_LIGHT_GRAY), PaintingVariants.AZTEC);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_GREEN), PaintingVariants.ALBAN);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN), PaintingVariants.AZTEC2);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_LIME), PaintingVariants.BOMB);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_GREEN, Tags.Items.DYES_WHITE), PaintingVariants.PLANT);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_BROWN), PaintingVariants.WASTELAND);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_BROWN), PaintingVariants.POOL);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_BLACK, Tags.Items.DYES_LIGHT_GRAY), PaintingVariants.COURBET);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_LIME), PaintingVariants.SEA);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BLACK), PaintingVariants.SUNSET);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_LIME), PaintingVariants.CREEBET);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_PINK, Tags.Items.DYES_BLACK), PaintingVariants.WANDERER);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_YELLOW), PaintingVariants.GRAHAM);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN, Tags.Items.DYES_ORANGE), PaintingVariants.MATCH);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_LIME, Tags.Items.DYES_BLACK, Tags.Items.DYES_ORANGE), PaintingVariants.BUST);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_WHITE), PaintingVariants.STAGE);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_MAGENTA), PaintingVariants.VOID);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_CYAN, Tags.Items.DYES_GREEN, Tags.Items.DYES_RED), PaintingVariants.SKULL_AND_ROSES);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_GREEN, Tags.Items.DYES_RED), PaintingVariants.WITHER);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN, Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN), PaintingVariants.FIGHTERS);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_WHITE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BLACK), PaintingVariants.POINTER);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_PINK, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BROWN, Tags.Items.DYES_BLACK), PaintingVariants.PIGSCENE);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN, Tags.Items.DYES_BLACK, Tags.Items.DYES_WHITE), PaintingVariants.BURNING_SKULL);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_ORANGE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_WHITE, Tags.Items.DYES_GRAY), PaintingVariants.SKELETON);
-        painting(finishedRecipe, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_BLACK, Tags.Items.DYES_PINK, Tags.Items.DYES_RED), PaintingVariants.DONKEY_KONG);
+        painting(finishedRecipe, PaintingVariants.KEBAB, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_LIME));
+        painting(finishedRecipe, PaintingVariants.AZTEC, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_LIGHT_GRAY));
+        painting(finishedRecipe, PaintingVariants.ALBAN, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_GREEN));
+        painting(finishedRecipe, PaintingVariants.AZTEC2, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN));
+        painting(finishedRecipe, PaintingVariants.BOMB, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_LIME));
+        painting(finishedRecipe, PaintingVariants.PLANT, List.of(Tags.Items.DYES_GREEN, Tags.Items.DYES_WHITE));
+        painting(finishedRecipe, PaintingVariants.WASTELAND, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_BROWN));
+        painting(finishedRecipe, PaintingVariants.POOL, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_BROWN));
+        painting(finishedRecipe, PaintingVariants.COURBET, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_BLACK, Tags.Items.DYES_LIGHT_GRAY));
+        painting(finishedRecipe, PaintingVariants.SEA, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_LIME));
+        painting(finishedRecipe, PaintingVariants.SUNSET, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BLACK));
+        painting(finishedRecipe, PaintingVariants.CREEBET, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_LIME));
+        painting(finishedRecipe, PaintingVariants.WANDERER, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_PINK, Tags.Items.DYES_BLACK));
+        painting(finishedRecipe, PaintingVariants.GRAHAM, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_YELLOW));
+        painting(finishedRecipe, PaintingVariants.MATCH, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN, Tags.Items.DYES_ORANGE));
+        painting(finishedRecipe, PaintingVariants.BUST, List.of(Tags.Items.DYES_LIME, Tags.Items.DYES_BLACK, Tags.Items.DYES_ORANGE));
+        painting(finishedRecipe, PaintingVariants.STAGE, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_WHITE));
+        painting(finishedRecipe, PaintingVariants.VOID, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_MAGENTA));
+        painting(finishedRecipe, PaintingVariants.SKULL_AND_ROSES, List.of(Tags.Items.DYES_CYAN, Tags.Items.DYES_GREEN, Tags.Items.DYES_RED));
+        painting(finishedRecipe, PaintingVariants.WITHER, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_GREEN, Tags.Items.DYES_RED));
+        painting(finishedRecipe, PaintingVariants.FIGHTERS, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN, Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN, Tags.Items.DYES_BLACK, Tags.Items.DYES_ORANGE));
+        painting(finishedRecipe, PaintingVariants.POINTER, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_WHITE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BLACK, Tags.Items.DYES_PURPLE, Tags.Items.DYES_BROWN));
+        painting(finishedRecipe, PaintingVariants.PIGSCENE, List.of(Tags.Items.DYES_PINK, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BROWN, Tags.Items.DYES_BLACK, Tags.Items.DYES_BLACK, Tags.Items.DYES_GREEN));
+        painting(finishedRecipe, PaintingVariants.BURNING_SKULL, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN, Tags.Items.DYES_BLACK, Tags.Items.DYES_WHITE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_LIGHT_GRAY));
+        painting(finishedRecipe, PaintingVariants.SKELETON, List.of(Tags.Items.DYES_ORANGE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_WHITE, Tags.Items.DYES_WHITE, Tags.Items.DYES_GRAY, Tags.Items.DYES_LIGHT_GRAY));
+        painting(finishedRecipe, PaintingVariants.DONKEY_KONG, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_BLACK, Tags.Items.DYES_PINK, Tags.Items.DYES_RED, Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN));
+
+        painting(finishedRecipe, PaintingVariants.EARTH, List.of(Tags.Items.DYES_BROWN, Tags.Items.DYES_BROWN, Tags.Items.DYES_ORANGE));
+        painting(finishedRecipe, PaintingVariants.WIND, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_LIGHT_GRAY, Tags.Items.DYES_YELLOW));
+        painting(finishedRecipe, PaintingVariants.FIRE, List.of(Tags.Items.DYES_ORANGE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_YELLOW));
+        painting(finishedRecipe, PaintingVariants.WATER, List.of(Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_BLUE, Tags.Items.DYES_WHITE));
     }
 
     // Templates
@@ -709,16 +714,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe, ModDataGenerator.extend(getConversionRecipeResourceLocation(result, ingredient), "_from_stonecutting"));
     }
 
-    public void painting(Consumer<FinishedRecipe> finishedRecipe, List<TagKey<Item>> dyes, ResourceKey<PaintingVariant> variant) {
-        painting(finishedRecipe, dyes, ForgeRegistries.PAINTING_VARIANTS.getHolder(variant).orElseThrow().get());
+    public void painting(Consumer<FinishedRecipe> finishedRecipe, ResourceKey<PaintingVariant> variant, List<TagKey<Item>> dyes) {
+        painting(finishedRecipe, Utils.resLocFromPaintingVariant(variant), dyes);
     }
 
-    public void painting(Consumer<FinishedRecipe> finishedRecipe, List<TagKey<Item>> dyes, PaintingVariant variant) {
+    public void painting(Consumer<FinishedRecipe> finishedRecipe, ResourceLocation variant, List<TagKey<Item>> dyes) {
         List<Ingredient> ingredientDyes = Lists.newArrayList();
         dyes.forEach(dye -> ingredientDyes.add(Ingredient.of(dye)));
         PaintingRecipeBuilder.painting(ingredientDyes, RecipeCategory.DECORATIONS, variant)
                 .unlockedBy(getHasName(ModItems.CANVAS.get()), has(ModItems.CANVAS.get()))
-                .save(finishedRecipe, new ResourceLocation(VanillaBoom.MOD_ID, Objects.requireNonNull(ForgeRegistries.PAINTING_VARIANTS.getKey(variant)).getPath() + "_from_painting"));
+                .save(finishedRecipe, new ResourceLocation(VanillaBoom.MOD_ID, variant.getPath() + "_from_painting"));
     }
 
     /**

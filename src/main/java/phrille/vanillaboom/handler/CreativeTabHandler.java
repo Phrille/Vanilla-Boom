@@ -1,6 +1,7 @@
 package phrille.vanillaboom.handler;
 
 import com.google.common.collect.Lists;
+import net.minecraft.world.entity.decoration.PaintingVariants;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
@@ -13,6 +14,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.item.ModItems;
+import phrille.vanillaboom.util.Utils;
 
 import java.util.List;
 
@@ -641,6 +643,12 @@ public class CreativeTabHandler {
                     ModItems.CRIMSON_BOOKSHELF.get(),
                     ModItems.WARPED_BOOKSHELF.get()
             ));
+            addUnusedPaintingVariants(entries, List.of(
+                    Utils.stackFromPaintingVariant(PaintingVariants.EARTH),
+                    Utils.stackFromPaintingVariant(PaintingVariants.WIND),
+                    Utils.stackFromPaintingVariant(PaintingVariants.FIRE),
+                    Utils.stackFromPaintingVariant(PaintingVariants.WATER)
+            ));
         }
 
         // Redstone Blocks
@@ -703,6 +711,10 @@ public class CreativeTabHandler {
             putBefore(entries, Items.PILLAGER_SPAWN_EGG, ModItems.PIKE_SPAWN_EGG.get());
             putBefore(entries, Items.TURTLE_SPAWN_EGG, ModItems.TUNA_SPAWN_EGG.get());
         }
+    }
+
+    private static void addUnusedPaintingVariants(MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries, List<ItemStack> paintings) {
+        paintings.forEach(stack -> entries.putBefore(new ItemStack(Blocks.BOOKSHELF), stack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
     }
 
     private static void put(MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries, List<ItemLike> items) {

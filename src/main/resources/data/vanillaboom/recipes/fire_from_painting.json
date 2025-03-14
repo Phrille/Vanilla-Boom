@@ -12,17 +12,8 @@
       "tag": "forge:dyes/orange"
     },
     {
-      "tag": "forge:dyes/white"
-    },
-    {
-      "tag": "forge:dyes/white"
-    },
-    {
-      "tag": "forge:dyes/gray"
-    },
-    {
-      "tag": "forge:dyes/light_gray"
+      "tag": "forge:dyes/yellow"
     }
   ],
-  "variant": "minecraft:skeleton"
+  "variant": "minecraft:fire"
 }

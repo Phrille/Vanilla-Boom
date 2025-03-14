@@ -16,6 +16,12 @@
     },
     {
       "tag": "forge:dyes/black"
+    },
+    {
+      "tag": "forge:dyes/purple"
+    },
+    {
+      "tag": "forge:dyes/brown"
     }
   ],
   "variant": "minecraft:pointer"

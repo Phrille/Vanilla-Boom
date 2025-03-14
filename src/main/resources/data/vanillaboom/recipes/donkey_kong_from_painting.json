@@ -16,6 +16,12 @@
     },
     {
       "tag": "forge:dyes/red"
+    },
+    {
+      "tag": "forge:dyes/white"
+    },
+    {
+      "tag": "forge:dyes/brown"
     }
   ],
   "variant": "minecraft:donkey_kong"

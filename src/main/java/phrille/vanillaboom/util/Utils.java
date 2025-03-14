@@ -3,6 +3,7 @@ package phrille.vanillaboom.util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.decoration.PaintingVariant;
@@ -28,8 +29,8 @@ import phrille.vanillaboom.block.crop.TrellisBlock;
 import phrille.vanillaboom.handler.FuelHandler;
 import phrille.vanillaboom.item.ModItems;
 
+import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Optional;
 
 public class Utils {
     public static final List<Block> CANDLES = List.of(Blocks.CANDLE, Blocks.WHITE_CANDLE, Blocks.ORANGE_CANDLE, Blocks.MAGENTA_CANDLE, Blocks.LIGHT_BLUE_CANDLE, Blocks.YELLOW_CANDLE, Blocks.LIME_CANDLE, Blocks.PINK_CANDLE, Blocks.GRAY_CANDLE, Blocks.LIGHT_GRAY_CANDLE, Blocks.CYAN_CANDLE, Blocks.PURPLE_CANDLE, Blocks.BLUE_CANDLE, Blocks.BROWN_CANDLE, Blocks.GREEN_CANDLE, Blocks.RED_CANDLE, Blocks.BLACK_CANDLE);
@@ -79,27 +80,34 @@ public class Utils {
         return to.setValue(property, from.getValue(property));
     }
 
-    public static Optional<ResourceLocation> resLocFromPaintingStack(ItemStack stack) {
+    public static ResourceLocation resLocFromPaintingVariant(ResourceKey<PaintingVariant> variant) {
+        PaintingVariant paintingVariant = ForgeRegistries.PAINTING_VARIANTS.getHolder(variant).orElseThrow().get();
+        return ForgeRegistries.PAINTING_VARIANTS.getKey(paintingVariant);
+    }
+
+    @Nullable
+    public static PaintingVariant paintingVariantFromStack(ItemStack stack) {
         if (stack.getTag() != null && stack.getTag().contains("EntityTag")) {
+
             CompoundTag entityTag = stack.getTag().getCompound("EntityTag");
             String variant = entityTag.getString("variant");
-            return Optional.of(new ResourceLocation(variant));
+            ResourceLocation resLoc = new ResourceLocation(variant);
+            return ForgeRegistries.PAINTING_VARIANTS.getValue(resLoc);
         }
 
-        return Optional.empty();
+        return null;
     }
 
-    public static Optional<PaintingVariant> paintingVariantFromStack(ItemStack stack) {
-        Optional<ResourceLocation> resLoc = resLocFromPaintingStack(stack);
-        if (resLoc.isPresent()) {
-            return paintVariantFromResLoc(resLoc.get());
-        }
-
-        return Optional.empty();
+    public static ItemStack stackFromPaintingVariant(ResourceKey<PaintingVariant> variant) {
+        return stackFromPaintingVariant(resLocFromPaintingVariant(variant));
     }
 
-    public static Optional<PaintingVariant> paintVariantFromResLoc(ResourceLocation paintingVariant) {
-        return Optional.ofNullable(ForgeRegistries.PAINTING_VARIANTS.getValue(paintingVariant));
+    public static ItemStack stackFromPaintingVariant(ResourceLocation resLoc) {
+        ItemStack result = new ItemStack(Items.PAINTING);
+        CompoundTag entityTag = new CompoundTag();
+        entityTag.putString("variant", resLoc.toString());
+        result.getOrCreateTag().put("EntityTag", entityTag);
+        return result;
     }
 
     public static void addCompostMaterials() {

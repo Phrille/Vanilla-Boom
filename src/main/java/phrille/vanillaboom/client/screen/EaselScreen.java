@@ -21,7 +21,6 @@ import phrille.vanillaboom.util.Utils;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
-import java.util.Optional;
 
 @ParametersAreNonnullByDefault
 public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
@@ -67,9 +66,9 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         buttonList = Lists.newArrayList();
         for (int buttonId = 0; buttonId < recipeList.size(); buttonId++) {
             PaintingRecipe recipe = recipeList.get(buttonId);
-            Optional<PaintingVariant> variant = Utils.paintingVariantFromStack(recipe.result());
-            if (variant.isPresent()) {
-                buttonList.add(buttonId, new PaintingButton(recipe, variant.get()));
+            PaintingVariant variant = Utils.paintingVariantFromStack(recipe.result());
+            if (variant != null) {
+                buttonList.add(buttonId, new PaintingButton(recipe, variant));
             }
         }
         buttonList.sort((a, b) -> a.area == b.area ? b.variant.getWidth() - a.variant.getWidth() : a.area - b.area);

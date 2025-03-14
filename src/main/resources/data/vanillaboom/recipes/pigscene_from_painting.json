@@ -16,6 +16,12 @@
     },
     {
       "tag": "forge:dyes/black"
+    },
+    {
+      "tag": "forge:dyes/black"
+    },
+    {
+      "tag": "forge:dyes/green"
     }
   ],
   "variant": "minecraft:pigscene"
