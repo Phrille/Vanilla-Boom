@@ -632,34 +632,6 @@ public class CreativeTabHandler {
                     ModItems.WARPED_LADDER.get(),
                     ModItems.TRELLIS.get()
             ));
-            putAfter(entries, Items.PAINTING, List.of(
-                    ModItems.KEBAB_PAINTING.get(),
-                    ModItems.AZTEC_PAINTING.get(),
-                    ModItems.ALBAN_PAINTING.get(),
-                    ModItems.AZTEC2_PAINTING.get(),
-                    ModItems.BOMB_PAINTING.get(),
-                    ModItems.PLANT_PAINTING.get(),
-                    ModItems.WASTELAND_PAINTING.get(),
-                    ModItems.POOL_PAINTING.get(),
-                    ModItems.COURBET_PAINTING.get(),
-                    ModItems.SEA_PAINTING.get(),
-                    ModItems.SUNSET_PAINTING.get(),
-                    ModItems.CREEBET_PAINTING.get(),
-                    ModItems.WANDERER_PAINTING.get(),
-                    ModItems.GRAHAM_PAINTING.get(),
-                    ModItems.MATCH_PAINTING.get(),
-                    ModItems.BUST_PAINTING.get(),
-                    ModItems.STAGE_PAINTING.get(),
-                    ModItems.VOID_PAINTING.get(),
-                    ModItems.SKULL_AND_ROSES_PAINTING.get(),
-                    ModItems.WITHER_PAINTING.get(),
-                    ModItems.FIGHTERS_PAINTING.get(),
-                    ModItems.POINTER_PAINTING.get(),
-                    ModItems.PIGSCENE_PAINTING.get(),
-                    ModItems.BURNING_SKULL_PAINTING.get(),
-                    ModItems.SKELETON_PAINTING.get(),
-                    ModItems.DONKEY_KONG_PAINTING.get()
-            ));
             putAfter(entries, Blocks.BOOKSHELF, List.of(
                     ModItems.SPRUCE_BOOKSHELF.get(),
                     ModItems.BIRCH_BOOKSHELF.get(),

@@ -525,6 +525,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.WITHER_BONE.get(), "Wither Bone");
         add(ModItems.WITHER_BONE_MEAL.get(), "Wither Bone Meal");
         add(ModItems.PRISMARINE_ARROW.get(), "Prismarine Arrow");
+        add(ModItems.CANVAS.get(), "Canvas", "Blank");
         add(ModItems.POLAR_BEAR_FUR.get(), "Polar Bear Fur");
         add(ModItems.RAW_POLAR_BEAR_MEAT.get(), "Raw Polar Bear Meat");
         add(ModItems.POLAR_BEAR_STEAK.get(), "Polar Bear Steak");
@@ -567,34 +568,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.COOKED_EEL.get(), "Cooked Eel");
         add(ModItems.EEL_BUCKET.get(), "Bucket of Eel");
         add(ModItems.EEL_SPAWN_EGG.get(), "Eel Spawn Egg");
-
-        add(ModItems.CANVAS.get(), "Canvas", "Blank");
-        add(ModItems.KEBAB_PAINTING.get(), "Small Painting", "Kebab");
-        add(ModItems.AZTEC_PAINTING.get(), "Small Painting", "Aztec");
-        add(ModItems.ALBAN_PAINTING.get(), "Small Painting", "Alban");
-        add(ModItems.AZTEC2_PAINTING.get(), "Small Painting", "Aztec 2");
-        add(ModItems.BOMB_PAINTING.get(), "Small Painting", "Bomb");
-        add(ModItems.PLANT_PAINTING.get(), "Small Painting", "Plant");
-        add(ModItems.WASTELAND_PAINTING.get(), "Small Painting", "Wasteland");
-        add(ModItems.POOL_PAINTING.get(), "Horizontal Painting", "Pool");
-        add(ModItems.COURBET_PAINTING.get(), "Horizontal Painting", "Courbet");
-        add(ModItems.SEA_PAINTING.get(), "Horizontal Painting", "Sea");
-        add(ModItems.SUNSET_PAINTING.get(), "Horizontal Painting", "Sunset");
-        add(ModItems.CREEBET_PAINTING.get(), "Horizontal Painting", "Creebet");
-        add(ModItems.WANDERER_PAINTING.get(), "Vertical Painting", "Wanderer");
-        add(ModItems.GRAHAM_PAINTING.get(), "Vertical Painting", "Graham");
-        add(ModItems.MATCH_PAINTING.get(), "Medium Painting", "Match");
-        add(ModItems.BUST_PAINTING.get(), "Medium Painting", "Bust");
-        add(ModItems.STAGE_PAINTING.get(), "Medium Painting", "Stage");
-        add(ModItems.VOID_PAINTING.get(), "Medium Painting", "Void");
-        add(ModItems.SKULL_AND_ROSES_PAINTING.get(), "Medium Painting", "Skull And Roses");
-        add(ModItems.WITHER_PAINTING.get(), "Medium Painting", "Wither");
-        add(ModItems.FIGHTERS_PAINTING.get(), "Large Horizontal Painting", "Fighters");
-        add(ModItems.POINTER_PAINTING.get(), "Large Painting", "Pointer");
-        add(ModItems.PIGSCENE_PAINTING.get(), "Large Painting", "Pigscene");
-        add(ModItems.BURNING_SKULL_PAINTING.get(), "Large Painting", "Burning Skull");
-        add(ModItems.SKELETON_PAINTING.get(), "Large Painting", "Skeleton");
-        add(ModItems.DONKEY_KONG_PAINTING.get(), "Large Painting", "Donkey Kong");
     }
 
     public void add(Item item, String name, String desc) {

@@ -66,32 +66,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         spawnEggItem(ModItems.PIKE_SPAWN_EGG.get());
         spawnEggItem(ModItems.EEL_SPAWN_EGG.get());
         item(ModItems.CANVAS.get(), "generated").texture("layer0", itemTexture(Items.FLOWER_BANNER_PATTERN));
-        item(ModItems.KEBAB_PAINTING.get());
-        item(ModItems.AZTEC_PAINTING.get());
-        item(ModItems.ALBAN_PAINTING.get());
-        item(ModItems.AZTEC2_PAINTING.get());
-        item(ModItems.BOMB_PAINTING.get());
-        item(ModItems.PLANT_PAINTING.get());
-        item(ModItems.WASTELAND_PAINTING.get());
-        item(ModItems.POOL_PAINTING.get());
-        item(ModItems.COURBET_PAINTING.get());
-        item(ModItems.SEA_PAINTING.get());
-        item(ModItems.SUNSET_PAINTING.get());
-        item(ModItems.CREEBET_PAINTING.get());
-        item(ModItems.WANDERER_PAINTING.get());
-        item(ModItems.GRAHAM_PAINTING.get());
-        item(ModItems.MATCH_PAINTING.get());
-        item(ModItems.BUST_PAINTING.get());
-        item(ModItems.STAGE_PAINTING.get());
-        item(ModItems.VOID_PAINTING.get());
-        item(ModItems.SKULL_AND_ROSES_PAINTING.get());
-        item(ModItems.WITHER_PAINTING.get());
-        item(ModItems.FIGHTERS_PAINTING.get());
-        item(ModItems.POINTER_PAINTING.get());
-        item(ModItems.PIGSCENE_PAINTING.get());
-        item(ModItems.BURNING_SKULL_PAINTING.get());
-        item(ModItems.SKELETON_PAINTING.get());
-        item(ModItems.DONKEY_KONG_PAINTING.get());
 
         // Bricks
         blockItem(ModItems.COBBLESTONE_BRICKS.get());

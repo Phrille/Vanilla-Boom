@@ -2,7 +2,6 @@ package phrille.vanillaboom.item;
 
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.decoration.PaintingVariants;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.BowlFoodItem;
@@ -27,6 +26,7 @@ public class ModItems {
     public static final RegistryObject<Item> POLAR_BEAR_FUR = ITEMS.register("polar_bear_fur", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CHILI_SEEDS = ITEMS.register("chili_seeds", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CANVAS = ITEMS.register("canvas", () -> new Item(new Item.Properties()));
 
     // Food
     public static final RegistryObject<Item> PINE_CONE = ITEMS.register("pine_cone", () -> new Item(new Item.Properties().food(ModFoods.PINE_CONE)));
@@ -70,35 +70,6 @@ public class ModItems {
     public static final RegistryObject<Item> PERCH_SPAWN_EGG = ITEMS.register("perch_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.PERCH, 0x464614, 0xFD5100, new Item.Properties()));
     public static final RegistryObject<Item> PIKE_SPAWN_EGG = ITEMS.register("pike_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.PIKE, 0x4C462A, 0xA0A169, new Item.Properties()));
     public static final RegistryObject<Item> EEL_SPAWN_EGG = ITEMS.register("eel_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.EEL, 0x5F4F37, 0x312517, new Item.Properties()));
-
-    // Paintings
-    public static final RegistryObject<Item> CANVAS = ITEMS.register("canvas", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> KEBAB_PAINTING = ITEMS.register("kebab_painting", () -> new PaintingItem(PaintingVariants.KEBAB));
-    public static final RegistryObject<Item> AZTEC_PAINTING = ITEMS.register("aztec_painting", () -> new PaintingItem(PaintingVariants.AZTEC));
-    public static final RegistryObject<Item> ALBAN_PAINTING = ITEMS.register("alban_painting", () -> new PaintingItem(PaintingVariants.ALBAN));
-    public static final RegistryObject<Item> AZTEC2_PAINTING = ITEMS.register("aztec2_painting", () -> new PaintingItem(PaintingVariants.AZTEC2));
-    public static final RegistryObject<Item> BOMB_PAINTING = ITEMS.register("bomb_painting", () -> new PaintingItem(PaintingVariants.BOMB));
-    public static final RegistryObject<Item> PLANT_PAINTING = ITEMS.register("plant_painting", () -> new PaintingItem(PaintingVariants.PLANT));
-    public static final RegistryObject<Item> WASTELAND_PAINTING = ITEMS.register("wasteland_painting", () -> new PaintingItem(PaintingVariants.WASTELAND));
-    public static final RegistryObject<Item> POOL_PAINTING = ITEMS.register("pool_painting", () -> new PaintingItem(PaintingVariants.POOL));
-    public static final RegistryObject<Item> COURBET_PAINTING = ITEMS.register("courbet_painting", () -> new PaintingItem(PaintingVariants.COURBET));
-    public static final RegistryObject<Item> SEA_PAINTING = ITEMS.register("sea_painting", () -> new PaintingItem(PaintingVariants.SEA));
-    public static final RegistryObject<Item> SUNSET_PAINTING = ITEMS.register("sunset_painting", () -> new PaintingItem(PaintingVariants.SUNSET));
-    public static final RegistryObject<Item> CREEBET_PAINTING = ITEMS.register("creebet_painting", () -> new PaintingItem(PaintingVariants.CREEBET));
-    public static final RegistryObject<Item> WANDERER_PAINTING = ITEMS.register("wanderer_painting", () -> new PaintingItem(PaintingVariants.WANDERER));
-    public static final RegistryObject<Item> GRAHAM_PAINTING = ITEMS.register("graham_painting", () -> new PaintingItem(PaintingVariants.GRAHAM));
-    public static final RegistryObject<Item> MATCH_PAINTING = ITEMS.register("match_painting", () -> new PaintingItem(PaintingVariants.MATCH));
-    public static final RegistryObject<Item> BUST_PAINTING = ITEMS.register("bust_painting", () -> new PaintingItem(PaintingVariants.BUST));
-    public static final RegistryObject<Item> STAGE_PAINTING = ITEMS.register("stage_painting", () -> new PaintingItem(PaintingVariants.STAGE));
-    public static final RegistryObject<Item> VOID_PAINTING = ITEMS.register("void_painting", () -> new PaintingItem(PaintingVariants.VOID));
-    public static final RegistryObject<Item> SKULL_AND_ROSES_PAINTING = ITEMS.register("skull_and_roses_painting", () -> new PaintingItem(PaintingVariants.SKULL_AND_ROSES));
-    public static final RegistryObject<Item> WITHER_PAINTING = ITEMS.register("wither_painting", () -> new PaintingItem(PaintingVariants.WITHER));
-    public static final RegistryObject<Item> FIGHTERS_PAINTING = ITEMS.register("fighters_painting", () -> new PaintingItem(PaintingVariants.FIGHTERS));
-    public static final RegistryObject<Item> POINTER_PAINTING = ITEMS.register("pointer_painting", () -> new PaintingItem(PaintingVariants.POINTER));
-    public static final RegistryObject<Item> PIGSCENE_PAINTING = ITEMS.register("pigscene_painting", () -> new PaintingItem(PaintingVariants.PIGSCENE));
-    public static final RegistryObject<Item> BURNING_SKULL_PAINTING = ITEMS.register("burning_skull_painting", () -> new PaintingItem(PaintingVariants.BURNING_SKULL));
-    public static final RegistryObject<Item> SKELETON_PAINTING = ITEMS.register("skeleton_painting", () -> new PaintingItem(PaintingVariants.SKELETON));
-    public static final RegistryObject<Item> DONKEY_KONG_PAINTING = ITEMS.register("donkey_kong_painting", () -> new PaintingItem(PaintingVariants.DONKEY_KONG));
 
     public static class ModFoods {
         public static final FoodProperties RAW_POLAR_BEAR_MEAT = new FoodProperties.Builder().nutrition(3).saturationMod(0.3F).meat().build();
