@@ -1,3 +1,11 @@
+/*
+ * Copyright (C) 2023-2025 Phrille
+ *
+ * This file is part of the Vanilla Boom Mod.
+ * Unauthorized distribution or modification is prohibited.
+ * See LICENSE for details.
+ */
+
 package phrille.vanillaboom.data;
 
 import com.google.common.collect.Lists;
@@ -33,16 +41,14 @@ import phrille.vanillaboom.data.tags.ModItemTagsProvider;
 import phrille.vanillaboom.util.ModDamageTypes;
 import phrille.vanillaboom.util.Utils;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import javax.annotation.Nullable;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModDataGenerator {
-    public static final List<Pair<Block, ResourceLocation>> STAIRS = Lists.newArrayList();
-    public static final List<Pair<Block, ResourceLocation>> SLABS = Lists.newArrayList();
+    public static final List<Pair<Block, Optional<ResourceLocation>>> STAIRS = Lists.newArrayList();
+    public static final List<Pair<Block, Optional<ResourceLocation>>> SLABS = Lists.newArrayList();
     public static final List<Block> WALLS = Lists.newArrayList();
     public static final List<Pair<Block, Block>> FENCES = Lists.newArrayList();
     public static final List<Pair<Block, Block>> FENCE_GATES = Lists.newArrayList();
@@ -462,16 +468,16 @@ public class ModDataGenerator {
         addStair(block, null);
     }
 
-    private static void addStair(Block block, ResourceLocation resLoc) {
-        STAIRS.add(Pair.of(block, resLoc));
+    private static void addStair(Block block, @Nullable ResourceLocation resLoc) {
+        STAIRS.add(Pair.of(block, Optional.ofNullable(resLoc)));
     }
 
     private static void addSlab(Block block) {
         addSlab(block, null);
     }
 
-    private static void addSlab(Block block, ResourceLocation resLoc) {
-        SLABS.add(Pair.of(block, resLoc));
+    private static void addSlab(Block block, @Nullable ResourceLocation resLoc) {
+        SLABS.add(Pair.of(block, Optional.ofNullable(resLoc)));
     }
 
     private static void addWall(Block block) {
