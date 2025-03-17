@@ -1,6 +1,5 @@
 package phrille.vanillaboom.block.crop;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -25,10 +24,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import phrille.vanillaboom.util.Utils;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrellisCrop {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 

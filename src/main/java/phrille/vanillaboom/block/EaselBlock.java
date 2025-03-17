@@ -1,6 +1,5 @@
 package phrille.vanillaboom.block;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -18,10 +17,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.inventory.EaselMenu;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class EaselBlock extends Block {
     private static final Component CONTAINER_TITLE = Component.translatable(VanillaBoom.MOD_ID + ".container.easel");
 

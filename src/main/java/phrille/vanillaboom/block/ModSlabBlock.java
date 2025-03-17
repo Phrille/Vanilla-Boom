@@ -8,10 +8,8 @@ import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.function.Supplier;
 
-@ParametersAreNonnullByDefault
 public class ModSlabBlock extends SlabBlock implements IVariantBlock {
     protected final Supplier<BlockState> state;
 

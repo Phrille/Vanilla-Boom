@@ -5,7 +5,6 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.*;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -17,11 +16,7 @@ import phrille.vanillaboom.inventory.ModMenuTypes;
 import phrille.vanillaboom.inventory.recipe.ModRecipes;
 import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
 @JeiPlugin
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class VanillaBoomJEIPlugin implements IModPlugin {
     public static final ResourceLocation UID = new ResourceLocation(VanillaBoom.MOD_ID, "main");
     public static final RecipeType<PaintingRecipe> PAINTING = RecipeType.create(VanillaBoom.MOD_ID, "painting", PaintingRecipe.class);

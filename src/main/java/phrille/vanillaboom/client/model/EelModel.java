@@ -1,6 +1,5 @@
 package phrille.vanillaboom.client.model;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -11,7 +10,6 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 
-@MethodsReturnNonnullByDefault
 public class EelModel<T extends Entity> extends HierarchicalModel<T> {
     private final ModelPart head;
     private final ModelPart bodyFront;

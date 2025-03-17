@@ -1,16 +1,11 @@
 package phrille.vanillaboom.item;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import phrille.vanillaboom.util.ModDamageTypes;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class ChiliItem extends Item {
     public ChiliItem() {
         super(new Item.Properties().food(ModItems.ModFoods.CHILI));

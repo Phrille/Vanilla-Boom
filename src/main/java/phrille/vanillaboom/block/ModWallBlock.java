@@ -8,10 +8,8 @@ import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.function.Supplier;
 
-@ParametersAreNonnullByDefault
 public class ModWallBlock extends WallBlock implements IVariantBlock {
     protected final Supplier<BlockState> state;
 

@@ -12,10 +12,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import phrille.vanillaboom.util.Utils;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.function.Supplier;
 
-@ParametersAreNonnullByDefault
 public class ShearedTallFlowerBlock extends TallFlowerBlock {
     private static final BiMap<TallFlowerBlock, ShearedTallFlowerBlock> SHEARED_FLOWER_BLOCKS = HashBiMap.create();
     private final Supplier<Block> flowerBlock;

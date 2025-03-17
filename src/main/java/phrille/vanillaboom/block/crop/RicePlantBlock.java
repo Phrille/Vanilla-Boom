@@ -1,6 +1,5 @@
 package phrille.vanillaboom.block.crop;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -23,10 +22,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.Utils;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class RicePlantBlock extends CropBlock {
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 8);
     private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{

@@ -2,7 +2,6 @@ package phrille.vanillaboom.inventory;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
@@ -22,12 +21,9 @@ import phrille.vanillaboom.network.EaselRecipePacket;
 import phrille.vanillaboom.util.ModTags;
 
 import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.Objects;
 
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class EaselMenu extends AbstractContainerMenu {
     public static final int DYE_SLOT_START = 0;
     public static final int DYE_SLOT_END = 6;

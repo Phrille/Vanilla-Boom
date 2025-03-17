@@ -1,7 +1,6 @@
 package phrille.vanillaboom.block;
 
 import com.google.common.collect.Maps;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -13,17 +12,17 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CakeBlock;
+import net.minecraft.world.level.block.CandleBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Map;
 
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class ModCakeBlock extends CakeBlock {
     private final Map<CandleBlock, ModCandleCakeBlock> CANDLE_CAKES = Maps.newHashMap();
 
@@ -72,7 +71,7 @@ public class ModCakeBlock extends CakeBlock {
         return CANDLE_CAKES.get(candle);
     }
 
-    public void addCandleCake(ModCandleCakeBlock candleCake){
+    public void addCandleCake(ModCandleCakeBlock candleCake) {
         CANDLE_CAKES.put((CandleBlock) candleCake.getCandle(), candleCake);
     }
 }

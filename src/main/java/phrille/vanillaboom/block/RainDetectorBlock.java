@@ -1,6 +1,5 @@
 package phrille.vanillaboom.block;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
@@ -29,10 +28,7 @@ import phrille.vanillaboom.block.entity.ModBlockEntities;
 import phrille.vanillaboom.block.entity.RainDetectorBlockEntity;
 
 import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
 
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class RainDetectorBlock extends BaseEntityBlock {
     public static final IntegerProperty POWER = BlockStateProperties.POWER;
     public static final BooleanProperty INVERTED = BlockStateProperties.INVERTED;

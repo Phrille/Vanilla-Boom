@@ -1,6 +1,5 @@
 package phrille.vanillaboom.entity;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.entity.Entity;
@@ -14,10 +13,6 @@ import net.minecraftforge.network.NetworkHooks;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.ModTags;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class PrismarineArrow extends Arrow {
     public PrismarineArrow(EntityType<? extends PrismarineArrow> entityType, Level level) {
         super(entityType, level);

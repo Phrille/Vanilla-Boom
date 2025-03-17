@@ -1,6 +1,5 @@
 package phrille.vanillaboom.block;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -23,10 +22,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import phrille.vanillaboom.config.VanillaBoomConfig;
 import phrille.vanillaboom.util.Utils;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class HydroRockBlock extends Block {
     public HydroRockBlock() {
         super(BlockBehaviour.Properties.copy(Blocks.PRISMARINE));

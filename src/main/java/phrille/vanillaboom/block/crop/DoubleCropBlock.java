@@ -1,6 +1,5 @@
 package phrille.vanillaboom.block.crop;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,10 +23,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import phrille.vanillaboom.util.Utils;
 
 import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
 
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class DoubleCropBlock extends CropBlock {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 

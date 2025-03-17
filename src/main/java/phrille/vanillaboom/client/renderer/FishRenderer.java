@@ -2,7 +2,6 @@ package phrille.vanillaboom.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -12,11 +11,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.entity.fish.Fish;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Objects;
 
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class FishRenderer extends MobRenderer<Fish, EntityModel<Fish>> {
     public FishRenderer(EntityRendererProvider.Context context, EntityModel<Fish> model) {
         super(context, model, 0.3F);

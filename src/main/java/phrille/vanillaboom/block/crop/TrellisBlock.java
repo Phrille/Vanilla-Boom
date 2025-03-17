@@ -1,7 +1,6 @@
 package phrille.vanillaboom.block.crop;
 
 import com.google.common.collect.Maps;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -32,11 +31,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import phrille.vanillaboom.util.Utils;
 
 import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Map;
 
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class TrellisBlock extends Block {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
     public static final VoxelShape TRELLIS_SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);

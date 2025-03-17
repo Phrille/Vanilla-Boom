@@ -10,7 +10,6 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -25,10 +24,6 @@ import phrille.vanillaboom.inventory.EaselMenu;
 import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
 import phrille.vanillaboom.util.Utils;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class PaintingRecipeCategory implements IRecipeCategory<PaintingRecipe> {
     public static final ResourceLocation BACKGROUND = new ResourceLocation(VanillaBoom.MOD_ID, "textures/gui/container/easel.png");
     private static final int PAINTING_BOX_SIZE = 38;

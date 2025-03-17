@@ -31,6 +31,7 @@ import phrille.vanillaboom.item.ModItems;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Objects;
 
 public class Utils {
     public static final List<Block> CANDLES = List.of(Blocks.CANDLE, Blocks.WHITE_CANDLE, Blocks.ORANGE_CANDLE, Blocks.MAGENTA_CANDLE, Blocks.LIGHT_BLUE_CANDLE, Blocks.YELLOW_CANDLE, Blocks.LIME_CANDLE, Blocks.PINK_CANDLE, Blocks.GRAY_CANDLE, Blocks.LIGHT_GRAY_CANDLE, Blocks.CYAN_CANDLE, Blocks.PURPLE_CANDLE, Blocks.BLUE_CANDLE, Blocks.BROWN_CANDLE, Blocks.GREEN_CANDLE, Blocks.RED_CANDLE, Blocks.BLACK_CANDLE);
@@ -82,7 +83,7 @@ public class Utils {
 
     public static ResourceLocation resLocFromPaintingVariant(ResourceKey<PaintingVariant> variant) {
         PaintingVariant paintingVariant = ForgeRegistries.PAINTING_VARIANTS.getHolder(variant).orElseThrow().get();
-        return ForgeRegistries.PAINTING_VARIANTS.getKey(paintingVariant);
+        return Objects.requireNonNull(ForgeRegistries.PAINTING_VARIANTS.getKey(paintingVariant));
     }
 
     @Nullable

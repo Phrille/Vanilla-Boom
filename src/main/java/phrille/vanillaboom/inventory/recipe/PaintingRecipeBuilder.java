@@ -2,7 +2,6 @@ package phrille.vanillaboom.inventory.recipe;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
@@ -20,12 +19,9 @@ import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.Nullable;
 import phrille.vanillaboom.util.ModTags;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.function.Consumer;
 
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class PaintingRecipeBuilder implements RecipeBuilder {
     private final RecipeCategory category;
     private final Ingredient canvas;

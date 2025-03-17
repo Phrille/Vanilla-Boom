@@ -4,7 +4,6 @@ import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -19,7 +18,6 @@ import java.lang.reflect.Field;
 import java.util.Set;
 import java.util.function.Supplier;
 
-@MethodsReturnNonnullByDefault
 public class FishingLootModifier extends LootModifier {
     public static final Supplier<Codec<FishingLootModifier>> CODEC = Suppliers.memoize(() ->
             RecordCodecBuilder.create(inst -> codecStart(inst).and(

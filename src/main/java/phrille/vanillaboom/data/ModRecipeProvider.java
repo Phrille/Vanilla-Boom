@@ -30,11 +30,10 @@ import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.ModTags;
 import phrille.vanillaboom.util.Utils;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 
-@ParametersAreNonnullByDefault
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     public ModRecipeProvider(PackOutput output) {
         super(output);
@@ -768,7 +767,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
      * @return the default ResourceLocation
      */
     private static ResourceLocation resLoc(ItemLike item) {
-        return ForgeRegistries.ITEMS.getKey(item.asItem());
+        return Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item.asItem()));
     }
 
     /**

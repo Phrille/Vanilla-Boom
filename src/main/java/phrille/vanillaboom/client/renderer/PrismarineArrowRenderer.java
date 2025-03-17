@@ -1,16 +1,11 @@
 package phrille.vanillaboom.client.renderer;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.entity.PrismarineArrow;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class PrismarineArrowRenderer extends ArrowRenderer<PrismarineArrow> {
     public static final ResourceLocation PRISMARINE_ARROW_TEXTURE = new ResourceLocation(VanillaBoom.MOD_ID, "textures/entity/prismarine_arrow.png");
 

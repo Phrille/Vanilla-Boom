@@ -1,6 +1,5 @@
 package phrille.vanillaboom.block.crop;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -14,10 +13,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.Material;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class WitheredVineBlock extends VineBlock {
     public WitheredVineBlock() {
         super(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().strength(0.2F).sound(SoundType.VINE));
@@ -25,7 +20,7 @@ public class WitheredVineBlock extends VineBlock {
 
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {
-        //No-op implementation
+        // No-op implementation
     }
 
     @Override

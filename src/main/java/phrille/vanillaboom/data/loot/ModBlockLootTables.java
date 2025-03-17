@@ -1,6 +1,5 @@
 package phrille.vanillaboom.data.loot;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
@@ -33,7 +32,6 @@ import phrille.vanillaboom.util.Utils;
 
 import java.util.Set;
 
-@MethodsReturnNonnullByDefault
 public class ModBlockLootTables extends BlockLootSubProvider {
     public ModBlockLootTables() {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags());

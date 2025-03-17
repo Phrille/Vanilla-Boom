@@ -1,6 +1,5 @@
 package phrille.vanillaboom.item;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -20,10 +19,6 @@ import phrille.vanillaboom.block.crop.IWitherBonemealable;
 import phrille.vanillaboom.config.VanillaBoomConfig;
 import phrille.vanillaboom.util.Utils;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class WitherBoneMealItem extends Item {
     public WitherBoneMealItem() {
         super(new Item.Properties());

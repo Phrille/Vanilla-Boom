@@ -1,6 +1,5 @@
 package phrille.vanillaboom.block;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.stats.Stats;
@@ -24,10 +23,7 @@ import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.BlockHitResult;
 
 import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
 
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class GunpowderBlock extends FallingBlock {
     public GunpowderBlock() {
         super(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.COLOR_LIGHT_GRAY).strength(0.5F).sound(SoundType.SAND));

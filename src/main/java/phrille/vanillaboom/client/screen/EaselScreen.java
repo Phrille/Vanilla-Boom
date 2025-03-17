@@ -19,10 +19,8 @@ import phrille.vanillaboom.inventory.EaselMenu;
 import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
 import phrille.vanillaboom.util.Utils;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-@ParametersAreNonnullByDefault
 public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
     private static final ResourceLocation BG_LOCATION = new ResourceLocation(VanillaBoom.MOD_ID, "textures/gui/container/easel.png");
 

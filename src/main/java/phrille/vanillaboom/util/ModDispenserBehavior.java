@@ -1,6 +1,5 @@
 package phrille.vanillaboom.util;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockSource;
 import net.minecraft.core.dispenser.OptionalDispenseItemBehavior;
@@ -14,10 +13,6 @@ import phrille.vanillaboom.config.VanillaBoomConfig;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.item.WitherBoneMealItem;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class ModDispenserBehavior {
     public static void registerWitherBonemealBehavior() {
         if (!VanillaBoomConfig.witherBoneMealEnabled) {

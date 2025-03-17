@@ -3,7 +3,6 @@ package phrille.vanillaboom.inventory.recipe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
@@ -24,12 +23,9 @@ import phrille.vanillaboom.inventory.EaselMenu;
 import phrille.vanillaboom.util.Utils;
 
 import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Comparator;
 import java.util.List;
 
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public record PaintingRecipe(ResourceLocation recipeId, String group, Ingredient canvas, NonNullList<Ingredient> dyes,
                              ItemStack result) implements Recipe<Container> {
     public static final int MAX_DYES = 7;
