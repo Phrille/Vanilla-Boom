@@ -10,12 +10,14 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.Container;
+import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.inventory.EaselMenu;
@@ -23,6 +25,7 @@ import phrille.vanillaboom.util.Utils;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Comparator;
 import java.util.List;
 
 @MethodsReturnNonnullByDefault
@@ -30,6 +33,10 @@ import java.util.List;
 public record PaintingRecipe(ResourceLocation recipeId, String group, Ingredient canvas, NonNullList<Ingredient> dyes,
                              ItemStack result) implements Recipe<Container> {
     public static final int MAX_DYES = 7;
+    public static final Comparator<PaintingRecipe> RECIPE_COMPARATOR = Comparator.comparing(recipe -> Utils.paintingVariantFromStack(recipe.result()),
+            Comparator.<PaintingVariant>comparingInt(variant -> variant.getHeight() * variant.getWidth())
+                    .thenComparing(PaintingVariant::getWidth)
+                    .thenComparing(ForgeRegistries.PAINTING_VARIANTS::getKey));
 
     @Override
     public boolean matches(Container container, Level level) {
@@ -100,6 +107,37 @@ public record PaintingRecipe(ResourceLocation recipeId, String group, Ingredient
         return new ItemStack(ModBlocks.EASEL.get());
     }
 
+    @Override
+    public boolean equals(Object other) {
+        return other instanceof PaintingRecipe otherRecipe && otherRecipe.recipeId.equals(recipeId);
+    }
+
+    public static PaintingRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
+        String group = buffer.readUtf();
+        int size = buffer.readVarInt();
+        Ingredient canvas = Ingredient.fromNetwork(buffer);
+        NonNullList<Ingredient> dyes = NonNullList.create();
+
+        for (int i = 1; i < size; i++) {
+            dyes.add(Ingredient.fromNetwork(buffer));
+        }
+
+        ItemStack result = buffer.readItem();
+        return new PaintingRecipe(recipeId, group, canvas, dyes, result);
+    }
+
+    public static void toNetwork(FriendlyByteBuf buffer, PaintingRecipe paintingRecipe) {
+        buffer.writeUtf(paintingRecipe.group());
+        buffer.writeVarInt(paintingRecipe.getIngredients().size());
+        paintingRecipe.canvas().toNetwork(buffer);
+
+        for (Ingredient ingredient : paintingRecipe.dyes()) {
+            ingredient.toNetwork(buffer);
+        }
+
+        buffer.writeItem(paintingRecipe.result());
+    }
+
     public static class PaintingRecipeSerializer implements RecipeSerializer<PaintingRecipe> {
         @Override
         public PaintingRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
@@ -123,30 +161,12 @@ public record PaintingRecipe(ResourceLocation recipeId, String group, Ingredient
 
         @Override
         public PaintingRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
-            String group = buffer.readUtf();
-            int size = buffer.readVarInt();
-            Ingredient canvas = Ingredient.fromNetwork(buffer);
-            NonNullList<Ingredient> dyes = NonNullList.create();
-
-            for (int i = 1; i < size; i++) {
-                dyes.add(Ingredient.fromNetwork(buffer));
-            }
-
-            ItemStack result = buffer.readItem();
-            return new PaintingRecipe(recipeId, group, canvas, dyes, result);
+            return PaintingRecipe.fromNetwork(recipeId, buffer);
         }
 
         @Override
         public void toNetwork(FriendlyByteBuf buffer, PaintingRecipe paintingRecipe) {
-            buffer.writeUtf(paintingRecipe.group());
-            buffer.writeVarInt(paintingRecipe.getIngredients().size());
-            paintingRecipe.canvas().toNetwork(buffer);
-
-            for (Ingredient ingredient : paintingRecipe.dyes()) {
-                ingredient.toNetwork(buffer);
-            }
-
-            buffer.writeItem(paintingRecipe.result());
+            PaintingRecipe.toNetwork(buffer, paintingRecipe);
         }
     }
 }

@@ -96,7 +96,6 @@ public class PaintingRecipeCategory implements IRecipeCategory<PaintingRecipe> {
             int yOffset = (int) ((maxSize - paintingHeight) / 2);
             RenderSystem.setShaderTexture(0, sprite.atlasLocation());
             GuiComponent.blit(pose, 52 + xOffset, 4 + yOffset, 0, paintingWidth, paintingHeight, sprite);
-            RenderSystem.setShaderTexture(0, BACKGROUND);
         }
     }
 }

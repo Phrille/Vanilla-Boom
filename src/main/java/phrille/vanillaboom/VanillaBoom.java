@@ -19,6 +19,7 @@ import phrille.vanillaboom.inventory.ModMenuTypes;
 import phrille.vanillaboom.inventory.recipe.ModRecipes;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.loot.ModGlobalLootModifiers;
+import phrille.vanillaboom.network.ModNetwork;
 import phrille.vanillaboom.util.ModDispenserBehavior;
 import phrille.vanillaboom.util.Utils;
 
@@ -30,6 +31,7 @@ public class VanillaBoom {
     public VanillaBoom(FMLJavaModLoadingContext context) {
         IEventBus eventBus = context.getModEventBus();
 
+        ModNetwork.register();
         ModEntities.ENTITY_TYPES.register(eventBus);
         ModBlocks.BLOCKS.register(eventBus);
         ModItems.ITEMS.register(eventBus);

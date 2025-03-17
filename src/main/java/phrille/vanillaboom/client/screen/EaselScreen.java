@@ -26,12 +26,14 @@ import java.util.List;
 public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
     private static final ResourceLocation BG_LOCATION = new ResourceLocation(VanillaBoom.MOD_ID, "textures/gui/container/easel.png");
 
+    private static List<PaintingRecipe> availableRecipes = Lists.newArrayList();
+
     public static final int SCREEN_WIDTH = 176;
     public static final int SCREEN_HEIGHT = 184;
 
     /* Buttons */
     public static final int BUTTON_SIZE = 24;
-    private final List<PaintingButton> buttonList;
+    private final List<PaintingButton> buttonList = Lists.newArrayList();
     private int startIndex;
 
     /* Grid */
@@ -62,16 +64,15 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         --titleLabelY;
         inventoryLabelY += 19;
 
-        List<PaintingRecipe> recipeList = menu.getAllRecipes();
-        buttonList = Lists.newArrayList();
-        for (int buttonId = 0; buttonId < recipeList.size(); buttonId++) {
-            PaintingRecipe recipe = recipeList.get(buttonId);
+        for (int buttonId = 0; buttonId < menu.getRecipes().size(); buttonId++) {
+            PaintingRecipe recipe = menu.getRecipes().get(buttonId);
             PaintingVariant variant = Utils.paintingVariantFromStack(recipe.result());
+
             if (variant != null) {
-                buttonList.add(buttonId, new PaintingButton(recipe, variant));
+                PaintingButton button = new PaintingButton(buttonId, recipe, variant);
+                button.register();
             }
         }
-        buttonList.sort((a, b) -> a.area == b.area ? b.variant.getWidth() - a.variant.getWidth() : a.area - b.area);
     }
 
     @Override
@@ -208,7 +209,7 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
 
     private void containerChanged() {
         buttonList.forEach(button -> {
-            button.enabled = menu.getRecipes().contains(button.recipe);
+            button.enabled = availableRecipes.contains(button.recipe);
             button.selected = button.enabled && button.selected;
         });
 
@@ -218,21 +219,31 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         }
     }
 
+    public void updateRecipes(List<PaintingRecipe> recipes) {
+        availableRecipes = recipes;
+        containerChanged();
+    }
+
+    @Override
+    public void onClose() {
+        super.onClose();
+        availableRecipes.clear();
+    }
+
     private class PaintingButton {
+        private final int buttonId;
         private final PaintingRecipe recipe;
-        private final PaintingVariant variant;
         private final TextureAtlasSprite sprite;
         private final int paintingWidth;
         private final int paintingHeight;
         private final int xOffset;
         private final int yOffset;
-        private final int area;
         private boolean enabled;
         private boolean selected;
 
-        public PaintingButton(PaintingRecipe recipe, PaintingVariant variant) {
+        public PaintingButton(int buttonId, PaintingRecipe recipe, PaintingVariant variant) {
+            this.buttonId = buttonId;
             this.recipe = recipe;
-            this.variant = variant;
             this.sprite = Minecraft.getInstance().getPaintingTextures().get(variant);
 
             float maxSize = BUTTON_SIZE - 2;
@@ -247,10 +258,12 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
             this.paintingHeight = Math.max(1, (int) (variant.getHeight() * scaleFactor));
             this.xOffset = (int) ((maxSize - paintingWidth) / 2);
             this.yOffset = (int) ((maxSize - paintingHeight) / 2);
-
-            this.area = variant.getWidth() * variant.getHeight();
             this.enabled = false;
             this.selected = false;
+        }
+
+        public void register() {
+            buttonList.add(buttonId, this);
         }
 
         public void render(PoseStack pose, int x, int y, int mouseX, int mouseY) {
@@ -277,13 +290,9 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
 
         @SuppressWarnings("ConstantConditions")
         public boolean onClick() {
-            // TODO: this might set the wrong index since it's getting the index from the client side and setting it on the server.
-            // Quickfix: sorting the recipes when updating the list on both client and server side.
-            int recipeIndex = menu.getRecipes().indexOf(recipe);
-
-            if (menu.clickMenuButton(minecraft.player, recipeIndex)) {
+            if (menu.clickMenuButton(minecraft.player, buttonId)) {
                 Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_LOOM_SELECT_PATTERN, 1.0F));
-                minecraft.gameMode.handleInventoryButtonClick(menu.containerId, recipeIndex);
+                minecraft.gameMode.handleInventoryButtonClick(menu.containerId, buttonId);
                 buttonList.forEach(button -> button.selected = false);
                 selected = true;
                 return true;
