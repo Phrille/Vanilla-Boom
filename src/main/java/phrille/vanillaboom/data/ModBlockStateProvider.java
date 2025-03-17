@@ -1,3 +1,11 @@
+/*
+ * Copyright (C) 2023-2025 Phrille
+ *
+ * This file is part of the Vanilla Boom Mod.
+ * Unauthorized distribution or modification is prohibited.
+ * See LICENSE for details.
+ */
+
 package phrille.vanillaboom.data;
 
 import net.minecraft.core.Direction;
@@ -194,17 +202,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         // Variant Blocks
         ModDataGenerator.STAIRS.forEach(pair -> {
-            if (pair.getSecond() == null) {
+            if (pair.getSecond().isPresent()) {
                 stairsBlock(pair.getFirst());
             } else {
-                stairsBlock(pair.getFirst(), pair.getSecond());
+                stairsBlock(pair.getFirst(), pair.getSecond().get());
             }
         });
         ModDataGenerator.SLABS.forEach(pair -> {
-            if (pair.getSecond() == null) {
+            if (pair.getSecond().isPresent()) {
                 slabBlock(pair.getFirst());
             } else {
-                slabBlock(pair.getFirst(), pair.getSecond());
+                slabBlock(pair.getFirst(), pair.getSecond().get());
             }
         });
         ModDataGenerator.WALLS.forEach(this::wallBlock);
