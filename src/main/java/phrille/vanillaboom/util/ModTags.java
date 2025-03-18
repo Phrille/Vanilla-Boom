@@ -19,7 +19,6 @@ import net.minecraft.world.level.block.Block;
 import phrille.vanillaboom.VanillaBoom;
 
 public class ModTags {
-
     /**
      * Class that encapsulates all tags that belong in the forge
      * data directory which is not created by forge itself.

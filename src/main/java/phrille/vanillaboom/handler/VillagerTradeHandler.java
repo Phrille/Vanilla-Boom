@@ -27,7 +27,6 @@ import java.util.List;
 
 @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID)
 public class VillagerTradeHandler {
-
     @SubscribeEvent
     public static void onVillagerTrade(VillagerTradesEvent event) {
         Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();

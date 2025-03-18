@@ -39,7 +39,6 @@ import phrille.vanillaboom.util.Utils;
 
 @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID)
 public class ItemEventHandler {
-
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         Level level = event.getLevel();

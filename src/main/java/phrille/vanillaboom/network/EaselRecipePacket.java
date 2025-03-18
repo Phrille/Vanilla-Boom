@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public record EaselRecipePacket(List<PaintingRecipe> recipes) {
-
     public static void encode(EaselRecipePacket packet, FriendlyByteBuf buffer) {
         buffer.writeInt(packet.recipes.size());
         for (PaintingRecipe recipe : packet.recipes) {

@@ -28,7 +28,6 @@ import java.util.List;
 
 @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CreativeTabHandler {
-
     @SubscribeEvent
     public static void buildContents(CreativeModeTabEvent.BuildContents event) {
         CreativeModeTab tab = event.getTab();
