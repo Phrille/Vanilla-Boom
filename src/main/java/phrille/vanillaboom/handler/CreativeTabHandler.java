@@ -129,6 +129,20 @@ public class CreativeTabHandler {
             ));
             putAfter(entries, Blocks.DARK_OAK_FENCE_GATE, ModItems.DARK_OAK_BOOKSHELF.get());
             putAfter(entries, Blocks.DARK_OAK_BUTTON, ModItems.DARK_OAK_LADDER.get());
+            putAfter(entries, Blocks.MANGROVE_WOOD, List.of(
+                    ModItems.MANGROVE_WOOD_STAIRS.get(),
+                    ModItems.MANGROVE_WOOD_SLAB.get(),
+                    ModItems.MANGROVE_WOOD_FENCE.get(),
+                    ModItems.MANGROVE_WOOD_FENCE_GATE.get()
+            ));
+            putAfter(entries, Blocks.STRIPPED_MANGROVE_WOOD, List.of(
+                    ModItems.STRIPPED_MANGROVE_WOOD_STAIRS.get(),
+                    ModItems.STRIPPED_MANGROVE_WOOD_SLAB.get(),
+                    ModItems.STRIPPED_MANGROVE_WOOD_FENCE.get(),
+                    ModItems.STRIPPED_MANGROVE_WOOD_FENCE_GATE.get()
+            ));
+            putAfter(entries, Blocks.MANGROVE_FENCE_GATE, ModItems.MANGROVE_BOOKSHELF.get());
+            putAfter(entries, Blocks.MANGROVE_BUTTON, ModItems.MANGROVE_LADDER.get());
             putAfter(entries, Blocks.CRIMSON_HYPHAE, List.of(
                     ModItems.CRIMSON_HYPHAE_STAIRS.get(),
                     ModItems.CRIMSON_HYPHAE_SLAB.get(),
@@ -600,6 +614,7 @@ public class CreativeTabHandler {
                     ModItems.JUNGLE_LADDER.get(),
                     ModItems.ACACIA_LADDER.get(),
                     ModItems.DARK_OAK_LADDER.get(),
+                    ModItems.MANGROVE_LADDER.get(),
                     ModItems.CRIMSON_LADDER.get(),
                     ModItems.WARPED_LADDER.get(),
                     ModItems.TRELLIS.get()
@@ -610,6 +625,7 @@ public class CreativeTabHandler {
                     ModItems.JUNGLE_BOOKSHELF.get(),
                     ModItems.ACACIA_BOOKSHELF.get(),
                     ModItems.DARK_OAK_BOOKSHELF.get(),
+                    ModItems.MANGROVE_BOOKSHELF.get(),
                     ModItems.CRIMSON_BOOKSHELF.get(),
                     ModItems.WARPED_BOOKSHELF.get()
             ));

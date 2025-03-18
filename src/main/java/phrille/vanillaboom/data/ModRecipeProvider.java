@@ -20,19 +20,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FenceBlock;
-import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
-import phrille.vanillaboom.block.ModSlabBlock;
-import phrille.vanillaboom.block.ModStairBlock;
-import phrille.vanillaboom.block.ModWallBlock;
+import phrille.vanillaboom.block.variant.*;
 import phrille.vanillaboom.inventory.recipe.PaintingRecipeBuilder;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.ModTags;
@@ -108,6 +103,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         bookshelfShaped(finishedRecipe, ModItems.JUNGLE_BOOKSHELF.get(), Blocks.JUNGLE_PLANKS);
         bookshelfShaped(finishedRecipe, ModItems.ACACIA_BOOKSHELF.get(), Blocks.ACACIA_PLANKS);
         bookshelfShaped(finishedRecipe, ModItems.DARK_OAK_BOOKSHELF.get(), Blocks.DARK_OAK_PLANKS);
+        bookshelfShaped(finishedRecipe, ModItems.MANGROVE_BOOKSHELF.get(), Blocks.MANGROVE_PLANKS);
         bookshelfShaped(finishedRecipe, ModItems.CRIMSON_BOOKSHELF.get(), Blocks.CRIMSON_PLANKS);
         bookshelfShaped(finishedRecipe, ModItems.WARPED_BOOKSHELF.get(), Blocks.WARPED_PLANKS);
         ladderShaped(finishedRecipe, ModItems.SPRUCE_LADDER.get(), Blocks.SPRUCE_SLAB);
@@ -115,6 +111,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ladderShaped(finishedRecipe, ModItems.JUNGLE_LADDER.get(), Blocks.JUNGLE_SLAB);
         ladderShaped(finishedRecipe, ModItems.ACACIA_LADDER.get(), Blocks.ACACIA_SLAB);
         ladderShaped(finishedRecipe, ModItems.DARK_OAK_LADDER.get(), Blocks.DARK_OAK_SLAB);
+        ladderShaped(finishedRecipe, ModItems.MANGROVE_LADDER.get(), Blocks.MANGROVE_SLAB);
         ladderShaped(finishedRecipe, ModItems.CRIMSON_LADDER.get(), Blocks.CRIMSON_SLAB);
         ladderShaped(finishedRecipe, ModItems.WARPED_LADDER.get(), Blocks.WARPED_SLAB);
         storageBlock(finishedRecipe, ModItems.CHARCOAL_BLOCK.get(), Items.CHARCOAL);
@@ -186,8 +183,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ModStairBlock.STAIRS.forEach(stair -> stair(finishedRecipe, stair));
         ModSlabBlock.SLABS.forEach(slab -> slab(finishedRecipe, slab));
         ModWallBlock.WALLS.forEach(wall -> wall(finishedRecipe, wall));
-        ModDataGenerator.FENCES.forEach(pair -> fence(finishedRecipe, (FenceBlock) pair.getFirst(), pair.getSecond()));
-        ModDataGenerator.FENCE_GATES.forEach(pair -> fenceGate(finishedRecipe, (FenceGateBlock) pair.getFirst(), pair.getSecond()));
+        ModFenceBlock.FENCES.forEach(fence -> fence(finishedRecipe, fence));
+        ModFenceGateBlock.FENCE_GATES.forEach(fenceGate -> fenceGate(finishedRecipe, fenceGate));
         variants(finishedRecipe, ModItems.COBBLESTONE_BRICK_STAIRS.get(), ModItems.COBBLESTONE_BRICK_SLAB.get(), ModItems.COBBLESTONE_BRICK_WALL.get(), Blocks.COBBLESTONE);
         variants(finishedRecipe, ModItems.MOSSY_COBBLESTONE_BRICK_STAIRS.get(), ModItems.MOSSY_COBBLESTONE_BRICK_SLAB.get(), ModItems.MOSSY_COBBLESTONE_BRICK_WALL.get(), Blocks.MOSSY_COBBLESTONE);
         variants(finishedRecipe, ModItems.OBSIDIAN_BRICK_STAIRS.get(), ModItems.OBSIDIAN_BRICK_SLAB.get(), ModItems.OBSIDIAN_BRICK_WALL.get(), Blocks.OBSIDIAN);
@@ -458,12 +455,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         stonecutting(finishedRecipe, RecipeCategory.DECORATIONS, wall.asItem(), wall.getParent().asItem());
     }
 
-    public void fence(Consumer<FinishedRecipe> finishedRecipe, FenceBlock fence, Block parent) {
-        fenceShaped(finishedRecipe, fence.asItem(), parent.asItem());
+    public void fence(Consumer<FinishedRecipe> finishedRecipe, ModFenceBlock fence) {
+        fenceShaped(finishedRecipe, fence.asItem(), fence.getParent().asItem());
     }
 
-    public void fenceGate(Consumer<FinishedRecipe> finishedRecipe, FenceGateBlock fenceGate, Block parent) {
-        fenceGateShaped(finishedRecipe, fenceGate.asItem(), parent.asItem());
+    public void fenceGate(Consumer<FinishedRecipe> finishedRecipe, ModFenceGateBlock fenceGate) {
+        fenceGateShaped(finishedRecipe, fenceGate.asItem(), fenceGate.getParent().asItem());
     }
 
     public void variants(Consumer<FinishedRecipe> finishedRecipe, ItemLike stair, ItemLike slab, ItemLike wall, ItemLike block) {

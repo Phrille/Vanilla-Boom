@@ -28,12 +28,13 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
-import phrille.vanillaboom.block.*;
+import phrille.vanillaboom.block.ModBlocks;
+import phrille.vanillaboom.block.ModCakeBlock;
 import phrille.vanillaboom.block.crop.ITrellisCrop;
 import phrille.vanillaboom.block.crop.ShearedTallFlowerBlock;
 import phrille.vanillaboom.block.crop.TrellisBlock;
 import phrille.vanillaboom.block.crop.TrellisCropBlock;
-import phrille.vanillaboom.data.ModDataGenerator;
+import phrille.vanillaboom.block.variant.*;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.Utils;
 
@@ -110,6 +111,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         add(ModBlocks.JUNGLE_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
         add(ModBlocks.ACACIA_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
         add(ModBlocks.DARK_OAK_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
+        add(ModBlocks.MANGROVE_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
         add(ModBlocks.CRIMSON_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
         add(ModBlocks.WARPED_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
         dropSelf(ModBlocks.SPRUCE_LADDER.get());
@@ -117,6 +119,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.JUNGLE_LADDER.get());
         dropSelf(ModBlocks.ACACIA_LADDER.get());
         dropSelf(ModBlocks.DARK_OAK_LADDER.get());
+        dropSelf(ModBlocks.MANGROVE_LADDER.get());
         dropSelf(ModBlocks.CRIMSON_LADDER.get());
         dropSelf(ModBlocks.WARPED_LADDER.get());
 
@@ -215,8 +218,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         ModStairBlock.STAIRS.forEach(this::dropSelf);
         ModSlabBlock.SLABS.forEach(this::dropSelf);
         ModWallBlock.WALLS.forEach(this::dropSelf);
-        ModDataGenerator.FENCES.forEach(pair -> dropSelf(pair.getFirst()));
-        ModDataGenerator.FENCE_GATES.forEach(pair -> dropSelf(pair.getFirst()));
+        ModFenceBlock.FENCES.forEach(this::dropSelf);
+        ModFenceGateBlock.FENCE_GATES.forEach(this::dropSelf);
     }
 
     @Override

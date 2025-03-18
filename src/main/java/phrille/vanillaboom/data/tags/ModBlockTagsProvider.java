@@ -11,8 +11,9 @@ import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
 import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.block.*;
-import phrille.vanillaboom.data.ModDataGenerator;
+import phrille.vanillaboom.block.ModBlocks;
+import phrille.vanillaboom.block.ModCakeBlock;
+import phrille.vanillaboom.block.variant.*;
 import phrille.vanillaboom.util.ModTags;
 import phrille.vanillaboom.util.Utils;
 
@@ -141,6 +142,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.JUNGLE_BOOKSHELF.get())
                 .add(ModBlocks.ACACIA_BOOKSHELF.get())
                 .add(ModBlocks.DARK_OAK_BOOKSHELF.get())
+                .add(ModBlocks.MANGROVE_BOOKSHELF.get())
                 .add(ModBlocks.CRIMSON_BOOKSHELF.get())
                 .add(ModBlocks.WARPED_BOOKSHELF.get());
         tag(ModTags.VanillaBoomTags.Blocks.DYE_BLOCKS)
@@ -166,6 +168,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.JUNGLE_LADDER.get())
                 .add(ModBlocks.ACACIA_LADDER.get())
                 .add(ModBlocks.DARK_OAK_LADDER.get())
+                .add(ModBlocks.MANGROVE_LADDER.get())
                 .add(ModBlocks.CRIMSON_LADDER.get())
                 .add(ModBlocks.WARPED_LADDER.get());
 
@@ -317,26 +320,26 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.WALLS).addTags(ModTags.VanillaBoomTags.Blocks.WALLS);
 
         //Fences
-        ModDataGenerator.FENCES.forEach(pair -> {
-            Material material = pair.getFirst().defaultBlockState().getMaterial();
+        ModFenceBlock.FENCES.forEach(fence -> {
+            Material material = fence.defaultBlockState().getMaterial();
 
             if (material == Material.WOOD || material == Material.NETHER_WOOD) {
-                tag(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCES).add(pair.getFirst());
+                tag(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCES).add(fence);
             } else {
-                tag(ModTags.VanillaBoomTags.Blocks.FENCES).add(pair.getFirst());
+                tag(ModTags.VanillaBoomTags.Blocks.FENCES).add(fence);
             }
         });
         tag(BlockTags.FENCES).addTags(ModTags.VanillaBoomTags.Blocks.FENCES);
         tag(BlockTags.WOODEN_FENCES).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCES);
 
         //Fence Gates
-        ModDataGenerator.FENCE_GATES.forEach(pair -> {
-            Material material = pair.getFirst().defaultBlockState().getMaterial();
+        ModFenceGateBlock.FENCE_GATES.forEach(fenceGate -> {
+            Material material = fenceGate.defaultBlockState().getMaterial();
 
             if (material == Material.WOOD || material == Material.NETHER_WOOD) {
-                tag(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCE_GATES).add(pair.getFirst());
+                tag(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCE_GATES).add(fenceGate);
             } else {
-                tag(ModTags.VanillaBoomTags.Blocks.FENCE_GATES).add(pair.getFirst());
+                tag(ModTags.VanillaBoomTags.Blocks.FENCE_GATES).add(fenceGate);
             }
         });
         tag(BlockTags.FENCE_GATES).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCE_GATES);

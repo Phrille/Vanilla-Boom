@@ -22,6 +22,7 @@ import phrille.vanillaboom.block.*;
 import phrille.vanillaboom.block.crop.RicePlantBlock;
 import phrille.vanillaboom.block.crop.TrellisBlock;
 import phrille.vanillaboom.block.crop.TrellisCropBlock;
+import phrille.vanillaboom.block.variant.*;
 import phrille.vanillaboom.util.Utils;
 
 import java.util.List;
@@ -106,6 +107,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         bookshelfBlock(ModBlocks.JUNGLE_BOOKSHELF.get(), Blocks.JUNGLE_PLANKS);
         bookshelfBlock(ModBlocks.ACACIA_BOOKSHELF.get(), Blocks.ACACIA_PLANKS);
         bookshelfBlock(ModBlocks.DARK_OAK_BOOKSHELF.get(), Blocks.DARK_OAK_PLANKS);
+        bookshelfBlock(ModBlocks.MANGROVE_BOOKSHELF.get(), Blocks.MANGROVE_PLANKS);
         bookshelfBlock(ModBlocks.CRIMSON_BOOKSHELF.get(), Blocks.CRIMSON_PLANKS);
         bookshelfBlock(ModBlocks.WARPED_BOOKSHELF.get(), Blocks.WARPED_PLANKS);
         ladderBlock(ModBlocks.SPRUCE_LADDER.get());
@@ -113,6 +115,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ladderBlock(ModBlocks.JUNGLE_LADDER.get());
         ladderBlock(ModBlocks.ACACIA_LADDER.get());
         ladderBlock(ModBlocks.DARK_OAK_LADDER.get());
+        ladderBlock(ModBlocks.MANGROVE_LADDER.get());
         ladderBlock(ModBlocks.CRIMSON_LADDER.get());
         ladderBlock(ModBlocks.WARPED_LADDER.get());
 
@@ -212,8 +215,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         });
         ModSlabBlock.SLABS.forEach(this::slabBlock);
         ModWallBlock.WALLS.forEach(this::wallBlock);
-        ModDataGenerator.FENCES.forEach(pair -> fenceBlock(pair.getFirst(), pair.getSecond()));
-        ModDataGenerator.FENCE_GATES.forEach(pair -> fenceGateBlock(pair.getFirst(), pair.getSecond()));
+        ModFenceBlock.FENCES.forEach(this::fenceBlock);
+        ModFenceGateBlock.FENCE_GATES.forEach(this::fenceGateBlock);
     }
 
     public void pillarBlock(Block block) {
@@ -251,14 +254,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .texture("wall", variantTexture(wall.getParent()));
     }
 
-    public void fenceBlock(Block fence, Block parent) {
-        fenceBlock((FenceBlock) fence, variantTexture(parent));
+    public void fenceBlock(ModFenceBlock fence) {
+        fenceBlock(fence, variantTexture(fence.getParent()));
         models().withExistingParent(name(fence) + "_inventory", ModelProvider.BLOCK_FOLDER + "/fence_inventory")
-                .texture("texture", variantTexture(parent));
+                .texture("texture", variantTexture(fence.getParent()));
     }
 
-    public void fenceGateBlock(Block fenceGate, Block parent) {
-        fenceGateBlock((FenceGateBlock) fenceGate, variantTexture(parent));
+    public void fenceGateBlock(ModFenceGateBlock fenceGate) {
+        fenceGateBlock(fenceGate, variantTexture(fenceGate.getParent()));
     }
 
     public void glassBlock(Block glass) {

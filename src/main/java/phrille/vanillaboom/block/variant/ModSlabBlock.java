@@ -6,13 +6,13 @@
  * See LICENSE for details.
  */
 
-package phrille.vanillaboom.block;
+package phrille.vanillaboom.block.variant;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import org.apache.commons.compress.utils.Lists;
@@ -20,18 +20,18 @@ import org.apache.commons.compress.utils.Lists;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class ModWallBlock extends WallBlock implements IVariantBlock {
-    public static final List<ModWallBlock> WALLS = Lists.newArrayList();
+public class ModSlabBlock extends SlabBlock implements IVariantBlock {
+    public static final List<ModSlabBlock> SLABS = Lists.newArrayList();
     protected final Supplier<BlockState> state;
 
-    public ModWallBlock(Supplier<BlockState> state) {
+    public ModSlabBlock(Supplier<BlockState> state) {
         this(state, BlockBehaviour.Properties.copy(state.get().getBlock()));
     }
 
-    public ModWallBlock(Supplier<BlockState> state, BlockBehaviour.Properties builder) {
+    public ModSlabBlock(Supplier<BlockState> state, BlockBehaviour.Properties builder) {
         super(builder);
         this.state = state;
-        WALLS.add(this);
+        SLABS.add(this);
     }
 
     @Override

@@ -6,7 +6,7 @@
  * See LICENSE for details.
  */
 
-package phrille.vanillaboom.block;
+package phrille.vanillaboom.block.variant;
 
 import net.minecraft.world.level.block.Block;
 

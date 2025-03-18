@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "vanillaboom:block/mangrove_ladder",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "vanillaboom:block/mangrove_ladder"
+    },
+    "facing=south": {
+      "model": "vanillaboom:block/mangrove_ladder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "vanillaboom:block/mangrove_ladder",
+      "y": 270
+    }
+  }
+}
