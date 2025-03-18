@@ -202,14 +202,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         // Variant Blocks
         ModDataGenerator.STAIRS.forEach(pair -> {
-            if (pair.getSecond().isPresent()) {
+            if (pair.getSecond().isEmpty()) {
                 stairsBlock(pair.getFirst());
             } else {
                 stairsBlock(pair.getFirst(), pair.getSecond().get());
             }
         });
         ModDataGenerator.SLABS.forEach(pair -> {
-            if (pair.getSecond().isPresent()) {
+            if (pair.getSecond().isEmpty()) {
                 slabBlock(pair.getFirst());
             } else {
                 slabBlock(pair.getFirst(), pair.getSecond().get());
@@ -576,14 +576,22 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     public void easelBlock(Block easel) {
-        simpleBlock(easel, models().withExistingParent(name(easel), "cube")
-                .texture("up", blockTexture(Blocks.SPRUCE_PLANKS))
-                .texture("down", blockTexture(Blocks.SPRUCE_PLANKS))
-                .texture("north", blockTexture(Blocks.SPRUCE_PLANKS))
-                .texture("east", blockTexture(Blocks.SPRUCE_PLANKS))
-                .texture("west", blockTexture(Blocks.SPRUCE_PLANKS))
-                .texture("south", blockTexture(Blocks.SPRUCE_PLANKS))
-                .texture("particle", blockTexture(Blocks.SPRUCE_PLANKS)));
+        ModelFile model = models().withExistingParent(name(easel), ModelProvider.BLOCK_FOLDER + "/lectern")
+                .texture("particle", ModDataGenerator.extend(blockTexture(Blocks.LECTERN), "_sides"))
+                .texture("bottom", blockTexture(Blocks.OAK_PLANKS))
+                .texture("base", blockTexture(Blocks.OAK_PLANKS))
+                .texture("front", ModDataGenerator.extend(blockTexture(easel), "_front"))
+                .texture("sides", ModDataGenerator.extend(blockTexture(Blocks.LECTERN), "_sides"))
+                .texture("top", ModDataGenerator.extend(blockTexture(easel), "_top"));
+
+        getVariantBuilder(easel).forAllStates(state -> {
+            Direction facing = state.getValue(EaselBlock.FACING);
+
+            return ConfiguredModel.builder()
+                    .modelFile(model)
+                    .rotationY((int) facing.getOpposite().toYRot())
+                    .build();
+        });
     }
 
     protected ResourceLocation variantTexture(Block block) {

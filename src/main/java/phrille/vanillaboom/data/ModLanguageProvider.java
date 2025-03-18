@@ -32,6 +32,7 @@ public class ModLanguageProvider extends LanguageProvider {
         // Containers
         add("vanillaboom.container.easel", "Easel");
         add("vanillaboom.recipe.category.painting", "Painting");
+        add("stat.vanillaboom.interact_with_easel", "Interactions with Easel");
 
         // Bricks
         add(ModBlocks.COBBLESTONE_BRICKS.get(), "Cobblestone Bricks");

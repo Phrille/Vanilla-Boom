@@ -338,6 +338,21 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe);
 
         // Paintings
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.EASEL.get())
+                .define('x', ItemTags.WOODEN_SLABS)
+                .define('y', ModTags.ForgeTags.Items.CANVAS)
+                .define('z', Blocks.OAK_PLANKS) // TODO: 1.20 replace with brush
+                .pattern("xyx")
+                .pattern(" z ")
+                .pattern(" x ")
+                .unlockedBy(getHasName(ModItems.CANVAS.get()), has(ModItems.CANVAS.get())) // TODO: add unlocked by brush
+                .save(finishedRecipe);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CANVAS.get(), 2)
+                .requires(ItemTags.WOOL)
+                .requires(Tags.Items.SHEARS)
+                .unlockedBy(getHasName(Blocks.WHITE_WOOL), has(Blocks.WHITE_WOOL))
+                .unlockedBy(getHasName(Items.SHEARS), has(Items.SHEARS))
+                .save(finishedRecipe);
         painting(finishedRecipe, PaintingVariants.KEBAB, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_LIME));
         painting(finishedRecipe, PaintingVariants.AZTEC, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_LIGHT_GRAY));
         painting(finishedRecipe, PaintingVariants.ALBAN, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_GREEN));
