@@ -156,6 +156,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
          */
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.SUGAR_CANE_BLOCK.get())
+                .add(ModBlocks.EASEL.get())
                 .addTags(ModTags.VanillaBoomTags.Blocks.BOOKSHELVES)
                 .addTags(ModTags.VanillaBoomTags.Blocks.LADDERS);
         tag(BlockTags.MINEABLE_WITH_HOE)
