@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "vanillaboom:block/hydro_rock",
-    "side": "vanillaboom:block/hydro_rock",
-    "top": "vanillaboom:block/hydro_rock"
-  }
-}

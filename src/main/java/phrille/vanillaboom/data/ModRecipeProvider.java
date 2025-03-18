@@ -95,7 +95,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         pillarBlock(finishedRecipe, ModItems.END_STONE_PILLAR.get(), ModItems.POLISHED_END_STONE.get(), List.of(Blocks.END_STONE));
         pillarBlock(finishedRecipe, ModItems.END_STONE_PILLAR.get(), Blocks.END_STONE_BRICKS);
         pillarBlock(finishedRecipe, ModItems.NETHERRACK_PILLAR.get(), ModItems.POLISHED_NETHERRACK.get(), List.of(Blocks.NETHERRACK));
-        pillarBlock(finishedRecipe, ModItems.RED_NETHER_PILLAR.get(), Blocks.RED_NETHER_BRICKS);
         pillarBlock(finishedRecipe, ModItems.OBSIDIAN_PILLAR.get(), Blocks.OBSIDIAN);
         pillarBlock(finishedRecipe, ModItems.OBSIDIAN_PILLAR.get(), ModItems.OBSIDIAN_BRICKS.get());
         storageBlock(finishedRecipe, ModItems.CHARCOAL_BLOCK.get(), Items.CHARCOAL);

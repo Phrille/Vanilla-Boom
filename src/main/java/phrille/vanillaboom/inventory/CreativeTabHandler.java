@@ -6,7 +6,7 @@
  * See LICENSE for details.
  */
 
-package phrille.vanillaboom.handler;
+package phrille.vanillaboom.inventory;
 
 import com.google.common.collect.Lists;
 import net.minecraft.world.entity.decoration.PaintingVariants;
@@ -21,6 +21,8 @@ import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import phrille.vanillaboom.VanillaBoom;
+import phrille.vanillaboom.block.variant.ModBookshelfBlock;
+import phrille.vanillaboom.block.variant.ModLadderBlock;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.Utils;
 
@@ -173,19 +175,17 @@ public class CreativeTabHandler {
             putAfter(entries, Blocks.WARPED_BUTTON, ModItems.WARPED_LADDER.get());
             // Stone Blocks
             putAfter(entries, Blocks.STONE_SLAB, ModItems.STONE_WALL.get());
-            putAfter(entries, Blocks.MOSSY_COBBLESTONE, List.of(
+            putAfter(entries, Blocks.MOSSY_COBBLESTONE_WALL, List.of(
                     ModItems.COBBLESTONE_BRICKS.get(),
                     ModItems.COBBLESTONE_BRICK_STAIRS.get(),
                     ModItems.COBBLESTONE_BRICK_SLAB.get(),
-                    ModItems.COBBLESTONE_BRICK_WALL.get()
-            ));
-            putBefore(entries, Blocks.SMOOTH_STONE, List.of(
+                    ModItems.COBBLESTONE_BRICK_WALL.get(),
                     ModItems.MOSSY_COBBLESTONE_BRICKS.get(),
                     ModItems.MOSSY_COBBLESTONE_BRICK_STAIRS.get(),
                     ModItems.MOSSY_COBBLESTONE_BRICK_SLAB.get(),
                     ModItems.MOSSY_COBBLESTONE_BRICK_WALL.get()
             ));
-            putBefore(entries, Blocks.SMOOTH_STONE_SLAB, ModItems.SMOOTH_STONE_STAIRS.get());
+            putAfter(entries, Blocks.SMOOTH_STONE, ModItems.SMOOTH_STONE_STAIRS.get());
             putAfter(entries, Blocks.SMOOTH_STONE_SLAB, ModItems.SMOOTH_STONE_WALL.get());
             putAfter(entries, Blocks.STONE_BRICK_WALL, List.of(
                     Blocks.CRACKED_STONE_BRICKS,
@@ -235,12 +235,7 @@ public class CreativeTabHandler {
                     ModItems.POLISHED_DARK_PRISMARINE_STAIRS.get(),
                     ModItems.POLISHED_DARK_PRISMARINE_SLAB.get(),
                     ModItems.POLISHED_DARK_PRISMARINE_WALL.get(),
-                    ModItems.DARK_PRISMARINE_PILLAR.get(),
-                    ModItems.HYDRO_ROCK.get(),
-                    ModItems.HYDRO_ROCK_STAIRS.get(),
-                    ModItems.HYDRO_ROCK_SLAB.get(),
-                    ModItems.HYDRO_ROCK_WALL.get(),
-                    ModItems.PRISMARINE_CRYSTAL_BLOCK.get()
+                    ModItems.DARK_PRISMARINE_PILLAR.get()
             ));
             // Nether Blocks
             putBefore(entries, Blocks.NETHERRACK, List.of(
@@ -279,21 +274,14 @@ public class CreativeTabHandler {
                     ModItems.CRACKED_RED_NETHER_BRICK_STAIRS.get(),
                     ModItems.CRACKED_RED_NETHER_BRICK_SLAB.get(),
                     ModItems.CRACKED_RED_NETHER_BRICK_WALL.get(),
-                    ModItems.CHISELED_RED_NETHER_BRICKS.get(),
-                    ModItems.RED_NETHER_PILLAR.get()
+                    ModItems.CHISELED_RED_NETHER_BRICKS.get()
             ));
             putBefore(entries, Blocks.BASALT, List.of(
                     Blocks.MAGMA_BLOCK,
                     ModItems.MAGMA_BRICKS.get(),
                     ModItems.MAGMA_BRICK_STAIRS.get(),
                     ModItems.MAGMA_BRICK_SLAB.get(),
-                    ModItems.MAGMA_BRICK_WALL.get(),
-                    ModItems.INFERNAL_ROCK.get(),
-                    ModItems.INFERNAL_ROCK_STAIRS.get(),
-                    ModItems.INFERNAL_ROCK_SLAB.get(),
-                    ModItems.INFERNAL_ROCK_WALL.get(),
-                    ModItems.MAGMA_CREAM_BLOCK.get(),
-                    ModItems.BLAZE_POWDER_BLOCK.get()
+                    ModItems.MAGMA_BRICK_WALL.get()
             ));
             putAfter(entries, Blocks.POLISHED_BLACKSTONE_BRICK_WALL, List.of(
                     Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS,
@@ -335,7 +323,10 @@ public class CreativeTabHandler {
             putAfter(entries, Blocks.NETHERITE_BLOCK, List.of(
                     ModItems.SUGAR_CANE_BLOCK.get(),
                     ModItems.SUGAR_BLOCK.get(),
-                    ModItems.GUNPOWDER_BLOCK.get()
+                    ModItems.GUNPOWDER_BLOCK.get(),
+                    ModItems.PRISMARINE_CRYSTAL_BLOCK.get(),
+                    ModItems.MAGMA_CREAM_BLOCK.get(),
+                    ModItems.BLAZE_POWDER_BLOCK.get()
             ));
             // Quartz Blocks
             putAfter(entries, Blocks.QUARTZ_SLAB, ModItems.QUARTZ_BLOCK_WALL.get());
@@ -596,6 +587,7 @@ public class CreativeTabHandler {
             putAfter(entries, Blocks.ANDESITE, ModItems.PERIDOTITE.get());
             putAfter(entries, Blocks.PRISMARINE, ModItems.HYDRO_ROCK.get());
             putAfter(entries, Blocks.SOUL_SOIL, List.of(ModItems.BONE_SAND.get(), ModItems.WITHER_BONE_SAND.get()));
+            putAfter(entries, Blocks.BONE_BLOCK, ModItems.WITHER_BONE_BLOCK.get());
             putAfter(entries, Blocks.SMOOTH_BASALT, ModItems.INFERNAL_ROCK.get());
             putAfter(entries, Blocks.LILY_OF_THE_VALLEY, List.of(ModItems.ROSE.get(), ModItems.PEONY.get(), ModItems.LILAC.get()));
             putAfter(entries, Blocks.ROSE_BUSH, ModItems.SHEARED_ROSE_BUSH.get());
@@ -608,27 +600,9 @@ public class CreativeTabHandler {
         // Functional Blocks
         if (tab == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             putAfter(entries, Blocks.LOOM, ModItems.EASEL.get());
-            putAfter(entries, Blocks.LADDER, List.of(
-                    ModItems.SPRUCE_LADDER.get(),
-                    ModItems.BIRCH_LADDER.get(),
-                    ModItems.JUNGLE_LADDER.get(),
-                    ModItems.ACACIA_LADDER.get(),
-                    ModItems.DARK_OAK_LADDER.get(),
-                    ModItems.MANGROVE_LADDER.get(),
-                    ModItems.CRIMSON_LADDER.get(),
-                    ModItems.WARPED_LADDER.get(),
-                    ModItems.TRELLIS.get()
-            ));
-            putAfter(entries, Blocks.BOOKSHELF, List.of(
-                    ModItems.SPRUCE_BOOKSHELF.get(),
-                    ModItems.BIRCH_BOOKSHELF.get(),
-                    ModItems.JUNGLE_BOOKSHELF.get(),
-                    ModItems.ACACIA_BOOKSHELF.get(),
-                    ModItems.DARK_OAK_BOOKSHELF.get(),
-                    ModItems.MANGROVE_BOOKSHELF.get(),
-                    ModItems.CRIMSON_BOOKSHELF.get(),
-                    ModItems.WARPED_BOOKSHELF.get()
-            ));
+            putAfter(entries, Blocks.LADDER, ModLadderBlock.LADDERS.stream().map(ladder -> (ItemLike) ladder.asItem()).toList());
+            putAfter(entries, Blocks.SCAFFOLDING, ModItems.TRELLIS.get());
+            putAfter(entries, Blocks.BOOKSHELF, ModBookshelfBlock.BOOKSHELVES.stream().map(bookshelf -> (ItemLike) bookshelf.asItem()).toList());
             addUnusedPaintingVariants(entries, List.of(
                     Utils.stackFromPaintingVariant(PaintingVariants.EARTH),
                     Utils.stackFromPaintingVariant(PaintingVariants.WIND),

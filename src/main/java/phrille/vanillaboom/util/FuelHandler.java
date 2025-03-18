@@ -6,7 +6,7 @@
  * See LICENSE for details.
  */
 
-package phrille.vanillaboom.handler;
+package phrille.vanillaboom.util;
 
 import com.google.common.collect.Maps;
 import net.minecraft.world.item.Item;

@@ -6,7 +6,7 @@
  * See LICENSE for details.
  */
 
-package phrille.vanillaboom.handler;
+package phrille.vanillaboom.item;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

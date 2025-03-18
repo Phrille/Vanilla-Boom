@@ -102,7 +102,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.DARK_PRISMARINE_PILLAR.get());
         dropSelf(ModBlocks.END_STONE_PILLAR.get());
         dropSelf(ModBlocks.NETHERRACK_PILLAR.get());
-        dropSelf(ModBlocks.RED_NETHER_PILLAR.get());
         dropSelf(ModBlocks.OBSIDIAN_PILLAR.get());
 
         // Storage Blocks

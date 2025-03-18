@@ -139,7 +139,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DARK_PRISMARINE_PILLAR.get())
                 .add(ModBlocks.END_STONE_PILLAR.get())
                 .add(ModBlocks.NETHERRACK_PILLAR.get())
-                .add(ModBlocks.RED_NETHER_PILLAR.get())
                 .add(ModBlocks.OBSIDIAN_PILLAR.get());
         tag(ModTags.VanillaBoomTags.Blocks.DYE_BLOCKS)
                 .add(ModBlocks.WHITE_DYE_BLOCK.get())

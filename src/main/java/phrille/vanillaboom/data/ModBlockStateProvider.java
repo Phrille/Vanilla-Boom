@@ -101,7 +101,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         pillarBlock(ModBlocks.DARK_PRISMARINE_PILLAR.get());
         pillarBlock(ModBlocks.END_STONE_PILLAR.get());
         pillarBlock(ModBlocks.NETHERRACK_PILLAR.get());
-        pillarBlock(ModBlocks.RED_NETHER_PILLAR.get());
         pillarBlock(ModBlocks.OBSIDIAN_PILLAR.get());
 
         // Storage Blocks

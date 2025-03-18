@@ -89,7 +89,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.DARK_PRISMARINE_PILLAR.get(), "Dark Prismarine Pillar");
         add(ModBlocks.END_STONE_PILLAR.get(), "End Stone Pillar");
         add(ModBlocks.NETHERRACK_PILLAR.get(), "Netherrack Pillar");
-        add(ModBlocks.RED_NETHER_PILLAR.get(), "Red Nether Pillar");
         add(ModBlocks.OBSIDIAN_PILLAR.get(), "Obsidian Pillar");
 
         // Wood Variants
@@ -209,8 +208,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.RED_TERRACOTTA_BRICK_STAIRS.get(), "Red Terracotta Brick Stairs");
         add(ModBlocks.BLACK_TERRACOTTA_BRICK_STAIRS.get(), "Black Terracotta Brick Stairs");
         add(ModBlocks.PERIDOTITE_STAIRS.get(), "Peridotite Stairs");
-        add(ModBlocks.HYDRO_ROCK_STAIRS.get(), "Hydro Rock Stairs");
-        add(ModBlocks.INFERNAL_ROCK_STAIRS.get(), "Infernal Rock Stairs");
         add(ModBlocks.POLISHED_PERIDOTITE_STAIRS.get(), "Polished Peridotite Stairs");
         add(ModBlocks.POLISHED_PRISMARINE_STAIRS.get(), "Polished Prismarine Stairs");
         add(ModBlocks.POLISHED_DARK_PRISMARINE_STAIRS.get(), "Polished Dark Prismarine Stairs");
@@ -242,8 +239,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.RED_TERRACOTTA_BRICK_SLAB.get(), "Red Terracotta Brick Slab");
         add(ModBlocks.BLACK_TERRACOTTA_BRICK_SLAB.get(), "Black Terracotta Brick Slab");
         add(ModBlocks.PERIDOTITE_SLAB.get(), "Peridotite Slab");
-        add(ModBlocks.HYDRO_ROCK_SLAB.get(), "Hydro Rock Slab");
-        add(ModBlocks.INFERNAL_ROCK_SLAB.get(), "Infernal Rock Slab");
         add(ModBlocks.POLISHED_PERIDOTITE_SLAB.get(), "Polished Peridotite Slab");
         add(ModBlocks.POLISHED_PRISMARINE_SLAB.get(), "Polished Prismarine Slab");
         add(ModBlocks.POLISHED_DARK_PRISMARINE_SLAB.get(), "Polished Dark Prismarine Slab");
@@ -275,8 +270,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.RED_TERRACOTTA_BRICK_WALL.get(), "Red Terracotta Brick Wall");
         add(ModBlocks.BLACK_TERRACOTTA_BRICK_WALL.get(), "Black Terracotta Brick Wall");
         add(ModBlocks.PERIDOTITE_WALL.get(), "Peridotite Wall");
-        add(ModBlocks.HYDRO_ROCK_WALL.get(), "Hydro Rock Wall");
-        add(ModBlocks.INFERNAL_ROCK_WALL.get(), "Infernal Rock Wall");
         add(ModBlocks.POLISHED_PERIDOTITE_WALL.get(), "Polished Peridotite Wall");
         add(ModBlocks.POLISHED_PRISMARINE_WALL.get(), "Polished Prismarine Wall");
         add(ModBlocks.POLISHED_DARK_PRISMARINE_WALL.get(), "Polished Dark Prismarine Wall");

@@ -167,7 +167,6 @@ public class ModItems {
     public static final RegistryObject<Item> DARK_PRISMARINE_PILLAR = ITEMS.register("dark_prismarine_pillar", () -> new BlockItem(ModBlocks.DARK_PRISMARINE_PILLAR.get(), new Item.Properties()));
     public static final RegistryObject<Item> END_STONE_PILLAR = ITEMS.register("end_stone_pillar", () -> new BlockItem(ModBlocks.END_STONE_PILLAR.get(), new Item.Properties()));
     public static final RegistryObject<Item> NETHERRACK_PILLAR = ITEMS.register("netherrack_pillar", () -> new BlockItem(ModBlocks.NETHERRACK_PILLAR.get(), new Item.Properties()));
-    public static final RegistryObject<Item> RED_NETHER_PILLAR = ITEMS.register("red_nether_pillar", () -> new BlockItem(ModBlocks.RED_NETHER_PILLAR.get(), new Item.Properties()));
     public static final RegistryObject<Item> OBSIDIAN_PILLAR = ITEMS.register("obsidian_pillar", () -> new BlockItem(ModBlocks.OBSIDIAN_PILLAR.get(), new Item.Properties()));
 
     // Wood Variations
@@ -287,8 +286,6 @@ public class ModItems {
     public static final RegistryObject<Item> RED_TERRACOTTA_BRICK_STAIRS = ITEMS.register("red_terracotta_brick_stairs", () -> new BlockItem(ModBlocks.RED_TERRACOTTA_BRICK_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> BLACK_TERRACOTTA_BRICK_STAIRS = ITEMS.register("black_terracotta_brick_stairs", () -> new BlockItem(ModBlocks.BLACK_TERRACOTTA_BRICK_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> PERIDOTITE_STAIRS = ITEMS.register("peridotite_stairs", () -> new BlockItem(ModBlocks.PERIDOTITE_STAIRS.get(), new Item.Properties()));
-    public static final RegistryObject<Item> HYDRO_ROCK_STAIRS = ITEMS.register("hydro_rock_stairs", () -> new BlockItem(ModBlocks.HYDRO_ROCK_STAIRS.get(), new Item.Properties()));
-    public static final RegistryObject<Item> INFERNAL_ROCK_STAIRS = ITEMS.register("infernal_rock_stairs", () -> new BlockItem(ModBlocks.INFERNAL_ROCK_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_PERIDOTITE_STAIRS = ITEMS.register("polished_peridotite_stairs", () -> new BlockItem(ModBlocks.POLISHED_PERIDOTITE_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_PRISMARINE_STAIRS = ITEMS.register("polished_prismarine_stairs", () -> new BlockItem(ModBlocks.POLISHED_PRISMARINE_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_DARK_PRISMARINE_STAIRS = ITEMS.register("polished_dark_prismarine_stairs", () -> new BlockItem(ModBlocks.POLISHED_DARK_PRISMARINE_STAIRS.get(), new Item.Properties()));
@@ -386,8 +383,6 @@ public class ModItems {
     public static final RegistryObject<Item> RED_TERRACOTTA_BRICK_SLAB = ITEMS.register("red_terracotta_brick_slab", () -> new BlockItem(ModBlocks.RED_TERRACOTTA_BRICK_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> BLACK_TERRACOTTA_BRICK_SLAB = ITEMS.register("black_terracotta_brick_slab", () -> new BlockItem(ModBlocks.BLACK_TERRACOTTA_BRICK_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> PERIDOTITE_SLAB = ITEMS.register("peridotite_slab", () -> new BlockItem(ModBlocks.PERIDOTITE_SLAB.get(), new Item.Properties()));
-    public static final RegistryObject<Item> HYDRO_ROCK_SLAB = ITEMS.register("hydro_rock_slab", () -> new BlockItem(ModBlocks.HYDRO_ROCK_SLAB.get(), new Item.Properties()));
-    public static final RegistryObject<Item> INFERNAL_ROCK_SLAB = ITEMS.register("infernal_rock_slab", () -> new BlockItem(ModBlocks.INFERNAL_ROCK_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_PERIDOTITE_SLAB = ITEMS.register("polished_peridotite_slab", () -> new BlockItem(ModBlocks.POLISHED_PERIDOTITE_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_PRISMARINE_SLAB = ITEMS.register("polished_prismarine_slab", () -> new BlockItem(ModBlocks.POLISHED_PRISMARINE_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_DARK_PRISMARINE_SLAB = ITEMS.register("polished_dark_prismarine_slab", () -> new BlockItem(ModBlocks.POLISHED_DARK_PRISMARINE_SLAB.get(), new Item.Properties()));
@@ -482,8 +477,6 @@ public class ModItems {
     public static final RegistryObject<Item> RED_TERRACOTTA_BRICK_WALL = ITEMS.register("red_terracotta_brick_wall", () -> new BlockItem(ModBlocks.RED_TERRACOTTA_BRICK_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> BLACK_TERRACOTTA_BRICK_WALL = ITEMS.register("black_terracotta_brick_wall", () -> new BlockItem(ModBlocks.BLACK_TERRACOTTA_BRICK_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> PERIDOTITE_WALL = ITEMS.register("peridotite_wall", () -> new BlockItem(ModBlocks.PERIDOTITE_WALL.get(), new Item.Properties()));
-    public static final RegistryObject<Item> HYDRO_ROCK_WALL = ITEMS.register("hydro_rock_wall", () -> new BlockItem(ModBlocks.HYDRO_ROCK_WALL.get(), new Item.Properties()));
-    public static final RegistryObject<Item> INFERNAL_ROCK_WALL = ITEMS.register("infernal_rock_wall", () -> new BlockItem(ModBlocks.INFERNAL_ROCK_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_PERIDOTITE_WALL = ITEMS.register("polished_peridotite_wall", () -> new BlockItem(ModBlocks.POLISHED_PERIDOTITE_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_PRISMARINE_WALL = ITEMS.register("polished_prismarine_wall", () -> new BlockItem(ModBlocks.POLISHED_PRISMARINE_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_DARK_PRISMARINE_WALL = ITEMS.register("polished_dark_prismarine_wall", () -> new BlockItem(ModBlocks.POLISHED_DARK_PRISMARINE_WALL.get(), new Item.Properties()));

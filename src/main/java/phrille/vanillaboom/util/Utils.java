@@ -34,7 +34,6 @@ import phrille.vanillaboom.block.ModCandleCakeBlock;
 import phrille.vanillaboom.block.crop.ITrellisCrop;
 import phrille.vanillaboom.block.crop.ShearedTallFlowerBlock;
 import phrille.vanillaboom.block.crop.TrellisBlock;
-import phrille.vanillaboom.handler.FuelHandler;
 import phrille.vanillaboom.item.ModItems;
 
 import javax.annotation.Nullable;

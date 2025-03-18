@@ -131,7 +131,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModItems.DARK_PRISMARINE_PILLAR.get());
         blockItem(ModItems.END_STONE_PILLAR.get());
         blockItem(ModItems.NETHERRACK_PILLAR.get());
-        blockItem(ModItems.RED_NETHER_PILLAR.get());
         blockItem(ModItems.OBSIDIAN_PILLAR.get());
 
         // Storage Blocks
