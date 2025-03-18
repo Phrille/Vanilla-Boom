@@ -84,14 +84,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_GREEN_DYE)
                 .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_RED_DYE)
                 .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BLACK_DYE);
-        tag(ModTags.ForgeTags.Blocks.BOOKSHELVES)
-                .addTags(ModTags.VanillaBoomTags.Blocks.BOOKSHELVES);
         tag(ModTags.ForgeTags.Blocks.CAKES)
                 .add(Blocks.CAKE)
                 .add(ModBlocks.CHOCOLATE_CAKE.get())
                 .add(ModBlocks.BERRY_CAKE.get())
                 .add(ModBlocks.CARROT_CAKE.get());
-        tag(ModTags.ForgeTags.Blocks.LADDERS).addTags(ModTags.VanillaBoomTags.Blocks.LADDERS);
 
         /*
          * VanillaBoom tags
@@ -136,15 +133,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.NETHERRACK_PILLAR.get())
                 .add(ModBlocks.RED_NETHER_PILLAR.get())
                 .add(ModBlocks.OBSIDIAN_PILLAR.get());
-        tag(ModTags.VanillaBoomTags.Blocks.BOOKSHELVES)
-                .add(ModBlocks.SPRUCE_BOOKSHELF.get())
-                .add(ModBlocks.BIRCH_BOOKSHELF.get())
-                .add(ModBlocks.JUNGLE_BOOKSHELF.get())
-                .add(ModBlocks.ACACIA_BOOKSHELF.get())
-                .add(ModBlocks.DARK_OAK_BOOKSHELF.get())
-                .add(ModBlocks.MANGROVE_BOOKSHELF.get())
-                .add(ModBlocks.CRIMSON_BOOKSHELF.get())
-                .add(ModBlocks.WARPED_BOOKSHELF.get());
         tag(ModTags.VanillaBoomTags.Blocks.DYE_BLOCKS)
                 .add(ModBlocks.WHITE_DYE_BLOCK.get())
                 .add(ModBlocks.ORANGE_DYE_BLOCK.get())
@@ -162,15 +150,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.GREEN_DYE_BLOCK.get())
                 .add(ModBlocks.RED_DYE_BLOCK.get())
                 .add(ModBlocks.BLACK_DYE_BLOCK.get());
-        tag(ModTags.VanillaBoomTags.Blocks.LADDERS)
-                .add(ModBlocks.SPRUCE_LADDER.get())
-                .add(ModBlocks.BIRCH_LADDER.get())
-                .add(ModBlocks.JUNGLE_LADDER.get())
-                .add(ModBlocks.ACACIA_LADDER.get())
-                .add(ModBlocks.DARK_OAK_LADDER.get())
-                .add(ModBlocks.MANGROVE_LADDER.get())
-                .add(ModBlocks.CRIMSON_LADDER.get())
-                .add(ModBlocks.WARPED_LADDER.get());
 
         /*
          * Mineable and tool types tags
@@ -235,7 +214,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         Utils.CANDLES.forEach(candle -> tag(BlockTags.CANDLE_CAKES).add(((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).byCandle((CandleBlock) candle)));
         Utils.CANDLES.forEach(candle -> tag(BlockTags.CANDLE_CAKES).add(((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).byCandle((CandleBlock) candle)));
         Utils.CANDLES.forEach(candle -> tag(BlockTags.CANDLE_CAKES).add(((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).byCandle((CandleBlock) candle)));
-        tag(BlockTags.CLIMBABLE).addTags(ModTags.VanillaBoomTags.Blocks.LADDERS);
         tag(BlockTags.CROPS)
                 .add(ModBlocks.TOMATO.get())
                 .add(ModBlocks.CHILI.get())
@@ -289,7 +267,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.WITHER_BONE_SAND.get());
         tag(BlockTags.STONE_ORE_REPLACEABLES).add(ModBlocks.PERIDOTITE.get());
 
-        //Stairs
+        // Bookshelves
+        ModBookshelfBlock.BOOKSHELVES.forEach(bookshelf -> tag(ModTags.VanillaBoomTags.Blocks.BOOKSHELVES).add(bookshelf));
+        tag(BlockTags.CLIMBABLE).addTags(ModTags.VanillaBoomTags.Blocks.LADDERS);
+        tag(ModTags.ForgeTags.Blocks.LADDERS).addTags(ModTags.VanillaBoomTags.Blocks.LADDERS);
+        ModLadderBlock.LADDERS.forEach(ladder -> tag(ModTags.VanillaBoomTags.Blocks.LADDERS).add(ladder));
+        tag(ModTags.ForgeTags.Blocks.BOOKSHELVES).addTags(ModTags.VanillaBoomTags.Blocks.BOOKSHELVES);
+
+        // Stairs
         ModStairBlock.STAIRS.forEach(stair -> {
             Material material = stair.defaultBlockState().getMaterial();
 
@@ -302,7 +287,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.STAIRS).addTags(ModTags.VanillaBoomTags.Blocks.STAIRS);
         tag(BlockTags.WOODEN_STAIRS).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_STAIRS);
 
-        //Slabs
+        // Slabs
         ModSlabBlock.SLABS.forEach(slab -> {
             Material material = slab.defaultBlockState().getMaterial();
 
@@ -315,11 +300,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.SLABS).addTags(ModTags.VanillaBoomTags.Blocks.SLABS);
         tag(BlockTags.WOODEN_SLABS).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_SLABS);
 
-        //Walls
+        // Walls
         ModWallBlock.WALLS.forEach(wall -> tag(ModTags.VanillaBoomTags.Blocks.WALLS).add(wall));
         tag(BlockTags.WALLS).addTags(ModTags.VanillaBoomTags.Blocks.WALLS);
 
-        //Fences
+        // Fences
         ModFenceBlock.FENCES.forEach(fence -> {
             Material material = fence.defaultBlockState().getMaterial();
 
@@ -332,7 +317,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.FENCES).addTags(ModTags.VanillaBoomTags.Blocks.FENCES);
         tag(BlockTags.WOODEN_FENCES).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCES);
 
-        //Fence Gates
+        // Fence Gates
         ModFenceGateBlock.FENCE_GATES.forEach(fenceGate -> {
             Material material = fenceGate.defaultBlockState().getMaterial();
 

@@ -18,7 +18,10 @@ import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.block.*;
+import phrille.vanillaboom.block.EaselBlock;
+import phrille.vanillaboom.block.ModBlocks;
+import phrille.vanillaboom.block.ModCakeBlock;
+import phrille.vanillaboom.block.RainDetectorBlock;
 import phrille.vanillaboom.block.crop.RicePlantBlock;
 import phrille.vanillaboom.block.crop.TrellisBlock;
 import phrille.vanillaboom.block.crop.TrellisCropBlock;
@@ -100,24 +103,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         pillarBlock(ModBlocks.NETHERRACK_PILLAR.get());
         pillarBlock(ModBlocks.RED_NETHER_PILLAR.get());
         pillarBlock(ModBlocks.OBSIDIAN_PILLAR.get());
-
-        // Wood Variations
-        bookshelfBlock(ModBlocks.SPRUCE_BOOKSHELF.get(), Blocks.SPRUCE_PLANKS);
-        bookshelfBlock(ModBlocks.BIRCH_BOOKSHELF.get(), Blocks.BIRCH_PLANKS);
-        bookshelfBlock(ModBlocks.JUNGLE_BOOKSHELF.get(), Blocks.JUNGLE_PLANKS);
-        bookshelfBlock(ModBlocks.ACACIA_BOOKSHELF.get(), Blocks.ACACIA_PLANKS);
-        bookshelfBlock(ModBlocks.DARK_OAK_BOOKSHELF.get(), Blocks.DARK_OAK_PLANKS);
-        bookshelfBlock(ModBlocks.MANGROVE_BOOKSHELF.get(), Blocks.MANGROVE_PLANKS);
-        bookshelfBlock(ModBlocks.CRIMSON_BOOKSHELF.get(), Blocks.CRIMSON_PLANKS);
-        bookshelfBlock(ModBlocks.WARPED_BOOKSHELF.get(), Blocks.WARPED_PLANKS);
-        ladderBlock(ModBlocks.SPRUCE_LADDER.get());
-        ladderBlock(ModBlocks.BIRCH_LADDER.get());
-        ladderBlock(ModBlocks.JUNGLE_LADDER.get());
-        ladderBlock(ModBlocks.ACACIA_LADDER.get());
-        ladderBlock(ModBlocks.DARK_OAK_LADDER.get());
-        ladderBlock(ModBlocks.MANGROVE_LADDER.get());
-        ladderBlock(ModBlocks.CRIMSON_LADDER.get());
-        ladderBlock(ModBlocks.WARPED_LADDER.get());
 
         // Storage Blocks
         simpleBlock(ModBlocks.CHARCOAL_BLOCK.get());
@@ -204,6 +189,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         cakeBlock(ModBlocks.BERRY_CAKE.get());
 
         // Variant Blocks
+        ModBookshelfBlock.BOOKSHELVES.forEach(this::bookshelfBlock);
+        ModLadderBlock.LADDERS.forEach(this::ladderBlock);
         ModStairBlock.STAIRS.forEach(stair -> {
             if (stair == ModBlocks.CUT_SANDSTONE_STAIRS.get()) {
                 stairsBlock(stair, ModDataGenerator.extend(blockTexture(Blocks.SANDSTONE), "_top"));
@@ -232,8 +219,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ));
     }
 
-    public void bookshelfBlock(Block bookshelf, Block plank) {
-        simpleBlock(bookshelf, models().cubeColumn(name(bookshelf), blockTexture(bookshelf), blockTexture(plank)));
+    public void bookshelfBlock(ModBookshelfBlock bookshelf) {
+        simpleBlock(bookshelf, models().cubeColumn(name(bookshelf), blockTexture(bookshelf), blockTexture(bookshelf.getParent())));
     }
 
     public void stairsBlock(ModStairBlock stair) {
@@ -298,8 +285,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT));
     }
 
-    public void ladderBlock(Block ladder) {
-        ladderBlock((LadderBlock) ladder, models()
+    public void ladderBlock(ModLadderBlock ladder) {
+        ladderBlock(ladder, models()
                 .withExistingParent(name(ladder), ModelProvider.BLOCK_FOLDER + "/ladder")
                 .texture("texture", blockTexture(ladder))
                 .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT));

@@ -105,24 +105,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.RED_NETHER_PILLAR.get());
         dropSelf(ModBlocks.OBSIDIAN_PILLAR.get());
 
-        // Wood Variations
-        add(ModBlocks.SPRUCE_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.BIRCH_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.JUNGLE_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.ACACIA_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.DARK_OAK_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.MANGROVE_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.CRIMSON_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.WARPED_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        dropSelf(ModBlocks.SPRUCE_LADDER.get());
-        dropSelf(ModBlocks.BIRCH_LADDER.get());
-        dropSelf(ModBlocks.JUNGLE_LADDER.get());
-        dropSelf(ModBlocks.ACACIA_LADDER.get());
-        dropSelf(ModBlocks.DARK_OAK_LADDER.get());
-        dropSelf(ModBlocks.MANGROVE_LADDER.get());
-        dropSelf(ModBlocks.CRIMSON_LADDER.get());
-        dropSelf(ModBlocks.WARPED_LADDER.get());
-
         // Storage Blocks
         dropSelf(ModBlocks.CHARCOAL_BLOCK.get());
         dropSelf(ModBlocks.SUGAR_BLOCK.get());
@@ -215,6 +197,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         Utils.CANDLES.forEach(candle -> add(((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).byCandle((CandleBlock) candle), createCandleCakeDrops(candle)));
         Utils.CANDLES.forEach(candle -> add(((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).byCandle((CandleBlock) candle), createCandleCakeDrops(candle)));
 
+        // Variants
+        ModBookshelfBlock.BOOKSHELVES.forEach(bookshelf -> add(bookshelf, block -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F))));
+        ModLadderBlock.LADDERS.forEach(this::dropSelf);
         ModStairBlock.STAIRS.forEach(this::dropSelf);
         ModSlabBlock.SLABS.forEach(this::dropSelf);
         ModWallBlock.WALLS.forEach(this::dropSelf);

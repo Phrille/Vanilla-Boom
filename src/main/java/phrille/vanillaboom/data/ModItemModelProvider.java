@@ -134,24 +134,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModItems.RED_NETHER_PILLAR.get());
         blockItem(ModItems.OBSIDIAN_PILLAR.get());
 
-        // Wood Variations
-        blockItem(ModItems.SPRUCE_BOOKSHELF.get());
-        blockItem(ModItems.BIRCH_BOOKSHELF.get());
-        blockItem(ModItems.JUNGLE_BOOKSHELF.get());
-        blockItem(ModItems.ACACIA_BOOKSHELF.get());
-        blockItem(ModItems.DARK_OAK_BOOKSHELF.get());
-        blockItem(ModItems.MANGROVE_BOOKSHELF.get());
-        blockItem(ModItems.CRIMSON_BOOKSHELF.get());
-        blockItem(ModItems.WARPED_BOOKSHELF.get());
-        item(ModBlocks.SPRUCE_LADDER.get());
-        item(ModBlocks.BIRCH_LADDER.get());
-        item(ModBlocks.JUNGLE_LADDER.get());
-        item(ModBlocks.ACACIA_LADDER.get());
-        item(ModBlocks.DARK_OAK_LADDER.get());
-        item(ModBlocks.MANGROVE_LADDER.get());
-        item(ModBlocks.CRIMSON_LADDER.get());
-        item(ModBlocks.WARPED_LADDER.get());
-
         // Storage Blocks
         blockItem(ModItems.CHARCOAL_BLOCK.get());
         blockItem(ModItems.SUGAR_BLOCK.get());
@@ -232,6 +214,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         item(ModBlocks.WITHERED_VINE.get());
 
         // Variant Blocks
+        ModBookshelfBlock.BOOKSHELVES.forEach(bookshelf -> blockItem(bookshelf.asItem()));
+        ModLadderBlock.LADDERS.forEach(this::item);
         ModStairBlock.STAIRS.forEach(stair -> blockItem(stair.asItem()));
         ModSlabBlock.SLABS.forEach(slab -> blockItem(slab.asItem()));
         ModWallBlock.WALLS.forEach(this::inventoryBlockItem);

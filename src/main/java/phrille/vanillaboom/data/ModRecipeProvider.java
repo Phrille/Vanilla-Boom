@@ -98,22 +98,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         pillarBlock(finishedRecipe, ModItems.RED_NETHER_PILLAR.get(), Blocks.RED_NETHER_BRICKS);
         pillarBlock(finishedRecipe, ModItems.OBSIDIAN_PILLAR.get(), Blocks.OBSIDIAN);
         pillarBlock(finishedRecipe, ModItems.OBSIDIAN_PILLAR.get(), ModItems.OBSIDIAN_BRICKS.get());
-        bookshelfShaped(finishedRecipe, ModItems.SPRUCE_BOOKSHELF.get(), Blocks.SPRUCE_PLANKS);
-        bookshelfShaped(finishedRecipe, ModItems.BIRCH_BOOKSHELF.get(), Blocks.BIRCH_PLANKS);
-        bookshelfShaped(finishedRecipe, ModItems.JUNGLE_BOOKSHELF.get(), Blocks.JUNGLE_PLANKS);
-        bookshelfShaped(finishedRecipe, ModItems.ACACIA_BOOKSHELF.get(), Blocks.ACACIA_PLANKS);
-        bookshelfShaped(finishedRecipe, ModItems.DARK_OAK_BOOKSHELF.get(), Blocks.DARK_OAK_PLANKS);
-        bookshelfShaped(finishedRecipe, ModItems.MANGROVE_BOOKSHELF.get(), Blocks.MANGROVE_PLANKS);
-        bookshelfShaped(finishedRecipe, ModItems.CRIMSON_BOOKSHELF.get(), Blocks.CRIMSON_PLANKS);
-        bookshelfShaped(finishedRecipe, ModItems.WARPED_BOOKSHELF.get(), Blocks.WARPED_PLANKS);
-        ladderShaped(finishedRecipe, ModItems.SPRUCE_LADDER.get(), Blocks.SPRUCE_SLAB);
-        ladderShaped(finishedRecipe, ModItems.BIRCH_LADDER.get(), Blocks.BIRCH_SLAB);
-        ladderShaped(finishedRecipe, ModItems.JUNGLE_LADDER.get(), Blocks.JUNGLE_SLAB);
-        ladderShaped(finishedRecipe, ModItems.ACACIA_LADDER.get(), Blocks.ACACIA_SLAB);
-        ladderShaped(finishedRecipe, ModItems.DARK_OAK_LADDER.get(), Blocks.DARK_OAK_SLAB);
-        ladderShaped(finishedRecipe, ModItems.MANGROVE_LADDER.get(), Blocks.MANGROVE_SLAB);
-        ladderShaped(finishedRecipe, ModItems.CRIMSON_LADDER.get(), Blocks.CRIMSON_SLAB);
-        ladderShaped(finishedRecipe, ModItems.WARPED_LADDER.get(), Blocks.WARPED_SLAB);
         storageBlock(finishedRecipe, ModItems.CHARCOAL_BLOCK.get(), Items.CHARCOAL);
         storageBlock(finishedRecipe, ModItems.SUGAR_BLOCK.get(), Items.SUGAR);
         storageBlock(finishedRecipe, ModItems.SUGAR_CANE_BLOCK.get(), Items.SUGAR_CANE);
@@ -180,6 +164,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("x x")
                 .unlockedBy(getHasName(Items.BAMBOO), has(Items.BAMBOO))
                 .save(finishedRecipe);
+        ModBookshelfBlock.BOOKSHELVES.forEach(bookshelf -> bookshelfShaped(finishedRecipe, bookshelf));
+        ModLadderBlock.LADDERS.forEach(ladder -> ladderShaped(finishedRecipe, ladder));
         ModStairBlock.STAIRS.forEach(stair -> stair(finishedRecipe, stair));
         ModSlabBlock.SLABS.forEach(slab -> slab(finishedRecipe, slab));
         ModWallBlock.WALLS.forEach(wall -> wall(finishedRecipe, wall));
@@ -564,27 +550,27 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(finishedRecipe, getConversionRecipeResourceLocation(result, ingredient));
     }
 
-    public void bookshelfShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike planks) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
-                .define('x', planks)
+    public void bookshelfShaped(Consumer<FinishedRecipe> finishedRecipe, ModBookshelfBlock bookshelf) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, bookshelf)
+                .define('x', bookshelf.getParent())
                 .define('y', Items.BOOK)
                 .pattern("xxx")
                 .pattern("yyy")
                 .pattern("xxx")
                 .unlockedBy(getHasName(Items.BOOK), has(Items.BOOK))
-                .unlockedBy(getHasName(planks), has(planks))
+                .unlockedBy(getHasName(bookshelf.getParent()), has(bookshelf.getParent()))
                 .save(finishedRecipe);
     }
 
-    public void ladderShaped(Consumer<FinishedRecipe> finishedRecipe, ItemLike result, ItemLike slab) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result, 3)
-                .define('x', slab)
+    public void ladderShaped(Consumer<FinishedRecipe> finishedRecipe, ModLadderBlock ladder) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ladder, 3)
+                .define('x', ladder.getCraftingIngredient())
                 .define('y', Tags.Items.RODS_WOODEN)
                 .pattern("y y")
                 .pattern("yxy")
                 .pattern("y y")
                 .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
-                .unlockedBy(getHasName(slab), has(slab))
+                .unlockedBy(getHasName(ladder.getCraftingIngredient()), has(ladder.getCraftingIngredient()))
                 .save(finishedRecipe);
     }
 
