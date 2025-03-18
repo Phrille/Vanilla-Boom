@@ -29,6 +29,7 @@ import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.loot.ModGlobalLootModifiers;
 import phrille.vanillaboom.network.ModNetwork;
 import phrille.vanillaboom.util.ModDispenserBehavior;
+import phrille.vanillaboom.util.ModStats;
 import phrille.vanillaboom.util.Utils;
 
 @Mod(VanillaBoom.MOD_ID)
@@ -59,6 +60,7 @@ public class VanillaBoom {
 
     public void setup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
+            ModStats.register();
             Utils.addCompostMaterials();
             Utils.registerBurnTimes();
             Utils.registerFlowerPots();
