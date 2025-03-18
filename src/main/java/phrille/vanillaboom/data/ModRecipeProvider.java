@@ -183,9 +183,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("x x")
                 .unlockedBy(getHasName(Items.BAMBOO), has(Items.BAMBOO))
                 .save(finishedRecipe);
-        ModDataGenerator.STAIRS.forEach(pair -> stair(finishedRecipe, (ModStairBlock) pair.getFirst()));
-        ModDataGenerator.SLABS.forEach(pair -> slab(finishedRecipe, (ModSlabBlock) pair.getFirst()));
-        ModDataGenerator.WALLS.forEach(block -> wall(finishedRecipe, (ModWallBlock) block));
+        ModStairBlock.STAIRS.forEach(stair -> stair(finishedRecipe, stair));
+        ModSlabBlock.SLABS.forEach(slab -> slab(finishedRecipe, slab));
+        ModWallBlock.WALLS.forEach(wall -> wall(finishedRecipe, wall));
         ModDataGenerator.FENCES.forEach(pair -> fence(finishedRecipe, (FenceBlock) pair.getFirst(), pair.getSecond()));
         ModDataGenerator.FENCE_GATES.forEach(pair -> fenceGate(finishedRecipe, (FenceGateBlock) pair.getFirst(), pair.getSecond()));
         variants(finishedRecipe, ModItems.COBBLESTONE_BRICK_STAIRS.get(), ModItems.COBBLESTONE_BRICK_SLAB.get(), ModItems.COBBLESTONE_BRICK_WALL.get(), Blocks.COBBLESTONE);
@@ -214,15 +214,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         variants(finishedRecipe, ModItems.POLISHED_DARK_PRISMARINE_STAIRS.get(), ModItems.POLISHED_DARK_PRISMARINE_SLAB.get(), ModItems.POLISHED_DARK_PRISMARINE_WALL.get(), Blocks.DARK_PRISMARINE);
         variants(finishedRecipe, ModItems.POLISHED_END_STONE_STAIRS.get(), ModItems.POLISHED_END_STONE_SLAB.get(), ModItems.POLISHED_END_STONE_WALL.get(), List.of(Blocks.END_STONE, Blocks.END_STONE_BRICKS));
         variants(finishedRecipe, ModItems.POLISHED_NETHERRACK_STAIRS.get(), ModItems.POLISHED_NETHERRACK_SLAB.get(), ModItems.POLISHED_NETHERRACK_WALL.get(), Blocks.NETHERRACK);
-        variants(finishedRecipe, ModItems.CHISELED_RED_NETHER_BRICK_STAIRS.get(), ModItems.CHISELED_RED_NETHER_BRICK_SLAB.get(), ModItems.CHISELED_RED_NETHER_BRICK_WALL.get(), Blocks.RED_NETHER_BRICKS);
-        variants(finishedRecipe, ModItems.CHISELED_PURPUR_BLOCK_STAIRS.get(), ModItems.CHISELED_PURPUR_BLOCK_SLAB.get(), ModItems.CHISELED_PURPUR_BLOCK_WALL.get(), Blocks.PURPUR_BLOCK);
-        variants(finishedRecipe, ModItems.CHISELED_OBSIDIAN_STAIRS.get(), ModItems.CHISELED_OBSIDIAN_SLAB.get(), ModItems.CHISELED_OBSIDIAN_WALL.get(), List.of(Blocks.OBSIDIAN, ModItems.OBSIDIAN_BRICKS.get()));
-        variants(finishedRecipe, ModItems.CHISELED_STONE_BRICK_STAIRS.get(), ModItems.CHISELED_STONE_BRICK_SLAB.get(), ModItems.CHISELED_STONE_BRICK_WALL.get(), List.of(Blocks.STONE, Blocks.STONE_BRICKS));
-        variants(finishedRecipe, ModItems.CHISELED_SANDSTONE_STAIRS.get(), ModItems.CHISELED_SANDSTONE_SLAB.get(), ModItems.CHISELED_SANDSTONE_WALL.get(), Blocks.SANDSTONE);
-        variants(finishedRecipe, ModItems.CHISELED_RED_SANDSTONE_STAIRS.get(), ModItems.CHISELED_RED_SANDSTONE_SLAB.get(), ModItems.CHISELED_RED_SANDSTONE_WALL.get(), Blocks.RED_SANDSTONE);
-        variants(finishedRecipe, ModItems.CHISELED_NETHER_BRICK_STAIRS.get(), ModItems.CHISELED_NETHER_BRICK_SLAB.get(), ModItems.CHISELED_NETHER_BRICK_WALL.get(), Blocks.NETHER_BRICKS);
-        variants(finishedRecipe, ModItems.CHISELED_POLISHED_BLACKSTONE_STAIRS.get(), ModItems.CHISELED_POLISHED_BLACKSTONE_SLAB.get(), ModItems.CHISELED_POLISHED_BLACKSTONE_WALL.get(), List.of(Blocks.BLACKSTONE, Blocks.POLISHED_BLACKSTONE));
-        variants(finishedRecipe, ModItems.CHISELED_QUARTZ_BLOCK_STAIRS.get(), ModItems.CHISELED_QUARTZ_BLOCK_SLAB.get(), ModItems.CHISELED_QUARTZ_BLOCK_WALL.get(), Blocks.QUARTZ_BLOCK);
         variants(finishedRecipe, ModItems.QUARTZ_BRICK_STAIRS.get(), ModItems.QUARTZ_BRICK_SLAB.get(), ModItems.QUARTZ_BRICK_WALL.get(), Blocks.QUARTZ_BLOCK);
         variants(finishedRecipe, ModItems.CUT_SANDSTONE_STAIRS.get(), ModItems.CUT_SANDSTONE_WALL.get(), Blocks.SANDSTONE);
         variants(finishedRecipe, ModItems.CUT_RED_SANDSTONE_STAIRS.get(), ModItems.CUT_RED_SANDSTONE_WALL.get(), Blocks.RED_SANDSTONE);

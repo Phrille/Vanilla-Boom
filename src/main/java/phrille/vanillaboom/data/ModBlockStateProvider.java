@@ -201,21 +201,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
         cakeBlock(ModBlocks.BERRY_CAKE.get());
 
         // Variant Blocks
-        ModDataGenerator.STAIRS.forEach(pair -> {
-            if (pair.getSecond().isEmpty()) {
-                stairsBlock(pair.getFirst());
+        ModStairBlock.STAIRS.forEach(stair -> {
+            if (stair == ModBlocks.CUT_SANDSTONE_STAIRS.get()) {
+                stairsBlock(stair, ModDataGenerator.extend(blockTexture(Blocks.SANDSTONE), "_top"));
+            } else if (stair == ModBlocks.CUT_RED_SANDSTONE_STAIRS.get()) {
+                stairsBlock(stair, ModDataGenerator.extend(blockTexture(Blocks.RED_SANDSTONE), "_top"));
             } else {
-                stairsBlock(pair.getFirst(), pair.getSecond().get());
+                stairsBlock(stair);
             }
         });
-        ModDataGenerator.SLABS.forEach(pair -> {
-            if (pair.getSecond().isEmpty()) {
-                slabBlock(pair.getFirst());
-            } else {
-                slabBlock(pair.getFirst(), pair.getSecond().get());
-            }
-        });
-        ModDataGenerator.WALLS.forEach(this::wallBlock);
+        ModSlabBlock.SLABS.forEach(this::slabBlock);
+        ModWallBlock.WALLS.forEach(this::wallBlock);
         ModDataGenerator.FENCES.forEach(pair -> fenceBlock(pair.getFirst(), pair.getSecond()));
         ModDataGenerator.FENCE_GATES.forEach(pair -> fenceGateBlock(pair.getFirst(), pair.getSecond()));
     }
@@ -237,28 +233,19 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(bookshelf, models().cubeColumn(name(bookshelf), blockTexture(bookshelf), blockTexture(plank)));
     }
 
-    public void stairsBlock(Block block) {
-        ModStairBlock stair = (ModStairBlock) block;
+    public void stairsBlock(ModStairBlock stair) {
         stairsBlock(stair, variantTexture(stair.getParent()));
     }
 
-    public void stairsBlock(Block block, ResourceLocation end) {
-        ModStairBlock stair = (ModStairBlock) block;
+    public void stairsBlock(ModStairBlock stair, ResourceLocation end) {
         stairsBlock(stair, variantTexture(stair.getParent()), end, end);
     }
 
-    public void slabBlock(Block block) {
-        ModSlabBlock slab = (ModSlabBlock) block;
+    public void slabBlock(ModSlabBlock slab) {
         slabBlock(slab, blockTexture(slab.getParent()), variantTexture(slab.getParent()));
     }
 
-    public void slabBlock(Block block, ResourceLocation end) {
-        ModSlabBlock slab = (ModSlabBlock) block;
-        slabBlock(slab, blockTexture(slab.getParent()), variantTexture(slab.getParent()), end, end);
-    }
-
-    public void wallBlock(Block block) {
-        ModWallBlock wall = (ModWallBlock) block;
+    public void wallBlock(ModWallBlock wall) {
         wallBlock(wall, variantTexture(wall.getParent()));
         models().withExistingParent(name(wall) + "_inventory", ModelProvider.BLOCK_FOLDER + "/wall_inventory")
                 .texture("wall", variantTexture(wall.getParent()));

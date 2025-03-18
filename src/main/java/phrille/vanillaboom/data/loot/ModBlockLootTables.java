@@ -28,8 +28,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
-import phrille.vanillaboom.block.ModBlocks;
-import phrille.vanillaboom.block.ModCakeBlock;
+import phrille.vanillaboom.block.*;
 import phrille.vanillaboom.block.crop.ITrellisCrop;
 import phrille.vanillaboom.block.crop.ShearedTallFlowerBlock;
 import phrille.vanillaboom.block.crop.TrellisBlock;
@@ -204,7 +203,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         //TODO: Fix loot table
         add(ModBlocks.RICE.get(), createCropDrops(ModBlocks.RICE.get(), ModItems.RICE_BOWL.get(), ModItems.RICE_BOWL.get(), riceCondition));
         add(ModBlocks.WITHERED_VINE.get(), BlockLootSubProvider::createShearsOnlyDrop);
-        dropSelf(ModBlocks.WITHERED_BAMBOO.get());
 
         // Cakes
         add(ModBlocks.CHOCOLATE_CAKE.get(), noDrop());
@@ -214,9 +212,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         Utils.CANDLES.forEach(candle -> add(((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).byCandle((CandleBlock) candle), createCandleCakeDrops(candle)));
         Utils.CANDLES.forEach(candle -> add(((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).byCandle((CandleBlock) candle), createCandleCakeDrops(candle)));
 
-        ModDataGenerator.STAIRS.forEach(pair -> dropSelf(pair.getFirst()));
-        ModDataGenerator.SLABS.forEach(pair -> dropSelf(pair.getFirst()));
-        ModDataGenerator.WALLS.forEach(this::dropSelf);
+        ModStairBlock.STAIRS.forEach(this::dropSelf);
+        ModSlabBlock.SLABS.forEach(this::dropSelf);
+        ModWallBlock.WALLS.forEach(this::dropSelf);
         ModDataGenerator.FENCES.forEach(pair -> dropSelf(pair.getFirst()));
         ModDataGenerator.FENCE_GATES.forEach(pair -> dropSelf(pair.getFirst()));
     }

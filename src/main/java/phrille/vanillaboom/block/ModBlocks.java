@@ -178,7 +178,6 @@ public class ModBlocks {
     public static final RegistryObject<Block> CHILI = BLOCKS.register("chili", () -> new ChiliBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
     public static final RegistryObject<Block> RICE = BLOCKS.register("rice", () -> new RicePlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
     public static final RegistryObject<Block> WITHERED_VINE = BLOCKS.register("withered_vine", WitheredVineBlock::new);
-    public static final RegistryObject<Block> WITHERED_BAMBOO = BLOCKS.register("withered_bamboo", WitheredVineBlock::new);
 
     // Cakes
     public static final RegistryObject<Block> CHOCOLATE_CAKE = BLOCKS.register("chocolate_cake", ModCakeBlock::new);
@@ -268,26 +267,17 @@ public class ModBlocks {
     public static final RegistryObject<Block> POLISHED_END_STONE_STAIRS = BLOCKS.register("polished_end_stone_stairs", () -> new ModStairBlock(() -> POLISHED_END_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.END_STONE)));
     public static final RegistryObject<Block> POLISHED_NETHERRACK_STAIRS = BLOCKS.register("polished_netherrack_stairs", () -> new ModStairBlock(() -> POLISHED_NETHERRACK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.NETHERRACK)));
     public static final RegistryObject<Block> CRACKED_RED_NETHER_BRICK_STAIRS = BLOCKS.register("cracked_red_nether_brick_stairs", () -> new ModStairBlock(() -> CRACKED_RED_NETHER_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)));
-    public static final RegistryObject<Block> CHISELED_RED_NETHER_BRICK_STAIRS = BLOCKS.register("chiseled_red_nether_brick_stairs", () -> new ModStairBlock(() -> CHISELED_RED_NETHER_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)));
-    public static final RegistryObject<Block> CHISELED_PURPUR_BLOCK_STAIRS = BLOCKS.register("chiseled_purpur_block_stairs", () -> new ModStairBlock(() -> CHISELED_PURPUR_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)));
-    public static final RegistryObject<Block> CHISELED_OBSIDIAN_STAIRS = BLOCKS.register("chiseled_obsidian_stairs", () -> new ModStairBlock(() -> CHISELED_OBSIDIAN.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
 
     // Vanilla Stairs
     public static final RegistryObject<Block> CRACKED_STONE_BRICK_STAIRS = BLOCKS.register("cracked_stone_brick_stairs", () -> new ModStairBlock(Blocks.CRACKED_STONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_STONE_BRICK_STAIRS = BLOCKS.register("chiseled_stone_brick_stairs", () -> new ModStairBlock(Blocks.CHISELED_STONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_SANDSTONE_STAIRS = BLOCKS.register("chiseled_sandstone_stairs", () -> new ModStairBlock(Blocks.CHISELED_SANDSTONE::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_RED_SANDSTONE_STAIRS = BLOCKS.register("chiseled_red_sandstone_stairs", () -> new ModStairBlock(Blocks.CHISELED_RED_SANDSTONE::defaultBlockState));
     public static final RegistryObject<Block> IRON_BLOCK_STAIRS = BLOCKS.register("iron_block_stairs", () -> new ModStairBlock(Blocks.IRON_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> GOLD_BLOCK_STAIRS = BLOCKS.register("gold_block_stairs", () -> new ModStairBlock(Blocks.GOLD_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> OBSIDIAN_STAIRS = BLOCKS.register("obsidian_stairs", () -> new ModStairBlock(Blocks.OBSIDIAN::defaultBlockState));
     public static final RegistryObject<Block> BEDROCK_STAIRS = BLOCKS.register("bedrock_stairs", () -> new ModStairBlock(Blocks.BEDROCK::defaultBlockState));
     public static final RegistryObject<Block> NETHERRACK_STAIRS = BLOCKS.register("netherrack_stairs", () -> new ModStairBlock(Blocks.NETHERRACK::defaultBlockState));
     public static final RegistryObject<Block> CRACKED_NETHER_BRICK_STAIRS = BLOCKS.register("cracked_nether_brick_stairs", () -> new ModStairBlock(Blocks.CRACKED_NETHER_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_NETHER_BRICK_STAIRS = BLOCKS.register("chiseled_nether_brick_stairs", () -> new ModStairBlock(Blocks.CHISELED_NETHER_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> CRACKED_POLISHED_BLACKSTONE_BRICK_STAIRS = BLOCKS.register("cracked_polished_blackstone_brick_stairs", () -> new ModStairBlock(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_POLISHED_BLACKSTONE_STAIRS = BLOCKS.register("chiseled_polished_blackstone_stairs", () -> new ModStairBlock(Blocks.CHISELED_POLISHED_BLACKSTONE::defaultBlockState));
     public static final RegistryObject<Block> END_STONE_STAIRS = BLOCKS.register("end_stone_stairs", () -> new ModStairBlock(Blocks.END_STONE::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_QUARTZ_BLOCK_STAIRS = BLOCKS.register("chiseled_quartz_block_stairs", () -> new ModStairBlock(Blocks.CHISELED_QUARTZ_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> QUARTZ_BRICK_STAIRS = BLOCKS.register("quartz_brick_stairs", () -> new ModStairBlock(Blocks.QUARTZ_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> TERRACOTTA_STAIRS = BLOCKS.register("terracotta_stairs", () -> new ModStairBlock(Blocks.TERRACOTTA::defaultBlockState));
     public static final RegistryObject<Block> WHITE_TERRACOTTA_STAIRS = BLOCKS.register("white_terracotta_stairs", () -> new ModStairBlock(Blocks.WHITE_TERRACOTTA::defaultBlockState));
@@ -374,26 +364,17 @@ public class ModBlocks {
     public static final RegistryObject<Block> POLISHED_END_STONE_SLAB = BLOCKS.register("polished_end_stone_slab", () -> new ModSlabBlock(() -> POLISHED_END_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.END_STONE)));
     public static final RegistryObject<Block> POLISHED_NETHERRACK_SLAB = BLOCKS.register("polished_netherrack_slab", () -> new ModSlabBlock(() -> POLISHED_NETHERRACK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.NETHERRACK)));
     public static final RegistryObject<Block> CRACKED_RED_NETHER_BRICK_SLAB = BLOCKS.register("cracked_red_nether_brick_slab", () -> new ModSlabBlock(() -> CRACKED_RED_NETHER_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)));
-    public static final RegistryObject<Block> CHISELED_RED_NETHER_BRICK_SLAB = BLOCKS.register("chiseled_red_nether_brick_slab", () -> new ModSlabBlock(() -> CHISELED_RED_NETHER_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)));
-    public static final RegistryObject<Block> CHISELED_PURPUR_BLOCK_SLAB = BLOCKS.register("chiseled_purpur_block_slab", () -> new ModSlabBlock(() -> CHISELED_PURPUR_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)));
-    public static final RegistryObject<Block> CHISELED_OBSIDIAN_SLAB = BLOCKS.register("chiseled_obsidian_slab", () -> new ModSlabBlock(() -> CHISELED_OBSIDIAN.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
 
     // Vanilla Slabs
     public static final RegistryObject<Block> CRACKED_STONE_BRICK_SLAB = BLOCKS.register("cracked_stone_brick_slab", () -> new ModSlabBlock(Blocks.CRACKED_STONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_STONE_BRICK_SLAB = BLOCKS.register("chiseled_stone_brick_slab", () -> new ModSlabBlock(Blocks.CHISELED_STONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_SANDSTONE_SLAB = BLOCKS.register("chiseled_sandstone_slab", () -> new ModSlabBlock(Blocks.CHISELED_SANDSTONE::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_RED_SANDSTONE_SLAB = BLOCKS.register("chiseled_red_sandstone_slab", () -> new ModSlabBlock(Blocks.CHISELED_RED_SANDSTONE::defaultBlockState));
     public static final RegistryObject<Block> IRON_BLOCK_SLAB = BLOCKS.register("iron_block_slab", () -> new ModSlabBlock(Blocks.IRON_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> GOLD_BLOCK_SLAB = BLOCKS.register("gold_block_slab", () -> new ModSlabBlock(Blocks.GOLD_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> OBSIDIAN_SLAB = BLOCKS.register("obsidian_slab", () -> new ModSlabBlock(Blocks.OBSIDIAN::defaultBlockState));
     public static final RegistryObject<Block> BEDROCK_SLAB = BLOCKS.register("bedrock_slab", () -> new ModSlabBlock(Blocks.BEDROCK::defaultBlockState));
     public static final RegistryObject<Block> NETHERRACK_SLAB = BLOCKS.register("netherrack_slab", () -> new ModSlabBlock(Blocks.NETHERRACK::defaultBlockState));
     public static final RegistryObject<Block> CRACKED_NETHER_BRICK_SLAB = BLOCKS.register("cracked_nether_brick_slab", () -> new ModSlabBlock(Blocks.CRACKED_NETHER_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_NETHER_BRICK_SLAB = BLOCKS.register("chiseled_nether_brick_slab", () -> new ModSlabBlock(Blocks.CHISELED_NETHER_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> CRACKED_POLISHED_BLACKSTONE_BRICK_SLAB = BLOCKS.register("cracked_polished_blackstone_brick_slab", () -> new ModSlabBlock(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_POLISHED_BLACKSTONE_SLAB = BLOCKS.register("chiseled_polished_blackstone_slab", () -> new ModSlabBlock(Blocks.CHISELED_POLISHED_BLACKSTONE::defaultBlockState));
     public static final RegistryObject<Block> END_STONE_SLAB = BLOCKS.register("end_stone_slab", () -> new ModSlabBlock(Blocks.END_STONE::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_QUARTZ_BLOCK_SLAB = BLOCKS.register("chiseled_quartz_block_slab", () -> new ModSlabBlock(Blocks.CHISELED_QUARTZ_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> QUARTZ_BRICK_SLAB = BLOCKS.register("quartz_brick_slab", () -> new ModSlabBlock(Blocks.QUARTZ_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> TERRACOTTA_SLAB = BLOCKS.register("terracotta_slab", () -> new ModSlabBlock(Blocks.TERRACOTTA::defaultBlockState));
     public static final RegistryObject<Block> WHITE_TERRACOTTA_SLAB = BLOCKS.register("white_terracotta_slab", () -> new ModSlabBlock(Blocks.WHITE_TERRACOTTA::defaultBlockState));
@@ -477,26 +458,17 @@ public class ModBlocks {
     public static final RegistryObject<Block> POLISHED_END_STONE_WALL = BLOCKS.register("polished_end_stone_wall", () -> new ModWallBlock(() -> POLISHED_END_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.END_STONE)));
     public static final RegistryObject<Block> POLISHED_NETHERRACK_WALL = BLOCKS.register("polished_netherrack_wall", () -> new ModWallBlock(() -> POLISHED_NETHERRACK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.NETHERRACK)));
     public static final RegistryObject<Block> CRACKED_RED_NETHER_BRICK_WALL = BLOCKS.register("cracked_red_nether_brick_wall", () -> new ModWallBlock(() -> CRACKED_RED_NETHER_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)));
-    public static final RegistryObject<Block> CHISELED_RED_NETHER_BRICK_WALL = BLOCKS.register("chiseled_red_nether_brick_wall", () -> new ModWallBlock(() -> CHISELED_RED_NETHER_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)));
-    public static final RegistryObject<Block> CHISELED_PURPUR_BLOCK_WALL = BLOCKS.register("chiseled_purpur_block_wall", () -> new ModWallBlock(() -> CHISELED_PURPUR_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)));
-    public static final RegistryObject<Block> CHISELED_OBSIDIAN_WALL = BLOCKS.register("chiseled_obsidian_wall", () -> new ModWallBlock(() -> CHISELED_OBSIDIAN.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
 
     // Vanilla Walls
     public static final RegistryObject<Block> CRACKED_STONE_BRICK_WALL = BLOCKS.register("cracked_stone_brick_wall", () -> new ModWallBlock(Blocks.CRACKED_STONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_STONE_BRICK_WALL = BLOCKS.register("chiseled_stone_brick_wall", () -> new ModWallBlock(Blocks.CHISELED_STONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_SANDSTONE_WALL = BLOCKS.register("chiseled_sandstone_wall", () -> new ModWallBlock(Blocks.CHISELED_SANDSTONE::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_RED_SANDSTONE_WALL = BLOCKS.register("chiseled_red_sandstone_wall", () -> new ModWallBlock(Blocks.CHISELED_RED_SANDSTONE::defaultBlockState));
     public static final RegistryObject<Block> IRON_BLOCK_WALL = BLOCKS.register("iron_block_wall", () -> new ModWallBlock(Blocks.IRON_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> GOLD_BLOCK_WALL = BLOCKS.register("gold_block_wall", () -> new ModWallBlock(Blocks.GOLD_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> OBSIDIAN_WALL = BLOCKS.register("obsidian_wall", () -> new ModWallBlock(Blocks.OBSIDIAN::defaultBlockState));
     public static final RegistryObject<Block> BEDROCK_WALL = BLOCKS.register("bedrock_wall", () -> new ModWallBlock(Blocks.BEDROCK::defaultBlockState));
     public static final RegistryObject<Block> NETHERRACK_WALL = BLOCKS.register("netherrack_wall", () -> new ModWallBlock(Blocks.NETHERRACK::defaultBlockState));
     public static final RegistryObject<Block> CRACKED_NETHER_BRICK_WALL = BLOCKS.register("cracked_nether_brick_wall", () -> new ModWallBlock(Blocks.CRACKED_NETHER_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_NETHER_BRICK_WALL = BLOCKS.register("chiseled_nether_brick_wall", () -> new ModWallBlock(Blocks.CHISELED_NETHER_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> CRACKED_POLISHED_BLACKSTONE_BRICK_WALL = BLOCKS.register("cracked_polished_blackstone_brick_wall", () -> new ModWallBlock(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_POLISHED_BLACKSTONE_WALL = BLOCKS.register("chiseled_polished_blackstone_wall", () -> new ModWallBlock(Blocks.CHISELED_POLISHED_BLACKSTONE::defaultBlockState));
     public static final RegistryObject<Block> END_STONE_WALL = BLOCKS.register("end_stone_wall", () -> new ModWallBlock(Blocks.END_STONE::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_QUARTZ_BLOCK_WALL = BLOCKS.register("chiseled_quartz_block_wall", () -> new ModWallBlock(Blocks.CHISELED_QUARTZ_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> QUARTZ_BRICK_WALL = BLOCKS.register("quartz_brick_wall", () -> new ModWallBlock(Blocks.QUARTZ_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> TERRACOTTA_WALL = BLOCKS.register("terracotta_wall", () -> new ModWallBlock(Blocks.TERRACOTTA::defaultBlockState));
     public static final RegistryObject<Block> WHITE_TERRACOTTA_WALL = BLOCKS.register("white_terracotta_wall", () -> new ModWallBlock(Blocks.WHITE_TERRACOTTA::defaultBlockState));

@@ -293,26 +293,17 @@ public class ModItems {
     public static final RegistryObject<Item> POLISHED_END_STONE_STAIRS = ITEMS.register("polished_end_stone_stairs", () -> new BlockItem(ModBlocks.POLISHED_END_STONE_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_NETHERRACK_STAIRS = ITEMS.register("polished_netherrack_stairs", () -> new BlockItem(ModBlocks.POLISHED_NETHERRACK_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> CRACKED_RED_NETHER_BRICK_STAIRS = ITEMS.register("cracked_red_nether_brick_stairs", () -> new BlockItem(ModBlocks.CRACKED_RED_NETHER_BRICK_STAIRS.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_RED_NETHER_BRICK_STAIRS = ITEMS.register("chiseled_red_nether_brick_stairs", () -> new BlockItem(ModBlocks.CHISELED_RED_NETHER_BRICK_STAIRS.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_PURPUR_BLOCK_STAIRS = ITEMS.register("chiseled_purpur_block_stairs", () -> new BlockItem(ModBlocks.CHISELED_PURPUR_BLOCK_STAIRS.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_OBSIDIAN_STAIRS = ITEMS.register("chiseled_obsidian_stairs", () -> new BlockItem(ModBlocks.CHISELED_OBSIDIAN_STAIRS.get(), new Item.Properties()));
 
     // Vanilla Stairs
     public static final RegistryObject<Item> CRACKED_STONE_BRICK_STAIRS = ITEMS.register("cracked_stone_brick_stairs", () -> new BlockItem(ModBlocks.CRACKED_STONE_BRICK_STAIRS.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_STONE_BRICK_STAIRS = ITEMS.register("chiseled_stone_brick_stairs", () -> new BlockItem(ModBlocks.CHISELED_STONE_BRICK_STAIRS.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_SANDSTONE_STAIRS = ITEMS.register("chiseled_sandstone_stairs", () -> new BlockItem(ModBlocks.CHISELED_SANDSTONE_STAIRS.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_RED_SANDSTONE_STAIRS = ITEMS.register("chiseled_red_sandstone_stairs", () -> new BlockItem(ModBlocks.CHISELED_RED_SANDSTONE_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> IRON_BLOCK_STAIRS = ITEMS.register("iron_block_stairs", () -> new BlockItem(ModBlocks.IRON_BLOCK_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> GOLD_BLOCK_STAIRS = ITEMS.register("gold_block_stairs", () -> new BlockItem(ModBlocks.GOLD_BLOCK_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> OBSIDIAN_STAIRS = ITEMS.register("obsidian_stairs", () -> new BlockItem(ModBlocks.OBSIDIAN_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> BEDROCK_STAIRS = ITEMS.register("bedrock_stairs", () -> new BlockItem(ModBlocks.BEDROCK_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> NETHERRACK_STAIRS = ITEMS.register("netherrack_stairs", () -> new BlockItem(ModBlocks.NETHERRACK_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> CRACKED_NETHER_BRICK_STAIRS = ITEMS.register("cracked_nether_brick_stairs", () -> new BlockItem(ModBlocks.CRACKED_NETHER_BRICK_STAIRS.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_NETHER_BRICK_STAIRS = ITEMS.register("chiseled_nether_brick_stairs", () -> new BlockItem(ModBlocks.CHISELED_NETHER_BRICK_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> CRACKED_POLISHED_BLACKSTONE_BRICK_STAIRS = ITEMS.register("cracked_polished_blackstone_brick_stairs", () -> new BlockItem(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_STAIRS.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_POLISHED_BLACKSTONE_STAIRS = ITEMS.register("chiseled_polished_blackstone_stairs", () -> new BlockItem(ModBlocks.CHISELED_POLISHED_BLACKSTONE_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> END_STONE_STAIRS = ITEMS.register("end_stone_stairs", () -> new BlockItem(ModBlocks.END_STONE_STAIRS.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_QUARTZ_BLOCK_STAIRS = ITEMS.register("chiseled_quartz_block_stairs", () -> new BlockItem(ModBlocks.CHISELED_QUARTZ_BLOCK_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> QUARTZ_BRICK_STAIRS = ITEMS.register("quartz_brick_stairs", () -> new BlockItem(ModBlocks.QUARTZ_BRICK_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> TERRACOTTA_STAIRS = ITEMS.register("terracotta_stairs", () -> new BlockItem(ModBlocks.TERRACOTTA_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> WHITE_TERRACOTTA_STAIRS = ITEMS.register("white_terracotta_stairs", () -> new BlockItem(ModBlocks.WHITE_TERRACOTTA_STAIRS.get(), new Item.Properties()));
@@ -400,26 +391,17 @@ public class ModItems {
     public static final RegistryObject<Item> POLISHED_END_STONE_SLAB = ITEMS.register("polished_end_stone_slab", () -> new BlockItem(ModBlocks.POLISHED_END_STONE_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_NETHERRACK_SLAB = ITEMS.register("polished_netherrack_slab", () -> new BlockItem(ModBlocks.POLISHED_NETHERRACK_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> CRACKED_RED_NETHER_BRICK_SLAB = ITEMS.register("cracked_red_nether_brick_slab", () -> new BlockItem(ModBlocks.CRACKED_RED_NETHER_BRICK_SLAB.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_RED_NETHER_BRICK_SLAB = ITEMS.register("chiseled_red_nether_brick_slab", () -> new BlockItem(ModBlocks.CHISELED_RED_NETHER_BRICK_SLAB.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_PURPUR_BLOCK_SLAB = ITEMS.register("chiseled_purpur_block_slab", () -> new BlockItem(ModBlocks.CHISELED_PURPUR_BLOCK_SLAB.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_OBSIDIAN_SLAB = ITEMS.register("chiseled_obsidian_slab", () -> new BlockItem(ModBlocks.CHISELED_OBSIDIAN_SLAB.get(), new Item.Properties()));
 
     // Vanilla Slabs
     public static final RegistryObject<Item> CRACKED_STONE_BRICK_SLAB = ITEMS.register("cracked_stone_brick_slab", () -> new BlockItem(ModBlocks.CRACKED_STONE_BRICK_SLAB.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_STONE_BRICK_SLAB = ITEMS.register("chiseled_stone_brick_slab", () -> new BlockItem(ModBlocks.CHISELED_STONE_BRICK_SLAB.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_SANDSTONE_SLAB = ITEMS.register("chiseled_sandstone_slab", () -> new BlockItem(ModBlocks.CHISELED_SANDSTONE_SLAB.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_RED_SANDSTONE_SLAB = ITEMS.register("chiseled_red_sandstone_slab", () -> new BlockItem(ModBlocks.CHISELED_RED_SANDSTONE_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> IRON_BLOCK_SLAB = ITEMS.register("iron_block_slab", () -> new BlockItem(ModBlocks.IRON_BLOCK_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> GOLD_BLOCK_SLAB = ITEMS.register("gold_block_slab", () -> new BlockItem(ModBlocks.GOLD_BLOCK_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> OBSIDIAN_SLAB = ITEMS.register("obsidian_slab", () -> new BlockItem(ModBlocks.OBSIDIAN_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> BEDROCK_SLAB = ITEMS.register("bedrock_slab", () -> new BlockItem(ModBlocks.BEDROCK_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> NETHERRACK_SLAB = ITEMS.register("netherrack_slab", () -> new BlockItem(ModBlocks.NETHERRACK_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> CRACKED_NETHER_BRICK_SLAB = ITEMS.register("cracked_nether_brick_slab", () -> new BlockItem(ModBlocks.CRACKED_NETHER_BRICK_SLAB.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_NETHER_BRICK_SLAB = ITEMS.register("chiseled_nether_brick_slab", () -> new BlockItem(ModBlocks.CHISELED_NETHER_BRICK_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> CRACKED_POLISHED_BLACKSTONE_BRICK_SLAB = ITEMS.register("cracked_polished_blackstone_brick_slab", () -> new BlockItem(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_SLAB.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_POLISHED_BLACKSTONE_SLAB = ITEMS.register("chiseled_polished_blackstone_slab", () -> new BlockItem(ModBlocks.CHISELED_POLISHED_BLACKSTONE_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> END_STONE_SLAB = ITEMS.register("end_stone_slab", () -> new BlockItem(ModBlocks.END_STONE_SLAB.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_QUARTZ_BLOCK_SLAB = ITEMS.register("chiseled_quartz_block_slab", () -> new BlockItem(ModBlocks.CHISELED_QUARTZ_BLOCK_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> QUARTZ_BRICK_SLAB = ITEMS.register("quartz_brick_slab", () -> new BlockItem(ModBlocks.QUARTZ_BRICK_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> TERRACOTTA_SLAB = ITEMS.register("terracotta_slab", () -> new BlockItem(ModBlocks.TERRACOTTA_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> WHITE_TERRACOTTA_SLAB = ITEMS.register("white_terracotta_slab", () -> new BlockItem(ModBlocks.WHITE_TERRACOTTA_SLAB.get(), new Item.Properties()));
@@ -504,26 +486,17 @@ public class ModItems {
     public static final RegistryObject<Item> POLISHED_END_STONE_WALL = ITEMS.register("polished_end_stone_wall", () -> new BlockItem(ModBlocks.POLISHED_END_STONE_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_NETHERRACK_WALL = ITEMS.register("polished_netherrack_wall", () -> new BlockItem(ModBlocks.POLISHED_NETHERRACK_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> CRACKED_RED_NETHER_BRICK_WALL = ITEMS.register("cracked_red_nether_brick_wall", () -> new BlockItem(ModBlocks.CRACKED_RED_NETHER_BRICK_WALL.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_RED_NETHER_BRICK_WALL = ITEMS.register("chiseled_red_nether_brick_wall", () -> new BlockItem(ModBlocks.CHISELED_RED_NETHER_BRICK_WALL.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_PURPUR_BLOCK_WALL = ITEMS.register("chiseled_purpur_block_wall", () -> new BlockItem(ModBlocks.CHISELED_PURPUR_BLOCK_WALL.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_OBSIDIAN_WALL = ITEMS.register("chiseled_obsidian_wall", () -> new BlockItem(ModBlocks.CHISELED_OBSIDIAN_WALL.get(), new Item.Properties()));
 
     // Vanilla Walls
     public static final RegistryObject<Item> CRACKED_STONE_BRICK_WALL = ITEMS.register("cracked_stone_brick_wall", () -> new BlockItem(ModBlocks.CRACKED_STONE_BRICK_WALL.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_STONE_BRICK_WALL = ITEMS.register("chiseled_stone_brick_wall", () -> new BlockItem(ModBlocks.CHISELED_STONE_BRICK_WALL.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_SANDSTONE_WALL = ITEMS.register("chiseled_sandstone_wall", () -> new BlockItem(ModBlocks.CHISELED_SANDSTONE_WALL.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_RED_SANDSTONE_WALL = ITEMS.register("chiseled_red_sandstone_wall", () -> new BlockItem(ModBlocks.CHISELED_RED_SANDSTONE_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> IRON_BLOCK_WALL = ITEMS.register("iron_block_wall", () -> new BlockItem(ModBlocks.IRON_BLOCK_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> GOLD_BLOCK_WALL = ITEMS.register("gold_block_wall", () -> new BlockItem(ModBlocks.GOLD_BLOCK_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> OBSIDIAN_WALL = ITEMS.register("obsidian_wall", () -> new BlockItem(ModBlocks.OBSIDIAN_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> BEDROCK_WALL = ITEMS.register("bedrock_wall", () -> new BlockItem(ModBlocks.BEDROCK_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> NETHERRACK_WALL = ITEMS.register("netherrack_wall", () -> new BlockItem(ModBlocks.NETHERRACK_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> CRACKED_NETHER_BRICK_WALL = ITEMS.register("cracked_nether_brick_wall", () -> new BlockItem(ModBlocks.CRACKED_NETHER_BRICK_WALL.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_NETHER_BRICK_WALL = ITEMS.register("chiseled_nether_brick_wall", () -> new BlockItem(ModBlocks.CHISELED_NETHER_BRICK_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> CRACKED_POLISHED_BLACKSTONE_BRICK_WALL = ITEMS.register("cracked_polished_blackstone_brick_wall", () -> new BlockItem(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_WALL.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_POLISHED_BLACKSTONE_WALL = ITEMS.register("chiseled_polished_blackstone_wall", () -> new BlockItem(ModBlocks.CHISELED_POLISHED_BLACKSTONE_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> END_STONE_WALL = ITEMS.register("end_stone_wall", () -> new BlockItem(ModBlocks.END_STONE_WALL.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CHISELED_QUARTZ_BLOCK_WALL = ITEMS.register("chiseled_quartz_block_wall", () -> new BlockItem(ModBlocks.CHISELED_QUARTZ_BLOCK_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> QUARTZ_BRICK_WALL = ITEMS.register("quartz_brick_wall", () -> new BlockItem(ModBlocks.QUARTZ_BRICK_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> TERRACOTTA_WALL = ITEMS.register("terracotta_wall", () -> new BlockItem(ModBlocks.TERRACOTTA_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> WHITE_TERRACOTTA_WALL = ITEMS.register("white_terracotta_wall", () -> new BlockItem(ModBlocks.WHITE_TERRACOTTA_WALL.get(), new Item.Properties()));

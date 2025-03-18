@@ -11,8 +11,7 @@ import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
 import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.block.ModBlocks;
-import phrille.vanillaboom.block.ModCakeBlock;
+import phrille.vanillaboom.block.*;
 import phrille.vanillaboom.data.ModDataGenerator;
 import phrille.vanillaboom.util.ModTags;
 import phrille.vanillaboom.util.Utils;
@@ -214,10 +213,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.OBSIDIAN_WALL.get())
                 .add(ModBlocks.OBSIDIAN_BRICK_STAIRS.get())
                 .add(ModBlocks.OBSIDIAN_BRICK_SLAB.get())
-                .add(ModBlocks.OBSIDIAN_BRICK_WALL.get())
-                .add(ModBlocks.CHISELED_OBSIDIAN_STAIRS.get())
-                .add(ModBlocks.CHISELED_OBSIDIAN_SLAB.get())
-                .add(ModBlocks.CHISELED_OBSIDIAN_WALL.get());
+                .add(ModBlocks.OBSIDIAN_BRICK_WALL.get());
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.GOLD_BARS.get())
                 .add(ModBlocks.GOLD_BLOCK_STAIRS.get())
@@ -251,9 +247,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.OBSIDIAN_BRICK_STAIRS.get())
                 .add(ModBlocks.OBSIDIAN_BRICK_SLAB.get())
                 .add(ModBlocks.OBSIDIAN_BRICK_WALL.get())
-                .add(ModBlocks.CHISELED_OBSIDIAN_STAIRS.get())
-                .add(ModBlocks.CHISELED_OBSIDIAN_SLAB.get())
-                .add(ModBlocks.CHISELED_OBSIDIAN_WALL.get())
                 .add(ModBlocks.BEDROCK_STAIRS.get())
                 .add(ModBlocks.BEDROCK_SLAB.get())
                 .add(ModBlocks.BEDROCK_WALL.get());
@@ -294,33 +287,33 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.STONE_ORE_REPLACEABLES).add(ModBlocks.PERIDOTITE.get());
 
         //Stairs
-        ModDataGenerator.STAIRS.forEach(pair -> {
-            Material material = pair.getFirst().defaultBlockState().getMaterial();
+        ModStairBlock.STAIRS.forEach(stair -> {
+            Material material = stair.defaultBlockState().getMaterial();
 
             if (material == Material.WOOD || material == Material.NETHER_WOOD) {
-                tag(ModTags.VanillaBoomTags.Blocks.WOODEN_STAIRS).add(pair.getFirst());
+                tag(ModTags.VanillaBoomTags.Blocks.WOODEN_STAIRS).add(stair);
             } else {
-                tag(ModTags.VanillaBoomTags.Blocks.STAIRS).add(pair.getFirst());
+                tag(ModTags.VanillaBoomTags.Blocks.STAIRS).add(stair);
             }
         });
         tag(BlockTags.STAIRS).addTags(ModTags.VanillaBoomTags.Blocks.STAIRS);
         tag(BlockTags.WOODEN_STAIRS).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_STAIRS);
 
         //Slabs
-        ModDataGenerator.SLABS.forEach(pair -> {
-            Material material = pair.getFirst().defaultBlockState().getMaterial();
+        ModSlabBlock.SLABS.forEach(slab -> {
+            Material material = slab.defaultBlockState().getMaterial();
 
             if (material == Material.WOOD || material == Material.NETHER_WOOD) {
-                tag(ModTags.VanillaBoomTags.Blocks.WOODEN_SLABS).add(pair.getFirst());
+                tag(ModTags.VanillaBoomTags.Blocks.WOODEN_SLABS).add(slab);
             } else {
-                tag(ModTags.VanillaBoomTags.Blocks.SLABS).add(pair.getFirst());
+                tag(ModTags.VanillaBoomTags.Blocks.SLABS).add(slab);
             }
         });
         tag(BlockTags.SLABS).addTags(ModTags.VanillaBoomTags.Blocks.SLABS);
         tag(BlockTags.WOODEN_SLABS).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_SLABS);
 
         //Walls
-        ModDataGenerator.WALLS.forEach(block -> tag(ModTags.VanillaBoomTags.Blocks.WALLS).add(block));
+        ModWallBlock.WALLS.forEach(wall -> tag(ModTags.VanillaBoomTags.Blocks.WALLS).add(wall));
         tag(BlockTags.WALLS).addTags(ModTags.VanillaBoomTags.Blocks.WALLS);
 
         //Fences

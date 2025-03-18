@@ -8,14 +8,17 @@
 
 package phrille.vanillaboom.block;
 
+import com.google.common.collect.Lists;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 public class ModStairBlock extends StairBlock implements IVariantBlock {
+    public static final List<ModStairBlock> STAIRS = Lists.newArrayList();
     protected final Supplier<BlockState> state;
 
     public ModStairBlock(Supplier<BlockState> state) {
@@ -25,6 +28,7 @@ public class ModStairBlock extends StairBlock implements IVariantBlock {
     public ModStairBlock(Supplier<BlockState> state, BlockBehaviour.Properties builder) {
         super(state, builder);
         this.state = state;
+        STAIRS.add(this);
     }
 
     @Override

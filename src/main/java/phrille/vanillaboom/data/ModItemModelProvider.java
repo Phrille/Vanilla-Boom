@@ -20,6 +20,9 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
+import phrille.vanillaboom.block.ModSlabBlock;
+import phrille.vanillaboom.block.ModStairBlock;
+import phrille.vanillaboom.block.ModWallBlock;
 import phrille.vanillaboom.item.ModItems;
 
 import java.util.Objects;
@@ -229,9 +232,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         item(ModBlocks.WITHERED_VINE.get());
 
         // Variant Blocks
-        ModDataGenerator.STAIRS.forEach(pair -> blockItem(pair.getFirst().asItem()));
-        ModDataGenerator.SLABS.forEach(pair -> blockItem(pair.getFirst().asItem()));
-        ModDataGenerator.WALLS.forEach(this::inventoryBlockItem);
+        ModStairBlock.STAIRS.forEach(stair -> blockItem(stair.asItem()));
+        ModSlabBlock.SLABS.forEach(slab -> blockItem(slab.asItem()));
+        ModWallBlock.WALLS.forEach(this::inventoryBlockItem);
         ModDataGenerator.FENCES.forEach(pair -> inventoryBlockItem(pair.getFirst()));
         ModDataGenerator.FENCE_GATES.forEach(pair -> blockItem(pair.getFirst().asItem()));
     }

@@ -179,11 +179,6 @@ public class CreativeTabHandler {
                     ModItems.CRACKED_STONE_BRICK_SLAB.get(),
                     ModItems.CRACKED_STONE_BRICK_WALL.get()
             ));
-            putAfter(entries, Blocks.CHISELED_STONE_BRICKS, List.of(
-                    ModItems.CHISELED_STONE_BRICK_STAIRS.get(),
-                    ModItems.CHISELED_STONE_BRICK_SLAB.get(),
-                    ModItems.CHISELED_STONE_BRICK_WALL.get()
-            ));
             putAfter(entries, Blocks.POLISHED_GRANITE_SLAB, List.of(
                     ModItems.POLISHED_GRANITE_WALL.get(),
                     ModItems.GRANITE_PILLAR.get()
@@ -206,19 +201,9 @@ public class CreativeTabHandler {
                     ModItems.PERIDOTITE_PILLAR.get()
             ));
             // Sandstone Blocks
-            putAfter(entries, Blocks.CHISELED_SANDSTONE, List.of(
-                    ModItems.CHISELED_SANDSTONE_STAIRS.get(),
-                    ModItems.CHISELED_SANDSTONE_SLAB.get(),
-                    ModItems.CHISELED_SANDSTONE_WALL.get()
-            ));
             putAfter(entries, Blocks.SMOOTH_SANDSTONE_SLAB, ModItems.SMOOTH_SANDSTONE_WALL.get());
             putAfter(entries, Blocks.CUT_SANDSTONE, ModItems.CUT_SANDSTONE_STAIRS.get());
             putAfter(entries, Blocks.CUT_SANDSTONE_SLAB, ModItems.CUT_SANDSTONE_WALL.get());
-            putAfter(entries, Blocks.CHISELED_RED_SANDSTONE, List.of(
-                    ModItems.CHISELED_RED_SANDSTONE_STAIRS.get(),
-                    ModItems.CHISELED_RED_SANDSTONE_SLAB.get(),
-                    ModItems.CHISELED_RED_SANDSTONE_WALL.get()
-            ));
             putAfter(entries, Blocks.SMOOTH_RED_SANDSTONE_SLAB, ModItems.SMOOTH_RED_SANDSTONE_WALL.get());
             putAfter(entries, Blocks.CUT_RED_SANDSTONE, ModItems.CUT_RED_SANDSTONE_STAIRS.get());
             putAfter(entries, Blocks.CUT_RED_SANDSTONE_SLAB, ModItems.CUT_RED_SANDSTONE_WALL.get());
@@ -254,9 +239,6 @@ public class CreativeTabHandler {
                     ModItems.OBSIDIAN_BRICK_SLAB.get(),
                     ModItems.OBSIDIAN_BRICK_WALL.get(),
                     ModItems.CHISELED_OBSIDIAN.get(),
-                    ModItems.CHISELED_OBSIDIAN_STAIRS.get(),
-                    ModItems.CHISELED_OBSIDIAN_SLAB.get(),
-                    ModItems.CHISELED_OBSIDIAN_WALL.get(),
                     ModItems.OBSIDIAN_PILLAR.get()
             ));
             putAfter(entries, Blocks.NETHERRACK, List.of(
@@ -276,11 +258,6 @@ public class CreativeTabHandler {
                     ModItems.CRACKED_NETHER_BRICK_SLAB.get(),
                     ModItems.CRACKED_NETHER_BRICK_WALL.get()
             ));
-            putAfter(entries, Blocks.CHISELED_NETHER_BRICKS, List.of(
-                    ModItems.CHISELED_NETHER_BRICK_STAIRS.get(),
-                    ModItems.CHISELED_NETHER_BRICK_SLAB.get(),
-                    ModItems.CHISELED_NETHER_BRICK_WALL.get()
-            ));
             putAfter(entries, Blocks.RED_NETHER_BRICK_WALL, List.of(
                     ModItems.RED_NETHER_BRICK_FENCE.get(),
                     ModItems.RED_NETHER_BRICK_FENCE_GATE.get(),
@@ -289,9 +266,6 @@ public class CreativeTabHandler {
                     ModItems.CRACKED_RED_NETHER_BRICK_SLAB.get(),
                     ModItems.CRACKED_RED_NETHER_BRICK_WALL.get(),
                     ModItems.CHISELED_RED_NETHER_BRICKS.get(),
-                    ModItems.CHISELED_RED_NETHER_BRICK_STAIRS.get(),
-                    ModItems.CHISELED_RED_NETHER_BRICK_SLAB.get(),
-                    ModItems.CHISELED_RED_NETHER_BRICK_WALL.get(),
                     ModItems.RED_NETHER_PILLAR.get()
             ));
             putBefore(entries, Blocks.BASALT, List.of(
@@ -313,9 +287,6 @@ public class CreativeTabHandler {
                     ModItems.CRACKED_POLISHED_BLACKSTONE_BRICK_SLAB.get(),
                     ModItems.CRACKED_POLISHED_BLACKSTONE_BRICK_WALL.get(),
                     Blocks.CHISELED_POLISHED_BLACKSTONE,
-                    ModItems.CHISELED_POLISHED_BLACKSTONE_STAIRS.get(),
-                    ModItems.CHISELED_POLISHED_BLACKSTONE_SLAB.get(),
-                    ModItems.CHISELED_POLISHED_BLACKSTONE_WALL.get(),
                     Blocks.GILDED_BLACKSTONE
             ));
             // End Blocks
@@ -332,9 +303,6 @@ public class CreativeTabHandler {
             putAfter(entries, Blocks.PURPUR_SLAB, List.of(
                     ModItems.PURPUR_BLOCK_WALL.get(),
                     ModItems.CHISELED_PURPUR_BLOCK.get(),
-                    ModItems.CHISELED_PURPUR_BLOCK_STAIRS.get(),
-                    ModItems.CHISELED_PURPUR_BLOCK_SLAB.get(),
-                    ModItems.CHISELED_PURPUR_BLOCK_WALL.get(),
                     Blocks.PURPUR_PILLAR
             ));
             // Storage Blocks
@@ -357,11 +325,6 @@ public class CreativeTabHandler {
             ));
             // Quartz Blocks
             putAfter(entries, Blocks.QUARTZ_SLAB, ModItems.QUARTZ_BLOCK_WALL.get());
-            putAfter(entries, Blocks.CHISELED_QUARTZ_BLOCK, List.of(
-                    ModItems.CHISELED_QUARTZ_BLOCK_STAIRS.get(),
-                    ModItems.CHISELED_QUARTZ_BLOCK_SLAB.get(),
-                    ModItems.CHISELED_QUARTZ_BLOCK_WALL.get()
-            ));
             putAfter(entries, Blocks.QUARTZ_BRICKS, List.of(
                     ModItems.QUARTZ_BRICK_STAIRS.get(),
                     ModItems.QUARTZ_BRICK_SLAB.get(),

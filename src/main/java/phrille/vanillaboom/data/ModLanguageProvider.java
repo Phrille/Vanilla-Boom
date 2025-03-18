@@ -214,10 +214,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.POLISHED_DARK_PRISMARINE_STAIRS.get(), "Polished Dark Prismarine Stairs");
         add(ModBlocks.POLISHED_END_STONE_STAIRS.get(), "Polished End Stone Stairs");
         add(ModBlocks.POLISHED_NETHERRACK_STAIRS.get(), "Polished Netherrack Stairs");
-        add(ModBlocks.CHISELED_OBSIDIAN_STAIRS.get(), "Chiseled Obsidian Stairs");
         add(ModBlocks.CRACKED_RED_NETHER_BRICK_STAIRS.get(), "Cracked Red Nether Brick Stairs");
-        add(ModBlocks.CHISELED_RED_NETHER_BRICK_STAIRS.get(), "Chiseled Red Nether Brick Stairs");
-        add(ModBlocks.CHISELED_PURPUR_BLOCK_STAIRS.get(), "Chiseled Purpur Block Stairs");
 
         // VanillaBoom Slabs
         add(ModBlocks.COBBLESTONE_BRICK_SLAB.get(), "Cobblestone Brick Slab");
@@ -250,10 +247,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.POLISHED_DARK_PRISMARINE_SLAB.get(), "Polished Dark Prismarine Slab");
         add(ModBlocks.POLISHED_END_STONE_SLAB.get(), "Polished End Stone Slab");
         add(ModBlocks.POLISHED_NETHERRACK_SLAB.get(), "Polished Netherrack Slab");
-        add(ModBlocks.CHISELED_OBSIDIAN_SLAB.get(), "Chiseled Obsidian Slab");
         add(ModBlocks.CRACKED_RED_NETHER_BRICK_SLAB.get(), "Cracked Red Nether Brick Slab");
-        add(ModBlocks.CHISELED_RED_NETHER_BRICK_SLAB.get(), "Chiseled Red Nether Brick Slab");
-        add(ModBlocks.CHISELED_PURPUR_BLOCK_SLAB.get(), "Chiseled Purpur Block Slab");
 
         // VanillaBoom Walls
         add(ModBlocks.COBBLESTONE_BRICK_WALL.get(), "Cobblestone Brick Wall");
@@ -286,27 +280,18 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.POLISHED_DARK_PRISMARINE_WALL.get(), "Polished Dark Prismarine Wall");
         add(ModBlocks.POLISHED_END_STONE_WALL.get(), "Polished End Stone Wall");
         add(ModBlocks.POLISHED_NETHERRACK_WALL.get(), "Polished Netherrack Wall");
-        add(ModBlocks.CHISELED_OBSIDIAN_WALL.get(), "Chiseled Obsidian Wall");
         add(ModBlocks.CRACKED_RED_NETHER_BRICK_WALL.get(), "Cracked Red Nether Brick Wall");
-        add(ModBlocks.CHISELED_RED_NETHER_BRICK_WALL.get(), "Chiseled Red Nether Brick Wall");
-        add(ModBlocks.CHISELED_PURPUR_BLOCK_WALL.get(), "Chiseled Purpur Block Wall");
 
         // Vanilla Stairs
         add(ModBlocks.CRACKED_STONE_BRICK_STAIRS.get(), "Cracked Stone Brick Stairs");
-        add(ModBlocks.CHISELED_STONE_BRICK_STAIRS.get(), "Chiseled Stone Brick Stairs");
-        add(ModBlocks.CHISELED_SANDSTONE_STAIRS.get(), "Chiseled Sandstone Stairs");
-        add(ModBlocks.CHISELED_RED_SANDSTONE_STAIRS.get(), "Chiseled Red Sandstone Stairs");
         add(ModBlocks.IRON_BLOCK_STAIRS.get(), "Iron Block Stairs");
         add(ModBlocks.GOLD_BLOCK_STAIRS.get(), "Gold Block Stairs");
         add(ModBlocks.OBSIDIAN_STAIRS.get(), "Obsidian Stairs");
         add(ModBlocks.BEDROCK_STAIRS.get(), "Bedrock Stairs");
         add(ModBlocks.NETHERRACK_STAIRS.get(), "Netherrack Stairs");
         add(ModBlocks.CRACKED_NETHER_BRICK_STAIRS.get(), "Cracked Nether Brick Stairs");
-        add(ModBlocks.CHISELED_NETHER_BRICK_STAIRS.get(), "Chiseled Nether Brick Stairs");
         add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_STAIRS.get(), "Cracked Polished Blackstone Brick Stairs");
-        add(ModBlocks.CHISELED_POLISHED_BLACKSTONE_STAIRS.get(), "Chiseled Polished Blackstone Stairs");
         add(ModBlocks.END_STONE_STAIRS.get(), "End Stone Stairs");
-        add(ModBlocks.CHISELED_QUARTZ_BLOCK_STAIRS.get(), "Chiseled Quartz Block Stairs");
         add(ModBlocks.QUARTZ_BRICK_STAIRS.get(), "Quartz Brick Stairs");
         add(ModBlocks.TERRACOTTA_STAIRS.get(), "Terracotta Stairs");
         add(ModBlocks.WHITE_TERRACOTTA_STAIRS.get(), "White Terracotta Stairs");
@@ -363,20 +348,14 @@ public class ModLanguageProvider extends LanguageProvider {
 
         // Vanilla Slabs
         add(ModBlocks.CRACKED_STONE_BRICK_SLAB.get(), "Cracked Stone Brick Slab");
-        add(ModBlocks.CHISELED_STONE_BRICK_SLAB.get(), "Chiseled Stone Brick Slab");
-        add(ModBlocks.CHISELED_SANDSTONE_SLAB.get(), "Chiseled Sandstone Slab");
-        add(ModBlocks.CHISELED_RED_SANDSTONE_SLAB.get(), "Chiseled Red Sandstone Slab");
         add(ModBlocks.IRON_BLOCK_SLAB.get(), "Iron Block Slab");
         add(ModBlocks.GOLD_BLOCK_SLAB.get(), "Gold Block Slab");
         add(ModBlocks.OBSIDIAN_SLAB.get(), "Obsidian Slab");
         add(ModBlocks.BEDROCK_SLAB.get(), "Bedrock Slab");
         add(ModBlocks.NETHERRACK_SLAB.get(), "Netherrack Slab");
         add(ModBlocks.CRACKED_NETHER_BRICK_SLAB.get(), "Cracked Nether Brick Slab");
-        add(ModBlocks.CHISELED_NETHER_BRICK_SLAB.get(), "Chiseled Nether Brick Slab");
         add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_SLAB.get(), "Cracked Polished Blackstone Brick Slab");
-        add(ModBlocks.CHISELED_POLISHED_BLACKSTONE_SLAB.get(), "Chiseled Polished Blackstone Slab");
         add(ModBlocks.END_STONE_SLAB.get(), "End Stone Slab");
-        add(ModBlocks.CHISELED_QUARTZ_BLOCK_SLAB.get(), "Chiseled Quartz Block Slab");
         add(ModBlocks.QUARTZ_BRICK_SLAB.get(), "Quartz Brick Slab");
         add(ModBlocks.TERRACOTTA_SLAB.get(), "Terracotta Slab");
         add(ModBlocks.WHITE_TERRACOTTA_SLAB.get(), "White Terracotta Slab");
@@ -430,20 +409,14 @@ public class ModLanguageProvider extends LanguageProvider {
 
         // Vanilla Walls
         add(ModBlocks.CRACKED_STONE_BRICK_WALL.get(), "Cracked Stone Brick Wall");
-        add(ModBlocks.CHISELED_STONE_BRICK_WALL.get(), "Chiseled Stone Brick Wall");
-        add(ModBlocks.CHISELED_SANDSTONE_WALL.get(), "Chiseled Sandstone Wall");
-        add(ModBlocks.CHISELED_RED_SANDSTONE_WALL.get(), "Chiseled Red Sandstone Wall");
         add(ModBlocks.IRON_BLOCK_WALL.get(), "Iron Block Wall");
         add(ModBlocks.GOLD_BLOCK_WALL.get(), "Gold Block Wall");
         add(ModBlocks.OBSIDIAN_WALL.get(), "Obsidian Wall");
         add(ModBlocks.BEDROCK_WALL.get(), "Bedrock Wall");
         add(ModBlocks.NETHERRACK_WALL.get(), "Netherrack Wall");
         add(ModBlocks.CRACKED_NETHER_BRICK_WALL.get(), "Cracked Nether Brick Wall");
-        add(ModBlocks.CHISELED_NETHER_BRICK_WALL.get(), "Chiseled Nether Brick Wall");
         add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_WALL.get(), "Cracked Polished Blackstone Brick Wall");
-        add(ModBlocks.CHISELED_POLISHED_BLACKSTONE_WALL.get(), "Chiseled Polished Blackstone Wall");
         add(ModBlocks.END_STONE_WALL.get(), "End Stone Wall");
-        add(ModBlocks.CHISELED_QUARTZ_BLOCK_WALL.get(), "Chiseled Quartz Block Wall");
         add(ModBlocks.QUARTZ_BRICK_WALL.get(), "Quartz Brick Wall");
         add(ModBlocks.TERRACOTTA_WALL.get(), "Terracotta Wall");
         add(ModBlocks.WHITE_TERRACOTTA_WALL.get(), "White Terracotta Wall");
