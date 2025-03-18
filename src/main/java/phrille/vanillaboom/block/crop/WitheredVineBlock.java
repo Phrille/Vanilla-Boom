@@ -27,6 +27,11 @@ public class WitheredVineBlock extends VineBlock {
     }
 
     @Override
+    public boolean isRandomlyTicking(BlockState state) {
+        return false;
+    }
+
+    @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {
         // No-op implementation
     }

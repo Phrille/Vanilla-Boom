@@ -13,6 +13,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -64,6 +65,8 @@ public class WitherBoneMealItem extends Item {
             return growNetherWarts(level, pos, state, stack);
         } else if (block == Blocks.VINE) {
             return witherVines(level, pos, state, stack);
+        } else if (block == Blocks.GRASS || block == Blocks.FERN) {
+            return witherGrass(level, pos, stack);
         }
         return false;
     }
@@ -101,6 +104,17 @@ public class WitherBoneMealItem extends Item {
             if (level instanceof ServerLevel) {
                 BlockState witheredVineState = ModBlocks.WITHERED_VINE.get().defaultBlockState();
                 level.setBlock(pos, Utils.copyState(state, witheredVineState), 2);
+                stack.shrink(1);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    protected static boolean witherGrass(Level level, BlockPos pos, ItemStack stack) {
+        if (VanillaBoomConfig.witherGrass && level.getBlockState(pos.below()).is(BlockTags.DEAD_BUSH_MAY_PLACE_ON)) {
+            if (level instanceof ServerLevel) {
+                level.setBlock(pos, Blocks.DEAD_BUSH.defaultBlockState(), 2);
                 stack.shrink(1);
             }
             return true;

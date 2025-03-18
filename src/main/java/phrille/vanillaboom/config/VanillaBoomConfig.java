@@ -15,6 +15,7 @@ public class VanillaBoomConfig {
     public static boolean growNetherWarts;
     public static boolean growWitherRoses;
     public static boolean witherVines;
+    public static boolean witherGrass;
     public static boolean placeSlimeBallPistons;
     public static boolean removeSlimeBallPistons;
     public static boolean fillWaterBottleHydroRock;
@@ -26,6 +27,7 @@ public class VanillaBoomConfig {
         growNetherWarts = ConfigHandler.COMMON.growNetherWarts.get();
         growWitherRoses = ConfigHandler.COMMON.growWitherRoses.get();
         witherVines = ConfigHandler.COMMON.witherVines.get();
+        witherGrass = ConfigHandler.COMMON.witherGrass.get();
         placeSlimeBallPistons = ConfigHandler.COMMON.placeSlimeBallPistons.get();
         removeSlimeBallPistons = ConfigHandler.COMMON.removeSlimeBallPistons.get();
         fillWaterBottleHydroRock = ConfigHandler.COMMON.fillWaterBottleHydroRock.get();
