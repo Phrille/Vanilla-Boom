@@ -184,7 +184,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         add(ModBlocks.TOMATO.get(), this::createTrellisCropDrops);
         add(ModBlocks.CHILI.get(), this::createTrellisCropDrops);
         LootItemCondition.Builder riceCondition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.RICE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 8));
-        //TODO: Fix loot table
         add(ModBlocks.RICE.get(), createCropDrops(ModBlocks.RICE.get(), ModItems.RICE_GRAINS.get(), ModItems.RICE_GRAINS.get(), riceCondition));
         add(ModBlocks.WITHERED_VINE.get(), BlockLootSubProvider::createShearsOnlyDrop);
 

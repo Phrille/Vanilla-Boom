@@ -276,6 +276,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.BOWL), has(Items.BOWL))
                 .unlockedBy(getHasName(Items.SEA_PICKLE), has(Items.SEA_PICKLE))
                 .save(finishedRecipe);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.RICE_BOWL.get())
+                .requires(Items.BOWL)
+                .requires(ModTags.ForgeTags.Items.RICE)
+                .unlockedBy(getHasName(Items.BOWL), has(Items.BOWL))
+                .unlockedBy(getHasName(ModItems.RICE_GRAINS.get()), has(ModItems.RICE_GRAINS.get()))
+                .save(finishedRecipe);
         cooking(finishedRecipe, ModItems.COOKED_TUNA.get(), ModItems.TUNA.get(), 0.35F);
         cooking(finishedRecipe, ModItems.COOKED_PERCH.get(), ModItems.PERCH.get(), 0.35F);
         cooking(finishedRecipe, ModItems.COOKED_PIKE.get(), ModItems.PIKE.get(), 0.35F);

@@ -113,7 +113,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.POLAR_BEAR_STEAK.get());
         tag(ModTags.ForgeTags.Items.CANVAS).add(ModItems.CANVAS.get());
         tag(ModTags.ForgeTags.Items.MILK).add(Items.MILK_BUCKET);
-        tag(ModTags.ForgeTags.Items.RICE).add(ModItems.RICE_BOWL.get());
+        tag(ModTags.ForgeTags.Items.RICE).add(ModItems.RICE_GRAINS.get());
 
         /*
          * VanillaBoom tags
