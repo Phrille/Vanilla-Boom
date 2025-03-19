@@ -14,4 +14,4 @@ blocks, items, mobs and structures, are in the spirit of the vanilla game.
 - [VanillaBoom Changelog](https://github.com/Phrille/Vanilla-Boom/wiki/Changelog)
 - [FAQ](https://github.com/Phrille/Vanilla-Boom/wiki/FAQ)
 
-Copyright (C) 2023-2025 Phrille
+Copyright (c) 2023-2025 Phrille
