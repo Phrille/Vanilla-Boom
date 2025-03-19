@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 2,
-  "ingredient": {
-    "item": "vanillaboom:hydro_rock"
-  },
-  "result": "vanillaboom:hydro_rock_slab"
-}

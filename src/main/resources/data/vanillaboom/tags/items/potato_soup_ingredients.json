@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "minecraft:poisonous_potato",
     "#forge:crops/potato"

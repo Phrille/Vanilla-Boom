@@ -13,5 +13,6 @@
   ],
   "result": {
     "item": "vanillaboom:blaze_powder_block"
-  }
+  },
+  "show_notification": true
 }

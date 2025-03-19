@@ -19,5 +19,6 @@
   ],
   "result": {
     "item": "vanillaboom:rain_detector"
-  }
+  },
+  "show_notification": true
 }

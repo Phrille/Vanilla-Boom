@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "vanillaboom:obsidian_bricks",
     "vanillaboom:obsidian_pillar",
@@ -9,9 +8,6 @@
     "vanillaboom:obsidian_wall",
     "vanillaboom:obsidian_brick_stairs",
     "vanillaboom:obsidian_brick_slab",
-    "vanillaboom:obsidian_brick_wall",
-    "vanillaboom:chiseled_obsidian_stairs",
-    "vanillaboom:chiseled_obsidian_slab",
-    "vanillaboom:chiseled_obsidian_wall"
+    "vanillaboom:obsidian_brick_wall"
   ]
 }

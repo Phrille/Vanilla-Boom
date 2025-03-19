@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "minecraft:wool"
+    },
+    {
+      "tag": "forge:shears"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "vanillaboom:canvas"
+  }
+}

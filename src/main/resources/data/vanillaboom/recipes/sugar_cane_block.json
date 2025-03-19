@@ -13,5 +13,6 @@
   ],
   "result": {
     "item": "vanillaboom:sugar_cane_block"
-  }
+  },
+  "show_notification": true
 }

@@ -1,7 +1,7 @@
 {
-  "replace": false,
   "values": [
     "#forge:crops/tomato",
+    "#forge:crops/chili",
     "#forge:crops/rice"
   ]
 }

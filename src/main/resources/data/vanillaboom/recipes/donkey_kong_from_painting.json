@@ -1,0 +1,28 @@
+{
+  "type": "vanillaboom:painting",
+  "canvas": {
+    "tag": "forge:canvas"
+  },
+  "count": 1,
+  "dyes": [
+    {
+      "tag": "forge:dyes/black"
+    },
+    {
+      "tag": "forge:dyes/black"
+    },
+    {
+      "tag": "forge:dyes/pink"
+    },
+    {
+      "tag": "forge:dyes/red"
+    },
+    {
+      "tag": "forge:dyes/white"
+    },
+    {
+      "tag": "forge:dyes/brown"
+    }
+  ],
+  "variant": "minecraft:donkey_kong"
+}

@@ -1,7 +1,7 @@
 {
-  "replace": false,
   "values": [
-    "vanillaboom:tomato_plant",
-    "vanillaboom:rice_plant"
+    "vanillaboom:tomato",
+    "vanillaboom:chili",
+    "vanillaboom:rice"
   ]
 }

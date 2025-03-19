@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "vanillaboom:lilac"
+    }
+  ],
+  "result": {
+    "item": "minecraft:magenta_dye"
+  }
+}

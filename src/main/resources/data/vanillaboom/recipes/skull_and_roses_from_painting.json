@@ -1,0 +1,19 @@
+{
+  "type": "vanillaboom:painting",
+  "canvas": {
+    "tag": "forge:canvas"
+  },
+  "count": 1,
+  "dyes": [
+    {
+      "tag": "forge:dyes/cyan"
+    },
+    {
+      "tag": "forge:dyes/green"
+    },
+    {
+      "tag": "forge:dyes/red"
+    }
+  ],
+  "variant": "minecraft:skull_and_roses"
+}

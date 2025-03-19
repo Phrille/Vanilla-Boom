@@ -1,3 +1,11 @@
+/*
+ * Copyright (C) 2023-2025 Phrille
+ *
+ * This file is part of the Vanilla Boom Mod.
+ * Unauthorized distribution or modification is prohibited.
+ * See LICENSE for details.
+ */
+
 package phrille.vanillaboom.block;
 
 import net.minecraft.sounds.SoundEvents;
@@ -5,15 +13,17 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import phrille.vanillaboom.VanillaBoom;
+import phrille.vanillaboom.block.crop.*;
+import phrille.vanillaboom.block.variant.*;
 
 public class ModBlocks {
-
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, VanillaBoom.MOD_ID);
 
     // Bricks
@@ -71,24 +81,25 @@ public class ModBlocks {
     public static final RegistryObject<Block> DARK_PRISMARINE_PILLAR = BLOCKS.register("dark_prismarine_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.DARK_PRISMARINE)));
     public static final RegistryObject<Block> END_STONE_PILLAR = BLOCKS.register("end_stone_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.END_STONE)));
     public static final RegistryObject<Block> NETHERRACK_PILLAR = BLOCKS.register("netherrack_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.NETHERRACK)));
-    public static final RegistryObject<Block> RED_NETHER_PILLAR = BLOCKS.register("red_nether_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)));
     public static final RegistryObject<Block> OBSIDIAN_PILLAR = BLOCKS.register("obsidian_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
 
     // Wood Variations
-    public static final RegistryObject<Block> SPRUCE_BOOKSHELF = BLOCKS.register("spruce_bookshelf", () -> new BookshelfBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_PLANKS)));
-    public static final RegistryObject<Block> BIRCH_BOOKSHELF = BLOCKS.register("birch_bookshelf", () -> new BookshelfBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_PLANKS)));
-    public static final RegistryObject<Block> JUNGLE_BOOKSHELF = BLOCKS.register("jungle_bookshelf", () -> new BookshelfBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_PLANKS)));
-    public static final RegistryObject<Block> ACACIA_BOOKSHELF = BLOCKS.register("acacia_bookshelf", () -> new BookshelfBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS)));
-    public static final RegistryObject<Block> DARK_OAK_BOOKSHELF = BLOCKS.register("dark_oak_bookshelf", () -> new BookshelfBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_PLANKS)));
-    public static final RegistryObject<Block> CRIMSON_BOOKSHELF = BLOCKS.register("crimson_bookshelf", () -> new BookshelfBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_PLANKS)));
-    public static final RegistryObject<Block> WARPED_BOOKSHELF = BLOCKS.register("warped_bookshelf", () -> new BookshelfBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)));
-    public static final RegistryObject<Block> SPRUCE_LADDER = BLOCKS.register("spruce_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)));
-    public static final RegistryObject<Block> BIRCH_LADDER = BLOCKS.register("birch_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)));
-    public static final RegistryObject<Block> JUNGLE_LADDER = BLOCKS.register("jungle_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)));
-    public static final RegistryObject<Block> ACACIA_LADDER = BLOCKS.register("acacia_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)));
-    public static final RegistryObject<Block> DARK_OAK_LADDER = BLOCKS.register("dark_oak_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)));
-    public static final RegistryObject<Block> CRIMSON_LADDER = BLOCKS.register("crimson_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)));
-    public static final RegistryObject<Block> WARPED_LADDER = BLOCKS.register("warped_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)));
+    public static final RegistryObject<Block> SPRUCE_BOOKSHELF = BLOCKS.register("spruce_bookshelf", () -> new ModBookshelfBlock(Blocks.SPRUCE_PLANKS::defaultBlockState));
+    public static final RegistryObject<Block> BIRCH_BOOKSHELF = BLOCKS.register("birch_bookshelf", () -> new ModBookshelfBlock(Blocks.BIRCH_PLANKS::defaultBlockState));
+    public static final RegistryObject<Block> JUNGLE_BOOKSHELF = BLOCKS.register("jungle_bookshelf", () -> new ModBookshelfBlock(Blocks.JUNGLE_PLANKS::defaultBlockState));
+    public static final RegistryObject<Block> ACACIA_BOOKSHELF = BLOCKS.register("acacia_bookshelf", () -> new ModBookshelfBlock(Blocks.ACACIA_PLANKS::defaultBlockState));
+    public static final RegistryObject<Block> DARK_OAK_BOOKSHELF = BLOCKS.register("dark_oak_bookshelf", () -> new ModBookshelfBlock(Blocks.DARK_OAK_PLANKS::defaultBlockState));
+    public static final RegistryObject<Block> MANGROVE_BOOKSHELF = BLOCKS.register("mangrove_bookshelf", () -> new ModBookshelfBlock(Blocks.MANGROVE_PLANKS::defaultBlockState));
+    public static final RegistryObject<Block> CRIMSON_BOOKSHELF = BLOCKS.register("crimson_bookshelf", () -> new ModBookshelfBlock(Blocks.CRIMSON_PLANKS::defaultBlockState));
+    public static final RegistryObject<Block> WARPED_BOOKSHELF = BLOCKS.register("warped_bookshelf", () -> new ModBookshelfBlock(Blocks.WARPED_PLANKS::defaultBlockState));
+    public static final RegistryObject<Block> SPRUCE_LADDER = BLOCKS.register("spruce_ladder", () -> new ModLadderBlock(() -> Blocks.SPRUCE_SLAB));
+    public static final RegistryObject<Block> BIRCH_LADDER = BLOCKS.register("birch_ladder", () -> new ModLadderBlock(() -> Blocks.BIRCH_SLAB));
+    public static final RegistryObject<Block> JUNGLE_LADDER = BLOCKS.register("jungle_ladder", () -> new ModLadderBlock(() -> Blocks.JUNGLE_SLAB));
+    public static final RegistryObject<Block> ACACIA_LADDER = BLOCKS.register("acacia_ladder", () -> new ModLadderBlock(() -> Blocks.ACACIA_SLAB));
+    public static final RegistryObject<Block> DARK_OAK_LADDER = BLOCKS.register("dark_oak_ladder", () -> new ModLadderBlock(() -> Blocks.DARK_OAK_SLAB));
+    public static final RegistryObject<Block> MANGROVE_LADDER = BLOCKS.register("mangrove_ladder", () -> new ModLadderBlock(() -> Blocks.MANGROVE_SLAB));
+    public static final RegistryObject<Block> CRIMSON_LADDER = BLOCKS.register("crimson_ladder", () -> new ModLadderBlock(() -> Blocks.CRIMSON_SLAB));
+    public static final RegistryObject<Block> WARPED_LADDER = BLOCKS.register("warped_ladder", () -> new ModLadderBlock(() -> Blocks.WARPED_SLAB));
 
     // Storage
     public static final RegistryObject<Block> CHARCOAL_BLOCK = BLOCKS.register("charcoal_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE)));
@@ -153,12 +164,23 @@ public class ModBlocks {
     public static final RegistryObject<Block> BLACK_STAINED_SOUL_GLASS_PANE = BLOCKS.register("black_stained_soul_glass_pane", () -> new StainedGlassPaneBlock(DyeColor.BLACK, BlockBehaviour.Properties.copy(Blocks.BLACK_STAINED_GLASS_PANE)));
 
     // Misc
+    public static final RegistryObject<Block> EASEL = BLOCKS.register("easel", EaselBlock::new);
     public static final RegistryObject<Block> RAIN_DETECTOR = BLOCKS.register("rain_detector", RainDetectorBlock::new);
     public static final RegistryObject<Block> GOLD_BARS = BLOCKS.register("gold_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS)));
-    public static final RegistryObject<Block> ROSE = BLOCKS.register("rose", () -> new FlowerBlock(() -> MobEffects.DIG_SPEED, 10, BlockBehaviour.Properties.copy(Blocks.POPPY)));
+    public static final RegistryObject<Block> ROSE = BLOCKS.register("rose", RoseBlock::new);
     public static final RegistryObject<Block> POTTED_ROSE = BLOCKS.register("potted_rose", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, ROSE, BlockBehaviour.Properties.copy(Blocks.POTTED_POPPY)));
-    public static final RegistryObject<Block> TOMATO_PLANT = BLOCKS.register("tomato_plant", () -> new TomatoPlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
-    public static final RegistryObject<Block> RICE_PLANT = BLOCKS.register("rice_plant", () -> new RicePlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
+    public static final RegistryObject<Block> SHEARED_ROSE_BUSH = BLOCKS.register("sheared_rose_bush", () -> new ShearedTallFlowerBlock(BlockBehaviour.Properties.copy(Blocks.ROSE_BUSH), ROSE));
+    public static final RegistryObject<Block> PEONY = BLOCKS.register("peony", () -> new FlowerBlock(() -> MobEffects.HEALTH_BOOST, 2, BlockBehaviour.Properties.copy(Blocks.POPPY)));
+    public static final RegistryObject<Block> POTTED_PEONY = BLOCKS.register("potted_peony", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, PEONY, BlockBehaviour.Properties.copy(Blocks.POTTED_POPPY)));
+    public static final RegistryObject<Block> SHEARED_PEONY = BLOCKS.register("sheared_peony", () -> new ShearedTallFlowerBlock(BlockBehaviour.Properties.copy(Blocks.PEONY), PEONY));
+    public static final RegistryObject<Block> LILAC = BLOCKS.register("lilac", () -> new FlowerBlock(() -> MobEffects.MOVEMENT_SPEED, 10, BlockBehaviour.Properties.copy(Blocks.POPPY)));
+    public static final RegistryObject<Block> POTTED_LILAC = BLOCKS.register("potted_lilac", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, LILAC, BlockBehaviour.Properties.copy(Blocks.POTTED_POPPY)));
+    public static final RegistryObject<Block> SHEARED_LILAC = BLOCKS.register("sheared_lilac", () -> new ShearedTallFlowerBlock(BlockBehaviour.Properties.copy(Blocks.LILAC), LILAC));
+    public static final RegistryObject<Block> TRELLIS = BLOCKS.register("trellis", () -> new TrellisBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> TOMATO = BLOCKS.register("tomato", () -> new TomatoBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
+    public static final RegistryObject<Block> CHILI = BLOCKS.register("chili", () -> new ChiliBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
+    public static final RegistryObject<Block> RICE = BLOCKS.register("rice", () -> new RicePlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
+    public static final RegistryObject<Block> WITHERED_VINE = BLOCKS.register("withered_vine", WitheredVineBlock::new);
 
     // Cakes
     public static final RegistryObject<Block> CHOCOLATE_CAKE = BLOCKS.register("chocolate_cake", ModCakeBlock::new);
@@ -240,34 +262,23 @@ public class ModBlocks {
     public static final RegistryObject<Block> RED_TERRACOTTA_BRICK_STAIRS = BLOCKS.register("red_terracotta_brick_stairs", () -> new ModStairBlock(() -> RED_TERRACOTTA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_TERRACOTTA)));
     public static final RegistryObject<Block> BLACK_TERRACOTTA_BRICK_STAIRS = BLOCKS.register("black_terracotta_brick_stairs", () -> new ModStairBlock(() -> BLACK_TERRACOTTA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.BLACK_TERRACOTTA)));
     public static final RegistryObject<Block> PERIDOTITE_STAIRS = BLOCKS.register("peridotite_stairs", () -> new ModStairBlock(() -> PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final RegistryObject<Block> HYDRO_ROCK_STAIRS = BLOCKS.register("hydro_rock_stairs", () -> new ModStairBlock(() -> HYDRO_ROCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PRISMARINE)));
-    public static final RegistryObject<Block> INFERNAL_ROCK_STAIRS = BLOCKS.register("infernal_rock_stairs", () -> new ModStairBlock(() -> INFERNAL_ROCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.NETHERRACK)));
     public static final RegistryObject<Block> POLISHED_PERIDOTITE_STAIRS = BLOCKS.register("polished_peridotite_stairs", () -> new ModStairBlock(() -> POLISHED_PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
     public static final RegistryObject<Block> POLISHED_PRISMARINE_STAIRS = BLOCKS.register("polished_prismarine_stairs", () -> new ModStairBlock(() -> POLISHED_PRISMARINE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PRISMARINE)));
     public static final RegistryObject<Block> POLISHED_DARK_PRISMARINE_STAIRS = BLOCKS.register("polished_dark_prismarine_stairs", () -> new ModStairBlock(() -> POLISHED_DARK_PRISMARINE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.DARK_PRISMARINE)));
     public static final RegistryObject<Block> POLISHED_END_STONE_STAIRS = BLOCKS.register("polished_end_stone_stairs", () -> new ModStairBlock(() -> POLISHED_END_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.END_STONE)));
     public static final RegistryObject<Block> POLISHED_NETHERRACK_STAIRS = BLOCKS.register("polished_netherrack_stairs", () -> new ModStairBlock(() -> POLISHED_NETHERRACK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.NETHERRACK)));
     public static final RegistryObject<Block> CRACKED_RED_NETHER_BRICK_STAIRS = BLOCKS.register("cracked_red_nether_brick_stairs", () -> new ModStairBlock(() -> CRACKED_RED_NETHER_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)));
-    public static final RegistryObject<Block> CHISELED_RED_NETHER_BRICK_STAIRS = BLOCKS.register("chiseled_red_nether_brick_stairs", () -> new ModStairBlock(() -> CHISELED_RED_NETHER_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)));
-    public static final RegistryObject<Block> CHISELED_PURPUR_BLOCK_STAIRS = BLOCKS.register("chiseled_purpur_block_stairs", () -> new ModStairBlock(() -> CHISELED_PURPUR_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)));
-    public static final RegistryObject<Block> CHISELED_OBSIDIAN_STAIRS = BLOCKS.register("chiseled_obsidian_stairs", () -> new ModStairBlock(() -> CHISELED_OBSIDIAN.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
 
     // Vanilla Stairs
     public static final RegistryObject<Block> CRACKED_STONE_BRICK_STAIRS = BLOCKS.register("cracked_stone_brick_stairs", () -> new ModStairBlock(Blocks.CRACKED_STONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_STONE_BRICK_STAIRS = BLOCKS.register("chiseled_stone_brick_stairs", () -> new ModStairBlock(Blocks.CHISELED_STONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_SANDSTONE_STAIRS = BLOCKS.register("chiseled_sandstone_stairs", () -> new ModStairBlock(Blocks.CHISELED_SANDSTONE::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_RED_SANDSTONE_STAIRS = BLOCKS.register("chiseled_red_sandstone_stairs", () -> new ModStairBlock(Blocks.CHISELED_RED_SANDSTONE::defaultBlockState));
     public static final RegistryObject<Block> IRON_BLOCK_STAIRS = BLOCKS.register("iron_block_stairs", () -> new ModStairBlock(Blocks.IRON_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> GOLD_BLOCK_STAIRS = BLOCKS.register("gold_block_stairs", () -> new ModStairBlock(Blocks.GOLD_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> OBSIDIAN_STAIRS = BLOCKS.register("obsidian_stairs", () -> new ModStairBlock(Blocks.OBSIDIAN::defaultBlockState));
     public static final RegistryObject<Block> BEDROCK_STAIRS = BLOCKS.register("bedrock_stairs", () -> new ModStairBlock(Blocks.BEDROCK::defaultBlockState));
     public static final RegistryObject<Block> NETHERRACK_STAIRS = BLOCKS.register("netherrack_stairs", () -> new ModStairBlock(Blocks.NETHERRACK::defaultBlockState));
     public static final RegistryObject<Block> CRACKED_NETHER_BRICK_STAIRS = BLOCKS.register("cracked_nether_brick_stairs", () -> new ModStairBlock(Blocks.CRACKED_NETHER_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_NETHER_BRICK_STAIRS = BLOCKS.register("chiseled_nether_brick_stairs", () -> new ModStairBlock(Blocks.CHISELED_NETHER_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> CRACKED_POLISHED_BLACKSTONE_BRICK_STAIRS = BLOCKS.register("cracked_polished_blackstone_brick_stairs", () -> new ModStairBlock(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_POLISHED_BLACKSTONE_STAIRS = BLOCKS.register("chiseled_polished_blackstone_stairs", () -> new ModStairBlock(Blocks.CHISELED_POLISHED_BLACKSTONE::defaultBlockState));
     public static final RegistryObject<Block> END_STONE_STAIRS = BLOCKS.register("end_stone_stairs", () -> new ModStairBlock(Blocks.END_STONE::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_QUARTZ_BLOCK_STAIRS = BLOCKS.register("chiseled_quartz_block_stairs", () -> new ModStairBlock(Blocks.CHISELED_QUARTZ_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> QUARTZ_BRICK_STAIRS = BLOCKS.register("quartz_brick_stairs", () -> new ModStairBlock(Blocks.QUARTZ_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> TERRACOTTA_STAIRS = BLOCKS.register("terracotta_stairs", () -> new ModStairBlock(Blocks.TERRACOTTA::defaultBlockState));
     public static final RegistryObject<Block> WHITE_TERRACOTTA_STAIRS = BLOCKS.register("white_terracotta_stairs", () -> new ModStairBlock(Blocks.WHITE_TERRACOTTA::defaultBlockState));
@@ -308,6 +319,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> JUNGLE_WOOD_STAIRS = BLOCKS.register("jungle_wood_stairs", () -> new ModStairBlock(Blocks.JUNGLE_WOOD::defaultBlockState));
     public static final RegistryObject<Block> ACACIA_WOOD_STAIRS = BLOCKS.register("acacia_wood_stairs", () -> new ModStairBlock(Blocks.ACACIA_WOOD::defaultBlockState));
     public static final RegistryObject<Block> DARK_OAK_WOOD_STAIRS = BLOCKS.register("dark_oak_wood_stairs", () -> new ModStairBlock(Blocks.DARK_OAK_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> MANGROVE_WOOD_STAIRS = BLOCKS.register("mangrove_wood_stairs", () -> new ModStairBlock(Blocks.MANGROVE_WOOD::defaultBlockState));
     public static final RegistryObject<Block> CRIMSON_HYPHAE_STAIRS = BLOCKS.register("crimson_hyphae_stairs", () -> new ModStairBlock(Blocks.CRIMSON_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> WARPED_HYPHAE_STAIRS = BLOCKS.register("warped_hyphae_stairs", () -> new ModStairBlock(Blocks.WARPED_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_OAK_WOOD_STAIRS = BLOCKS.register("stripped_oak_wood_stairs", () -> new ModStairBlock(Blocks.STRIPPED_OAK_WOOD::defaultBlockState));
@@ -316,6 +328,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> STRIPPED_JUNGLE_WOOD_STAIRS = BLOCKS.register("stripped_jungle_wood_stairs", () -> new ModStairBlock(Blocks.STRIPPED_JUNGLE_WOOD::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_ACACIA_WOOD_STAIRS = BLOCKS.register("stripped_acacia_wood_stairs", () -> new ModStairBlock(Blocks.STRIPPED_ACACIA_WOOD::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_DARK_OAK_WOOD_STAIRS = BLOCKS.register("stripped_dark_oak_wood_stairs", () -> new ModStairBlock(Blocks.STRIPPED_DARK_OAK_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> STRIPPED_MANGROVE_WOOD_STAIRS = BLOCKS.register("stripped_mangrove_wood_stairs", () -> new ModStairBlock(Blocks.STRIPPED_MANGROVE_WOOD::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MANGROVE_STAIRS)));
     public static final RegistryObject<Block> STRIPPED_CRIMSON_HYPHAE_STAIRS = BLOCKS.register("stripped_crimson_hyphae_stairs", () -> new ModStairBlock(Blocks.STRIPPED_CRIMSON_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_WARPED_HYPHAE_STAIRS = BLOCKS.register("stripped_warped_hyphae_stairs", () -> new ModStairBlock(Blocks.STRIPPED_WARPED_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> CUT_SANDSTONE_STAIRS = BLOCKS.register("cut_sandstone_stairs", () -> new ModStairBlock(Blocks.CUT_SANDSTONE::defaultBlockState));
@@ -346,34 +359,23 @@ public class ModBlocks {
     public static final RegistryObject<Block> RED_TERRACOTTA_BRICK_SLAB = BLOCKS.register("red_terracotta_brick_slab", () -> new ModSlabBlock(() -> RED_TERRACOTTA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_TERRACOTTA)));
     public static final RegistryObject<Block> BLACK_TERRACOTTA_BRICK_SLAB = BLOCKS.register("black_terracotta_brick_slab", () -> new ModSlabBlock(() -> BLACK_TERRACOTTA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.BLACK_TERRACOTTA)));
     public static final RegistryObject<Block> PERIDOTITE_SLAB = BLOCKS.register("peridotite_slab", () -> new ModSlabBlock(() -> PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final RegistryObject<Block> HYDRO_ROCK_SLAB = BLOCKS.register("hydro_rock_slab", () -> new ModSlabBlock(() -> HYDRO_ROCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PRISMARINE)));
-    public static final RegistryObject<Block> INFERNAL_ROCK_SLAB = BLOCKS.register("infernal_rock_slab", () -> new ModSlabBlock(() -> INFERNAL_ROCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.NETHERRACK)));
     public static final RegistryObject<Block> POLISHED_PERIDOTITE_SLAB = BLOCKS.register("polished_peridotite_slab", () -> new ModSlabBlock(() -> POLISHED_PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
     public static final RegistryObject<Block> POLISHED_PRISMARINE_SLAB = BLOCKS.register("polished_prismarine_slab", () -> new ModSlabBlock(() -> POLISHED_PRISMARINE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PRISMARINE)));
     public static final RegistryObject<Block> POLISHED_DARK_PRISMARINE_SLAB = BLOCKS.register("polished_dark_prismarine_slab", () -> new ModSlabBlock(() -> POLISHED_DARK_PRISMARINE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.DARK_PRISMARINE)));
     public static final RegistryObject<Block> POLISHED_END_STONE_SLAB = BLOCKS.register("polished_end_stone_slab", () -> new ModSlabBlock(() -> POLISHED_END_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.END_STONE)));
     public static final RegistryObject<Block> POLISHED_NETHERRACK_SLAB = BLOCKS.register("polished_netherrack_slab", () -> new ModSlabBlock(() -> POLISHED_NETHERRACK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.NETHERRACK)));
     public static final RegistryObject<Block> CRACKED_RED_NETHER_BRICK_SLAB = BLOCKS.register("cracked_red_nether_brick_slab", () -> new ModSlabBlock(() -> CRACKED_RED_NETHER_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)));
-    public static final RegistryObject<Block> CHISELED_RED_NETHER_BRICK_SLAB = BLOCKS.register("chiseled_red_nether_brick_slab", () -> new ModSlabBlock(() -> CHISELED_RED_NETHER_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)));
-    public static final RegistryObject<Block> CHISELED_PURPUR_BLOCK_SLAB = BLOCKS.register("chiseled_purpur_block_slab", () -> new ModSlabBlock(() -> CHISELED_PURPUR_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)));
-    public static final RegistryObject<Block> CHISELED_OBSIDIAN_SLAB = BLOCKS.register("chiseled_obsidian_slab", () -> new ModSlabBlock(() -> CHISELED_OBSIDIAN.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
 
     // Vanilla Slabs
     public static final RegistryObject<Block> CRACKED_STONE_BRICK_SLAB = BLOCKS.register("cracked_stone_brick_slab", () -> new ModSlabBlock(Blocks.CRACKED_STONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_STONE_BRICK_SLAB = BLOCKS.register("chiseled_stone_brick_slab", () -> new ModSlabBlock(Blocks.CHISELED_STONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_SANDSTONE_SLAB = BLOCKS.register("chiseled_sandstone_slab", () -> new ModSlabBlock(Blocks.CHISELED_SANDSTONE::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_RED_SANDSTONE_SLAB = BLOCKS.register("chiseled_red_sandstone_slab", () -> new ModSlabBlock(Blocks.CHISELED_RED_SANDSTONE::defaultBlockState));
     public static final RegistryObject<Block> IRON_BLOCK_SLAB = BLOCKS.register("iron_block_slab", () -> new ModSlabBlock(Blocks.IRON_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> GOLD_BLOCK_SLAB = BLOCKS.register("gold_block_slab", () -> new ModSlabBlock(Blocks.GOLD_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> OBSIDIAN_SLAB = BLOCKS.register("obsidian_slab", () -> new ModSlabBlock(Blocks.OBSIDIAN::defaultBlockState));
     public static final RegistryObject<Block> BEDROCK_SLAB = BLOCKS.register("bedrock_slab", () -> new ModSlabBlock(Blocks.BEDROCK::defaultBlockState));
     public static final RegistryObject<Block> NETHERRACK_SLAB = BLOCKS.register("netherrack_slab", () -> new ModSlabBlock(Blocks.NETHERRACK::defaultBlockState));
     public static final RegistryObject<Block> CRACKED_NETHER_BRICK_SLAB = BLOCKS.register("cracked_nether_brick_slab", () -> new ModSlabBlock(Blocks.CRACKED_NETHER_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_NETHER_BRICK_SLAB = BLOCKS.register("chiseled_nether_brick_slab", () -> new ModSlabBlock(Blocks.CHISELED_NETHER_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> CRACKED_POLISHED_BLACKSTONE_BRICK_SLAB = BLOCKS.register("cracked_polished_blackstone_brick_slab", () -> new ModSlabBlock(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_POLISHED_BLACKSTONE_SLAB = BLOCKS.register("chiseled_polished_blackstone_slab", () -> new ModSlabBlock(Blocks.CHISELED_POLISHED_BLACKSTONE::defaultBlockState));
     public static final RegistryObject<Block> END_STONE_SLAB = BLOCKS.register("end_stone_slab", () -> new ModSlabBlock(Blocks.END_STONE::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_QUARTZ_BLOCK_SLAB = BLOCKS.register("chiseled_quartz_block_slab", () -> new ModSlabBlock(Blocks.CHISELED_QUARTZ_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> QUARTZ_BRICK_SLAB = BLOCKS.register("quartz_brick_slab", () -> new ModSlabBlock(Blocks.QUARTZ_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> TERRACOTTA_SLAB = BLOCKS.register("terracotta_slab", () -> new ModSlabBlock(Blocks.TERRACOTTA::defaultBlockState));
     public static final RegistryObject<Block> WHITE_TERRACOTTA_SLAB = BLOCKS.register("white_terracotta_slab", () -> new ModSlabBlock(Blocks.WHITE_TERRACOTTA::defaultBlockState));
@@ -414,6 +416,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> JUNGLE_WOOD_SLAB = BLOCKS.register("jungle_wood_slab", () -> new ModSlabBlock(Blocks.JUNGLE_WOOD::defaultBlockState));
     public static final RegistryObject<Block> ACACIA_WOOD_SLAB = BLOCKS.register("acacia_wood_slab", () -> new ModSlabBlock(Blocks.ACACIA_WOOD::defaultBlockState));
     public static final RegistryObject<Block> DARK_OAK_WOOD_SLAB = BLOCKS.register("dark_oak_wood_slab", () -> new ModSlabBlock(Blocks.DARK_OAK_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> MANGROVE_WOOD_SLAB = BLOCKS.register("mangrove_wood_slab", () -> new ModSlabBlock(Blocks.MANGROVE_WOOD::defaultBlockState));
     public static final RegistryObject<Block> CRIMSON_HYPHAE_SLAB = BLOCKS.register("crimson_hyphae_slab", () -> new ModSlabBlock(Blocks.CRIMSON_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> WARPED_HYPHAE_SLAB = BLOCKS.register("warped_hyphae_slab", () -> new ModSlabBlock(Blocks.WARPED_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_OAK_WOOD_SLAB = BLOCKS.register("stripped_oak_wood_slab", () -> new ModSlabBlock(Blocks.STRIPPED_OAK_WOOD::defaultBlockState));
@@ -422,6 +425,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> STRIPPED_JUNGLE_WOOD_SLAB = BLOCKS.register("stripped_jungle_wood_slab", () -> new ModSlabBlock(Blocks.STRIPPED_JUNGLE_WOOD::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_ACACIA_WOOD_SLAB = BLOCKS.register("stripped_acacia_wood_slab", () -> new ModSlabBlock(Blocks.STRIPPED_ACACIA_WOOD::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_DARK_OAK_WOOD_SLAB = BLOCKS.register("stripped_dark_oak_wood_slab", () -> new ModSlabBlock(Blocks.STRIPPED_DARK_OAK_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> STRIPPED_MANGROVE_WOOD_SLAB = BLOCKS.register("stripped_mangrove_wood_slab", () -> new ModSlabBlock(Blocks.STRIPPED_MANGROVE_WOOD::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MANGROVE_SLAB)));
     public static final RegistryObject<Block> STRIPPED_CRIMSON_HYPHAE_SLAB = BLOCKS.register("stripped_crimson_hyphae_slab", () -> new ModSlabBlock(Blocks.STRIPPED_CRIMSON_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_WARPED_HYPHAE_SLAB = BLOCKS.register("stripped_warped_hyphae_slab", () -> new ModSlabBlock(Blocks.STRIPPED_WARPED_HYPHAE::defaultBlockState));
 
@@ -449,34 +453,23 @@ public class ModBlocks {
     public static final RegistryObject<Block> RED_TERRACOTTA_BRICK_WALL = BLOCKS.register("red_terracotta_brick_wall", () -> new ModWallBlock(() -> RED_TERRACOTTA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_TERRACOTTA)));
     public static final RegistryObject<Block> BLACK_TERRACOTTA_BRICK_WALL = BLOCKS.register("black_terracotta_brick_wall", () -> new ModWallBlock(() -> BLACK_TERRACOTTA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.BLACK_TERRACOTTA)));
     public static final RegistryObject<Block> PERIDOTITE_WALL = BLOCKS.register("peridotite_wall", () -> new ModWallBlock(() -> PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final RegistryObject<Block> HYDRO_ROCK_WALL = BLOCKS.register("hydro_rock_wall", () -> new ModWallBlock(() -> HYDRO_ROCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PRISMARINE)));
-    public static final RegistryObject<Block> INFERNAL_ROCK_WALL = BLOCKS.register("infernal_rock_wall", () -> new ModWallBlock(() -> INFERNAL_ROCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.NETHERRACK)));
     public static final RegistryObject<Block> POLISHED_PERIDOTITE_WALL = BLOCKS.register("polished_peridotite_wall", () -> new ModWallBlock(() -> POLISHED_PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
     public static final RegistryObject<Block> POLISHED_PRISMARINE_WALL = BLOCKS.register("polished_prismarine_wall", () -> new ModWallBlock(() -> POLISHED_PRISMARINE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PRISMARINE)));
     public static final RegistryObject<Block> POLISHED_DARK_PRISMARINE_WALL = BLOCKS.register("polished_dark_prismarine_wall", () -> new ModWallBlock(() -> POLISHED_DARK_PRISMARINE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.DARK_PRISMARINE)));
     public static final RegistryObject<Block> POLISHED_END_STONE_WALL = BLOCKS.register("polished_end_stone_wall", () -> new ModWallBlock(() -> POLISHED_END_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.END_STONE)));
     public static final RegistryObject<Block> POLISHED_NETHERRACK_WALL = BLOCKS.register("polished_netherrack_wall", () -> new ModWallBlock(() -> POLISHED_NETHERRACK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.NETHERRACK)));
     public static final RegistryObject<Block> CRACKED_RED_NETHER_BRICK_WALL = BLOCKS.register("cracked_red_nether_brick_wall", () -> new ModWallBlock(() -> CRACKED_RED_NETHER_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)));
-    public static final RegistryObject<Block> CHISELED_RED_NETHER_BRICK_WALL = BLOCKS.register("chiseled_red_nether_brick_wall", () -> new ModWallBlock(() -> CHISELED_RED_NETHER_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS)));
-    public static final RegistryObject<Block> CHISELED_PURPUR_BLOCK_WALL = BLOCKS.register("chiseled_purpur_block_wall", () -> new ModWallBlock(() -> CHISELED_PURPUR_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)));
-    public static final RegistryObject<Block> CHISELED_OBSIDIAN_WALL = BLOCKS.register("chiseled_obsidian_wall", () -> new ModWallBlock(() -> CHISELED_OBSIDIAN.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
 
     // Vanilla Walls
     public static final RegistryObject<Block> CRACKED_STONE_BRICK_WALL = BLOCKS.register("cracked_stone_brick_wall", () -> new ModWallBlock(Blocks.CRACKED_STONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_STONE_BRICK_WALL = BLOCKS.register("chiseled_stone_brick_wall", () -> new ModWallBlock(Blocks.CHISELED_STONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_SANDSTONE_WALL = BLOCKS.register("chiseled_sandstone_wall", () -> new ModWallBlock(Blocks.CHISELED_SANDSTONE::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_RED_SANDSTONE_WALL = BLOCKS.register("chiseled_red_sandstone_wall", () -> new ModWallBlock(Blocks.CHISELED_RED_SANDSTONE::defaultBlockState));
     public static final RegistryObject<Block> IRON_BLOCK_WALL = BLOCKS.register("iron_block_wall", () -> new ModWallBlock(Blocks.IRON_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> GOLD_BLOCK_WALL = BLOCKS.register("gold_block_wall", () -> new ModWallBlock(Blocks.GOLD_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> OBSIDIAN_WALL = BLOCKS.register("obsidian_wall", () -> new ModWallBlock(Blocks.OBSIDIAN::defaultBlockState));
     public static final RegistryObject<Block> BEDROCK_WALL = BLOCKS.register("bedrock_wall", () -> new ModWallBlock(Blocks.BEDROCK::defaultBlockState));
     public static final RegistryObject<Block> NETHERRACK_WALL = BLOCKS.register("netherrack_wall", () -> new ModWallBlock(Blocks.NETHERRACK::defaultBlockState));
     public static final RegistryObject<Block> CRACKED_NETHER_BRICK_WALL = BLOCKS.register("cracked_nether_brick_wall", () -> new ModWallBlock(Blocks.CRACKED_NETHER_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_NETHER_BRICK_WALL = BLOCKS.register("chiseled_nether_brick_wall", () -> new ModWallBlock(Blocks.CHISELED_NETHER_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> CRACKED_POLISHED_BLACKSTONE_BRICK_WALL = BLOCKS.register("cracked_polished_blackstone_brick_wall", () -> new ModWallBlock(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_POLISHED_BLACKSTONE_WALL = BLOCKS.register("chiseled_polished_blackstone_wall", () -> new ModWallBlock(Blocks.CHISELED_POLISHED_BLACKSTONE::defaultBlockState));
     public static final RegistryObject<Block> END_STONE_WALL = BLOCKS.register("end_stone_wall", () -> new ModWallBlock(Blocks.END_STONE::defaultBlockState));
-    public static final RegistryObject<Block> CHISELED_QUARTZ_BLOCK_WALL = BLOCKS.register("chiseled_quartz_block_wall", () -> new ModWallBlock(Blocks.CHISELED_QUARTZ_BLOCK::defaultBlockState));
     public static final RegistryObject<Block> QUARTZ_BRICK_WALL = BLOCKS.register("quartz_brick_wall", () -> new ModWallBlock(Blocks.QUARTZ_BRICKS::defaultBlockState));
     public static final RegistryObject<Block> TERRACOTTA_WALL = BLOCKS.register("terracotta_wall", () -> new ModWallBlock(Blocks.TERRACOTTA::defaultBlockState));
     public static final RegistryObject<Block> WHITE_TERRACOTTA_WALL = BLOCKS.register("white_terracotta_wall", () -> new ModWallBlock(Blocks.WHITE_TERRACOTTA::defaultBlockState));
@@ -527,39 +520,43 @@ public class ModBlocks {
     public static final RegistryObject<Block> DARK_PRISMARINE_WALL = BLOCKS.register("dark_prismarine_wall", () -> new ModWallBlock(Blocks.DARK_PRISMARINE::defaultBlockState));
 
     // Vanilla Fences
-    public static final RegistryObject<Block> OAK_WOOD_FENCE = BLOCKS.register("oak_wood_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)));
-    public static final RegistryObject<Block> SPRUCE_WOOD_FENCE = BLOCKS.register("spruce_wood_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_FENCE)));
-    public static final RegistryObject<Block> BIRCH_WOOD_FENCE = BLOCKS.register("birch_wood_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_FENCE)));
-    public static final RegistryObject<Block> JUNGLE_WOOD_FENCE = BLOCKS.register("jungle_wood_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_FENCE)));
-    public static final RegistryObject<Block> ACACIA_WOOD_FENCE = BLOCKS.register("acacia_wood_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_FENCE)));
-    public static final RegistryObject<Block> DARK_OAK_WOOD_FENCE = BLOCKS.register("dark_oak_wood_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_FENCE)));
-    public static final RegistryObject<Block> CRIMSON_HYPHAE_FENCE = BLOCKS.register("crimson_hyphae_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_FENCE).sound(SoundType.STEM)));
-    public static final RegistryObject<Block> WARPED_HYPHAE_FENCE = BLOCKS.register("warped_hyphae_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_FENCE).sound(SoundType.STEM)));
-    public static final RegistryObject<Block> STRIPPED_OAK_WOOD_FENCE = BLOCKS.register("stripped_oak_wood_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)));
-    public static final RegistryObject<Block> STRIPPED_SPRUCE_WOOD_FENCE = BLOCKS.register("stripped_spruce_wood_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_FENCE)));
-    public static final RegistryObject<Block> STRIPPED_BIRCH_WOOD_FENCE = BLOCKS.register("stripped_birch_wood_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_FENCE)));
-    public static final RegistryObject<Block> STRIPPED_JUNGLE_WOOD_FENCE = BLOCKS.register("stripped_jungle_wood_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_FENCE)));
-    public static final RegistryObject<Block> STRIPPED_ACACIA_WOOD_FENCE = BLOCKS.register("stripped_acacia_wood_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_FENCE)));
-    public static final RegistryObject<Block> STRIPPED_DARK_OAK_WOOD_FENCE = BLOCKS.register("stripped_dark_oak_wood_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_FENCE)));
-    public static final RegistryObject<Block> STRIPPED_CRIMSON_HYPHAE_FENCE = BLOCKS.register("stripped_crimson_hyphae_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_FENCE).sound(SoundType.STEM)));
-    public static final RegistryObject<Block> STRIPPED_WARPED_HYPHAE_FENCE = BLOCKS.register("stripped_warped_hyphae_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_FENCE).sound(SoundType.STEM)));
-    public static final RegistryObject<Block> RED_NETHER_BRICK_FENCE = BLOCKS.register("red_nether_brick_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_BRICK_FENCE)));
-    public static final RegistryObject<Block> OAK_WOOD_FENCE_GATE = BLOCKS.register("oak_wood_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE), SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
-    public static final RegistryObject<Block> SPRUCE_WOOD_FENCE_GATE = BLOCKS.register("spruce_wood_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_FENCE), SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
-    public static final RegistryObject<Block> BIRCH_WOOD_FENCE_GATE = BLOCKS.register("birch_wood_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_FENCE), SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
-    public static final RegistryObject<Block> JUNGLE_WOOD_FENCE_GATE = BLOCKS.register("jungle_wood_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_FENCE), SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
-    public static final RegistryObject<Block> ACACIA_WOOD_FENCE_GATE = BLOCKS.register("acacia_wood_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_FENCE), SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
-    public static final RegistryObject<Block> DARK_OAK_WOOD_FENCE_GATE = BLOCKS.register("dark_oak_wood_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_FENCE), SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
-    public static final RegistryObject<Block> CRIMSON_HYPHAE_FENCE_GATE = BLOCKS.register("crimson_hyphae_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_FENCE).sound(SoundType.STEM), SoundEvents.NETHER_WOOD_FENCE_GATE_CLOSE, SoundEvents.NETHER_WOOD_FENCE_GATE_OPEN));
-    public static final RegistryObject<Block> WARPED_HYPHAE_FENCE_GATE = BLOCKS.register("warped_hyphae_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_FENCE).sound(SoundType.STEM), SoundEvents.NETHER_WOOD_FENCE_GATE_CLOSE, SoundEvents.NETHER_WOOD_FENCE_GATE_OPEN));
-    public static final RegistryObject<Block> STRIPPED_OAK_WOOD_FENCE_GATE = BLOCKS.register("stripped_oak_wood_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE), SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
-    public static final RegistryObject<Block> STRIPPED_SPRUCE_WOOD_FENCE_GATE = BLOCKS.register("stripped_spruce_wood_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_FENCE), SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
-    public static final RegistryObject<Block> STRIPPED_BIRCH_WOOD_FENCE_GATE = BLOCKS.register("stripped_birch_wood_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_FENCE), SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
-    public static final RegistryObject<Block> STRIPPED_JUNGLE_WOOD_FENCE_GATE = BLOCKS.register("stripped_jungle_wood_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_FENCE), SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
-    public static final RegistryObject<Block> STRIPPED_ACACIA_WOOD_FENCE_GATE = BLOCKS.register("stripped_acacia_wood_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_FENCE), SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
-    public static final RegistryObject<Block> STRIPPED_DARK_OAK_WOOD_FENCE_GATE = BLOCKS.register("stripped_dark_oak_wood_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_FENCE), SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
-    public static final RegistryObject<Block> STRIPPED_CRIMSON_HYPHAE_FENCE_GATE = BLOCKS.register("stripped_crimson_hyphae_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_FENCE).sound(SoundType.STEM), SoundEvents.NETHER_WOOD_FENCE_GATE_CLOSE, SoundEvents.NETHER_WOOD_FENCE_GATE_OPEN));
-    public static final RegistryObject<Block> STRIPPED_WARPED_HYPHAE_FENCE_GATE = BLOCKS.register("stripped_warped_hyphae_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_FENCE).sound(SoundType.STEM), SoundEvents.NETHER_WOOD_FENCE_GATE_CLOSE, SoundEvents.NETHER_WOOD_FENCE_GATE_OPEN));
-    public static final RegistryObject<Block> NETHER_BRICK_FENCE_GATE = BLOCKS.register("nether_brick_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_BRICK_FENCE), SoundEvents.NETHER_WOOD_FENCE_GATE_CLOSE, SoundEvents.NETHER_WOOD_FENCE_GATE_OPEN));
-    public static final RegistryObject<Block> RED_NETHER_BRICK_FENCE_GATE = BLOCKS.register("red_nether_brick_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_BRICK_FENCE), SoundEvents.NETHER_WOOD_FENCE_GATE_CLOSE, SoundEvents.NETHER_WOOD_FENCE_GATE_OPEN));
+    public static final RegistryObject<Block> OAK_WOOD_FENCE = BLOCKS.register("oak_wood_fence", () -> new ModFenceBlock(Blocks.OAK_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> SPRUCE_WOOD_FENCE = BLOCKS.register("spruce_wood_fence", () -> new ModFenceBlock(Blocks.SPRUCE_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> BIRCH_WOOD_FENCE = BLOCKS.register("birch_wood_fence", () -> new ModFenceBlock(Blocks.BIRCH_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> JUNGLE_WOOD_FENCE = BLOCKS.register("jungle_wood_fence", () -> new ModFenceBlock(Blocks.JUNGLE_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> ACACIA_WOOD_FENCE = BLOCKS.register("acacia_wood_fence", () -> new ModFenceBlock(Blocks.ACACIA_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> DARK_OAK_WOOD_FENCE = BLOCKS.register("dark_oak_wood_fence", () -> new ModFenceBlock(Blocks.DARK_OAK_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> MANGROVE_WOOD_FENCE = BLOCKS.register("mangrove_wood_fence", () -> new ModFenceBlock(Blocks.MANGROVE_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> CRIMSON_HYPHAE_FENCE = BLOCKS.register("crimson_hyphae_fence", () -> new ModFenceBlock(Blocks.CRIMSON_HYPHAE::defaultBlockState));
+    public static final RegistryObject<Block> WARPED_HYPHAE_FENCE = BLOCKS.register("warped_hyphae_fence", () -> new ModFenceBlock(Blocks.WARPED_HYPHAE::defaultBlockState));
+    public static final RegistryObject<Block> STRIPPED_OAK_WOOD_FENCE = BLOCKS.register("stripped_oak_wood_fence", () -> new ModFenceBlock(Blocks.STRIPPED_OAK_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> STRIPPED_SPRUCE_WOOD_FENCE = BLOCKS.register("stripped_spruce_wood_fence", () -> new ModFenceBlock(Blocks.STRIPPED_SPRUCE_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> STRIPPED_BIRCH_WOOD_FENCE = BLOCKS.register("stripped_birch_wood_fence", () -> new ModFenceBlock(Blocks.STRIPPED_BIRCH_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> STRIPPED_JUNGLE_WOOD_FENCE = BLOCKS.register("stripped_jungle_wood_fence", () -> new ModFenceBlock(Blocks.STRIPPED_JUNGLE_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> STRIPPED_ACACIA_WOOD_FENCE = BLOCKS.register("stripped_acacia_wood_fence", () -> new ModFenceBlock(Blocks.STRIPPED_ACACIA_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> STRIPPED_DARK_OAK_WOOD_FENCE = BLOCKS.register("stripped_dark_oak_wood_fence", () -> new ModFenceBlock(Blocks.STRIPPED_DARK_OAK_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> STRIPPED_MANGROVE_WOOD_FENCE = BLOCKS.register("stripped_mangrove_wood_fence", () -> new ModFenceBlock(Blocks.STRIPPED_MANGROVE_WOOD::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MANGROVE_FENCE)));
+    public static final RegistryObject<Block> STRIPPED_CRIMSON_HYPHAE_FENCE = BLOCKS.register("stripped_crimson_hyphae_fence", () -> new ModFenceBlock(Blocks.STRIPPED_CRIMSON_HYPHAE::defaultBlockState));
+    public static final RegistryObject<Block> STRIPPED_WARPED_HYPHAE_FENCE = BLOCKS.register("stripped_warped_hyphae_fence", () -> new ModFenceBlock(Blocks.STRIPPED_WARPED_HYPHAE::defaultBlockState));
+    public static final RegistryObject<Block> RED_NETHER_BRICK_FENCE = BLOCKS.register("red_nether_brick_fence", () -> new ModFenceBlock(Blocks.RED_NETHER_BRICKS::defaultBlockState));
+    public static final RegistryObject<Block> OAK_WOOD_FENCE_GATE = BLOCKS.register("oak_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.OAK_WOOD::defaultBlockState, WoodType.OAK));
+    public static final RegistryObject<Block> SPRUCE_WOOD_FENCE_GATE = BLOCKS.register("spruce_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.SPRUCE_WOOD::defaultBlockState, WoodType.SPRUCE));
+    public static final RegistryObject<Block> BIRCH_WOOD_FENCE_GATE = BLOCKS.register("birch_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.BIRCH_WOOD::defaultBlockState, WoodType.BIRCH));
+    public static final RegistryObject<Block> JUNGLE_WOOD_FENCE_GATE = BLOCKS.register("jungle_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.JUNGLE_WOOD::defaultBlockState, WoodType.JUNGLE));
+    public static final RegistryObject<Block> ACACIA_WOOD_FENCE_GATE = BLOCKS.register("acacia_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.ACACIA_WOOD::defaultBlockState, WoodType.ACACIA));
+    public static final RegistryObject<Block> DARK_OAK_WOOD_FENCE_GATE = BLOCKS.register("dark_oak_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.DARK_OAK_WOOD::defaultBlockState, WoodType.DARK_OAK));
+    public static final RegistryObject<Block> MANGROVE_WOOD_FENCE_GATE = BLOCKS.register("mangrove_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.MANGROVE_WOOD::defaultBlockState, WoodType.MANGROVE));
+    public static final RegistryObject<Block> CRIMSON_HYPHAE_FENCE_GATE = BLOCKS.register("crimson_hyphae_fence_gate", () -> new ModFenceGateBlock(Blocks.CRIMSON_HYPHAE::defaultBlockState, WoodType.CRIMSON));
+    public static final RegistryObject<Block> WARPED_HYPHAE_FENCE_GATE = BLOCKS.register("warped_hyphae_fence_gate", () -> new ModFenceGateBlock(Blocks.WARPED_HYPHAE::defaultBlockState, WoodType.WARPED));
+    public static final RegistryObject<Block> STRIPPED_OAK_WOOD_FENCE_GATE = BLOCKS.register("stripped_oak_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.STRIPPED_OAK_WOOD::defaultBlockState, WoodType.OAK));
+    public static final RegistryObject<Block> STRIPPED_SPRUCE_WOOD_FENCE_GATE = BLOCKS.register("stripped_spruce_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.STRIPPED_SPRUCE_WOOD::defaultBlockState, WoodType.SPRUCE));
+    public static final RegistryObject<Block> STRIPPED_BIRCH_WOOD_FENCE_GATE = BLOCKS.register("stripped_birch_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.STRIPPED_BIRCH_WOOD::defaultBlockState, WoodType.BIRCH));
+    public static final RegistryObject<Block> STRIPPED_JUNGLE_WOOD_FENCE_GATE = BLOCKS.register("stripped_jungle_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.STRIPPED_JUNGLE_WOOD::defaultBlockState, WoodType.JUNGLE));
+    public static final RegistryObject<Block> STRIPPED_ACACIA_WOOD_FENCE_GATE = BLOCKS.register("stripped_acacia_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.STRIPPED_ACACIA_WOOD::defaultBlockState, WoodType.ACACIA));
+    public static final RegistryObject<Block> STRIPPED_DARK_OAK_WOOD_FENCE_GATE = BLOCKS.register("stripped_dark_oak_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.STRIPPED_DARK_OAK_WOOD::defaultBlockState, WoodType.DARK_OAK));
+    public static final RegistryObject<Block> STRIPPED_MANGROVE_WOOD_FENCE_GATE = BLOCKS.register("stripped_mangrove_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.STRIPPED_MANGROVE_WOOD::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MANGROVE_FENCE_GATE), WoodType.MANGROVE));
+    public static final RegistryObject<Block> STRIPPED_CRIMSON_HYPHAE_FENCE_GATE = BLOCKS.register("stripped_crimson_hyphae_fence_gate", () -> new ModFenceGateBlock(Blocks.STRIPPED_CRIMSON_HYPHAE::defaultBlockState, WoodType.CRIMSON));
+    public static final RegistryObject<Block> STRIPPED_WARPED_HYPHAE_FENCE_GATE = BLOCKS.register("stripped_warped_hyphae_fence_gate", () -> new ModFenceGateBlock(Blocks.STRIPPED_WARPED_HYPHAE::defaultBlockState, WoodType.WARPED));
+    public static final RegistryObject<Block> NETHER_BRICK_FENCE_GATE = BLOCKS.register("nether_brick_fence_gate", () -> new ModFenceGateBlock(Blocks.NETHER_BRICKS::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.NETHER_BRICK_FENCE), SoundEvents.NETHER_WOOD_FENCE_GATE_CLOSE, SoundEvents.NETHER_WOOD_FENCE_GATE_OPEN));
+    public static final RegistryObject<Block> RED_NETHER_BRICK_FENCE_GATE = BLOCKS.register("red_nether_brick_fence_gate", () -> new ModFenceGateBlock(Blocks.RED_NETHER_BRICKS::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.NETHER_BRICK_FENCE), SoundEvents.NETHER_WOOD_FENCE_GATE_CLOSE, SoundEvents.NETHER_WOOD_FENCE_GATE_OPEN));
 }

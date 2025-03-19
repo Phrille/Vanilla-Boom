@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "x": {
+      "item": "minecraft:stripped_mangrove_wood"
+    }
+  },
+  "pattern": [
+    "xxx"
+  ],
+  "result": {
+    "count": 6,
+    "item": "vanillaboom:stripped_mangrove_wood_slab"
+  },
+  "show_notification": true
+}

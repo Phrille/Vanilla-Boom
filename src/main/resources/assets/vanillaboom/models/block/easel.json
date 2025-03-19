@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/lectern",
+  "textures": {
+    "base": "minecraft:block/oak_planks",
+    "bottom": "minecraft:block/oak_planks",
+    "front": "vanillaboom:block/easel_front",
+    "particle": "minecraft:block/lectern_sides",
+    "sides": "minecraft:block/lectern_sides",
+    "top": "vanillaboom:block/easel_top"
+  }
+}

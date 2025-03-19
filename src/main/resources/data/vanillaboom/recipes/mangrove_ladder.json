@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "x": {
+      "item": "minecraft:mangrove_slab"
+    },
+    "y": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "y y",
+    "yxy",
+    "y y"
+  ],
+  "result": {
+    "count": 3,
+    "item": "vanillaboom:mangrove_ladder"
+  },
+  "show_notification": true
+}

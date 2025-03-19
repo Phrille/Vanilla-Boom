@@ -15,5 +15,6 @@
   ],
   "result": {
     "item": "vanillaboom:stripped_acacia_wood_fence_gate"
-  }
+  },
+  "show_notification": true
 }

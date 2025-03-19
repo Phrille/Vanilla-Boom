@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "vanillaboom:block/trellis_lower"
+    },
+    "half=upper": {
+      "model": "vanillaboom:block/trellis_upper"
+    }
+  }
+}

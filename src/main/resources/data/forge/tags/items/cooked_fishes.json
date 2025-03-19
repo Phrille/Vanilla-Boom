@@ -1,6 +1,7 @@
 {
-  "replace": false,
   "values": [
+    "minecraft:cooked_cod",
+    "minecraft:cooked_salmon",
     "#vanillaboom:cooked_fishes"
   ]
 }

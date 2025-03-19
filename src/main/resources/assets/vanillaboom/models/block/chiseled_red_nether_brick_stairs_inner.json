@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "vanillaboom:block/chiseled_red_nether_bricks",
-    "side": "vanillaboom:block/chiseled_red_nether_bricks",
-    "top": "vanillaboom:block/chiseled_red_nether_bricks"
-  }
-}

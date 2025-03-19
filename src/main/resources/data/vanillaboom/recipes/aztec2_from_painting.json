@@ -1,0 +1,16 @@
+{
+  "type": "vanillaboom:painting",
+  "canvas": {
+    "tag": "forge:canvas"
+  },
+  "count": 1,
+  "dyes": [
+    {
+      "tag": "forge:dyes/blue"
+    },
+    {
+      "tag": "forge:dyes/green"
+    }
+  ],
+  "variant": "minecraft:aztec2"
+}

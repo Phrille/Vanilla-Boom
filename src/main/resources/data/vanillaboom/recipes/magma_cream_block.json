@@ -13,5 +13,6 @@
   ],
   "result": {
     "item": "vanillaboom:magma_cream_block"
-  }
+  },
+  "show_notification": true
 }

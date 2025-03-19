@@ -13,5 +13,6 @@
   ],
   "result": {
     "item": "vanillaboom:wither_bone_block"
-  }
+  },
+  "show_notification": true
 }

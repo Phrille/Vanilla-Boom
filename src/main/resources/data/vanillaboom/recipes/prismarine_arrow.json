@@ -20,5 +20,6 @@
   ],
   "result": {
     "item": "vanillaboom:prismarine_arrow"
-  }
+  },
+  "show_notification": true
 }

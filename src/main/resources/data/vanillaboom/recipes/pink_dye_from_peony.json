@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "vanillaboom:peony"
+    }
+  ],
+  "result": {
+    "item": "minecraft:pink_dye"
+  }
+}

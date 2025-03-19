@@ -1,15 +1,24 @@
+/*
+ * Copyright (C) 2023-2025 Phrille
+ *
+ * This file is part of the Vanilla Boom Mod.
+ * Unauthorized distribution or modification is prohibited.
+ * See LICENSE for details.
+ */
+
 package phrille.vanillaboom.util;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import phrille.vanillaboom.VanillaBoom;
 
 public class ModTags {
-
     /**
      * Class that encapsulates all tags that belong in the forge
      * data directory which is not created by forge itself.
@@ -80,8 +89,10 @@ public class ModTags {
             public static final TagKey<Item> STORAGE_BLOCKS_BLACK_DYE = forgeTag("storage_blocks/black_dye");
 
             public static final TagKey<Item> CROPS_TOMATO = forgeTag("crops/tomato");
+            public static final TagKey<Item> CROPS_CHILI = forgeTag("crops/chili");
             public static final TagKey<Item> CROPS_RICE = forgeTag("crops/rice");
             public static final TagKey<Item> SEEDS_TOMATO = forgeTag("seeds/tomato");
+            public static final TagKey<Item> SEEDS_CHILI = forgeTag("seeds/chili");
             public static final TagKey<Item> SEEDS_RICE = forgeTag("seeds/rice");
             public static final TagKey<Item> INGOTS_MAGMA_BRICK = forgeTag("ingots/magma_brick");
             public static final TagKey<Item> WITHER_BONES = forgeTag("wither_bones");
@@ -92,6 +103,7 @@ public class ModTags {
             public static final TagKey<Item> COOKED_MEATS = forgeTag("cooked_meats");
             public static final TagKey<Item> CANVAS = forgeTag("canvas");
             public static final TagKey<Item> MILK = forgeTag("milk");
+            public static final TagKey<Item> RICE = forgeTag("rice");
 
             private static TagKey<Item> forgeTag(String name) {
                 return ItemTags.create(new ResourceLocation("forge", name));
@@ -149,6 +161,15 @@ public class ModTags {
 
             private static TagKey<Item> modTag(String name) {
                 return ItemTags.create(new ResourceLocation(VanillaBoom.MOD_ID, name));
+            }
+        }
+
+        public static class Entities {
+            public static final TagKey<EntityType<?>> PRISMARINE_EXTRA_HURT = modTag("prismarine_arrow_hurts_extra_types");
+
+            @SuppressWarnings("SameParameterValue")
+            private static TagKey<EntityType<?>> modTag(String name) {
+                return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(VanillaBoom.MOD_ID, name));
             }
         }
     }
