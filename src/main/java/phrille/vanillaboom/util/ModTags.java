@@ -93,6 +93,7 @@ public class ModTags {
             public static final TagKey<Item> CROPS_RICE = forgeTag("crops/rice");
             public static final TagKey<Item> SEEDS_TOMATO = forgeTag("seeds/tomato");
             public static final TagKey<Item> SEEDS_CHILI = forgeTag("seeds/chili");
+            public static final TagKey<Item> SEEDS_RICE = forgeTag("seeds/rice");
             public static final TagKey<Item> INGOTS_MAGMA_BRICK = forgeTag("ingots/magma_brick");
             public static final TagKey<Item> WITHER_BONES = forgeTag("wither_bones");
             public static final TagKey<Item> WITHER_BONE_MEALS = forgeTag("wither_bone_meals");

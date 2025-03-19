@@ -34,6 +34,7 @@ public class ModItems {
     public static final RegistryObject<Item> POLAR_BEAR_FUR = ITEMS.register("polar_bear_fur", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CHILI_SEEDS = ITEMS.register("chili_seeds", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RICE_GRAINS = ITEMS.register("rice_grains", () -> new BlockItem(ModBlocks.RICE.get(), new Item.Properties()));
     public static final RegistryObject<Item> CANVAS = ITEMS.register("canvas", () -> new Item(new Item.Properties()));
 
     // Food

@@ -32,12 +32,17 @@ public class VillagerTradeHandler {
         Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
         ResourceLocation profession = ForgeRegistries.VILLAGER_PROFESSIONS.getKey(event.getType());
 
-        if (profession == null) {
-            return;
-        }
+        if (profession == null) return;
+
         if (profession.getPath().equals("farmer")) {
-            trades.get(1).add(itemToEmeralds(ModItems.TOMATO.get(), 26, 16, 2));
-            trades.get(2).add(itemToEmeralds(ModItems.RICE_BOWL.get(), 1, 20, 4));
+            trades.get(1).add(itemToEmeralds(ModItems.TOMATO.get(), 22, 16, 2));
+            trades.get(1).add(itemToEmeralds(ModItems.CHILI.get(), 20, 16, 2));
+            trades.get(1).add(itemToEmeralds(ModItems.RICE_GRAINS.get(), 30, 16, 2));
+        } else if (profession.getPath().equals("fisherman")) {
+            trades.get(1).add(emeraldsToItem(3, ModItems.TUNA_BUCKET.get(), 16, 1));
+            trades.get(1).add(emeraldsToItem(3, ModItems.PERCH_BUCKET.get(), 16, 1));
+            trades.get(1).add(emeraldsToItem(3, ModItems.PIKE_BUCKET.get(), 16, 1));
+            trades.get(1).add(emeraldsToItem(3, ModItems.EEL_BUCKET.get(), 16, 1));
         }
     }
 
@@ -46,14 +51,16 @@ public class VillagerTradeHandler {
         List<VillagerTrades.ItemListing> trades = event.getGenericTrades();
         trades.add(emeraldsToItem(1, ModItems.TOMATO_SEEDS.get(), 1, 10));
         trades.add(emeraldsToItem(1, ModItems.CHILI_SEEDS.get(), 1, 10));
+        trades.add(emeraldsToItem(1, ModItems.RICE_GRAINS.get(), 1, 10));
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static BasicItemListing itemToEmeralds(ItemLike item, int amount, int maxTrades, int xp) {
         return new BasicItemListing(new ItemStack(item, amount), new ItemStack(Items.EMERALD), maxTrades, xp, 0.05F);
     }
 
     @SuppressWarnings("SameParameterValue")
-    private static BasicItemListing emeraldsToItem(int amount, ItemLike item, int maxTrades, int xp) {
-        return new BasicItemListing(amount, new ItemStack(item), maxTrades, xp, 0.05F);
+    private static BasicItemListing emeraldsToItem(int emeralds, ItemLike item, int maxTrades, int xp) {
+        return new BasicItemListing(emeralds, new ItemStack(item), maxTrades, xp, 0.05F);
     }
 }

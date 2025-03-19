@@ -30,8 +30,8 @@ public class FuelHandler {
     public static void fuelBurnTime(FurnaceFuelBurnTimeEvent event) {
         Item item = event.getItemStack().getItem();
 
-        if (!event.isCanceled() && burnTimes.containsKey(item)) {
-            event.setBurnTime(burnTimes.get(item));
-        }
+        if (event.isCanceled() || !burnTimes.containsKey(item)) return;
+
+        event.setBurnTime(burnTimes.get(item));
     }
 }

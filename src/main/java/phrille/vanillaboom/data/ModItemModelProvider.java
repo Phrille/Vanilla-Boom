@@ -39,6 +39,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         item(ModItems.POLAR_BEAR_FUR.get());
         item(ModItems.TOMATO_SEEDS.get());
         item(ModItems.CHILI_SEEDS.get());
+        item(ModItems.RICE_GRAINS.get());
         item(ModItems.PINE_CONE.get());
         item(ModItems.TOMATO.get());
         item(ModItems.CHILI.get());

@@ -71,16 +71,18 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
         tag(ModTags.ForgeTags.Items.CROPS_TOMATO).add(ModItems.TOMATO.get());
         tag(ModTags.ForgeTags.Items.CROPS_CHILI).add(ModItems.CHILI.get());
-        tag(ModTags.ForgeTags.Items.CROPS_RICE).add(ModItems.RICE_BOWL.get());
+        tag(ModTags.ForgeTags.Items.CROPS_RICE).add(ModItems.RICE_GRAINS.get());
         tag(Tags.Items.CROPS)
                 .addTags(ModTags.ForgeTags.Items.CROPS_TOMATO)
                 .addTags(ModTags.ForgeTags.Items.CROPS_CHILI)
                 .addTags(ModTags.ForgeTags.Items.CROPS_RICE);
         tag(ModTags.ForgeTags.Items.SEEDS_TOMATO).add(ModItems.TOMATO_SEEDS.get());
         tag(ModTags.ForgeTags.Items.SEEDS_CHILI).add(ModItems.CHILI_SEEDS.get());
+        tag(ModTags.ForgeTags.Items.SEEDS_RICE).add(ModItems.RICE_GRAINS.get());
         tag(Tags.Items.SEEDS)
                 .addTags(ModTags.ForgeTags.Items.SEEDS_TOMATO)
-                .addTags(ModTags.ForgeTags.Items.SEEDS_CHILI);
+                .addTags(ModTags.ForgeTags.Items.SEEDS_CHILI)
+                .addTags(ModTags.ForgeTags.Items.SEEDS_RICE);
         tag(ModTags.ForgeTags.Items.INGOTS_MAGMA_BRICK).add(ModItems.MAGMA_BRICK.get());
         tag(Tags.Items.INGOTS).addTags(ModTags.ForgeTags.Items.INGOTS_MAGMA_BRICK);
         tag(ModTags.ForgeTags.Items.WITHER_BONES).add(ModItems.WITHER_BONE.get());

@@ -26,4 +26,9 @@ public class IceCreamItem extends Item {
 
         return entity instanceof Player && ((Player) entity).getAbilities().instabuild ? newStack : new ItemStack(Items.STICK);
     }
+
+    @Override
+    public int getUseDuration(ItemStack stack) {
+        return 8;
+    }
 }

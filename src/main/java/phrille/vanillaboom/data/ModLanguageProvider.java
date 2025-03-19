@@ -530,10 +530,11 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.TOMATO_SEEDS.get(), "Tomato Seeds");
         add(ModItems.CHILI.get(), "Chili");
         add(ModItems.CHILI_SEEDS.get(), "Chili Seeds");
-        add(ModItems.RICE_BOWL.get(), "Bowl of Rice");
+        add(ModBlocks.RICE.get(), "Rice Grains");
         add(ModItems.POTATO_SOUP.get(), "Potato Soup");
         add(ModItems.FISH_SOUP.get(), "Fish Soup");
         add(ModItems.MEAT_SOUP.get(), "Meat Soup");
+        add(ModItems.RICE_BOWL.get(), "Bowl of Rice");
 
         add(ModItems.TUNA.get(), "Raw Tuna");
         add(ModItems.COOKED_TUNA.get(), "Cooked Tuna");

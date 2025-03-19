@@ -48,9 +48,7 @@ public class ItemEventHandler {
         Player player = event.getEntity();
         InteractionHand hand = event.getHand();
 
-        if (event.isCanceled() || stack.isEmpty()) {
-            return;
-        }
+        if (event.isCanceled() || stack.isEmpty()) return;
 
         Event.Result result = Event.Result.DEFAULT;
 

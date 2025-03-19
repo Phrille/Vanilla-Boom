@@ -23,11 +23,11 @@
                   }
                 }
               ],
-              "name": "vanillaboom:rice_bowl"
+              "name": "vanillaboom:rice_grains"
             },
             {
               "type": "minecraft:item",
-              "name": "vanillaboom:rice_bowl"
+              "name": "vanillaboom:rice_grains"
             }
           ]
         }
@@ -59,7 +59,7 @@
               }
             }
           ],
-          "name": "vanillaboom:rice_bowl"
+          "name": "vanillaboom:rice_grains"
         }
       ],
       "rolls": 1.0
