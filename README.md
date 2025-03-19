@@ -1,7 +1,17 @@
-# Vanilla-Boom
-Vanilla Boom is a mod that aims to expand the vanilla experience. All things that are added, block, items, mobs and structures, are in the spirit of the vanilla game. This is a mod for those of you who love the essence of vanilla, but are just looking to add that little extra. Blocks that should be in the game but aren't, missing items and extra features to make the game a little bit more appealing
+# ![VanillaBoom logo](https://i.imgur.com/U9m5YfE.png)
 
-Download link: https://www.curseforge.com/minecraft/mc-mods/vanilla-boom
+**Vanilla Boom** is a mod that aims to expand the vanilla experience. All things that are added,
+blocks, items, mobs and structures, are in the spirit of the vanilla game.
 
-Vanilla Boom Discord: https://discord.gg/n5a4aVx4
+### Links
 
+- [CurseForge](https://www.curseforge.com/minecraft/mc-mods/vanilla-boom)
+- [Modrinth](https://modrinth.com/mod/vanilla-boom)
+- [Github/Source Code](https://github.com/Phrille/Vanilla-Boom)
+- [License](https://github.com/Phrille/Vanilla-Boom/blob/main/LICENSE)
+- [Issues and Bugs](https://github.com/Phrille/Vanilla-Boom/issues)
+- [Discord Server](https://discord.gg/n5a4aVx4)
+- [VanillaBoom Changelog](https://github.com/Phrille/Vanilla-Boom/wiki/Changelog)
+- [FAQ](https://github.com/Phrille/Vanilla-Boom/wiki/FAQ)
+
+Copyright (C) 2023-2025 Phrille
