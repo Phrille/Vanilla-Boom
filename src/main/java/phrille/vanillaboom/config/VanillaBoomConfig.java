@@ -20,6 +20,7 @@ public class VanillaBoomConfig {
     public static boolean removeSlimeBallPistons;
     public static boolean fillWaterBottleHydroRock;
     public static boolean shearTallFlowers;
+    public static boolean generateVillageStructures;
 
     @SuppressWarnings("unused")
     public static void bakeCommon(ModConfig config) {
@@ -32,5 +33,6 @@ public class VanillaBoomConfig {
         removeSlimeBallPistons = ConfigHandler.COMMON.removeSlimeBallPistons.get();
         fillWaterBottleHydroRock = ConfigHandler.COMMON.fillWaterBottleHydroRock.get();
         shearTallFlowers = ConfigHandler.COMMON.shearTallFlowers.get();
+        generateVillageStructures = ConfigHandler.COMMON.generateVillageStructures.get();
     }
 }

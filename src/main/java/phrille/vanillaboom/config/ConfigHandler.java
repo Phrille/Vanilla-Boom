@@ -47,6 +47,7 @@ public final class ConfigHandler {
         public final ForgeConfigSpec.BooleanValue removeSlimeBallPistons;
         public final ForgeConfigSpec.BooleanValue fillWaterBottleHydroRock;
         public final ForgeConfigSpec.BooleanValue shearTallFlowers;
+        public final ForgeConfigSpec.BooleanValue generateVillageStructures;
 
         public Common(ForgeConfigSpec.Builder builder) {
             builder.push("general");
@@ -59,6 +60,10 @@ public final class ConfigHandler {
             removeSlimeBallPistons = builder.comment("\n Set this to false to disable removing Slime Balls from Sticky Pistons when right clicking and crouching with an Axe.").define("remove_slime_ball_pistons", true);
             fillWaterBottleHydroRock = builder.comment("\n Set this to false to disable Glass Bottles being able to be filled up when right clicking a Hydro Rock block.").define("fill_water_bottle_hydro_rock", true);
             shearTallFlowers = builder.comment("\n Set this to false to disable shearing Tall Flower Blocks to obtain their flower.").define("shear_rose_bushes", true);
+            builder.pop();
+
+            builder.push("worldgen");
+            generateVillageStructures = builder.comment("\n Set this to false to disable custom Village structures to be generated in the world.").define("generate_village_structures", true);
             builder.pop();
         }
     }
