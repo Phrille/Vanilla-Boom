@@ -16,5 +16,6 @@
   ],
   "result": {
     "item": "vanillaboom:crimson_bookshelf"
-  }
+  },
+  "show_notification": true
 }

@@ -1,20 +1,38 @@
+/*
+ * Copyright (C) 2023-2025 Phrille
+ *
+ * This file is part of the Vanilla Boom Mod.
+ * Unauthorized distribution or modification is prohibited.
+ * See LICENSE for details.
+ */
+
 package phrille.vanillaboom.config;
 
 import net.minecraftforge.fml.config.ModConfig;
 
 public class VanillaBoomConfig {
+    public static boolean witherBoneMealEnabled;
     public static boolean growNetherWarts;
     public static boolean growWitherRoses;
+    public static boolean witherVines;
+    public static boolean witherGrass;
     public static boolean placeSlimeBallPistons;
     public static boolean removeSlimeBallPistons;
     public static boolean fillWaterBottleHydroRock;
+    public static boolean shearTallFlowers;
+    public static boolean generateVillageStructures;
 
     @SuppressWarnings("unused")
     public static void bakeCommon(ModConfig config) {
+        witherBoneMealEnabled = ConfigHandler.COMMON.witherBoneMealEnabled.get();
         growNetherWarts = ConfigHandler.COMMON.growNetherWarts.get();
         growWitherRoses = ConfigHandler.COMMON.growWitherRoses.get();
+        witherVines = ConfigHandler.COMMON.witherVines.get();
+        witherGrass = ConfigHandler.COMMON.witherGrass.get();
         placeSlimeBallPistons = ConfigHandler.COMMON.placeSlimeBallPistons.get();
         removeSlimeBallPistons = ConfigHandler.COMMON.removeSlimeBallPistons.get();
         fillWaterBottleHydroRock = ConfigHandler.COMMON.fillWaterBottleHydroRock.get();
+        shearTallFlowers = ConfigHandler.COMMON.shearTallFlowers.get();
+        generateVillageStructures = ConfigHandler.COMMON.generateVillageStructures.get();
     }
 }

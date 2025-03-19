@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "vanillaboom:chiseled_purpur_block"
-  },
-  "result": "vanillaboom:chiseled_purpur_block_stairs"
-}

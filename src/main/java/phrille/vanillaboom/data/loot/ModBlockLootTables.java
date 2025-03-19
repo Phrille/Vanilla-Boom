@@ -1,6 +1,13 @@
+/*
+ * Copyright (C) 2023-2025 Phrille
+ *
+ * This file is part of the Vanilla Boom Mod.
+ * Unauthorized distribution or modification is prohibited.
+ * See LICENSE for details.
+ */
+
 package phrille.vanillaboom.data.loot;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
@@ -10,6 +17,8 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CandleBlock;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
@@ -21,13 +30,16 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.ModCakeBlock;
-import phrille.vanillaboom.data.ModDataGenerator;
+import phrille.vanillaboom.block.crop.ITrellisCrop;
+import phrille.vanillaboom.block.crop.ShearedTallFlowerBlock;
+import phrille.vanillaboom.block.crop.TrellisBlock;
+import phrille.vanillaboom.block.crop.TrellisCropBlock;
+import phrille.vanillaboom.block.variant.*;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.Utils;
 
 import java.util.Set;
 
-@MethodsReturnNonnullByDefault
 public class ModBlockLootTables extends BlockLootSubProvider {
     public ModBlockLootTables() {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags());
@@ -90,24 +102,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.DARK_PRISMARINE_PILLAR.get());
         dropSelf(ModBlocks.END_STONE_PILLAR.get());
         dropSelf(ModBlocks.NETHERRACK_PILLAR.get());
-        dropSelf(ModBlocks.RED_NETHER_PILLAR.get());
         dropSelf(ModBlocks.OBSIDIAN_PILLAR.get());
-
-        // Wood Variations
-        add(ModBlocks.SPRUCE_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.BIRCH_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.JUNGLE_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.ACACIA_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.DARK_OAK_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.CRIMSON_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        add(ModBlocks.WARPED_BOOKSHELF.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F)));
-        dropSelf(ModBlocks.SPRUCE_LADDER.get());
-        dropSelf(ModBlocks.BIRCH_LADDER.get());
-        dropSelf(ModBlocks.JUNGLE_LADDER.get());
-        dropSelf(ModBlocks.ACACIA_LADDER.get());
-        dropSelf(ModBlocks.DARK_OAK_LADDER.get());
-        dropSelf(ModBlocks.CRIMSON_LADDER.get());
-        dropSelf(ModBlocks.WARPED_LADDER.get());
 
         // Storage Blocks
         dropSelf(ModBlocks.CHARCOAL_BLOCK.get());
@@ -173,15 +168,24 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropWhenSilkTouch(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get());
 
         // Misc
+        dropSelf(ModBlocks.EASEL.get());
         dropSelf(ModBlocks.RAIN_DETECTOR.get());
         dropSelf(ModBlocks.GOLD_BARS.get());
         dropSelf(ModBlocks.ROSE.get());
         dropPottedContents(ModBlocks.POTTED_ROSE.get());
-
-        LootItemCondition.Builder tomatoCondition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.TOMATO_PLANT.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7));
-        add(ModBlocks.TOMATO_PLANT.get(), createCropDrops(ModBlocks.TOMATO_PLANT.get(), ModItems.TOMATO.get(), ModItems.TOMATO_SEEDS.get(), tomatoCondition));
-        LootItemCondition.Builder riceCondition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.RICE_PLANT.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 8));
-        add(ModBlocks.RICE_PLANT.get(), createCropDrops(ModBlocks.RICE_PLANT.get(), ModItems.RICE_SEEDS.get(), ModItems.RICE_SEEDS.get(), riceCondition));
+        add(ModBlocks.SHEARED_ROSE_BUSH.get(), shearedRoseBush -> createSinglePropConditionTable(shearedRoseBush, ShearedTallFlowerBlock.HALF, DoubleBlockHalf.LOWER));
+        dropSelf(ModBlocks.PEONY.get());
+        dropPottedContents(ModBlocks.POTTED_PEONY.get());
+        add(ModBlocks.SHEARED_PEONY.get(), shearedPeony -> createSinglePropConditionTable(shearedPeony, ShearedTallFlowerBlock.HALF, DoubleBlockHalf.LOWER));
+        dropSelf(ModBlocks.LILAC.get());
+        dropPottedContents(ModBlocks.POTTED_LILAC.get());
+        add(ModBlocks.SHEARED_LILAC.get(), shearedLilac -> createSinglePropConditionTable(shearedLilac, ShearedTallFlowerBlock.HALF, DoubleBlockHalf.LOWER));
+        add(ModBlocks.TRELLIS.get(), trellis -> createSinglePropConditionTable(trellis, TrellisBlock.HALF, DoubleBlockHalf.LOWER));
+        add(ModBlocks.TOMATO.get(), this::createTrellisCropDrops);
+        add(ModBlocks.CHILI.get(), this::createTrellisCropDrops);
+        LootItemCondition.Builder riceCondition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.RICE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 8));
+        add(ModBlocks.RICE.get(), createCropDrops(ModBlocks.RICE.get(), ModItems.RICE_GRAINS.get(), ModItems.RICE_GRAINS.get(), riceCondition));
+        add(ModBlocks.WITHERED_VINE.get(), BlockLootSubProvider::createShearsOnlyDrop);
 
         // Cakes
         add(ModBlocks.CHOCOLATE_CAKE.get(), noDrop());
@@ -191,12 +195,14 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         Utils.CANDLES.forEach(candle -> add(((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).byCandle((CandleBlock) candle), createCandleCakeDrops(candle)));
         Utils.CANDLES.forEach(candle -> add(((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).byCandle((CandleBlock) candle), createCandleCakeDrops(candle)));
 
-
-        ModDataGenerator.STAIRS.forEach(pair -> dropSelf(pair.getFirst()));
-        ModDataGenerator.SLABS.forEach(pair -> dropSelf(pair.getFirst()));
-        ModDataGenerator.WALLS.forEach(this::dropSelf);
-        ModDataGenerator.FENCES.forEach(pair -> dropSelf(pair.getFirst()));
-        ModDataGenerator.FENCE_GATES.forEach(pair -> dropSelf(pair.getFirst()));
+        // Variants
+        ModBookshelfBlock.BOOKSHELVES.forEach(bookshelf -> add(bookshelf, block -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F))));
+        ModLadderBlock.LADDERS.forEach(this::dropSelf);
+        ModStairBlock.STAIRS.forEach(this::dropSelf);
+        ModSlabBlock.SLABS.forEach(this::dropSelf);
+        ModWallBlock.WALLS.forEach(this::dropSelf);
+        ModFenceBlock.FENCES.forEach(this::dropSelf);
+        ModFenceGateBlock.FENCE_GATES.forEach(this::dropSelf);
     }
 
     @Override
@@ -208,5 +214,32 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         return createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(item)
                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 5.0F)))
                 .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))));
+    }
+
+    protected LootTable.Builder createTrellisCropDrops(Block cropBlock) {
+        ITrellisCrop trellisCrop = (ITrellisCrop) cropBlock;
+        LootItemCondition.Builder ageCondition = LootItemBlockStatePropertyCondition
+                .hasBlockStateProperties(cropBlock)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7));
+        LootItemBlockStatePropertyCondition.Builder halfCondition = LootItemBlockStatePropertyCondition
+                .hasBlockStateProperties(cropBlock)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(TrellisCropBlock.HALF, DoubleBlockHalf.LOWER));
+
+        return this.applyExplosionDecay(cropBlock, LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .add(LootItem.lootTableItem(trellisCrop.getFruit())
+                                .when(ageCondition)
+                                .when(halfCondition)
+                                .otherwise(LootItem.lootTableItem(trellisCrop.getSeed())
+                                        .when(halfCondition))))
+                .withPool(LootPool.lootPool()
+                        .when(ageCondition)
+                        .when(halfCondition)
+                        .add(LootItem.lootTableItem(trellisCrop.getSeed()))
+                        .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3)))
+                .withPool(LootPool.lootPool()
+                        .add(LootItem.lootTableItem(ModBlocks.TRELLIS.get())
+                                .when(halfCondition)))
+        );
     }
 }

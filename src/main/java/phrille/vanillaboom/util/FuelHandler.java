@@ -1,13 +1,20 @@
+/*
+ * Copyright (C) 2023-2025 Phrille
+ *
+ * This file is part of the Vanilla Boom Mod.
+ * Unauthorized distribution or modification is prohibited.
+ * See LICENSE for details.
+ */
+
 package phrille.vanillaboom.util;
 
 import com.google.common.collect.Maps;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.item.ModItems;
 
 import java.util.Map;
 
@@ -15,22 +22,16 @@ import java.util.Map;
 public class FuelHandler {
     private static final Map<Item, Integer> burnTimes = Maps.newHashMap();
 
-    public static void registerBurnTimes() {
-        burnTimes.put(Items.BLAZE_POWDER, 1200);
-        burnTimes.put(ModItems.CHARCOAL_BLOCK.get(), 16000);
-        burnTimes.put(ModItems.BLAZE_POWDER_BLOCK.get(), 10800);
-        burnTimes.put(ModItems.WITHER_BONE_BLOCK.get(), 10800);
-        burnTimes.put(ModItems.WITHER_BONE.get(), 1200);
-        burnTimes.put(ModItems.WITHER_BONE_MEAL.get(), 400);
-        burnTimes.put(ModItems.PINE_CONE.get(), 100);
+    public static void registerBurnTime(ItemLike item, int burnTime) {
+        burnTimes.put(item.asItem(), burnTime);
     }
 
     @SubscribeEvent
     public static void fuelBurnTime(FurnaceFuelBurnTimeEvent event) {
         Item item = event.getItemStack().getItem();
 
-        if (!event.isCanceled() && burnTimes.containsKey(item)) {
-            event.setBurnTime(burnTimes.get(item));
-        }
+        if (event.isCanceled() || !burnTimes.containsKey(item)) return;
+
+        event.setBurnTime(burnTimes.get(item));
     }
 }

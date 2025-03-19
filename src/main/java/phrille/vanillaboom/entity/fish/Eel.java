@@ -1,12 +1,10 @@
 package phrille.vanillaboom.entity.fish;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import phrille.vanillaboom.item.ModItems;
 
-@MethodsReturnNonnullByDefault
 public class Eel extends Fish {
     public Eel(EntityType<? extends Eel> type, Level level) {
         super(type, level);

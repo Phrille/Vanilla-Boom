@@ -1,11 +1,11 @@
 {
-  "replace": false,
   "values": [
     "vanillaboom:spruce_ladder",
     "vanillaboom:birch_ladder",
     "vanillaboom:jungle_ladder",
     "vanillaboom:acacia_ladder",
     "vanillaboom:dark_oak_ladder",
+    "vanillaboom:mangrove_ladder",
     "vanillaboom:crimson_ladder",
     "vanillaboom:warped_ladder"
   ]

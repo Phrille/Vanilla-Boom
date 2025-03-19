@@ -1,0 +1,19 @@
+{
+  "type": "vanillaboom:painting",
+  "canvas": {
+    "tag": "forge:canvas"
+  },
+  "count": 1,
+  "dyes": [
+    {
+      "tag": "forge:dyes/white"
+    },
+    {
+      "tag": "forge:dyes/brown"
+    },
+    {
+      "tag": "forge:dyes/orange"
+    }
+  ],
+  "variant": "minecraft:match"
+}

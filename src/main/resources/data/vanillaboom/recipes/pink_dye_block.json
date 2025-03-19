@@ -13,5 +13,6 @@
   ],
   "result": {
     "item": "vanillaboom:pink_dye_block"
-  }
+  },
+  "show_notification": true
 }

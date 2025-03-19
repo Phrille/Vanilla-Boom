@@ -15,5 +15,6 @@
   ],
   "result": {
     "item": "vanillaboom:spruce_wood_fence_gate"
-  }
+  },
+  "show_notification": true
 }

@@ -1,3 +1,11 @@
+/*
+ * Copyright (C) 2023-2025 Phrille
+ *
+ * This file is part of the Vanilla Boom Mod.
+ * Unauthorized distribution or modification is prohibited.
+ * See LICENSE for details.
+ */
+
 package phrille.vanillaboom.data;
 
 import net.minecraft.data.PackOutput;
@@ -12,6 +20,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
+import phrille.vanillaboom.block.variant.*;
 import phrille.vanillaboom.item.ModItems;
 
 import java.util.Objects;
@@ -29,10 +38,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         item(ModItems.PRISMARINE_ARROW.get());
         item(ModItems.POLAR_BEAR_FUR.get());
         item(ModItems.TOMATO_SEEDS.get());
-        item(ModItems.RICE_SEEDS.get());
+        item(ModItems.CHILI_SEEDS.get());
+        item(ModItems.RICE_GRAINS.get());
         item(ModItems.PINE_CONE.get());
         item(ModItems.TOMATO.get());
-        item(ModItems.COOKED_EGG.get());
+        item(ModItems.CHILI.get());
+        item(ModItems.FRIED_EGG.get());
         item(ModItems.DROWNED_FLESH.get());
         item(ModItems.MELON_POPSICLE.get());
         item(ModItems.CHOCOLATE.get());
@@ -65,32 +76,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         spawnEggItem(ModItems.PIKE_SPAWN_EGG.get());
         spawnEggItem(ModItems.EEL_SPAWN_EGG.get());
         item(ModItems.CANVAS.get(), "generated").texture("layer0", itemTexture(Items.FLOWER_BANNER_PATTERN));
-        item(ModItems.KEBAB_PAINTING.get());
-        item(ModItems.AZTEC_PAINTING.get());
-        item(ModItems.ALBAN_PAINTING.get());
-        item(ModItems.AZTEC2_PAINTING.get());
-        item(ModItems.BOMB_PAINTING.get());
-        item(ModItems.PLANT_PAINTING.get());
-        item(ModItems.WASTELAND_PAINTING.get());
-        item(ModItems.POOL_PAINTING.get());
-        item(ModItems.COURBET_PAINTING.get());
-        item(ModItems.SEA_PAINTING.get());
-        item(ModItems.SUNSET_PAINTING.get());
-        item(ModItems.CREEBET_PAINTING.get());
-        item(ModItems.WANDERER_PAINTING.get());
-        item(ModItems.GRAHAM_PAINTING.get());
-        item(ModItems.MATCH_PAINTING.get());
-        item(ModItems.BUST_PAINTING.get());
-        item(ModItems.STAGE_PAINTING.get());
-        item(ModItems.VOID_PAINTING.get());
-        item(ModItems.SKULL_AND_ROSES_PAINTING.get());
-        item(ModItems.WITHER_PAINTING.get());
-        item(ModItems.FIGHTERS_PAINTING.get());
-        item(ModItems.POINTER_PAINTING.get());
-        item(ModItems.PIGSCENE_PAINTING.get());
-        item(ModItems.BURNING_SKULL_PAINTING.get());
-        item(ModItems.SKELETON_PAINTING.get());
-        item(ModItems.DONKEY_KONG_PAINTING.get());
 
         // Bricks
         blockItem(ModItems.COBBLESTONE_BRICKS.get());
@@ -147,24 +132,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModItems.DARK_PRISMARINE_PILLAR.get());
         blockItem(ModItems.END_STONE_PILLAR.get());
         blockItem(ModItems.NETHERRACK_PILLAR.get());
-        blockItem(ModItems.RED_NETHER_PILLAR.get());
         blockItem(ModItems.OBSIDIAN_PILLAR.get());
-
-        // Wood Variations
-        blockItem(ModItems.SPRUCE_BOOKSHELF.get());
-        blockItem(ModItems.BIRCH_BOOKSHELF.get());
-        blockItem(ModItems.JUNGLE_BOOKSHELF.get());
-        blockItem(ModItems.ACACIA_BOOKSHELF.get());
-        blockItem(ModItems.DARK_OAK_BOOKSHELF.get());
-        blockItem(ModItems.CRIMSON_BOOKSHELF.get());
-        blockItem(ModItems.WARPED_BOOKSHELF.get());
-        item(ModBlocks.SPRUCE_LADDER.get());
-        item(ModBlocks.BIRCH_LADDER.get());
-        item(ModBlocks.JUNGLE_LADDER.get());
-        item(ModBlocks.ACACIA_LADDER.get());
-        item(ModBlocks.DARK_OAK_LADDER.get());
-        item(ModBlocks.CRIMSON_LADDER.get());
-        item(ModBlocks.WARPED_LADDER.get());
 
         // Storage Blocks
         blockItem(ModItems.CHARCOAL_BLOCK.get());
@@ -230,16 +198,29 @@ public class ModItemModelProvider extends ItemModelProvider {
         glassPaneItem(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get());
 
         // Misc
+        blockItem(ModItems.EASEL.get());
         blockItem(ModItems.RAIN_DETECTOR.get());
         item(ModBlocks.GOLD_BARS.get());
         item(ModBlocks.ROSE.get());
+        item(ModBlocks.SHEARED_ROSE_BUSH.get().asItem(), "generated")
+                .texture("layer0", ModDataGenerator.extend(blockTexture(ModBlocks.SHEARED_ROSE_BUSH.get()), "_top"));
+        item(ModBlocks.PEONY.get());
+        item(ModBlocks.SHEARED_PEONY.get().asItem(), "generated")
+                .texture("layer0", ModDataGenerator.extend(blockTexture(ModBlocks.SHEARED_PEONY.get()), "_top"));
+        item(ModBlocks.LILAC.get());
+        item(ModBlocks.SHEARED_LILAC.get().asItem(), "generated")
+                .texture("layer0", ModDataGenerator.extend(blockTexture(ModBlocks.SHEARED_LILAC.get()), "_top"));
+        item(ModBlocks.TRELLIS.get());
+        item(ModBlocks.WITHERED_VINE.get());
 
         // Variant Blocks
-        ModDataGenerator.STAIRS.forEach(pair -> blockItem(pair.getFirst().asItem()));
-        ModDataGenerator.SLABS.forEach(pair -> blockItem(pair.getFirst().asItem()));
-        ModDataGenerator.WALLS.forEach(this::inventoryBlockItem);
-        ModDataGenerator.FENCES.forEach(pair -> inventoryBlockItem(pair.getFirst()));
-        ModDataGenerator.FENCE_GATES.forEach(pair -> blockItem(pair.getFirst().asItem()));
+        ModBookshelfBlock.BOOKSHELVES.forEach(bookshelf -> blockItem(bookshelf.asItem()));
+        ModLadderBlock.LADDERS.forEach(this::item);
+        ModStairBlock.STAIRS.forEach(stair -> blockItem(stair.asItem()));
+        ModSlabBlock.SLABS.forEach(slab -> blockItem(slab.asItem()));
+        ModWallBlock.WALLS.forEach(this::inventoryBlockItem);
+        ModFenceBlock.FENCES.forEach(this::inventoryBlockItem);
+        ModFenceGateBlock.FENCE_GATES.forEach(fenceGate -> blockItem(fenceGate.asItem()));
     }
 
     public void item(Item item) {

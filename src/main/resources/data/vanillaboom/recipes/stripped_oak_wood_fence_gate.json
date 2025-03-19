@@ -15,5 +15,6 @@
   ],
   "result": {
     "item": "vanillaboom:stripped_oak_wood_fence_gate"
-  }
+  },
+  "show_notification": true
 }

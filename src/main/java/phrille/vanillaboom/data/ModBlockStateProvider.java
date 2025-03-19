@@ -1,15 +1,31 @@
+/*
+ * Copyright (C) 2023-2025 Phrille
+ *
+ * This file is part of the Vanilla Boom Mod.
+ * Unauthorized distribution or modification is prohibited.
+ * See LICENSE for details.
+ */
+
 package phrille.vanillaboom.data;
 
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.block.*;
+import phrille.vanillaboom.block.EaselBlock;
+import phrille.vanillaboom.block.ModBlocks;
+import phrille.vanillaboom.block.ModCakeBlock;
+import phrille.vanillaboom.block.RainDetectorBlock;
+import phrille.vanillaboom.block.crop.RicePlantBlock;
+import phrille.vanillaboom.block.crop.TrellisBlock;
+import phrille.vanillaboom.block.crop.TrellisCropBlock;
+import phrille.vanillaboom.block.variant.*;
 import phrille.vanillaboom.util.Utils;
 
 import java.util.List;
@@ -27,6 +43,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        // Models
+        trellisCropModel();
+
         // Bricks
         simpleBlock(ModBlocks.COBBLESTONE_BRICKS.get());
         simpleBlock(ModBlocks.MOSSY_COBBLESTONE_BRICKS.get());
@@ -82,24 +101,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         pillarBlock(ModBlocks.DARK_PRISMARINE_PILLAR.get());
         pillarBlock(ModBlocks.END_STONE_PILLAR.get());
         pillarBlock(ModBlocks.NETHERRACK_PILLAR.get());
-        pillarBlock(ModBlocks.RED_NETHER_PILLAR.get());
         pillarBlock(ModBlocks.OBSIDIAN_PILLAR.get());
-
-        // Wood Variations
-        bookshelfBlock(ModBlocks.SPRUCE_BOOKSHELF.get(), Blocks.SPRUCE_PLANKS);
-        bookshelfBlock(ModBlocks.BIRCH_BOOKSHELF.get(), Blocks.BIRCH_PLANKS);
-        bookshelfBlock(ModBlocks.JUNGLE_BOOKSHELF.get(), Blocks.JUNGLE_PLANKS);
-        bookshelfBlock(ModBlocks.ACACIA_BOOKSHELF.get(), Blocks.ACACIA_PLANKS);
-        bookshelfBlock(ModBlocks.DARK_OAK_BOOKSHELF.get(), Blocks.DARK_OAK_PLANKS);
-        bookshelfBlock(ModBlocks.CRIMSON_BOOKSHELF.get(), Blocks.CRIMSON_PLANKS);
-        bookshelfBlock(ModBlocks.WARPED_BOOKSHELF.get(), Blocks.WARPED_PLANKS);
-        ladderBlock(ModBlocks.SPRUCE_LADDER.get());
-        ladderBlock(ModBlocks.BIRCH_LADDER.get());
-        ladderBlock(ModBlocks.JUNGLE_LADDER.get());
-        ladderBlock(ModBlocks.ACACIA_LADDER.get());
-        ladderBlock(ModBlocks.DARK_OAK_LADDER.get());
-        ladderBlock(ModBlocks.CRIMSON_LADDER.get());
-        ladderBlock(ModBlocks.WARPED_LADDER.get());
 
         // Storage Blocks
         simpleBlock(ModBlocks.CHARCOAL_BLOCK.get());
@@ -165,11 +167,20 @@ public class ModBlockStateProvider extends BlockStateProvider {
         glassPaneBlock(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get());
 
         // Misc
+        easelBlock(ModBlocks.EASEL.get());
         rainDetectorBlock(ModBlocks.RAIN_DETECTOR.get());
         barsBlock(ModBlocks.GOLD_BARS.get());
         flowerBlock(ModBlocks.ROSE.get(), ModBlocks.POTTED_ROSE.get());
-        cropBlock(ModBlocks.TOMATO_PLANT.get());
-        cropBlock(ModBlocks.RICE_PLANT.get(), RicePlantBlock.AGE);
+        doublePlantBlock(ModBlocks.SHEARED_ROSE_BUSH.get());
+        flowerBlock(ModBlocks.PEONY.get(), ModBlocks.POTTED_PEONY.get());
+        doublePlantBlock(ModBlocks.SHEARED_PEONY.get());
+        flowerBlock(ModBlocks.LILAC.get(), ModBlocks.POTTED_LILAC.get());
+        doublePlantBlock(ModBlocks.SHEARED_LILAC.get());
+        trellisBlock(ModBlocks.TRELLIS.get());
+        trellisCropBlock(ModBlocks.TOMATO.get());
+        trellisCropBlock(ModBlocks.CHILI.get());
+        cropBlock(ModBlocks.RICE.get(), RicePlantBlock.AGE);
+        vineBlock(ModBlocks.WITHERED_VINE.get());
 
         // Cakes
         cakeBlock(ModBlocks.CHOCOLATE_CAKE.get());
@@ -177,23 +188,21 @@ public class ModBlockStateProvider extends BlockStateProvider {
         cakeBlock(ModBlocks.BERRY_CAKE.get());
 
         // Variant Blocks
-        ModDataGenerator.STAIRS.forEach(pair -> {
-            if (pair.getSecond() == null) {
-                stairsBlock(pair.getFirst());
+        ModBookshelfBlock.BOOKSHELVES.forEach(this::bookshelfBlock);
+        ModLadderBlock.LADDERS.forEach(this::ladderBlock);
+        ModStairBlock.STAIRS.forEach(stair -> {
+            if (stair == ModBlocks.CUT_SANDSTONE_STAIRS.get()) {
+                stairsBlock(stair, ModDataGenerator.extend(blockTexture(Blocks.SANDSTONE), "_top"));
+            } else if (stair == ModBlocks.CUT_RED_SANDSTONE_STAIRS.get()) {
+                stairsBlock(stair, ModDataGenerator.extend(blockTexture(Blocks.RED_SANDSTONE), "_top"));
             } else {
-                stairsBlock(pair.getFirst(), pair.getSecond());
+                stairsBlock(stair);
             }
         });
-        ModDataGenerator.SLABS.forEach(pair -> {
-            if (pair.getSecond() == null) {
-                slabBlock(pair.getFirst());
-            } else {
-                slabBlock(pair.getFirst(), pair.getSecond());
-            }
-        });
-        ModDataGenerator.WALLS.forEach(this::wallBlock);
-        ModDataGenerator.FENCES.forEach(pair -> fenceBlock(pair.getFirst(), pair.getSecond()));
-        ModDataGenerator.FENCE_GATES.forEach(pair -> fenceGateBlock(pair.getFirst(), pair.getSecond()));
+        ModSlabBlock.SLABS.forEach(this::slabBlock);
+        ModWallBlock.WALLS.forEach(this::wallBlock);
+        ModFenceBlock.FENCES.forEach(this::fenceBlock);
+        ModFenceGateBlock.FENCE_GATES.forEach(this::fenceGateBlock);
     }
 
     public void pillarBlock(Block block) {
@@ -201,67 +210,85 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     public void sideBottomTopBlock(Block block) {
-        simpleBlock(block, models().cubeBottomTop(name(block), ModDataGenerator.extend(blockTexture(block), "_side"), ModDataGenerator.extend(blockTexture(block), "_bottom"), ModDataGenerator.extend(blockTexture(block), "_top")));
+        simpleBlock(block, models().cubeBottomTop(
+                name(block),
+                ModDataGenerator.extend(blockTexture(block), "_side"),
+                ModDataGenerator.extend(blockTexture(block), "_bottom"),
+                ModDataGenerator.extend(blockTexture(block), "_top")
+        ));
     }
 
-    public void bookshelfBlock(Block bookshelf, Block plank) {
-        simpleBlock(bookshelf, models().cubeColumn(name(bookshelf), blockTexture(bookshelf), blockTexture(plank)));
+    public void bookshelfBlock(ModBookshelfBlock bookshelf) {
+        simpleBlock(bookshelf, models().cubeColumn(name(bookshelf), blockTexture(bookshelf), blockTexture(bookshelf.getParent())));
     }
 
-    public void stairsBlock(Block block) {
-        ModStairBlock stair = (ModStairBlock) block;
+    public void stairsBlock(ModStairBlock stair) {
         stairsBlock(stair, variantTexture(stair.getParent()));
     }
 
-    public void stairsBlock(Block block, ResourceLocation end) {
-        ModStairBlock stair = (ModStairBlock) block;
+    public void stairsBlock(ModStairBlock stair, ResourceLocation end) {
         stairsBlock(stair, variantTexture(stair.getParent()), end, end);
     }
 
-    public void slabBlock(Block block) {
-        ModSlabBlock slab = (ModSlabBlock) block;
+    public void slabBlock(ModSlabBlock slab) {
         slabBlock(slab, blockTexture(slab.getParent()), variantTexture(slab.getParent()));
     }
 
-    public void slabBlock(Block block, ResourceLocation end) {
-        ModSlabBlock slab = (ModSlabBlock) block;
-        slabBlock(slab, blockTexture(slab.getParent()), variantTexture(slab.getParent()), end, end);
-    }
-
-    public void wallBlock(Block block) {
-        ModWallBlock wall = (ModWallBlock) block;
+    public void wallBlock(ModWallBlock wall) {
         wallBlock(wall, variantTexture(wall.getParent()));
-        models().withExistingParent(name(wall) + "_inventory", ModelProvider.BLOCK_FOLDER + "/wall_inventory").texture("wall", variantTexture(wall.getParent()));
+        models().withExistingParent(name(wall) + "_inventory", ModelProvider.BLOCK_FOLDER + "/wall_inventory")
+                .texture("wall", variantTexture(wall.getParent()));
     }
 
-    public void fenceBlock(Block fence, Block parent) {
-        fenceBlock((FenceBlock) fence, variantTexture(parent));
-        models().withExistingParent(name(fence) + "_inventory", ModelProvider.BLOCK_FOLDER + "/fence_inventory").texture("texture", variantTexture(parent));
+    public void fenceBlock(ModFenceBlock fence) {
+        fenceBlock(fence, variantTexture(fence.getParent()));
+        models().withExistingParent(name(fence) + "_inventory", ModelProvider.BLOCK_FOLDER + "/fence_inventory")
+                .texture("texture", variantTexture(fence.getParent()));
     }
 
-    public void fenceGateBlock(Block fenceGate, Block parent) {
-        fenceGateBlock((FenceGateBlock) fenceGate, variantTexture(parent));
+    public void fenceGateBlock(ModFenceGateBlock fenceGate) {
+        fenceGateBlock(fenceGate, variantTexture(fenceGate.getParent()));
     }
 
     public void glassBlock(Block glass) {
-        simpleBlock(glass, models().cubeAll(name(glass), blockTexture(glass)).renderType(ModBlockStateProvider.RENDER_TYPE_TRANSLUCENT));
+        simpleBlock(glass, models()
+                .cubeAll(name(glass), blockTexture(glass))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_TRANSLUCENT));
     }
 
     public void glassPaneBlock(Block pane) {
-        paneBlockWithRenderType((IronBarsBlock) pane, ModDataGenerator.shrink(blockTexture(pane), "_pane"), ModDataGenerator.extend(blockTexture(pane), "_top"), ModBlockStateProvider.RENDER_TYPE_TRANSLUCENT);
+        paneBlockWithRenderType(
+                (IronBarsBlock) pane,
+                ModDataGenerator.shrink(blockTexture(pane), "_pane"),
+                ModDataGenerator.extend(blockTexture(pane), "_top"),
+                ModBlockStateProvider.RENDER_TYPE_TRANSLUCENT
+        );
     }
 
     public void barsBlock(Block bars) {
-        paneBlockWithRenderType((IronBarsBlock) bars, blockTexture(bars), blockTexture(bars), ModBlockStateProvider.RENDER_TYPE_CUTOUT_MIPPED);
+        paneBlockWithRenderType(
+                (IronBarsBlock) bars,
+                blockTexture(bars),
+                blockTexture(bars),
+                ModBlockStateProvider.RENDER_TYPE_CUTOUT_MIPPED
+        );
     }
 
     public void flowerBlock(Block flower, Block pot) {
-        simpleBlock(flower, models().cross(name(flower), blockTexture(flower)).renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT));
-        simpleBlock(pot, models().withExistingParent(name(pot), ModelProvider.BLOCK_FOLDER + "/flower_pot_cross").texture("plant", blockTexture(flower)).renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT));
+        simpleBlock(flower, models()
+                .cross(name(flower), blockTexture(flower))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT));
+        simpleBlock(pot, models()
+                .withExistingParent(name(pot), ModelProvider.BLOCK_FOLDER + "/flower_pot_cross")
+                .texture("plant", blockTexture(flower))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT));
     }
 
-    public void ladderBlock(Block ladder) {
-        ladderBlock((LadderBlock) ladder, models().withExistingParent(name(ladder), ModelProvider.BLOCK_FOLDER + "/ladder").texture("texture", blockTexture(ladder)).renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT));
+    public void ladderBlock(ModLadderBlock ladder) {
+        ladderBlock(ladder, models()
+                .withExistingParent(name(ladder), ModelProvider.BLOCK_FOLDER + "/ladder")
+                .texture("texture", blockTexture(ladder))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT));
     }
 
     protected void ladderBlock(LadderBlock ladder, ModelFile model) {
@@ -275,13 +302,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
         }, LadderBlock.WATERLOGGED);
     }
 
-    public void cropBlock(Block crop) {
-        cropBlock(crop, CropBlock.AGE);
-    }
-
     public void cropBlock(Block crop, IntegerProperty ageProperty) {
         List<ModelFile> files = ageProperty.getAllValues()
-                .map(age -> models().withExistingParent(name(crop) + "_stage" + age.value(), ModelProvider.BLOCK_FOLDER + "/crop").texture("crop", ModDataGenerator.extend(blockTexture(crop), "_stage" + age.value())).renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT))
+                .map(age -> models()
+                        .withExistingParent(name(crop) + "_stage" + age.value(), ModelProvider.BLOCK_FOLDER + "/crop")
+                        .texture("crop", ModDataGenerator.extend(blockTexture(crop), "_stage" + age.value()))
+                        .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT))
                 .collect(Collectors.toList());
         cropBlock((CropBlock) crop, files, ageProperty);
     }
@@ -294,6 +320,157 @@ public class ModBlockStateProvider extends BlockStateProvider {
                     .modelFile(files.get(age))
                     .build();
         });
+    }
+
+    public void trellisBlock(Block trellis) {
+        List<ModelFile> files = TrellisBlock.HALF.getAllValues()
+                .map(property -> models()
+                        .withExistingParent(name(trellis) + "_" + property.value(), ModelProvider.BLOCK_FOLDER + "/crop")
+                        .texture("crop", blockTexture(trellis))
+                        .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT))
+                .collect(Collectors.toList());
+        trellisBlock((TrellisBlock) trellis, files);
+    }
+
+    protected void trellisBlock(TrellisBlock trellis, List<ModelFile> files) {
+        getVariantBuilder(trellis).forAllStates(state -> {
+            DoubleBlockHalf doubleBlock = state.getValue(TrellisBlock.HALF);
+
+            return ConfiguredModel.builder()
+                    .modelFile(doubleBlock == DoubleBlockHalf.UPPER ? files.get(0) : files.get(1))
+                    .build();
+        });
+    }
+
+    protected void trellisCropBlock(Block trellisCrop) {
+        List<ModelFile> filesLower = TrellisCropBlock.AGE.getAllValues()
+                .map(age -> models()
+                        .withExistingParent(name(trellisCrop) + "_lower_stage" + age.value(), modLoc(ModelProvider.BLOCK_FOLDER + "/crop_with_trellis"))
+                        .texture("crop", ModDataGenerator.extend(blockTexture(trellisCrop), "_lower_stage" + age.value()))
+                        .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT))
+                .collect(Collectors.toList());
+        List<ModelFile> filesUpper = TrellisCropBlock.AGE.getAllValues()
+                .map(age -> models()
+                        .withExistingParent(name(trellisCrop) + "_upper_stage" + age.value(), modLoc(ModelProvider.BLOCK_FOLDER + "/crop_with_trellis"))
+                        .texture("crop", ModDataGenerator.extend(blockTexture(trellisCrop), "_upper_stage" + age.value()))
+                        .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT))
+                .collect(Collectors.toList());
+        trellisCropBlock((TrellisCropBlock) trellisCrop, filesLower, filesUpper);
+    }
+
+    protected void trellisCropBlock(TrellisCropBlock trellisCrop, List<ModelFile> filesLower, List<ModelFile> filesUpper) {
+        getVariantBuilder(trellisCrop).forAllStates(state -> {
+            DoubleBlockHalf doubleBlock = state.getValue(TrellisCropBlock.HALF);
+            int age = state.getValue(TrellisCropBlock.AGE);
+
+            return ConfiguredModel.builder()
+                    .modelFile(doubleBlock == DoubleBlockHalf.UPPER ? filesUpper.get(age) : filesLower.get(age))
+                    .build();
+        });
+    }
+
+    protected void trellisCropModel() {
+        models().getBuilder("crop_with_trellis")
+                .ao(false)
+                .texture("particle", "#crop")
+                .texture("trellis", blockTexture(ModBlocks.TRELLIS.get()))
+                .element()
+                .from(0.8F, -1, 8)
+                .to(15.2F, 15, 8)
+                .rotation().origin(8, 8, 8).axis(Direction.Axis.Y).angle(45).rescale(true).end()
+                .shade(false)
+                .face(Direction.NORTH).uvs(0, 0, 16, 16).texture("#crop").end()
+                .face(Direction.SOUTH).uvs(0, 0, 16, 16).texture("#crop").end()
+                .end()
+                .element()
+                .from(8, -1, 0.8F)
+                .to(8, 15, 15.2F)
+                .rotation().origin(8, 8, 8).axis(Direction.Axis.Y).angle(45).rescale(true).end()
+                .shade(false)
+                .face(Direction.WEST).uvs(0, 0, 16, 16).texture("#crop").end()
+                .face(Direction.EAST).uvs(0, 0, 16, 16).texture("#crop").end()
+                .end()
+                .element()
+                .from(4, -1, 0)
+                .to(4, 15, 16)
+                .shade(false)
+                .face(Direction.WEST).uvs(0, 0, 16, 16).texture("#trellis").end()
+                .face(Direction.EAST).uvs(16, 0, 0, 16).texture("#trellis").end()
+                .end()
+                .element()
+                .from(12, -1, 0)
+                .to(12, 15, 16)
+                .shade(false)
+                .face(Direction.WEST).uvs(16, 0, 0, 16).texture("#trellis").end()
+                .face(Direction.EAST).uvs(0, 0, 16, 16).texture("#trellis").end()
+                .end()
+                .element()
+                .from(0, -1, 4)
+                .to(16, 15, 4)
+                .shade(false)
+                .face(Direction.NORTH).uvs(0, 0, 16, 16).texture("#trellis").end()
+                .face(Direction.SOUTH).uvs(16, 0, 0, 16).texture("#trellis").end()
+                .end()
+                .element()
+                .from(0, -1, 12)
+                .to(16, 15, 12)
+                .shade(false)
+                .face(Direction.NORTH).uvs(16, 0, 0, 16).texture("#trellis").end()
+                .face(Direction.SOUTH).uvs(0, 0, 16, 16).texture("#trellis").end()
+                .end();
+    }
+
+    public void doublePlantBlock(Block plant) {
+        ModelFile upperModel = models()
+                .withExistingParent(name(plant) + "_top", ModelProvider.BLOCK_FOLDER + "/cross")
+                .texture("cross", ModDataGenerator.extend(blockTexture(plant), "_top"))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT);
+        ModelFile lowerModel = models()
+                .withExistingParent(name(plant) + "_bottom", ModelProvider.BLOCK_FOLDER + "/cross")
+                .texture("cross", ModDataGenerator.extend(blockTexture(plant), "_bottom"))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT);
+
+        getVariantBuilder(plant).forAllStates(state -> {
+            DoubleBlockHalf doubleBlock = state.getValue(DoublePlantBlock.HALF);
+
+            return ConfiguredModel.builder()
+                    .modelFile(doubleBlock == DoubleBlockHalf.UPPER ? upperModel : lowerModel)
+                    .build();
+        });
+    }
+
+    public void vineBlock(Block vineBlock) {
+        ModelFile vineModel = models()
+                .withExistingParent(name(vineBlock), ModelProvider.BLOCK_FOLDER + "/vine")
+                .texture("particle", blockTexture(vineBlock))
+                .texture("vine", blockTexture(vineBlock))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT);
+        ModelFile vineModelUpper = models()
+                .withExistingParent(name(vineBlock) + "_upper", ModelProvider.BLOCK_FOLDER + "/vine")
+                .texture("particle", blockTexture(Blocks.VINE))
+                .texture("vine", blockTexture(Blocks.VINE))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT);
+
+        MultiPartBlockStateBuilder builder = getMultipartBuilder(vineBlock);
+        Direction.stream()
+                .filter(direction -> direction != Direction.DOWN)
+                .forEach(direction -> {
+                    for (int i = 0; i < 2; i++) {
+                        MultiPartBlockStateBuilder.PartBuilder partBuilder = builder.part()
+                                .modelFile(direction == Direction.UP ? vineModelUpper : vineModel)
+                                .rotationY(direction == Direction.UP ? 0 : (((int) direction.toYRot()) + 180) % 360)
+                                .rotationX(direction == Direction.UP ? 270 : 0)
+                                .uvLock(direction != Direction.NORTH)
+                                .addModel();
+                        if (i == 0) {
+                            partBuilder.condition(VineBlock.getPropertyForFace(direction), true);
+                        } else {
+                            Direction.stream()
+                                    .filter(dir -> dir != Direction.DOWN)
+                                    .forEach(dir -> partBuilder.condition(VineBlock.getPropertyForFace(dir), false));
+                        }
+                    }
+                });
     }
 
     public void rainDetectorBlock(Block rainDetector) {
@@ -372,6 +549,25 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .texture("top", ModDataGenerator.extend(blockTexture(cake), "_top"))
                 .texture("bottom", ModDataGenerator.extend(blockTexture(cake), "_bottom"))
                 .texture("particle", ModDataGenerator.extend(blockTexture(cake), "_side"));
+    }
+
+    public void easelBlock(Block easel) {
+        ModelFile model = models().withExistingParent(name(easel), ModelProvider.BLOCK_FOLDER + "/lectern")
+                .texture("particle", ModDataGenerator.extend(blockTexture(Blocks.LECTERN), "_sides"))
+                .texture("bottom", blockTexture(Blocks.OAK_PLANKS))
+                .texture("base", blockTexture(Blocks.OAK_PLANKS))
+                .texture("front", ModDataGenerator.extend(blockTexture(easel), "_front"))
+                .texture("sides", ModDataGenerator.extend(blockTexture(Blocks.LECTERN), "_sides"))
+                .texture("top", ModDataGenerator.extend(blockTexture(easel), "_top"));
+
+        getVariantBuilder(easel).forAllStates(state -> {
+            Direction facing = state.getValue(EaselBlock.FACING);
+
+            return ConfiguredModel.builder()
+                    .modelFile(model)
+                    .rotationY((int) facing.getOpposite().toYRot())
+                    .build();
+        });
     }
 
     protected ResourceLocation variantTexture(Block block) {

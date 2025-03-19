@@ -1,8 +1,15 @@
+/*
+ * Copyright (C) 2023-2025 Phrille
+ *
+ * This file is part of the Vanilla Boom Mod.
+ * Unauthorized distribution or modification is prohibited.
+ * See LICENSE for details.
+ */
+
 package phrille.vanillaboom.item;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -14,10 +21,11 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.NetherWartBlock;
+import net.minecraft.world.level.block.TallFlowerBlock;
 import net.minecraft.world.level.block.piston.PistonBaseBlock;
 import net.minecraft.world.level.block.piston.PistonHeadBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.PistonType;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -25,14 +33,12 @@ import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.block.ModBlocks;
+import phrille.vanillaboom.block.crop.ShearedTallFlowerBlock;
 import phrille.vanillaboom.config.VanillaBoomConfig;
-import phrille.vanillaboom.util.ModTags;
 import phrille.vanillaboom.util.Utils;
 
 @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID)
 public class ItemEventHandler {
-
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         Level level = event.getLevel();
@@ -40,62 +46,21 @@ public class ItemEventHandler {
         BlockState state = level.getBlockState(pos);
         ItemStack stack = event.getItemStack();
         Player player = event.getEntity();
+        InteractionHand hand = event.getHand();
 
-        if (event.isCanceled() || stack.isEmpty()) {
-            return;
-        }
+        if (event.isCanceled() || stack.isEmpty()) return;
 
         Event.Result result = Event.Result.DEFAULT;
 
-        if (stack.is(ModTags.ForgeTags.Items.WITHER_BONE_MEALS)) {
-            result = useWitherBoneMeal(level, player, state, pos, stack);
-        } else if (stack.is(Tags.Items.SLIMEBALLS)) {
+        if (stack.is(Tags.Items.SLIMEBALLS)) {
             result = useSlimeBall(level, player, state, pos, stack);
         } else if (stack.is(ItemTags.AXES) && player.isCrouching()) {
-            result = removeSlimeBall(level, player, state, pos, stack, event.getHand());
+            result = removeSlimeBall(level, player, state, pos, stack, hand);
+        } else if (stack.is(Tags.Items.SHEARS)) {
+            result = shearTallFlower(level, player, state, pos, stack, hand);
         }
 
         event.setUseBlock(result);
-    }
-
-    protected static Event.Result useWitherBoneMeal(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack) {
-        if (state.getBlock() == Blocks.NETHER_WART) {
-            if (!VanillaBoomConfig.growNetherWarts) {
-                return Event.Result.DEFAULT;
-            }
-
-            int age = state.getValue(NetherWartBlock.AGE);
-
-            if (age < 3) {
-                if (!level.isClientSide) {
-                    if (level.random.nextFloat() < 0.625F) {
-                        level.setBlock(pos, state.setValue(NetherWartBlock.AGE, age + 1), 2);
-                    }
-                }
-            } else {
-                return Event.Result.DEFAULT;
-            }
-        } else if (state.getBlock() == ModBlocks.ROSE.get()) {
-            if (!VanillaBoomConfig.growWitherRoses) {
-                return Event.Result.DEFAULT;
-            }
-
-            if (!level.isClientSide) {
-                if (level.random.nextFloat() < 0.25F) {
-                    level.setBlock(pos, Blocks.WITHER_ROSE.defaultBlockState(), 2);
-                }
-            }
-        } else {
-            return Event.Result.DEFAULT;
-        }
-
-        Utils.spawnParticles(ParticleTypes.SMOKE, level, pos);
-        player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-        if (!player.isCreative()) {
-            stack.shrink(1);
-        }
-
-        return Event.Result.DENY;
     }
 
     protected static Event.Result useSlimeBall(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack) {
@@ -150,6 +115,34 @@ public class ItemEventHandler {
         Block.popResource(level, pos, new ItemStack(Items.SLIME_BALL));
         player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
         level.playSound(null, pos, SoundEvents.CHICKEN_EGG, SoundSource.BLOCKS, 1.0F, 1.0F);
+        if (!player.isCreative()) {
+            stack.hurtAndBreak(1, player, entity -> entity.broadcastBreakEvent(hand));
+        }
+
+        return Event.Result.DENY;
+    }
+
+    protected static Event.Result shearTallFlower(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack, InteractionHand hand) {
+        ShearedTallFlowerBlock shearedTallFlower;
+
+        if (!VanillaBoomConfig.shearTallFlowers) {
+            return Event.Result.DEFAULT;
+        }
+
+        if (state.getBlock() instanceof TallFlowerBlock tallFlower && ShearedTallFlowerBlock.getShearedFlowerBlocks().containsKey(tallFlower)) {
+            DoubleBlockHalf half = state.getValue(TallFlowerBlock.HALF);
+            if (half == DoubleBlockHalf.UPPER) {
+                pos = pos.below();
+            }
+            shearedTallFlower = ShearedTallFlowerBlock.getShearedFlowerBlocks().get(tallFlower);
+            Utils.setDoubleBlock(level, shearedTallFlower.defaultBlockState(), pos, TallFlowerBlock.HALF);
+        } else {
+            return Event.Result.DEFAULT;
+        }
+
+        Block.popResource(level, pos, new ItemStack(shearedTallFlower.getFlower()));
+        player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
+        level.playSound(null, pos, SoundEvents.SHEEP_SHEAR, SoundSource.BLOCKS, 1.0F, 1.0F);
         if (!player.isCreative()) {
             stack.hurtAndBreak(1, player, entity -> entity.broadcastBreakEvent(hand));
         }

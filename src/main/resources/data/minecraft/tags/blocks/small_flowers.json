@@ -1,6 +1,7 @@
 {
-  "replace": false,
   "values": [
-    "vanillaboom:rose"
+    "vanillaboom:rose",
+    "vanillaboom:peony",
+    "vanillaboom:lilac"
   ]
 }

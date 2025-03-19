@@ -13,5 +13,6 @@
   ],
   "result": {
     "item": "vanillaboom:chiseled_obsidian"
-  }
+  },
+  "show_notification": true
 }

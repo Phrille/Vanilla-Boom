@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "vanillaboom:block/chiseled_purpur_block",
-    "side": "vanillaboom:block/chiseled_purpur_block",
-    "top": "vanillaboom:block/chiseled_purpur_block"
-  }
-}

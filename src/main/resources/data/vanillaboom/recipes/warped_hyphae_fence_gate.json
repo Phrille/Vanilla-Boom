@@ -15,5 +15,6 @@
   ],
   "result": {
     "item": "vanillaboom:warped_hyphae_fence_gate"
-  }
+  },
+  "show_notification": true
 }

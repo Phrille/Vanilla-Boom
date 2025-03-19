@@ -1,3 +1,11 @@
+/*
+ * Copyright (C) 2023-2025 Phrille
+ *
+ * This file is part of the Vanilla Boom Mod.
+ * Unauthorized distribution or modification is prohibited.
+ * See LICENSE for details.
+ */
+
 package phrille.vanillaboom.data.tags;
 
 import net.minecraft.core.HolderLookup;
@@ -62,14 +70,18 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BLACK_DYE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_BLACK_DYE);
         copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
         tag(ModTags.ForgeTags.Items.CROPS_TOMATO).add(ModItems.TOMATO.get());
-        tag(ModTags.ForgeTags.Items.CROPS_RICE).add(ModItems.RICE_BOWL.get());
+        tag(ModTags.ForgeTags.Items.CROPS_CHILI).add(ModItems.CHILI.get());
+        tag(ModTags.ForgeTags.Items.CROPS_RICE).add(ModItems.RICE_GRAINS.get());
         tag(Tags.Items.CROPS)
                 .addTags(ModTags.ForgeTags.Items.CROPS_TOMATO)
+                .addTags(ModTags.ForgeTags.Items.CROPS_CHILI)
                 .addTags(ModTags.ForgeTags.Items.CROPS_RICE);
         tag(ModTags.ForgeTags.Items.SEEDS_TOMATO).add(ModItems.TOMATO_SEEDS.get());
-        tag(ModTags.ForgeTags.Items.SEEDS_RICE).add(ModItems.RICE_SEEDS.get());
+        tag(ModTags.ForgeTags.Items.SEEDS_CHILI).add(ModItems.CHILI_SEEDS.get());
+        tag(ModTags.ForgeTags.Items.SEEDS_RICE).add(ModItems.RICE_GRAINS.get());
         tag(Tags.Items.SEEDS)
                 .addTags(ModTags.ForgeTags.Items.SEEDS_TOMATO)
+                .addTags(ModTags.ForgeTags.Items.SEEDS_CHILI)
                 .addTags(ModTags.ForgeTags.Items.SEEDS_RICE);
         tag(ModTags.ForgeTags.Items.INGOTS_MAGMA_BRICK).add(ModItems.MAGMA_BRICK.get());
         tag(Tags.Items.INGOTS).addTags(ModTags.ForgeTags.Items.INGOTS_MAGMA_BRICK);
@@ -101,6 +113,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.POLAR_BEAR_STEAK.get());
         tag(ModTags.ForgeTags.Items.CANVAS).add(ModItems.CANVAS.get());
         tag(ModTags.ForgeTags.Items.MILK).add(Items.MILK_BUCKET);
+        tag(ModTags.ForgeTags.Items.RICE).add(ModItems.RICE_GRAINS.get());
 
         /*
          * VanillaBoom tags

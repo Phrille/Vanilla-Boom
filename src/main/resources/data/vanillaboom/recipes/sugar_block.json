@@ -13,5 +13,6 @@
   ],
   "result": {
     "item": "vanillaboom:sugar_block"
-  }
+  },
+  "show_notification": true
 }
