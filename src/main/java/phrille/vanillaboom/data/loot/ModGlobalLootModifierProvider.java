@@ -43,9 +43,10 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
         dropLootModifier("spruce_leaves", new LootItemCondition[]{
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SPRUCE_LEAVES).build()
         }, List.of());
+
         add("fishing", new FishingLootModifier(new LootItemCondition[]{
-                LootTableIdCondition.builder(new ResourceLocation("minecraft", "gameplay/fishing")).build()
-        }, ModGlobalLootModifiers.getLootTableReference("vanillaboom:fishing"), 0.3F));
+                LootTableIdCondition.builder(new ResourceLocation("minecraft", "gameplay/fishing/fish")).build()
+        }, ModGlobalLootModifiers.getLootTableReference(new ResourceLocation(VanillaBoom.MOD_ID, "gameplay/fishing/fish")), 0.3F));
     }
 
     private void entityLootModifier(String name, EntityType<?> entityType, List<Item> overwrites) {
@@ -55,6 +56,6 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
     }
 
     private void dropLootModifier(String name, LootItemCondition[] conditions, List<Item> overwrites) {
-        add(name, new DropLootModifier(conditions, ModGlobalLootModifiers.getLootTableReference("vanillaboom:minecraft/" + name), overwrites));
+        add(name, new DropLootModifier(conditions, ModGlobalLootModifiers.getLootTableReference(new ResourceLocation(VanillaBoom.MOD_ID, "minecraft/" + name)), overwrites));
     }
 }

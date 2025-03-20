@@ -28,20 +28,23 @@ public class FishingLootModifier extends LootModifier {
     public static final Supplier<Codec<FishingLootModifier>> CODEC = Suppliers.memoize(() ->
             RecordCodecBuilder.create(inst -> codecStart(inst).and(
                     inst.group(
-                            Codec.STRING.fieldOf("table").xmap(ModGlobalLootModifiers::getLootTableReference, ModGlobalLootModifiers::getString).forGetter(m -> m.lootTable),
-                            Codec.FLOAT.fieldOf("chance").forGetter(m -> m.chance)
+                            Codec.STRING.fieldOf("modifier_loot_table")
+                                    .xmap(ModGlobalLootModifiers::getLootTableReference, ModGlobalLootModifiers::getString)
+                                    .forGetter(modifier -> modifier.modifierLootTable),
+                            Codec.FLOAT.fieldOf("replace_chance")
+                                    .forGetter(modifier -> modifier.replaceChance)
                     )).apply(inst, FishingLootModifier::new)
             )
     );
 
     private static final Field LOOT_FIELD = ObfuscationReflectionHelper.findField(LootContext.class, "f_278466_");
-    private final LootTableReference lootTable;
-    private final float chance;
+    private final LootTableReference modifierLootTable;
+    private final float replaceChance;
 
-    public FishingLootModifier(LootItemCondition[] conditions, LootTableReference lootTable, float chance) {
+    public FishingLootModifier(LootItemCondition[] conditions, LootTableReference modifierLootTable, float replaceChance) {
         super(conditions);
-        this.lootTable = lootTable;
-        this.chance = chance;
+        this.modifierLootTable = modifierLootTable;
+        this.replaceChance = replaceChance;
     }
 
     @Override
@@ -50,9 +53,9 @@ public class FishingLootModifier extends LootModifier {
         try {
             Set<LootContext.VisitedEntry<?>> set = (Set<LootContext.VisitedEntry<?>>) LOOT_FIELD.get(context);
 
-            if (set.isEmpty() && context.getRandom().nextFloat() <= chance) {
+            if (set.isEmpty() && replaceChance >= context.getRandom().nextFloat()) {
                 ObjectArrayList<ItemStack> loot = ObjectArrayList.of();
-                lootTable.createItemStack(loot::add, context);
+                modifierLootTable.createItemStack(loot::add, context);
 
                 return loot;
             } else {
