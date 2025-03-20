@@ -30,5 +30,6 @@
     "recipes": [
       "vanillaboom:skull_and_roses_from_painting"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

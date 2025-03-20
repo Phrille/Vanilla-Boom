@@ -30,5 +30,6 @@
     "recipes": [
       "vanillaboom:stripped_birch_wood_stairs"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

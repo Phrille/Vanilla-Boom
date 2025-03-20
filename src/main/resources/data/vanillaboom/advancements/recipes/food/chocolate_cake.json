@@ -69,5 +69,6 @@
     "recipes": [
       "vanillaboom:chocolate_cake"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

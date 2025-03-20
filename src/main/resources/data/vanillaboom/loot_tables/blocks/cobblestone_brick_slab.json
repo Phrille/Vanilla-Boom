@@ -16,5 +16,6 @@
       ],
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "vanillaboom:blocks/cobblestone_brick_slab"
 }

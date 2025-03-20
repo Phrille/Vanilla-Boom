@@ -69,5 +69,6 @@
     "recipes": [
       "vanillaboom:berry_cake"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

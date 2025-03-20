@@ -43,5 +43,6 @@
     "recipes": [
       "vanillaboom:warped_bookshelf"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

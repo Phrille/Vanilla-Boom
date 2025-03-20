@@ -11,6 +11,7 @@ package phrille.vanillaboom.data.tags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CandleBlock;
 import net.minecraftforge.common.Tags;
@@ -23,9 +24,33 @@ import phrille.vanillaboom.block.variant.*;
 import phrille.vanillaboom.util.ModTags;
 import phrille.vanillaboom.util.Utils;
 
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 public class ModBlockTagsProvider extends BlockTagsProvider {
+    private static final Set<Block> WOOD_BLOCKS = Set.of(
+            Blocks.OAK_WOOD,
+            Blocks.SPRUCE_WOOD,
+            Blocks.BIRCH_WOOD,
+            Blocks.JUNGLE_WOOD,
+            Blocks.ACACIA_WOOD,
+            Blocks.DARK_OAK_WOOD,
+            Blocks.MANGROVE_WOOD,
+            Blocks.CHERRY_WOOD,
+            Blocks.CRIMSON_HYPHAE,
+            Blocks.WARPED_HYPHAE,
+            Blocks.STRIPPED_OAK_WOOD,
+            Blocks.STRIPPED_SPRUCE_WOOD,
+            Blocks.STRIPPED_BIRCH_WOOD,
+            Blocks.STRIPPED_JUNGLE_WOOD,
+            Blocks.STRIPPED_ACACIA_WOOD,
+            Blocks.STRIPPED_DARK_OAK_WOOD,
+            Blocks.STRIPPED_MANGROVE_WOOD,
+            Blocks.STRIPPED_CHERRY_WOOD,
+            Blocks.STRIPPED_CRIMSON_HYPHAE,
+            Blocks.STRIPPED_WARPED_HYPHAE
+    );
+
     public ModBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, VanillaBoom.MOD_ID, existingFileHelper);
     }
@@ -282,7 +307,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // Stairs
         ModStairBlock.STAIRS.forEach(stair -> {
-            if (stair.getParent().defaultBlockState().is(BlockTags.LOGS)) {
+            if (WOOD_BLOCKS.contains(stair.getParent())) {
                 tag(ModTags.VanillaBoomTags.Blocks.WOODEN_STAIRS).add(stair);
             } else {
                 tag(ModTags.VanillaBoomTags.Blocks.STAIRS).add(stair);
@@ -293,7 +318,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // Slabs
         ModSlabBlock.SLABS.forEach(slab -> {
-            if (slab.getParent().defaultBlockState().is(BlockTags.LOGS)) {
+            if (WOOD_BLOCKS.contains(slab.getParent())) {
                 tag(ModTags.VanillaBoomTags.Blocks.WOODEN_SLABS).add(slab);
             } else {
                 tag(ModTags.VanillaBoomTags.Blocks.SLABS).add(slab);
@@ -308,7 +333,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // Fences
         ModFenceBlock.FENCES.forEach(fence -> {
-            if (fence.getParent().defaultBlockState().is(BlockTags.LOGS)) {
+            if (WOOD_BLOCKS.contains(fence.getParent())) {
                 tag(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCES).add(fence);
             } else {
                 tag(ModTags.VanillaBoomTags.Blocks.FENCES).add(fence);
@@ -319,7 +344,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // Fence Gates
         ModFenceGateBlock.FENCE_GATES.forEach(fenceGate -> {
-            if (fenceGate.getParent().defaultBlockState().is(BlockTags.LOGS)) {
+            if (WOOD_BLOCKS.contains(fenceGate.getParent())) {
                 tag(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCE_GATES).add(fenceGate);
             } else {
                 tag(ModTags.VanillaBoomTags.Blocks.FENCE_GATES).add(fenceGate);

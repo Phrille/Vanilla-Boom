@@ -30,5 +30,6 @@
     "recipes": [
       "vanillaboom:polished_end_stone_slab_from_polished_end_stone_from_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

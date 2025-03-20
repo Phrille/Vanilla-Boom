@@ -30,5 +30,6 @@
     "recipes": [
       "vanillaboom:white_stained_soul_glass"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

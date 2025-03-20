@@ -30,5 +30,6 @@
     "recipes": [
       "vanillaboom:cut_sandstone_stairs_from_sandstone_from_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

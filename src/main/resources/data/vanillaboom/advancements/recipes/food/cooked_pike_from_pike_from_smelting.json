@@ -30,5 +30,6 @@
     "recipes": [
       "vanillaboom:cooked_pike_from_pike_from_smelting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }
