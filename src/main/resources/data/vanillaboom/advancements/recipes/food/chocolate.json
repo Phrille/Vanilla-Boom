@@ -56,5 +56,6 @@
     "recipes": [
       "vanillaboom:chocolate"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

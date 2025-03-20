@@ -36,25 +36,31 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
+        // Blocks
+        add("spruce_leaves", new DropLootModifier(new LootItemCondition[]{
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SPRUCE_LEAVES).build()},
+                ModGlobalLootModifiers.getLootTableReference(VanillaBoom.resLoc("blocks/loot_modifiers/spruce_leaves")),
+                List.of()));
+
+        // Entities
         entityLootModifier("drowned", EntityType.DROWNED, List.of(Items.ROTTEN_FLESH));
         entityLootModifier("polar_bear", EntityType.POLAR_BEAR, List.of(Items.COD, Items.SALMON));
         entityLootModifier("silverfish", EntityType.SILVERFISH, List.of());
         entityLootModifier("wither_skeleton", EntityType.WITHER_SKELETON, List.of(Items.BONE));
-        dropLootModifier("spruce_leaves", new LootItemCondition[]{
-                LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SPRUCE_LEAVES).build()
-        }, List.of());
+
+        // Gameplay
         add("fishing", new FishingLootModifier(new LootItemCondition[]{
-                LootTableIdCondition.builder(new ResourceLocation("minecraft", "gameplay/fishing")).build()
-        }, ModGlobalLootModifiers.getLootTableReference("vanillaboom:fishing"), 0.3F));
+                LootTableIdCondition.builder(new ResourceLocation("minecraft", "gameplay/fishing/fish")).build()},
+                ModGlobalLootModifiers.getLootTableReference(VanillaBoom.resLoc("gameplay/fishing/fish")),
+                0.45F));
     }
 
-    private void entityLootModifier(String name, EntityType<?> entityType, List<Item> overwrites) {
-        dropLootModifier(name, new LootItemCondition[]{
-                LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(entityType))).build()
-        }, overwrites);
-    }
-
-    private void dropLootModifier(String name, LootItemCondition[] conditions, List<Item> overwrites) {
-        add(name, new DropLootModifier(conditions, ModGlobalLootModifiers.getLootTableReference("vanillaboom:minecraft/" + name), overwrites));
+    private void entityLootModifier(String name, EntityType<?> entityType, List<Item> removeItems) {
+        add(name, new DropLootModifier(new LootItemCondition[]{
+                LootItemEntityPropertyCondition.hasProperties(
+                        LootContext.EntityTarget.THIS,
+                        EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(entityType))).build()},
+                ModGlobalLootModifiers.getLootTableReference(VanillaBoom.resLoc("entities/loot_modifiers/" + name)),
+                removeItems));
     }
 }

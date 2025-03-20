@@ -30,5 +30,6 @@
     "recipes": [
       "vanillaboom:light_gray_dye_block"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

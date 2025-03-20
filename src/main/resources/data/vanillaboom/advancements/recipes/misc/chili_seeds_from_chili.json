@@ -30,5 +30,6 @@
     "recipes": [
       "vanillaboom:chili_seeds_from_chili"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

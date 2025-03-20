@@ -10,7 +10,6 @@ package phrille.vanillaboom.util;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageType;
 import phrille.vanillaboom.VanillaBoom;
 
@@ -19,6 +18,6 @@ public class ModDamageTypes {
 
     @SuppressWarnings("SameParameterValue")
     private static ResourceKey<DamageType> register(String name) {
-        return ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(VanillaBoom.MOD_ID, name));
+        return ResourceKey.create(Registries.DAMAGE_TYPE, VanillaBoom.resLoc(name));
     }
 }

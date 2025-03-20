@@ -45,7 +45,7 @@ public class VillageHandler {
     }
 
     private static void addToPool(RegistryAccess registryAccess, ResourceLocation poolId, String add, int weight) {
-        addToPool(registryAccess, poolId, new ResourceLocation(VanillaBoom.MOD_ID, poolId.getPath() + "/" + add), weight);
+        addToPool(registryAccess, poolId, VanillaBoom.resLoc(poolId.getPath() + "/" + add), weight);
     }
 
     /**

@@ -10,17 +10,16 @@ displayName="${mod_name}"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/vanilla-boom"
 logoFile="vanillaboom_logo.png"
 authors="${mod_authors}"
-displayTest="MATCH_VERSION"
 description='''${mod_description}'''
 
-[[dependencies.vanillaboom]]
+[[dependencies.${mod_id}]]
     modId="forge"
     mandatory=true
     versionRange="${forge_version_range}"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.vanillaboom]]
+[[dependencies.${mod_id}]]
     modId="minecraft"
     mandatory=true
     versionRange="${minecraft_version_range}"

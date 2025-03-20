@@ -43,5 +43,6 @@
     "recipes": [
       "vanillaboom:crimson_bookshelf"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

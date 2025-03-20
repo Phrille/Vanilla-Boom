@@ -56,5 +56,6 @@
     "recipes": [
       "vanillaboom:potato_soup"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

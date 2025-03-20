@@ -30,5 +30,6 @@
     "recipes": [
       "vanillaboom:sugar_from_sugar_block"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

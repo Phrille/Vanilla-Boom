@@ -43,5 +43,6 @@
     "recipes": [
       "vanillaboom:mossy_cobblestone_bricks_from_vine"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

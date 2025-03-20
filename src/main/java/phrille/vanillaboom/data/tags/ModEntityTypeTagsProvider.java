@@ -14,7 +14,6 @@ import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import org.jetbrains.annotations.NotNull;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.entity.ModEntities;
 import phrille.vanillaboom.util.ModTags;
@@ -27,7 +26,7 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
     }
 
     @Override
-    protected void addTags(HolderLookup.@NotNull Provider provider) {
+    protected void addTags(HolderLookup.Provider provider) {
         // VanillaBoom Tags
         tag(ModTags.VanillaBoomTags.Entities.PRISMARINE_EXTRA_HURT)
                 .add(EntityType.BLAZE)

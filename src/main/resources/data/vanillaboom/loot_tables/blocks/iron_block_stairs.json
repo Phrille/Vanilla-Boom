@@ -16,5 +16,6 @@
       ],
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "vanillaboom:blocks/iron_block_stairs"
 }

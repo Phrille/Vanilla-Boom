@@ -30,5 +30,6 @@
     "recipes": [
       "vanillaboom:quartz_block_wall"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -20,7 +20,6 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -29,29 +28,31 @@ public class DropLootModifier extends LootModifier {
     public static final Supplier<Codec<DropLootModifier>> CODEC = Suppliers.memoize(() ->
             RecordCodecBuilder.create(inst -> codecStart(inst).and(
                     inst.group(
-                            Codec.STRING.fieldOf("table").xmap(ModGlobalLootModifiers::getLootTableReference, ModGlobalLootModifiers::getString).forGetter(m -> m.lootTable),
-                            ForgeRegistries.ITEMS.getCodec().listOf().fieldOf("overwrites").forGetter(m -> m.overwrites)
+                            Codec.STRING.fieldOf("modifier_loot_table")
+                                    .xmap(ModGlobalLootModifiers::getLootTableReference, ModGlobalLootModifiers::getString)
+                                    .forGetter(modifier -> modifier.modifierLootTable),
+                            ForgeRegistries.ITEMS.getCodec().listOf().optionalFieldOf("remove_items", List.of())
+                                    .forGetter(modifier -> modifier.removeItems)
                     )).apply(inst, DropLootModifier::new)
             )
     );
 
-    private final LootTableReference lootTable;
-    private final List<Item> overwrites;
+    private final LootTableReference modifierLootTable;
+    private final List<Item> removeItems;
 
-    public DropLootModifier(LootItemCondition[] conditions, LootTableReference lootTable, List<Item> overwrites) {
+    public DropLootModifier(LootItemCondition[] conditions, LootTableReference modifierLootTable, List<Item> removeItems) {
         super(conditions);
-        this.lootTable = lootTable;
-        this.overwrites = overwrites;
+        this.modifierLootTable = modifierLootTable;
+        this.removeItems = removeItems;
     }
 
-    @NotNull
     @Override
     protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-        if (!overwrites.isEmpty()) {
-            overwrites.forEach(item -> generatedLoot.removeIf(stack -> stack.is(item)));
+        if (!removeItems.isEmpty()) {
+            removeItems.forEach(item -> generatedLoot.removeIf(stack -> stack.is(item)));
         }
 
-        lootTable.createItemStack(generatedLoot::add, context);
+        modifierLootTable.createItemStack(generatedLoot::add, context);
 
         return generatedLoot;
     }

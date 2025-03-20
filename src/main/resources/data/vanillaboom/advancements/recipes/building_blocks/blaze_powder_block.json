@@ -30,5 +30,6 @@
     "recipes": [
       "vanillaboom:blaze_powder_block"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

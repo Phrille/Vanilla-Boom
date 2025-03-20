@@ -320,11 +320,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.EASEL.get())
                 .define('x', ItemTags.WOODEN_SLABS)
                 .define('y', ModTags.ForgeTags.Items.CANVAS)
-                .define('z', Blocks.OAK_PLANKS) // TODO: 1.20 replace with brush
+                .define('z', Items.BRUSH)
                 .pattern("xyx")
                 .pattern(" z ")
                 .pattern(" x ")
-                .unlockedBy(getHasName(ModItems.CANVAS.get()), has(ModItems.CANVAS.get())) // TODO: add unlocked by brush
+                .unlockedBy(getHasName(ModItems.CANVAS.get()), has(ModItems.CANVAS.get()))
+                .unlockedBy(getHasName(Items.BRUSH), has(Items.BRUSH))
                 .save(finishedRecipe);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CANVAS.get(), 2)
                 .requires(ItemTags.WOOL)
@@ -724,7 +725,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         dyes.forEach(dye -> ingredientDyes.add(Ingredient.of(dye)));
         PaintingRecipeBuilder.painting(ingredientDyes, RecipeCategory.DECORATIONS, variant)
                 .unlockedBy(getHasName(ModItems.CANVAS.get()), has(ModItems.CANVAS.get()))
-                .save(finishedRecipe, new ResourceLocation(VanillaBoom.MOD_ID, variant.getPath() + "_from_painting"));
+                .save(finishedRecipe, VanillaBoom.resLoc(variant.getPath() + "_from_painting"));
     }
 
     /**
@@ -759,7 +760,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
      * @return a ResourceLocation with modid namespace
      */
     private static ResourceLocation modLoc(ItemLike item) {
-        return new ResourceLocation(VanillaBoom.MOD_ID, name(item));
+        return VanillaBoom.resLoc(name(item));
     }
 
     /**

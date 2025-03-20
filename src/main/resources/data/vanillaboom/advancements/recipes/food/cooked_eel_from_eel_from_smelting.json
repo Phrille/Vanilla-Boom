@@ -30,5 +30,6 @@
     "recipes": [
       "vanillaboom:cooked_eel_from_eel_from_smelting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

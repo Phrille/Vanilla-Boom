@@ -11,7 +11,6 @@ package phrille.vanillaboom.client.renderer;
 import net.minecraft.client.model.SalmonModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
@@ -29,9 +28,9 @@ import phrille.vanillaboom.entity.ModEntities;
 
 @Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID, value = Dist.CLIENT, bus = Bus.MOD)
 public class ModRenderers {
-    public static final ModelLayerLocation PERCH_MODEL = new ModelLayerLocation(new ResourceLocation(VanillaBoom.MOD_ID, "perch_model"), "perch_model");
-    public static final ModelLayerLocation TUNA_MODEL = new ModelLayerLocation(new ResourceLocation(VanillaBoom.MOD_ID, "tuna_model"), "tuna_model");
-    public static final ModelLayerLocation EEl_MODEL = new ModelLayerLocation(new ResourceLocation(VanillaBoom.MOD_ID, "eel_model"), "eel_model");
+    public static final ModelLayerLocation PERCH_MODEL = new ModelLayerLocation(VanillaBoom.resLoc("perch_model"), "perch_model");
+    public static final ModelLayerLocation TUNA_MODEL = new ModelLayerLocation(VanillaBoom.resLoc("tuna_model"), "tuna_model");
+    public static final ModelLayerLocation EEl_MODEL = new ModelLayerLocation(VanillaBoom.resLoc("eel_model"), "eel_model");
 
     @SubscribeEvent
     public static void registerLayer(EntityRenderersEvent.RegisterRenderers event) {

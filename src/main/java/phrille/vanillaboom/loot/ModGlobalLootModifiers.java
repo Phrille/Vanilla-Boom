@@ -24,8 +24,13 @@ public class ModGlobalLootModifiers {
     public static final RegistryObject<Codec<DropLootModifier>> DROP_LOOT_MODIFIER = GLOBAL_LOOT_MODIFIERS.register("drop_loot_modifier", DropLootModifier.CODEC);
     public static final RegistryObject<Codec<FishingLootModifier>> FISHING_MODIFIER = GLOBAL_LOOT_MODIFIERS.register("fishing_modifier", FishingLootModifier.CODEC);
 
-    public static LootTableReference getLootTableReference(String resLoc) {
-        return (LootTableReference) LootTableReference.lootTableReference(new ResourceLocation(resLoc)).build();
+    public static LootTableReference getLootTableReference(String location) {
+        // Replace with ResourceLocation.parse(location)
+        return getLootTableReference(new ResourceLocation(location));
+    }
+
+    public static LootTableReference getLootTableReference(ResourceLocation resLoc) {
+        return (LootTableReference) LootTableReference.lootTableReference(resLoc).build();
     }
 
     public static String getString(LootTableReference lootTable) {

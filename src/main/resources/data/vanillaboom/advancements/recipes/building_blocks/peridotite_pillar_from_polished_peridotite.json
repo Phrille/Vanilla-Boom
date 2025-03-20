@@ -30,5 +30,6 @@
     "recipes": [
       "vanillaboom:peridotite_pillar_from_polished_peridotite"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

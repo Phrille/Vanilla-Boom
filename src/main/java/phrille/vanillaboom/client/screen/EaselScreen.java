@@ -8,9 +8,8 @@
 
 package phrille.vanillaboom.client.screen;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
@@ -30,7 +29,7 @@ import phrille.vanillaboom.util.Utils;
 import java.util.List;
 
 public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
-    private static final ResourceLocation BG_LOCATION = new ResourceLocation(VanillaBoom.MOD_ID, "textures/gui/container/easel.png");
+    private static final ResourceLocation BG_LOCATION = VanillaBoom.resLoc("textures/gui/container/easel.png");
 
     private static List<PaintingRecipe> availableRecipes = Lists.newArrayList();
 
@@ -82,41 +81,40 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
     }
 
     @Override
-    public void render(PoseStack pose, int mouseX, int mouseY, float partialTick) {
-        super.render(pose, mouseX, mouseY, partialTick);
-        renderTooltip(pose, mouseX, mouseY);
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        super.render(guiGraphics, mouseX, mouseY, partialTick);
+        renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
     @Override
-    protected void renderBg(PoseStack pose, float partialTick, int mouseX, int mouseY) {
-        renderBackground(pose);
-        RenderSystem.setShaderTexture(0, BG_LOCATION);
+    protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
+        renderBackground(guiGraphics);
         int x = leftPos;
         int y = topPos;
 
         // Background
-        blit(pose, x, y, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        guiGraphics.blit(BG_LOCATION, x, y, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
         // Scrollbar
         int scrollY = (int) ((float) (SCROLLBAR_HEIGHT - SCROLL_BUTTON_HEIGHT) * scrollOffset);
-        blit(pose, x + SCROLLBAR_X, y + SCROLLBAR_Y + scrollY, SCREEN_WIDTH + (isScrollBarActive() ? 0 : SCROLL_BUTTON_WIDTH), 0, SCROLL_BUTTON_WIDTH, SCROLL_BUTTON_HEIGHT);
+        guiGraphics.blit(BG_LOCATION, x + SCROLLBAR_X, y + SCROLLBAR_Y + scrollY, SCREEN_WIDTH + (isScrollBarActive() ? 0 : SCROLL_BUTTON_WIDTH), 0, SCROLL_BUTTON_WIDTH, SCROLL_BUTTON_HEIGHT);
 
         // Dye slots
         menu.getDyeSlots().stream()
                 .filter(slot -> !slot.hasItem())
-                .forEach(slot -> blit(pose, x + slot.x, y + slot.y, SCREEN_WIDTH, 15, SLOT_SIZE, SLOT_SIZE));
+                .forEach(slot -> guiGraphics.blit(BG_LOCATION, x + slot.x, y + slot.y, SCREEN_WIDTH, 15, SLOT_SIZE, SLOT_SIZE));
 
         // Canvas slot
         Slot canvasSlot = menu.getCanvasSlot();
         if (!canvasSlot.hasItem()) {
-            blit(pose, x + canvasSlot.x, y + canvasSlot.y, SCREEN_WIDTH + SLOT_SIZE, 15, SLOT_SIZE, SLOT_SIZE);
+            guiGraphics.blit(BG_LOCATION, x + canvasSlot.x, y + canvasSlot.y, SCREEN_WIDTH + SLOT_SIZE, 15, SLOT_SIZE, SLOT_SIZE);
         }
 
         // Grid
-        renderGrid(pose, x + GRID_X, y + GRID_Y, mouseX, mouseY);
+        renderGrid(guiGraphics, x + GRID_X, y + GRID_Y, mouseX, mouseY);
     }
 
-    private void renderGrid(PoseStack pose, int x, int y, int mouseX, int mouseY) {
+    private void renderGrid(GuiGraphics guiGraphics, int x, int y, int mouseX, int mouseY) {
         int max = startIndex + GRID_MAX_ITEMS;
 
         for (int buttonId = startIndex; buttonId < max && buttonId < buttonList.size(); buttonId++) {
@@ -124,7 +122,7 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
             int i = buttonId - startIndex;
             int buttonX = x + i % GRID_COLUMNS * BUTTON_SIZE;
             int buttonY = y + i / GRID_COLUMNS * BUTTON_SIZE;
-            button.render(pose, buttonX, buttonY, mouseX, mouseY);
+            button.render(guiGraphics, buttonX, buttonY, mouseX, mouseY);
         }
     }
 
@@ -185,8 +183,8 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
     }
 
     @Override
-    protected void renderTooltip(PoseStack pose, int mouseX, int mouseY) {
-        super.renderTooltip(pose, mouseX, mouseY);
+    protected void renderTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        super.renderTooltip(guiGraphics, mouseX, mouseY);
 
         int x = leftPos + GRID_X;
         int y = topPos + GRID_Y;
@@ -199,7 +197,7 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
             int buttonY = y + i / GRID_COLUMNS * BUTTON_SIZE;
 
             if (mouseX >= buttonX && mouseX < buttonX + BUTTON_SIZE && mouseY >= buttonY && mouseY < buttonY + BUTTON_SIZE) {
-                button.renderButtonTooltip(pose, mouseX, mouseY);
+                button.renderButtonTooltip(guiGraphics, mouseX, mouseY);
             }
         }
     }
@@ -272,7 +270,7 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
             buttonList.add(buttonId, this);
         }
 
-        public void render(PoseStack pose, int x, int y, int mouseX, int mouseY) {
+        public void render(GuiGraphics guiGraphics, int x, int y, int mouseX, int mouseY) {
             int textureY = 31;
             if (!enabled) {
                 textureY += BUTTON_SIZE;
@@ -282,16 +280,13 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
                 textureY += BUTTON_SIZE * 2;
             }
 
-            blit(pose, x, y, SCREEN_WIDTH, textureY, BUTTON_SIZE, BUTTON_SIZE);
-
-            RenderSystem.setShaderTexture(0, sprite.atlasLocation());
-            blit(pose, x + 1 + xOffset, y + 1 + yOffset, 0, paintingWidth, paintingHeight, sprite);
-            RenderSystem.setShaderTexture(0, BG_LOCATION);
+            guiGraphics.blit(BG_LOCATION, x, y, SCREEN_WIDTH, textureY, BUTTON_SIZE, BUTTON_SIZE);
+            guiGraphics.blit(x + 1 + xOffset, y + 1 + yOffset, 0, paintingWidth, paintingHeight, sprite);
         }
 
-        public void renderButtonTooltip(PoseStack pose, int mouseX, int mouseY) {
+        public void renderButtonTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY) {
             // TODO: Display ingredients
-            renderTooltip(pose, recipe.result(), mouseX, mouseY);
+            guiGraphics.renderTooltip(font, recipe.result(), mouseX, mouseY);
         }
 
         @SuppressWarnings("ConstantConditions")

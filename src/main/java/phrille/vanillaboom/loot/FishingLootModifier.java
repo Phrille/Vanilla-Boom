@@ -14,13 +14,11 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootTableReference;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
-import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
 import java.util.Set;
@@ -30,32 +28,34 @@ public class FishingLootModifier extends LootModifier {
     public static final Supplier<Codec<FishingLootModifier>> CODEC = Suppliers.memoize(() ->
             RecordCodecBuilder.create(inst -> codecStart(inst).and(
                     inst.group(
-                            Codec.STRING.fieldOf("table").xmap(ModGlobalLootModifiers::getLootTableReference, ModGlobalLootModifiers::getString).forGetter(m -> m.lootTable),
-                            Codec.FLOAT.fieldOf("chance").forGetter(m -> m.chance)
+                            Codec.STRING.fieldOf("modifier_loot_table")
+                                    .xmap(ModGlobalLootModifiers::getLootTableReference, ModGlobalLootModifiers::getString)
+                                    .forGetter(modifier -> modifier.modifierLootTable),
+                            Codec.FLOAT.fieldOf("replace_chance")
+                                    .forGetter(modifier -> modifier.replaceChance)
                     )).apply(inst, FishingLootModifier::new)
             )
     );
 
-    private static final Field LOOT_FIELD = ObfuscationReflectionHelper.findField(LootContext.class, "f_78911_");
-    private final LootTableReference lootTable;
-    private final float chance;
+    private static final Field LOOT_FIELD = ObfuscationReflectionHelper.findField(LootContext.class, "f_278466_");
+    private final LootTableReference modifierLootTable;
+    private final float replaceChance;
 
-    public FishingLootModifier(LootItemCondition[] conditions, LootTableReference lootTable, float chance) {
+    public FishingLootModifier(LootItemCondition[] conditions, LootTableReference modifierLootTable, float replaceChance) {
         super(conditions);
-        this.lootTable = lootTable;
-        this.chance = chance;
+        this.modifierLootTable = modifierLootTable;
+        this.replaceChance = replaceChance;
     }
 
-    @NotNull
     @Override
     @SuppressWarnings("unchecked")
     protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
         try {
-            Set<LootTable> set = (Set<LootTable>) LOOT_FIELD.get(context);
+            Set<LootContext.VisitedEntry<?>> set = (Set<LootContext.VisitedEntry<?>>) LOOT_FIELD.get(context);
 
-            if (set.isEmpty() && context.getRandom().nextFloat() <= chance) {
+            if (set.isEmpty() && replaceChance >= context.getRandom().nextFloat()) {
                 ObjectArrayList<ItemStack> loot = ObjectArrayList.of();
-                lootTable.createItemStack(loot::add, context);
+                modifierLootTable.createItemStack(loot::add, context);
 
                 return loot;
             } else {

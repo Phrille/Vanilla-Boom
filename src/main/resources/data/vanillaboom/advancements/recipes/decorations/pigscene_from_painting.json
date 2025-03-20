@@ -30,5 +30,6 @@
     "recipes": [
       "vanillaboom:pigscene_from_painting"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

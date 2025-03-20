@@ -8,7 +8,9 @@
 
 package phrille.vanillaboom;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -37,8 +39,8 @@ public class VanillaBoom {
     public static final String MOD_ID = "vanillaboom";
     public static final Logger LOGGER = LogManager.getLogger();
 
-    public VanillaBoom(FMLJavaModLoadingContext context) {
-        IEventBus eventBus = context.getModEventBus();
+    public VanillaBoom() {
+        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModNetwork.register();
         ModEntities.ENTITY_TYPES.register(eventBus);
@@ -55,7 +57,7 @@ public class VanillaBoom {
         eventBus.addListener(this::enqueueIMC);
         eventBus.addListener(this::processIMC);
 
-        context.registerConfig(ModConfig.Type.COMMON, ConfigHandler.COMMON_SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigHandler.COMMON_SPEC);
     }
 
     public void setup(FMLCommonSetupEvent event) {
@@ -79,5 +81,9 @@ public class VanillaBoom {
     }
 
     private void processIMC(InterModProcessEvent event) {
+    }
+
+    public static ResourceLocation resLoc(String path) {
+        return new ResourceLocation(VanillaBoom.MOD_ID, path);
     }
 }

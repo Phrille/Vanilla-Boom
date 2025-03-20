@@ -15,7 +15,7 @@ import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.entity.PrismarineArrow;
 
 public class PrismarineArrowRenderer extends ArrowRenderer<PrismarineArrow> {
-    public static final ResourceLocation PRISMARINE_ARROW_TEXTURE = new ResourceLocation(VanillaBoom.MOD_ID, "textures/entity/prismarine_arrow.png");
+    public static final ResourceLocation PRISMARINE_ARROW_TEXTURE = VanillaBoom.resLoc("textures/entity/prismarine_arrow.png");
 
     public PrismarineArrowRenderer(EntityRendererProvider.Context context) {
         super(context);

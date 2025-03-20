@@ -2,29 +2,30 @@
   "type": "minecraft:fishing",
   "pools": [
     {
-      "rolls": 1.0,
+      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
-          "weight": 30,
+          "weight": 20,
           "name": "vanillaboom:tuna"
         },
         {
           "type": "minecraft:item",
-          "weight": 30,
+          "weight": 34,
           "name": "vanillaboom:perch"
         },
         {
           "type": "minecraft:item",
-          "weight": 30,
+          "weight": 34,
           "name": "vanillaboom:pike"
         },
         {
           "type": "minecraft:item",
-          "weight": 30,
+          "weight": 12,
           "name": "vanillaboom:eel"
         }
-      ]
+      ],
+      "rolls": 1.0
     }
   ]
 }

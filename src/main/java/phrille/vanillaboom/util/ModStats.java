@@ -20,7 +20,7 @@ public class ModStats {
 
     @SuppressWarnings("SameParameterValue")
     private static ResourceLocation makeCustomStat(String id, StatFormatter statFormatter) {
-        ResourceLocation resourcelocation = new ResourceLocation(VanillaBoom.MOD_ID, id);
+        ResourceLocation resourcelocation = VanillaBoom.resLoc(id);
         Registry.register(BuiltInRegistries.CUSTOM_STAT, id, resourcelocation);
         Stats.CUSTOM.get(resourcelocation, statFormatter);
         return resourcelocation;

@@ -30,5 +30,6 @@
     "recipes": [
       "vanillaboom:bedrock_wall_from_bedrock_from_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

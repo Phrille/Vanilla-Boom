@@ -12,11 +12,13 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.RecipeType;
-import mezz.jei.api.registration.*;
+import mezz.jei.api.registration.IRecipeCatalystRegistration;
+import mezz.jei.api.registration.IRecipeCategoryRegistration;
+import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.inventory.EaselMenu;
@@ -26,13 +28,8 @@ import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
 
 @JeiPlugin
 public class VanillaBoomJEIPlugin implements IModPlugin {
-    public static final ResourceLocation UID = new ResourceLocation(VanillaBoom.MOD_ID, "main");
+    public static final ResourceLocation UID = VanillaBoom.resLoc("main");
     public static final RecipeType<PaintingRecipe> PAINTING = RecipeType.create(VanillaBoom.MOD_ID, "painting", PaintingRecipe.class);
-
-    @Override
-    public void registerItemSubtypes(ISubtypeRegistration subtypeRegistry) {
-        subtypeRegistry.useNbtForSubtypes(Items.PAINTING);
-    }
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {

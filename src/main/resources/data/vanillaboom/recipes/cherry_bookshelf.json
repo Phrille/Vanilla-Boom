@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "x": {
+      "item": "minecraft:cherry_planks"
+    },
+    "y": {
+      "item": "minecraft:book"
+    }
+  },
+  "pattern": [
+    "xxx",
+    "yyy",
+    "xxx"
+  ],
+  "result": {
+    "item": "vanillaboom:cherry_bookshelf"
+  },
+  "show_notification": true
+}

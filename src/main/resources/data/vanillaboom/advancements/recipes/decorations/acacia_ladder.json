@@ -43,5 +43,6 @@
     "recipes": [
       "vanillaboom:acacia_ladder"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

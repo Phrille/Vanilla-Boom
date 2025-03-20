@@ -30,5 +30,6 @@
     "recipes": [
       "vanillaboom:polar_bear_steak_from_raw_polar_bear_meat_from_campfire"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

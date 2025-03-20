@@ -43,5 +43,6 @@
     "recipes": [
       "vanillaboom:peridotite"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

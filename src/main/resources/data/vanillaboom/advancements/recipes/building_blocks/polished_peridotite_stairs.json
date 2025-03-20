@@ -30,5 +30,6 @@
     "recipes": [
       "vanillaboom:polished_peridotite_stairs"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

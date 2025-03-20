@@ -69,5 +69,6 @@
     "recipes": [
       "vanillaboom:carrot_cake"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

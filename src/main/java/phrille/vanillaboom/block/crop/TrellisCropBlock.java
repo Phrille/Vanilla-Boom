@@ -29,7 +29,6 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.NotNull;
 import phrille.vanillaboom.util.Utils;
 
 public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrellisCrop {
@@ -40,7 +39,7 @@ public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrell
     }
 
     @Override
-    public @NotNull VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         return TrellisBlock.TRELLIS_SHAPE;
     }
 
