@@ -27,6 +27,7 @@ import phrille.vanillaboom.loot.DropLootModifier;
 import phrille.vanillaboom.loot.FishingLootModifier;
 import phrille.vanillaboom.loot.ModGlobalLootModifiers;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
@@ -36,26 +37,31 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
+        // Blocks
+        add("spruce_leaves", new DropLootModifier(new LootItemCondition[]{
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SPRUCE_LEAVES).build()},
+                ModGlobalLootModifiers.getLootTableReference(new ResourceLocation(VanillaBoom.MOD_ID, "blocks/loot_modifiers/spruce_leaves")),
+                null));
+
+        // Entities
         entityLootModifier("drowned", EntityType.DROWNED, List.of(Items.ROTTEN_FLESH));
         entityLootModifier("polar_bear", EntityType.POLAR_BEAR, List.of(Items.COD, Items.SALMON));
-        entityLootModifier("silverfish", EntityType.SILVERFISH, List.of());
+        entityLootModifier("silverfish", EntityType.SILVERFISH, null);
         entityLootModifier("wither_skeleton", EntityType.WITHER_SKELETON, List.of(Items.BONE));
-        dropLootModifier("spruce_leaves", new LootItemCondition[]{
-                LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SPRUCE_LEAVES).build()
-        }, List.of());
 
+        // Gameplay
         add("fishing", new FishingLootModifier(new LootItemCondition[]{
-                LootTableIdCondition.builder(new ResourceLocation("minecraft", "gameplay/fishing/fish")).build()
-        }, ModGlobalLootModifiers.getLootTableReference(new ResourceLocation(VanillaBoom.MOD_ID, "gameplay/fishing/fish")), 0.3F));
+                LootTableIdCondition.builder(new ResourceLocation("minecraft", "gameplay/fishing/fish")).build()},
+                ModGlobalLootModifiers.getLootTableReference(new ResourceLocation(VanillaBoom.MOD_ID, "gameplay/fishing/fish")),
+                0.3F));
     }
 
-    private void entityLootModifier(String name, EntityType<?> entityType, List<Item> overwrites) {
-        dropLootModifier(name, new LootItemCondition[]{
-                LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(entityType))).build()
-        }, overwrites);
-    }
-
-    private void dropLootModifier(String name, LootItemCondition[] conditions, List<Item> overwrites) {
-        add(name, new DropLootModifier(conditions, ModGlobalLootModifiers.getLootTableReference(new ResourceLocation(VanillaBoom.MOD_ID, "minecraft/" + name)), overwrites));
+    private void entityLootModifier(String name, EntityType<?> entityType, @Nullable List<Item> removeItems) {
+        add(name, new DropLootModifier(new LootItemCondition[]{
+                LootItemEntityPropertyCondition.hasProperties(
+                        LootContext.EntityTarget.THIS,
+                        EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(entityType))).build()},
+                ModGlobalLootModifiers.getLootTableReference(new ResourceLocation(VanillaBoom.MOD_ID, "entities/loot_modifiers/" + name)),
+                removeItems));
     }
 }

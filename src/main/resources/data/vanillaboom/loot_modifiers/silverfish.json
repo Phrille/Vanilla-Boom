@@ -9,6 +9,5 @@
       }
     }
   ],
-  "overwrites": [],
-  "table": "vanillaboom:minecraft/silverfish"
+  "modifier_loot_table": "vanillaboom:entities/loot_modifiers/silverfish"
 }

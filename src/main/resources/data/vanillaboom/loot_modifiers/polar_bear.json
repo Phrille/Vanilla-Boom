@@ -9,9 +9,9 @@
       }
     }
   ],
-  "overwrites": [
+  "modifier_loot_table": "vanillaboom:entities/loot_modifiers/polar_bear",
+  "remove_items": [
     "minecraft:cod",
     "minecraft:salmon"
-  ],
-  "table": "vanillaboom:minecraft/polar_bear"
+  ]
 }
