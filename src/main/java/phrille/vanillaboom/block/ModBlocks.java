@@ -91,6 +91,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> ACACIA_BOOKSHELF = BLOCKS.register("acacia_bookshelf", () -> new ModBookshelfBlock(Blocks.ACACIA_PLANKS::defaultBlockState));
     public static final RegistryObject<Block> DARK_OAK_BOOKSHELF = BLOCKS.register("dark_oak_bookshelf", () -> new ModBookshelfBlock(Blocks.DARK_OAK_PLANKS::defaultBlockState));
     public static final RegistryObject<Block> MANGROVE_BOOKSHELF = BLOCKS.register("mangrove_bookshelf", () -> new ModBookshelfBlock(Blocks.MANGROVE_PLANKS::defaultBlockState));
+    public static final RegistryObject<Block> CHERRY_BOOKSHELF = BLOCKS.register("cherry_bookshelf", () -> new ModBookshelfBlock(Blocks.CHERRY_PLANKS::defaultBlockState));
     public static final RegistryObject<Block> CRIMSON_BOOKSHELF = BLOCKS.register("crimson_bookshelf", () -> new ModBookshelfBlock(Blocks.CRIMSON_PLANKS::defaultBlockState));
     public static final RegistryObject<Block> WARPED_BOOKSHELF = BLOCKS.register("warped_bookshelf", () -> new ModBookshelfBlock(Blocks.WARPED_PLANKS::defaultBlockState));
     public static final RegistryObject<Block> SPRUCE_LADDER = BLOCKS.register("spruce_ladder", () -> new ModLadderBlock(() -> Blocks.SPRUCE_SLAB));
@@ -99,6 +100,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> ACACIA_LADDER = BLOCKS.register("acacia_ladder", () -> new ModLadderBlock(() -> Blocks.ACACIA_SLAB));
     public static final RegistryObject<Block> DARK_OAK_LADDER = BLOCKS.register("dark_oak_ladder", () -> new ModLadderBlock(() -> Blocks.DARK_OAK_SLAB));
     public static final RegistryObject<Block> MANGROVE_LADDER = BLOCKS.register("mangrove_ladder", () -> new ModLadderBlock(() -> Blocks.MANGROVE_SLAB));
+    public static final RegistryObject<Block> CHERRY_LADDER = BLOCKS.register("cherry_ladder", () -> new ModLadderBlock(() -> Blocks.CHERRY_SLAB));
     public static final RegistryObject<Block> CRIMSON_LADDER = BLOCKS.register("crimson_ladder", () -> new ModLadderBlock(() -> Blocks.CRIMSON_SLAB));
     public static final RegistryObject<Block> WARPED_LADDER = BLOCKS.register("warped_ladder", () -> new ModLadderBlock(() -> Blocks.WARPED_SLAB));
 
@@ -321,6 +323,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> ACACIA_WOOD_STAIRS = BLOCKS.register("acacia_wood_stairs", () -> new ModStairBlock(Blocks.ACACIA_WOOD::defaultBlockState));
     public static final RegistryObject<Block> DARK_OAK_WOOD_STAIRS = BLOCKS.register("dark_oak_wood_stairs", () -> new ModStairBlock(Blocks.DARK_OAK_WOOD::defaultBlockState));
     public static final RegistryObject<Block> MANGROVE_WOOD_STAIRS = BLOCKS.register("mangrove_wood_stairs", () -> new ModStairBlock(Blocks.MANGROVE_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> CHERRY_WOOD_STAIRS = BLOCKS.register("cherry_wood_stairs", () -> new ModStairBlock(Blocks.CHERRY_WOOD::defaultBlockState));
     public static final RegistryObject<Block> CRIMSON_HYPHAE_STAIRS = BLOCKS.register("crimson_hyphae_stairs", () -> new ModStairBlock(Blocks.CRIMSON_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> WARPED_HYPHAE_STAIRS = BLOCKS.register("warped_hyphae_stairs", () -> new ModStairBlock(Blocks.WARPED_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_OAK_WOOD_STAIRS = BLOCKS.register("stripped_oak_wood_stairs", () -> new ModStairBlock(Blocks.STRIPPED_OAK_WOOD::defaultBlockState));
@@ -330,6 +333,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> STRIPPED_ACACIA_WOOD_STAIRS = BLOCKS.register("stripped_acacia_wood_stairs", () -> new ModStairBlock(Blocks.STRIPPED_ACACIA_WOOD::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_DARK_OAK_WOOD_STAIRS = BLOCKS.register("stripped_dark_oak_wood_stairs", () -> new ModStairBlock(Blocks.STRIPPED_DARK_OAK_WOOD::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_MANGROVE_WOOD_STAIRS = BLOCKS.register("stripped_mangrove_wood_stairs", () -> new ModStairBlock(Blocks.STRIPPED_MANGROVE_WOOD::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MANGROVE_STAIRS)));
+    public static final RegistryObject<Block> STRIPPED_CHERRY_WOOD_STAIRS = BLOCKS.register("stripped_cherry_wood_stairs", () -> new ModStairBlock(Blocks.STRIPPED_CHERRY_WOOD::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_CRIMSON_HYPHAE_STAIRS = BLOCKS.register("stripped_crimson_hyphae_stairs", () -> new ModStairBlock(Blocks.STRIPPED_CRIMSON_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_WARPED_HYPHAE_STAIRS = BLOCKS.register("stripped_warped_hyphae_stairs", () -> new ModStairBlock(Blocks.STRIPPED_WARPED_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> CUT_SANDSTONE_STAIRS = BLOCKS.register("cut_sandstone_stairs", () -> new ModStairBlock(Blocks.CUT_SANDSTONE::defaultBlockState));
@@ -418,6 +422,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> ACACIA_WOOD_SLAB = BLOCKS.register("acacia_wood_slab", () -> new ModSlabBlock(Blocks.ACACIA_WOOD::defaultBlockState));
     public static final RegistryObject<Block> DARK_OAK_WOOD_SLAB = BLOCKS.register("dark_oak_wood_slab", () -> new ModSlabBlock(Blocks.DARK_OAK_WOOD::defaultBlockState));
     public static final RegistryObject<Block> MANGROVE_WOOD_SLAB = BLOCKS.register("mangrove_wood_slab", () -> new ModSlabBlock(Blocks.MANGROVE_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> CHERRY_WOOD_SLAB = BLOCKS.register("cherry_wood_slab", () -> new ModSlabBlock(Blocks.CHERRY_WOOD::defaultBlockState));
     public static final RegistryObject<Block> CRIMSON_HYPHAE_SLAB = BLOCKS.register("crimson_hyphae_slab", () -> new ModSlabBlock(Blocks.CRIMSON_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> WARPED_HYPHAE_SLAB = BLOCKS.register("warped_hyphae_slab", () -> new ModSlabBlock(Blocks.WARPED_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_OAK_WOOD_SLAB = BLOCKS.register("stripped_oak_wood_slab", () -> new ModSlabBlock(Blocks.STRIPPED_OAK_WOOD::defaultBlockState));
@@ -427,6 +432,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> STRIPPED_ACACIA_WOOD_SLAB = BLOCKS.register("stripped_acacia_wood_slab", () -> new ModSlabBlock(Blocks.STRIPPED_ACACIA_WOOD::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_DARK_OAK_WOOD_SLAB = BLOCKS.register("stripped_dark_oak_wood_slab", () -> new ModSlabBlock(Blocks.STRIPPED_DARK_OAK_WOOD::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_MANGROVE_WOOD_SLAB = BLOCKS.register("stripped_mangrove_wood_slab", () -> new ModSlabBlock(Blocks.STRIPPED_MANGROVE_WOOD::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MANGROVE_SLAB)));
+    public static final RegistryObject<Block> STRIPPED_CHERRY_WOOD_SLAB = BLOCKS.register("stripped_cherry_wood_slab", () -> new ModSlabBlock(Blocks.STRIPPED_CHERRY_WOOD::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_CRIMSON_HYPHAE_SLAB = BLOCKS.register("stripped_crimson_hyphae_slab", () -> new ModSlabBlock(Blocks.STRIPPED_CRIMSON_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_WARPED_HYPHAE_SLAB = BLOCKS.register("stripped_warped_hyphae_slab", () -> new ModSlabBlock(Blocks.STRIPPED_WARPED_HYPHAE::defaultBlockState));
 
@@ -528,6 +534,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> ACACIA_WOOD_FENCE = BLOCKS.register("acacia_wood_fence", () -> new ModFenceBlock(Blocks.ACACIA_WOOD::defaultBlockState));
     public static final RegistryObject<Block> DARK_OAK_WOOD_FENCE = BLOCKS.register("dark_oak_wood_fence", () -> new ModFenceBlock(Blocks.DARK_OAK_WOOD::defaultBlockState));
     public static final RegistryObject<Block> MANGROVE_WOOD_FENCE = BLOCKS.register("mangrove_wood_fence", () -> new ModFenceBlock(Blocks.MANGROVE_WOOD::defaultBlockState));
+    public static final RegistryObject<Block> CHERRY_WOOD_FENCE = BLOCKS.register("cherry_wood_fence", () -> new ModFenceBlock(Blocks.CHERRY_WOOD::defaultBlockState));
     public static final RegistryObject<Block> CRIMSON_HYPHAE_FENCE = BLOCKS.register("crimson_hyphae_fence", () -> new ModFenceBlock(Blocks.CRIMSON_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> WARPED_HYPHAE_FENCE = BLOCKS.register("warped_hyphae_fence", () -> new ModFenceBlock(Blocks.WARPED_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_OAK_WOOD_FENCE = BLOCKS.register("stripped_oak_wood_fence", () -> new ModFenceBlock(Blocks.STRIPPED_OAK_WOOD::defaultBlockState));
@@ -537,6 +544,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> STRIPPED_ACACIA_WOOD_FENCE = BLOCKS.register("stripped_acacia_wood_fence", () -> new ModFenceBlock(Blocks.STRIPPED_ACACIA_WOOD::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_DARK_OAK_WOOD_FENCE = BLOCKS.register("stripped_dark_oak_wood_fence", () -> new ModFenceBlock(Blocks.STRIPPED_DARK_OAK_WOOD::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_MANGROVE_WOOD_FENCE = BLOCKS.register("stripped_mangrove_wood_fence", () -> new ModFenceBlock(Blocks.STRIPPED_MANGROVE_WOOD::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MANGROVE_FENCE)));
+    public static final RegistryObject<Block> STRIPPED_CHERRY_WOOD_FENCE = BLOCKS.register("stripped_cherry_wood_fence", () -> new ModFenceBlock(Blocks.STRIPPED_CHERRY_WOOD::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_CRIMSON_HYPHAE_FENCE = BLOCKS.register("stripped_crimson_hyphae_fence", () -> new ModFenceBlock(Blocks.STRIPPED_CRIMSON_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> STRIPPED_WARPED_HYPHAE_FENCE = BLOCKS.register("stripped_warped_hyphae_fence", () -> new ModFenceBlock(Blocks.STRIPPED_WARPED_HYPHAE::defaultBlockState));
     public static final RegistryObject<Block> RED_NETHER_BRICK_FENCE = BLOCKS.register("red_nether_brick_fence", () -> new ModFenceBlock(Blocks.RED_NETHER_BRICKS::defaultBlockState));
@@ -547,6 +555,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> ACACIA_WOOD_FENCE_GATE = BLOCKS.register("acacia_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.ACACIA_WOOD::defaultBlockState, WoodType.ACACIA));
     public static final RegistryObject<Block> DARK_OAK_WOOD_FENCE_GATE = BLOCKS.register("dark_oak_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.DARK_OAK_WOOD::defaultBlockState, WoodType.DARK_OAK));
     public static final RegistryObject<Block> MANGROVE_WOOD_FENCE_GATE = BLOCKS.register("mangrove_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.MANGROVE_WOOD::defaultBlockState, WoodType.MANGROVE));
+    public static final RegistryObject<Block> CHERRY_WOOD_FENCE_GATE = BLOCKS.register("cherry_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.CHERRY_WOOD::defaultBlockState, WoodType.CHERRY));
     public static final RegistryObject<Block> CRIMSON_HYPHAE_FENCE_GATE = BLOCKS.register("crimson_hyphae_fence_gate", () -> new ModFenceGateBlock(Blocks.CRIMSON_HYPHAE::defaultBlockState, WoodType.CRIMSON));
     public static final RegistryObject<Block> WARPED_HYPHAE_FENCE_GATE = BLOCKS.register("warped_hyphae_fence_gate", () -> new ModFenceGateBlock(Blocks.WARPED_HYPHAE::defaultBlockState, WoodType.WARPED));
     public static final RegistryObject<Block> STRIPPED_OAK_WOOD_FENCE_GATE = BLOCKS.register("stripped_oak_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.STRIPPED_OAK_WOOD::defaultBlockState, WoodType.OAK));
@@ -556,6 +565,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> STRIPPED_ACACIA_WOOD_FENCE_GATE = BLOCKS.register("stripped_acacia_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.STRIPPED_ACACIA_WOOD::defaultBlockState, WoodType.ACACIA));
     public static final RegistryObject<Block> STRIPPED_DARK_OAK_WOOD_FENCE_GATE = BLOCKS.register("stripped_dark_oak_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.STRIPPED_DARK_OAK_WOOD::defaultBlockState, WoodType.DARK_OAK));
     public static final RegistryObject<Block> STRIPPED_MANGROVE_WOOD_FENCE_GATE = BLOCKS.register("stripped_mangrove_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.STRIPPED_MANGROVE_WOOD::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MANGROVE_FENCE_GATE), WoodType.MANGROVE));
+    public static final RegistryObject<Block> STRIPPED_CHERRY_WOOD_FENCE_GATE = BLOCKS.register("stripped_cherry_wood_fence_gate", () -> new ModFenceGateBlock(Blocks.STRIPPED_CHERRY_WOOD::defaultBlockState, WoodType.CHERRY));
     public static final RegistryObject<Block> STRIPPED_CRIMSON_HYPHAE_FENCE_GATE = BLOCKS.register("stripped_crimson_hyphae_fence_gate", () -> new ModFenceGateBlock(Blocks.STRIPPED_CRIMSON_HYPHAE::defaultBlockState, WoodType.CRIMSON));
     public static final RegistryObject<Block> STRIPPED_WARPED_HYPHAE_FENCE_GATE = BLOCKS.register("stripped_warped_hyphae_fence_gate", () -> new ModFenceGateBlock(Blocks.STRIPPED_WARPED_HYPHAE::defaultBlockState, WoodType.WARPED));
     public static final RegistryObject<Block> NETHER_BRICK_FENCE_GATE = BLOCKS.register("nether_brick_fence_gate", () -> new ModFenceGateBlock(Blocks.NETHER_BRICKS::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.NETHER_BRICK_FENCE), SoundEvents.NETHER_WOOD_FENCE_GATE_CLOSE, SoundEvents.NETHER_WOOD_FENCE_GATE_OPEN));

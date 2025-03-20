@@ -21,9 +21,7 @@ import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Supplier;
 
 public class DropLootModifier extends LootModifier {
@@ -33,17 +31,16 @@ public class DropLootModifier extends LootModifier {
                             Codec.STRING.fieldOf("modifier_loot_table")
                                     .xmap(ModGlobalLootModifiers::getLootTableReference, ModGlobalLootModifiers::getString)
                                     .forGetter(modifier -> modifier.modifierLootTable),
-                            ForgeRegistries.ITEMS.getCodec().listOf().optionalFieldOf("remove_items", null)
+                            ForgeRegistries.ITEMS.getCodec().listOf().optionalFieldOf("remove_items", List.of())
                                     .forGetter(modifier -> modifier.removeItems)
                     )).apply(inst, DropLootModifier::new)
             )
     );
 
     private final LootTableReference modifierLootTable;
-    @Nullable
     private final List<Item> removeItems;
 
-    public DropLootModifier(LootItemCondition[] conditions, LootTableReference modifierLootTable, @Nullable List<Item> removeItems) {
+    public DropLootModifier(LootItemCondition[] conditions, LootTableReference modifierLootTable, List<Item> removeItems) {
         super(conditions);
         this.modifierLootTable = modifierLootTable;
         this.removeItems = removeItems;
@@ -51,7 +48,7 @@ public class DropLootModifier extends LootModifier {
 
     @Override
     protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-        if (removeItems != null && !removeItems.isEmpty()) {
+        if (!removeItems.isEmpty()) {
             removeItems.forEach(item -> generatedLoot.removeIf(stack -> stack.is(item)));
         }
 

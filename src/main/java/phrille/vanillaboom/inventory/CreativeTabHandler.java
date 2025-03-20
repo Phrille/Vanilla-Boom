@@ -146,6 +146,20 @@ public class CreativeTabHandler {
             ));
             putAfter(entries, Blocks.MANGROVE_FENCE_GATE, ModItems.MANGROVE_BOOKSHELF.get());
             putAfter(entries, Blocks.MANGROVE_BUTTON, ModItems.MANGROVE_LADDER.get());
+            putAfter(entries, Blocks.CHERRY_WOOD, List.of(
+                    ModItems.CHERRY_WOOD_STAIRS.get(),
+                    ModItems.CHERRY_WOOD_SLAB.get(),
+                    ModItems.CHERRY_WOOD_FENCE.get(),
+                    ModItems.CHERRY_WOOD_FENCE_GATE.get()
+            ));
+            putAfter(entries, Blocks.STRIPPED_CHERRY_WOOD, List.of(
+                    ModItems.STRIPPED_CHERRY_WOOD_STAIRS.get(),
+                    ModItems.STRIPPED_CHERRY_WOOD_SLAB.get(),
+                    ModItems.STRIPPED_CHERRY_WOOD_FENCE.get(),
+                    ModItems.STRIPPED_CHERRY_WOOD_FENCE_GATE.get()
+            ));
+            putAfter(entries, Blocks.CHERRY_FENCE_GATE, ModItems.CHERRY_BOOKSHELF.get());
+            putAfter(entries, Blocks.CHERRY_BUTTON, ModItems.CHERRY_LADDER.get());
             putAfter(entries, Blocks.CRIMSON_HYPHAE, List.of(
                     ModItems.CRIMSON_HYPHAE_STAIRS.get(),
                     ModItems.CRIMSON_HYPHAE_SLAB.get(),

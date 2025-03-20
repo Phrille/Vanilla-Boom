@@ -7,5 +7,5 @@
     }
   ],
   "modifier_loot_table": "vanillaboom:gameplay/fishing/fish",
-  "replace_chance": 0.3
+  "replace_chance": 0.45
 }

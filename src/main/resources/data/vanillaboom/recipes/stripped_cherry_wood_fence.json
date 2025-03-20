@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "x": {
+      "item": "minecraft:stripped_cherry_wood"
+    },
+    "y": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "xyx",
+    "xyx"
+  ],
+  "result": {
+    "count": 3,
+    "item": "vanillaboom:stripped_cherry_wood_fence"
+  },
+  "show_notification": true
+}

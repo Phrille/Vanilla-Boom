@@ -177,6 +177,7 @@ public class ModItems {
     public static final RegistryObject<Item> ACACIA_BOOKSHELF = ITEMS.register("acacia_bookshelf", () -> new BlockItem(ModBlocks.ACACIA_BOOKSHELF.get(), new Item.Properties()));
     public static final RegistryObject<Item> DARK_OAK_BOOKSHELF = ITEMS.register("dark_oak_bookshelf", () -> new BlockItem(ModBlocks.DARK_OAK_BOOKSHELF.get(), new Item.Properties()));
     public static final RegistryObject<Item> MANGROVE_BOOKSHELF = ITEMS.register("mangrove_bookshelf", () -> new BlockItem(ModBlocks.MANGROVE_BOOKSHELF.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CHERRY_BOOKSHELF = ITEMS.register("cherry_bookshelf", () -> new BlockItem(ModBlocks.CHERRY_BOOKSHELF.get(), new Item.Properties()));
     public static final RegistryObject<Item> CRIMSON_BOOKSHELF = ITEMS.register("crimson_bookshelf", () -> new BlockItem(ModBlocks.CRIMSON_BOOKSHELF.get(), new Item.Properties()));
     public static final RegistryObject<Item> WARPED_BOOKSHELF = ITEMS.register("warped_bookshelf", () -> new BlockItem(ModBlocks.WARPED_BOOKSHELF.get(), new Item.Properties()));
     public static final RegistryObject<Item> SPRUCE_LADDER = ITEMS.register("spruce_ladder", () -> new BlockItem(ModBlocks.SPRUCE_LADDER.get(), new Item.Properties()));
@@ -185,6 +186,7 @@ public class ModItems {
     public static final RegistryObject<Item> ACACIA_LADDER = ITEMS.register("acacia_ladder", () -> new BlockItem(ModBlocks.ACACIA_LADDER.get(), new Item.Properties()));
     public static final RegistryObject<Item> DARK_OAK_LADDER = ITEMS.register("dark_oak_ladder", () -> new BlockItem(ModBlocks.DARK_OAK_LADDER.get(), new Item.Properties()));
     public static final RegistryObject<Item> MANGROVE_LADDER = ITEMS.register("mangrove_ladder", () -> new BlockItem(ModBlocks.MANGROVE_LADDER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CHERRY_LADDER = ITEMS.register("cherry_ladder", () -> new BlockItem(ModBlocks.CHERRY_LADDER.get(), new Item.Properties()));
     public static final RegistryObject<Item> CRIMSON_LADDER = ITEMS.register("crimson_ladder", () -> new BlockItem(ModBlocks.CRIMSON_LADDER.get(), new Item.Properties()));
     public static final RegistryObject<Item> WARPED_LADDER = ITEMS.register("warped_ladder", () -> new BlockItem(ModBlocks.WARPED_LADDER.get(), new Item.Properties()));
 
@@ -345,6 +347,7 @@ public class ModItems {
     public static final RegistryObject<Item> ACACIA_WOOD_STAIRS = ITEMS.register("acacia_wood_stairs", () -> new BlockItem(ModBlocks.ACACIA_WOOD_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> DARK_OAK_WOOD_STAIRS = ITEMS.register("dark_oak_wood_stairs", () -> new BlockItem(ModBlocks.DARK_OAK_WOOD_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> MANGROVE_WOOD_STAIRS = ITEMS.register("mangrove_wood_stairs", () -> new BlockItem(ModBlocks.MANGROVE_WOOD_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CHERRY_WOOD_STAIRS = ITEMS.register("cherry_wood_stairs", () -> new BlockItem(ModBlocks.CHERRY_WOOD_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> CRIMSON_HYPHAE_STAIRS = ITEMS.register("crimson_hyphae_stairs", () -> new BlockItem(ModBlocks.CRIMSON_HYPHAE_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> WARPED_HYPHAE_STAIRS = ITEMS.register("warped_hyphae_stairs", () -> new BlockItem(ModBlocks.WARPED_HYPHAE_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_OAK_WOOD_STAIRS = ITEMS.register("stripped_oak_wood_stairs", () -> new BlockItem(ModBlocks.STRIPPED_OAK_WOOD_STAIRS.get(), new Item.Properties()));
@@ -354,6 +357,7 @@ public class ModItems {
     public static final RegistryObject<Item> STRIPPED_ACACIA_WOOD_STAIRS = ITEMS.register("stripped_acacia_wood_stairs", () -> new BlockItem(ModBlocks.STRIPPED_ACACIA_WOOD_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_DARK_OAK_WOOD_STAIRS = ITEMS.register("stripped_dark_oak_wood_stairs", () -> new BlockItem(ModBlocks.STRIPPED_DARK_OAK_WOOD_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_MANGROVE_WOOD_STAIRS = ITEMS.register("stripped_mangrove_wood_stairs", () -> new BlockItem(ModBlocks.STRIPPED_MANGROVE_WOOD_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STRIPPED_CHERRY_WOOD_STAIRS = ITEMS.register("stripped_cherry_wood_stairs", () -> new BlockItem(ModBlocks.STRIPPED_CHERRY_WOOD_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_CRIMSON_HYPHAE_STAIRS = ITEMS.register("stripped_crimson_hyphae_stairs", () -> new BlockItem(ModBlocks.STRIPPED_CRIMSON_HYPHAE_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_WARPED_HYPHAE_STAIRS = ITEMS.register("stripped_warped_hyphae_stairs", () -> new BlockItem(ModBlocks.STRIPPED_WARPED_HYPHAE_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> CUT_SANDSTONE_STAIRS = ITEMS.register("cut_sandstone_stairs", () -> new BlockItem(ModBlocks.CUT_SANDSTONE_STAIRS.get(), new Item.Properties()));
@@ -442,6 +446,7 @@ public class ModItems {
     public static final RegistryObject<Item> ACACIA_WOOD_SLAB = ITEMS.register("acacia_wood_slab", () -> new BlockItem(ModBlocks.ACACIA_WOOD_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> DARK_OAK_WOOD_SLAB = ITEMS.register("dark_oak_wood_slab", () -> new BlockItem(ModBlocks.DARK_OAK_WOOD_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> MANGROVE_WOOD_SLAB = ITEMS.register("mangrove_wood_slab", () -> new BlockItem(ModBlocks.MANGROVE_WOOD_SLAB.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CHERRY_WOOD_SLAB = ITEMS.register("cherry_wood_slab", () -> new BlockItem(ModBlocks.CHERRY_WOOD_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> CRIMSON_HYPHAE_SLAB = ITEMS.register("crimson_hyphae_slab", () -> new BlockItem(ModBlocks.CRIMSON_HYPHAE_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> WARPED_HYPHAE_SLAB = ITEMS.register("warped_hyphae_slab", () -> new BlockItem(ModBlocks.WARPED_HYPHAE_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_OAK_WOOD_SLAB = ITEMS.register("stripped_oak_wood_slab", () -> new BlockItem(ModBlocks.STRIPPED_OAK_WOOD_SLAB.get(), new Item.Properties()));
@@ -451,6 +456,7 @@ public class ModItems {
     public static final RegistryObject<Item> STRIPPED_ACACIA_WOOD_SLAB = ITEMS.register("stripped_acacia_wood_slab", () -> new BlockItem(ModBlocks.STRIPPED_ACACIA_WOOD_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_DARK_OAK_WOOD_SLAB = ITEMS.register("stripped_dark_oak_wood_slab", () -> new BlockItem(ModBlocks.STRIPPED_DARK_OAK_WOOD_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_MANGROVE_WOOD_SLAB = ITEMS.register("stripped_mangrove_wood_slab", () -> new BlockItem(ModBlocks.STRIPPED_MANGROVE_WOOD_SLAB.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STRIPPED_CHERRY_WOOD_SLAB = ITEMS.register("stripped_cherry_wood_slab", () -> new BlockItem(ModBlocks.STRIPPED_CHERRY_WOOD_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_CRIMSON_HYPHAE_SLAB = ITEMS.register("stripped_crimson_hyphae_slab", () -> new BlockItem(ModBlocks.STRIPPED_CRIMSON_HYPHAE_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_WARPED_HYPHAE_SLAB = ITEMS.register("stripped_warped_hyphae_slab", () -> new BlockItem(ModBlocks.STRIPPED_WARPED_HYPHAE_SLAB.get(), new Item.Properties()));
 
@@ -552,6 +558,7 @@ public class ModItems {
     public static final RegistryObject<Item> ACACIA_WOOD_FENCE = ITEMS.register("acacia_wood_fence", () -> new BlockItem(ModBlocks.ACACIA_WOOD_FENCE.get(), new Item.Properties()));
     public static final RegistryObject<Item> DARK_OAK_WOOD_FENCE = ITEMS.register("dark_oak_wood_fence", () -> new BlockItem(ModBlocks.DARK_OAK_WOOD_FENCE.get(), new Item.Properties()));
     public static final RegistryObject<Item> MANGROVE_WOOD_FENCE = ITEMS.register("mangrove_wood_fence", () -> new BlockItem(ModBlocks.MANGROVE_WOOD_FENCE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CHERRY_WOOD_FENCE = ITEMS.register("cherry_wood_fence", () -> new BlockItem(ModBlocks.CHERRY_WOOD_FENCE.get(), new Item.Properties()));
     public static final RegistryObject<Item> CRIMSON_HYPHAE_FENCE = ITEMS.register("crimson_hyphae_fence", () -> new BlockItem(ModBlocks.CRIMSON_HYPHAE_FENCE.get(), new Item.Properties()));
     public static final RegistryObject<Item> WARPED_HYPHAE_FENCE = ITEMS.register("warped_hyphae_fence", () -> new BlockItem(ModBlocks.WARPED_HYPHAE_FENCE.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_OAK_WOOD_FENCE = ITEMS.register("stripped_oak_wood_fence", () -> new BlockItem(ModBlocks.STRIPPED_OAK_WOOD_FENCE.get(), new Item.Properties()));
@@ -561,6 +568,7 @@ public class ModItems {
     public static final RegistryObject<Item> STRIPPED_ACACIA_WOOD_FENCE = ITEMS.register("stripped_acacia_wood_fence", () -> new BlockItem(ModBlocks.STRIPPED_ACACIA_WOOD_FENCE.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_DARK_OAK_WOOD_FENCE = ITEMS.register("stripped_dark_oak_wood_fence", () -> new BlockItem(ModBlocks.STRIPPED_DARK_OAK_WOOD_FENCE.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_MANGROVE_WOOD_FENCE = ITEMS.register("stripped_mangrove_wood_fence", () -> new BlockItem(ModBlocks.STRIPPED_MANGROVE_WOOD_FENCE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STRIPPED_CHERRY_WOOD_FENCE = ITEMS.register("stripped_cherry_wood_fence", () -> new BlockItem(ModBlocks.STRIPPED_CHERRY_WOOD_FENCE.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_CRIMSON_HYPHAE_FENCE = ITEMS.register("stripped_crimson_hyphae_fence", () -> new BlockItem(ModBlocks.STRIPPED_CRIMSON_HYPHAE_FENCE.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_WARPED_HYPHAE_FENCE = ITEMS.register("stripped_warped_hyphae_fence", () -> new BlockItem(ModBlocks.STRIPPED_WARPED_HYPHAE_FENCE.get(), new Item.Properties()));
     public static final RegistryObject<Item> RED_NETHER_BRICK_FENCE = ITEMS.register("red_nether_brick_fence", () -> new BlockItem(ModBlocks.RED_NETHER_BRICK_FENCE.get(), new Item.Properties()));
@@ -571,6 +579,7 @@ public class ModItems {
     public static final RegistryObject<Item> ACACIA_WOOD_FENCE_GATE = ITEMS.register("acacia_wood_fence_gate", () -> new BlockItem(ModBlocks.ACACIA_WOOD_FENCE_GATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> DARK_OAK_WOOD_FENCE_GATE = ITEMS.register("dark_oak_wood_fence_gate", () -> new BlockItem(ModBlocks.DARK_OAK_WOOD_FENCE_GATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> MANGROVE_WOOD_FENCE_GATE = ITEMS.register("mangrove_wood_fence_gate", () -> new BlockItem(ModBlocks.MANGROVE_WOOD_FENCE_GATE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CHERRY_WOOD_FENCE_GATE = ITEMS.register("cherry_wood_fence_gate", () -> new BlockItem(ModBlocks.CHERRY_WOOD_FENCE_GATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> CRIMSON_HYPHAE_FENCE_GATE = ITEMS.register("crimson_hyphae_fence_gate", () -> new BlockItem(ModBlocks.CRIMSON_HYPHAE_FENCE_GATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> WARPED_HYPHAE_FENCE_GATE = ITEMS.register("warped_hyphae_fence_gate", () -> new BlockItem(ModBlocks.WARPED_HYPHAE_FENCE_GATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_OAK_WOOD_FENCE_GATE = ITEMS.register("stripped_oak_wood_fence_gate", () -> new BlockItem(ModBlocks.STRIPPED_OAK_WOOD_FENCE_GATE.get(), new Item.Properties()));
@@ -580,6 +589,7 @@ public class ModItems {
     public static final RegistryObject<Item> STRIPPED_ACACIA_WOOD_FENCE_GATE = ITEMS.register("stripped_acacia_wood_fence_gate", () -> new BlockItem(ModBlocks.STRIPPED_ACACIA_WOOD_FENCE_GATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_DARK_OAK_WOOD_FENCE_GATE = ITEMS.register("stripped_dark_oak_wood_fence_gate", () -> new BlockItem(ModBlocks.STRIPPED_DARK_OAK_WOOD_FENCE_GATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_MANGROVE_WOOD_FENCE_GATE = ITEMS.register("stripped_mangrove_wood_fence_gate", () -> new BlockItem(ModBlocks.STRIPPED_MANGROVE_WOOD_FENCE_GATE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STRIPPED_CHERRY_WOOD_FENCE_GATE = ITEMS.register("stripped_cherry_wood_fence_gate", () -> new BlockItem(ModBlocks.STRIPPED_CHERRY_WOOD_FENCE_GATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_CRIMSON_HYPHAE_FENCE_GATE = ITEMS.register("stripped_crimson_hyphae_fence_gate", () -> new BlockItem(ModBlocks.STRIPPED_CRIMSON_HYPHAE_FENCE_GATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRIPPED_WARPED_HYPHAE_FENCE_GATE = ITEMS.register("stripped_warped_hyphae_fence_gate", () -> new BlockItem(ModBlocks.STRIPPED_WARPED_HYPHAE_FENCE_GATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> NETHER_BRICK_FENCE_GATE = ITEMS.register("nether_brick_fence_gate", () -> new BlockItem(ModBlocks.NETHER_BRICK_FENCE_GATE.get(), new Item.Properties()));

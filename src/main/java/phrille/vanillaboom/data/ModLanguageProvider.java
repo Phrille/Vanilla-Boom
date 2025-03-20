@@ -98,6 +98,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.ACACIA_BOOKSHELF.get(), "Acacia Bookshelf");
         add(ModBlocks.DARK_OAK_BOOKSHELF.get(), "Dark Oak Bookshelf");
         add(ModBlocks.MANGROVE_BOOKSHELF.get(), "Mangrove Bookshelf");
+        add(ModBlocks.CHERRY_BOOKSHELF.get(), "Cherry Bookshelf");
         add(ModBlocks.CRIMSON_BOOKSHELF.get(), "Crimson Bookshelf");
         add(ModBlocks.WARPED_BOOKSHELF.get(), "Warped Bookshelf");
         add(ModBlocks.SPRUCE_LADDER.get(), "Spruce Ladder");
@@ -106,6 +107,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.ACACIA_LADDER.get(), "Acacia Ladder");
         add(ModBlocks.DARK_OAK_LADDER.get(), "Dark Oak Ladder");
         add(ModBlocks.MANGROVE_LADDER.get(), "Mangrove Ladder");
+        add(ModBlocks.CHERRY_LADDER.get(), "Cherry Ladder");
         add(ModBlocks.CRIMSON_LADDER.get(), "Crimson Ladder");
         add(ModBlocks.WARPED_LADDER.get(), "Warped Ladder");
 
@@ -328,6 +330,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.ACACIA_WOOD_STAIRS.get(), "Acacia Wood Stairs");
         add(ModBlocks.DARK_OAK_WOOD_STAIRS.get(), "Dark Oak Wood Stairs");
         add(ModBlocks.MANGROVE_WOOD_STAIRS.get(), "Mangrove Wood Stairs");
+        add(ModBlocks.CHERRY_WOOD_STAIRS.get(), "Cherry Wood Stairs");
         add(ModBlocks.CRIMSON_HYPHAE_STAIRS.get(), "Crimson Hyphae Stairs");
         add(ModBlocks.WARPED_HYPHAE_STAIRS.get(), "Warped Hyphae Stairs");
         add(ModBlocks.STRIPPED_OAK_WOOD_STAIRS.get(), "Stripped Oak Wood Stairs");
@@ -337,6 +340,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.STRIPPED_ACACIA_WOOD_STAIRS.get(), "Stripped Acacia Wood Stairs");
         add(ModBlocks.STRIPPED_DARK_OAK_WOOD_STAIRS.get(), "Stripped Dark Oak Wood Stairs");
         add(ModBlocks.STRIPPED_MANGROVE_WOOD_STAIRS.get(), "Stripped Mangrove Wood Stairs");
+        add(ModBlocks.STRIPPED_CHERRY_WOOD_STAIRS.get(), "Stripped Cherry Wood Stairs");
         add(ModBlocks.STRIPPED_CRIMSON_HYPHAE_STAIRS.get(), "Stripped Crimson Hyphae Stairs");
         add(ModBlocks.STRIPPED_WARPED_HYPHAE_STAIRS.get(), "Stripped Warped Hyphae Stairs");
         add(ModBlocks.CUT_SANDSTONE_STAIRS.get(), "Cut Sandstone Stairs");
@@ -394,6 +398,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.ACACIA_WOOD_SLAB.get(), "Acacia Wood Slab");
         add(ModBlocks.DARK_OAK_WOOD_SLAB.get(), "Dark Oak Wood Slab");
         add(ModBlocks.MANGROVE_WOOD_SLAB.get(), "Mangrove Wood Slab");
+        add(ModBlocks.CHERRY_WOOD_SLAB.get(), "Cherry Wood Slab");
         add(ModBlocks.CRIMSON_HYPHAE_SLAB.get(), "Crimson Hyphae Slab");
         add(ModBlocks.WARPED_HYPHAE_SLAB.get(), "Warped Hyphae Slab");
         add(ModBlocks.STRIPPED_OAK_WOOD_SLAB.get(), "Stripped Oak Wood Slab");
@@ -403,6 +408,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.STRIPPED_ACACIA_WOOD_SLAB.get(), "Stripped Acacia Wood Slab");
         add(ModBlocks.STRIPPED_DARK_OAK_WOOD_SLAB.get(), "Stripped Dark Oak Wood Slab");
         add(ModBlocks.STRIPPED_MANGROVE_WOOD_SLAB.get(), "Stripped Mangrove Wood Slab");
+        add(ModBlocks.STRIPPED_CHERRY_WOOD_SLAB.get(), "Stripped Cherry Wood Slab");
         add(ModBlocks.STRIPPED_CRIMSON_HYPHAE_SLAB.get(), "Stripped Crimson Hyphae Slab");
         add(ModBlocks.STRIPPED_WARPED_HYPHAE_SLAB.get(), "Stripped Warped Hyphae Slab");
 
@@ -473,6 +479,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.ACACIA_WOOD_FENCE.get(), "Acacia Wood Fence");
         add(ModBlocks.DARK_OAK_WOOD_FENCE.get(), "Dark Oak Wood Fence");
         add(ModBlocks.MANGROVE_WOOD_FENCE.get(), "Mangrove Wood Fence");
+        add(ModBlocks.CHERRY_WOOD_FENCE.get(), "Cherry Wood Fence");
         add(ModBlocks.CRIMSON_HYPHAE_FENCE.get(), "Crimson Hyphae Fence");
         add(ModBlocks.WARPED_HYPHAE_FENCE.get(), "Warped Hyphae Fence");
         add(ModBlocks.STRIPPED_OAK_WOOD_FENCE.get(), "Stripped Oak Wood Fence");
@@ -482,6 +489,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.STRIPPED_ACACIA_WOOD_FENCE.get(), "Stripped Acacia Wood Fence");
         add(ModBlocks.STRIPPED_DARK_OAK_WOOD_FENCE.get(), "Stripped Dark Oak Wood Fence");
         add(ModBlocks.STRIPPED_MANGROVE_WOOD_FENCE.get(), "Stripped Mangrove Wood Fence");
+        add(ModBlocks.STRIPPED_CHERRY_WOOD_FENCE.get(), "Stripped Cherry Wood Fence");
         add(ModBlocks.STRIPPED_CRIMSON_HYPHAE_FENCE.get(), "Stripped Crimson Hyphae Fence");
         add(ModBlocks.STRIPPED_WARPED_HYPHAE_FENCE.get(), "Stripped Warped Hyphae Fence");
         add(ModBlocks.RED_NETHER_BRICK_FENCE.get(), "Red Nether Brick Fence");
@@ -492,6 +500,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.ACACIA_WOOD_FENCE_GATE.get(), "Acacia Wood Fence Gate");
         add(ModBlocks.DARK_OAK_WOOD_FENCE_GATE.get(), "Dark Oak Wood Fence Gate");
         add(ModBlocks.MANGROVE_WOOD_FENCE_GATE.get(), "Mangrove Wood Fence Gate");
+        add(ModBlocks.CHERRY_WOOD_FENCE_GATE.get(), "Cherry Wood Fence Gate");
         add(ModBlocks.CRIMSON_HYPHAE_FENCE_GATE.get(), "Crimson Hyphae Fence Gate");
         add(ModBlocks.WARPED_HYPHAE_FENCE_GATE.get(), "Warped Hyphae Fence Gate");
         add(ModBlocks.STRIPPED_OAK_WOOD_FENCE_GATE.get(), "Stripped Oak Wood Fence Gate");
@@ -501,6 +510,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.STRIPPED_ACACIA_WOOD_FENCE_GATE.get(), "Stripped Acacia Wood Fence Gate");
         add(ModBlocks.STRIPPED_DARK_OAK_WOOD_FENCE_GATE.get(), "Stripped Dark Oak Wood Fence Gate");
         add(ModBlocks.STRIPPED_MANGROVE_WOOD_FENCE_GATE.get(), "Stripped Mangrove Wood Fence Gate");
+        add(ModBlocks.STRIPPED_CHERRY_WOOD_FENCE_GATE.get(), "Stripped Cherry Wood Fence Gate");
         add(ModBlocks.STRIPPED_CRIMSON_HYPHAE_FENCE_GATE.get(), "Stripped Crimson Hyphae Fence Gate");
         add(ModBlocks.STRIPPED_WARPED_HYPHAE_FENCE_GATE.get(), "Stripped Warped Hyphae Fence Gate");
         add(ModBlocks.NETHER_BRICK_FENCE_GATE.get(), "Nether Brick Fence Gate");
