@@ -8,8 +8,6 @@
 
 package phrille.vanillaboom.integration.jei;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
@@ -19,7 +17,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiComponent;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -79,7 +77,7 @@ public class PaintingRecipeCategory implements IRecipeCategory<PaintingRecipe> {
     }
 
     @Override
-    public void draw(PaintingRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack pose, double mouseX, double mouseY) {
+    public void draw(PaintingRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         PaintingVariant variant = Utils.paintingVariantFromStack(recipe.result());
 
         if (variant != null) {
@@ -97,8 +95,7 @@ public class PaintingRecipeCategory implements IRecipeCategory<PaintingRecipe> {
             int paintingHeight = Math.max(1, (int) (variant.getHeight() * scaleFactor));
             int xOffset = (int) ((maxSize - paintingWidth) / 2);
             int yOffset = (int) ((maxSize - paintingHeight) / 2);
-            RenderSystem.setShaderTexture(0, sprite.atlasLocation());
-            GuiComponent.blit(pose, 52 + xOffset, 4 + yOffset, 0, paintingWidth, paintingHeight, sprite);
+            guiGraphics.blit(52 + xOffset, 4 + yOffset, 0, paintingWidth, paintingHeight, sprite);
         }
     }
 }

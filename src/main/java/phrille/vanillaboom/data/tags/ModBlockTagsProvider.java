@@ -13,11 +13,9 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CandleBlock;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import org.jetbrains.annotations.NotNull;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.ModCakeBlock;
@@ -34,7 +32,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     @SuppressWarnings("unchecked")
-    protected void addTags(HolderLookup.@NotNull Provider provider) {
+    protected void addTags(HolderLookup.Provider provider) {
         /*
          * Forge tags
          */
@@ -284,9 +282,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // Stairs
         ModStairBlock.STAIRS.forEach(stair -> {
-            Material material = stair.defaultBlockState().getMaterial();
-
-            if (material == Material.WOOD || material == Material.NETHER_WOOD) {
+            if (stair.getParent().defaultBlockState().is(BlockTags.LOGS)) {
                 tag(ModTags.VanillaBoomTags.Blocks.WOODEN_STAIRS).add(stair);
             } else {
                 tag(ModTags.VanillaBoomTags.Blocks.STAIRS).add(stair);
@@ -297,9 +293,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // Slabs
         ModSlabBlock.SLABS.forEach(slab -> {
-            Material material = slab.defaultBlockState().getMaterial();
-
-            if (material == Material.WOOD || material == Material.NETHER_WOOD) {
+            if (slab.getParent().defaultBlockState().is(BlockTags.LOGS)) {
                 tag(ModTags.VanillaBoomTags.Blocks.WOODEN_SLABS).add(slab);
             } else {
                 tag(ModTags.VanillaBoomTags.Blocks.SLABS).add(slab);
@@ -314,9 +308,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // Fences
         ModFenceBlock.FENCES.forEach(fence -> {
-            Material material = fence.defaultBlockState().getMaterial();
-
-            if (material == Material.WOOD || material == Material.NETHER_WOOD) {
+            if (fence.getParent().defaultBlockState().is(BlockTags.LOGS)) {
                 tag(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCES).add(fence);
             } else {
                 tag(ModTags.VanillaBoomTags.Blocks.FENCES).add(fence);
@@ -327,9 +319,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // Fence Gates
         ModFenceGateBlock.FENCE_GATES.forEach(fenceGate -> {
-            Material material = fenceGate.defaultBlockState().getMaterial();
-
-            if (material == Material.WOOD || material == Material.NETHER_WOOD) {
+            if (fenceGate.getParent().defaultBlockState().is(BlockTags.LOGS)) {
                 tag(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCE_GATES).add(fenceGate);
             } else {
                 tag(ModTags.VanillaBoomTags.Blocks.FENCE_GATES).add(fenceGate);

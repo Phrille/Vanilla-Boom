@@ -44,28 +44,21 @@ public class EaselMenu extends AbstractContainerMenu {
     private long lastSoundTime;
 
     /* Input */
-    private Runnable slotUpdateListener = () -> {
-    };
-    private final List<Slot> dyeSlots = Lists.newArrayList();
+    private Runnable slotUpdateListener;
+    private final List<Slot> dyeSlots;
     private final Slot canvasSlot;
-    private final Container inputContainer = new SimpleContainer(CANVAS_SLOT + 1) {
-        public void setChanged() {
-            super.setChanged();
-            EaselMenu.this.slotsChanged(this);
-            EaselMenu.this.slotUpdateListener.run();
-        }
-    };
+    private final Container inputContainer;
 
     /* Result */
     private final Slot resultSlot;
-    private final ResultContainer resultContainer = new ResultContainer();
+    private final ResultContainer resultContainer;
 
     /* Recipe list */
     private final ImmutableList<PaintingRecipe> recipes;
-    private List<PaintingRecipe> availableRecipes = Lists.newArrayList();
+    private List<PaintingRecipe> availableRecipes;
     @Nullable
     private PaintingRecipe currentRecipe;
-    private final DataSlot selectedPaintingIndex = DataSlot.standalone();
+    private final DataSlot selectedPaintingIndex;
 
     public EaselMenu(int containerId, Inventory inventory) {
         this(containerId, inventory, ContainerLevelAccess.NULL);
@@ -75,17 +68,29 @@ public class EaselMenu extends AbstractContainerMenu {
         super(ModMenuTypes.EASEL_MENU.get(), containerId);
         access = levelAccess;
         player = inventory.player;
-        level = player.getLevel();
+        level = player.level();
+        availableRecipes = Lists.newArrayList();
+        slotUpdateListener = () -> {
+        };
 
-        // Dye slots
+        // Input slots
+        inputContainer = new SimpleContainer(CANVAS_SLOT + 1) {
+            public void setChanged() {
+                super.setChanged();
+                EaselMenu.this.slotsChanged(this);
+                EaselMenu.this.slotUpdateListener.run();
+            }
+        };
+
+        dyeSlots = Lists.newArrayList();
         for (int i = DYE_SLOT_START; i < DYE_SLOT_END + 1; i++) {
             dyeSlots.add(i, addSlot(new Slot(inputContainer, i, 8 + (i % 2) * 18, 16 + (i / 2) * 18)));
         }
 
-        // Canvas slot
         canvasSlot = addSlot(new Slot(inputContainer, CANVAS_SLOT, 26, 70));
 
         // Result slot
+        resultContainer = new ResultContainer();
         resultSlot = addSlot(new Slot(resultContainer, RESULT_SLOT - inputContainer.getContainerSize(), 147, 43) {
             @Override
             public boolean mayPlace(ItemStack stack) {
@@ -94,8 +99,8 @@ public class EaselMenu extends AbstractContainerMenu {
 
             @Override
             public void onTake(Player player, ItemStack stack) {
-                stack.onCraftedBy(player.level, player, stack.getCount());
-                EaselMenu.this.resultContainer.awardUsedRecipes(player);
+                List<ItemStack> itemsUsed = Lists.newArrayList();
+                stack.onCraftedBy(player.level(), player, stack.getCount());
 
                 // Remove items used in the recipe
                 PaintingRecipe recipe = Objects.requireNonNull(EaselMenu.this.currentRecipe, "No currentRecipe set in the EaselMenu resultContainer!");
@@ -105,6 +110,7 @@ public class EaselMenu extends AbstractContainerMenu {
                         ItemStack ingredientStack = EaselMenu.this.inputContainer.getItem(i);
                         if (ingredient.test(ingredientStack)) {
                             ingredientStack.shrink(1);
+                            itemsUsed.add(ingredientStack);
                             success = true;
                             break;
                         }
@@ -113,9 +119,10 @@ public class EaselMenu extends AbstractContainerMenu {
                         throw new IllegalStateException("Missing expected ingredient in EaselMenu inputContainer!");
                     }
                 }
+                EaselMenu.this.resultContainer.awardUsedRecipes(player, itemsUsed);
 
                 // Check if a new recipe can be matched
-                if (recipe.matches(EaselMenu.this.inputContainer, player.level)) {
+                if (recipe.matches(EaselMenu.this.inputContainer, player.level())) {
                     EaselMenu.this.setupResultSlot();
                 } else {
                     EaselMenu.this.currentRecipe = null;
@@ -153,6 +160,7 @@ public class EaselMenu extends AbstractContainerMenu {
                 .stream()
                 .sorted(PaintingRecipe.RECIPE_COMPARATOR)
                 .toList());
+        selectedPaintingIndex = DataSlot.standalone();
         addDataSlot(selectedPaintingIndex);
     }
 
@@ -219,7 +227,7 @@ public class EaselMenu extends AbstractContainerMenu {
         ItemStack copy = stackInSlot.copy();
 
         if (index == RESULT_SLOT) {
-            item.onCraftedBy(stackInSlot, player.level, player);
+            item.onCraftedBy(stackInSlot, player.level(), player);
             if (!moveItemStackTo(stackInSlot, RESULT_SLOT + 1, slots.size(), true)) {
                 return ItemStack.EMPTY;
             }

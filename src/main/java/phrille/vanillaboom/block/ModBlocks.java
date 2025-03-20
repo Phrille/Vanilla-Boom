@@ -13,9 +13,10 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -31,7 +32,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> MOSSY_COBBLESTONE_BRICKS = BLOCKS.register("mossy_cobblestone_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE)));
     public static final RegistryObject<Block> MAGMA_BRICKS = BLOCKS.register("magma_bricks", () -> new MagmaBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK).sound(SoundType.NETHER_BRICKS)));
     public static final RegistryObject<Block> OBSIDIAN_BRICKS = BLOCKS.register("obsidian_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
-    public static final RegistryObject<Block> SNOW_BRICKS = BLOCKS.register("snow_bricks", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.SNOW).strength(1.5F).sound(SoundType.SNOW)));
+    public static final RegistryObject<Block> SNOW_BRICKS = BLOCKS.register("snow_bricks", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).strength(0.2F).sound(SoundType.SNOW)));
     public static final RegistryObject<Block> TERRACOTTA_BRICKS = BLOCKS.register("terracotta_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA)));
     public static final RegistryObject<Block> WHITE_TERRACOTTA_BRICKS = BLOCKS.register("white_terracotta_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.WHITE_TERRACOTTA)));
     public static final RegistryObject<Block> ORANGE_TERRACOTTA_BRICKS = BLOCKS.register("orange_terracotta_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.ORANGE_TERRACOTTA)));
@@ -51,16 +52,16 @@ public class ModBlocks {
     public static final RegistryObject<Block> BLACK_TERRACOTTA_BRICKS = BLOCKS.register("black_terracotta_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BLACK_TERRACOTTA)));
 
     // Rocks
-    public static final RegistryObject<Block> PERIDOTITE = BLOCKS.register("peridotite", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block> PERIDOTITE = BLOCKS.register("peridotite", () -> new Block(BlockBehaviour.Properties.copy(Blocks.ANDESITE).mapColor(MapColor.COLOR_GREEN)));
     public static final RegistryObject<Block> HYDRO_ROCK = BLOCKS.register("hydro_rock", HydroRockBlock::new);
     public static final RegistryObject<Block> INFERNAL_ROCK = BLOCKS.register("infernal_rock", InfernalRockBlock::new);
 
     // Sand and Gravel
-    public static final RegistryObject<Block> BONE_SAND = BLOCKS.register("bone_sand", () -> new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.SNOW).strength(0.5F).sound(SoundType.SOUL_SAND)));
-    public static final RegistryObject<Block> WITHER_BONE_SAND = BLOCKS.register("wither_bone_sand", () -> new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.COLOR_BLACK).strength(0.5F).sound(SoundType.SOUL_SAND)));
+    public static final RegistryObject<Block> BONE_SAND = BLOCKS.register("bone_sand", () -> new SandBlock(12958127, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).strength(0.5F).sound(SoundType.SOUL_SAND)));
+    public static final RegistryObject<Block> WITHER_BONE_SAND = BLOCKS.register("wither_bone_sand", () -> new SandBlock(2104344, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(0.5F).sound(SoundType.SOUL_SAND)));
 
     // Polished
-    public static final RegistryObject<Block> POLISHED_PERIDOTITE = BLOCKS.register("polished_peridotite", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block> POLISHED_PERIDOTITE = BLOCKS.register("polished_peridotite", () -> new Block(BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE).mapColor(MapColor.COLOR_GREEN)));
     public static final RegistryObject<Block> POLISHED_PRISMARINE = BLOCKS.register("polished_prismarine", () -> new Block(BlockBehaviour.Properties.copy(Blocks.PRISMARINE)));
     public static final RegistryObject<Block> POLISHED_DARK_PRISMARINE = BLOCKS.register("polished_dark_prismarine", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DARK_PRISMARINE)));
     public static final RegistryObject<Block> POLISHED_END_STONE = BLOCKS.register("polished_end_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE)));
@@ -76,7 +77,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> GRANITE_PILLAR = BLOCKS.register("granite_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_GRANITE)));
     public static final RegistryObject<Block> DIORITE_PILLAR = BLOCKS.register("diorite_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_DIORITE)));
     public static final RegistryObject<Block> ANDESITE_PILLAR = BLOCKS.register("andesite_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE)));
-    public static final RegistryObject<Block> PERIDOTITE_PILLAR = BLOCKS.register("peridotite_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block> PERIDOTITE_PILLAR = BLOCKS.register("peridotite_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE).mapColor(MapColor.COLOR_GREEN)));
     public static final RegistryObject<Block> PRISMARINE_PILLAR = BLOCKS.register("prismarine_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.PRISMARINE)));
     public static final RegistryObject<Block> DARK_PRISMARINE_PILLAR = BLOCKS.register("dark_prismarine_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.DARK_PRISMARINE)));
     public static final RegistryObject<Block> END_STONE_PILLAR = BLOCKS.register("end_stone_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.END_STONE)));
@@ -103,29 +104,29 @@ public class ModBlocks {
 
     // Storage
     public static final RegistryObject<Block> CHARCOAL_BLOCK = BLOCKS.register("charcoal_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE)));
-    public static final RegistryObject<Block> SUGAR_BLOCK = BLOCKS.register("sugar_block", () -> new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.SNOW).strength(0.5F).sound(SoundType.SAND)));
-    public static final RegistryObject<Block> SUGAR_CANE_BLOCK = BLOCKS.register("sugar_cane_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.GRASS).strength(0.5F).sound(SoundType.GRASS)));
+    public static final RegistryObject<Block> SUGAR_BLOCK = BLOCKS.register("sugar_block", () -> new SandBlock(15329769, BlockBehaviour.Properties.of().mapColor(MapColor.WOOL).strength(0.5F).sound(SoundType.SAND)));
+    public static final RegistryObject<Block> SUGAR_CANE_BLOCK = BLOCKS.register("sugar_cane_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.GRASS).strength(0.5F).sound(SoundType.GRASS)));
     public static final RegistryObject<Block> GUNPOWDER_BLOCK = BLOCKS.register("gunpowder_block", GunpowderBlock::new);
-    public static final RegistryObject<Block> BLAZE_POWDER_BLOCK = BLOCKS.register("blaze_powder_block", () -> new FallingBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.SNOW)));
+    public static final RegistryObject<Block> BLAZE_POWDER_BLOCK = BLOCKS.register("blaze_powder_block", () -> new SandBlock(16688384, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.SNOW)));
     public static final RegistryObject<Block> MAGMA_CREAM_BLOCK = BLOCKS.register("magma_cream_block", () -> new SlimeBlock(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK)));
-    public static final RegistryObject<Block> PRISMARINE_CRYSTAL_BLOCK = BLOCKS.register("prismarine_crystal_block", () -> new Block(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.COLOR_CYAN).strength(0.3F, 0.5F).sound(SoundType.GLASS).lightLevel((lightValue) -> 5)));
-    public static final RegistryObject<Block> WITHER_BONE_BLOCK = BLOCKS.register("wither_bone_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).sound(SoundType.BONE_BLOCK).strength(1.8F, 3.33F)));
-    public static final RegistryObject<Block> WHITE_DYE_BLOCK = BLOCKS.register("white_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.WOOL).strength(3.0F, 5.0F)));
-    public static final RegistryObject<Block> ORANGE_DYE_BLOCK = BLOCKS.register("orange_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).strength(3.0F, 5.0F)));
-    public static final RegistryObject<Block> MAGENTA_DYE_BLOCK = BLOCKS.register("magenta_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_MAGENTA).strength(3.0F, 5.0F)));
-    public static final RegistryObject<Block> LIGHT_BLUE_DYE_BLOCK = BLOCKS.register("light_blue_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_LIGHT_BLUE).strength(3.0F, 5.0F)));
-    public static final RegistryObject<Block> YELLOW_DYE_BLOCK = BLOCKS.register("yellow_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_YELLOW).strength(3.0F, 5.0F)));
-    public static final RegistryObject<Block> LIME_DYE_BLOCK = BLOCKS.register("lime_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_LIGHT_GREEN).strength(3.0F, 5.0F)));
-    public static final RegistryObject<Block> PINK_DYE_BLOCK = BLOCKS.register("pink_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_PINK).strength(3.0F, 5.0F)));
-    public static final RegistryObject<Block> GRAY_DYE_BLOCK = BLOCKS.register("gray_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).strength(3.0F, 5.0F)));
-    public static final RegistryObject<Block> LIGHT_GRAY_DYE_BLOCK = BLOCKS.register("light_gray_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_LIGHT_GRAY).strength(3.0F, 5.0F)));
-    public static final RegistryObject<Block> CYAN_DYE_BLOCK = BLOCKS.register("cyan_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_CYAN).strength(3.0F, 5.0F)));
-    public static final RegistryObject<Block> PURPLE_DYE_BLOCK = BLOCKS.register("purple_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_PURPLE).strength(3.0F, 5.0F)));
-    public static final RegistryObject<Block> BLUE_DYE_BLOCK = BLOCKS.register("blue_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLUE).strength(3.0F, 5.0F)));
-    public static final RegistryObject<Block> BROWN_DYE_BLOCK = BLOCKS.register("brown_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BROWN).strength(3.0F, 5.0F)));
-    public static final RegistryObject<Block> GREEN_DYE_BLOCK = BLOCKS.register("green_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GREEN).strength(3.0F, 5.0F)));
-    public static final RegistryObject<Block> RED_DYE_BLOCK = BLOCKS.register("red_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_RED).strength(3.0F, 5.0F)));
-    public static final RegistryObject<Block> BLACK_DYE_BLOCK = BLOCKS.register("black_dye_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).strength(3.0F, 5.0F)));
+    public static final RegistryObject<Block> PRISMARINE_CRYSTAL_BLOCK = BLOCKS.register("prismarine_crystal_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).strength(0.3F, 0.5F).sound(SoundType.GLASS).lightLevel((lightValue) -> 5)));
+    public static final RegistryObject<Block> WITHER_BONE_BLOCK = BLOCKS.register("wither_bone_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.XYLOPHONE).requiresCorrectToolForDrops().strength(2.0F).sound(SoundType.BONE_BLOCK)));
+    public static final RegistryObject<Block> WHITE_DYE_BLOCK = BLOCKS.register("white_dye_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.WOOL).strength(3.0F, 5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> ORANGE_DYE_BLOCK = BLOCKS.register("orange_dye_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(3.0F, 5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> MAGENTA_DYE_BLOCK = BLOCKS.register("magenta_dye_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_MAGENTA).strength(3.0F, 5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> LIGHT_BLUE_DYE_BLOCK = BLOCKS.register("light_blue_dye_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).strength(3.0F, 5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> YELLOW_DYE_BLOCK = BLOCKS.register("yellow_dye_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(3.0F, 5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> LIME_DYE_BLOCK = BLOCKS.register("lime_dye_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).strength(3.0F, 5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> PINK_DYE_BLOCK = BLOCKS.register("pink_dye_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(3.0F, 5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> GRAY_DYE_BLOCK = BLOCKS.register("gray_dye_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(3.0F, 5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> LIGHT_GRAY_DYE_BLOCK = BLOCKS.register("light_gray_dye_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).strength(3.0F, 5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> CYAN_DYE_BLOCK = BLOCKS.register("cyan_dye_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).strength(3.0F, 5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> PURPLE_DYE_BLOCK = BLOCKS.register("purple_dye_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(3.0F, 5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> BLUE_DYE_BLOCK = BLOCKS.register("blue_dye_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).strength(3.0F, 5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> BROWN_DYE_BLOCK = BLOCKS.register("brown_dye_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(3.0F, 5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> GREEN_DYE_BLOCK = BLOCKS.register("green_dye_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(3.0F, 5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> RED_DYE_BLOCK = BLOCKS.register("red_dye_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).strength(3.0F, 5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> BLACK_DYE_BLOCK = BLOCKS.register("black_dye_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 5.0F).sound(SoundType.STONE)));
 
     // Glass
     public static final RegistryObject<Block> SOUL_GLASS = BLOCKS.register("soul_glass", () -> new StainedGlassBlock(DyeColor.WHITE, BlockBehaviour.Properties.copy(Blocks.GLASS)));
@@ -176,10 +177,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> LILAC = BLOCKS.register("lilac", () -> new FlowerBlock(() -> MobEffects.MOVEMENT_SPEED, 10, BlockBehaviour.Properties.copy(Blocks.POPPY)));
     public static final RegistryObject<Block> POTTED_LILAC = BLOCKS.register("potted_lilac", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, LILAC, BlockBehaviour.Properties.copy(Blocks.POTTED_POPPY)));
     public static final RegistryObject<Block> SHEARED_LILAC = BLOCKS.register("sheared_lilac", () -> new ShearedTallFlowerBlock(BlockBehaviour.Properties.copy(Blocks.LILAC), LILAC));
-    public static final RegistryObject<Block> TRELLIS = BLOCKS.register("trellis", () -> new TrellisBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> TOMATO = BLOCKS.register("tomato", () -> new TomatoBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
-    public static final RegistryObject<Block> CHILI = BLOCKS.register("chili", () -> new ChiliBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
-    public static final RegistryObject<Block> RICE = BLOCKS.register("rice", () -> new RicePlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
+    public static final RegistryObject<Block> TRELLIS = BLOCKS.register("trellis", () -> new TrellisBlock(BlockBehaviour.Properties.of().noCollission().instabreak().sound(SoundType.BAMBOO).pushReaction(PushReaction.DESTROY)));
+    public static final RegistryObject<Block> TOMATO = BLOCKS.register("tomato", () -> new TomatoBlock(BlockBehaviour.Properties.of().noCollission().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY)));
+    public static final RegistryObject<Block> CHILI = BLOCKS.register("chili", () -> new ChiliBlock(BlockBehaviour.Properties.of().noCollission().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY)));
+    public static final RegistryObject<Block> RICE = BLOCKS.register("rice", () -> new RicePlantBlock(BlockBehaviour.Properties.of().noCollission().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY)));
     public static final RegistryObject<Block> WITHERED_VINE = BLOCKS.register("withered_vine", WitheredVineBlock::new);
 
     // Cakes
@@ -261,8 +262,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> GREEN_TERRACOTTA_BRICK_STAIRS = BLOCKS.register("green_terracotta_brick_stairs", () -> new ModStairBlock(() -> GREEN_TERRACOTTA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.GREEN_TERRACOTTA)));
     public static final RegistryObject<Block> RED_TERRACOTTA_BRICK_STAIRS = BLOCKS.register("red_terracotta_brick_stairs", () -> new ModStairBlock(() -> RED_TERRACOTTA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_TERRACOTTA)));
     public static final RegistryObject<Block> BLACK_TERRACOTTA_BRICK_STAIRS = BLOCKS.register("black_terracotta_brick_stairs", () -> new ModStairBlock(() -> BLACK_TERRACOTTA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.BLACK_TERRACOTTA)));
-    public static final RegistryObject<Block> PERIDOTITE_STAIRS = BLOCKS.register("peridotite_stairs", () -> new ModStairBlock(() -> PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final RegistryObject<Block> POLISHED_PERIDOTITE_STAIRS = BLOCKS.register("polished_peridotite_stairs", () -> new ModStairBlock(() -> POLISHED_PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block> PERIDOTITE_STAIRS = BLOCKS.register("peridotite_stairs", () -> new ModStairBlock(() -> PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.copy(ModBlocks.PERIDOTITE.get())));
+    public static final RegistryObject<Block> POLISHED_PERIDOTITE_STAIRS = BLOCKS.register("polished_peridotite_stairs", () -> new ModStairBlock(() -> POLISHED_PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.copy(ModBlocks.PERIDOTITE.get())));
     public static final RegistryObject<Block> POLISHED_PRISMARINE_STAIRS = BLOCKS.register("polished_prismarine_stairs", () -> new ModStairBlock(() -> POLISHED_PRISMARINE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PRISMARINE)));
     public static final RegistryObject<Block> POLISHED_DARK_PRISMARINE_STAIRS = BLOCKS.register("polished_dark_prismarine_stairs", () -> new ModStairBlock(() -> POLISHED_DARK_PRISMARINE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.DARK_PRISMARINE)));
     public static final RegistryObject<Block> POLISHED_END_STONE_STAIRS = BLOCKS.register("polished_end_stone_stairs", () -> new ModStairBlock(() -> POLISHED_END_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.END_STONE)));
@@ -358,8 +359,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> GREEN_TERRACOTTA_BRICK_SLAB = BLOCKS.register("green_terracotta_brick_slab", () -> new ModSlabBlock(() -> GREEN_TERRACOTTA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.GREEN_TERRACOTTA)));
     public static final RegistryObject<Block> RED_TERRACOTTA_BRICK_SLAB = BLOCKS.register("red_terracotta_brick_slab", () -> new ModSlabBlock(() -> RED_TERRACOTTA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_TERRACOTTA)));
     public static final RegistryObject<Block> BLACK_TERRACOTTA_BRICK_SLAB = BLOCKS.register("black_terracotta_brick_slab", () -> new ModSlabBlock(() -> BLACK_TERRACOTTA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.BLACK_TERRACOTTA)));
-    public static final RegistryObject<Block> PERIDOTITE_SLAB = BLOCKS.register("peridotite_slab", () -> new ModSlabBlock(() -> PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final RegistryObject<Block> POLISHED_PERIDOTITE_SLAB = BLOCKS.register("polished_peridotite_slab", () -> new ModSlabBlock(() -> POLISHED_PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block> PERIDOTITE_SLAB = BLOCKS.register("peridotite_slab", () -> new ModSlabBlock(() -> PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.copy(ModBlocks.PERIDOTITE.get())));
+    public static final RegistryObject<Block> POLISHED_PERIDOTITE_SLAB = BLOCKS.register("polished_peridotite_slab", () -> new ModSlabBlock(() -> POLISHED_PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.copy(ModBlocks.PERIDOTITE.get())));
     public static final RegistryObject<Block> POLISHED_PRISMARINE_SLAB = BLOCKS.register("polished_prismarine_slab", () -> new ModSlabBlock(() -> POLISHED_PRISMARINE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PRISMARINE)));
     public static final RegistryObject<Block> POLISHED_DARK_PRISMARINE_SLAB = BLOCKS.register("polished_dark_prismarine_slab", () -> new ModSlabBlock(() -> POLISHED_DARK_PRISMARINE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.DARK_PRISMARINE)));
     public static final RegistryObject<Block> POLISHED_END_STONE_SLAB = BLOCKS.register("polished_end_stone_slab", () -> new ModSlabBlock(() -> POLISHED_END_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.END_STONE)));
@@ -452,8 +453,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> GREEN_TERRACOTTA_BRICK_WALL = BLOCKS.register("green_terracotta_brick_wall", () -> new ModWallBlock(() -> GREEN_TERRACOTTA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.GREEN_TERRACOTTA)));
     public static final RegistryObject<Block> RED_TERRACOTTA_BRICK_WALL = BLOCKS.register("red_terracotta_brick_wall", () -> new ModWallBlock(() -> RED_TERRACOTTA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.RED_TERRACOTTA)));
     public static final RegistryObject<Block> BLACK_TERRACOTTA_BRICK_WALL = BLOCKS.register("black_terracotta_brick_wall", () -> new ModWallBlock(() -> BLACK_TERRACOTTA_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.BLACK_TERRACOTTA)));
-    public static final RegistryObject<Block> PERIDOTITE_WALL = BLOCKS.register("peridotite_wall", () -> new ModWallBlock(() -> PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final RegistryObject<Block> POLISHED_PERIDOTITE_WALL = BLOCKS.register("polished_peridotite_wall", () -> new ModWallBlock(() -> POLISHED_PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_LIGHT_GREEN).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block> PERIDOTITE_WALL = BLOCKS.register("peridotite_wall", () -> new ModWallBlock(() -> PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.copy(ModBlocks.PERIDOTITE.get())));
+    public static final RegistryObject<Block> POLISHED_PERIDOTITE_WALL = BLOCKS.register("polished_peridotite_wall", () -> new ModWallBlock(() -> POLISHED_PERIDOTITE.get().defaultBlockState(), BlockBehaviour.Properties.copy(ModBlocks.PERIDOTITE.get())));
     public static final RegistryObject<Block> POLISHED_PRISMARINE_WALL = BLOCKS.register("polished_prismarine_wall", () -> new ModWallBlock(() -> POLISHED_PRISMARINE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PRISMARINE)));
     public static final RegistryObject<Block> POLISHED_DARK_PRISMARINE_WALL = BLOCKS.register("polished_dark_prismarine_wall", () -> new ModWallBlock(() -> POLISHED_DARK_PRISMARINE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.DARK_PRISMARINE)));
     public static final RegistryObject<Block> POLISHED_END_STONE_WALL = BLOCKS.register("polished_end_stone_wall", () -> new ModWallBlock(() -> POLISHED_END_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.END_STONE)));

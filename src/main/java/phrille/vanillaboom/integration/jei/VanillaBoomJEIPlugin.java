@@ -30,11 +30,6 @@ public class VanillaBoomJEIPlugin implements IModPlugin {
     public static final RecipeType<PaintingRecipe> PAINTING = RecipeType.create(VanillaBoom.MOD_ID, "painting", PaintingRecipe.class);
 
     @Override
-    public void registerItemSubtypes(ISubtypeRegistration subtypeRegistry) {
-        subtypeRegistry.useNbtForSubtypes(Items.PAINTING);
-    }
-
-    @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
         IGuiHelper guiHelper = registration.getJeiHelpers().getGuiHelper();
         registration.addRecipeCategories(new PaintingRecipeCategory(guiHelper));

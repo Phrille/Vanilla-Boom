@@ -24,9 +24,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
-import org.jetbrains.annotations.Nullable;
 import phrille.vanillaboom.util.ModTags;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Consumer;
 
