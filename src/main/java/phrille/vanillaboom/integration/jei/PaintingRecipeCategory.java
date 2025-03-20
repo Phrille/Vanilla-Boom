@@ -36,12 +36,10 @@ public class PaintingRecipeCategory implements IRecipeCategory<PaintingRecipe> {
 
     private final IGuiHelper guiHelper;
     private final Component title;
-    private final IDrawable background;
 
     public PaintingRecipeCategory(IGuiHelper guiHelper) {
         this.guiHelper = guiHelper;
         this.title = Component.translatable(VanillaBoom.MOD_ID + ".recipe.category.painting");
-        this.background = guiHelper.createDrawable(BACKGROUND, 0, 184, 106, 72);
     }
 
     @Override
@@ -55,8 +53,13 @@ public class PaintingRecipeCategory implements IRecipeCategory<PaintingRecipe> {
     }
 
     @Override
-    public IDrawable getBackground() {
-        return background;
+    public int getWidth() {
+        return 106;
+    }
+
+    @Override
+    public int getHeight() {
+        return 72;
     }
 
     @Override
@@ -78,6 +81,7 @@ public class PaintingRecipeCategory implements IRecipeCategory<PaintingRecipe> {
 
     @Override
     public void draw(PaintingRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+        guiGraphics.blit(BACKGROUND, 0, 0, 0, 184, getWidth(), getHeight());
         PaintingVariant variant = Utils.paintingVariantFromStack(recipe.result());
 
         if (variant != null) {
