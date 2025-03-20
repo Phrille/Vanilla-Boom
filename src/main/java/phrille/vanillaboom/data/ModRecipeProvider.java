@@ -320,11 +320,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.EASEL.get())
                 .define('x', ItemTags.WOODEN_SLABS)
                 .define('y', ModTags.ForgeTags.Items.CANVAS)
-                .define('z', Blocks.OAK_PLANKS) // TODO: 1.20 replace with brush
+                .define('z', Items.BRUSH)
                 .pattern("xyx")
                 .pattern(" z ")
                 .pattern(" x ")
-                .unlockedBy(getHasName(ModItems.CANVAS.get()), has(ModItems.CANVAS.get())) // TODO: add unlocked by brush
+                .unlockedBy(getHasName(ModItems.CANVAS.get()), has(ModItems.CANVAS.get()))
+                .unlockedBy(getHasName(Items.BRUSH), has(Items.BRUSH))
                 .save(finishedRecipe);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CANVAS.get(), 2)
                 .requires(ItemTags.WOOL)
