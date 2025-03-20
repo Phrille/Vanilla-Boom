@@ -134,7 +134,7 @@ public class ModTags {
             public static final TagKey<Block> WOODEN_FENCE_GATES = modTag("wooden_fence_gates");
 
             private static TagKey<Block> modTag(String name) {
-                return BlockTags.create(new ResourceLocation(VanillaBoom.MOD_ID, name));
+                return BlockTags.create(VanillaBoom.resLoc(name));
             }
         }
 
@@ -160,7 +160,7 @@ public class ModTags {
             public static final TagKey<Item> POTATO_SOUP_INGREDIENTS = modTag("potato_soup_ingredients");
 
             private static TagKey<Item> modTag(String name) {
-                return ItemTags.create(new ResourceLocation(VanillaBoom.MOD_ID, name));
+                return ItemTags.create(VanillaBoom.resLoc(name));
             }
         }
 
@@ -169,7 +169,7 @@ public class ModTags {
 
             @SuppressWarnings("SameParameterValue")
             private static TagKey<EntityType<?>> modTag(String name) {
-                return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(VanillaBoom.MOD_ID, name));
+                return TagKey.create(Registries.ENTITY_TYPE, VanillaBoom.resLoc(name));
             }
         }
     }

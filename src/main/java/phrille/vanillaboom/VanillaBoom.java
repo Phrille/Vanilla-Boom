@@ -8,6 +8,7 @@
 
 package phrille.vanillaboom;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -80,5 +81,9 @@ public class VanillaBoom {
     }
 
     private void processIMC(InterModProcessEvent event) {
+    }
+
+    public static ResourceLocation resLoc(String path) {
+        return new ResourceLocation(VanillaBoom.MOD_ID, path);
     }
 }

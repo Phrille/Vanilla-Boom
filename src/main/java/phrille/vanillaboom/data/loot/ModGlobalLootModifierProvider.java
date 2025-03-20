@@ -40,7 +40,7 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
         // Blocks
         add("spruce_leaves", new DropLootModifier(new LootItemCondition[]{
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SPRUCE_LEAVES).build()},
-                ModGlobalLootModifiers.getLootTableReference(new ResourceLocation(VanillaBoom.MOD_ID, "blocks/loot_modifiers/spruce_leaves")),
+                ModGlobalLootModifiers.getLootTableReference(VanillaBoom.resLoc("blocks/loot_modifiers/spruce_leaves")),
                 null));
 
         // Entities
@@ -52,7 +52,7 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
         // Gameplay
         add("fishing", new FishingLootModifier(new LootItemCondition[]{
                 LootTableIdCondition.builder(new ResourceLocation("minecraft", "gameplay/fishing/fish")).build()},
-                ModGlobalLootModifiers.getLootTableReference(new ResourceLocation(VanillaBoom.MOD_ID, "gameplay/fishing/fish")),
+                ModGlobalLootModifiers.getLootTableReference(VanillaBoom.resLoc("gameplay/fishing/fish")),
                 0.3F));
     }
 
@@ -61,7 +61,7 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
                 LootItemEntityPropertyCondition.hasProperties(
                         LootContext.EntityTarget.THIS,
                         EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(entityType))).build()},
-                ModGlobalLootModifiers.getLootTableReference(new ResourceLocation(VanillaBoom.MOD_ID, "entities/loot_modifiers/" + name)),
+                ModGlobalLootModifiers.getLootTableReference(VanillaBoom.resLoc("entities/loot_modifiers/" + name)),
                 removeItems));
     }
 }

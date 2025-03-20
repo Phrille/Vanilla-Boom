@@ -28,7 +28,7 @@ public class FishRenderer extends MobRenderer<Fish, EntityModel<Fish>> {
 
     @Override
     public ResourceLocation getTextureLocation(Fish fish) {
-        return new ResourceLocation(VanillaBoom.MOD_ID, "textures/entity/" + Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.getKey(fish.getType())).getPath() + ".png");
+        return VanillaBoom.resLoc("textures/entity/" + Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.getKey(fish.getType())).getPath() + ".png");
     }
 
     @Override

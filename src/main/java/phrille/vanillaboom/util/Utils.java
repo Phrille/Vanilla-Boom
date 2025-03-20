@@ -138,9 +138,9 @@ public class Utils {
     }
 
     public static void registerFlowerPots() {
-        ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(new ResourceLocation(VanillaBoom.MOD_ID, "rose"), ModBlocks.POTTED_ROSE);
-        ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(new ResourceLocation(VanillaBoom.MOD_ID, "peony"), ModBlocks.POTTED_PEONY);
-        ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(new ResourceLocation(VanillaBoom.MOD_ID, "lilac"), ModBlocks.POTTED_LILAC);
+        ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(VanillaBoom.resLoc("rose"), ModBlocks.POTTED_ROSE);
+        ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(VanillaBoom.resLoc("peony"), ModBlocks.POTTED_PEONY);
+        ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(VanillaBoom.resLoc("lilac"), ModBlocks.POTTED_LILAC);
     }
 
     public static void registerShearedTallFlowers() {

@@ -31,7 +31,7 @@ import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
 import phrille.vanillaboom.util.Utils;
 
 public class PaintingRecipeCategory implements IRecipeCategory<PaintingRecipe> {
-    public static final ResourceLocation BACKGROUND = new ResourceLocation(VanillaBoom.MOD_ID, "textures/gui/container/easel.png");
+    public static final ResourceLocation BACKGROUND = VanillaBoom.resLoc("textures/gui/container/easel.png");
     private static final int PAINTING_BOX_SIZE = 38;
 
     private final IGuiHelper guiHelper;

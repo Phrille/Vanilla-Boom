@@ -8,8 +8,6 @@
 
 package phrille.vanillaboom.client.screen;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -31,7 +29,7 @@ import phrille.vanillaboom.util.Utils;
 import java.util.List;
 
 public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
-    private static final ResourceLocation BG_LOCATION = new ResourceLocation(VanillaBoom.MOD_ID, "textures/gui/container/easel.png");
+    private static final ResourceLocation BG_LOCATION = VanillaBoom.resLoc("textures/gui/container/easel.png");
 
     private static List<PaintingRecipe> availableRecipes = Lists.newArrayList();
 
