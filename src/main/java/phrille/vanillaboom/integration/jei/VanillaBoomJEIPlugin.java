@@ -19,6 +19,7 @@ import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.inventory.EaselMenu;
@@ -40,7 +41,7 @@ public class VanillaBoomJEIPlugin implements IModPlugin {
     @Override
     @SuppressWarnings("ConstantConditions")
     public void registerRecipes(IRecipeRegistration registration) {
-        registration.addRecipes(PAINTING, Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(ModRecipes.PAINTING.get()));
+        registration.addRecipes(PAINTING, Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(ModRecipes.PAINTING.get()).stream().map(RecipeHolder::value).toList());
     }
 
     @Override

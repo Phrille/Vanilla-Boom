@@ -8,23 +8,19 @@
 
 package phrille.vanillaboom.inventory.recipe;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
+import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.inventory.EaselMenu;
@@ -34,13 +30,13 @@ import javax.annotation.Nullable;
 import java.util.Comparator;
 import java.util.List;
 
-public record PaintingRecipe(ResourceLocation recipeId, String group, Ingredient canvas, NonNullList<Ingredient> dyes,
+public record PaintingRecipe(String group, Ingredient canvas, List<Ingredient> dyes,
                              ItemStack result) implements Recipe<Container> {
     public static final int MAX_DYES = 7;
-    public static final Comparator<PaintingRecipe> RECIPE_COMPARATOR = Comparator.comparing(recipe -> Utils.paintingVariantFromStack(recipe.result()),
+    public static final Comparator<RecipeHolder<PaintingRecipe>> RECIPE_COMPARATOR = Comparator.comparing(recipe -> Utils.paintingVariantFromStack(recipe.value().result()),
             Comparator.<PaintingVariant>comparingInt(variant -> variant.getHeight() * variant.getWidth())
                     .thenComparing(PaintingVariant::getWidth)
-                    .thenComparing(ForgeRegistries.PAINTING_VARIANTS::getKey));
+                    .thenComparing(BuiltInRegistries.PAINTING_VARIANT::getKey));
 
     @Override
     public boolean matches(Container container, Level level) {
@@ -74,12 +70,12 @@ public record PaintingRecipe(ResourceLocation recipeId, String group, Ingredient
     }
 
     @Override
-    public RecipeType<?> getType() {
+    public RecipeType<PaintingRecipe> getType() {
         return ModRecipes.PAINTING.get();
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<PaintingRecipe> getSerializer() {
         return ModRecipes.PAINTING_SERIALIZER.get();
     }
 
@@ -91,11 +87,6 @@ public record PaintingRecipe(ResourceLocation recipeId, String group, Ingredient
     @Override
     public boolean canCraftInDimensions(int width, int height) {
         return true;
-    }
-
-    @Override
-    public ResourceLocation getId() {
-        return recipeId;
     }
 
     @Override
@@ -113,64 +104,54 @@ public record PaintingRecipe(ResourceLocation recipeId, String group, Ingredient
 
     @Override
     public boolean equals(Object other) {
-        return other instanceof PaintingRecipe otherRecipe && otherRecipe.recipeId.equals(recipeId);
-    }
-
-    public static PaintingRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
-        String group = buffer.readUtf();
-        int size = buffer.readVarInt();
-        Ingredient canvas = Ingredient.fromNetwork(buffer);
-        NonNullList<Ingredient> dyes = NonNullList.create();
-
-        for (int i = 1; i < size; i++) {
-            dyes.add(Ingredient.fromNetwork(buffer));
-        }
-
-        ItemStack result = buffer.readItem();
-        return new PaintingRecipe(recipeId, group, canvas, dyes, result);
-    }
-
-    public static void toNetwork(FriendlyByteBuf buffer, PaintingRecipe paintingRecipe) {
-        buffer.writeUtf(paintingRecipe.group());
-        buffer.writeVarInt(paintingRecipe.getIngredients().size());
-        paintingRecipe.canvas().toNetwork(buffer);
-
-        for (Ingredient ingredient : paintingRecipe.dyes()) {
-            ingredient.toNetwork(buffer);
-        }
-
-        buffer.writeItem(paintingRecipe.result());
+        return other instanceof PaintingRecipe; //otherRecipe && otherRecipe.recipeId.equals(recipeId);
     }
 
     public static class PaintingRecipeSerializer implements RecipeSerializer<PaintingRecipe> {
+        private static final Codec<PaintingRecipe> CODEC = RecordCodecBuilder.create(inst ->
+                inst.group(
+                        ExtraCodecs.strictOptionalField(Codec.STRING, "group", "")
+                                .forGetter(recipe -> recipe.group),
+                        Ingredient.CODEC_NONEMPTY.fieldOf("canvas")
+                                .forGetter(recipe -> recipe.canvas),
+                        Ingredient.LIST_CODEC_NONEMPTY.fieldOf("dyes")
+                                .forGetter(recipe -> recipe.dyes),
+                        ResourceLocation.CODEC.fieldOf("variant")
+                                .xmap(Utils::stackFromPaintingVariant, Utils::resLocFromStack)
+                                .forGetter(recipe -> recipe.result)
+                ).apply(inst, PaintingRecipe::new));
+
         @Override
-        public PaintingRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
-            String group = GsonHelper.getAsString(json, "group", "");
-
-            Ingredient canvas = Ingredient.fromJson(GsonHelper.getAsJsonObject(json, "canvas"));
-            NonNullList<Ingredient> dyes = NonNullList.create();
-            JsonArray jsonDyes = GsonHelper.getAsJsonArray(json, "dyes");
-
-            if (jsonDyes.isEmpty()) {
-                throw new JsonSyntaxException("List of dye ingredients can not be empty");
-            } else if (jsonDyes.size() > MAX_DYES) {
-                throw new JsonSyntaxException("List of dye ingredients can not exceed " + MAX_DYES + " items");
-            }
-
-            jsonDyes.asList().forEach((jsonDye) -> dyes.add(Ingredient.fromJson(jsonDye)));
-            ItemStack result = Utils.stackFromPaintingVariant(new ResourceLocation(GsonHelper.getAsString(json, "variant")));
-
-            return new PaintingRecipe(recipeId, group, canvas, dyes, result);
+        public Codec<PaintingRecipe> codec() {
+            return CODEC;
         }
 
         @Override
-        public PaintingRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
-            return PaintingRecipe.fromNetwork(recipeId, buffer);
+        public PaintingRecipe fromNetwork(FriendlyByteBuf buffer) {
+            String group = buffer.readUtf();
+            int size = buffer.readVarInt();
+            Ingredient canvas = Ingredient.fromNetwork(buffer);
+            NonNullList<Ingredient> dyes = NonNullList.create();
+
+            for (int i = 1; i < size; i++) {
+                dyes.add(Ingredient.fromNetwork(buffer));
+            }
+
+            ItemStack result = buffer.readItem();
+            return new PaintingRecipe(group, canvas, dyes, result);
         }
 
         @Override
         public void toNetwork(FriendlyByteBuf buffer, PaintingRecipe paintingRecipe) {
-            PaintingRecipe.toNetwork(buffer, paintingRecipe);
+            buffer.writeUtf(paintingRecipe.group());
+            buffer.writeVarInt(paintingRecipe.getIngredients().size());
+            paintingRecipe.canvas().toNetwork(buffer);
+
+            for (Ingredient ingredient : paintingRecipe.dyes()) {
+                ingredient.toNetwork(buffer);
+            }
+
+            buffer.writeItem(paintingRecipe.result());
         }
     }
 }

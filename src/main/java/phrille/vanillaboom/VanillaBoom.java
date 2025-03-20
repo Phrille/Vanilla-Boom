@@ -9,21 +9,20 @@
 package phrille.vanillaboom;
 
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.event.lifecycle.InterModEnqueueEvent;
+import net.neoforged.fml.event.lifecycle.InterModProcessEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.entity.ModBlockEntities;
 import phrille.vanillaboom.client.ClientUtils;
-import phrille.vanillaboom.config.ConfigHandler;
+import phrille.vanillaboom.config.VanillaBoomConfig;
 import phrille.vanillaboom.entity.ModEntities;
 import phrille.vanillaboom.inventory.ModMenuTypes;
 import phrille.vanillaboom.inventory.recipe.ModRecipes;
@@ -39,9 +38,7 @@ public class VanillaBoom {
     public static final String MOD_ID = "vanillaboom";
     public static final Logger LOGGER = LogManager.getLogger();
 
-    public VanillaBoom() {
-        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
+    public VanillaBoom(IEventBus eventBus) {
         ModNetwork.register();
         ModEntities.ENTITY_TYPES.register(eventBus);
         ModBlocks.BLOCKS.register(eventBus);
@@ -51,18 +48,19 @@ public class VanillaBoom {
         ModRecipes.RECIPE_TYPES.register(eventBus);
         ModMenuTypes.MENU_TYPES.register(eventBus);
         ModGlobalLootModifiers.GLOBAL_LOOT_MODIFIERS.register(eventBus);
+        ModStats.STATS.register(eventBus);
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::clientSetup);
         eventBus.addListener(this::enqueueIMC);
         eventBus.addListener(this::processIMC);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigHandler.COMMON_SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, VanillaBoomConfig.SPEC);
     }
 
     public void setup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            ModStats.register();
+            ModStats.registerStats();
             Utils.addCompostMaterials();
             Utils.registerBurnTimes();
             Utils.registerFlowerPots();

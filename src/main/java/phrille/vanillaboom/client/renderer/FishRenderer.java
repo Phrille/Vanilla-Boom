@@ -13,9 +13,9 @@ import com.mojang.math.Axis;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.entity.fish.Fish;
 
@@ -28,7 +28,7 @@ public class FishRenderer extends MobRenderer<Fish, EntityModel<Fish>> {
 
     @Override
     public ResourceLocation getTextureLocation(Fish fish) {
-        return VanillaBoom.resLoc("textures/entity/" + Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.getKey(fish.getType())).getPath() + ".png");
+        return VanillaBoom.resLoc("textures/entity/" + Objects.requireNonNull(BuiltInRegistries.ENTITY_TYPE.getKey(fish.getType())).getPath() + ".png");
     }
 
     @Override

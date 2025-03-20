@@ -20,8 +20,9 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.Tags;
+import net.neoforged.neoforge.common.Tags;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.inventory.recipe.ModRecipes;
 import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
@@ -54,8 +55,8 @@ public class EaselMenu extends AbstractContainerMenu {
     private final ResultContainer resultContainer;
 
     /* Recipe list */
-    private final ImmutableList<PaintingRecipe> recipes;
-    private List<PaintingRecipe> availableRecipes;
+    private final ImmutableList<RecipeHolder<PaintingRecipe>> recipes;
+    private List<RecipeHolder<PaintingRecipe>> availableRecipes;
     @Nullable
     private PaintingRecipe currentRecipe;
     private final DataSlot selectedPaintingIndex;
@@ -167,7 +168,7 @@ public class EaselMenu extends AbstractContainerMenu {
     @Override
     public boolean clickMenuButton(Player player, int index) {
         if (index >= 0 && index < recipes.size()) {
-            PaintingRecipe clicked = recipes.get(index);
+            RecipeHolder<PaintingRecipe> clicked = recipes.get(index);
             if (availableRecipes.contains(clicked)) {
                 selectedPaintingIndex.set(availableRecipes.indexOf(clicked));
                 setupResultSlot();
@@ -199,10 +200,10 @@ public class EaselMenu extends AbstractContainerMenu {
 
     private void setupResultSlot() {
         if (!availableRecipes.isEmpty() && isValidPaintingIndex(selectedPaintingIndex.get())) {
-            PaintingRecipe recipe = availableRecipes.get(selectedPaintingIndex.get());
-            ItemStack result = recipe.assemble(inputContainer, level.registryAccess());
+            RecipeHolder<PaintingRecipe> recipe = availableRecipes.get(selectedPaintingIndex.get());
+            ItemStack result = recipe.value().assemble(inputContainer, level.registryAccess());
             if (result.isItemEnabled(level.enabledFeatures())) {
-                currentRecipe = recipe;
+                currentRecipe = recipe.value();
                 resultContainer.setRecipeUsed(recipe);
                 resultSlot.set(result);
             } else {
@@ -241,7 +242,7 @@ public class EaselMenu extends AbstractContainerMenu {
                 if (!moveItemStackTo(stackInSlot, DYE_SLOT_START, DYE_SLOT_END + 1, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (stackInSlot.is(ModTags.ForgeTags.Items.CANVAS)) {
+            } else if (stackInSlot.is(ModTags.NeoForgeTags.Items.CANVAS)) {
                 if (!moveItemStackTo(stackInSlot, CANVAS_SLOT, CANVAS_SLOT + 1, false)) {
                     return ItemStack.EMPTY;
                 }
@@ -279,7 +280,7 @@ public class EaselMenu extends AbstractContainerMenu {
         access.execute((remover, container) -> clearContainer(player, inputContainer));
     }
 
-    public List<PaintingRecipe> getRecipes() {
+    public List<RecipeHolder<PaintingRecipe>> getRecipes() {
         return recipes;
     }
 

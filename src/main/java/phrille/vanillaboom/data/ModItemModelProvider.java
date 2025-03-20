@@ -8,16 +8,16 @@
 
 package phrille.vanillaboom.data;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.client.model.generators.ModelProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.variant.*;
@@ -232,12 +232,12 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     public void blockItem(Item blockItem) {
-        ResourceLocation parent = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(blockItem));
+        ResourceLocation parent = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(blockItem));
         withExistingParent(name(blockItem), new ResourceLocation(parent.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + parent.getPath()));
     }
 
     public void inventoryBlockItem(Block block) {
-        ResourceLocation parent = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block));
+        ResourceLocation parent = Objects.requireNonNull(BuiltInRegistries.BLOCK.getKey(block));
         withExistingParent(name(block.asItem()), new ResourceLocation(parent.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + parent.getPath() + "_inventory"));
     }
 
@@ -254,16 +254,16 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     protected ResourceLocation itemTexture(Item item) {
-        ResourceLocation name = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item));
+        ResourceLocation name = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(item));
         return new ResourceLocation(name.getNamespace(), ModelProvider.ITEM_FOLDER + "/" + name.getPath());
     }
 
     protected ResourceLocation blockTexture(Block block) {
-        ResourceLocation name = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block));
+        ResourceLocation name = Objects.requireNonNull(BuiltInRegistries.BLOCK.getKey(block));
         return new ResourceLocation(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath().replace("_pane", ""));
     }
 
     protected String name(Item item) {
-        return Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)).getPath();
+        return Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(item)).getPath();
     }
 }

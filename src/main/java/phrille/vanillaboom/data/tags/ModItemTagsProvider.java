@@ -16,8 +16,8 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.ModTags;
@@ -35,84 +35,84 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         /*
          * Forge tags
          */
-        copy(ModTags.ForgeTags.Blocks.BOOKSHELVES, Tags.Items.BOOKSHELVES);
-        copy(ModTags.ForgeTags.Blocks.CAKES, ModTags.ForgeTags.Items.CAKES);
-        copy(ModTags.ForgeTags.Blocks.LADDERS, ModTags.ForgeTags.Items.LADDERS);
+        copy(ModTags.NeoForgeTags.Blocks.BOOKSHELVES, Tags.Items.BOOKSHELVES);
+        copy(ModTags.NeoForgeTags.Blocks.CAKES, ModTags.NeoForgeTags.Items.CAKES);
+        copy(ModTags.NeoForgeTags.Blocks.LADDERS, ModTags.NeoForgeTags.Items.LADDERS);
         copy(Tags.Blocks.FENCES_WOODEN, Tags.Items.FENCES_WOODEN);
         copy(Tags.Blocks.FENCES_NETHER_BRICK, Tags.Items.FENCES_NETHER_BRICK);
-        copy(ModTags.ForgeTags.Blocks.FENCE_GATES_NETHER_BRICK, ModTags.ForgeTags.Items.FENCE_GATES_NETHER_BRICK);
+        copy(ModTags.NeoForgeTags.Blocks.FENCE_GATES_NETHER_BRICK, ModTags.NeoForgeTags.Items.FENCE_GATES_NETHER_BRICK);
         copy(Tags.Blocks.FENCE_GATES_WOODEN, Tags.Items.FENCE_GATES_WOODEN);
         copy(Tags.Blocks.FENCE_GATES, Tags.Items.FENCE_GATES);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_CHARCOAL, ModTags.ForgeTags.Items.STORAGE_BLOCKS_CHARCOAL);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_SUGAR, ModTags.ForgeTags.Items.STORAGE_BLOCKS_SUGAR);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_SUGAR_CANE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_SUGAR_CANE);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_GUNPOWDER, ModTags.ForgeTags.Items.STORAGE_BLOCKS_GUNPOWDER);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BLAZE_POWDER, ModTags.ForgeTags.Items.STORAGE_BLOCKS_BLAZE_POWDER);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_MAGMA_CREAM, ModTags.ForgeTags.Items.STORAGE_BLOCKS_MAGMA_CREAM);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_PRISMARINE_CRYSTAL, ModTags.ForgeTags.Items.STORAGE_BLOCKS_PRISMARINE_CRYSTAL);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_WITHER_BONE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_WITHER_BONE);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_WHITE_DYE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_WHITE_DYE);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_ORANGE_DYE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_ORANGE_DYE);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_MAGENTA_DYE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_MAGENTA_DYE);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_LIGHT_BLUE_DYE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_LIGHT_BLUE_DYE);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_YELLOW_DYE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_YELLOW_DYE);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_LIME_DYE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_LIME_DYE);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_PINK_DYE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_PINK_DYE);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_GRAY_DYE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_GRAY_DYE);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_LIGHT_GRAY_DYE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_LIGHT_GRAY_DYE);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_CYAN_DYE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_CYAN_DYE);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_PURPLE_DYE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_PURPLE_DYE);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BLUE_DYE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_BLUE_DYE);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BROWN_DYE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_BROWN_DYE);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_GREEN_DYE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_GREEN_DYE);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_RED_DYE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_RED_DYE);
-        copy(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BLACK_DYE, ModTags.ForgeTags.Items.STORAGE_BLOCKS_BLACK_DYE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_CHARCOAL, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_CHARCOAL);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_SUGAR, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_SUGAR);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_SUGAR_CANE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_SUGAR_CANE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_GUNPOWDER, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_GUNPOWDER);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_BLAZE_POWDER, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_BLAZE_POWDER);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_MAGMA_CREAM, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_MAGMA_CREAM);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_PRISMARINE_CRYSTAL, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_PRISMARINE_CRYSTAL);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_WITHER_BONE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_WITHER_BONE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_WHITE_DYE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_WHITE_DYE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_ORANGE_DYE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_ORANGE_DYE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_MAGENTA_DYE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_MAGENTA_DYE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_LIGHT_BLUE_DYE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_LIGHT_BLUE_DYE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_YELLOW_DYE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_YELLOW_DYE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_LIME_DYE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_LIME_DYE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_PINK_DYE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_PINK_DYE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_GRAY_DYE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_GRAY_DYE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_LIGHT_GRAY_DYE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_LIGHT_GRAY_DYE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_CYAN_DYE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_CYAN_DYE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_PURPLE_DYE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_PURPLE_DYE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_BLUE_DYE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_BLUE_DYE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_BROWN_DYE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_BROWN_DYE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_GREEN_DYE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_GREEN_DYE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_RED_DYE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_RED_DYE);
+        copy(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_BLACK_DYE, ModTags.NeoForgeTags.Items.STORAGE_BLOCKS_BLACK_DYE);
         copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
-        tag(ModTags.ForgeTags.Items.CROPS_TOMATO).add(ModItems.TOMATO.get());
-        tag(ModTags.ForgeTags.Items.CROPS_CHILI).add(ModItems.CHILI.get());
-        tag(ModTags.ForgeTags.Items.CROPS_RICE).add(ModItems.RICE_GRAINS.get());
+        tag(ModTags.NeoForgeTags.Items.CROPS_TOMATO).add(ModItems.TOMATO.get());
+        tag(ModTags.NeoForgeTags.Items.CROPS_CHILI).add(ModItems.CHILI.get());
+        tag(ModTags.NeoForgeTags.Items.CROPS_RICE).add(ModItems.RICE_GRAINS.get());
         tag(Tags.Items.CROPS)
-                .addTags(ModTags.ForgeTags.Items.CROPS_TOMATO)
-                .addTags(ModTags.ForgeTags.Items.CROPS_CHILI)
-                .addTags(ModTags.ForgeTags.Items.CROPS_RICE);
-        tag(ModTags.ForgeTags.Items.SEEDS_TOMATO).add(ModItems.TOMATO_SEEDS.get());
-        tag(ModTags.ForgeTags.Items.SEEDS_CHILI).add(ModItems.CHILI_SEEDS.get());
-        tag(ModTags.ForgeTags.Items.SEEDS_RICE).add(ModItems.RICE_GRAINS.get());
+                .addTags(ModTags.NeoForgeTags.Items.CROPS_TOMATO)
+                .addTags(ModTags.NeoForgeTags.Items.CROPS_CHILI)
+                .addTags(ModTags.NeoForgeTags.Items.CROPS_RICE);
+        tag(ModTags.NeoForgeTags.Items.SEEDS_TOMATO).add(ModItems.TOMATO_SEEDS.get());
+        tag(ModTags.NeoForgeTags.Items.SEEDS_CHILI).add(ModItems.CHILI_SEEDS.get());
+        tag(ModTags.NeoForgeTags.Items.SEEDS_RICE).add(ModItems.RICE_GRAINS.get());
         tag(Tags.Items.SEEDS)
-                .addTags(ModTags.ForgeTags.Items.SEEDS_TOMATO)
-                .addTags(ModTags.ForgeTags.Items.SEEDS_CHILI)
-                .addTags(ModTags.ForgeTags.Items.SEEDS_RICE);
-        tag(ModTags.ForgeTags.Items.INGOTS_MAGMA_BRICK).add(ModItems.MAGMA_BRICK.get());
-        tag(Tags.Items.INGOTS).addTags(ModTags.ForgeTags.Items.INGOTS_MAGMA_BRICK);
-        tag(ModTags.ForgeTags.Items.WITHER_BONES).add(ModItems.WITHER_BONE.get());
-        tag(ModTags.ForgeTags.Items.WITHER_BONE_MEALS).add(ModItems.WITHER_BONE_MEAL.get());
-        tag(ModTags.ForgeTags.Items.RAW_FISHES)
+                .addTags(ModTags.NeoForgeTags.Items.SEEDS_TOMATO)
+                .addTags(ModTags.NeoForgeTags.Items.SEEDS_CHILI)
+                .addTags(ModTags.NeoForgeTags.Items.SEEDS_RICE);
+        tag(ModTags.NeoForgeTags.Items.INGOTS_MAGMA_BRICK).add(ModItems.MAGMA_BRICK.get());
+        tag(Tags.Items.INGOTS).addTags(ModTags.NeoForgeTags.Items.INGOTS_MAGMA_BRICK);
+        tag(ModTags.NeoForgeTags.Items.WITHER_BONES).add(ModItems.WITHER_BONE.get());
+        tag(ModTags.NeoForgeTags.Items.WITHER_BONE_MEALS).add(ModItems.WITHER_BONE_MEAL.get());
+        tag(ModTags.NeoForgeTags.Items.RAW_FISHES)
                 .add(Items.COD)
                 .add(Items.SALMON)
                 .add(Items.PUFFERFISH)
                 .add(Items.TROPICAL_FISH)
                 .addTags(ModTags.VanillaBoomTags.Items.RAW_FISHES);
-        tag(ModTags.ForgeTags.Items.COOKED_FISHES)
+        tag(ModTags.NeoForgeTags.Items.COOKED_FISHES)
                 .add(Items.COOKED_COD)
                 .add(Items.COOKED_SALMON)
                 .addTags(ModTags.VanillaBoomTags.Items.COOKED_FISHES);
-        tag(ModTags.ForgeTags.Items.RAW_MEATS)
+        tag(ModTags.NeoForgeTags.Items.RAW_MEATS)
                 .add(Items.PORKCHOP)
                 .add(Items.BEEF)
                 .add(Items.CHICKEN)
                 .add(Items.MUTTON)
                 .add(Items.RABBIT)
                 .add(ModItems.RAW_POLAR_BEAR_MEAT.get());
-        tag(ModTags.ForgeTags.Items.COOKED_MEATS)
+        tag(ModTags.NeoForgeTags.Items.COOKED_MEATS)
                 .add(Items.COOKED_PORKCHOP)
                 .add(Items.COOKED_BEEF)
                 .add(Items.COOKED_CHICKEN)
                 .add(Items.COOKED_MUTTON)
                 .add(Items.COOKED_RABBIT)
                 .add(ModItems.POLAR_BEAR_STEAK.get());
-        tag(ModTags.ForgeTags.Items.CANVAS).add(ModItems.CANVAS.get());
-        tag(ModTags.ForgeTags.Items.MILK).add(Items.MILK_BUCKET);
-        tag(ModTags.ForgeTags.Items.RICE).add(ModItems.RICE_GRAINS.get());
+        tag(ModTags.NeoForgeTags.Items.CANVAS).add(ModItems.CANVAS.get());
+        tag(ModTags.NeoForgeTags.Items.MILK).add(Items.MILK_BUCKET);
+        tag(ModTags.NeoForgeTags.Items.RICE).add(ModItems.RICE_GRAINS.get());
 
         /*
          * VanillaBoom tags

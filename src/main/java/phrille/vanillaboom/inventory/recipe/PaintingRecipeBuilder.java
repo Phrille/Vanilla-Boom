@@ -8,16 +8,15 @@
 
 package phrille.vanillaboom.inventory.recipe;
 
+import com.google.common.collect.Maps;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementRewards;
-import net.minecraft.advancements.CriterionTriggerInstance;
-import net.minecraft.advancements.RequirementsStrategy;
+import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -28,7 +27,8 @@ import phrille.vanillaboom.util.ModTags;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.Map;
+import java.util.Objects;
 
 public class PaintingRecipeBuilder implements RecipeBuilder {
     private final RecipeCategory category;
@@ -37,7 +37,8 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
     private final ResourceLocation variant;
     private final Item result;
     private final int count;
-    private final Advancement.Builder advancement = Advancement.Builder.advancement();
+    private final Map<String, Criterion<?>> criteria = Maps.newLinkedHashMap();
+    @Nullable
     private String group;
 
     public PaintingRecipeBuilder(RecipeCategory category, Ingredient canvas, List<Ingredient> dyes, ResourceLocation variant, ItemLike result, int count) {
@@ -54,12 +55,12 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
     }
 
     public static PaintingRecipeBuilder painting(List<Ingredient> dyes, RecipeCategory category, ResourceLocation variant) {
-        return new PaintingRecipeBuilder(category, Ingredient.of(ModTags.ForgeTags.Items.CANVAS), dyes, variant, Items.PAINTING, 1);
+        return new PaintingRecipeBuilder(category, Ingredient.of(ModTags.NeoForgeTags.Items.CANVAS), dyes, variant, Items.PAINTING, 1);
     }
 
     @Override
-    public PaintingRecipeBuilder unlockedBy(String criterionName, CriterionTriggerInstance criterionTrigger) {
-        advancement.addCriterion(criterionName, criterionTrigger);
+    public PaintingRecipeBuilder unlockedBy(String criterionName, Criterion<?> criterionTrigger) {
+        criteria.put(criterionName, criterionTrigger);
         return this;
     }
 
@@ -75,49 +76,36 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
     }
 
     @Override
-    public void save(Consumer<FinishedRecipe> finishedRecipe, ResourceLocation recipeId) {
-        ensureValid(recipeId);
-        advancement.parent(ROOT_RECIPE_ADVANCEMENT).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId)).rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(RequirementsStrategy.OR);
-        finishedRecipe.accept(new PaintingRecipeBuilder.Result(recipeId, group == null ? "" : group, canvas, dyes, variant, count, advancement, recipeId.withPrefix("recipes/" + category.getFolderName() + "/")));
+    public void save(RecipeOutput output, ResourceLocation id) {
+        ensureValid(id);
+        Advancement.Builder builder = output.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger
+                        .unlocked(id))
+                .rewards(AdvancementRewards.Builder.recipe(id)).requirements(AdvancementRequirements.Strategy.OR);
+        Objects.requireNonNull(builder);
+        criteria.forEach(builder::addCriterion);
+        output.accept(new PaintingRecipeBuilder.Result(id, group == null ? "" : group, canvas, dyes, variant, count,
+                builder.build(id.withPrefix("recipes/" + category.getFolderName() + "/"))));
     }
 
-    private void ensureValid(ResourceLocation recipeId) {
-        if (advancement.getCriteria().isEmpty()) {
-            throw new IllegalStateException("No way of obtaining recipe " + recipeId);
+    private void ensureValid(ResourceLocation id) {
+        if (criteria.isEmpty()) {
+            throw new IllegalStateException("No way of obtaining recipe " + id);
         }
     }
 
-    public static class Result implements FinishedRecipe {
-        private final ResourceLocation recipeId;
-        private final String group;
-        private final Ingredient canvas;
-        private final List<Ingredient> dyes;
-        private final ResourceLocation variant;
-        private final int count;
-        private final Advancement.Builder advancement;
-        private final ResourceLocation advancementId;
-
-        public Result(ResourceLocation recipeId, String group, Ingredient canvas, List<Ingredient> dyes, ResourceLocation variant, int count, Advancement.Builder advancement, ResourceLocation advancementId) {
-            this.recipeId = recipeId;
-            this.group = group;
-            this.canvas = canvas;
-            this.dyes = dyes;
-            this.variant = variant;
-            this.count = count;
-            this.advancement = advancement;
-            this.advancementId = advancementId;
-        }
-
+    public record Result(ResourceLocation id, String group, Ingredient canvas, List<Ingredient> dyes,
+                         ResourceLocation variant, int count, AdvancementHolder advancement) implements FinishedRecipe {
+        @Override
         public void serializeRecipeData(JsonObject json) {
             if (!group.isEmpty()) {
                 json.addProperty("group", group);
             }
 
-            json.add("canvas", canvas.toJson());
+            json.add("canvas", canvas.toJson(false));
             JsonArray jsonDyes = new JsonArray(PaintingRecipe.MAX_DYES);
 
             for (Ingredient dye : dyes) {
-                jsonDyes.add(dye.toJson());
+                jsonDyes.add(dye.toJson(false));
             }
 
             json.add("dyes", jsonDyes);
@@ -126,25 +114,8 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
         }
 
         @Override
-        public ResourceLocation getId() {
-            return recipeId;
-        }
-
-        @Override
-        public RecipeSerializer<?> getType() {
+        public RecipeSerializer<PaintingRecipe> type() {
             return ModRecipes.PAINTING_SERIALIZER.get();
-        }
-
-        @Override
-        @Nullable
-        public JsonObject serializeAdvancement() {
-            return advancement.serializeToJson();
-        }
-
-        @Override
-        @Nullable
-        public ResourceLocation getAdvancementId() {
-            return advancementId;
         }
     }
 }

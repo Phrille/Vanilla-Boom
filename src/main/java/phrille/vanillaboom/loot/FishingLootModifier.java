@@ -16,9 +16,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.entries.LootTableReference;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
-import net.minecraftforge.common.loot.LootModifier;
-import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
+import net.neoforged.fml.util.ObfuscationReflectionHelper;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
+import net.neoforged.neoforge.common.loot.LootModifier;
 
 import java.lang.reflect.Field;
 import java.util.Set;
@@ -37,7 +37,7 @@ public class FishingLootModifier extends LootModifier {
             )
     );
 
-    private static final Field LOOT_FIELD = ObfuscationReflectionHelper.findField(LootContext.class, "f_278466_");
+    private static final Field LOOT_FIELD = ObfuscationReflectionHelper.findField(LootContext.class, "visitedElements");
     private final LootTableReference modifierLootTable;
     private final float replaceChance;
 
