@@ -34,9 +34,9 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_paper",
-      "has_polar_bear_fur",
-      "has_the_recipe"
+      "has_polar_bear_fur"
     ]
   ],
   "rewards": {

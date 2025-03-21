@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_canvas",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_canvas"
     ]
   ],
   "rewards": {
@@ -31,5 +31,5 @@
       "vanillaboom:kebab_from_painting"
     ]
   },
-  "sends_telemetry_event": true
+  "sends_telemetry_event": false
 }

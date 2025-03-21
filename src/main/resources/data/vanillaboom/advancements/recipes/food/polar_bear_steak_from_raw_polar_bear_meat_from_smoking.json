@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_raw_polar_bear_meat",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_raw_polar_bear_meat"
     ]
   ],
   "rewards": {

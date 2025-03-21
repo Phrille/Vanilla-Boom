@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_eel",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_eel"
     ]
   ],
   "rewards": {

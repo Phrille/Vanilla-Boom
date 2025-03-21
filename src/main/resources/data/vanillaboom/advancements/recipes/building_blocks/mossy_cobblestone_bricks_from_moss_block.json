@@ -34,9 +34,9 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_cobblestone_bricks",
-      "has_moss_block",
-      "has_the_recipe"
+      "has_moss_block"
     ]
   ],
   "rewards": {

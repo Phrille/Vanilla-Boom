@@ -46,10 +46,10 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_bowl",
       "has_potato",
-      "has_poisonous_potato",
-      "has_the_recipe"
+      "has_poisonous_potato"
     ]
   ],
   "rewards": {

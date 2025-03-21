@@ -34,9 +34,9 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_diorite",
-      "has_prismarine",
-      "has_the_recipe"
+      "has_prismarine"
     ]
   ],
   "rewards": {
