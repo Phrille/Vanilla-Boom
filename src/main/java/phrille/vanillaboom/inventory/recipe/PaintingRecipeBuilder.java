@@ -17,13 +17,14 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.level.ItemLike;
-import phrille.vanillaboom.util.ModTags;
+import phrille.vanillaboom.util.Utils;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -32,30 +33,33 @@ import java.util.Objects;
 
 public class PaintingRecipeBuilder implements RecipeBuilder {
     private final RecipeCategory category;
-    private final Ingredient canvas;
-    private final List<Ingredient> dyes;
-    private final ResourceLocation variant;
-    private final Item result;
+    private final ResourceKey<PaintingVariant> variant;
     private final int count;
     private final Map<String, Criterion<?>> criteria = Maps.newLinkedHashMap();
+
+    private Ingredient canvas;
+    private List<Ingredient> dyes;
     @Nullable
     private String group;
 
-    public PaintingRecipeBuilder(RecipeCategory category, Ingredient canvas, List<Ingredient> dyes, ResourceLocation variant, ItemLike result, int count) {
+    public PaintingRecipeBuilder(RecipeCategory category, ResourceKey<PaintingVariant> variant, int count) {
         this.category = category;
-        this.canvas = canvas;
-        this.dyes = dyes;
         this.variant = variant;
-        this.result = result.asItem();
         this.count = count;
     }
 
-    public static PaintingRecipeBuilder painting(Ingredient canvas, List<Ingredient> dyes, RecipeCategory category, ResourceLocation variant, ItemLike result, int count) {
-        return new PaintingRecipeBuilder(category, canvas, dyes, variant, result, count);
+    public static PaintingRecipeBuilder painting(RecipeCategory category, ResourceKey<PaintingVariant> variant, int count) {
+        return new PaintingRecipeBuilder(category, variant, count);
     }
 
-    public static PaintingRecipeBuilder painting(List<Ingredient> dyes, RecipeCategory category, ResourceLocation variant) {
-        return new PaintingRecipeBuilder(category, Ingredient.of(ModTags.NeoForgeTags.Items.CANVAS), dyes, variant, Items.PAINTING, 1);
+    public PaintingRecipeBuilder canvas(Ingredient canvas) {
+        this.canvas = canvas;
+        return this;
+    }
+
+    public PaintingRecipeBuilder dyes(List<Ingredient> dyes) {
+        this.dyes = dyes;
+        return this;
     }
 
     @Override
@@ -72,15 +76,15 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
 
     @Override
     public Item getResult() {
-        return result;
+        return Items.PAINTING;
     }
 
     @Override
     public void save(RecipeOutput output, ResourceLocation id) {
         ensureValid(id);
-        Advancement.Builder builder = output.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger
-                        .unlocked(id))
-                .rewards(AdvancementRewards.Builder.recipe(id)).requirements(AdvancementRequirements.Strategy.OR);
+        Advancement.Builder builder = output.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
+                .rewards(AdvancementRewards.Builder.recipe(id))
+                .requirements(AdvancementRequirements.Strategy.OR);
         Objects.requireNonNull(builder);
         criteria.forEach(builder::addCriterion);
         output.accept(new PaintingRecipeBuilder.Result(id, group == null ? "" : group, canvas, dyes, variant, count,
@@ -94,7 +98,8 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
     }
 
     public record Result(ResourceLocation id, String group, Ingredient canvas, List<Ingredient> dyes,
-                         ResourceLocation variant, int count, AdvancementHolder advancement) implements FinishedRecipe {
+                         ResourceKey<PaintingVariant> variant, int count,
+                         AdvancementHolder advancement) implements FinishedRecipe {
         @Override
         public void serializeRecipeData(JsonObject json) {
             if (!group.isEmpty()) {
@@ -109,8 +114,10 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
             }
 
             json.add("dyes", jsonDyes);
-            json.addProperty("variant", variant.toString());
-            json.addProperty("count", count);
+            json.addProperty("variant", Utils.resLocFromPaintingVariant(variant).toString());
+            if (count > 1) {
+                json.addProperty("count", count);
+            }
         }
 
         @Override

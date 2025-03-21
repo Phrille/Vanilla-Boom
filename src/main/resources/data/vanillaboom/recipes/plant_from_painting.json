@@ -3,7 +3,6 @@
   "canvas": {
     "tag": "forge:canvas"
   },
-  "count": 1,
   "dyes": [
     {
       "tag": "forge:dyes/green"

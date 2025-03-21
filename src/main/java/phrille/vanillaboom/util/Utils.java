@@ -103,10 +103,6 @@ public class Utils {
         return null;
     }
 
-    public static ItemStack stackFromPaintingVariant(ResourceKey<PaintingVariant> variant) {
-        return stackFromPaintingVariant(resLocFromPaintingVariant(variant));
-    }
-
     @Nullable
     public static ResourceLocation resLocFromStack(ItemStack stack) {
         if (stack.getTag() != null && stack.getTag().contains("EntityTag")) {

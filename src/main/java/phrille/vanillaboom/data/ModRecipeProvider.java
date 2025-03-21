@@ -718,15 +718,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void painting(RecipeOutput output, ResourceKey<PaintingVariant> variant, List<TagKey<Item>> dyes) {
-        painting(output, Utils.resLocFromPaintingVariant(variant), dyes);
-    }
-
-    public void painting(RecipeOutput output, ResourceLocation variant, List<TagKey<Item>> dyes) {
         List<Ingredient> ingredientDyes = Lists.newArrayList();
         dyes.forEach(dye -> ingredientDyes.add(Ingredient.of(dye)));
-        PaintingRecipeBuilder.painting(ingredientDyes, RecipeCategory.DECORATIONS, variant)
+        PaintingRecipeBuilder.painting(RecipeCategory.DECORATIONS, variant, 1)
+                .canvas(Ingredient.of(ModTags.NeoForgeTags.Items.CANVAS))
+                .dyes(ingredientDyes)
                 .unlockedBy(getHasName(ModItems.CANVAS.get()), has(ModItems.CANVAS.get()))
-                .save(output, VanillaBoom.resLoc(variant.getPath() + "_from_painting"));
+                .save(output, VanillaBoom.resLoc(Utils.resLocFromPaintingVariant(variant).getPath() + "_from_painting"));
     }
 
     /**

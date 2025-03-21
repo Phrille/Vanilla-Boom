@@ -8,7 +8,9 @@
 
 package phrille.vanillaboom.inventory.recipe;
 
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
@@ -30,7 +32,7 @@ import javax.annotation.Nullable;
 import java.util.Comparator;
 import java.util.List;
 
-public record PaintingRecipe(String group, Ingredient canvas, List<Ingredient> dyes,
+public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingredient> dyes,
                              ItemStack result) implements Recipe<Container> {
     public static final int MAX_DYES = 7;
     public static final Comparator<RecipeHolder<PaintingRecipe>> RECIPE_COMPARATOR = Comparator.comparing(recipe -> Utils.paintingVariantFromStack(recipe.value().result()),
@@ -102,11 +104,6 @@ public record PaintingRecipe(String group, Ingredient canvas, List<Ingredient> d
         return new ItemStack(ModBlocks.EASEL.get());
     }
 
-    @Override
-    public boolean equals(Object other) {
-        return other instanceof PaintingRecipe; //otherRecipe && otherRecipe.recipeId.equals(recipeId);
-    }
-
     public static class PaintingRecipeSerializer implements RecipeSerializer<PaintingRecipe> {
         private static final Codec<PaintingRecipe> CODEC = RecordCodecBuilder.create(inst ->
                 inst.group(
@@ -114,10 +111,25 @@ public record PaintingRecipe(String group, Ingredient canvas, List<Ingredient> d
                                 .forGetter(recipe -> recipe.group),
                         Ingredient.CODEC_NONEMPTY.fieldOf("canvas")
                                 .forGetter(recipe -> recipe.canvas),
-                        Ingredient.LIST_CODEC_NONEMPTY.fieldOf("dyes")
+                        Ingredient.CODEC.listOf().fieldOf("dyes")
+                                .flatXmap(ingredientList -> {
+                                    Ingredient[] ingredients = ingredientList.toArray(Ingredient[]::new);
+                                    if (ingredients.length == 0) {
+                                        return DataResult.error(() -> "List of dye ingredients can not be empty");
+                                    } else if (ingredients.length > MAX_DYES) {
+                                        return DataResult.error(() -> "List of dye ingredients can not exceed %s items".formatted(MAX_DYES));
+                                    }
+                                    return DataResult.success(NonNullList.of(Ingredient.EMPTY, ingredients));
+                                }, DataResult::success)
                                 .forGetter(recipe -> recipe.dyes),
                         ResourceLocation.CODEC.fieldOf("variant")
                                 .xmap(Utils::stackFromPaintingVariant, Utils::resLocFromStack)
+                                .dependent(Codec.INT.optionalFieldOf("count", 1),
+                                        stack -> Pair.of(stack.getCount(), Codec.INT.optionalFieldOf("count", stack.getCount())),
+                                        (stack, count) -> {
+                                            stack.setCount(count);
+                                            return stack;
+                                        })
                                 .forGetter(recipe -> recipe.result)
                 ).apply(inst, PaintingRecipe::new));
 
