@@ -195,7 +195,7 @@ public class EaselMenu extends AbstractContainerMenu {
         availableRecipes = level.getRecipeManager().getRecipesFor(ModRecipes.PAINTING.get(), container, level);
         selectedPaintingIndex.set(-1);
         resultSlot.set(ItemStack.EMPTY);
-        EaselRecipePacket.send(player, availableRecipes);
+        EaselRecipePacket.send(player, availableRecipes, (short) containerId);
     }
 
     private void setupResultSlot() {

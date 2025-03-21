@@ -9,6 +9,7 @@
 package phrille.vanillaboom.network;
 
 import net.neoforged.neoforge.network.NetworkRegistry;
+import net.neoforged.neoforge.network.PlayNetworkDirection;
 import net.neoforged.neoforge.network.simple.SimpleChannel;
 import phrille.vanillaboom.VanillaBoom;
 
@@ -21,6 +22,10 @@ public class ModNetwork {
             PROTOCOL_VERSION::equals);
 
     public static void register() {
-        CHANNEL.messageBuilder(EaselRecipePacket.class, 0).encoder(EaselRecipePacket::encode).decoder(EaselRecipePacket::decode).consumerMainThread(EaselRecipePacket::handle).add();
+        CHANNEL.messageBuilder(EaselRecipePacket.class, 0, PlayNetworkDirection.PLAY_TO_CLIENT)
+                .encoder(EaselRecipePacket::encode)
+                .decoder(EaselRecipePacket::decode)
+                .consumerMainThread(EaselRecipePacket::handle)
+                .add();
     }
 }
