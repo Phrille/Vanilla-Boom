@@ -8,8 +8,9 @@
 
 package phrille.vanillaboom.network;
 
-import net.minecraftforge.network.NetworkRegistry;
-import net.minecraftforge.network.simple.SimpleChannel;
+import net.neoforged.neoforge.network.NetworkRegistry;
+import net.neoforged.neoforge.network.PlayNetworkDirection;
+import net.neoforged.neoforge.network.simple.SimpleChannel;
 import phrille.vanillaboom.VanillaBoom;
 
 public class ModNetwork {
@@ -20,9 +21,11 @@ public class ModNetwork {
             PROTOCOL_VERSION::equals,
             PROTOCOL_VERSION::equals);
 
-    @SuppressWarnings("UnusedAssignment")
     public static void register() {
-        int id = 0;
-        CHANNEL.registerMessage(id++, EaselRecipePacket.class, EaselRecipePacket::encode, EaselRecipePacket::decode, EaselRecipePacket::handle);
+        CHANNEL.messageBuilder(EaselRecipePacket.class, 0, PlayNetworkDirection.PLAY_TO_CLIENT)
+                .encoder(EaselRecipePacket::encode)
+                .decoder(EaselRecipePacket::decode)
+                .consumerMainThread(EaselRecipePacket::handle)
+                .add();
     }
 }

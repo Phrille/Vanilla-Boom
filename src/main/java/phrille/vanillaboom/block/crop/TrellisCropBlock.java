@@ -29,6 +29,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.common.CommonHooks;
 import phrille.vanillaboom.util.Utils;
 
 public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrellisCrop {
@@ -59,7 +60,6 @@ public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrell
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {
         if (!level.isAreaLoaded(pos, 1) || level.getRawBrightness(pos, 0) < 9) {
             return;
@@ -68,9 +68,9 @@ public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrell
         int age = getAge(state);
         if (age < getMaxAge()) {
             float growthSpeed = getGrowthSpeed(this, level, pos);
-            if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, rand.nextInt((int) (25.0F / growthSpeed) + 1) == 0)) {
+            if (CommonHooks.onCropsGrowPre(level, pos, state, rand.nextInt((int) (25.0F / growthSpeed) + 1) == 0)) {
                 growToAge(level, state, pos, age + 1, 2);
-                net.minecraftforge.common.ForgeHooks.onCropsGrowPost(level, pos, state);
+                CommonHooks.onCropsGrowPost(level, pos, state);
             }
         }
     }

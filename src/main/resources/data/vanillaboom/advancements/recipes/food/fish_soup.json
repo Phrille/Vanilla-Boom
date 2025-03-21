@@ -34,9 +34,9 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_bowl",
-      "has_sea_pickle",
-      "has_the_recipe"
+      "has_sea_pickle"
     ]
   ],
   "rewards": {

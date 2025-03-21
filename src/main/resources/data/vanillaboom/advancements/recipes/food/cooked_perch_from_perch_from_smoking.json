@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_perch",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_perch"
     ]
   ],
   "rewards": {

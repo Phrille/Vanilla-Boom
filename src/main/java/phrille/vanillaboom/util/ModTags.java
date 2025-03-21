@@ -23,7 +23,7 @@ public class ModTags {
      * Class that encapsulates all tags that belong in the forge
      * data directory which is not created by forge itself.
      */
-    public static class ForgeTags {
+    public static class NeoForgeTags {
         public static class Blocks {
             public static final TagKey<Block> BOOKSHELVES = forgeTag("bookshelves");
             public static final TagKey<Block> CAKES = forgeTag("cakes");

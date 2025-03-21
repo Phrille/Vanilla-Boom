@@ -107,7 +107,7 @@ public class EaselBlock extends Block {
             return InteractionResult.SUCCESS;
         } else {
             player.openMenu(state.getMenuProvider(level, pos));
-            player.awardStat(Stats.CUSTOM.get(ModStats.INTERACT_WITH_EASEL));
+            player.awardStat(Stats.CUSTOM.get(ModStats.INTERACT_WITH_EASEL.get()));
             return InteractionResult.CONSUME;
         }
     }

@@ -20,6 +20,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.inventory.EaselMenu;
@@ -31,7 +32,7 @@ import java.util.List;
 public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
     private static final ResourceLocation BG_LOCATION = VanillaBoom.resLoc("textures/gui/container/easel.png");
 
-    private static List<PaintingRecipe> availableRecipes = Lists.newArrayList();
+    private static List<RecipeHolder<PaintingRecipe>> availableRecipes = Lists.newArrayList();
 
     public static final int SCREEN_WIDTH = 176;
     public static final int SCREEN_HEIGHT = 184;
@@ -70,8 +71,8 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         inventoryLabelY += 19;
 
         for (int buttonId = 0; buttonId < menu.getRecipes().size(); buttonId++) {
-            PaintingRecipe recipe = menu.getRecipes().get(buttonId);
-            PaintingVariant variant = Utils.paintingVariantFromStack(recipe.result());
+            RecipeHolder<PaintingRecipe> recipe = menu.getRecipes().get(buttonId);
+            PaintingVariant variant = Utils.paintingVariantFromStack(recipe.value().result());
 
             if (variant != null) {
                 PaintingButton button = new PaintingButton(buttonId, recipe, variant);
@@ -88,7 +89,6 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
-        renderBackground(guiGraphics);
         int x = leftPos;
         int y = topPos;
 
@@ -171,10 +171,10 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
     }
 
     @Override
-    public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
+    public boolean mouseScrolled(double mouseX, double mouseY, double deltaX, double deltaY) {
         if (isScrollBarActive()) {
             int rows = getOffscreenRows();
-            float f = (float) delta / (float) rows;
+            float f = (float) deltaY / (float) rows;
             scrollOffset = Mth.clamp(scrollOffset - f, 0.0F, 1.0F);
             startIndex = (int) ((double) (scrollOffset * (float) rows) + 0.5D) * GRID_COLUMNS;
         }
@@ -223,7 +223,7 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         }
     }
 
-    public void updateRecipes(List<PaintingRecipe> recipes) {
+    public void updateRecipes(List<RecipeHolder<PaintingRecipe>> recipes) {
         availableRecipes = recipes;
         containerChanged();
     }
@@ -236,7 +236,7 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
 
     private class PaintingButton {
         private final int buttonId;
-        private final PaintingRecipe recipe;
+        private final RecipeHolder<PaintingRecipe> recipe;
         private final TextureAtlasSprite sprite;
         private final int paintingWidth;
         private final int paintingHeight;
@@ -245,7 +245,7 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         private boolean enabled;
         private boolean selected;
 
-        public PaintingButton(int buttonId, PaintingRecipe recipe, PaintingVariant variant) {
+        public PaintingButton(int buttonId, RecipeHolder<PaintingRecipe> recipe, PaintingVariant variant) {
             this.buttonId = buttonId;
             this.recipe = recipe;
             this.sprite = Minecraft.getInstance().getPaintingTextures().get(variant);
@@ -286,7 +286,7 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
 
         public void renderButtonTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY) {
             // TODO: Display ingredients
-            guiGraphics.renderTooltip(font, recipe.result(), mouseX, mouseY);
+            guiGraphics.renderTooltip(font, recipe.value().result(), mouseX, mouseY);
         }
 
         @SuppressWarnings("ConstantConditions")

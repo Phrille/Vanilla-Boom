@@ -34,9 +34,9 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_white_wool",
-      "has_shears",
-      "has_the_recipe"
+      "has_shears"
     ]
   ],
   "rewards": {

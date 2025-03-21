@@ -10,6 +10,7 @@ package phrille.vanillaboom.util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -26,7 +27,6 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.registries.ForgeRegistries;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.ModCakeBlock;
@@ -89,25 +89,30 @@ public class Utils {
     }
 
     public static ResourceLocation resLocFromPaintingVariant(ResourceKey<PaintingVariant> variant) {
-        PaintingVariant paintingVariant = ForgeRegistries.PAINTING_VARIANTS.getHolder(variant).orElseThrow().get();
-        return Objects.requireNonNull(ForgeRegistries.PAINTING_VARIANTS.getKey(paintingVariant));
+        PaintingVariant paintingVariant = BuiltInRegistries.PAINTING_VARIANT.getHolder(variant).orElseThrow().value();
+        return Objects.requireNonNull(BuiltInRegistries.PAINTING_VARIANT.getKey(paintingVariant));
     }
 
     @Nullable
     public static PaintingVariant paintingVariantFromStack(ItemStack stack) {
-        if (stack.getTag() != null && stack.getTag().contains("EntityTag")) {
-
-            CompoundTag entityTag = stack.getTag().getCompound("EntityTag");
-            String variant = entityTag.getString("variant");
-            ResourceLocation resLoc = new ResourceLocation(variant);
-            return ForgeRegistries.PAINTING_VARIANTS.getValue(resLoc);
+        ResourceLocation resLoc = resLocFromStack(stack);
+        if (resLoc != null) {
+            return BuiltInRegistries.PAINTING_VARIANT.get(resLoc);
         }
 
         return null;
     }
 
-    public static ItemStack stackFromPaintingVariant(ResourceKey<PaintingVariant> variant) {
-        return stackFromPaintingVariant(resLocFromPaintingVariant(variant));
+    @Nullable
+    public static ResourceLocation resLocFromStack(ItemStack stack) {
+        if (stack.getTag() != null && stack.getTag().contains("EntityTag")) {
+
+            CompoundTag entityTag = stack.getTag().getCompound("EntityTag");
+            String variant = entityTag.getString("variant");
+            return new ResourceLocation(variant);
+        }
+
+        return null;
     }
 
     public static ItemStack stackFromPaintingVariant(ResourceLocation resLoc) {

@@ -58,11 +58,11 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_carrot",
       "has_milk_bucket",
       "has_sugar",
-      "has_egg",
-      "has_the_recipe"
+      "has_egg"
     ]
   ],
   "rewards": {

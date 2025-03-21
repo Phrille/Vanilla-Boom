@@ -10,6 +10,7 @@ package phrille.vanillaboom.inventory;
 
 import com.google.common.collect.Lists;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.entity.decoration.PaintingVariants;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -17,10 +18,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.util.MutableHashedLinkedMap;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.util.MutableHashedLinkedMap;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.variant.ModBookshelfBlock;
 import phrille.vanillaboom.block.variant.ModLadderBlock;
@@ -619,10 +620,10 @@ public class CreativeTabHandler {
             putAfter(entries, Blocks.SCAFFOLDING, ModItems.TRELLIS.get());
             putAfter(entries, Blocks.BOOKSHELF, ModBookshelfBlock.BOOKSHELVES.stream().map(bookshelf -> (ItemLike) bookshelf.asItem()).toList());
             addUnusedPaintingVariants(entries, List.of(
-                    Utils.stackFromPaintingVariant(PaintingVariants.EARTH),
-                    Utils.stackFromPaintingVariant(PaintingVariants.WIND),
-                    Utils.stackFromPaintingVariant(PaintingVariants.FIRE),
-                    Utils.stackFromPaintingVariant(PaintingVariants.WATER)
+                    paintingStack(PaintingVariants.EARTH),
+                    paintingStack(PaintingVariants.WIND),
+                    paintingStack(PaintingVariants.FIRE),
+                    paintingStack(PaintingVariants.WATER)
             ));
         }
 
@@ -718,5 +719,9 @@ public class CreativeTabHandler {
 
     private static void remove(MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries, ItemLike item) {
         entries.remove(new ItemStack(item));
+    }
+
+    private static ItemStack paintingStack(ResourceKey<PaintingVariant> variant) {
+        return Utils.stackFromPaintingVariant(Utils.resLocFromPaintingVariant(variant));
     }
 }

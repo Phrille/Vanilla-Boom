@@ -1,5 +1,5 @@
 {
-  "type": "forge:add_features",
+  "type": "neoforge:add_features",
   "biomes": "#minecraft:is_ocean",
   "features": "vanillaboom:disk_hydro_rock",
   "step": "underground_ores"

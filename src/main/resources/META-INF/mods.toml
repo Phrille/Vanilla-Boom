@@ -12,10 +12,13 @@ logoFile="vanillaboom_logo.png"
 authors="${mod_authors}"
 description='''${mod_description}'''
 
+[[accessTransformers]]
+    file="META-INF/accesstransformer.cfg"
+
 [[dependencies.${mod_id}]]
-    modId="forge"
+    modId="neoforge"
     mandatory=true
-    versionRange="${forge_version_range}"
+    versionRange="${neo_version_range}"
     ordering="NONE"
     side="BOTH"
 

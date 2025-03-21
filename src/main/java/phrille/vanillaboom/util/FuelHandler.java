@@ -11,9 +11,9 @@ package phrille.vanillaboom.util;
 import com.google.common.collect.Maps;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import phrille.vanillaboom.VanillaBoom;
 
 import java.util.Map;

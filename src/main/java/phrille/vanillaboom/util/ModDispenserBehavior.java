@@ -9,7 +9,7 @@
 package phrille.vanillaboom.util;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.BlockSource;
+import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.OptionalDispenseItemBehavior;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
@@ -31,8 +31,8 @@ public class ModDispenserBehavior {
             @Override
             protected ItemStack execute(BlockSource source, ItemStack stack) {
                 setSuccess(true);
-                Level level = source.getLevel();
-                BlockPos pos = source.getPos().relative(source.getBlockState().getValue(DispenserBlock.FACING));
+                Level level = source.level();
+                BlockPos pos = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
 
                 if (!WitherBoneMealItem.apply(stack, level, pos)) {
                     setSuccess(false);

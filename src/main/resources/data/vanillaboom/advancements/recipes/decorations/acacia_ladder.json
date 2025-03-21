@@ -34,9 +34,9 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_stick",
-      "has_acacia_slab",
-      "has_the_recipe"
+      "has_acacia_slab"
     ]
   ],
   "rewards": {

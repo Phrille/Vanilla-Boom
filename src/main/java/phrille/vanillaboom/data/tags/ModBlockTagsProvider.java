@@ -14,9 +14,9 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CandleBlock;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.BlockTagsProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.ModCakeBlock;
@@ -61,61 +61,61 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         /*
          * Forge tags
          */
-        tag(ModTags.ForgeTags.Blocks.FENCE_GATES_NETHER_BRICK).addTags(ModTags.VanillaBoomTags.Blocks.FENCE_GATES);
+        tag(ModTags.NeoForgeTags.Blocks.FENCE_GATES_NETHER_BRICK).addTags(ModTags.VanillaBoomTags.Blocks.FENCE_GATES);
         tag(Tags.Blocks.FENCE_GATES_WOODEN).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCE_GATES);
-        tag(Tags.Blocks.FENCE_GATES).addTags(ModTags.ForgeTags.Blocks.FENCE_GATES_NETHER_BRICK);
+        tag(Tags.Blocks.FENCE_GATES).addTags(ModTags.NeoForgeTags.Blocks.FENCE_GATES_NETHER_BRICK);
         tag(Tags.Blocks.FENCES_NETHER_BRICK).addTags(ModTags.VanillaBoomTags.Blocks.FENCES);
         tag(Tags.Blocks.FENCES_WOODEN).addTags(ModTags.VanillaBoomTags.Blocks.WOODEN_FENCES);
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_CHARCOAL).add(ModBlocks.CHARCOAL_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_SUGAR).add(ModBlocks.SUGAR_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_SUGAR_CANE).add(ModBlocks.SUGAR_CANE_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_GUNPOWDER).add(ModBlocks.GUNPOWDER_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BLAZE_POWDER).add(ModBlocks.BLAZE_POWDER_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_MAGMA_CREAM).add(ModBlocks.MAGMA_CREAM_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_PRISMARINE_CRYSTAL).add(ModBlocks.PRISMARINE_CRYSTAL_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_WITHER_BONE).add(ModBlocks.WITHER_BONE_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_WHITE_DYE).add(ModBlocks.WHITE_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_ORANGE_DYE).add(ModBlocks.ORANGE_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_MAGENTA_DYE).add(ModBlocks.MAGENTA_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_LIGHT_BLUE_DYE).add(ModBlocks.LIGHT_BLUE_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_YELLOW_DYE).add(ModBlocks.YELLOW_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_LIME_DYE).add(ModBlocks.LIME_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_PINK_DYE).add(ModBlocks.PINK_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_GRAY_DYE).add(ModBlocks.GRAY_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_LIGHT_GRAY_DYE).add(ModBlocks.LIGHT_GRAY_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_CYAN_DYE).add(ModBlocks.CYAN_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_PURPLE_DYE).add(ModBlocks.PURPLE_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BLUE_DYE).add(ModBlocks.BLUE_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BROWN_DYE).add(ModBlocks.BROWN_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_GREEN_DYE).add(ModBlocks.GREEN_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_RED_DYE).add(ModBlocks.RED_DYE_BLOCK.get());
-        tag(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BLACK_DYE).add(ModBlocks.BLACK_DYE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_CHARCOAL).add(ModBlocks.CHARCOAL_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_SUGAR).add(ModBlocks.SUGAR_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_SUGAR_CANE).add(ModBlocks.SUGAR_CANE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_GUNPOWDER).add(ModBlocks.GUNPOWDER_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_BLAZE_POWDER).add(ModBlocks.BLAZE_POWDER_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_MAGMA_CREAM).add(ModBlocks.MAGMA_CREAM_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_PRISMARINE_CRYSTAL).add(ModBlocks.PRISMARINE_CRYSTAL_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_WITHER_BONE).add(ModBlocks.WITHER_BONE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_WHITE_DYE).add(ModBlocks.WHITE_DYE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_ORANGE_DYE).add(ModBlocks.ORANGE_DYE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_MAGENTA_DYE).add(ModBlocks.MAGENTA_DYE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_LIGHT_BLUE_DYE).add(ModBlocks.LIGHT_BLUE_DYE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_YELLOW_DYE).add(ModBlocks.YELLOW_DYE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_LIME_DYE).add(ModBlocks.LIME_DYE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_PINK_DYE).add(ModBlocks.PINK_DYE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_GRAY_DYE).add(ModBlocks.GRAY_DYE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_LIGHT_GRAY_DYE).add(ModBlocks.LIGHT_GRAY_DYE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_CYAN_DYE).add(ModBlocks.CYAN_DYE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_PURPLE_DYE).add(ModBlocks.PURPLE_DYE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_BLUE_DYE).add(ModBlocks.BLUE_DYE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_BROWN_DYE).add(ModBlocks.BROWN_DYE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_GREEN_DYE).add(ModBlocks.GREEN_DYE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_RED_DYE).add(ModBlocks.RED_DYE_BLOCK.get());
+        tag(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_BLACK_DYE).add(ModBlocks.BLACK_DYE_BLOCK.get());
         tag(Tags.Blocks.STORAGE_BLOCKS)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_CHARCOAL)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_SUGAR)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_SUGAR_CANE)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_GUNPOWDER)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BLAZE_POWDER)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_MAGMA_CREAM)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_PRISMARINE_CRYSTAL)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_WITHER_BONE)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_WHITE_DYE)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_ORANGE_DYE)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_MAGENTA_DYE)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_LIGHT_BLUE_DYE)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_YELLOW_DYE)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_LIME_DYE)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_PINK_DYE)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_GRAY_DYE)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_LIGHT_GRAY_DYE)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_CYAN_DYE)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_PURPLE_DYE)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BLUE_DYE)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BROWN_DYE)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_GREEN_DYE)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_RED_DYE)
-                .addTags(ModTags.ForgeTags.Blocks.STORAGE_BLOCKS_BLACK_DYE);
-        tag(ModTags.ForgeTags.Blocks.CAKES)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_CHARCOAL)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_SUGAR)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_SUGAR_CANE)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_GUNPOWDER)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_BLAZE_POWDER)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_MAGMA_CREAM)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_PRISMARINE_CRYSTAL)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_WITHER_BONE)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_WHITE_DYE)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_ORANGE_DYE)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_MAGENTA_DYE)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_LIGHT_BLUE_DYE)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_YELLOW_DYE)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_LIME_DYE)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_PINK_DYE)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_GRAY_DYE)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_LIGHT_GRAY_DYE)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_CYAN_DYE)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_PURPLE_DYE)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_BLUE_DYE)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_BROWN_DYE)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_GREEN_DYE)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_RED_DYE)
+                .addTags(ModTags.NeoForgeTags.Blocks.STORAGE_BLOCKS_BLACK_DYE);
+        tag(ModTags.NeoForgeTags.Blocks.CAKES)
                 .add(Blocks.CAKE)
                 .add(ModBlocks.CHOCOLATE_CAKE.get())
                 .add(ModBlocks.BERRY_CAKE.get())
@@ -301,9 +301,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         // Bookshelves
         ModBookshelfBlock.BOOKSHELVES.forEach(bookshelf -> tag(ModTags.VanillaBoomTags.Blocks.BOOKSHELVES).add(bookshelf));
         tag(BlockTags.CLIMBABLE).addTags(ModTags.VanillaBoomTags.Blocks.LADDERS);
-        tag(ModTags.ForgeTags.Blocks.LADDERS).addTags(ModTags.VanillaBoomTags.Blocks.LADDERS);
+        tag(ModTags.NeoForgeTags.Blocks.LADDERS).addTags(ModTags.VanillaBoomTags.Blocks.LADDERS);
         ModLadderBlock.LADDERS.forEach(ladder -> tag(ModTags.VanillaBoomTags.Blocks.LADDERS).add(ladder));
-        tag(ModTags.ForgeTags.Blocks.BOOKSHELVES).addTags(ModTags.VanillaBoomTags.Blocks.BOOKSHELVES);
+        tag(ModTags.NeoForgeTags.Blocks.BOOKSHELVES).addTags(ModTags.VanillaBoomTags.Blocks.BOOKSHELVES);
 
         // Stairs
         ModStairBlock.STAIRS.forEach(stair -> {

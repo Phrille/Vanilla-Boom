@@ -9,14 +9,14 @@
 package phrille.vanillaboom.data;
 
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraftforge.client.model.generators.*;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.model.generators.*;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.EaselBlock;
 import phrille.vanillaboom.block.ModBlocks;
@@ -571,7 +571,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     protected ResourceLocation variantTexture(Block block) {
-        ResourceLocation name = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block));
+        ResourceLocation name = Objects.requireNonNull(BuiltInRegistries.BLOCK.getKey(block));
 
         return new ResourceLocation(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath()
                 .replace("_wood", "_log")
@@ -584,7 +584,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     protected String name(Block block) {
-        return Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)).getPath();
+        return Objects.requireNonNull(BuiltInRegistries.BLOCK.getKey(block)).getPath();
     }
 
     protected String getCakeName(String name, int bites) {

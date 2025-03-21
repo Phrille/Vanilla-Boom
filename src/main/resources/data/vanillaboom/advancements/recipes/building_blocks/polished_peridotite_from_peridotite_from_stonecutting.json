@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_peridotite",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_peridotite"
     ]
   ],
   "rewards": {

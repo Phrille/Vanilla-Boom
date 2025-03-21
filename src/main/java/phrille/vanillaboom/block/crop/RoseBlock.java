@@ -27,7 +27,7 @@ public class RoseBlock extends FlowerBlock implements IWitherBonemealable {
 
     @Override
     public boolean isValidWitherBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
-        return VanillaBoomConfig.growWitherRoses;
+        return VanillaBoomConfig.witherRoses;
     }
 
     @Override
