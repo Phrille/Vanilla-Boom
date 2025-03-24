@@ -32,6 +32,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.CommonHooks;
 import phrille.vanillaboom.util.Utils;
 
+import javax.annotation.Nullable;
+
 public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrellisCrop {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 
@@ -45,6 +47,7 @@ public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrell
     }
 
     @Override
+    @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         return null;
     }

@@ -65,7 +65,7 @@ public class WitherBoneMealItem extends Item {
             return growNetherWarts(level, pos, state, stack);
         } else if (block == Blocks.VINE) {
             return witherVines(level, pos, state, stack);
-        } else if (block == Blocks.GRASS || block == Blocks.FERN) {
+        } else if (block == Blocks.SHORT_GRASS || block == Blocks.FERN) {
             return witherGrass(level, pos, stack);
         }
         return false;

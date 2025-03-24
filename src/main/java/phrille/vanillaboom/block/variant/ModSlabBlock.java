@@ -25,7 +25,7 @@ public class ModSlabBlock extends SlabBlock implements IVariantBlock {
     protected final Supplier<BlockState> state;
 
     public ModSlabBlock(Supplier<BlockState> state) {
-        this(state, BlockBehaviour.Properties.copy(state.get().getBlock()));
+        this(state, BlockBehaviour.Properties.ofFullCopy(state.get().getBlock()));
     }
 
     public ModSlabBlock(Supplier<BlockState> state, BlockBehaviour.Properties builder) {

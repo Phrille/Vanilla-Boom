@@ -14,8 +14,8 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CandleCakeBlock;
@@ -31,7 +31,7 @@ public class ModCandleCakeBlock extends CandleCakeBlock {
 
     @SuppressWarnings("ConstantConditions")
     public ModCandleCakeBlock(Supplier<Block> candle, Supplier<Block> parent) {
-        super(null, BlockBehaviour.Properties.copy(Blocks.CANDLE_CAKE));
+        super(null, BlockBehaviour.Properties.ofFullCopy(Blocks.CANDLE_CAKE));
         this.candle = candle;
         this.parent = parent;
     }
@@ -64,7 +64,7 @@ public class ModCandleCakeBlock extends CandleCakeBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockGetter getter, BlockPos pos, BlockState state) {
+    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
         return new ItemStack(parent.get());
     }
 

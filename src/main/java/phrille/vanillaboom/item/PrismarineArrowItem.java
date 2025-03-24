@@ -23,6 +23,6 @@ public class PrismarineArrowItem extends ArrowItem {
 
     @Override
     public AbstractArrow createArrow(Level level, ItemStack stack, LivingEntity shooter) {
-        return new PrismarineArrow(level, shooter);
+        return new PrismarineArrow(level, shooter, stack.copyWithCount(1));
     }
 }

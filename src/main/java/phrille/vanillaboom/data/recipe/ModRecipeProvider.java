@@ -6,9 +6,8 @@
  * See LICENSE for details.
  */
 
-package phrille.vanillaboom.data;
+package phrille.vanillaboom.data.recipe;
 
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -29,18 +28,17 @@ import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.variant.*;
-import phrille.vanillaboom.inventory.recipe.PaintingRecipeBuilder;
+import phrille.vanillaboom.data.ModDataGenerator;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.ModTags;
 import phrille.vanillaboom.util.Utils;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    public ModRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, lookupProvider);
+    public ModRecipeProvider(PackOutput output) {
+        super(output);
     }
 
     @Override
@@ -720,7 +718,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     public void painting(RecipeOutput output, ResourceKey<PaintingVariant> variant, List<TagKey<Item>> dyes) {
         List<Ingredient> ingredientDyes = Lists.newArrayList();
         dyes.forEach(dye -> ingredientDyes.add(Ingredient.of(dye)));
-        PaintingRecipeBuilder.painting(RecipeCategory.DECORATIONS, variant, 1)
+        PaintingRecipeBuilder.painting(RecipeCategory.DECORATIONS, variant)
                 .canvas(Ingredient.of(ModTags.NeoForgeTags.Items.CANVAS))
                 .dyes(ingredientDyes)
                 .unlockedBy(getHasName(ModItems.CANVAS.get()), has(ModItems.CANVAS.get()))

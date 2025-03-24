@@ -6,14 +6,15 @@
  * See LICENSE for details.
  */
 
-package phrille.vanillaboom.inventory.recipe;
+package phrille.vanillaboom.data.recipe;
 
 import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import net.minecraft.advancements.*;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementRequirements;
+import net.minecraft.advancements.AdvancementRewards;
+import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
-import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.core.NonNullList;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -21,9 +22,10 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
+import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
 import phrille.vanillaboom.util.Utils;
 
 import javax.annotation.Nullable;
@@ -38,11 +40,11 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
     private final Map<String, Criterion<?>> criteria = Maps.newLinkedHashMap();
 
     private Ingredient canvas;
-    private List<Ingredient> dyes;
+    private NonNullList<Ingredient> dyes;
     @Nullable
     private String group;
 
-    public PaintingRecipeBuilder(RecipeCategory category, ResourceKey<PaintingVariant> variant, int count) {
+    protected PaintingRecipeBuilder(RecipeCategory category, ResourceKey<PaintingVariant> variant, int count) {
         this.category = category;
         this.variant = variant;
         this.count = count;
@@ -52,13 +54,17 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
         return new PaintingRecipeBuilder(category, variant, count);
     }
 
+    public static PaintingRecipeBuilder painting(RecipeCategory category, ResourceKey<PaintingVariant> variant) {
+        return new PaintingRecipeBuilder(category, variant, 1);
+    }
+
     public PaintingRecipeBuilder canvas(Ingredient canvas) {
         this.canvas = canvas;
         return this;
     }
 
     public PaintingRecipeBuilder dyes(List<Ingredient> dyes) {
-        this.dyes = dyes;
+        this.dyes = NonNullList.copyOf(dyes);
         return this;
     }
 
@@ -87,42 +93,15 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
                 .requirements(AdvancementRequirements.Strategy.OR);
         Objects.requireNonNull(builder);
         criteria.forEach(builder::addCriterion);
-        output.accept(new PaintingRecipeBuilder.Result(id, group == null ? "" : group, canvas, dyes, variant, count,
-                builder.build(id.withPrefix("recipes/" + category.getFolderName() + "/"))));
+        ItemStack resultStack = Utils.stackFromPaintingVariant(Utils.resLocFromPaintingVariant(variant));
+        resultStack.setCount(count);
+        PaintingRecipe recipe = new PaintingRecipe(Objects.requireNonNullElse(group, ""), canvas, dyes, resultStack);
+        output.accept(id, recipe, builder.build(id.withPrefix("recipes/" + category.getFolderName() + "/")));
     }
 
     private void ensureValid(ResourceLocation id) {
         if (criteria.isEmpty()) {
             throw new IllegalStateException("No way of obtaining recipe " + id);
-        }
-    }
-
-    public record Result(ResourceLocation id, String group, Ingredient canvas, List<Ingredient> dyes,
-                         ResourceKey<PaintingVariant> variant, int count,
-                         AdvancementHolder advancement) implements FinishedRecipe {
-        @Override
-        public void serializeRecipeData(JsonObject json) {
-            if (!group.isEmpty()) {
-                json.addProperty("group", group);
-            }
-
-            json.add("canvas", canvas.toJson(false));
-            JsonArray jsonDyes = new JsonArray(PaintingRecipe.MAX_DYES);
-
-            for (Ingredient dye : dyes) {
-                jsonDyes.add(dye.toJson(false));
-            }
-
-            json.add("dyes", jsonDyes);
-            json.addProperty("variant", Utils.resLocFromPaintingVariant(variant).toString());
-            if (count > 1) {
-                json.addProperty("count", count);
-            }
-        }
-
-        @Override
-        public RecipeSerializer<PaintingRecipe> type() {
-            return ModRecipes.PAINTING_SERIALIZER.get();
         }
     }
 }

@@ -8,6 +8,7 @@
 
 package phrille.vanillaboom.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
@@ -38,13 +39,16 @@ import phrille.vanillaboom.block.entity.RainDetectorBlockEntity;
 import javax.annotation.Nullable;
 
 public class RainDetectorBlock extends BaseEntityBlock {
+    public static final MapCodec<RainDetectorBlock> CODEC = MapCodec.unit(RainDetectorBlock::new);
     public static final IntegerProperty POWER = BlockStateProperties.POWER;
     public static final BooleanProperty INVERTED = BlockStateProperties.INVERTED;
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D);
 
     public RainDetectorBlock() {
-        super(BlockBehaviour.Properties.copy(Blocks.DAYLIGHT_DETECTOR));
-        registerDefaultState(stateDefinition.any().setValue(INVERTED, false).setValue(POWER, 0));
+        super(BlockBehaviour.Properties.ofFullCopy(Blocks.DAYLIGHT_DETECTOR));
+        registerDefaultState(stateDefinition.any()
+                .setValue(INVERTED, false)
+                .setValue(POWER, 0));
     }
 
     @Override
@@ -125,6 +129,11 @@ public class RainDetectorBlock extends BaseEntityBlock {
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new RainDetectorBlockEntity(pos, state);
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @Override
