@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:cooked_tuna_from_tuna_from_smoking"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

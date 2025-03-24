@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:granite_pillar_from_granite_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

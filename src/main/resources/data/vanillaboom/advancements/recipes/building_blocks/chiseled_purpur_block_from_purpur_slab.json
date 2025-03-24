@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:chiseled_purpur_block_from_purpur_slab"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

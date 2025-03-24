@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:stripped_crimson_hyphae_stairs"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

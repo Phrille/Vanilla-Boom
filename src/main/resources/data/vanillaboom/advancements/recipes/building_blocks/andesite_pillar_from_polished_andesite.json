@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:andesite_pillar_from_polished_andesite"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

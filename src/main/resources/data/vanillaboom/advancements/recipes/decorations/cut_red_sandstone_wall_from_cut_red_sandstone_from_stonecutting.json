@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:cut_red_sandstone_wall_from_cut_red_sandstone_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

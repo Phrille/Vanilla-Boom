@@ -43,6 +43,5 @@
     "recipes": [
       "vanillaboom:crimson_ladder"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

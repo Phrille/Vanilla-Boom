@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:polished_granite_wall_from_granite_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

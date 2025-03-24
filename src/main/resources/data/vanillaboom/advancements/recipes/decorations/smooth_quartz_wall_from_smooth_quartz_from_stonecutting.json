@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:smooth_quartz_wall_from_smooth_quartz_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

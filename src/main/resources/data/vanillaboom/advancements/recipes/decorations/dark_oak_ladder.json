@@ -43,6 +43,5 @@
     "recipes": [
       "vanillaboom:dark_oak_ladder"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

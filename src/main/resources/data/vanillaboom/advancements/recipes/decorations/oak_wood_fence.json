@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:oak_wood_fence"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

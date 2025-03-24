@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:white_terracotta_brick_wall_from_white_terracotta_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:cooked_perch_from_perch_from_campfire"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:purpur_block_wall_from_purpur_block_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

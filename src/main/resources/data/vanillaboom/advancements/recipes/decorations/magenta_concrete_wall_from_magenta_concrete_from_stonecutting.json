@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:magenta_concrete_wall_from_magenta_concrete_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:cooked_eel_from_eel_from_smoking"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

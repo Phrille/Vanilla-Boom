@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:white_terracotta_wall"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

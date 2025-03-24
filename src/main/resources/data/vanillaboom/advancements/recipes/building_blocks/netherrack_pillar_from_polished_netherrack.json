@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:netherrack_pillar_from_polished_netherrack"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:red_dye_from_rose"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:magma_brick_from_magma_block_from_smelting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

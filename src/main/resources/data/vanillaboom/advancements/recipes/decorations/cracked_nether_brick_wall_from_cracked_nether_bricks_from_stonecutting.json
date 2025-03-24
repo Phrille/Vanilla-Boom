@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:cracked_nether_brick_wall_from_cracked_nether_bricks_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

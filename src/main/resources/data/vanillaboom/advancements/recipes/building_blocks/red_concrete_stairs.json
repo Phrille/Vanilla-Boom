@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:red_concrete_stairs"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:charcoal_from_charcoal_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

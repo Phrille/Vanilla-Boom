@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:dark_oak_wood_stairs"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

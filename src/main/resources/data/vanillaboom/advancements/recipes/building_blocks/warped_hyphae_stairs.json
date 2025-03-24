@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:warped_hyphae_stairs"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:brown_dye_from_brown_dye_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

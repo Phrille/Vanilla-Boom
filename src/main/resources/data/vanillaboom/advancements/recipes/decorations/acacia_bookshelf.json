@@ -43,6 +43,5 @@
     "recipes": [
       "vanillaboom:acacia_bookshelf"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

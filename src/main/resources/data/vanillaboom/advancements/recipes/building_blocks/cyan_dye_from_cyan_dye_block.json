@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:cyan_dye_from_cyan_dye_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

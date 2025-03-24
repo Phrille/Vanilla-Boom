@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:cyan_terracotta_brick_stairs"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

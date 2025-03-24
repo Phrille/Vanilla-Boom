@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:gunpowder_from_gunpowder_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

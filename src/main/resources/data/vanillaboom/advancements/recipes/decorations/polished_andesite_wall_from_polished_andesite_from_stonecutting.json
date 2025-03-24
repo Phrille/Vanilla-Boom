@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:polished_andesite_wall_from_polished_andesite_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

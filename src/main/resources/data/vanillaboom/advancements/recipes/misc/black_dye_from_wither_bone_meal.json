@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:black_dye_from_wither_bone_meal"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

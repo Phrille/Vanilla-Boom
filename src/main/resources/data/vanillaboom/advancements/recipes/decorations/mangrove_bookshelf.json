@@ -43,6 +43,5 @@
     "recipes": [
       "vanillaboom:mangrove_bookshelf"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

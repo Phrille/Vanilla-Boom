@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:pink_dye_from_peony"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

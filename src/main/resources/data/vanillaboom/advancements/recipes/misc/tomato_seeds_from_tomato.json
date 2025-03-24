@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:tomato_seeds_from_tomato"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

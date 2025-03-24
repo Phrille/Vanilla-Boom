@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:diorite_pillar_from_polished_diorite_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

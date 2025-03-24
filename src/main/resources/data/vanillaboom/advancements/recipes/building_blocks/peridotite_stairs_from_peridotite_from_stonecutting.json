@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:peridotite_stairs_from_peridotite_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

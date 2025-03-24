@@ -278,7 +278,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> IRON_BLOCK_STAIRS = BLOCKS.register("iron_block_stairs", () -> new ModStairBlock(Blocks.IRON_BLOCK::defaultBlockState));
     public static final DeferredBlock<Block> GOLD_BLOCK_STAIRS = BLOCKS.register("gold_block_stairs", () -> new ModStairBlock(Blocks.GOLD_BLOCK::defaultBlockState));
     public static final DeferredBlock<Block> OBSIDIAN_STAIRS = BLOCKS.register("obsidian_stairs", () -> new ModStairBlock(Blocks.OBSIDIAN::defaultBlockState));
-    public static final DeferredBlock<Block> BEDROCK_STAIRS = BLOCKS.register("bedrock_stairs", () -> new ModStairBlock(Blocks.BEDROCK::defaultBlockState));
+    public static final DeferredBlock<Block> BEDROCK_STAIRS = BLOCKS.register("bedrock_stairs", () -> new ModStairBlock(Blocks.BEDROCK::defaultBlockState, BlockBehaviour.Properties.ofLegacyCopy(Blocks.BEDROCK).noLootTable()));
     public static final DeferredBlock<Block> NETHERRACK_STAIRS = BLOCKS.register("netherrack_stairs", () -> new ModStairBlock(Blocks.NETHERRACK::defaultBlockState));
     public static final DeferredBlock<Block> CRACKED_NETHER_BRICK_STAIRS = BLOCKS.register("cracked_nether_brick_stairs", () -> new ModStairBlock(Blocks.CRACKED_NETHER_BRICKS::defaultBlockState));
     public static final DeferredBlock<Block> CRACKED_POLISHED_BLACKSTONE_BRICK_STAIRS = BLOCKS.register("cracked_polished_blackstone_brick_stairs", () -> new ModStairBlock(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS::defaultBlockState));
@@ -473,7 +473,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> IRON_BLOCK_WALL = BLOCKS.register("iron_block_wall", () -> new ModWallBlock(Blocks.IRON_BLOCK::defaultBlockState));
     public static final DeferredBlock<Block> GOLD_BLOCK_WALL = BLOCKS.register("gold_block_wall", () -> new ModWallBlock(Blocks.GOLD_BLOCK::defaultBlockState));
     public static final DeferredBlock<Block> OBSIDIAN_WALL = BLOCKS.register("obsidian_wall", () -> new ModWallBlock(Blocks.OBSIDIAN::defaultBlockState));
-    public static final DeferredBlock<Block> BEDROCK_WALL = BLOCKS.register("bedrock_wall", () -> new ModWallBlock(Blocks.BEDROCK::defaultBlockState));
+    public static final DeferredBlock<Block> BEDROCK_WALL = BLOCKS.register("bedrock_wall", () -> new ModWallBlock(Blocks.BEDROCK::defaultBlockState, BlockBehaviour.Properties.ofLegacyCopy(Blocks.BEDROCK).forceSolidOn().noLootTable()));
     public static final DeferredBlock<Block> NETHERRACK_WALL = BLOCKS.register("netherrack_wall", () -> new ModWallBlock(Blocks.NETHERRACK::defaultBlockState));
     public static final DeferredBlock<Block> CRACKED_NETHER_BRICK_WALL = BLOCKS.register("cracked_nether_brick_wall", () -> new ModWallBlock(Blocks.CRACKED_NETHER_BRICKS::defaultBlockState));
     public static final DeferredBlock<Block> CRACKED_POLISHED_BLACKSTONE_BRICK_WALL = BLOCKS.register("cracked_polished_blackstone_brick_wall", () -> new ModWallBlock(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS::defaultBlockState));
