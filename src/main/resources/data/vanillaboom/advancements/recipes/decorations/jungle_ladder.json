@@ -43,6 +43,5 @@
     "recipes": [
       "vanillaboom:jungle_ladder"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

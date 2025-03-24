@@ -43,6 +43,5 @@
     "recipes": [
       "vanillaboom:rice_bowl"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

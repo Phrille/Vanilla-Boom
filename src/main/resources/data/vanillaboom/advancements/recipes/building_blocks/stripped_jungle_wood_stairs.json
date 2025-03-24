@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:stripped_jungle_wood_stairs"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -21,8 +21,9 @@ public class ModStairBlock extends StairBlock implements IVariantBlock {
     public static final List<ModStairBlock> STAIRS = Lists.newArrayList();
     protected final Supplier<BlockState> state;
 
+    @SuppressWarnings("deprecation")
     public ModStairBlock(Supplier<BlockState> state) {
-        this(state, BlockBehaviour.Properties.copy(state.get().getBlock()));
+        this(state, BlockBehaviour.Properties.ofLegacyCopy(state.get().getBlock()));
     }
 
     public ModStairBlock(Supplier<BlockState> state, BlockBehaviour.Properties builder) {

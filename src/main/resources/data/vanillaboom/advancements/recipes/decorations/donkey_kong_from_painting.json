@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:donkey_kong_from_painting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

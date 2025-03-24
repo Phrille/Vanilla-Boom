@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:blue_terracotta_brick_stairs_from_blue_terracotta_bricks_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

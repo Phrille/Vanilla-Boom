@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:cyan_terracotta_stairs_from_cyan_terracotta_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

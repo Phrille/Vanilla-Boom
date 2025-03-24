@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:orange_terracotta_slab"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

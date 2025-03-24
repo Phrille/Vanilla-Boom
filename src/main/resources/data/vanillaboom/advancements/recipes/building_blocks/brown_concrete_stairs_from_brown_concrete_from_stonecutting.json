@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:brown_concrete_stairs_from_brown_concrete_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

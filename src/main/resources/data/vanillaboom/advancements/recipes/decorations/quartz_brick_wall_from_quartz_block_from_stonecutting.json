@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:quartz_brick_wall_from_quartz_block_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

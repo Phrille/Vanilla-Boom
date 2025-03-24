@@ -26,6 +26,8 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -38,8 +40,13 @@ public class EaselBlock extends Block {
     private static final Component CONTAINER_TITLE = Component.translatable(VanillaBoom.MOD_ID + ".container.easel");
 
     public EaselBlock() {
-        super(BlockBehaviour.Properties.copy(Blocks.CARTOGRAPHY_TABLE));
-        registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH));
+        super(BlockBehaviour.Properties.of().
+                mapColor(MapColor.WOOD).
+                instrument(NoteBlockInstrument.BASS).
+                strength(2.5F).sound(SoundType.WOOD).
+                ignitedByLava());
+        registerDefaultState(stateDefinition.any()
+                .setValue(FACING, Direction.NORTH));
     }
 
     @Override

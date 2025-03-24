@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:cyan_concrete_slab"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:cyan_terracotta_brick_wall_from_cyan_terracotta_bricks_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

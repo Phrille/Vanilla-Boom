@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:leather_from_polar_bear_fur"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:blue_terracotta_slab_from_blue_terracotta_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

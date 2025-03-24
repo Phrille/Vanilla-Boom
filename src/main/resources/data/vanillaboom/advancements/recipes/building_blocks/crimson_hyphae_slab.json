@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:crimson_hyphae_slab"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

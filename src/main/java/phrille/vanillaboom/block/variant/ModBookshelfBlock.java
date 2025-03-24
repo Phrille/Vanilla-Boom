@@ -23,7 +23,7 @@ public class ModBookshelfBlock extends Block implements IVariantBlock {
     protected final Supplier<BlockState> state;
 
     public ModBookshelfBlock(Supplier<BlockState> state) {
-        this(state, BlockBehaviour.Properties.copy(state.get().getBlock()));
+        this(state, BlockBehaviour.Properties.ofFullCopy(state.get().getBlock()));
     }
 
     public ModBookshelfBlock(Supplier<BlockState> state, Properties builder) {

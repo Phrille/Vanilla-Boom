@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:iron_block_slab_from_iron_block_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:cyan_concrete_stairs_from_cyan_concrete_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

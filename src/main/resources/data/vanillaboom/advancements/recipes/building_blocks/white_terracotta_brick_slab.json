@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:white_terracotta_brick_slab"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

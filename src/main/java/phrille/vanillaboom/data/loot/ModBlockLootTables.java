@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CandleBlock;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -39,7 +40,6 @@ import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.Utils;
 
 import java.util.Set;
-import java.util.function.Supplier;
 
 public class ModBlockLootTables extends BlockLootSubProvider {
     public ModBlockLootTables() {
@@ -209,6 +209,12 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     @Override
     protected Iterable<Block> getKnownBlocks() {
         return ModBlocks.BLOCKS.getEntries().stream().map(Holder::value).toList();
+    }
+
+    @Override
+    protected void add(Block block, LootTable.Builder builder) {
+        if (block.getLootTable() == BuiltInLootTables.EMPTY) return;
+        super.add(block, builder);
     }
 
     protected LootTable.Builder createBoneSandDrops(Block block, ItemLike item) {

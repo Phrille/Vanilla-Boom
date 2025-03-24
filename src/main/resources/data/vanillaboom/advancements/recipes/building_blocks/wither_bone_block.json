@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:wither_bone_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

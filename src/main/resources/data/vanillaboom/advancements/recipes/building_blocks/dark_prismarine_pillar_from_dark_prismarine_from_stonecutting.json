@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:dark_prismarine_pillar_from_dark_prismarine_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

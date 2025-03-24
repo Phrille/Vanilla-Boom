@@ -48,7 +48,8 @@ public class TrellisBlock extends Block {
 
     public TrellisBlock(Properties builder) {
         super(builder);
-        registerDefaultState(stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER));
+        registerDefaultState(stateDefinition.any()
+                .setValue(HALF, DoubleBlockHalf.LOWER));
     }
 
     @Override
@@ -72,7 +73,10 @@ public class TrellisBlock extends Block {
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockPos pos = context.getClickedPos();
         Level level = context.getLevel();
-        return pos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(pos.above()).canBeReplaced(context) ? super.getStateForPlacement(context) : null;
+        if (pos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(pos.above()).canBeReplaced(context)) {
+            return super.getStateForPlacement(context);
+        }
+        return null;
     }
 
     @Override
@@ -100,9 +104,7 @@ public class TrellisBlock extends Block {
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
 
-        if (!TRELLIS_CROPS.containsKey(stack.getItem())) {
-            return InteractionResult.PASS;
-        }
+        if (!TRELLIS_CROPS.containsKey(stack.getItem())) return InteractionResult.PASS;
 
         level.playSound(null, pos, SoundEvents.CROP_PLANTED, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
         ITrellisCrop cropBlock = TRELLIS_CROPS.get(stack.getItem());
@@ -116,7 +118,7 @@ public class TrellisBlock extends Block {
     }
 
     @Override
-    public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
         if (!level.isClientSide) {
             if (player.isCreative()) {
                 Utils.preventCreativeDropFromBottomPart(level, pos, state, player, HALF);
@@ -124,7 +126,7 @@ public class TrellisBlock extends Block {
                 dropResources(state, level, pos, null, player, player.getMainHandItem());
             }
         }
-        super.playerWillDestroy(level, pos, state, player);
+       return super.playerWillDestroy(level, pos, state, player);
     }
 
     @Override

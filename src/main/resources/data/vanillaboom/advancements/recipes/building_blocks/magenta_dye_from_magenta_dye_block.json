@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:magenta_dye_from_magenta_dye_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

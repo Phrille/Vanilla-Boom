@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:green_dye_from_green_dye_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

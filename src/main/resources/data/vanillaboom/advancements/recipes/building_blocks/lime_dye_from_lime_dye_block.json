@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:lime_dye_from_lime_dye_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -43,6 +43,5 @@
     "recipes": [
       "vanillaboom:canvas"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

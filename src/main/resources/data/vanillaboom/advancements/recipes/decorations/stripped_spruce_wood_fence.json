@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:stripped_spruce_wood_fence"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

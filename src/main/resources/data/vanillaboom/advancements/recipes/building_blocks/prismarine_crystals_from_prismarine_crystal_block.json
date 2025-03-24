@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:prismarine_crystals_from_prismarine_crystal_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

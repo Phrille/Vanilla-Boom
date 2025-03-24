@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:stripped_dark_oak_wood_slab"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

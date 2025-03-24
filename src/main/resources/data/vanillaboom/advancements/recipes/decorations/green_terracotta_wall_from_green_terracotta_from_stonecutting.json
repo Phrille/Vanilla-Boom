@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:green_terracotta_wall_from_green_terracotta_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

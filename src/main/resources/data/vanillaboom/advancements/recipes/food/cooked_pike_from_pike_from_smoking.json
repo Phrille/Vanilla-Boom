@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:cooked_pike_from_pike_from_smoking"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

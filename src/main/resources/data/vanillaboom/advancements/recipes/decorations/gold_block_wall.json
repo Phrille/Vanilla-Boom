@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:gold_block_wall"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:iron_block_stairs"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

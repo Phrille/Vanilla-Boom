@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:pointer_from_painting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

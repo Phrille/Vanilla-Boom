@@ -14,7 +14,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
@@ -37,7 +36,9 @@ public class DoubleCropBlock extends CropBlock {
 
     public DoubleCropBlock(Properties builder) {
         super(builder);
-        registerDefaultState(stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER).setValue(getAgeProperty(), 0));
+        registerDefaultState(stateDefinition.any()
+                .setValue(HALF, DoubleBlockHalf.LOWER)
+                .setValue(getAgeProperty(), 0));
     }
 
     @Override
@@ -50,10 +51,14 @@ public class DoubleCropBlock extends CropBlock {
     }
 
     @Override
+    @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockPos pos = context.getClickedPos();
         Level level = context.getLevel();
-        return pos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(pos.above()).canBeReplaced(context) ? super.getStateForPlacement(context) : null;
+        if (pos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(pos.above()).canBeReplaced(context)) {
+            return super.getStateForPlacement(context);
+        }
+        return null;
     }
 
     @Override
@@ -78,12 +83,7 @@ public class DoubleCropBlock extends CropBlock {
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {
-        return state.is(Blocks.FARMLAND);
-    }
-
-    @Override
-    public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
         if (!level.isClientSide) {
             if (player.isCreative()) {
                 Utils.preventCreativeDropFromBottomPart(level, pos, state, player, HALF);
@@ -91,7 +91,7 @@ public class DoubleCropBlock extends CropBlock {
                 dropResources(state, level, pos, null, player, player.getMainHandItem());
             }
         }
-        super.playerWillDestroy(level, pos, state, player);
+        return super.playerWillDestroy(level, pos, state, player);
     }
 
     @Override

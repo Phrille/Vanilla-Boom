@@ -43,6 +43,5 @@
     "recipes": [
       "vanillaboom:dark_oak_bookshelf"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

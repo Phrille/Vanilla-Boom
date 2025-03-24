@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:chiseled_red_nether_bricks_from_red_nether_brick_slab"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -22,7 +22,7 @@ public class ModLadderBlock extends LadderBlock {
     private final Supplier<Block> craftingIngredient;
 
     public ModLadderBlock(Supplier<Block> craftingIngredient) {
-        this(craftingIngredient, BlockBehaviour.Properties.copy(Blocks.LADDER));
+        this(craftingIngredient, BlockBehaviour.Properties.ofFullCopy(Blocks.LADDER));
     }
 
     public ModLadderBlock(Supplier<Block> craftingIngredient, BlockBehaviour.Properties builder) {

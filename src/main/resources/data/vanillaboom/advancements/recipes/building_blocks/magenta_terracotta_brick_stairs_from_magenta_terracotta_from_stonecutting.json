@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:magenta_terracotta_brick_stairs_from_magenta_terracotta_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

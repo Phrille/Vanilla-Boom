@@ -10,6 +10,7 @@ package phrille.vanillaboom.inventory;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
@@ -23,10 +24,11 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.network.PacketDistributor;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.inventory.recipe.ModRecipes;
 import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
-import phrille.vanillaboom.network.EaselRecipePacket;
+import phrille.vanillaboom.network.EaselRecipePayload;
 import phrille.vanillaboom.util.ModTags;
 
 import javax.annotation.Nullable;
@@ -69,7 +71,7 @@ public class EaselMenu extends AbstractContainerMenu {
         super(ModMenuTypes.EASEL_MENU.get(), containerId);
         access = levelAccess;
         player = inventory.player;
-        level = player.level();
+        level = inventory.player.level();
         availableRecipes = Lists.newArrayList();
         slotUpdateListener = () -> {
         };
@@ -195,7 +197,9 @@ public class EaselMenu extends AbstractContainerMenu {
         availableRecipes = level.getRecipeManager().getRecipesFor(ModRecipes.PAINTING.get(), container, level);
         selectedPaintingIndex.set(-1);
         resultSlot.set(ItemStack.EMPTY);
-        EaselRecipePacket.send(player, availableRecipes, (short) containerId);
+        if (player instanceof ServerPlayer serverPlayer) {
+            PacketDistributor.PLAYER.with(serverPlayer).send(new EaselRecipePayload((short) containerId, availableRecipes));
+        }
     }
 
     private void setupResultSlot() {

@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:obsidian_brick_wall_from_obsidian_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

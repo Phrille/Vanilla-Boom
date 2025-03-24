@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:prismarine_pillar_from_prismarine_bricks"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

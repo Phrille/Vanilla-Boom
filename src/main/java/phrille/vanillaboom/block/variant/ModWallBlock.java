@@ -24,8 +24,9 @@ public class ModWallBlock extends WallBlock implements IVariantBlock {
     public static final List<ModWallBlock> WALLS = Lists.newArrayList();
     protected final Supplier<BlockState> state;
 
+    @SuppressWarnings("deprecation")
     public ModWallBlock(Supplier<BlockState> state) {
-        this(state, BlockBehaviour.Properties.copy(state.get().getBlock()));
+        this(state, BlockBehaviour.Properties.ofLegacyCopy(state.get().getBlock()).forceSolidOn());
     }
 
     public ModWallBlock(Supplier<BlockState> state, BlockBehaviour.Properties builder) {

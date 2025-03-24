@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:warped_hyphae_fence"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

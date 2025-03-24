@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:purple_terracotta_bricks_alt"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

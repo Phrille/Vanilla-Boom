@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:andesite_pillar_from_andesite_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

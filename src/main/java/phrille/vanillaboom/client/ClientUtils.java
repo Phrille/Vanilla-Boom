@@ -13,6 +13,7 @@ import phrille.vanillaboom.client.screen.EaselScreen;
 import phrille.vanillaboom.inventory.ModMenuTypes;
 
 public class ClientUtils {
+    @SuppressWarnings("deprecation")
     public static void registerMenuScreen() {
         MenuScreens.register(ModMenuTypes.EASEL_MENU.get(), EaselScreen::new);
     }

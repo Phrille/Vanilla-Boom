@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:light_gray_terracotta_brick_slab_from_light_gray_terracotta_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

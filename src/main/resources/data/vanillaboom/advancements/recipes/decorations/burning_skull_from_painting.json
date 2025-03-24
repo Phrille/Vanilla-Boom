@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:burning_skull_from_painting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

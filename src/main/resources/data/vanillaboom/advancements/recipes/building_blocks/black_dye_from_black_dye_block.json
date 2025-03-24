@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:black_dye_from_black_dye_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

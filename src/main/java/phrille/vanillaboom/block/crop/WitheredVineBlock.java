@@ -21,7 +21,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 
 public class WitheredVineBlock extends VineBlock {
     public WitheredVineBlock() {
-        super(BlockBehaviour.Properties.copy(Blocks.VINE));
+        super(BlockBehaviour.Properties.ofFullCopy(Blocks.VINE));
     }
 
     @Override

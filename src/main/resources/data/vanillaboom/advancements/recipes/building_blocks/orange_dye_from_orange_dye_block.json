@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:orange_dye_from_orange_dye_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

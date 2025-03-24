@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:light_blue_terracotta_wall_from_light_blue_terracotta_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

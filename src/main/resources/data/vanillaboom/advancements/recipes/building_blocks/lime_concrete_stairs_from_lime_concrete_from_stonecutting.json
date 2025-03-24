@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:lime_concrete_stairs_from_lime_concrete_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

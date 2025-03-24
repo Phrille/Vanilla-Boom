@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:blue_concrete_wall"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

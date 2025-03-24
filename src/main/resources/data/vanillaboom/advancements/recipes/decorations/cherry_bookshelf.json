@@ -43,6 +43,5 @@
     "recipes": [
       "vanillaboom:cherry_bookshelf"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

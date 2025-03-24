@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:meat_soup"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

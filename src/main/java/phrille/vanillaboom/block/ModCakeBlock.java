@@ -35,7 +35,7 @@ public class ModCakeBlock extends CakeBlock {
     private final Map<CandleBlock, ModCandleCakeBlock> CANDLE_CAKES = Maps.newHashMap();
 
     public ModCakeBlock() {
-        super(BlockBehaviour.Properties.copy(Blocks.CAKE));
+        super(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE));
     }
 
     public static InteractionResult eat(LevelAccessor level, BlockPos pos, BlockState state, Player player) {

@@ -43,6 +43,5 @@
     "recipes": [
       "vanillaboom:jungle_bookshelf"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

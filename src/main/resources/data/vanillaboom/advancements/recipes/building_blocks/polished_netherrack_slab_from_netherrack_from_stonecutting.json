@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:polished_netherrack_slab_from_netherrack_from_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

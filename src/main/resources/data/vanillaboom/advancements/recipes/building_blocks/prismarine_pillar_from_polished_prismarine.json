@@ -30,6 +30,5 @@
     "recipes": [
       "vanillaboom:prismarine_pillar_from_polished_prismarine"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -23,8 +23,9 @@ public class ModFenceGateBlock extends FenceGateBlock implements IVariantBlock {
     public static final List<ModFenceGateBlock> FENCE_GATES = Lists.newArrayList();
     protected final Supplier<BlockState> state;
 
+    @SuppressWarnings("deprecation")
     public ModFenceGateBlock(Supplier<BlockState> state, WoodType woodType) {
-        this(state, BlockBehaviour.Properties.copy(state.get().getBlock()), woodType);
+        this(state, BlockBehaviour.Properties.ofLegacyCopy(state.get().getBlock()).forceSolidOn(), woodType);
     }
 
     public ModFenceGateBlock(Supplier<BlockState> state, Properties builder, WoodType woodType) {
