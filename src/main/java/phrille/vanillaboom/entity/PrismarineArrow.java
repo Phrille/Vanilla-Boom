@@ -19,10 +19,8 @@ import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.ModTags;
 
 public class PrismarineArrow extends AbstractArrow {
-    public static final ItemStack DEFAULT_ARROW_STACK = new ItemStack(ModItems.PRISMARINE_ARROW.get());
-
     public PrismarineArrow(EntityType<? extends PrismarineArrow> arrow, Level level) {
-        super(arrow, level, DEFAULT_ARROW_STACK);
+        super(arrow, level);
     }
 
     public PrismarineArrow(Level level, LivingEntity owner, ItemStack pickupStack) {
@@ -48,7 +46,12 @@ public class PrismarineArrow extends AbstractArrow {
     }
 
     public boolean isExtraHurtTarget(Entity entity) {
-        return entity.getType().is(ModTags.VanillaBoomTags.Entities.PRISMARINE_EXTRA_HURT);
+        return entity.getType().is(ModTags.Entities.PRISMARINE_EXTRA_HURT);
+    }
+
+    @Override
+    protected ItemStack getDefaultPickupItem() {
+        return new ItemStack(ModItems.PRISMARINE_ARROW.get());
     }
 
     @Override

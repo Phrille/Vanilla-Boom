@@ -27,7 +27,7 @@ public class ModStairBlock extends StairBlock implements IVariantBlock {
     }
 
     public ModStairBlock(Supplier<BlockState> state, BlockBehaviour.Properties builder) {
-        super(state, builder);
+        super(state.get(), builder);
         this.state = state;
         STAIRS.add(this);
     }

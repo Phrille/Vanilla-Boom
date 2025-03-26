@@ -20,6 +20,8 @@ import phrille.vanillaboom.util.ModTags;
 
 import java.util.concurrent.CompletableFuture;
 
+// TODO: aquatic tag, can_breathe_under_water, not_scary_for_pufferfish USE VB FISH TAG
+
 public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
     public ModEntityTypeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, VanillaBoom.MOD_ID, existingFileHelper);
@@ -27,18 +29,23 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        // VanillaBoom Tags
-        tag(ModTags.VanillaBoomTags.Entities.PRISMARINE_EXTRA_HURT)
-                .add(EntityType.BLAZE)
-                .add(EntityType.STRIDER)
-                .add(EntityType.MAGMA_CUBE);
-
-        // Vanilla Tags
+        // Minecraft Tags
         tag(EntityTypeTags.ARROWS).add(ModEntities.PRISMARINE_ARROW.get());
         tag(EntityTypeTags.AXOLOTL_HUNT_TARGETS)
                 .add(ModEntities.TUNA.get())
                 .add(ModEntities.PERCH.get())
                 .add(ModEntities.PIKE.get())
                 .add(ModEntities.EEL.get());
+
+        // Mod Tags
+        tag(ModTags.Entities.FISHES)
+                .add(ModEntities.TUNA.get())
+                .add(ModEntities.PERCH.get())
+                .add(ModEntities.PIKE.get())
+                .add(ModEntities.EEL.get());
+        tag(ModTags.Entities.PRISMARINE_EXTRA_HURT)
+                .add(EntityType.BLAZE)
+                .add(EntityType.STRIDER)
+                .add(EntityType.MAGMA_CUBE);
     }
 }

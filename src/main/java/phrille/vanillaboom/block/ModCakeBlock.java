@@ -42,6 +42,7 @@ public class ModCakeBlock extends CakeBlock {
         return CakeBlock.eat(level, pos, state, player);
     }
 
+    /*
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
@@ -74,12 +75,12 @@ public class ModCakeBlock extends CakeBlock {
 
         return CakeBlock.eat(level, pos, state, player);
     }
-
-    public Block byCandle(CandleBlock candle) {
+*/
+    public ModCandleCakeBlock byCandle(CandleBlock candle) {
         return CANDLE_CAKES.get(candle);
     }
 
-    public void addCandleCake(ModCandleCakeBlock candleCake) {
-        CANDLE_CAKES.put((CandleBlock) candleCake.getCandle(), candleCake);
+    public void addCandleCake(CandleBlock candle, ModCandleCakeBlock candleCake) {
+        CANDLE_CAKES.put(candle, candleCake);
     }
 }

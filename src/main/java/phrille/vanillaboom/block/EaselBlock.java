@@ -12,7 +12,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
@@ -35,6 +34,8 @@ import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.inventory.EaselMenu;
 import phrille.vanillaboom.util.ModStats;
 
+import javax.annotation.Nullable;
+
 public class EaselBlock extends Block {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     private static final Component CONTAINER_TITLE = Component.translatable(VanillaBoom.MOD_ID + ".container.easel");
@@ -50,32 +51,22 @@ public class EaselBlock extends Block {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public VoxelShape getOcclusionShape(BlockState state, BlockGetter getter, BlockPos pos) {
+    protected VoxelShape getOcclusionShape(BlockState state, BlockGetter getter, BlockPos pos) {
         return LecternBlock.SHAPE_COMMON;
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public boolean useShapeForLightOcclusion(BlockState state) {
+    protected boolean useShapeForLightOcclusion(BlockState state) {
         return true;
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public VoxelShape getCollisionShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+    protected VoxelShape getCollisionShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         return LecternBlock.SHAPE_COLLISION;
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+    protected VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         return switch (state.getValue(FACING)) {
             case NORTH -> LecternBlock.SHAPE_NORTH;
             case SOUTH -> LecternBlock.SHAPE_SOUTH;
@@ -92,13 +83,13 @@ public class EaselBlock extends Block {
 
     @Override
     @SuppressWarnings("deprecation")
-    public BlockState rotate(BlockState state, Rotation rotation) {
+    protected BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
     @Override
     @SuppressWarnings("deprecation")
-    public BlockState mirror(BlockState state, Mirror mirror) {
+    protected BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
@@ -108,8 +99,7 @@ public class EaselBlock extends Block {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
         if (level.isClientSide) {
             return InteractionResult.SUCCESS;
         } else {
@@ -120,8 +110,8 @@ public class EaselBlock extends Block {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
+    @Nullable
+    protected MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
         return new SimpleMenuProvider((containerId, inventory, player) -> new EaselMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE);
     }
 }

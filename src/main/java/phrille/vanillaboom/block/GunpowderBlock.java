@@ -13,7 +13,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -42,26 +42,23 @@ public class GunpowderBlock extends ColoredFallingBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        ItemStack stack = player.getItemInHand(hand);
-
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (!stack.is(Items.FLINT_AND_STEEL) && !stack.is(Items.FIRE_CHARGE)) {
-            return super.use(state, level, pos, player, hand, hit);
+            return super.useItemOn(stack, state, level, pos, player, hand, hit);
         } else {
             onCaughtFire(state, level, pos, hit.getDirection(), player);
 
             Item item = stack.getItem();
             if (!player.isCreative()) {
                 if (stack.is(Items.FLINT_AND_STEEL)) {
-                    stack.hurtAndBreak(1, player, (entity) -> entity.broadcastBreakEvent(hand));
+                    stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
                 } else {
                     stack.shrink(1);
                 }
             }
 
             player.awardStat(Stats.ITEM_USED.get(item));
-            return InteractionResult.SUCCESS;
+            return ItemInteractionResult.SUCCESS;
         }
     }
 
@@ -71,8 +68,7 @@ public class GunpowderBlock extends ColoredFallingBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public void onProjectileHit(Level level, BlockState state, BlockHitResult hit, Projectile projectile) {
+    protected void onProjectileHit(Level level, BlockState state, BlockHitResult hit, Projectile projectile) {
         if (!level.isClientSide) {
             if (projectile.isOnFire()) {
                 Entity owner = projectile.getOwner();

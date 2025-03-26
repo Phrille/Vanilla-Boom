@@ -27,8 +27,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.inventory.EaselMenu;
-import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
-import phrille.vanillaboom.util.Utils;
+import phrille.vanillaboom.crafting.PaintingRecipe;
+import phrille.vanillaboom.util.PaintingUtils;
 
 public class PaintingRecipeCategory implements IRecipeCategory<PaintingRecipe> {
     public static final ResourceLocation BACKGROUND = VanillaBoom.resLoc("textures/gui/container/easel.png");
@@ -89,24 +89,21 @@ public class PaintingRecipeCategory implements IRecipeCategory<PaintingRecipe> {
     @Override
     public void draw(PaintingRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         // guiGraphics.blit(BACKGROUND, 0, 0, 0, 184, getWidth(), getHeight());
-        PaintingVariant variant = Utils.paintingVariantFromStack(recipe.result());
+        PaintingVariant variant = PaintingUtils.holderFromStack(recipe.result()).value();
+        TextureAtlasSprite sprite = Minecraft.getInstance().getPaintingTextures().get(variant);
+        float maxSize = PAINTING_BOX_SIZE;
+        float scaleFactor = Math.min(maxSize / variant.getWidth(), maxSize / variant.getHeight());
 
-        if (variant != null) {
-            TextureAtlasSprite sprite = Minecraft.getInstance().getPaintingTextures().get(variant);
-            float maxSize = PAINTING_BOX_SIZE;
-            float scaleFactor = Math.min(maxSize / variant.getWidth(), maxSize / variant.getHeight());
-
-            if (variant.getWidth() <= 16 && variant.getHeight() <= 16) {
-                scaleFactor *= 0.5F;
-            } else if (variant.getWidth() <= 32 && variant.getHeight() <= 32) {
-                scaleFactor *= 0.85F;
-            }
-
-            int paintingWidth = Math.max(1, (int) (variant.getWidth() * scaleFactor));
-            int paintingHeight = Math.max(1, (int) (variant.getHeight() * scaleFactor));
-            int xOffset = (int) ((maxSize - paintingWidth) / 2);
-            int yOffset = (int) ((maxSize - paintingHeight) / 2);
-            guiGraphics.blit(52 + xOffset, 4 + yOffset, 0, paintingWidth, paintingHeight, sprite);
+        if (variant.getWidth() <= 16 && variant.getHeight() <= 16) {
+            scaleFactor *= 0.5F;
+        } else if (variant.getWidth() <= 32 && variant.getHeight() <= 32) {
+            scaleFactor *= 0.85F;
         }
+
+        int paintingWidth = Math.max(1, (int) (variant.getWidth() * scaleFactor));
+        int paintingHeight = Math.max(1, (int) (variant.getHeight() * scaleFactor));
+        int xOffset = (int) ((maxSize - paintingWidth) / 2);
+        int yOffset = (int) ((maxSize - paintingHeight) / 2);
+        guiGraphics.blit(52 + xOffset, 4 + yOffset, 0, paintingWidth, paintingHeight, sprite);
     }
 }

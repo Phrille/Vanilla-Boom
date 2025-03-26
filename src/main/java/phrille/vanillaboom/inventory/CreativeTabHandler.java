@@ -10,7 +10,6 @@ package phrille.vanillaboom.inventory;
 
 import com.google.common.collect.Lists;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.entity.decoration.PaintingVariants;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -19,18 +18,18 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.util.MutableHashedLinkedMap;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.variant.ModBookshelfBlock;
 import phrille.vanillaboom.block.variant.ModLadderBlock;
 import phrille.vanillaboom.item.ModItems;
-import phrille.vanillaboom.util.Utils;
+import phrille.vanillaboom.util.PaintingUtils;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class CreativeTabHandler {
     @SubscribeEvent
     public static void buildContents(BuildCreativeModeTabContentsEvent event) {
@@ -38,15 +37,16 @@ public class CreativeTabHandler {
         MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries = event.getEntries();
 
         // Building Blocks
+        // TODO fix remove
         if (tab == CreativeModeTabs.BUILDING_BLOCKS) {
             remove(entries, List.of(
-                    Blocks.CRACKED_STONE_BRICKS,
-                    Blocks.CRACKED_NETHER_BRICKS,
-                    Blocks.GILDED_BLACKSTONE,
-                    Blocks.CHISELED_POLISHED_BLACKSTONE,
-                    Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS,
-                    Blocks.PURPUR_PILLAR,
-                    Blocks.QUARTZ_PILLAR
+                    //Blocks.CRACKED_STONE_BRICKS,
+                    //Blocks.CRACKED_NETHER_BRICKS,
+                    //Blocks.GILDED_BLACKSTONE,
+                    //Blocks.CHISELED_POLISHED_BLACKSTONE
+                    //Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS,
+                    //Blocks.PURPUR_PILLAR,
+                    //Blocks.QUARTZ_PILLAR
             ));
             // Wood Blocks
             putAfter(entries, Blocks.OAK_WOOD, List.of(
@@ -204,7 +204,7 @@ public class CreativeTabHandler {
             putAfter(entries, Blocks.SMOOTH_STONE, ModItems.SMOOTH_STONE_STAIRS.get());
             putAfter(entries, Blocks.SMOOTH_STONE_SLAB, ModItems.SMOOTH_STONE_WALL.get());
             putAfter(entries, Blocks.STONE_BRICK_WALL, List.of(
-                    Blocks.CRACKED_STONE_BRICKS,
+                    //Blocks.CRACKED_STONE_BRICKS,
                     ModItems.CRACKED_STONE_BRICK_STAIRS.get(),
                     ModItems.CRACKED_STONE_BRICK_SLAB.get(),
                     ModItems.CRACKED_STONE_BRICK_WALL.get()
@@ -278,7 +278,7 @@ public class CreativeTabHandler {
             ));
             putAfter(entries, Blocks.NETHER_BRICK_FENCE, List.of(
                     ModItems.NETHER_BRICK_FENCE_GATE.get(),
-                    Blocks.CRACKED_NETHER_BRICKS,
+                    //Blocks.CRACKED_NETHER_BRICKS,
                     ModItems.CRACKED_NETHER_BRICK_STAIRS.get(),
                     ModItems.CRACKED_NETHER_BRICK_SLAB.get(),
                     ModItems.CRACKED_NETHER_BRICK_WALL.get()
@@ -300,12 +300,12 @@ public class CreativeTabHandler {
                     ModItems.MAGMA_BRICK_WALL.get()
             ));
             putAfter(entries, Blocks.POLISHED_BLACKSTONE_BRICK_WALL, List.of(
-                    Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS,
+                    //Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS,
                     ModItems.CRACKED_POLISHED_BLACKSTONE_BRICK_STAIRS.get(),
                     ModItems.CRACKED_POLISHED_BLACKSTONE_BRICK_SLAB.get(),
-                    ModItems.CRACKED_POLISHED_BLACKSTONE_BRICK_WALL.get(),
-                    Blocks.CHISELED_POLISHED_BLACKSTONE,
-                    Blocks.GILDED_BLACKSTONE
+                    ModItems.CRACKED_POLISHED_BLACKSTONE_BRICK_WALL.get()
+                    //Blocks.CHISELED_POLISHED_BLACKSTONE,
+                    //Blocks.GILDED_BLACKSTONE
             ));
             // End Blocks
             putAfter(entries, Blocks.END_STONE, List.of(
@@ -320,8 +320,8 @@ public class CreativeTabHandler {
             putAfter(entries, Blocks.END_STONE_BRICK_WALL, ModItems.END_STONE_PILLAR.get());
             putAfter(entries, Blocks.PURPUR_SLAB, List.of(
                     ModItems.PURPUR_BLOCK_WALL.get(),
-                    ModItems.CHISELED_PURPUR_BLOCK.get(),
-                    Blocks.PURPUR_PILLAR
+                    ModItems.CHISELED_PURPUR_BLOCK.get()
+                    //Blocks.PURPUR_PILLAR
             ));
             // Storage Blocks
             putAfter(entries, Blocks.COAL_BLOCK, ModItems.CHARCOAL_BLOCK.get());
@@ -351,7 +351,10 @@ public class CreativeTabHandler {
                     ModItems.QUARTZ_BRICK_SLAB.get(),
                     ModItems.QUARTZ_BRICK_WALL.get()
             ));
-            putAfter(entries, Blocks.SMOOTH_QUARTZ_SLAB, List.of(ModItems.SMOOTH_QUARTZ_WALL.get(), Blocks.QUARTZ_PILLAR));
+            putAfter(entries, Blocks.SMOOTH_QUARTZ_SLAB, List.of(
+                    ModItems.SMOOTH_QUARTZ_WALL.get()
+                    //Blocks.QUARTZ_PILLAR
+            ));
             // Snow Bricks
             putBefore(entries, Blocks.AMETHYST_BLOCK, List.of(
                     Blocks.SNOW_BLOCK,
@@ -620,10 +623,10 @@ public class CreativeTabHandler {
             putAfter(entries, Blocks.SCAFFOLDING, ModItems.TRELLIS.get());
             putAfter(entries, Blocks.BOOKSHELF, ModBookshelfBlock.BOOKSHELVES.stream().map(bookshelf -> (ItemLike) bookshelf.asItem()).toList());
             addUnusedPaintingVariants(entries, List.of(
-                    paintingStack(PaintingVariants.EARTH),
-                    paintingStack(PaintingVariants.WIND),
-                    paintingStack(PaintingVariants.FIRE),
-                    paintingStack(PaintingVariants.WATER)
+                    PaintingUtils.stackFromVariant(PaintingVariants.EARTH),
+                    PaintingUtils.stackFromVariant(PaintingVariants.WIND),
+                    PaintingUtils.stackFromVariant(PaintingVariants.FIRE),
+                    PaintingUtils.stackFromVariant(PaintingVariants.WATER)
             ));
         }
 
@@ -719,9 +722,5 @@ public class CreativeTabHandler {
 
     private static void remove(MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries, ItemLike item) {
         entries.remove(new ItemStack(item));
-    }
-
-    private static ItemStack paintingStack(ResourceKey<PaintingVariant> variant) {
-        return Utils.stackFromPaintingVariant(Utils.resLocFromPaintingVariant(variant));
     }
 }

@@ -1,6 +1,6 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-package phrille.vanillaboom.inventory.recipe;
+package phrille.vanillaboom.crafting;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

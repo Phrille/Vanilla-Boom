@@ -12,13 +12,13 @@ import com.google.common.collect.Maps;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import phrille.vanillaboom.VanillaBoom;
 
 import java.util.Map;
 
-@Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID)
+@EventBusSubscriber(modid = VanillaBoom.MOD_ID)
 public class FuelHandler {
     private static final Map<Item, Integer> burnTimes = Maps.newHashMap();
 

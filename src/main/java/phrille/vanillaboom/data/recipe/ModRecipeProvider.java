@@ -8,6 +8,8 @@
 
 package phrille.vanillaboom.data.recipe;
 
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -30,15 +32,16 @@ import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.variant.*;
 import phrille.vanillaboom.data.ModDataGenerator;
 import phrille.vanillaboom.item.ModItems;
+import phrille.vanillaboom.util.CommonTags;
 import phrille.vanillaboom.util.ModTags;
-import phrille.vanillaboom.util.Utils;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    public ModRecipeProvider(PackOutput output) {
-        super(output);
+    public ModRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider);
     }
 
     @Override
@@ -103,7 +106,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         storageBlock(output, ModItems.BLAZE_POWDER_BLOCK.get(), Items.BLAZE_POWDER);
         storageBlock(output, ModItems.MAGMA_CREAM_BLOCK.get(), Items.MAGMA_CREAM);
         storageBlock(output, ModItems.PRISMARINE_CRYSTAL_BLOCK.get(), Items.PRISMARINE_CRYSTALS);
-        storageBlock(output, ModItems.WITHER_BONE_BLOCK.get(), ModItems.WITHER_BONE.get());
+        storageBlock(output, ModItems.WITHER_BONE_BLOCK.get(), ModItems.WITHER_BONE_MEAL.get());
         storageBlock(output, ModItems.ORANGE_DYE_BLOCK.get(), Items.ORANGE_DYE);
         storageBlock(output, ModItems.MAGENTA_DYE_BLOCK.get(), Items.MAGENTA_DYE);
         storageBlock(output, ModItems.LIGHT_BLUE_DYE_BLOCK.get(), Items.LIGHT_BLUE_DYE);
@@ -254,8 +257,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         cooking(output, ModItems.POLAR_BEAR_STEAK.get(), ModItems.RAW_POLAR_BEAR_MEAT.get(), 0.35F);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.POTATO_SOUP.get())
                 .requires(Items.BOWL)
-                .requires(ModTags.VanillaBoomTags.Items.POTATO_SOUP_INGREDIENTS)
-                .requires(ModTags.VanillaBoomTags.Items.POTATO_SOUP_INGREDIENTS)
+                .requires(ModTags.Items.POTATO_SOUP_INGREDIENTS)
+                .requires(ModTags.Items.POTATO_SOUP_INGREDIENTS)
                 .unlockedBy(getHasName(Items.BOWL), has(Items.BOWL))
                 .unlockedBy(getHasName(Items.POTATO), has(Items.POTATO))
                 .unlockedBy(getHasName(Items.POISONOUS_POTATO), has(Items.POISONOUS_POTATO))
@@ -263,21 +266,21 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.MEAT_SOUP.get())
                 .requires(Items.BOWL)
                 .requires(Tags.Items.CROPS_POTATO)
-                .requires(ModTags.NeoForgeTags.Items.COOKED_MEATS)
-                .requires(ModTags.NeoForgeTags.Items.COOKED_MEATS)
+                .requires(Tags.Items.FOODS_COOKED_MEATS)
+                .requires(Tags.Items.FOODS_COOKED_MEATS)
                 .unlockedBy(getHasName(Items.BOWL), has(Items.BOWL))
                 .save(output);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.FISH_SOUP.get())
                 .requires(Items.BOWL)
                 .requires(Items.SEA_PICKLE)
-                .requires(ModTags.NeoForgeTags.Items.COOKED_FISHES)
-                .requires(ModTags.NeoForgeTags.Items.COOKED_FISHES)
+                .requires(Tags.Items.FOODS_COOKED_FISHES)
+                .requires(Tags.Items.FOODS_COOKED_FISHES)
                 .unlockedBy(getHasName(Items.BOWL), has(Items.BOWL))
                 .unlockedBy(getHasName(Items.SEA_PICKLE), has(Items.SEA_PICKLE))
                 .save(output);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.RICE_BOWL.get())
                 .requires(Items.BOWL)
-                .requires(ModTags.NeoForgeTags.Items.RICE)
+                .requires(CommonTags.Items.FOODS_RICES)
                 .unlockedBy(getHasName(Items.BOWL), has(Items.BOWL))
                 .unlockedBy(getHasName(ModItems.RICE_GRAINS.get()), has(ModItems.RICE_GRAINS.get()))
                 .save(output);
@@ -294,10 +297,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("xxx")
                 .unlockedBy(getHasName(Items.BONE), has(Items.BONE))
                 .save(output);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BONE, 9)
-                .requires(Blocks.BONE_BLOCK)
-                .unlockedBy(getHasName(Blocks.BONE_BLOCK), has(Blocks.BONE_BLOCK))
-                .save(output, "bone_meal_from_bone_block");
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.BOOKSHELF)
                 .define('x', Blocks.OAK_PLANKS)
                 .define('y', Items.BOOK)
@@ -318,7 +317,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         // Paintings
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.EASEL.get())
                 .define('x', ItemTags.WOODEN_SLABS)
-                .define('y', ModTags.NeoForgeTags.Items.CANVAS)
+                .define('y', CommonTags.Items.CANVASES)
                 .define('z', Items.BRUSH)
                 .pattern("xyx")
                 .pattern(" z ")
@@ -328,7 +327,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(output);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CANVAS.get(), 2)
                 .requires(ItemTags.WOOL)
-                .requires(Tags.Items.SHEARS)
+                .requires(Tags.Items.TOOLS_SHEARS)
                 .unlockedBy(getHasName(Blocks.WHITE_WOOL), has(Blocks.WHITE_WOOL))
                 .unlockedBy(getHasName(Items.SHEARS), has(Items.SHEARS))
                 .save(output);
@@ -638,7 +637,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     public void cakeShaped(RecipeOutput output, ItemLike result, ItemLike ingredient) {
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, result)
                 .define('x', ingredient)
-                .define('y', ModTags.NeoForgeTags.Items.MILK)
+                .define('y', Tags.Items.BUCKETS_MILK)
                 .define('z', Items.SUGAR)
                 .define('i', Tags.Items.EGGS)
                 .define('j', Tags.Items.CROPS_WHEAT)
@@ -716,13 +715,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void painting(RecipeOutput output, ResourceKey<PaintingVariant> variant, List<TagKey<Item>> dyes) {
+        Holder<PaintingVariant> holder = BuiltInRegistries.PAINTING_VARIANT.getHolderOrThrow(variant);
         List<Ingredient> ingredientDyes = Lists.newArrayList();
         dyes.forEach(dye -> ingredientDyes.add(Ingredient.of(dye)));
-        PaintingRecipeBuilder.painting(RecipeCategory.DECORATIONS, variant)
-                .canvas(Ingredient.of(ModTags.NeoForgeTags.Items.CANVAS))
+        PaintingRecipeBuilder.painting(RecipeCategory.DECORATIONS, holder)
+                .canvas(Ingredient.of(CommonTags.Items.CANVASES))
                 .dyes(ingredientDyes)
                 .unlockedBy(getHasName(ModItems.CANVAS.get()), has(ModItems.CANVAS.get()))
-                .save(output, VanillaBoom.resLoc(Utils.resLocFromPaintingVariant(variant).getPath() + "_from_painting"));
+                .save(output, VanillaBoom.resLoc(variant.location().getPath() + "_from_painting"));
     }
 
     /**

@@ -10,11 +10,12 @@ package phrille.vanillaboom.loot;
 
 import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.entries.LootTableReference;
+import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.fml.util.ObfuscationReflectionHelper;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
@@ -25,11 +26,10 @@ import java.util.Set;
 import java.util.function.Supplier;
 
 public class FishingLootModifier extends LootModifier {
-    public static final Supplier<Codec<FishingLootModifier>> CODEC = Suppliers.memoize(() ->
-            RecordCodecBuilder.create(inst -> codecStart(inst).and(
+    public static final Supplier<MapCodec<FishingLootModifier>> CODEC = Suppliers.memoize(() ->
+            RecordCodecBuilder.mapCodec(inst -> LootModifier.codecStart(inst).and(
                     inst.group(
-                            Codec.STRING.fieldOf("modifier_loot_table")
-                                    .xmap(ModGlobalLootModifiers::getLootTableReference, ModGlobalLootModifiers::getString)
+                            NestedLootTable.CODEC.fieldOf("modifier_loot_table")
                                     .forGetter(modifier -> modifier.modifierLootTable),
                             Codec.FLOAT.fieldOf("replace_chance")
                                     .forGetter(modifier -> modifier.replaceChance)
@@ -38,10 +38,10 @@ public class FishingLootModifier extends LootModifier {
     );
 
     private static final Field LOOT_FIELD = ObfuscationReflectionHelper.findField(LootContext.class, "visitedElements");
-    private final LootTableReference modifierLootTable;
+    private final NestedLootTable modifierLootTable;
     private final float replaceChance;
 
-    public FishingLootModifier(LootItemCondition[] conditions, LootTableReference modifierLootTable, float replaceChance) {
+    public FishingLootModifier(LootItemCondition[] conditions, NestedLootTable modifierLootTable, float replaceChance) {
         super(conditions);
         this.modifierLootTable = modifierLootTable;
         this.replaceChance = replaceChance;
@@ -62,12 +62,12 @@ public class FishingLootModifier extends LootModifier {
                 return generatedLoot;
             }
         } catch (IllegalArgumentException | IllegalAccessException e) {
-            throw new RuntimeException("Could not access lootTables", e);
+            throw new RuntimeException("Could not access LootContext#visitedElements", e);
         }
     }
 
     @Override
-    public Codec<? extends IGlobalLootModifier> codec() {
+    public MapCodec<? extends IGlobalLootModifier> codec() {
         return CODEC.get();
     }
 }

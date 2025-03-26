@@ -14,7 +14,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -53,14 +53,12 @@ public class TrellisBlock extends Block {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+    protected VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         return TrellisBlock.TRELLIS_SHAPE;
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+    protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
         DoubleBlockHalf doubleBlock = state.getValue(HALF);
         if (direction.getAxis() != Direction.Axis.Y || doubleBlock == DoubleBlockHalf.LOWER != (direction == Direction.UP) || neighborState.is(this) && neighborState.getValue(HALF) != doubleBlock) {
             return doubleBlock == DoubleBlockHalf.LOWER && direction == Direction.DOWN && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, neighborState, level, pos, neighborPos);
@@ -86,8 +84,7 @@ public class TrellisBlock extends Block {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+    protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockState belowState = level.getBlockState(pos.below());
         if (state.getValue(HALF) != DoubleBlockHalf.UPPER || state.getBlock() != this) {
             return mayPlaceOn(belowState);
@@ -100,11 +97,8 @@ public class TrellisBlock extends Block {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        ItemStack stack = player.getItemInHand(hand);
-
-        if (!TRELLIS_CROPS.containsKey(stack.getItem())) return InteractionResult.PASS;
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (!TRELLIS_CROPS.containsKey(stack.getItem())) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 
         level.playSound(null, pos, SoundEvents.CROP_PLANTED, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
         ITrellisCrop cropBlock = TRELLIS_CROPS.get(stack.getItem());
@@ -114,7 +108,7 @@ public class TrellisBlock extends Block {
         }
 
         cropBlock.placeAt(level, pos);
-        return InteractionResult.sidedSuccess(level.isClientSide);
+        return ItemInteractionResult.sidedSuccess(level.isClientSide);
     }
 
     @Override
@@ -126,7 +120,7 @@ public class TrellisBlock extends Block {
                 dropResources(state, level, pos, null, player, player.getMainHandItem());
             }
         }
-       return super.playerWillDestroy(level, pos, state, player);
+        return super.playerWillDestroy(level, pos, state, player);
     }
 
     @Override

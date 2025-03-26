@@ -6,7 +6,7 @@
  * See LICENSE for details.
  */
 
-package phrille.vanillaboom.inventory.recipe;
+package phrille.vanillaboom.crafting;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -20,7 +20,7 @@ import java.util.function.Supplier;
 
 public class ModRecipes {
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(BuiltInRegistries.RECIPE_SERIALIZER, VanillaBoom.MOD_ID);
-    public static final Supplier<RecipeSerializer<PaintingRecipe>> PAINTING_SERIALIZER = RECIPE_SERIALIZERS.register("painting", PaintingRecipe.PaintingRecipeSerializer::new);
+    public static final Supplier<RecipeSerializer<PaintingRecipe>> PAINTING_SERIALIZER = RECIPE_SERIALIZERS.register("painting", PaintingRecipe.Serializer::new);
 
     public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(BuiltInRegistries.RECIPE_TYPE, VanillaBoom.MOD_ID);
     public static final Supplier<RecipeType<PaintingRecipe>> PAINTING = RECIPE_TYPES.register("painting", () -> new VanillaBoomRecipeType<>(new ResourceLocation(VanillaBoom.MOD_ID, "painting")));

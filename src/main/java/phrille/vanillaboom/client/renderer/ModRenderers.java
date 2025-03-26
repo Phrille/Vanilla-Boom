@@ -11,21 +11,17 @@ package phrille.vanillaboom.client.renderer;
 import net.minecraft.client.model.SalmonModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.client.model.EelModel;
 import phrille.vanillaboom.client.model.PerchModel;
 import phrille.vanillaboom.client.model.TunaModel;
 import phrille.vanillaboom.entity.ModEntities;
 
-@Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = VanillaBoom.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public class ModRenderers {
     public static final ModelLayerLocation PERCH_MODEL = new ModelLayerLocation(VanillaBoom.resLoc("perch_model"), "perch_model");
     public static final ModelLayerLocation TUNA_MODEL = new ModelLayerLocation(VanillaBoom.resLoc("tuna_model"), "tuna_model");
@@ -45,21 +41,5 @@ public class ModRenderers {
         event.registerLayerDefinition(PERCH_MODEL, PerchModel::createBodyLayer);
         event.registerLayerDefinition(TUNA_MODEL, TunaModel::createBodyLayer);
         event.registerLayerDefinition(EEl_MODEL, EelModel::createBodyLayer);
-    }
-
-    @SubscribeEvent
-    public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
-        event.register((state, level, pos, tintIndex) ->
-                        event.getBlockColors().getColor(Blocks.VINE.defaultBlockState(), level, pos, tintIndex),
-                ModBlocks.WITHERED_VINE.get()
-        );
-    }
-
-    @SubscribeEvent
-    public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
-        event.register((stack, tintIndex) ->
-                        event.getItemColors().getColor(new ItemStack(Blocks.VINE), tintIndex),
-                ModBlocks.WITHERED_VINE.get()
-        );
     }
 }

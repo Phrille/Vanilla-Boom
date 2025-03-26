@@ -26,10 +26,10 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.network.PacketDistributor;
 import phrille.vanillaboom.block.ModBlocks;
-import phrille.vanillaboom.inventory.recipe.ModRecipes;
-import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
+import phrille.vanillaboom.crafting.ModRecipes;
+import phrille.vanillaboom.crafting.PaintingRecipe;
 import phrille.vanillaboom.network.EaselRecipePayload;
-import phrille.vanillaboom.util.ModTags;
+import phrille.vanillaboom.util.CommonTags;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -198,7 +198,7 @@ public class EaselMenu extends AbstractContainerMenu {
         selectedPaintingIndex.set(-1);
         resultSlot.set(ItemStack.EMPTY);
         if (player instanceof ServerPlayer serverPlayer) {
-            PacketDistributor.PLAYER.with(serverPlayer).send(new EaselRecipePayload((short) containerId, availableRecipes));
+            PacketDistributor.sendToPlayer(serverPlayer, new EaselRecipePayload((short) containerId, availableRecipes));
         }
     }
 
@@ -246,7 +246,7 @@ public class EaselMenu extends AbstractContainerMenu {
                 if (!moveItemStackTo(stackInSlot, DYE_SLOT_START, DYE_SLOT_END + 1, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (stackInSlot.is(ModTags.NeoForgeTags.Items.CANVAS)) {
+            } else if (stackInSlot.is(CommonTags.Items.CANVASES)) {
                 if (!moveItemStackTo(stackInSlot, CANVAS_SLOT, CANVAS_SLOT + 1, false)) {
                     return ItemStack.EMPTY;
                 }

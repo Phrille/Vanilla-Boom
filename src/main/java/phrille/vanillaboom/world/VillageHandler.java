@@ -16,7 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.structure.pools.SinglePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.TagsUpdatedEvent;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.config.VanillaBoomConfig;
@@ -24,7 +24,7 @@ import phrille.vanillaboom.config.VanillaBoomConfig;
 import java.util.ArrayList;
 import java.util.Objects;
 
-@Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID)
+@EventBusSubscriber(modid = VanillaBoom.MOD_ID)
 public class VillageHandler {
     private static final ResourceLocation PLAINS_HOUSES = new ResourceLocation("village/plains/houses");
     private static final ResourceLocation DESERT_HOUSES = new ResourceLocation("village/desert/houses");

@@ -24,8 +24,8 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.inventory.EaselMenu;
-import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
-import phrille.vanillaboom.util.Utils;
+import phrille.vanillaboom.crafting.PaintingRecipe;
+import phrille.vanillaboom.util.PaintingUtils;
 
 import java.util.List;
 
@@ -72,12 +72,9 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
 
         for (int buttonId = 0; buttonId < menu.getRecipes().size(); buttonId++) {
             RecipeHolder<PaintingRecipe> recipe = menu.getRecipes().get(buttonId);
-            PaintingVariant variant = Utils.paintingVariantFromStack(recipe.value().result());
-
-            if (variant != null) {
-                PaintingButton button = new PaintingButton(buttonId, recipe, variant);
-                button.register();
-            }
+            PaintingVariant variant = PaintingUtils.holderFromStack(recipe.value().result()).value();
+            PaintingButton button = new PaintingButton(buttonId, recipe, variant);
+            button.register();
         }
     }
 

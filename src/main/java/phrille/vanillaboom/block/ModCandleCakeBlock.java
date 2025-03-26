@@ -9,37 +9,36 @@
 package phrille.vanillaboom.block;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CandleCakeBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.function.Supplier;
 
 public class ModCandleCakeBlock extends CandleCakeBlock {
     private final Supplier<Block> parent;
-    private final Supplier<Block> candle;
 
     @SuppressWarnings("ConstantConditions")
-    public ModCandleCakeBlock(Supplier<Block> candle, Supplier<Block> parent) {
-        super(null, BlockBehaviour.Properties.ofFullCopy(Blocks.CANDLE_CAKE));
-        this.candle = candle;
-        this.parent = parent;
+    public ModCandleCakeBlock(Block candle, Supplier<Block> parent) {
+        // TODO: mixin
+        super(candle, BlockBehaviour.Properties.ofFullCopy(Blocks.CANDLE_CAKE));
+
+        if (candle instanceof CandleBlock candleBlock) {
+            if (parent.get() instanceof ModCakeBlock cakeBlock) {
+                cakeBlock.addCandleCake(candleBlock, this);
+                this.parent = parent;
+            } else {
+                throw new IllegalArgumentException("Expected block to be of " + ModCakeBlock.class + " was " + parent.get().getClass());
+            }
+        } else {
+            throw new IllegalArgumentException("Expected block to be of " + CandleBlock.class + " was " + candle.getClass());
+        }
+
     }
 
-    protected static boolean candleHit(BlockHitResult result) {
-        return result.getLocation().y - (double) result.getBlockPos().getY() > 0.5D;
-    }
-
+/*
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
@@ -62,13 +61,10 @@ public class ModCandleCakeBlock extends CandleCakeBlock {
             return InteractionResult.PASS;
         }
     }
+*/
 
     @Override
-    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
+    public ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return new ItemStack(parent.get());
-    }
-
-    public Block getCandle() {
-        return candle.get();
     }
 }

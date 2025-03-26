@@ -24,8 +24,8 @@ import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.inventory.EaselMenu;
 import phrille.vanillaboom.inventory.ModMenuTypes;
-import phrille.vanillaboom.inventory.recipe.ModRecipes;
-import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
+import phrille.vanillaboom.crafting.ModRecipes;
+import phrille.vanillaboom.crafting.PaintingRecipe;
 
 @JeiPlugin
 public class VanillaBoomJEIPlugin implements IModPlugin {

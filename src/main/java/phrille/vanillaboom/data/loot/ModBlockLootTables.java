@@ -16,7 +16,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.CandleBlock;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
@@ -36,8 +35,8 @@ import phrille.vanillaboom.block.crop.ShearedTallFlowerBlock;
 import phrille.vanillaboom.block.crop.TrellisBlock;
 import phrille.vanillaboom.block.crop.TrellisCropBlock;
 import phrille.vanillaboom.block.variant.*;
+import phrille.vanillaboom.data.ModDataGenerator;
 import phrille.vanillaboom.item.ModItems;
-import phrille.vanillaboom.util.Utils;
 
 import java.util.Set;
 
@@ -192,9 +191,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         add(ModBlocks.CHOCOLATE_CAKE.get(), noDrop());
         add(ModBlocks.CARROT_CAKE.get(), noDrop());
         add(ModBlocks.BERRY_CAKE.get(), noDrop());
-        Utils.CANDLES.forEach(candle -> add(((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).byCandle((CandleBlock) candle), createCandleCakeDrops(candle)));
-        Utils.CANDLES.forEach(candle -> add(((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).byCandle((CandleBlock) candle), createCandleCakeDrops(candle)));
-        Utils.CANDLES.forEach(candle -> add(((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).byCandle((CandleBlock) candle), createCandleCakeDrops(candle)));
+        ModDataGenerator.CANDLES.forEach(candle -> add(((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).byCandle(candle), createCandleCakeDrops(candle)));
+        ModDataGenerator.CANDLES.forEach(candle -> add(((ModCakeBlock) ModBlocks.BERRY_CAKE.get()).byCandle(candle), createCandleCakeDrops(candle)));
+        ModDataGenerator.CANDLES.forEach(candle -> add(((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).byCandle(candle), createCandleCakeDrops(candle)));
 
         // Variants
         ModBookshelfBlock.BOOKSHELVES.forEach(bookshelf -> add(bookshelf, block -> createSingleItemTableWithSilkTouch(block, Items.BOOK, ConstantValue.exactly(3.0F))));
@@ -220,7 +219,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     protected LootTable.Builder createBoneSandDrops(Block block, ItemLike item) {
         return createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(item)
                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 5.0F)))
-                .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))));
+                .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.FORTUNE))));
     }
 
     protected LootTable.Builder createTrellisCropDrops(Block cropBlock) {
@@ -243,7 +242,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                         .when(ageCondition)
                         .when(halfCondition)
                         .add(LootItem.lootTableItem(trellisCrop.getSeed()))
-                        .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3)))
+                        .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.FORTUNE, 0.5714286F, 3)))
                 .withPool(LootPool.lootPool()
                         .add(LootItem.lootTableItem(ModBlocks.TRELLIS.get())
                                 .when(halfCondition)))
