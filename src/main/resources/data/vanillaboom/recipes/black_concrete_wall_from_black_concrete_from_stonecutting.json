@@ -1,8 +1,10 @@
 {
   "type": "minecraft:stonecutting",
-  "count": 1,
   "ingredient": {
     "item": "minecraft:black_concrete"
   },
-  "result": "vanillaboom:black_concrete_wall"
+  "result": {
+    "count": 1,
+    "id": "vanillaboom:black_concrete_wall"
+  }
 }

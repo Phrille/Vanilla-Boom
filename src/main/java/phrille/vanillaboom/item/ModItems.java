@@ -80,11 +80,11 @@ public class ModItems {
 
     public static class ModFoods {
         public static final FoodProperties RAW_POLAR_BEAR_MEAT = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3F).build();
-        public static final FoodProperties POLAR_BEAR_STEAK = new FoodProperties.Builder().nutrition(8).saturationModifier(0.8F).build(); // TODO: meat in tags
+        public static final FoodProperties POLAR_BEAR_STEAK = new FoodProperties.Builder().nutrition(8).saturationModifier(0.8F).build();
         public static final FoodProperties FRIED_EGG = new FoodProperties.Builder().nutrition(6).saturationModifier(0.6F).build();
         public static final FoodProperties DROWNED_FLESH = new FoodProperties.Builder().nutrition(4).saturationModifier(0.1F)
                 .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 0.8F)
-                .effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 600, 0), 0.5F).build(); // TODO: meat in tags
+                .effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 600, 0), 0.5F).build();
         public static final FoodProperties MELON_POPSICLE = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3F).fast().build();
         public static final FoodProperties PINE_CONE = new FoodProperties.Builder().nutrition(3).saturationModifier(0.2F).fast().build();
         public static final FoodProperties CHOCOLATE = new FoodProperties.Builder().nutrition(5).saturationModifier(0.3F)
@@ -95,7 +95,7 @@ public class ModItems {
         public static final FoodProperties APPLE_PIE = new FoodProperties.Builder().nutrition(8).saturationModifier(0.3F).build();
         public static final FoodProperties BERRY_PIE = new FoodProperties.Builder().nutrition(8).saturationModifier(0.3F).build();
         public static final FoodProperties MONSTER_PIE = new FoodProperties.Builder().nutrition(10).saturationModifier(0.2F)
-                .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 1.0F).build(); // TODO: meat in tags
+                .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 1.0F).build();
         public static final FoodProperties POTATO_SOUP = new FoodProperties.Builder().nutrition(8).saturationModifier(0.5F).build();
         public static final FoodProperties MEAT_SOUP = new FoodProperties.Builder().nutrition(12).saturationModifier(0.7F).build();
         public static final FoodProperties FISH_SOUP = new FoodProperties.Builder().nutrition(10).saturationModifier(0.6F).build();

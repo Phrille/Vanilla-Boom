@@ -1,18 +1,20 @@
 {
   "type": "vanillaboom:painting",
   "canvas": {
-    "tag": "forge:canvas"
+    "tag": "c:canvases"
   },
   "dyes": [
     {
-      "tag": "forge:dyes/blue"
+      "tag": "c:dyes/blue"
     },
     {
-      "tag": "forge:dyes/light_blue"
+      "tag": "c:dyes/light_blue"
     },
     {
-      "tag": "forge:dyes/lime"
+      "tag": "c:dyes/lime"
     }
   ],
-  "variant": "minecraft:creebet"
+  "result": {
+    "variant": "minecraft:creebet"
+  }
 }

@@ -1,15 +1,17 @@
 {
   "type": "vanillaboom:painting",
   "canvas": {
-    "tag": "forge:canvas"
+    "tag": "c:canvases"
   },
   "dyes": [
     {
-      "tag": "forge:dyes/red"
+      "tag": "c:dyes/red"
     },
     {
-      "tag": "forge:dyes/lime"
+      "tag": "c:dyes/lime"
     }
   ],
-  "variant": "minecraft:kebab"
+  "result": {
+    "variant": "minecraft:kebab"
+  }
 }

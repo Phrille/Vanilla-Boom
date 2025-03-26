@@ -1,15 +1,17 @@
 {
   "type": "vanillaboom:painting",
   "canvas": {
-    "tag": "forge:canvas"
+    "tag": "c:canvases"
   },
   "dyes": [
     {
-      "tag": "forge:dyes/yellow"
+      "tag": "c:dyes/yellow"
     },
     {
-      "tag": "forge:dyes/brown"
+      "tag": "c:dyes/brown"
     }
   ],
-  "variant": "minecraft:wasteland"
+  "result": {
+    "variant": "minecraft:wasteland"
+  }
 }

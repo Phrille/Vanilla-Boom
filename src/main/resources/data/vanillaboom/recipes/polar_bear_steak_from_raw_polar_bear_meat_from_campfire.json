@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "vanillaboom:raw_polar_bear_meat"
   },
-  "result": "vanillaboom:polar_bear_steak"
+  "result": {
+    "count": 1,
+    "id": "vanillaboom:polar_bear_steak"
+  }
 }

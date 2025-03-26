@@ -14,9 +14,11 @@ import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.TallFlowerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
@@ -27,7 +29,6 @@ import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.crop.ITrellisCrop;
 import phrille.vanillaboom.block.crop.ShearedTallFlowerBlock;
 import phrille.vanillaboom.block.crop.TrellisBlock;
-import phrille.vanillaboom.item.ModItems;
 
 public class Utils {
     public static void spawnParticles(SimpleParticleType particle, Level level, BlockPos pos) {
@@ -75,42 +76,18 @@ public class Utils {
         return to.setValue(property, from.getValue(property));
     }
 
-    // TODO: datamaps
-    public static void addCompostMaterials() {
-        ComposterBlock.COMPOSTABLES.put(ModItems.PINE_CONE.get(), 0.35F);
-        ComposterBlock.COMPOSTABLES.put(ModItems.TOMATO.get(), 0.6F);
-        ComposterBlock.COMPOSTABLES.put(ModItems.TOMATO_SEEDS.get(), 0.3F);
-        ComposterBlock.COMPOSTABLES.put(ModItems.CHILI.get(), 0.6F);
-        ComposterBlock.COMPOSTABLES.put(ModItems.CHILI_SEEDS.get(), 0.3F);
-        ComposterBlock.COMPOSTABLES.put(ModBlocks.ROSE.get(), 0.6F);
-    }
-
-    // TODO: datamaps
-    public static void registerBurnTimes() {
-        FuelHandler.registerBurnTime(Items.BLAZE_POWDER, 1200);
-        FuelHandler.registerBurnTime(ModBlocks.CHARCOAL_BLOCK.get(), 16000);
-        FuelHandler.registerBurnTime(ModBlocks.BLAZE_POWDER_BLOCK.get(), 10800);
-        FuelHandler.registerBurnTime(ModBlocks.WITHER_BONE_BLOCK.get(), 10800);
-        FuelHandler.registerBurnTime(ModItems.WITHER_BONE.get(), 1200);
-        FuelHandler.registerBurnTime(ModItems.WITHER_BONE_MEAL.get(), 400);
-        FuelHandler.registerBurnTime(ModItems.PINE_CONE.get(), 100);
-    }
-
-    // TODO: datamaps
     public static void registerFlowerPots() {
         ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(VanillaBoom.resLoc("rose"), ModBlocks.POTTED_ROSE);
         ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(VanillaBoom.resLoc("peony"), ModBlocks.POTTED_PEONY);
         ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(VanillaBoom.resLoc("lilac"), ModBlocks.POTTED_LILAC);
     }
 
-    // TODO: datamaps
     public static void registerShearedTallFlowers() {
         ShearedTallFlowerBlock.registerShearedTallFlowerBlock((TallFlowerBlock) Blocks.ROSE_BUSH, (ShearedTallFlowerBlock) ModBlocks.SHEARED_ROSE_BUSH.get());
         ShearedTallFlowerBlock.registerShearedTallFlowerBlock((TallFlowerBlock) Blocks.PEONY, (ShearedTallFlowerBlock) ModBlocks.SHEARED_PEONY.get());
         ShearedTallFlowerBlock.registerShearedTallFlowerBlock((TallFlowerBlock) Blocks.LILAC, (ShearedTallFlowerBlock) ModBlocks.SHEARED_LILAC.get());
     }
 
-    // TODO: datamaps
     public static void registerTrellisCrops() {
         ((TrellisBlock) ModBlocks.TRELLIS.get()).registerTrellisCrop((ITrellisCrop) ModBlocks.TOMATO.get());
         ((TrellisBlock) ModBlocks.TRELLIS.get()).registerTrellisCrop((ITrellisCrop) ModBlocks.CHILI.get());

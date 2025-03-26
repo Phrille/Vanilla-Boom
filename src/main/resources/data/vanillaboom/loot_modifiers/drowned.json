@@ -9,7 +9,9 @@
       }
     }
   ],
-  "modifier_loot_table": "vanillaboom:entities/loot_modifiers/drowned",
+  "modifier_loot_table": {
+    "value": "vanillaboom:modifiers/entities/drowned"
+  },
   "remove_items": [
     "minecraft:rotten_flesh"
   ]

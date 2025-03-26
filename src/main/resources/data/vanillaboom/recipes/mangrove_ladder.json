@@ -6,7 +6,7 @@
       "item": "minecraft:mangrove_slab"
     },
     "y": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     }
   },
   "pattern": [
@@ -16,6 +16,6 @@
   ],
   "result": {
     "count": 3,
-    "item": "vanillaboom:mangrove_ladder"
+    "id": "vanillaboom:mangrove_ladder"
   }
 }

@@ -7,10 +7,10 @@
       "item": "minecraft:prismarine_shard"
     },
     "y": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     },
     "z": {
-      "tag": "forge:feathers"
+      "tag": "c:feathers"
     }
   },
   "pattern": [
@@ -19,6 +19,7 @@
     "z"
   ],
   "result": {
-    "item": "vanillaboom:prismarine_arrow"
+    "count": 1,
+    "id": "vanillaboom:prismarine_arrow"
   }
 }

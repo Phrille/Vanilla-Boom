@@ -6,7 +6,7 @@
       "item": "minecraft:acacia_slab"
     },
     "y": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     }
   },
   "pattern": [
@@ -16,6 +16,6 @@
   ],
   "result": {
     "count": 3,
-    "item": "vanillaboom:acacia_ladder"
+    "id": "vanillaboom:acacia_ladder"
   }
 }

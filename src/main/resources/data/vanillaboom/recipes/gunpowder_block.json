@@ -12,6 +12,7 @@
     "xxx"
   ],
   "result": {
-    "item": "vanillaboom:gunpowder_block"
+    "count": 1,
+    "id": "vanillaboom:gunpowder_block"
   }
 }

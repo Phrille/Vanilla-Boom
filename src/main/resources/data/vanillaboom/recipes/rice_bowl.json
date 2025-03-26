@@ -6,10 +6,11 @@
       "item": "minecraft:bowl"
     },
     {
-      "tag": "forge:rice"
+      "tag": "c:foods/rices"
     }
   ],
   "result": {
-    "item": "vanillaboom:rice_bowl"
+    "count": 1,
+    "id": "vanillaboom:rice_bowl"
   }
 }

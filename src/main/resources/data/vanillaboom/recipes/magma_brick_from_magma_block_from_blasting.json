@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "minecraft:magma_block"
   },
-  "result": "vanillaboom:magma_brick"
+  "result": {
+    "count": 1,
+    "id": "vanillaboom:magma_brick"
+  }
 }

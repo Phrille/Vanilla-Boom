@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "vanillaboom:perch"
   },
-  "result": "vanillaboom:cooked_perch"
+  "result": {
+    "count": 1,
+    "id": "vanillaboom:cooked_perch"
+  }
 }

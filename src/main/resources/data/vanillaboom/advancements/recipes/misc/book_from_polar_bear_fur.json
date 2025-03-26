@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:paper"
-            ]
+            "items": "minecraft:paper"
           }
         ]
       },
@@ -17,9 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "vanillaboom:polar_bear_fur"
-            ]
+            "items": "vanillaboom:polar_bear_fur"
           }
         ]
       },

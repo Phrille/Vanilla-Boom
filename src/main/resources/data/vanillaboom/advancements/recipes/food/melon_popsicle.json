@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:ice"
-            ]
+            "items": "minecraft:ice"
           }
         ]
       },
@@ -17,9 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:melon"
-            ]
+            "items": "minecraft:melon"
           }
         ]
       },

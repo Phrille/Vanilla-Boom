@@ -1,18 +1,20 @@
 {
   "type": "vanillaboom:painting",
   "canvas": {
-    "tag": "forge:canvas"
+    "tag": "c:canvases"
   },
   "dyes": [
     {
-      "tag": "forge:dyes/red"
+      "tag": "c:dyes/red"
     },
     {
-      "tag": "forge:dyes/black"
+      "tag": "c:dyes/black"
     },
     {
-      "tag": "forge:dyes/white"
+      "tag": "c:dyes/white"
     }
   ],
-  "variant": "minecraft:stage"
+  "result": {
+    "variant": "minecraft:stage"
+  }
 }

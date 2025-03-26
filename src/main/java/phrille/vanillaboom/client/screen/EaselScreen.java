@@ -62,6 +62,8 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
     private float scrollOffset;
     private boolean scrolling;
 
+    //TODO: draw background
+    //TODO: recipe list does not update when painting is selected
     public EaselScreen(EaselMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
         menu.registerUpdateListener(this::containerChanged);

@@ -1,18 +1,20 @@
 {
   "type": "vanillaboom:painting",
   "canvas": {
-    "tag": "forge:canvas"
+    "tag": "c:canvases"
   },
   "dyes": [
     {
-      "tag": "forge:dyes/lime"
+      "tag": "c:dyes/lime"
     },
     {
-      "tag": "forge:dyes/black"
+      "tag": "c:dyes/black"
     },
     {
-      "tag": "forge:dyes/orange"
+      "tag": "c:dyes/orange"
     }
   ],
-  "variant": "minecraft:bust"
+  "result": {
+    "variant": "minecraft:bust"
+  }
 }

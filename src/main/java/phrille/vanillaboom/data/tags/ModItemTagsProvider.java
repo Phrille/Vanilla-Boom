@@ -25,7 +25,6 @@ import phrille.vanillaboom.util.ModTags;
 
 import java.util.concurrent.CompletableFuture;
 
-// TODO: camel_food cat_food chicken_food meat non_flammable_wood ocelot_food panda_eats_from_ground parrot_food parrot_poisonous_food villager_picks_up villager_plantable_seeds wolf_food
 @SuppressWarnings("unchecked")
 public class ModItemTagsProvider extends ItemTagsProvider {
     public ModItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, TagsProvider<Block> blockTags, ExistingFileHelper existingFileHelper) {
@@ -34,14 +33,15 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        minecraftTags();
-        defaultCommonTags();
-        customCommonTags();
         modTags();
+        customCommonTags();
+        defaultCommonTags();
+        minecraftTags();
     }
 
     protected void minecraftTags() {
         copy(BlockTags.FENCES, ItemTags.FENCES);
+        copy(BlockTags.SAND, ItemTags.SAND);
         copy(BlockTags.SLABS, ItemTags.SLABS);
         copy(BlockTags.SMALL_FLOWERS, ItemTags.SMALL_FLOWERS);
         copy(BlockTags.SOUL_FIRE_BASE_BLOCKS, ItemTags.SOUL_FIRE_BASE_BLOCKS);
@@ -51,15 +51,57 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);
         copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS);
 
-        tag(ItemTags.ARROWS).add(ModItems.PRISMARINE_ARROW.get());
+        tag(ItemTags.ARROWS)
+                .add(ModItems.PRISMARINE_ARROW.get());
+        tag(ItemTags.CAMEL_FOOD)
+                .add(ModItems.CHILI.get());
+        tag(ItemTags.CAT_FOOD)
+                .add(ModItems.PIKE.get())
+                .add(ModItems.TUNA.get())
+                .add(ModItems.PERCH.get());
+        tag(ItemTags.CHICKEN_FOOD)
+                .add(ModItems.TOMATO_SEEDS.get())
+                .add(ModItems.CHILI_SEEDS.get())
+                .add(ModItems.RICE_GRAINS.get());
         tag(ItemTags.FISHES)
                 .addTags(ModTags.Items.RAW_FISHES)
                 .addTags(ModTags.Items.COOKED_FISHES);
+        tag(ItemTags.MEAT)
+                .add(ModItems.DROWNED_FLESH.get())
+                .add(ModItems.POLAR_BEAR_STEAK.get())
+                .add(ModItems.RAW_POLAR_BEAR_MEAT.get());
+        tag(ItemTags.NON_FLAMMABLE_WOOD)
+                .addTags(ModTags.Items.NETHER_BOOKSHELVES)
+                .addTags(ModTags.Items.NETHER_LADDERS)
+                .addTags(ModTags.Items.NETHER_WOODEN_FENCES)
+                .addTags(ModTags.Items.NETHER_WOODEN_FENCE_GATES)
+                .addTags(ModTags.Items.NETHER_WOODEN_SLABS)
+                .addTags(ModTags.Items.NETHER_WOODEN_STAIRS);
+        tag(ItemTags.OCELOT_FOOD)
+                .add(ModItems.PIKE.get())
+                .add(ModItems.TUNA.get())
+                .add(ModItems.PERCH.get());
+        tag(ItemTags.PARROT_FOOD)
+                .add(ModItems.TOMATO_SEEDS.get())
+                .add(ModItems.CHILI_SEEDS.get())
+                .add(ModItems.RICE_GRAINS.get());
+        tag(ItemTags.PARROT_POISONOUS_FOOD)
+                .add(ModItems.CHOCOLATE.get())
+                .add(ModItems.CHOCOLATE_CAKE.get());
         tag(ItemTags.PIGLIN_LOVED)
                 .add(ModItems.GOLD_BARS.get())
                 .add(ModItems.GOLD_BLOCK_STAIRS.get())
                 .add(ModItems.GOLD_BLOCK_SLAB.get())
                 .add(ModItems.GOLD_BLOCK_WALL.get());
+        /*
+         TODO: Add this tag when villager AI to handle custom crops have been added.
+         tag(ItemTags.VILLAGER_PLANTABLE_SEEDS)
+                 .add(ModItems.TOMATO_SEEDS.get())
+                 .add(ModItems.CHILI_SEEDS.get())
+                 .add(ModItems.RICE_GRAINS.get());
+        */
+        tag(ItemTags.WOLF_FOOD)
+                .add(ModItems.MONSTER_PIE.get());
     }
 
     protected void defaultCommonTags() {
@@ -74,8 +116,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .addTags(CommonTags.Items.CROPS_TOMATO)
                 .addTags(CommonTags.Items.CROPS_CHILI)
                 .addTags(CommonTags.Items.CROPS_RICE);
+        tag(Tags.Items.FOODS)
+                .addTags(CommonTags.Items.FOODS_PIES)
+                .addTags(CommonTags.Items.FOODS_RICES);
         tag(Tags.Items.FOODS_CANDIES)
-                .add(ModItems.CHOCOLATE.get());
+                .add(ModItems.CHOCOLATE.get())
+                .add(ModItems.MELON_POPSICLE.get());
         tag(Tags.Items.FOODS_COOKED_FISHES)
                 .addTags(ModTags.Items.COOKED_FISHES);
         tag(Tags.Items.FOODS_COOKED_MEATS)
@@ -85,6 +131,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.BERRY_CAKE.get())
                 .add(ModItems.CARROT_CAKE.get());
         tag(Tags.Items.FOODS_FOOD_POISONING)
+                .add(ModItems.DROWNED_FLESH.get())
                 .add(ModItems.MONSTER_PIE.get());
         tag(Tags.Items.FOODS_RAW_FISHES)
                 .addTags(ModTags.Items.RAW_FISHES);
@@ -163,21 +210,27 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     }
 
     protected void modTags() {
-        copy(ModTags.Blocks.BOOKSHELVES, ModTags.Items.BOOKSHELVES);
         copy(ModTags.Blocks.BRICKS, ModTags.Items.BRICKS);
         copy(ModTags.Blocks.DYE_BLOCKS, ModTags.Items.DYE_BLOCKS);
-        copy(ModTags.Blocks.FENCES, ModTags.Items.FENCES);
-        copy(ModTags.Blocks.FENCE_GATES, ModTags.Items.FENCE_GATES);
-        copy(ModTags.Blocks.LADDERS, ModTags.Items.LADDERS);
+        copy(ModTags.Blocks.NETHER_BOOKSHELVES, ModTags.Items.NETHER_BOOKSHELVES);
+        copy(ModTags.Blocks.NETHER_BRICK_FENCES, ModTags.Items.NETHER_BRICK_FENCES);
+        copy(ModTags.Blocks.NETHER_BRICK_FENCE_GATES, ModTags.Items.NETHER_BRICK_FENCE_GATES);
+        copy(ModTags.Blocks.NETHER_LADDERS, ModTags.Items.NETHER_LADDERS);
+        copy(ModTags.Blocks.NETHER_WOODEN_FENCES, ModTags.Items.NETHER_WOODEN_FENCES);
+        copy(ModTags.Blocks.NETHER_WOODEN_FENCE_GATES, ModTags.Items.NETHER_WOODEN_FENCE_GATES);
+        copy(ModTags.Blocks.NETHER_WOODEN_SLABS, ModTags.Items.NETHER_WOODEN_SLABS);
+        copy(ModTags.Blocks.NETHER_WOODEN_STAIRS, ModTags.Items.NETHER_WOODEN_STAIRS);
+        copy(ModTags.Blocks.OVERWORLD_BOOKSHELVES, ModTags.Items.OVERWORLD_BOOKSHELVES);
+        copy(ModTags.Blocks.OVERWORLD_LADDERS, ModTags.Items.OVERWORLD_LADDERS);
+        copy(ModTags.Blocks.OVERWORLD_WOODEN_FENCES, ModTags.Items.OVERWORLD_WOODEN_FENCES);
+        copy(ModTags.Blocks.OVERWORLD_WOODEN_FENCE_GATES, ModTags.Items.OVERWORLD_WOODEN_FENCE_GATES);
+        copy(ModTags.Blocks.OVERWORLD_WOODEN_SLABS, ModTags.Items.OVERWORLD_WOODEN_SLABS);
+        copy(ModTags.Blocks.OVERWORLD_WOODEN_STAIRS, ModTags.Items.OVERWORLD_WOODEN_STAIRS);
         copy(ModTags.Blocks.PILLARS, ModTags.Items.PILLARS);
         copy(ModTags.Blocks.POLISHED, ModTags.Items.POLISHED);
         copy(ModTags.Blocks.SLABS, ModTags.Items.SLABS);
         copy(ModTags.Blocks.STAIRS, ModTags.Items.STAIRS);
         copy(ModTags.Blocks.WALLS, ModTags.Items.WALLS);
-        copy(ModTags.Blocks.WOODEN_STAIRS, ModTags.Items.WOODEN_STAIRS);
-        copy(ModTags.Blocks.WOODEN_SLABS, ModTags.Items.WOODEN_SLABS);
-        copy(ModTags.Blocks.WOODEN_FENCES, ModTags.Items.WOODEN_FENCES);
-        copy(ModTags.Blocks.WOODEN_FENCE_GATES, ModTags.Items.WOODEN_FENCE_GATES);
 
         tag(ModTags.Items.COOKED_FISHES)
                 .add(ModItems.COOKED_TUNA.get())

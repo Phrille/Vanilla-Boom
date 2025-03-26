@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:bowl"
-            ]
+            "items": "minecraft:bowl"
           }
         ]
       },
@@ -17,9 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:sea_pickle"
-            ]
+            "items": "minecraft:sea_pickle"
           }
         ]
       },

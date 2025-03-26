@@ -3,7 +3,7 @@
   "category": "building",
   "key": {
     "x": {
-      "item": "vanillaboom:wither_bone"
+      "item": "vanillaboom:wither_bone_meal"
     }
   },
   "pattern": [
@@ -12,6 +12,7 @@
     "xxx"
   ],
   "result": {
-    "item": "vanillaboom:wither_bone_block"
+    "count": 1,
+    "id": "vanillaboom:wither_bone_block"
   }
 }

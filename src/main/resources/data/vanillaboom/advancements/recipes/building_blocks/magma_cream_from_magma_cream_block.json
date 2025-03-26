@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "vanillaboom:magma_cream_block"
-            ]
+            "items": "vanillaboom:magma_cream_block"
           }
         ]
       },

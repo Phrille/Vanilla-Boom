@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "vanillaboom:blaze_powder_block"
-            ]
+            "items": "vanillaboom:blaze_powder_block"
           }
         ]
       },

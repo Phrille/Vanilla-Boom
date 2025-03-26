@@ -6,5 +6,7 @@
       "condition": "minecraft:block_state_property"
     }
   ],
-  "modifier_loot_table": "vanillaboom:blocks/loot_modifiers/spruce_leaves"
+  "modifier_loot_table": {
+    "value": "vanillaboom:modifiers/blocks/spruce_leaves"
+  }
 }

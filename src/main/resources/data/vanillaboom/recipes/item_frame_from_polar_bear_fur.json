@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "x": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     },
     "y": {
       "item": "vanillaboom:polar_bear_fur"
@@ -16,6 +16,6 @@
   ],
   "result": {
     "count": 4,
-    "item": "minecraft:item_frame"
+    "id": "minecraft:item_frame"
   }
 }

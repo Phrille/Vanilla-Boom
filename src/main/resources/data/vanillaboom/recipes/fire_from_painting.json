@@ -1,18 +1,20 @@
 {
   "type": "vanillaboom:painting",
   "canvas": {
-    "tag": "forge:canvas"
+    "tag": "c:canvases"
   },
   "dyes": [
     {
-      "tag": "forge:dyes/orange"
+      "tag": "c:dyes/orange"
     },
     {
-      "tag": "forge:dyes/orange"
+      "tag": "c:dyes/orange"
     },
     {
-      "tag": "forge:dyes/yellow"
+      "tag": "c:dyes/yellow"
     }
   ],
-  "variant": "minecraft:fire"
+  "result": {
+    "variant": "minecraft:fire"
+  }
 }

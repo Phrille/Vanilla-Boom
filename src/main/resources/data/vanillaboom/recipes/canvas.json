@@ -6,11 +6,11 @@
       "tag": "minecraft:wool"
     },
     {
-      "tag": "forge:shears"
+      "tag": "c:tools/shears"
     }
   ],
   "result": {
     "count": 2,
-    "item": "vanillaboom:canvas"
+    "id": "vanillaboom:canvas"
   }
 }

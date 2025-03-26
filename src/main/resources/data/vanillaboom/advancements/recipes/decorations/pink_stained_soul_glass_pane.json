@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "vanillaboom:pink_stained_soul_glass"
-            ]
+            "items": "vanillaboom:pink_stained_soul_glass"
           }
         ]
       },

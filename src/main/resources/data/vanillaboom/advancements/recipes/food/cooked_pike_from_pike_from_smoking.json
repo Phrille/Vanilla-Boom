@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "vanillaboom:pike"
-            ]
+            "items": "vanillaboom:pike"
           }
         ]
       },

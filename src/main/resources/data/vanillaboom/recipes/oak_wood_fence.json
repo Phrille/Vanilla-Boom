@@ -6,7 +6,7 @@
       "item": "minecraft:oak_wood"
     },
     "y": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     }
   },
   "pattern": [
@@ -15,6 +15,6 @@
   ],
   "result": {
     "count": 3,
-    "item": "vanillaboom:oak_wood_fence"
+    "id": "vanillaboom:oak_wood_fence"
   }
 }

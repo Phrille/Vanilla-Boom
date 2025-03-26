@@ -7,7 +7,7 @@
       "item": "vanillaboom:terracotta_bricks"
     },
     "y": {
-      "tag": "forge:dyes/black"
+      "tag": "c:dyes/black"
     }
   },
   "pattern": [
@@ -17,6 +17,6 @@
   ],
   "result": {
     "count": 8,
-    "item": "vanillaboom:black_terracotta_bricks"
+    "id": "vanillaboom:black_terracotta_bricks"
   }
 }

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:cracked_nether_bricks"
-            ]
+            "items": "minecraft:cracked_nether_bricks"
           }
         ]
       },

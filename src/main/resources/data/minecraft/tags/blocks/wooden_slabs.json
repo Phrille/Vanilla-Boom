@@ -1,5 +1,6 @@
 {
   "values": [
-    "#vanillaboom:wooden_slabs"
+    "#vanillaboom:overworld_wooden_slabs",
+    "#vanillaboom:nether_wooden_slabs"
   ]
 }

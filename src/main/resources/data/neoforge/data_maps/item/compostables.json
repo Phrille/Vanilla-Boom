@@ -1,0 +1,61 @@
+{
+  "values": {
+    "vanillaboom:apple_pie": {
+      "chance": 1.0
+    },
+    "vanillaboom:berry_cake": {
+      "chance": 1.0
+    },
+    "vanillaboom:berry_pie": {
+      "chance": 1.0
+    },
+    "vanillaboom:carrot_cake": {
+      "chance": 1.0
+    },
+    "vanillaboom:chili": {
+      "chance": 0.5
+    },
+    "vanillaboom:chili_seeds": {
+      "chance": 0.3
+    },
+    "vanillaboom:chocolate_cake": {
+      "chance": 1.0
+    },
+    "vanillaboom:lilac": {
+      "chance": 0.5
+    },
+    "vanillaboom:monster_pie": {
+      "chance": 1.0
+    },
+    "vanillaboom:peony": {
+      "chance": 0.5
+    },
+    "vanillaboom:pine_cone": {
+      "chance": 0.35
+    },
+    "vanillaboom:rice_grains": {
+      "chance": 0.3
+    },
+    "vanillaboom:rose": {
+      "chance": 0.5
+    },
+    "vanillaboom:sheared_lilac": {
+      "chance": 0.6
+    },
+    "vanillaboom:sheared_peony": {
+      "chance": 0.6
+    },
+    "vanillaboom:sheared_rose_bush": {
+      "chance": 0.6
+    },
+    "vanillaboom:tomato": {
+      "chance": 0.6
+    },
+    "vanillaboom:tomato_seeds": {
+      "chance": 0.3
+    },
+    "vanillaboom:withered_vine": {
+      "chance": 0.5
+    }
+  }
+}

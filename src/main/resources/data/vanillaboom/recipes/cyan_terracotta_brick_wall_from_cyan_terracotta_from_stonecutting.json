@@ -1,8 +1,10 @@
 {
   "type": "minecraft:stonecutting",
-  "count": 1,
   "ingredient": {
     "item": "minecraft:cyan_terracotta"
   },
-  "result": "vanillaboom:cyan_terracotta_brick_wall"
+  "result": {
+    "count": 1,
+    "id": "vanillaboom:cyan_terracotta_brick_wall"
+  }
 }

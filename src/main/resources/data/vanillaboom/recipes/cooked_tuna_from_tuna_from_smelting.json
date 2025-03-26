@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "vanillaboom:tuna"
   },
-  "result": "vanillaboom:cooked_tuna"
+  "result": {
+    "count": 1,
+    "id": "vanillaboom:cooked_tuna"
+  }
 }

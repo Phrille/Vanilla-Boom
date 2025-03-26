@@ -29,8 +29,7 @@ import phrille.vanillaboom.util.ModTags;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-// TODO: add vb tags for sand?
-// TODO: enchantment_power_provider, maintains_farmland, BURNS_NETHER_WOOD?
+// TODO: add vb tags for sand, soul glass?
 // TODO: common: glass, dyed, sands, sandstone, stones
 @SuppressWarnings("unchecked")
 public class ModBlockTagsProvider extends BlockTagsProvider {
@@ -40,14 +39,18 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        minecraftTags();
-        defaultCommonTags();
-        customCommonTags();
         modTags();
+        customCommonTags();
+        defaultCommonTags();
+        minecraftTags();
     }
 
     protected void minecraftTags() {
-        tag(BlockTags.BASE_STONE_OVERWORLD).add(ModBlocks.PERIDOTITE.get());
+        tag(BlockTags.BASE_STONE_OVERWORLD)
+                .add(ModBlocks.PERIDOTITE.get());
+        tag(BlockTags.CAMEL_SAND_STEP_SOUND_BLOCKS)
+                .add(ModBlocks.SUGAR_BLOCK.get())
+                .add(ModBlocks.GUNPOWDER_BLOCK.get());
         tag(BlockTags.CANDLE_CAKES, ModDataGenerator.CANDLES
                 .stream()
                 .map(candle -> ((ModCakeBlock) ModBlocks.CHOCOLATE_CAKE.get()).byCandle(candle))
@@ -60,11 +63,16 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .stream()
                 .map(candle -> ((ModCakeBlock) ModBlocks.CARROT_CAKE.get()).byCandle(candle))
                 .toList());
-        tag(BlockTags.CLIMBABLE).addTags(ModTags.Blocks.LADDERS);
+        tag(BlockTags.CLIMBABLE)
+                .add(ModBlocks.WITHERED_VINE.get())
+                .addTags(ModTags.Blocks.OVERWORLD_LADDERS)
+                .addTags(ModTags.Blocks.NETHER_LADDERS);
         tag(BlockTags.CROPS, List.of(
                 ModBlocks.TOMATO.get(),
                 ModBlocks.CHILI.get(),
                 ModBlocks.RICE.get()));
+        tag(BlockTags.CRYSTAL_SOUND_BLOCKS)
+                .add(ModBlocks.PRISMARINE_CRYSTAL_BLOCK.get());
         tag(BlockTags.DRAGON_IMMUNE, List.of(
                 ModBlocks.OBSIDIAN_BRICKS.get(),
                 ModBlocks.OBSIDIAN_PILLAR.get(),
@@ -78,8 +86,15 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.BEDROCK_STAIRS.get(),
                 ModBlocks.BEDROCK_SLAB.get(),
                 ModBlocks.BEDROCK_WALL.get()));
-        tag(BlockTags.FENCES).addTags(ModTags.Blocks.FENCES);
-        tag(BlockTags.FENCE_GATES).addTags(ModTags.Blocks.WOODEN_FENCE_GATES);
+        tag(BlockTags.ENCHANTMENT_POWER_PROVIDER)
+                .addTags(ModTags.Blocks.OVERWORLD_BOOKSHELVES)
+                .addTags(ModTags.Blocks.NETHER_BOOKSHELVES);
+        tag(BlockTags.FENCES)
+                .addTags(ModTags.Blocks.NETHER_BRICK_FENCES);
+        tag(BlockTags.FENCE_GATES)
+                .addTags(ModTags.Blocks.OVERWORLD_WOODEN_FENCE_GATES)
+                .addTags(ModTags.Blocks.NETHER_WOODEN_FENCE_GATES)
+                .addTags(ModTags.Blocks.NETHER_BRICK_FENCE_GATES);
         tag(BlockTags.FLOWER_POTS, List.of(
                 ModBlocks.POTTED_ROSE.get(),
                 ModBlocks.POTTED_PEONY.get(),
@@ -107,11 +122,18 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.INFERNAL_ROCK.get(),
                 ModBlocks.POLISHED_NETHERRACK.get(),
                 ModBlocks.NETHERRACK_PILLAR.get()));
+        tag(BlockTags.MAINTAINS_FARMLAND)
+                .add(ModBlocks.TRELLIS.get())
+                .add(ModBlocks.TOMATO.get())
+                .add(ModBlocks.CHILI.get())
+                .add(ModBlocks.RICE.get());
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.SUGAR_CANE_BLOCK.get())
                 .add(ModBlocks.EASEL.get())
-                .addTags(ModTags.Blocks.BOOKSHELVES)
-                .addTags(ModTags.Blocks.LADDERS);
+                .addTags(ModTags.Blocks.OVERWORLD_BOOKSHELVES)
+                .addTags(ModTags.Blocks.NETHER_BOOKSHELVES)
+                .addTags(ModTags.Blocks.OVERWORLD_LADDERS)
+                .addTags(ModTags.Blocks.NETHER_LADDERS);
         tag(BlockTags.MINEABLE_WITH_HOE).add(ModBlocks.SUGAR_CANE_BLOCK.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.PERIDOTITE.get())
@@ -131,8 +153,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addTags(ModTags.Blocks.DYE_BLOCKS)
                 .addTags(ModTags.Blocks.STAIRS)
                 .addTags(ModTags.Blocks.SLABS)
-                .addTags(ModTags.Blocks.FENCES)
-                .addTags(ModTags.Blocks.FENCE_GATES);
+                .addTags(ModTags.Blocks.NETHER_BRICK_FENCES)
+                .addTags(ModTags.Blocks.NETHER_BRICK_FENCE_GATES);
         tag(BlockTags.MINEABLE_WITH_SHOVEL, List.of(
                 ModBlocks.BONE_SAND.get(),
                 ModBlocks.WITHER_BONE_SAND.get(),
@@ -159,7 +181,21 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.IRON_BLOCK_STAIRS.get(),
                 ModBlocks.IRON_BLOCK_SLAB.get(),
                 ModBlocks.IRON_BLOCK_WALL.get()));
-        tag(BlockTags.SLABS).addTags(ModTags.Blocks.SLABS);
+        tag(BlockTags.NETHER_CARVER_REPLACEABLES)
+                .add(ModBlocks.INFERNAL_ROCK.get())
+                .add(ModBlocks.BONE_SAND.get())
+                .add(ModBlocks.WITHER_BONE_SAND.get());
+        tag(BlockTags.OVERWORLD_CARVER_REPLACEABLES)
+                .add(ModBlocks.HYDRO_ROCK.get());
+        tag(BlockTags.REPLACEABLE)
+                .add(ModBlocks.WITHERED_VINE.get());
+        tag(BlockTags.REPLACEABLE_BY_TREES)
+                .add(ModBlocks.WITHERED_VINE.get());
+        tag(BlockTags.SAND)
+                .add(ModBlocks.BONE_SAND.get())
+                .add(ModBlocks.WITHER_BONE_SAND.get());
+        tag(BlockTags.SLABS)
+                .addTags(ModTags.Blocks.SLABS);
         tag(BlockTags.SMALL_FLOWERS, List.of(
                 ModBlocks.ROSE.get(),
                 ModBlocks.PEONY.get(),
@@ -167,20 +203,41 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.SOUL_FIRE_BASE_BLOCKS, List.of(
                 ModBlocks.BONE_SAND.get(),
                 ModBlocks.WITHER_BONE_SAND.get()));
-        tag(BlockTags.STAIRS).addTags(ModTags.Blocks.STAIRS);
-        tag(BlockTags.STONE_ORE_REPLACEABLES).add(ModBlocks.PERIDOTITE.get());
-        tag(BlockTags.WALLS).addTags(ModTags.Blocks.WALLS);
-        tag(BlockTags.WOODEN_FENCES).addTags(ModTags.Blocks.WOODEN_FENCES);
-        tag(BlockTags.WOODEN_SLABS).addTags(ModTags.Blocks.WOODEN_SLABS);
-        tag(BlockTags.WOODEN_STAIRS).addTags(ModTags.Blocks.WOODEN_STAIRS);
+        tag(BlockTags.STAIRS)
+                .addTags(ModTags.Blocks.STAIRS);
+        tag(BlockTags.STONE_ORE_REPLACEABLES)
+                .add(ModBlocks.PERIDOTITE.get());
+        tag(BlockTags.WALLS)
+                .addTags(ModTags.Blocks.WALLS);
+        tag(BlockTags.WITHER_IMMUNE, List.of(
+                ModBlocks.BEDROCK_STAIRS.get(),
+                ModBlocks.BEDROCK_SLAB.get(),
+                ModBlocks.BEDROCK_WALL.get()));
+        tag(BlockTags.WOODEN_FENCES)
+                .addTags(ModTags.Blocks.OVERWORLD_WOODEN_FENCES)
+                .addTags(ModTags.Blocks.NETHER_WOODEN_FENCES);
+        tag(BlockTags.WOODEN_SLABS)
+                .addTags(ModTags.Blocks.OVERWORLD_WOODEN_SLABS)
+                .addTags(ModTags.Blocks.NETHER_WOODEN_SLABS);
+        tag(BlockTags.WOODEN_STAIRS)
+                .addTags(ModTags.Blocks.OVERWORLD_WOODEN_STAIRS)
+                .addTags(ModTags.Blocks.NETHER_WOODEN_STAIRS);
     }
 
     protected void defaultCommonTags() {
-        tag(Tags.Blocks.BOOKSHELVES).addTags(ModTags.Blocks.BOOKSHELVES);
-        tag(Tags.Blocks.FENCES_NETHER_BRICK).addTags(ModTags.Blocks.FENCES);
-        tag(Tags.Blocks.FENCES_WOODEN).addTags(ModTags.Blocks.WOODEN_FENCES);
-        tag(Tags.Blocks.FENCE_GATES).addTags(CommonTags.Blocks.FENCE_GATES_NETHER_BRICK);
-        tag(Tags.Blocks.FENCE_GATES_WOODEN).addTags(ModTags.Blocks.WOODEN_FENCE_GATES);
+        tag(Tags.Blocks.BOOKSHELVES)
+                .addTags(ModTags.Blocks.OVERWORLD_BOOKSHELVES)
+                .addTags(ModTags.Blocks.NETHER_BOOKSHELVES);
+        tag(Tags.Blocks.FENCES_NETHER_BRICK)
+                .addTags(ModTags.Blocks.NETHER_BRICK_FENCES);
+        tag(Tags.Blocks.FENCES_WOODEN)
+                .addTags(ModTags.Blocks.OVERWORLD_WOODEN_FENCES)
+                .addTags(ModTags.Blocks.NETHER_WOODEN_FENCES);
+        tag(Tags.Blocks.FENCE_GATES)
+                .addTags(CommonTags.Blocks.FENCE_GATES_NETHER_BRICK);
+        tag(Tags.Blocks.FENCE_GATES_WOODEN)
+                .addTags(ModTags.Blocks.OVERWORLD_WOODEN_FENCE_GATES)
+                .addTags(ModTags.Blocks.NETHER_WOODEN_FENCE_GATES);
         tag(Tags.Blocks.STORAGE_BLOCKS)
                 .addTags(CommonTags.Blocks.STORAGE_BLOCKS_CHARCOAL)
                 .addTags(CommonTags.Blocks.STORAGE_BLOCKS_SUGAR)
@@ -209,36 +266,62 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     }
 
     protected void customCommonTags() {
-        tag(CommonTags.Blocks.LADDERS).addTags(ModTags.Blocks.LADDERS);
-        tag(CommonTags.Blocks.FENCE_GATES_NETHER_BRICK).addTags(ModTags.Blocks.FENCE_GATES);
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_CHARCOAL).add(ModBlocks.CHARCOAL_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_SUGAR).add(ModBlocks.SUGAR_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_SUGAR_CANE).add(ModBlocks.SUGAR_CANE_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_GUNPOWDER).add(ModBlocks.GUNPOWDER_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_BLAZE_POWDER).add(ModBlocks.BLAZE_POWDER_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_MAGMA_CREAM).add(ModBlocks.MAGMA_CREAM_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_PRISMARINE_CRYSTAL).add(ModBlocks.PRISMARINE_CRYSTAL_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_WITHER_BONE_MEAL).add(ModBlocks.WITHER_BONE_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_WHITE_DYE).add(ModBlocks.WHITE_DYE_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_ORANGE_DYE).add(ModBlocks.ORANGE_DYE_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_MAGENTA_DYE).add(ModBlocks.MAGENTA_DYE_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_LIGHT_BLUE_DYE).add(ModBlocks.LIGHT_BLUE_DYE_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_YELLOW_DYE).add(ModBlocks.YELLOW_DYE_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_LIME_DYE).add(ModBlocks.LIME_DYE_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_PINK_DYE).add(ModBlocks.PINK_DYE_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_GRAY_DYE).add(ModBlocks.GRAY_DYE_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_LIGHT_GRAY_DYE).add(ModBlocks.LIGHT_GRAY_DYE_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_CYAN_DYE).add(ModBlocks.CYAN_DYE_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_PURPLE_DYE).add(ModBlocks.PURPLE_DYE_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_BLUE_DYE).add(ModBlocks.BLUE_DYE_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_BROWN_DYE).add(ModBlocks.BROWN_DYE_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_GREEN_DYE).add(ModBlocks.GREEN_DYE_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_RED_DYE).add(ModBlocks.RED_DYE_BLOCK.get());
-        tag(CommonTags.Blocks.STORAGE_BLOCKS_BLACK_DYE).add(ModBlocks.BLACK_DYE_BLOCK.get());
+        tag(CommonTags.Blocks.LADDERS)
+                .addTags(ModTags.Blocks.OVERWORLD_LADDERS)
+                .addTags(ModTags.Blocks.NETHER_LADDERS);
+        tag(CommonTags.Blocks.FENCE_GATES_NETHER_BRICK)
+                .addTags(ModTags.Blocks.NETHER_BRICK_FENCE_GATES);
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_CHARCOAL)
+                .add(ModBlocks.CHARCOAL_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_SUGAR)
+                .add(ModBlocks.SUGAR_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_SUGAR_CANE)
+                .add(ModBlocks.SUGAR_CANE_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_GUNPOWDER)
+                .add(ModBlocks.GUNPOWDER_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_BLAZE_POWDER)
+                .add(ModBlocks.BLAZE_POWDER_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_MAGMA_CREAM)
+                .add(ModBlocks.MAGMA_CREAM_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_PRISMARINE_CRYSTAL)
+                .add(ModBlocks.PRISMARINE_CRYSTAL_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_WITHER_BONE_MEAL)
+                .add(ModBlocks.WITHER_BONE_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_WHITE_DYE)
+                .add(ModBlocks.WHITE_DYE_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_ORANGE_DYE)
+                .add(ModBlocks.ORANGE_DYE_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_MAGENTA_DYE)
+                .add(ModBlocks.MAGENTA_DYE_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_LIGHT_BLUE_DYE)
+                .add(ModBlocks.LIGHT_BLUE_DYE_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_YELLOW_DYE)
+                .add(ModBlocks.YELLOW_DYE_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_LIME_DYE)
+                .add(ModBlocks.LIME_DYE_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_PINK_DYE)
+                .add(ModBlocks.PINK_DYE_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_GRAY_DYE)
+                .add(ModBlocks.GRAY_DYE_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_LIGHT_GRAY_DYE)
+                .add(ModBlocks.LIGHT_GRAY_DYE_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_CYAN_DYE)
+                .add(ModBlocks.CYAN_DYE_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_PURPLE_DYE)
+                .add(ModBlocks.PURPLE_DYE_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_BLUE_DYE)
+                .add(ModBlocks.BLUE_DYE_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_BROWN_DYE)
+                .add(ModBlocks.BROWN_DYE_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_GREEN_DYE)
+                .add(ModBlocks.GREEN_DYE_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_RED_DYE)
+                .add(ModBlocks.RED_DYE_BLOCK.get());
+        tag(CommonTags.Blocks.STORAGE_BLOCKS_BLACK_DYE)
+                .add(ModBlocks.BLACK_DYE_BLOCK.get());
     }
 
     protected void modTags() {
-        tag(ModTags.Blocks.BOOKSHELVES, ModBookshelfBlock.BOOKSHELVES);
         tag(ModTags.Blocks.BRICKS, List.of(
                 ModBlocks.COBBLESTONE_BRICKS.get(),
                 ModBlocks.MOSSY_COBBLESTONE_BRICKS.get(),
@@ -279,15 +362,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.GREEN_DYE_BLOCK.get(),
                 ModBlocks.RED_DYE_BLOCK.get(),
                 ModBlocks.BLACK_DYE_BLOCK.get()));
-        ModFenceBlock.FENCES.forEach(fence -> {
-            TagKey<Block> fenceTag = ModDataGenerator.WOOD_BLOCKS.contains(fence.getParent()) ? ModTags.Blocks.WOODEN_FENCES : ModTags.Blocks.FENCES;
-            tag(fenceTag).add(fence);
-        });
-        ModFenceGateBlock.FENCE_GATES.forEach(fenceGate -> {
-            TagKey<Block> fenceGateTag = ModDataGenerator.WOOD_BLOCKS.contains(fenceGate.getParent()) ? ModTags.Blocks.WOODEN_FENCE_GATES : ModTags.Blocks.FENCE_GATES;
-            tag(fenceGateTag).add(fenceGate);
-        });
-        tag(ModTags.Blocks.LADDERS, ModLadderBlock.LADDERS);
         tag(ModTags.Blocks.POLISHED, List.of(
                 ModBlocks.POLISHED_PERIDOTITE.get(),
                 ModBlocks.POLISHED_PRISMARINE.get(),
@@ -304,19 +378,58 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.END_STONE_PILLAR.get(),
                 ModBlocks.NETHERRACK_PILLAR.get(),
                 ModBlocks.OBSIDIAN_PILLAR.get()));
-        ModSlabBlock.SLABS.forEach(slab -> {
-            TagKey<Block> slabTag = ModDataGenerator.WOOD_BLOCKS.contains(slab.getParent()) ? ModTags.Blocks.WOODEN_SLABS : ModTags.Blocks.SLABS;
-            tag(slabTag).add(slab);
+        variantTag(ModBookshelfBlock.BOOKSHELVES);
+        variantTag(ModFenceBlock.FENCES);
+        variantTag(ModFenceGateBlock.FENCE_GATES);
+        variantTag(ModSlabBlock.SLABS);
+        variantTag(ModStairBlock.STAIRS);
+        variantTag(ModWallBlock.WALLS);
+        ModLadderBlock.LADDERS.forEach(ladder -> {
+            TagKey<Block> ladderTag = ModDataGenerator.OVERWORLD_WOOD_BLOCKS.contains(ladder.getCraftingIngredient()) ?
+                    ModTags.Blocks.OVERWORLD_LADDERS : ModTags.Blocks.NETHER_LADDERS;
+            tag(ladderTag).add(ladder);
         });
-        ModStairBlock.STAIRS.forEach(stair -> {
-            TagKey<Block> stairTag = ModDataGenerator.WOOD_BLOCKS.contains(stair.getParent()) ? ModTags.Blocks.WOODEN_STAIRS : ModTags.Blocks.STAIRS;
-            tag(stairTag).add(stair);
-        });
-        tag(ModTags.Blocks.WALLS, ModWallBlock.WALLS);
     }
 
     protected void tag(TagKey<Block> tagKey, List<? extends Block> blocks) {
         IntrinsicHolderTagsProvider.IntrinsicTagAppender<Block> tagsProvider = tag(tagKey);
         blocks.forEach(tagsProvider::add);
+    }
+
+    protected void variantTag(List<? extends IVariantBlock> variantBlocks) {
+        variantBlocks.forEach(variant -> {
+            TagKey<Block> variantTag = getVariantTag(variant);
+            tag(variantTag).add((Block) variant);
+        });
+    }
+
+    protected TagKey<Block> getVariantTag(IVariantBlock variant) {
+        return switch (variant) {
+            case ModBookshelfBlock bookshelf ->
+                    ModDataGenerator.OVERWORLD_WOOD_BLOCKS.contains(bookshelf.getParent()) ? ModTags.Blocks.OVERWORLD_BOOKSHELVES : ModTags.Blocks.NETHER_BOOKSHELVES;
+            case ModFenceBlock fence -> ModDataGenerator.OVERWORLD_WOOD_BLOCKS.contains(fence.getParent()) ?
+                    ModTags.Blocks.OVERWORLD_WOODEN_FENCES :
+                    ModDataGenerator.NETHER_WOOD_BLOCKS.contains(fence.getParent()) ?
+                            ModTags.Blocks.NETHER_WOODEN_FENCES :
+                            ModTags.Blocks.NETHER_BRICK_FENCES;
+            case ModFenceGateBlock fenceGate -> ModDataGenerator.OVERWORLD_WOOD_BLOCKS.contains(fenceGate.getParent()) ?
+                    ModTags.Blocks.OVERWORLD_WOODEN_FENCE_GATES :
+                    ModDataGenerator.NETHER_WOOD_BLOCKS.contains(fenceGate.getParent()) ?
+                            ModTags.Blocks.NETHER_WOODEN_FENCE_GATES :
+                            ModTags.Blocks.NETHER_BRICK_FENCE_GATES;
+            case ModSlabBlock slab -> ModDataGenerator.OVERWORLD_WOOD_BLOCKS.contains(slab.getParent()) ?
+                    ModTags.Blocks.OVERWORLD_WOODEN_SLABS :
+                    ModDataGenerator.NETHER_WOOD_BLOCKS.contains(slab.getParent()) ?
+                            ModTags.Blocks.NETHER_WOODEN_SLABS :
+                            ModTags.Blocks.SLABS;
+            case ModStairBlock stair -> ModDataGenerator.OVERWORLD_WOOD_BLOCKS.contains(stair.getParent()) ?
+                    ModTags.Blocks.OVERWORLD_WOODEN_STAIRS :
+                    ModDataGenerator.NETHER_WOOD_BLOCKS.contains(stair.getParent()) ?
+                            ModTags.Blocks.NETHER_WOODEN_STAIRS :
+                            ModTags.Blocks.STAIRS;
+            case ModWallBlock ignored -> ModTags.Blocks.WALLS;
+            default ->
+                    throw new IllegalArgumentException("Tried to get variant tag for invalid block %s".formatted(variant.getClass()));
+        };
     }
 }

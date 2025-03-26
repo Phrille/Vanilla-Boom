@@ -31,13 +31,16 @@ import java.util.List;
 
 @EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class CreativeTabHandler {
+    /**
+     * TODO: This event is broken in 1.20.6. Fix in 1.21
+     *  See: <a href="https://github.com/neoforged/NeoForge/pull/1156">...</a>
+     */
     @SubscribeEvent
     public static void buildContents(BuildCreativeModeTabContentsEvent event) {
         ResourceKey<CreativeModeTab> tab = event.getTabKey();
         MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries = event.getEntries();
 
         // Building Blocks
-        // TODO fix remove
         if (tab == CreativeModeTabs.BUILDING_BLOCKS) {
             remove(entries, List.of(
                     //Blocks.CRACKED_STONE_BRICKS,

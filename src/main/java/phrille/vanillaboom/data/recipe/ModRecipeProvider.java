@@ -241,7 +241,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Blocks.ICE), has(Blocks.ICE))
                 .save(output);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.CHOCOLATE.get(), 2)
-                .requires(Items.MILK_BUCKET)
+                .requires(Tags.Items.BUCKETS_MILK)
                 .requires(Items.COCOA_BEANS)
                 .requires(Items.SUGAR)
                 .unlockedBy(getHasName(Items.MILK_BUCKET), has(Items.MILK_BUCKET))
@@ -290,13 +290,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         cooking(output, ModItems.COOKED_EEL.get(), ModItems.EEL.get(), 0.35F);
 
         // Altered recipes from vanilla
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.BONE_BLOCK)
-                .define('x', Items.BONE)
-                .pattern("xxx")
-                .pattern("xxx")
-                .pattern("xxx")
-                .unlockedBy(getHasName(Items.BONE), has(Items.BONE))
-                .save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.BOOKSHELF)
                 .define('x', Blocks.OAK_PLANKS)
                 .define('y', Items.BOOK)

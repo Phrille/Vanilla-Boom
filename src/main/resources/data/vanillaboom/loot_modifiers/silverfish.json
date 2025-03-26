@@ -9,5 +9,7 @@
       }
     }
   ],
-  "modifier_loot_table": "vanillaboom:entities/loot_modifiers/silverfish"
+  "modifier_loot_table": {
+    "value": "vanillaboom:modifiers/entities/silverfish"
+  }
 }

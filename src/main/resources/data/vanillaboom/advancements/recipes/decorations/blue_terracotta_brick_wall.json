@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "vanillaboom:blue_terracotta_bricks"
-            ]
+            "items": "vanillaboom:blue_terracotta_bricks"
           }
         ]
       },

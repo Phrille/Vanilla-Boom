@@ -6,6 +6,8 @@
       "loot_table_id": "minecraft:gameplay/fishing/fish"
     }
   ],
-  "modifier_loot_table": "vanillaboom:gameplay/fishing/fish",
+  "modifier_loot_table": {
+    "value": "vanillaboom:modifiers/gameplay/fishing/fish"
+  },
   "replace_chance": 0.45
 }

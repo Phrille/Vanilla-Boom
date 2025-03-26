@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "vanillaboom:wither_bone_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "vanillaboom:wither_bone_meal"
+  }
+}

@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "minecraft:egg"
   },
-  "result": "vanillaboom:fried_egg"
+  "result": {
+    "count": 1,
+    "id": "vanillaboom:fried_egg"
+  }
 }

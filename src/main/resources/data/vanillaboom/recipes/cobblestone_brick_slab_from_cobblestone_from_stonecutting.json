@@ -1,8 +1,10 @@
 {
   "type": "minecraft:stonecutting",
-  "count": 2,
   "ingredient": {
     "item": "minecraft:cobblestone"
   },
-  "result": "vanillaboom:cobblestone_brick_slab"
+  "result": {
+    "count": 2,
+    "id": "vanillaboom:cobblestone_brick_slab"
+  }
 }

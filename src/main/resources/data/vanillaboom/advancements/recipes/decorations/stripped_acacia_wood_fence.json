@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:stripped_acacia_wood"
-            ]
+            "items": "minecraft:stripped_acacia_wood"
           }
         ]
       },

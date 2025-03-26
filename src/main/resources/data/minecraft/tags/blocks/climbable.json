@@ -1,5 +1,7 @@
 {
   "values": [
-    "#vanillaboom:ladders"
+    "vanillaboom:withered_vine",
+    "#vanillaboom:overworld_ladders",
+    "#vanillaboom:nether_ladders"
   ]
 }

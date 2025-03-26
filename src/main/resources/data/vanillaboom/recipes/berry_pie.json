@@ -6,13 +6,14 @@
       "item": "minecraft:sweet_berries"
     },
     {
-      "tag": "forge:eggs"
+      "tag": "c:eggs"
     },
     {
       "item": "minecraft:sugar"
     }
   ],
   "result": {
-    "item": "vanillaboom:berry_pie"
+    "count": 1,
+    "id": "vanillaboom:berry_pie"
   }
 }
