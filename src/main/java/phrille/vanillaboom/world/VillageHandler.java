@@ -37,6 +37,7 @@ public class VillageHandler {
         if (!VanillaBoomConfig.generateVillageStructures) return;
 
         RegistryAccess registryAccess = event.getRegistryAccess();
+        VanillaBoom.LOGGER.info("Registering custom Village structures");
         addToPool(registryAccess, PLAINS_HOUSES, "plains_small_farm_1", 3);
         addToPool(registryAccess, DESERT_HOUSES, "desert_farm_1", 7);
         addToPool(registryAccess, DESERT_HOUSES, "desert_farm_2", 4);

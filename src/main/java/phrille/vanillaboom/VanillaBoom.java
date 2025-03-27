@@ -23,7 +23,7 @@ import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.entity.ModBlockEntities;
 import phrille.vanillaboom.config.VanillaBoomConfig;
 import phrille.vanillaboom.entity.ModAttachmentTypes;
-import phrille.vanillaboom.entity.ModEntities;
+import phrille.vanillaboom.entity.ModEntityTypes;
 import phrille.vanillaboom.inventory.ModMenuTypes;
 import phrille.vanillaboom.crafting.ModRecipes;
 import phrille.vanillaboom.item.ModItems;
@@ -38,7 +38,7 @@ public class VanillaBoom {
     public static final Logger LOGGER = LogManager.getLogger();
 
     public VanillaBoom(IEventBus eventBus, ModContainer modContainer) {
-        ModEntities.ENTITY_TYPES.register(eventBus);
+        ModEntityTypes.ENTITY_TYPES.register(eventBus);
         ModBlocks.BLOCKS.register(eventBus);
         ModItems.ITEMS.register(eventBus);
         ModBlockEntities.BLOCK_ENTITY_TYPES.register(eventBus);

@@ -19,7 +19,7 @@ import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.client.model.EelModel;
 import phrille.vanillaboom.client.model.PerchModel;
 import phrille.vanillaboom.client.model.TunaModel;
-import phrille.vanillaboom.entity.ModEntities;
+import phrille.vanillaboom.entity.ModEntityTypes;
 
 @EventBusSubscriber(modid = VanillaBoom.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public class ModRenderers {
@@ -29,11 +29,11 @@ public class ModRenderers {
 
     @SubscribeEvent
     public static void registerLayer(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(ModEntities.PRISMARINE_ARROW.get(), PrismarineArrowRenderer::new);
-        event.registerEntityRenderer(ModEntities.PERCH.get(), context -> new FishRenderer(context, new PerchModel<>(context.bakeLayer(ModRenderers.PERCH_MODEL))));
-        event.registerEntityRenderer(ModEntities.TUNA.get(), context -> new FishRenderer(context, new TunaModel<>(context.bakeLayer(ModRenderers.TUNA_MODEL))));
-        event.registerEntityRenderer(ModEntities.PIKE.get(), context -> new FishRenderer(context, new SalmonModel<>(context.bakeLayer(ModelLayers.SALMON))));
-        event.registerEntityRenderer(ModEntities.EEL.get(), context -> new FishRenderer(context, new EelModel<>(context.bakeLayer(ModRenderers.EEl_MODEL))));
+        event.registerEntityRenderer(ModEntityTypes.PRISMARINE_ARROW.get(), PrismarineArrowRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.PERCH.get(), context -> new FishRenderer(context, new PerchModel<>(context.bakeLayer(ModRenderers.PERCH_MODEL))));
+        event.registerEntityRenderer(ModEntityTypes.TUNA.get(), context -> new FishRenderer(context, new TunaModel<>(context.bakeLayer(ModRenderers.TUNA_MODEL))));
+        event.registerEntityRenderer(ModEntityTypes.PIKE.get(), context -> new FishRenderer(context, new SalmonModel<>(context.bakeLayer(ModelLayers.SALMON))));
+        event.registerEntityRenderer(ModEntityTypes.EEL.get(), context -> new FishRenderer(context, new EelModel<>(context.bakeLayer(ModRenderers.EEl_MODEL))));
     }
 
     @SubscribeEvent

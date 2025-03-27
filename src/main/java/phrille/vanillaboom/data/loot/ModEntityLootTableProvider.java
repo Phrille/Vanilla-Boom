@@ -26,7 +26,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCon
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithLootingCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import phrille.vanillaboom.entity.ModEntities;
+import phrille.vanillaboom.entity.ModEntityTypes;
 import phrille.vanillaboom.entity.fish.Fish;
 import phrille.vanillaboom.item.ModItems;
 
@@ -39,15 +39,15 @@ public class ModEntityLootTableProvider extends EntityLootSubProvider {
 
     @Override
     public void generate() {
-        fishLoot(ModEntities.PERCH.get(), ModItems.PERCH.get());
-        fishLoot(ModEntities.PIKE.get(), ModItems.PIKE.get());
-        fishLoot(ModEntities.TUNA.get(), ModItems.TUNA.get());
-        fishLoot(ModEntities.EEL.get(), ModItems.EEL.get());
+        fishLoot(ModEntityTypes.PERCH.get(), ModItems.PERCH.get());
+        fishLoot(ModEntityTypes.PIKE.get(), ModItems.PIKE.get());
+        fishLoot(ModEntityTypes.TUNA.get(), ModItems.TUNA.get());
+        fishLoot(ModEntityTypes.EEL.get(), ModItems.EEL.get());
     }
 
     @Override
     protected Stream<EntityType<?>> getKnownEntityTypes() {
-        return ModEntities.ENTITY_TYPES.getEntries().stream().map(Holder::value);
+        return ModEntityTypes.ENTITY_TYPES.getEntries().stream().map(Holder::value);
     }
 
     protected void fishLoot(EntityType<? extends Fish> fish, Item drop) {

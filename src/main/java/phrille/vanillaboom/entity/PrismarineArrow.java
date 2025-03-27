@@ -24,12 +24,12 @@ public class PrismarineArrow extends AbstractArrow {
     }
 
     public PrismarineArrow(Level level, LivingEntity owner, ItemStack pickupStack) {
-        super(ModEntities.PRISMARINE_ARROW.get(), owner, level, pickupStack);
+        super(ModEntityTypes.PRISMARINE_ARROW.get(), owner, level, pickupStack);
     }
 
     @SuppressWarnings("unused")
     public PrismarineArrow(Level level, double x, double y, double z, ItemStack pickupStack) {
-        super(ModEntities.PRISMARINE_ARROW.get(), x, y, z, level, pickupStack);
+        super(ModEntityTypes.PRISMARINE_ARROW.get(), x, y, z, level, pickupStack);
     }
 
     @Override

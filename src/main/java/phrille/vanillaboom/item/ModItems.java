@@ -19,7 +19,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
-import phrille.vanillaboom.entity.ModEntities;
+import phrille.vanillaboom.entity.ModEntityTypes;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(VanillaBoom.MOD_ID);
@@ -67,16 +67,16 @@ public class ModItems {
     public static final DeferredItem<Item> COOKED_EEL = ITEMS.register("cooked_eel", () -> new Item(new Item.Properties().food(ModFoods.COOKED_EEL)));
 
     // Fish Buckets
-    public static final DeferredItem<Item> TUNA_BUCKET = ITEMS.register("tuna_bucket", () -> new MobBucketItem(ModEntities.TUNA.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> PERCH_BUCKET = ITEMS.register("perch_bucket", () -> new MobBucketItem(ModEntities.PERCH.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> PIKE_BUCKET = ITEMS.register("pike_bucket", () -> new MobBucketItem(ModEntities.PIKE.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> EEL_BUCKET = ITEMS.register("eel_bucket", () -> new MobBucketItem(ModEntities.EEL.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> TUNA_BUCKET = ITEMS.register("tuna_bucket", () -> new MobBucketItem(ModEntityTypes.TUNA.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> PERCH_BUCKET = ITEMS.register("perch_bucket", () -> new MobBucketItem(ModEntityTypes.PERCH.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> PIKE_BUCKET = ITEMS.register("pike_bucket", () -> new MobBucketItem(ModEntityTypes.PIKE.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> EEL_BUCKET = ITEMS.register("eel_bucket", () -> new MobBucketItem(ModEntityTypes.EEL.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1)));
 
     // Spawn Eggs
-    public static final DeferredItem<Item> TUNA_SPAWN_EGG = ITEMS.register("tuna_spawn_egg", () -> new DeferredSpawnEggItem(ModEntities.TUNA, 0x33495E, 0xD7C376, new Item.Properties()));
-    public static final DeferredItem<Item> PERCH_SPAWN_EGG = ITEMS.register("perch_spawn_egg", () -> new DeferredSpawnEggItem(ModEntities.PERCH, 0x464614, 0xFD5100, new Item.Properties()));
-    public static final DeferredItem<Item> PIKE_SPAWN_EGG = ITEMS.register("pike_spawn_egg", () -> new DeferredSpawnEggItem(ModEntities.PIKE, 0x4C462A, 0xA0A169, new Item.Properties()));
-    public static final DeferredItem<Item> EEL_SPAWN_EGG = ITEMS.register("eel_spawn_egg", () -> new DeferredSpawnEggItem(ModEntities.EEL, 0x5F4F37, 0x312517, new Item.Properties()));
+    public static final DeferredItem<Item> TUNA_SPAWN_EGG = ITEMS.register("tuna_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.TUNA, 0x33495E, 0xD7C376, new Item.Properties()));
+    public static final DeferredItem<Item> PERCH_SPAWN_EGG = ITEMS.register("perch_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.PERCH, 0x464614, 0xFD5100, new Item.Properties()));
+    public static final DeferredItem<Item> PIKE_SPAWN_EGG = ITEMS.register("pike_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.PIKE, 0x4C462A, 0xA0A169, new Item.Properties()));
+    public static final DeferredItem<Item> EEL_SPAWN_EGG = ITEMS.register("eel_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.EEL, 0x5F4F37, 0x312517, new Item.Properties()));
 
     public static class ModFoods {
         public static final FoodProperties RAW_POLAR_BEAR_MEAT = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3F).build();
