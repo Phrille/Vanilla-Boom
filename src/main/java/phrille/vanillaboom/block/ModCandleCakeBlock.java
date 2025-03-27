@@ -9,11 +9,18 @@
 package phrille.vanillaboom.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CandleBlock;
+import net.minecraft.world.level.block.CandleCakeBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.function.Supplier;
 
@@ -22,7 +29,6 @@ public class ModCandleCakeBlock extends CandleCakeBlock {
 
     @SuppressWarnings("ConstantConditions")
     public ModCandleCakeBlock(Block candle, Supplier<Block> parent) {
-        // TODO: mixin
         super(candle, BlockBehaviour.Properties.ofFullCopy(Blocks.CANDLE_CAKE));
 
         if (candle instanceof CandleBlock candleBlock) {
@@ -38,30 +44,15 @@ public class ModCandleCakeBlock extends CandleCakeBlock {
 
     }
 
-/*
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        ItemStack stack = player.getItemInHand(hand);
-
-        if (!stack.is(Items.FLINT_AND_STEEL) && !stack.is(Items.FIRE_CHARGE)) {
-            if (candleHit(hit) && player.getItemInHand(hand).isEmpty() && state.getValue(LIT)) {
-                extinguish(player, state, level, pos);
-
-                return InteractionResult.sidedSuccess(level.isClientSide);
-            } else {
-                InteractionResult interactionresult = ModCakeBlock.eat(level, pos, parent.get().defaultBlockState(), player);
-
-                if (interactionresult.consumesAction()) {
-                    dropResources(state, level, pos);
-                }
-
-                return interactionresult;
-            }
-        } else {
-            return InteractionResult.PASS;
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult result) {
+        InteractionResult interactionResult = ModCakeBlock.eat(level, pos, parent.get().defaultBlockState(), player);
+        if (interactionResult.consumesAction()) {
+            dropResources(state, level, pos);
         }
+
+        return interactionResult;
     }
-*/
 
     @Override
     public ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {

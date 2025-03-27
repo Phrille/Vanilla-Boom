@@ -11,6 +11,10 @@ issueTrackerURL="https://github.com/Phrille/Vanilla-Boom/issues"
     logoFile="vanillaboom_logo.png"
     authors="${mod_authors}"
     description='''${mod_description}'''
+    # displayTest="MATCH_VERSION"
+
+[[mixins]]
+    config="${mod_id}.mixins.json"
 
 [[accessTransformers]]
     file="META-INF/accesstransformer.cfg"
