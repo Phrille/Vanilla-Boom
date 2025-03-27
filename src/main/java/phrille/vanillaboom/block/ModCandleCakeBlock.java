@@ -27,7 +27,6 @@ import java.util.function.Supplier;
 public class ModCandleCakeBlock extends CandleCakeBlock {
     private final Supplier<Block> parent;
 
-    @SuppressWarnings("ConstantConditions")
     public ModCandleCakeBlock(Block candle, Supplier<Block> parent) {
         super(candle, BlockBehaviour.Properties.ofFullCopy(Blocks.CANDLE_CAKE));
 

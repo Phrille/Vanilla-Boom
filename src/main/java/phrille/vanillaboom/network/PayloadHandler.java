@@ -1,3 +1,11 @@
+/*
+ * Copyright (C) 2025 Phrille
+ *
+ * This file is part of the Vanilla Boom Mod.
+ * Unauthorized distribution or modification is prohibited.
+ * See LICENSE for details.
+ */
+
 package phrille.vanillaboom.network;
 
 import net.neoforged.bus.api.SubscribeEvent;
@@ -12,9 +20,14 @@ public class PayloadHandler {
     public static void register(RegisterPayloadHandlersEvent event) {
         PayloadRegistrar registrar = event.registrar(Integer.toString(1));
         registrar.playToClient(
-                EaselRecipePayload.TYPE,
-                EaselRecipePayload.STREAM_CODEC,
-                EaselRecipePayload::handle
+                EaselRecipePacket.TYPE,
+                EaselRecipePacket.STREAM_CODEC,
+                EaselRecipePacket::handle
+        );
+        registrar.playToServer(
+                EaselScreenPacket.TYPE,
+                EaselScreenPacket.STREAM_CODEC,
+                EaselScreenPacket::handle
         );
     }
 }

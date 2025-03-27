@@ -26,7 +26,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
-import phrille.vanillaboom.inventory.EaselMenu;
+import phrille.vanillaboom.block.entity.EaselBlockEntity;
 import phrille.vanillaboom.crafting.PaintingRecipe;
 import phrille.vanillaboom.util.PaintingUtils;
 
@@ -76,7 +76,7 @@ public class PaintingRecipeCategory implements IRecipeCategory<PaintingRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, PaintingRecipe recipe, IFocusGroup focuses) {
-        for (int i = EaselMenu.DYE_SLOT_START; i < EaselMenu.DYE_SLOT_END + 1; i++) {
+        for (int i = EaselBlockEntity.DYE_SLOT_START; i < EaselBlockEntity.DYE_SLOT_END + 1; i++) {
             Ingredient dye = i < recipe.dyes().size() ? recipe.dyes().get(i) : Ingredient.EMPTY;
             builder.addSlot(RecipeIngredientRole.INPUT, 1 + (i % 2) * 18, 1 + (i / 2) * 18)
                     .addIngredients(dye);

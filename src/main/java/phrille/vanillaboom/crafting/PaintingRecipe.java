@@ -26,7 +26,7 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.block.ModBlocks;
-import phrille.vanillaboom.inventory.EaselMenu;
+import phrille.vanillaboom.block.entity.EaselBlockEntity;
 import phrille.vanillaboom.util.PaintingUtils;
 
 import java.util.Comparator;
@@ -42,12 +42,12 @@ public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingred
 
     @Override
     public boolean matches(Container container, Level level) {
-        if (!canvas.test(container.getItem(EaselMenu.CANVAS_SLOT))) {
+        if (!canvas.test(container.getItem(EaselBlockEntity.CANVAS_SLOT))) {
             return false;
         }
 
         List<ItemStack> dyeStacks = Lists.newArrayList();
-        for (int i = EaselMenu.DYE_SLOT_START; i < EaselMenu.DYE_SLOT_END + 1; i++) {
+        for (int i = EaselBlockEntity.DYE_SLOT_START; i < EaselBlockEntity.DYE_SLOT_END + 1; i++) {
             dyeStacks.add(container.getItem(i).copy());
         }
 

@@ -22,10 +22,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
-import phrille.vanillaboom.inventory.EaselMenu;
-import phrille.vanillaboom.inventory.ModMenuTypes;
+import phrille.vanillaboom.block.entity.EaselBlockEntity;
 import phrille.vanillaboom.crafting.ModRecipes;
 import phrille.vanillaboom.crafting.PaintingRecipe;
+import phrille.vanillaboom.inventory.EaselMenu;
+import phrille.vanillaboom.inventory.ModMenuTypes;
 
 @JeiPlugin
 public class VanillaBoomJEIPlugin implements IModPlugin {
@@ -51,7 +52,7 @@ public class VanillaBoomJEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
-        registration.addRecipeTransferHandler(EaselMenu.class, ModMenuTypes.EASEL_MENU.get(), PAINTING, EaselMenu.DYE_SLOT_START, EaselMenu.CANVAS_SLOT + 1, 9, 36);
+        registration.addRecipeTransferHandler(EaselMenu.class, ModMenuTypes.EASEL_MENU.get(), PAINTING, EaselBlockEntity.DYE_SLOT_START, EaselBlockEntity.CANVAS_SLOT + 1, 9, 36);
     }
 
     @Override
