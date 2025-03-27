@@ -4,7 +4,9 @@
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
   "mixins": [
-    "CandleCakeMixin"
+    "CandleCakeBlockMixin",
+    "HangingEntityItemMixin",
+    "PaintingMixin"
   ],
   "client": [],
   "injectors": {

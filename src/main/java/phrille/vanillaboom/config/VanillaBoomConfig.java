@@ -49,6 +49,9 @@ public final class VanillaBoomConfig {
     private static final ModConfigSpec.BooleanValue GENERATE_VILLAGE_STRUCTURES = BUILDER
             .comment("Set this to false to disable custom Village structures to be generated in the world.")
             .define("generate_village_structures", true);
+    private static final ModConfigSpec.BooleanValue VARIANT_SENSITIVE_PAINTING_DROPS = BUILDER
+            .comment("Set this to false to disable Paintings dropping variant sensitive items.")
+            .define("variant_sensitive_painting_drops", true);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 
@@ -62,6 +65,7 @@ public final class VanillaBoomConfig {
     public static boolean fillWaterBottleHydroRock;
     public static boolean shearTallFlowers;
     public static boolean generateVillageStructures;
+    public static boolean variantSensitivePaintingDrops;
 
     @SubscribeEvent
     static void onLoad(ModConfigEvent event) {
@@ -75,5 +79,6 @@ public final class VanillaBoomConfig {
         fillWaterBottleHydroRock = FILL_WATER_BOTTLE_HYDRO_ROCK.get();
         shearTallFlowers = SHEAR_TALL_FLOWERS.get();
         generateVillageStructures = GENERATE_VILLAGE_STRUCTURES.get();
+        variantSensitivePaintingDrops = VARIANT_SENSITIVE_PAINTING_DROPS.get();
     }
 }

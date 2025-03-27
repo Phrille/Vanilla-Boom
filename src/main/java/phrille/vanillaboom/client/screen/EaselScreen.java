@@ -23,8 +23,8 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.inventory.EaselMenu;
 import phrille.vanillaboom.crafting.PaintingRecipe;
+import phrille.vanillaboom.inventory.EaselMenu;
 import phrille.vanillaboom.util.PaintingUtils;
 
 import java.util.List;
@@ -62,8 +62,6 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
     private float scrollOffset;
     private boolean scrolling;
 
-    //TODO: draw background
-    //TODO: recipe list does not update when painting is selected
     public EaselScreen(EaselMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
         menu.registerUpdateListener(this::containerChanged);

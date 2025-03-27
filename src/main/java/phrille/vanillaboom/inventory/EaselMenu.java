@@ -182,21 +182,22 @@ public class EaselMenu extends AbstractContainerMenu {
 
     @Override
     public void slotsChanged(Container container) {
+        // TODO: the selected painting index is reset when new ingredient stacks are added.
+        // this is possibly due to the method being run on both client and server, resulting in the reset.
+        // Fix: Store the selected index in a BlockEntity and send packages from the client.
         if (currentRecipe != null) {
             if (!currentRecipe.matches(container, level)) {
-                setupRecipeList(container);
+                currentRecipe = null;
+                selectedPaintingIndex.set(-1);
+                resultSlot.set(ItemStack.EMPTY);
             }
         } else {
-            setupRecipeList(container);
+            selectedPaintingIndex.set(-1);
+            resultSlot.set(ItemStack.EMPTY);
         }
-    }
 
-    private void setupRecipeList(Container container) {
-        currentRecipe = null;
         availableRecipes.clear();
         availableRecipes = level.getRecipeManager().getRecipesFor(ModRecipes.PAINTING.get(), container, level);
-        selectedPaintingIndex.set(-1);
-        resultSlot.set(ItemStack.EMPTY);
         if (player instanceof ServerPlayer serverPlayer) {
             PacketDistributor.sendToPlayer(serverPlayer, new EaselRecipePayload((short) containerId, availableRecipes));
         }

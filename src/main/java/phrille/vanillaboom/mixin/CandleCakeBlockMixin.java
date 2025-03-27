@@ -18,11 +18,10 @@ import phrille.vanillaboom.block.ModCandleCakeBlock;
 import java.util.Map;
 
 @Mixin(CandleCakeBlock.class)
-public class CandleCakeMixin {
+public class CandleCakeBlockMixin {
     @WrapWithCondition(
             method = "<init>",
-            at = @At(value = "INVOKE", target = "Ljava/util/Map;put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;")
-    )
+            at = @At(value = "INVOKE", target = "Ljava/util/Map;put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"))
     public boolean isNotVanillaBoomCake(Map<CandleBlock, CandleCakeBlock> instance, Object candle, Object candleCake) {
         return !(candleCake instanceof ModCandleCakeBlock);
     }

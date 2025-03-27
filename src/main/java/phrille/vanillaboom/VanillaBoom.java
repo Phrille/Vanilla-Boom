@@ -22,6 +22,7 @@ import org.apache.logging.log4j.Logger;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.entity.ModBlockEntities;
 import phrille.vanillaboom.config.VanillaBoomConfig;
+import phrille.vanillaboom.entity.ModAttachmentTypes;
 import phrille.vanillaboom.entity.ModEntities;
 import phrille.vanillaboom.inventory.ModMenuTypes;
 import phrille.vanillaboom.crafting.ModRecipes;
@@ -41,6 +42,7 @@ public class VanillaBoom {
         ModBlocks.BLOCKS.register(eventBus);
         ModItems.ITEMS.register(eventBus);
         ModBlockEntities.BLOCK_ENTITY_TYPES.register(eventBus);
+        ModAttachmentTypes.ATTACHMENT_TYPES.register(eventBus);
         ModRecipes.RECIPE_SERIALIZERS.register(eventBus);
         ModRecipes.RECIPE_TYPES.register(eventBus);
         ModMenuTypes.MENU_TYPES.register(eventBus);
