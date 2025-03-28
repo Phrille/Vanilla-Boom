@@ -21,6 +21,8 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.decoration.Painting;
 import net.minecraft.world.entity.decoration.PaintingVariant;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
@@ -102,6 +104,33 @@ public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingred
     @Override
     public ItemStack getToastSymbol() {
         return new ItemStack(ModBlocks.EASEL.get());
+    }
+
+    public List<ItemStack> getCombinedDyeStacks() {
+        List<ItemStack> dyeStacks = Lists.newArrayList();
+        dyeStacks.add(canvas().getItems()[0]);
+
+        for (Ingredient dye : dyes()) {
+            if (dye.hasNoItems()) continue;
+
+            ItemStack[] possibleStacks = dye.getItems();
+            DyeColor color = DyeColor.getColor(possibleStacks[0]);
+            if (color == null) continue;
+
+            ItemStack dyeStack = new ItemStack(DyeItem.byColor(color));
+            boolean foundMatch = false;
+            for (ItemStack existingStack : dyeStacks) {
+                if (existingStack.is(dyeStack.getItem())) {
+                    existingStack.grow(1);
+                    foundMatch = true;
+                    break;
+                }
+            }
+            if (!foundMatch) {
+                dyeStacks.add(dyeStack);
+            }
+        }
+        return dyeStacks;
     }
 
     public static class Serializer implements RecipeSerializer<PaintingRecipe> {

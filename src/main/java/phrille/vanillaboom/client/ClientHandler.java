@@ -1,3 +1,11 @@
+/*
+ * Copyright (C) 2025 Phrille
+ *
+ * This file is part of the Vanilla Boom Mod.
+ * Unauthorized distribution or modification is prohibited.
+ * See LICENSE for details.
+ */
+
 package phrille.vanillaboom.client;
 
 import net.minecraft.world.item.ItemStack;
@@ -5,11 +13,14 @@ import net.minecraft.world.level.block.Blocks;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
+import phrille.vanillaboom.client.screen.EaselClientTooltip;
 import phrille.vanillaboom.client.screen.EaselScreen;
+import phrille.vanillaboom.inventory.EaselTooltip;
 import phrille.vanillaboom.inventory.ModMenuTypes;
 
 @EventBusSubscriber(modid = VanillaBoom.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
@@ -17,6 +28,11 @@ public class ClientHandler {
     @SubscribeEvent
     public static void registerMenuScreens(RegisterMenuScreensEvent event) {
         event.register(ModMenuTypes.EASEL_MENU.get(), EaselScreen::new);
+    }
+
+    @SubscribeEvent
+    public static void registerTooltipComponents(RegisterClientTooltipComponentFactoriesEvent event) {
+        event.register(EaselTooltip.class, (tooltip) -> new EaselClientTooltip(tooltip.ingredients()));
     }
 
     @SubscribeEvent
