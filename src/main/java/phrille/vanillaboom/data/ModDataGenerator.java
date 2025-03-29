@@ -35,6 +35,7 @@ import phrille.vanillaboom.data.loot.ModGlobalLootModifierProvider;
 import phrille.vanillaboom.data.loot.ModModifierLootTableProvider;
 import phrille.vanillaboom.data.recipe.ModRecipeProvider;
 import phrille.vanillaboom.data.tags.ModBlockTagsProvider;
+import phrille.vanillaboom.data.tags.ModDamageTypeTagsProvider;
 import phrille.vanillaboom.data.tags.ModEntityTypeTagsProvider;
 import phrille.vanillaboom.data.tags.ModItemTagsProvider;
 import phrille.vanillaboom.util.ModDamageTypes;
@@ -132,6 +133,7 @@ public class ModDataGenerator {
         generator.addProvider(event.includeServer(), blockTagProvider);
         generator.addProvider(event.includeServer(), new ModItemTagsProvider(output, lookupProvider, blockTagProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new ModEntityTypeTagsProvider(output, lookupProvider, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ModDamageTypeTagsProvider(output, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new ModRecipeProvider(output, lookupProvider));
         generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(), lootProviders, lookupProvider));
         generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(output, lookupProvider));
