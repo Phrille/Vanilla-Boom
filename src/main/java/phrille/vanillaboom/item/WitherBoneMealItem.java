@@ -9,10 +9,7 @@
 package phrille.vanillaboom.item;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
@@ -23,9 +20,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.NetherWartBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.network.PacketDistributor;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.crop.IWitherBonemealable;
 import phrille.vanillaboom.config.VanillaBoomConfig;
+import phrille.vanillaboom.network.WitherBoneMealPacket;
 import phrille.vanillaboom.util.Utils;
 
 public class WitherBoneMealItem extends Item {
@@ -40,8 +39,9 @@ public class WitherBoneMealItem extends Item {
 
         if (VanillaBoomConfig.witherBoneMealEnabled) {
             if (applyWitherBoneMeal(level, pos, context.getItemInHand())) {
-                Utils.spawnParticles(ParticleTypes.SOUL, level, pos);
-                level.playLocalSound(pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
+                if (!level.isClientSide) {
+                    PacketDistributor.sendToPlayersNear((ServerLevel) level, null, pos.getX(), pos.getY(), pos.getZ(), 64.0, new WitherBoneMealPacket(pos));
+                }
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }
         }

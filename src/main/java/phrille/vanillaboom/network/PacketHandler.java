@@ -15,7 +15,7 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import phrille.vanillaboom.VanillaBoom;
 
 @EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
-public class PayloadHandler {
+public class PacketHandler {
     @SubscribeEvent
     public static void register(RegisterPayloadHandlersEvent event) {
         PayloadRegistrar registrar = event.registrar(Integer.toString(1));
@@ -23,6 +23,11 @@ public class PayloadHandler {
                 EaselRecipePacket.TYPE,
                 EaselRecipePacket.STREAM_CODEC,
                 EaselRecipePacket::handle
+        );
+        registrar.playToClient(
+                WitherBoneMealPacket.TYPE,
+                WitherBoneMealPacket.STREAM_CODEC,
+                WitherBoneMealPacket::handle
         );
         registrar.playToServer(
                 EaselScreenPacket.TYPE,
