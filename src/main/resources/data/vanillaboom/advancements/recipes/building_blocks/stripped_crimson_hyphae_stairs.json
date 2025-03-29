@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:stripped_crimson_hyphae"
-            ]
+            "items": "minecraft:stripped_crimson_hyphae"
           }
         ]
       },

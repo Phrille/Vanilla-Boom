@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "minecraft:soul_soil"
   },
-  "result": "vanillaboom:soul_glass"
+  "result": {
+    "count": 1,
+    "id": "vanillaboom:soul_glass"
+  }
 }

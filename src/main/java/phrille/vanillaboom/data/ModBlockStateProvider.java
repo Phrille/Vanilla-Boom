@@ -26,7 +26,6 @@ import phrille.vanillaboom.block.crop.RicePlantBlock;
 import phrille.vanillaboom.block.crop.TrellisBlock;
 import phrille.vanillaboom.block.crop.TrellisCropBlock;
 import phrille.vanillaboom.block.variant.*;
-import phrille.vanillaboom.util.Utils;
 
 import java.util.List;
 import java.util.Objects;
@@ -502,7 +501,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .collect(Collectors.toList());
 
         cakeBlock((CakeBlock) cake, files);
-        Utils.CANDLES.forEach(candle -> candleCakeBlock(cake, ((ModCakeBlock) cake).byCandle((CandleBlock) candle), candle));
+        ModDataGenerator.CANDLES.forEach(candle -> candleCakeBlock(cake, ((ModCakeBlock) cake).byCandle(candle), candle));
     }
 
     protected void cakeBlock(CakeBlock cake, List<ModelFile> files) {

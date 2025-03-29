@@ -14,19 +14,19 @@ import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.core.Holder;
 import net.minecraft.core.NonNullList;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
-import phrille.vanillaboom.util.Utils;
+import phrille.vanillaboom.crafting.PaintingRecipe;
+import phrille.vanillaboom.util.PaintingUtils;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class PaintingRecipeBuilder implements RecipeBuilder {
     private final RecipeCategory category;
-    private final ResourceKey<PaintingVariant> variant;
+    private final Holder<PaintingVariant> variant;
     private final int count;
     private final Map<String, Criterion<?>> criteria = Maps.newLinkedHashMap();
 
@@ -44,17 +44,17 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
     @Nullable
     private String group;
 
-    protected PaintingRecipeBuilder(RecipeCategory category, ResourceKey<PaintingVariant> variant, int count) {
+    protected PaintingRecipeBuilder(RecipeCategory category, Holder<PaintingVariant> variant, int count) {
         this.category = category;
         this.variant = variant;
         this.count = count;
     }
 
-    public static PaintingRecipeBuilder painting(RecipeCategory category, ResourceKey<PaintingVariant> variant, int count) {
+    public static PaintingRecipeBuilder painting(RecipeCategory category, Holder<PaintingVariant> variant, int count) {
         return new PaintingRecipeBuilder(category, variant, count);
     }
 
-    public static PaintingRecipeBuilder painting(RecipeCategory category, ResourceKey<PaintingVariant> variant) {
+    public static PaintingRecipeBuilder painting(RecipeCategory category, Holder<PaintingVariant> variant) {
         return new PaintingRecipeBuilder(category, variant, 1);
     }
 
@@ -93,9 +93,9 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
                 .requirements(AdvancementRequirements.Strategy.OR);
         Objects.requireNonNull(builder);
         criteria.forEach(builder::addCriterion);
-        ItemStack resultStack = Utils.stackFromPaintingVariant(Utils.resLocFromPaintingVariant(variant));
-        resultStack.setCount(count);
-        PaintingRecipe recipe = new PaintingRecipe(Objects.requireNonNullElse(group, ""), canvas, dyes, resultStack);
+        ItemStack result = PaintingUtils.stackFromHolder(variant);
+        result.setCount(count);
+        PaintingRecipe recipe = new PaintingRecipe(Objects.requireNonNullElse(group, ""), canvas, dyes, result);
         output.accept(id, recipe, builder.build(id.withPrefix("recipes/" + category.getFolderName() + "/")));
     }
 

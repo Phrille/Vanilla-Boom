@@ -1,5 +1,6 @@
 {
   "values": [
-    "#vanillaboom:wooden_stairs"
+    "#vanillaboom:overworld_wooden_stairs",
+    "#vanillaboom:nether_wooden_stairs"
   ]
 }

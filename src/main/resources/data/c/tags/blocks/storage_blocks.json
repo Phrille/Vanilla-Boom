@@ -1,0 +1,28 @@
+{
+  "values": [
+    "#c:storage_blocks/charcoal",
+    "#c:storage_blocks/sugar",
+    "#c:storage_blocks/sugar_cane",
+    "#c:storage_blocks/gunpowder",
+    "#c:storage_blocks/blaze_powder",
+    "#c:storage_blocks/magma_cream",
+    "#c:storage_blocks/prismarine_crystal",
+    "#c:storage_blocks/wither_bone_meal",
+    "#c:storage_blocks/white_dye",
+    "#c:storage_blocks/orange_dye",
+    "#c:storage_blocks/magenta_dye",
+    "#c:storage_blocks/light_blue_dye",
+    "#c:storage_blocks/yellow_dye",
+    "#c:storage_blocks/lime_dye",
+    "#c:storage_blocks/pink_dye",
+    "#c:storage_blocks/gray_dye",
+    "#c:storage_blocks/light_gray_dye",
+    "#c:storage_blocks/cyan_dye",
+    "#c:storage_blocks/purple_dye",
+    "#c:storage_blocks/blue_dye",
+    "#c:storage_blocks/brown_dye",
+    "#c:storage_blocks/green_dye",
+    "#c:storage_blocks/red_dye",
+    "#c:storage_blocks/black_dye"
+  ]
+}

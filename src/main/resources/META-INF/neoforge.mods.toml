@@ -1,0 +1,35 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+issueTrackerURL="https://github.com/Phrille/Vanilla-Boom/issues"
+
+[[mods]]
+    modId="${mod_id}"
+    version="${mod_version}"
+    displayName="${mod_name}"
+    displayURL="https://www.curseforge.com/minecraft/mc-mods/vanilla-boom"
+    logoFile="vanillaboom_logo.png"
+    authors="${mod_authors}"
+    description='''${mod_description}'''
+    updateJSONURL="https://github.com/Phrille/Vanilla-Boom/blob/main/update-neoforge.json"
+# displayTest="MATCH_VERSION"
+
+[[mixins]]
+    config="${mod_id}.mixins.json"
+
+[[accessTransformers]]
+    file="META-INF/accesstransformer.cfg"
+
+[[dependencies.${mod_id}]]
+    modId="neoforge"
+    type="required"
+    versionRange="${neo_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    type="required"
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"

@@ -15,6 +15,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -71,9 +72,9 @@ public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrell
         int age = getAge(state);
         if (age < getMaxAge()) {
             float growthSpeed = getGrowthSpeed(this, level, pos);
-            if (CommonHooks.onCropsGrowPre(level, pos, state, rand.nextInt((int) (25.0F / growthSpeed) + 1) == 0)) {
+            if (CommonHooks.canCropGrow(level, pos, state, rand.nextInt((int) (25.0F / growthSpeed) + 1) == 0)) {
                 growToAge(level, state, pos, age + 1, 2);
-                CommonHooks.onCropsGrowPost(level, pos, state);
+                CommonHooks.fireCropGrowPost(level, pos, state);
             }
         }
     }
@@ -115,15 +116,15 @@ public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrell
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        int age = state.getValue(AGE);
-        boolean isMaxAge = age == getMaxAge();
-        ItemStack stack = player.getItemInHand(hand);
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        boolean isMaxAge = state.getValue(AGE) == getMaxAge();
+        return !isMaxAge && stack.is(Items.BONE_MEAL)? ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION: super.useItemOn(stack, state, level, pos, player, hand, hit);
+    }
 
-        if (!isMaxAge && stack.is(Items.BONE_MEAL)) {
-            return InteractionResult.PASS;
-        }
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        boolean isMaxAge = state.getValue(AGE) == getMaxAge();
+
         if (isMaxAge) {
             popResource(level, pos, new ItemStack(getFruit()));
             level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
@@ -134,7 +135,7 @@ public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrell
             growToAge(level, state, pos, 4, 2);
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
-        return super.use(state, level, pos, player, hand, hit);
+        return super.useWithoutItem(state, level, pos, player, hit);
     }
 
     @Override

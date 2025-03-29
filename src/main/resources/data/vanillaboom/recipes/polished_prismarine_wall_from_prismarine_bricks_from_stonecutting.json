@@ -1,8 +1,10 @@
 {
   "type": "minecraft:stonecutting",
-  "count": 1,
   "ingredient": {
     "item": "minecraft:prismarine_bricks"
   },
-  "result": "vanillaboom:polished_prismarine_wall"
+  "result": {
+    "count": 1,
+    "id": "vanillaboom:polished_prismarine_wall"
+  }
 }

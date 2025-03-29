@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "x": {
-      "tag": "forge:ingots/gold"
+      "tag": "c:ingots/gold"
     }
   },
   "pattern": [
@@ -12,6 +12,6 @@
   ],
   "result": {
     "count": 16,
-    "item": "vanillaboom:gold_bars"
+    "id": "vanillaboom:gold_bars"
   }
 }

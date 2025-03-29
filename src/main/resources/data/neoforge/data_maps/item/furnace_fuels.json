@@ -1,0 +1,43 @@
+{
+  "values": {
+    "#vanillaboom:overworld_bookshelves": {
+      "burn_time": 300
+    },
+    "#vanillaboom:overworld_ladders": {
+      "burn_time": 300
+    },
+    "#vanillaboom:overworld_wooden_fence_gates": {
+      "burn_time": 300
+    },
+    "#vanillaboom:overworld_wooden_fences": {
+      "burn_time": 300
+    },
+    "#vanillaboom:overworld_wooden_slabs": {
+      "burn_time": 300
+    },
+    "minecraft:blaze_powder": {
+      "burn_time": 16000
+    },
+    "vanillaboom:blaze_powder_block": {
+      "burn_time": 10800
+    },
+    "vanillaboom:charcoal_block": {
+      "burn_time": 16000
+    },
+    "vanillaboom:easel": {
+      "burn_time": 300
+    },
+    "vanillaboom:pine_cone": {
+      "burn_time": 150
+    },
+    "vanillaboom:wither_bone": {
+      "burn_time": 1200
+    },
+    "vanillaboom:wither_bone_block": {
+      "burn_time": 3600
+    },
+    "vanillaboom:wither_bone_meal": {
+      "burn_time": 400
+    }
+  }
+}

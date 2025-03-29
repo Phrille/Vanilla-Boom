@@ -6,7 +6,7 @@
       "item": "minecraft:warped_hyphae"
     },
     "y": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     }
   },
   "pattern": [
@@ -14,6 +14,7 @@
     "yxy"
   ],
   "result": {
-    "item": "vanillaboom:warped_hyphae_fence_gate"
+    "count": 1,
+    "id": "vanillaboom:warped_hyphae_fence_gate"
   }
 }

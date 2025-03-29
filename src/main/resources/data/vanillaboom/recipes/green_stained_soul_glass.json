@@ -7,7 +7,7 @@
       "item": "vanillaboom:soul_glass"
     },
     "y": {
-      "tag": "forge:dyes/green"
+      "tag": "c:dyes/green"
     }
   },
   "pattern": [
@@ -17,6 +17,6 @@
   ],
   "result": {
     "count": 8,
-    "item": "vanillaboom:green_stained_soul_glass"
+    "id": "vanillaboom:green_stained_soul_glass"
   }
 }

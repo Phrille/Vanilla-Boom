@@ -7,13 +7,11 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_wither_bone": {
+    "has_wither_bone_meal": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "vanillaboom:wither_bone"
-            ]
+            "items": "vanillaboom:wither_bone_meal"
           }
         ]
       },
@@ -23,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_wither_bone"
+      "has_wither_bone_meal"
     ]
   ],
   "rewards": {

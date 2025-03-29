@@ -32,22 +32,22 @@ public class FishRenderer extends MobRenderer<Fish, EntityModel<Fish>> {
     }
 
     @Override
-    protected void setupRotations(Fish fish, PoseStack matrix, float ageInTicks, float rotationYaw, float partialTicks) {
-        super.setupRotations(fish, matrix, ageInTicks, rotationYaw, partialTicks);
+    protected void setupRotations(Fish fish, PoseStack pose, float ageInTicks, float rotationYaw, float partialTicks, float scale) {
+        super.setupRotations(fish, pose, ageInTicks, rotationYaw, partialTicks, scale);
 
         float rotation = 4.3F * Mth.sin(0.6F * ageInTicks);
-        matrix.mulPose(Axis.YP.rotationDegrees(rotation));
+        pose.mulPose(Axis.YP.rotationDegrees(rotation));
 
         if (fish.getSize() == Fish.Size.LARGE) {
-            matrix.translate(0.0F, 0.0F, -0.4F);
+            pose.translate(0.0F, 0.0F, -0.4F);
         }
 
         if (!fish.isInWater()) {
             if (fish.getSize() == Fish.Size.LARGE) {
-                matrix.translate(0.2F, 0.1F, 0.0F);
+                pose.translate(0.2F, 0.1F, 0.0F);
             }
 
-            matrix.mulPose(Axis.ZP.rotationDegrees(90.0F));
+            pose.mulPose(Axis.ZP.rotationDegrees(90.0F));
         }
     }
 }

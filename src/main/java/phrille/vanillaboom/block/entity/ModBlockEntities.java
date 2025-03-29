@@ -21,4 +21,5 @@ public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, VanillaBoom.MOD_ID);
 
     public static final Supplier<BlockEntityType<RainDetectorBlockEntity>> RAIN_DETECTOR = BLOCK_ENTITY_TYPES.register("rain_detector", () -> BlockEntityType.Builder.of(RainDetectorBlockEntity::new, ModBlocks.RAIN_DETECTOR.get()).build(null));
+    public static final Supplier<BlockEntityType<EaselBlockEntity>> EASEL = BLOCK_ENTITY_TYPES.register("easel", () -> BlockEntityType.Builder.of(EaselBlockEntity::new, ModBlocks.EASEL.get()).build(null));
 }

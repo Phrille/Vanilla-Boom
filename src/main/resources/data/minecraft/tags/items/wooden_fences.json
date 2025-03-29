@@ -1,5 +1,6 @@
 {
   "values": [
-    "#vanillaboom:wooden_fences"
+    "#vanillaboom:overworld_wooden_fences",
+    "#vanillaboom:nether_wooden_fences"
   ]
 }

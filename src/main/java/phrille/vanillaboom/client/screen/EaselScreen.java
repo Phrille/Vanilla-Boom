@@ -8,8 +8,10 @@
 
 package phrille.vanillaboom.client.screen;
 
+import com.google.common.collect.ImmutableList;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
@@ -20,19 +22,22 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.VanillaBoom;
+import phrille.vanillaboom.crafting.PaintingRecipe;
 import phrille.vanillaboom.inventory.EaselMenu;
-import phrille.vanillaboom.inventory.recipe.PaintingRecipe;
-import phrille.vanillaboom.util.Utils;
+import phrille.vanillaboom.inventory.EaselTooltip;
+import phrille.vanillaboom.network.EaselScreenPacket;
+import phrille.vanillaboom.util.PaintingUtils;
 
 import java.util.List;
+import java.util.Optional;
 
 public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
     private static final ResourceLocation BG_LOCATION = VanillaBoom.resLoc("textures/gui/container/easel.png");
-
-    private static List<RecipeHolder<PaintingRecipe>> availableRecipes = Lists.newArrayList();
 
     public static final int SCREEN_WIDTH = 176;
     public static final int SCREEN_HEIGHT = 184;
@@ -64,21 +69,19 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
 
     public EaselScreen(EaselMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
-        menu.registerUpdateListener(this::containerChanged);
         imageWidth = SCREEN_WIDTH;
         imageHeight = SCREEN_HEIGHT;
         --titleLabelY;
         inventoryLabelY += 19;
 
-        for (int buttonId = 0; buttonId < menu.getRecipes().size(); buttonId++) {
-            RecipeHolder<PaintingRecipe> recipe = menu.getRecipes().get(buttonId);
-            PaintingVariant variant = Utils.paintingVariantFromStack(recipe.value().result());
-
-            if (variant != null) {
-                PaintingButton button = new PaintingButton(buttonId, recipe, variant);
-                button.register();
-            }
+        ImmutableList<RecipeHolder<PaintingRecipe>> recipes = menu.getRecipeList();
+        for (int buttonId = 0; buttonId < recipes.size(); buttonId++) {
+            RecipeHolder<PaintingRecipe> recipe = recipes.get(buttonId);
+            PaintingVariant variant = PaintingUtils.holderFromStack(recipe.value().result()).value();
+            PaintingButton button = new PaintingButton(buttonId, recipe, variant);
+            button.register();
         }
+        PacketDistributor.sendToServer(new EaselScreenPacket((short) menu.containerId));
     }
 
     @Override
@@ -211,10 +214,10 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         return Math.max(0, totalRows - GRID_ROWS);
     }
 
-    private void containerChanged() {
+    public void updateRecipes(List<RecipeHolder<PaintingRecipe>> recipes) {
         buttonList.forEach(button -> {
-            button.enabled = availableRecipes.contains(button.recipe);
-            button.selected = button.enabled && button.selected;
+            button.enabled = recipes.contains(button.recipe);
+            button.selected = button.buttonId == menu.getSelectedIndex() && button.enabled;
         });
 
         if (!isScrollBarActive()) {
@@ -223,21 +226,13 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         }
     }
 
-    public void updateRecipes(List<RecipeHolder<PaintingRecipe>> recipes) {
-        availableRecipes = recipes;
-        containerChanged();
-    }
-
-    @Override
-    public void onClose() {
-        super.onClose();
-        availableRecipes.clear();
-    }
-
+    @SuppressWarnings("ConstantConditions")
     private class PaintingButton {
         private final int buttonId;
         private final RecipeHolder<PaintingRecipe> recipe;
         private final TextureAtlasSprite sprite;
+        private final ItemStack result;
+        private final EaselTooltip tooltip;
         private final int paintingWidth;
         private final int paintingHeight;
         private final int xOffset;
@@ -249,6 +244,8 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
             this.buttonId = buttonId;
             this.recipe = recipe;
             this.sprite = Minecraft.getInstance().getPaintingTextures().get(variant);
+            this.result = recipe.value().result();
+            this.tooltip = new EaselTooltip(recipe.value().getCombinedDyeStacks());
 
             float maxSize = BUTTON_SIZE - 2;
             float scaleFactor = Math.min(maxSize / variant.getWidth(), maxSize / variant.getHeight());
@@ -285,11 +282,9 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         }
 
         public void renderButtonTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-            // TODO: Display ingredients
-            guiGraphics.renderTooltip(font, recipe.value().result(), mouseX, mouseY);
+            guiGraphics.renderTooltip(font, Screen.getTooltipFromItem(minecraft, result), Optional.of(tooltip), result, mouseX, mouseY);
         }
 
-        @SuppressWarnings("ConstantConditions")
         public boolean onClick() {
             if (menu.clickMenuButton(minecraft.player, buttonId)) {
                 Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_LOOM_SELECT_PATTERN, 1.0F));

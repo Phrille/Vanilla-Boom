@@ -7,7 +7,7 @@
       "item": "vanillaboom:soul_glass"
     },
     "y": {
-      "tag": "forge:dyes/light_blue"
+      "tag": "c:dyes/light_blue"
     }
   },
   "pattern": [
@@ -17,6 +17,6 @@
   ],
   "result": {
     "count": 8,
-    "item": "vanillaboom:light_blue_stained_soul_glass"
+    "id": "vanillaboom:light_blue_stained_soul_glass"
   }
 }

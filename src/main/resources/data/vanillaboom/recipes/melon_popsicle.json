@@ -9,11 +9,11 @@
       "item": "minecraft:ice"
     },
     {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     }
   ],
   "result": {
     "count": 4,
-    "item": "vanillaboom:melon_popsicle"
+    "id": "vanillaboom:melon_popsicle"
   }
 }

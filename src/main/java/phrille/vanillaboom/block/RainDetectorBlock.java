@@ -12,7 +12,6 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
@@ -20,7 +19,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -52,20 +50,12 @@ public class RainDetectorBlock extends BaseEntityBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+    protected VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
         if (player.mayBuild()) {
             if (level.isClientSide) {
                 return InteractionResult.SUCCESS;
@@ -77,7 +67,7 @@ public class RainDetectorBlock extends BaseEntityBlock {
                 return InteractionResult.CONSUME;
             }
         } else {
-            return super.use(state, level, pos, player, hand, hit);
+            return super.useWithoutItem(state, level, pos, player, hit);
         }
     }
 
@@ -110,19 +100,18 @@ public class RainDetectorBlock extends BaseEntityBlock {
 
     @Override
     @SuppressWarnings("deprecation")
-    public int getSignal(BlockState state, BlockGetter getter, BlockPos pos, Direction direction) {
+    protected int getSignal(BlockState state, BlockGetter getter, BlockPos pos, Direction direction) {
         return state.getValue(POWER);
     }
 
     @Override
     @SuppressWarnings("deprecation")
-    public boolean isSignalSource(BlockState state) {
+    protected boolean isSignalSource(BlockState state) {
         return true;
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public boolean useShapeForLightOcclusion(BlockState state) {
+    protected boolean useShapeForLightOcclusion(BlockState state) {
         return true;
     }
 

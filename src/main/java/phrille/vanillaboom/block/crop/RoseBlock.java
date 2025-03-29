@@ -22,7 +22,7 @@ import phrille.vanillaboom.config.VanillaBoomConfig;
 
 public class RoseBlock extends FlowerBlock implements IWitherBonemealable {
     public RoseBlock() {
-        super(() -> MobEffects.DIG_SPEED, 10, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY));
+        super(MobEffects.DIG_SPEED, 10, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY));
     }
 
     @Override

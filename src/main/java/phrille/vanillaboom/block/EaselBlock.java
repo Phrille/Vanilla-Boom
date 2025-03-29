@@ -8,20 +8,17 @@
 
 package phrille.vanillaboom.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -31,13 +28,12 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.inventory.EaselMenu;
+import phrille.vanillaboom.block.entity.EaselBlockEntity;
 import phrille.vanillaboom.util.ModStats;
 
-public class EaselBlock extends Block {
+public class EaselBlock extends BaseEntityBlock {
+    public static final MapCodec<EaselBlock> CODEC = MapCodec.unit(EaselBlock::new);
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-    private static final Component CONTAINER_TITLE = Component.translatable(VanillaBoom.MOD_ID + ".container.easel");
 
     public EaselBlock() {
         super(BlockBehaviour.Properties.of().
@@ -51,31 +47,27 @@ public class EaselBlock extends Block {
 
     @Override
     @SuppressWarnings("deprecation")
-    public RenderShape getRenderShape(BlockState state) {
+    protected RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public VoxelShape getOcclusionShape(BlockState state, BlockGetter getter, BlockPos pos) {
+    protected VoxelShape getOcclusionShape(BlockState state, BlockGetter getter, BlockPos pos) {
         return LecternBlock.SHAPE_COMMON;
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public boolean useShapeForLightOcclusion(BlockState state) {
+    protected boolean useShapeForLightOcclusion(BlockState state) {
         return true;
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public VoxelShape getCollisionShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+    protected VoxelShape getCollisionShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         return LecternBlock.SHAPE_COLLISION;
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+    protected VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         return switch (state.getValue(FACING)) {
             case NORTH -> LecternBlock.SHAPE_NORTH;
             case SOUTH -> LecternBlock.SHAPE_SOUTH;
@@ -92,13 +84,13 @@ public class EaselBlock extends Block {
 
     @Override
     @SuppressWarnings("deprecation")
-    public BlockState rotate(BlockState state, Rotation rotation) {
+    protected BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
     @Override
     @SuppressWarnings("deprecation")
-    public BlockState mirror(BlockState state, Mirror mirror) {
+    protected BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
@@ -108,20 +100,23 @@ public class EaselBlock extends Block {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (level.isClientSide) {
-            return InteractionResult.SUCCESS;
-        } else {
-            player.openMenu(state.getMenuProvider(level, pos));
-            player.awardStat(Stats.CUSTOM.get(ModStats.INTERACT_WITH_EASEL.get()));
-            return InteractionResult.CONSUME;
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        if (!level.isClientSide) {
+            if (level.getBlockEntity(pos) instanceof EaselBlockEntity easel) {
+                player.openMenu(easel);
+                player.awardStat(Stats.CUSTOM.get(ModStats.INTERACT_WITH_EASEL.get()));
+            }
         }
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
-        return new SimpleMenuProvider((containerId, inventory, player) -> new EaselMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE);
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
+    }
+
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new EaselBlockEntity(pos, state);
     }
 }

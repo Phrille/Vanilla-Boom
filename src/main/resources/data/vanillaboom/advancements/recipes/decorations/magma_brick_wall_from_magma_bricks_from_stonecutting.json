@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "vanillaboom:magma_bricks"
-            ]
+            "items": "vanillaboom:magma_bricks"
           }
         ]
       },

@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "vanillaboom:pike"
   },
-  "result": "vanillaboom:cooked_pike"
+  "result": {
+    "count": 1,
+    "id": "vanillaboom:cooked_pike"
+  }
 }

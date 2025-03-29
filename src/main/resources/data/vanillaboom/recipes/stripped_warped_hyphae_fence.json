@@ -6,7 +6,7 @@
       "item": "minecraft:stripped_warped_hyphae"
     },
     "y": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     }
   },
   "pattern": [
@@ -15,6 +15,6 @@
   ],
   "result": {
     "count": 3,
-    "item": "vanillaboom:stripped_warped_hyphae_fence"
+    "id": "vanillaboom:stripped_warped_hyphae_fence"
   }
 }

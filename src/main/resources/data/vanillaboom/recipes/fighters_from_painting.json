@@ -1,27 +1,29 @@
 {
   "type": "vanillaboom:painting",
   "canvas": {
-    "tag": "forge:canvas"
+    "tag": "c:canvases"
   },
   "dyes": [
     {
-      "tag": "forge:dyes/blue"
+      "tag": "c:dyes/blue"
     },
     {
-      "tag": "forge:dyes/green"
+      "tag": "c:dyes/green"
     },
     {
-      "tag": "forge:dyes/white"
+      "tag": "c:dyes/white"
     },
     {
-      "tag": "forge:dyes/brown"
+      "tag": "c:dyes/brown"
     },
     {
-      "tag": "forge:dyes/black"
+      "tag": "c:dyes/black"
     },
     {
-      "tag": "forge:dyes/orange"
+      "tag": "c:dyes/orange"
     }
   ],
-  "variant": "minecraft:fighters"
+  "result": {
+    "variant": "minecraft:fighters"
+  }
 }

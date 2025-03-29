@@ -1,8 +1,10 @@
 {
   "type": "minecraft:stonecutting",
-  "count": 1,
   "ingredient": {
     "item": "minecraft:pink_concrete"
   },
-  "result": "vanillaboom:pink_concrete_stairs"
+  "result": {
+    "count": 1,
+    "id": "vanillaboom:pink_concrete_stairs"
+  }
 }

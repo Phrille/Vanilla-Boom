@@ -15,6 +15,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -27,9 +29,8 @@ import net.minecraft.world.level.block.piston.PistonHeadBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.PistonType;
-import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import phrille.vanillaboom.VanillaBoom;
@@ -37,7 +38,7 @@ import phrille.vanillaboom.block.crop.ShearedTallFlowerBlock;
 import phrille.vanillaboom.config.VanillaBoomConfig;
 import phrille.vanillaboom.util.Utils;
 
-@Mod.EventBusSubscriber(modid = VanillaBoom.MOD_ID)
+@EventBusSubscriber(modid = VanillaBoom.MOD_ID)
 public class ItemEventHandler {
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
@@ -50,23 +51,21 @@ public class ItemEventHandler {
 
         if (event.isCanceled() || stack.isEmpty()) return;
 
-        Event.Result result = Event.Result.DEFAULT;
+        InteractionResult result = InteractionResult.PASS;
 
         if (stack.is(Tags.Items.SLIMEBALLS)) {
             result = useSlimeBall(level, player, state, pos, stack);
         } else if (stack.is(ItemTags.AXES) && player.isCrouching()) {
             result = removeSlimeBall(level, player, state, pos, stack, hand);
-        } else if (stack.is(Tags.Items.SHEARS)) {
+        } else if (stack.is(Tags.Items.TOOLS_SHEARS)) {
             result = shearTallFlower(level, player, state, pos, stack, hand);
         }
 
-        event.setUseBlock(result);
+        event.setCancellationResult(result);
     }
 
-    protected static Event.Result useSlimeBall(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack) {
-        if (!VanillaBoomConfig.placeSlimeBallPistons) {
-            return Event.Result.DEFAULT;
-        }
+    protected static InteractionResult useSlimeBall(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack) {
+        if (!VanillaBoomConfig.placeSlimeBallPistons) return InteractionResult.PASS;
 
         if (state.getBlock() == Blocks.PISTON && !state.getValue(PistonBaseBlock.EXTENDED)) {
             Direction direction = state.getValue(PistonBaseBlock.FACING);
@@ -80,7 +79,7 @@ public class ItemEventHandler {
                 level.setBlock(pos.relative(direction, -1), Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.EXTENDED, true).setValue(PistonBaseBlock.FACING, direction), 2);
             }
         } else {
-            return Event.Result.DEFAULT;
+            return InteractionResult.PASS;
         }
 
         player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
@@ -89,13 +88,11 @@ public class ItemEventHandler {
             stack.shrink(1);
         }
 
-        return Event.Result.DENY;
+        return InteractionResult.CONSUME;
     }
 
-    protected static Event.Result removeSlimeBall(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack, InteractionHand hand) {
-        if (!VanillaBoomConfig.removeSlimeBallPistons) {
-            return Event.Result.DEFAULT;
-        }
+    protected static InteractionResult removeSlimeBall(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack, InteractionHand hand) {
+        if (!VanillaBoomConfig.removeSlimeBallPistons) return InteractionResult.PASS;
 
         if (state.getBlock() == Blocks.STICKY_PISTON && !state.getValue(PistonBaseBlock.EXTENDED)) {
             Direction direction = state.getValue(PistonBaseBlock.FACING);
@@ -109,26 +106,23 @@ public class ItemEventHandler {
                 level.setBlock(pos.relative(direction, -1), Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.EXTENDED, true).setValue(PistonBaseBlock.FACING, direction), 2);
             }
         } else {
-            return Event.Result.DEFAULT;
+            return InteractionResult.PASS;
         }
 
         Block.popResource(level, pos, new ItemStack(Items.SLIME_BALL));
         player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
         level.playSound(null, pos, SoundEvents.CHICKEN_EGG, SoundSource.BLOCKS, 1.0F, 1.0F);
         if (!player.isCreative()) {
-            stack.hurtAndBreak(1, player, entity -> entity.broadcastBreakEvent(hand));
+            stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
         }
 
-        return Event.Result.DENY;
+        return InteractionResult.CONSUME_PARTIAL;
     }
 
-    protected static Event.Result shearTallFlower(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack, InteractionHand hand) {
+    protected static InteractionResult shearTallFlower(Level level, Player player, BlockState state, BlockPos pos, ItemStack stack, InteractionHand hand) {
+        if (!VanillaBoomConfig.shearTallFlowers) return InteractionResult.PASS;
+
         ShearedTallFlowerBlock shearedTallFlower;
-
-        if (!VanillaBoomConfig.shearTallFlowers) {
-            return Event.Result.DEFAULT;
-        }
-
         if (state.getBlock() instanceof TallFlowerBlock tallFlower && ShearedTallFlowerBlock.getShearedFlowerBlocks().containsKey(tallFlower)) {
             DoubleBlockHalf half = state.getValue(TallFlowerBlock.HALF);
             if (half == DoubleBlockHalf.UPPER) {
@@ -137,16 +131,16 @@ public class ItemEventHandler {
             shearedTallFlower = ShearedTallFlowerBlock.getShearedFlowerBlocks().get(tallFlower);
             Utils.setDoubleBlock(level, shearedTallFlower.defaultBlockState(), pos, TallFlowerBlock.HALF);
         } else {
-            return Event.Result.DEFAULT;
+            return InteractionResult.PASS;
         }
 
         Block.popResource(level, pos, new ItemStack(shearedTallFlower.getFlower()));
         player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
         level.playSound(null, pos, SoundEvents.SHEEP_SHEAR, SoundSource.BLOCKS, 1.0F, 1.0F);
         if (!player.isCreative()) {
-            stack.hurtAndBreak(1, player, entity -> entity.broadcastBreakEvent(hand));
+            stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
         }
 
-        return Event.Result.DENY;
+        return InteractionResult.CONSUME_PARTIAL;
     }
 }

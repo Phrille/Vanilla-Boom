@@ -7,7 +7,7 @@
       "item": "vanillaboom:terracotta_bricks"
     },
     "y": {
-      "tag": "forge:dyes/light_gray"
+      "tag": "c:dyes/light_gray"
     }
   },
   "pattern": [
@@ -17,6 +17,6 @@
   ],
   "result": {
     "count": 8,
-    "item": "vanillaboom:light_gray_terracotta_bricks"
+    "id": "vanillaboom:light_gray_terracotta_bricks"
   }
 }

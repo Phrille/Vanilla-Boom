@@ -1,18 +1,20 @@
 {
   "type": "vanillaboom:painting",
   "canvas": {
-    "tag": "forge:canvas"
+    "tag": "c:canvases"
   },
   "dyes": [
     {
-      "tag": "forge:dyes/white"
+      "tag": "c:dyes/white"
     },
     {
-      "tag": "forge:dyes/brown"
+      "tag": "c:dyes/brown"
     },
     {
-      "tag": "forge:dyes/orange"
+      "tag": "c:dyes/orange"
     }
   ],
-  "variant": "minecraft:match"
+  "result": {
+    "variant": "minecraft:match"
+  }
 }

@@ -3,16 +3,16 @@
   "category": "misc",
   "key": {
     "i": {
-      "tag": "forge:eggs"
+      "tag": "c:eggs"
     },
     "j": {
-      "tag": "forge:crops/wheat"
+      "tag": "c:crops/wheat"
     },
     "x": {
       "item": "minecraft:sweet_berries"
     },
     "y": {
-      "tag": "forge:milk"
+      "tag": "c:buckets/milk"
     },
     "z": {
       "item": "minecraft:sugar"
@@ -24,6 +24,7 @@
     "jjj"
   ],
   "result": {
-    "item": "vanillaboom:berry_cake"
+    "count": 1,
+    "id": "vanillaboom:berry_cake"
   }
 }

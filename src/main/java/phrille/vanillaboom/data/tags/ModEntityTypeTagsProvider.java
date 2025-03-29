@@ -15,7 +15,7 @@ import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.EntityType;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.entity.ModEntities;
+import phrille.vanillaboom.entity.ModEntityTypes;
 import phrille.vanillaboom.util.ModTags;
 
 import java.util.concurrent.CompletableFuture;
@@ -26,19 +26,29 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     protected void addTags(HolderLookup.Provider provider) {
-        // VanillaBoom Tags
-        tag(ModTags.VanillaBoomTags.Entities.PRISMARINE_EXTRA_HURT)
+        // Mod Tags
+        tag(ModTags.Entities.FISHES)
+                .add(ModEntityTypes.TUNA.get())
+                .add(ModEntityTypes.PERCH.get())
+                .add(ModEntityTypes.PIKE.get())
+                .add(ModEntityTypes.EEL.get());
+        tag(ModTags.Entities.PRISMARINE_EXTRA_HURT)
                 .add(EntityType.BLAZE)
                 .add(EntityType.STRIDER)
                 .add(EntityType.MAGMA_CUBE);
 
-        // Vanilla Tags
-        tag(EntityTypeTags.ARROWS).add(ModEntities.PRISMARINE_ARROW.get());
+        // Minecraft Tags
+        tag(EntityTypeTags.AQUATIC)
+                .addTags(ModTags.Entities.FISHES);
+        tag(EntityTypeTags.ARROWS)
+                .add(ModEntityTypes.PRISMARINE_ARROW.get());
         tag(EntityTypeTags.AXOLOTL_HUNT_TARGETS)
-                .add(ModEntities.TUNA.get())
-                .add(ModEntities.PERCH.get())
-                .add(ModEntities.PIKE.get())
-                .add(ModEntities.EEL.get());
+                .addTags(ModTags.Entities.FISHES);
+        tag(EntityTypeTags.CAN_BREATHE_UNDER_WATER)
+                .addTags(ModTags.Entities.FISHES);
+        tag(EntityTypeTags.NOT_SCARY_FOR_PUFFERFISH)
+                .addTags(ModTags.Entities.FISHES);
     }
 }

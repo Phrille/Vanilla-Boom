@@ -1,18 +1,20 @@
 {
   "type": "vanillaboom:painting",
   "canvas": {
-    "tag": "forge:canvas"
+    "tag": "c:canvases"
   },
   "dyes": [
     {
-      "tag": "forge:dyes/brown"
+      "tag": "c:dyes/brown"
     },
     {
-      "tag": "forge:dyes/brown"
+      "tag": "c:dyes/brown"
     },
     {
-      "tag": "forge:dyes/orange"
+      "tag": "c:dyes/orange"
     }
   ],
-  "variant": "minecraft:earth"
+  "result": {
+    "variant": "minecraft:earth"
+  }
 }

@@ -9,7 +9,9 @@
       }
     }
   ],
-  "modifier_loot_table": "vanillaboom:entities/loot_modifiers/wither_skeleton",
+  "modifier_loot_table": {
+    "value": "vanillaboom:modifiers/entities/wither_skeleton"
+  },
   "remove_items": [
     "minecraft:bone"
   ]

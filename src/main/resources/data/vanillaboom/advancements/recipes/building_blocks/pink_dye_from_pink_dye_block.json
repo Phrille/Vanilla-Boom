@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "vanillaboom:pink_dye_block"
-            ]
+            "items": "vanillaboom:pink_dye_block"
           }
         ]
       },

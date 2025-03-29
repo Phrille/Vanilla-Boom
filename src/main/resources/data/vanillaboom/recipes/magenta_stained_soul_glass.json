@@ -7,7 +7,7 @@
       "item": "vanillaboom:soul_glass"
     },
     "y": {
-      "tag": "forge:dyes/magenta"
+      "tag": "c:dyes/magenta"
     }
   },
   "pattern": [
@@ -17,6 +17,6 @@
   ],
   "result": {
     "count": 8,
-    "item": "vanillaboom:magenta_stained_soul_glass"
+    "id": "vanillaboom:magenta_stained_soul_glass"
   }
 }

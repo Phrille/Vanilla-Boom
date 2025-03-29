@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "vanillaboom:eel"
   },
-  "result": "vanillaboom:cooked_eel"
+  "result": {
+    "count": 1,
+    "id": "vanillaboom:cooked_eel"
+  }
 }

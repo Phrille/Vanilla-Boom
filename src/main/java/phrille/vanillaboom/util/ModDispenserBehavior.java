@@ -11,15 +11,14 @@ package phrille.vanillaboom.util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.OptionalDispenseItemBehavior;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DispenserBlock;
+import net.neoforged.neoforge.network.PacketDistributor;
 import phrille.vanillaboom.config.VanillaBoomConfig;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.item.WitherBoneMealItem;
+import phrille.vanillaboom.network.WitherBoneMealPacket;
 
 public class ModDispenserBehavior {
     public static void registerWitherBonemealBehavior() {
@@ -31,14 +30,13 @@ public class ModDispenserBehavior {
             @Override
             protected ItemStack execute(BlockSource source, ItemStack stack) {
                 setSuccess(true);
-                Level level = source.level();
+                ServerLevel level = source.level();
                 BlockPos pos = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
 
                 if (!WitherBoneMealItem.apply(stack, level, pos)) {
                     setSuccess(false);
-                } else {
-                    Utils.spawnParticles(ParticleTypes.SOUL, level, pos);
-                    level.playLocalSound(pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
+                } else if (!level.isClientSide) {
+                    PacketDistributor.sendToPlayersNear(level, null, pos.getX(), pos.getY(), pos.getZ(), 64.0, new WitherBoneMealPacket(pos));
                 }
                 return stack;
             }

@@ -6,7 +6,7 @@
       "item": "minecraft:crimson_hyphae"
     },
     "y": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     }
   },
   "pattern": [
@@ -15,6 +15,6 @@
   ],
   "result": {
     "count": 3,
-    "item": "vanillaboom:crimson_hyphae_fence"
+    "id": "vanillaboom:crimson_hyphae_fence"
   }
 }

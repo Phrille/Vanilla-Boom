@@ -17,7 +17,7 @@
     "#vanillaboom:dye_blocks",
     "#vanillaboom:stairs",
     "#vanillaboom:slabs",
-    "#vanillaboom:fences",
-    "#vanillaboom:fence_gates"
+    "#vanillaboom:nether_brick_fences",
+    "#vanillaboom:nether_brick_fence_gates"
   ]
 }

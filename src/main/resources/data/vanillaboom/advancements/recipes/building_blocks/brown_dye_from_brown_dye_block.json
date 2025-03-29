@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "vanillaboom:brown_dye_block"
-            ]
+            "items": "vanillaboom:brown_dye_block"
           }
         ]
       },

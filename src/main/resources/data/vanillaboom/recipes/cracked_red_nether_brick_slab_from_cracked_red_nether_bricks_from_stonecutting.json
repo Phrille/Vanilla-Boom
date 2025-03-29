@@ -1,8 +1,10 @@
 {
   "type": "minecraft:stonecutting",
-  "count": 2,
   "ingredient": {
     "item": "vanillaboom:cracked_red_nether_bricks"
   },
-  "result": "vanillaboom:cracked_red_nether_brick_slab"
+  "result": {
+    "count": 2,
+    "id": "vanillaboom:cracked_red_nether_brick_slab"
+  }
 }

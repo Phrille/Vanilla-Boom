@@ -6,7 +6,7 @@
       "item": "minecraft:stripped_acacia_wood"
     },
     "y": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     }
   },
   "pattern": [
@@ -14,6 +14,7 @@
     "yxy"
   ],
   "result": {
-    "item": "vanillaboom:stripped_acacia_wood_fence_gate"
+    "count": 1,
+    "id": "vanillaboom:stripped_acacia_wood_fence_gate"
   }
 }

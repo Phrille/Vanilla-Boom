@@ -1,8 +1,10 @@
 {
   "type": "minecraft:stonecutting",
-  "count": 1,
   "ingredient": {
     "item": "minecraft:orange_terracotta"
   },
-  "result": "vanillaboom:orange_terracotta_brick_stairs"
+  "result": {
+    "count": 1,
+    "id": "vanillaboom:orange_terracotta_brick_stairs"
+  }
 }

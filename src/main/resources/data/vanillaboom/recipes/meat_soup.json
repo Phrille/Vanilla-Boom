@@ -6,16 +6,17 @@
       "item": "minecraft:bowl"
     },
     {
-      "tag": "forge:crops/potato"
+      "tag": "c:crops/potato"
     },
     {
-      "tag": "forge:cooked_meats"
+      "tag": "c:foods/cooked_meats"
     },
     {
-      "tag": "forge:cooked_meats"
+      "tag": "c:foods/cooked_meats"
     }
   ],
   "result": {
-    "item": "vanillaboom:meat_soup"
+    "count": 1,
+    "id": "vanillaboom:meat_soup"
   }
 }

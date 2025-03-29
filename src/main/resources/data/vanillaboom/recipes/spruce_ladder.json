@@ -6,7 +6,7 @@
       "item": "minecraft:spruce_slab"
     },
     "y": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     }
   },
   "pattern": [
@@ -16,6 +16,6 @@
   ],
   "result": {
     "count": 3,
-    "item": "vanillaboom:spruce_ladder"
+    "id": "vanillaboom:spruce_ladder"
   }
 }

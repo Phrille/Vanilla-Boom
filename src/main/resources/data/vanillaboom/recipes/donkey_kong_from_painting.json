@@ -1,27 +1,29 @@
 {
   "type": "vanillaboom:painting",
   "canvas": {
-    "tag": "forge:canvas"
+    "tag": "c:canvases"
   },
   "dyes": [
     {
-      "tag": "forge:dyes/black"
+      "tag": "c:dyes/black"
     },
     {
-      "tag": "forge:dyes/black"
+      "tag": "c:dyes/black"
     },
     {
-      "tag": "forge:dyes/pink"
+      "tag": "c:dyes/pink"
     },
     {
-      "tag": "forge:dyes/red"
+      "tag": "c:dyes/red"
     },
     {
-      "tag": "forge:dyes/white"
+      "tag": "c:dyes/white"
     },
     {
-      "tag": "forge:dyes/brown"
+      "tag": "c:dyes/brown"
     }
   ],
-  "variant": "minecraft:donkey_kong"
+  "result": {
+    "variant": "minecraft:donkey_kong"
+  }
 }

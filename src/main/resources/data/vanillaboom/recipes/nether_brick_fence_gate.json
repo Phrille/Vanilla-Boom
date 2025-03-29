@@ -6,7 +6,7 @@
       "item": "minecraft:nether_bricks"
     },
     "y": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     }
   },
   "pattern": [
@@ -14,6 +14,7 @@
     "yxy"
   ],
   "result": {
-    "item": "vanillaboom:nether_brick_fence_gate"
+    "count": 1,
+    "id": "vanillaboom:nether_brick_fence_gate"
   }
 }

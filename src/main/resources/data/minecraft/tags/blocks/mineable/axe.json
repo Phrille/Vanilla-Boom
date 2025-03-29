@@ -2,7 +2,9 @@
   "values": [
     "vanillaboom:sugar_cane_block",
     "vanillaboom:easel",
-    "#vanillaboom:bookshelves",
-    "#vanillaboom:ladders"
+    "#vanillaboom:overworld_bookshelves",
+    "#vanillaboom:nether_bookshelves",
+    "#vanillaboom:overworld_ladders",
+    "#vanillaboom:nether_ladders"
   ]
 }

@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "phrille.vanillaboom.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "mixins": [
+    "CandleCakeBlockMixin",
+    "HangingEntityItemMixin",
+    "PaintingMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
