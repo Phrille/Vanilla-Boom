@@ -29,8 +29,6 @@ import phrille.vanillaboom.util.ModTags;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-// TODO: add vb tags for sand, soul glass?
-// TODO: common: glass, dyed, sands, sandstone, stones
 @SuppressWarnings("unchecked")
 public class ModBlockTagsProvider extends BlockTagsProvider {
     public ModBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper) {
@@ -238,6 +236,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(Tags.Blocks.FENCE_GATES_WOODEN)
                 .addTags(ModTags.Blocks.OVERWORLD_WOODEN_FENCE_GATES)
                 .addTags(ModTags.Blocks.NETHER_WOODEN_FENCE_GATES);
+        tag(Tags.Blocks.STONES)
+                .add(ModBlocks.PERIDOTITE.get());
+        tag(Tags.Blocks.STONES)
+                .add(ModBlocks.PERIDOTITE.get());
         tag(Tags.Blocks.STORAGE_BLOCKS)
                 .addTags(CommonTags.Blocks.STORAGE_BLOCKS_CHARCOAL)
                 .addTags(CommonTags.Blocks.STORAGE_BLOCKS_SUGAR)
