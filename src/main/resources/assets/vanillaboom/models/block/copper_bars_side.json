@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/iron_bars_side",
+  "render_type": "minecraft:cutout_mipped",
+  "textures": {
+    "bars": "vanillaboom:block/copper_bars",
+    "edge": "vanillaboom:block/copper_bars",
+    "particle": "vanillaboom:block/copper_bars"
+  }
+}

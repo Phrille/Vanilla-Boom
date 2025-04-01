@@ -24,8 +24,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.network.PacketDistributor;
 import phrille.vanillaboom.block.entity.EaselBlockEntity;
+import phrille.vanillaboom.crafting.EaselRecipeInput;
 import phrille.vanillaboom.crafting.ModRecipes;
 import phrille.vanillaboom.crafting.PaintingRecipe;
 import phrille.vanillaboom.network.EaselRecipePacket;
@@ -94,7 +94,7 @@ public class EaselMenu extends AbstractContainerMenu implements ContainerListene
                 if (player instanceof ServerPlayer) {
                     List<ItemStack> itemsUsed = Lists.newArrayList();
 
-                    RecipeHolder<PaintingRecipe> recipe = Objects.requireNonNull(currentRecipe);
+                    RecipeHolder<PaintingRecipe> recipe = Objects.requireNonNull(currentRecipe, "Missing currentRecipe in EaselMenu");
                     for (Ingredient ingredient : recipe.value().getIngredients()) {
                         boolean success = false;
                         for (int i = 0; i < EaselMenu.this.container.getContainerSize(); i++) {
@@ -156,20 +156,20 @@ public class EaselMenu extends AbstractContainerMenu implements ContainerListene
         if (player instanceof ServerPlayer serverPlayer) {
             Level level = serverPlayer.level();
             List<RecipeHolder<PaintingRecipe>> availableRecipes = level.getRecipeManager()
-                    .getRecipesFor(ModRecipes.PAINTING.get(), container, level);
+                    .getRecipesFor(ModRecipes.PAINTING.get(), inputView(), level);
 
             if (checkIndexStillValid(availableRecipes)) {
                 setupResultSlot();
             }
 
-            PacketDistributor.sendToPlayer(serverPlayer, new EaselRecipePacket((short) containerId, availableRecipes));
+            EaselRecipePacket.send(serverPlayer, containerId, availableRecipes);
         }
     }
 
     private void setupResultSlot() {
         Level level = player.level();
         RecipeHolder<PaintingRecipe> recipe = recipeList.get(getSelectedIndex());
-        ItemStack result = recipe.value().assemble(container, level.registryAccess());
+        ItemStack result = recipe.value().assemble(inputView(), level.registryAccess());
 
         if (result.isItemEnabled(level.enabledFeatures())) {
             currentRecipe = recipe;
@@ -195,6 +195,15 @@ public class EaselMenu extends AbstractContainerMenu implements ContainerListene
         containerData.set(0, -1);
         broadcastChanges();
         return false;
+    }
+
+    private EaselRecipeInput inputView() {
+        ItemStack canvas = container.getItem(EaselBlockEntity.CANVAS_SLOT);
+        List<ItemStack> dyes = Lists.newArrayList();
+        for (int i = EaselBlockEntity.DYE_SLOT_START; i < EaselBlockEntity.DYE_SLOT_END; i++) {
+            dyes.add(container.getItem(i));
+        }
+        return new EaselRecipeInput(canvas, dyes);
     }
 
     @Override

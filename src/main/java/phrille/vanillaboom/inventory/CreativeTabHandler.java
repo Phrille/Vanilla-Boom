@@ -10,7 +10,6 @@ package phrille.vanillaboom.inventory;
 
 import com.google.common.collect.Lists;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.decoration.PaintingVariants;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
@@ -19,182 +18,175 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.common.util.MutableHashedLinkedMap;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.variant.ModBookshelfBlock;
 import phrille.vanillaboom.block.variant.ModLadderBlock;
 import phrille.vanillaboom.item.ModItems;
-import phrille.vanillaboom.util.PaintingUtils;
 
 import java.util.List;
 
 @EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class CreativeTabHandler {
-    /**
-     * TODO: This event is broken in 1.20.6. Fix in 1.21
-     *  See: <a href="https://github.com/neoforged/NeoForge/pull/1156">...</a>
-     */
     @SubscribeEvent
     public static void buildContents(BuildCreativeModeTabContentsEvent event) {
         ResourceKey<CreativeModeTab> tab = event.getTabKey();
-        MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries = event.getEntries();
 
         // Building Blocks
         if (tab == CreativeModeTabs.BUILDING_BLOCKS) {
-            remove(entries, List.of(
-                    //Blocks.CRACKED_STONE_BRICKS,
-                    //Blocks.CRACKED_NETHER_BRICKS,
-                    //Blocks.GILDED_BLACKSTONE,
-                    //Blocks.CHISELED_POLISHED_BLACKSTONE
-                    //Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS,
-                    //Blocks.PURPUR_PILLAR,
-                    //Blocks.QUARTZ_PILLAR
+            remove(event, List.of(
+                    Blocks.CRACKED_STONE_BRICKS,
+                    Blocks.CRACKED_NETHER_BRICKS,
+                    Blocks.GILDED_BLACKSTONE,
+                    Blocks.CHISELED_POLISHED_BLACKSTONE,
+                    Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS,
+                    Blocks.PURPUR_PILLAR,
+                    Blocks.QUARTZ_PILLAR
             ));
             // Wood Blocks
-            putAfter(entries, Blocks.OAK_WOOD, List.of(
+            putAfter(event, Blocks.OAK_WOOD, List.of(
                     ModItems.OAK_WOOD_STAIRS.get(),
                     ModItems.OAK_WOOD_SLAB.get(),
                     ModItems.OAK_WOOD_FENCE.get(),
                     ModItems.OAK_WOOD_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.STRIPPED_OAK_WOOD, List.of(
+            putAfter(event, Blocks.STRIPPED_OAK_WOOD, List.of(
                     ModItems.STRIPPED_OAK_WOOD_STAIRS.get(),
                     ModItems.STRIPPED_OAK_WOOD_SLAB.get(),
                     ModItems.STRIPPED_OAK_WOOD_FENCE.get(),
                     ModItems.STRIPPED_OAK_WOOD_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.OAK_FENCE_GATE, Blocks.BOOKSHELF);
-            putAfter(entries, Blocks.OAK_BUTTON, Blocks.LADDER);
-            putAfter(entries, Blocks.SPRUCE_WOOD, List.of(
+            putAfter(event, Blocks.OAK_FENCE_GATE, Blocks.BOOKSHELF);
+            putAfter(event, Blocks.OAK_BUTTON, Blocks.LADDER);
+            putAfter(event, Blocks.SPRUCE_WOOD, List.of(
                     ModItems.SPRUCE_WOOD_STAIRS.get(),
                     ModItems.SPRUCE_WOOD_SLAB.get(),
                     ModItems.SPRUCE_WOOD_FENCE.get(),
                     ModItems.SPRUCE_WOOD_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.STRIPPED_SPRUCE_WOOD, List.of(
+            putAfter(event, Blocks.STRIPPED_SPRUCE_WOOD, List.of(
                     ModItems.STRIPPED_SPRUCE_WOOD_STAIRS.get(),
                     ModItems.STRIPPED_SPRUCE_WOOD_SLAB.get(),
                     ModItems.STRIPPED_SPRUCE_WOOD_FENCE.get(),
                     ModItems.STRIPPED_SPRUCE_WOOD_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.SPRUCE_FENCE_GATE, ModItems.SPRUCE_BOOKSHELF.get());
-            putAfter(entries, Blocks.SPRUCE_BUTTON, ModItems.SPRUCE_LADDER.get());
-            putAfter(entries, Blocks.BIRCH_WOOD, List.of(
+            putAfter(event, Blocks.SPRUCE_FENCE_GATE, ModItems.SPRUCE_BOOKSHELF.get());
+            putAfter(event, Blocks.SPRUCE_BUTTON, ModItems.SPRUCE_LADDER.get());
+            putAfter(event, Blocks.BIRCH_WOOD, List.of(
                     ModItems.BIRCH_WOOD_STAIRS.get(),
                     ModItems.BIRCH_WOOD_SLAB.get(),
                     ModItems.BIRCH_WOOD_FENCE.get(),
                     ModItems.BIRCH_WOOD_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.STRIPPED_BIRCH_WOOD, List.of(
+            putAfter(event, Blocks.STRIPPED_BIRCH_WOOD, List.of(
                     ModItems.STRIPPED_BIRCH_WOOD_STAIRS.get(),
                     ModItems.STRIPPED_BIRCH_WOOD_SLAB.get(),
                     ModItems.STRIPPED_BIRCH_WOOD_FENCE.get(),
                     ModItems.STRIPPED_BIRCH_WOOD_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.BIRCH_FENCE_GATE, ModItems.BIRCH_BOOKSHELF.get());
-            putAfter(entries, Blocks.BIRCH_BUTTON, ModItems.BIRCH_LADDER.get());
-            putAfter(entries, Blocks.JUNGLE_WOOD, List.of(
+            putAfter(event, Blocks.BIRCH_FENCE_GATE, ModItems.BIRCH_BOOKSHELF.get());
+            putAfter(event, Blocks.BIRCH_BUTTON, ModItems.BIRCH_LADDER.get());
+            putAfter(event, Blocks.JUNGLE_WOOD, List.of(
                     ModItems.JUNGLE_WOOD_STAIRS.get(),
                     ModItems.JUNGLE_WOOD_SLAB.get(),
                     ModItems.JUNGLE_WOOD_FENCE.get(),
                     ModItems.JUNGLE_WOOD_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.STRIPPED_JUNGLE_WOOD, List.of(
+            putAfter(event, Blocks.STRIPPED_JUNGLE_WOOD, List.of(
                     ModItems.STRIPPED_JUNGLE_WOOD_STAIRS.get(),
                     ModItems.STRIPPED_JUNGLE_WOOD_SLAB.get(),
                     ModItems.STRIPPED_JUNGLE_WOOD_FENCE.get(),
                     ModItems.STRIPPED_JUNGLE_WOOD_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.JUNGLE_FENCE_GATE, ModItems.JUNGLE_BOOKSHELF.get());
-            putAfter(entries, Blocks.JUNGLE_BUTTON, ModItems.JUNGLE_LADDER.get());
-            putAfter(entries, Blocks.ACACIA_WOOD, List.of(
+            putAfter(event, Blocks.JUNGLE_FENCE_GATE, ModItems.JUNGLE_BOOKSHELF.get());
+            putAfter(event, Blocks.JUNGLE_BUTTON, ModItems.JUNGLE_LADDER.get());
+            putAfter(event, Blocks.ACACIA_WOOD, List.of(
                     ModItems.ACACIA_WOOD_STAIRS.get(),
                     ModItems.ACACIA_WOOD_SLAB.get(),
                     ModItems.ACACIA_WOOD_FENCE.get(),
                     ModItems.ACACIA_WOOD_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.STRIPPED_ACACIA_WOOD, List.of(
+            putAfter(event, Blocks.STRIPPED_ACACIA_WOOD, List.of(
                     ModItems.STRIPPED_ACACIA_WOOD_STAIRS.get(),
                     ModItems.STRIPPED_ACACIA_WOOD_SLAB.get(),
                     ModItems.STRIPPED_ACACIA_WOOD_FENCE.get(),
                     ModItems.STRIPPED_ACACIA_WOOD_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.ACACIA_FENCE_GATE, ModItems.ACACIA_BOOKSHELF.get());
-            putAfter(entries, Blocks.ACACIA_BUTTON, ModItems.ACACIA_LADDER.get());
-            putAfter(entries, Blocks.DARK_OAK_WOOD, List.of(
+            putAfter(event, Blocks.ACACIA_FENCE_GATE, ModItems.ACACIA_BOOKSHELF.get());
+            putAfter(event, Blocks.ACACIA_BUTTON, ModItems.ACACIA_LADDER.get());
+            putAfter(event, Blocks.DARK_OAK_WOOD, List.of(
                     ModItems.DARK_OAK_WOOD_STAIRS.get(),
                     ModItems.DARK_OAK_WOOD_SLAB.get(),
                     ModItems.DARK_OAK_WOOD_FENCE.get(),
                     ModItems.DARK_OAK_WOOD_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.STRIPPED_DARK_OAK_WOOD, List.of(
+            putAfter(event, Blocks.STRIPPED_DARK_OAK_WOOD, List.of(
                     ModItems.STRIPPED_DARK_OAK_WOOD_STAIRS.get(),
                     ModItems.STRIPPED_DARK_OAK_WOOD_SLAB.get(),
                     ModItems.STRIPPED_DARK_OAK_WOOD_FENCE.get(),
                     ModItems.STRIPPED_DARK_OAK_WOOD_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.DARK_OAK_FENCE_GATE, ModItems.DARK_OAK_BOOKSHELF.get());
-            putAfter(entries, Blocks.DARK_OAK_BUTTON, ModItems.DARK_OAK_LADDER.get());
-            putAfter(entries, Blocks.MANGROVE_WOOD, List.of(
+            putAfter(event, Blocks.DARK_OAK_FENCE_GATE, ModItems.DARK_OAK_BOOKSHELF.get());
+            putAfter(event, Blocks.DARK_OAK_BUTTON, ModItems.DARK_OAK_LADDER.get());
+            putAfter(event, Blocks.MANGROVE_WOOD, List.of(
                     ModItems.MANGROVE_WOOD_STAIRS.get(),
                     ModItems.MANGROVE_WOOD_SLAB.get(),
                     ModItems.MANGROVE_WOOD_FENCE.get(),
                     ModItems.MANGROVE_WOOD_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.STRIPPED_MANGROVE_WOOD, List.of(
+            putAfter(event, Blocks.STRIPPED_MANGROVE_WOOD, List.of(
                     ModItems.STRIPPED_MANGROVE_WOOD_STAIRS.get(),
                     ModItems.STRIPPED_MANGROVE_WOOD_SLAB.get(),
                     ModItems.STRIPPED_MANGROVE_WOOD_FENCE.get(),
                     ModItems.STRIPPED_MANGROVE_WOOD_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.MANGROVE_FENCE_GATE, ModItems.MANGROVE_BOOKSHELF.get());
-            putAfter(entries, Blocks.MANGROVE_BUTTON, ModItems.MANGROVE_LADDER.get());
-            putAfter(entries, Blocks.CHERRY_WOOD, List.of(
+            putAfter(event, Blocks.MANGROVE_FENCE_GATE, ModItems.MANGROVE_BOOKSHELF.get());
+            putAfter(event, Blocks.MANGROVE_BUTTON, ModItems.MANGROVE_LADDER.get());
+            putAfter(event, Blocks.CHERRY_WOOD, List.of(
                     ModItems.CHERRY_WOOD_STAIRS.get(),
                     ModItems.CHERRY_WOOD_SLAB.get(),
                     ModItems.CHERRY_WOOD_FENCE.get(),
                     ModItems.CHERRY_WOOD_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.STRIPPED_CHERRY_WOOD, List.of(
+            putAfter(event, Blocks.STRIPPED_CHERRY_WOOD, List.of(
                     ModItems.STRIPPED_CHERRY_WOOD_STAIRS.get(),
                     ModItems.STRIPPED_CHERRY_WOOD_SLAB.get(),
                     ModItems.STRIPPED_CHERRY_WOOD_FENCE.get(),
                     ModItems.STRIPPED_CHERRY_WOOD_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.CHERRY_FENCE_GATE, ModItems.CHERRY_BOOKSHELF.get());
-            putAfter(entries, Blocks.CHERRY_BUTTON, ModItems.CHERRY_LADDER.get());
-            putAfter(entries, Blocks.CRIMSON_HYPHAE, List.of(
+            putAfter(event, Blocks.CHERRY_FENCE_GATE, ModItems.CHERRY_BOOKSHELF.get());
+            putAfter(event, Blocks.CHERRY_BUTTON, ModItems.CHERRY_LADDER.get());
+            putAfter(event, Blocks.CRIMSON_HYPHAE, List.of(
                     ModItems.CRIMSON_HYPHAE_STAIRS.get(),
                     ModItems.CRIMSON_HYPHAE_SLAB.get(),
                     ModItems.CRIMSON_HYPHAE_FENCE.get(),
                     ModItems.CRIMSON_HYPHAE_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.STRIPPED_CRIMSON_HYPHAE, List.of(
+            putAfter(event, Blocks.STRIPPED_CRIMSON_HYPHAE, List.of(
                     ModItems.STRIPPED_CRIMSON_HYPHAE_STAIRS.get(),
                     ModItems.STRIPPED_CRIMSON_HYPHAE_SLAB.get(),
                     ModItems.STRIPPED_CRIMSON_HYPHAE_FENCE.get(),
                     ModItems.STRIPPED_CRIMSON_HYPHAE_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.CRIMSON_FENCE_GATE, ModItems.CRIMSON_BOOKSHELF.get());
-            putAfter(entries, Blocks.CRIMSON_BUTTON, ModItems.CRIMSON_LADDER.get());
-            putAfter(entries, Blocks.WARPED_HYPHAE, List.of(
+            putAfter(event, Blocks.CRIMSON_FENCE_GATE, ModItems.CRIMSON_BOOKSHELF.get());
+            putAfter(event, Blocks.CRIMSON_BUTTON, ModItems.CRIMSON_LADDER.get());
+            putAfter(event, Blocks.WARPED_HYPHAE, List.of(
                     ModItems.WARPED_HYPHAE_STAIRS.get(),
                     ModItems.WARPED_HYPHAE_SLAB.get(),
                     ModItems.WARPED_HYPHAE_FENCE.get(),
                     ModItems.WARPED_HYPHAE_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.STRIPPED_WARPED_HYPHAE, List.of(
+            putAfter(event, Blocks.STRIPPED_WARPED_HYPHAE, List.of(
                     ModItems.STRIPPED_WARPED_HYPHAE_STAIRS.get(),
                     ModItems.STRIPPED_WARPED_HYPHAE_SLAB.get(),
                     ModItems.STRIPPED_WARPED_HYPHAE_FENCE.get(),
                     ModItems.STRIPPED_WARPED_HYPHAE_FENCE_GATE.get()
             ));
-            putAfter(entries, Blocks.WARPED_FENCE_GATE, ModItems.WARPED_BOOKSHELF.get());
-            putAfter(entries, Blocks.WARPED_BUTTON, ModItems.WARPED_LADDER.get());
+            putAfter(event, Blocks.WARPED_FENCE_GATE, ModItems.WARPED_BOOKSHELF.get());
+            putAfter(event, Blocks.WARPED_BUTTON, ModItems.WARPED_LADDER.get());
             // Stone Blocks
-            putAfter(entries, Blocks.STONE_SLAB, ModItems.STONE_WALL.get());
-            putAfter(entries, Blocks.MOSSY_COBBLESTONE_WALL, List.of(
+            putAfter(event, Blocks.STONE_SLAB, ModItems.STONE_WALL.get());
+            putAfter(event, Blocks.MOSSY_COBBLESTONE_WALL, List.of(
                     ModItems.COBBLESTONE_BRICKS.get(),
                     ModItems.COBBLESTONE_BRICK_STAIRS.get(),
                     ModItems.COBBLESTONE_BRICK_SLAB.get(),
@@ -204,23 +196,23 @@ public class CreativeTabHandler {
                     ModItems.MOSSY_COBBLESTONE_BRICK_SLAB.get(),
                     ModItems.MOSSY_COBBLESTONE_BRICK_WALL.get()
             ));
-            putAfter(entries, Blocks.SMOOTH_STONE, ModItems.SMOOTH_STONE_STAIRS.get());
-            putAfter(entries, Blocks.SMOOTH_STONE_SLAB, ModItems.SMOOTH_STONE_WALL.get());
-            putAfter(entries, Blocks.STONE_BRICK_WALL, List.of(
-                    //Blocks.CRACKED_STONE_BRICKS,
+            putAfter(event, Blocks.SMOOTH_STONE, ModItems.SMOOTH_STONE_STAIRS.get());
+            putAfter(event, Blocks.SMOOTH_STONE_SLAB, ModItems.SMOOTH_STONE_WALL.get());
+            putAfter(event, Blocks.STONE_BRICK_WALL, List.of(
+                    Blocks.CRACKED_STONE_BRICKS,
                     ModItems.CRACKED_STONE_BRICK_STAIRS.get(),
                     ModItems.CRACKED_STONE_BRICK_SLAB.get(),
                     ModItems.CRACKED_STONE_BRICK_WALL.get()
             ));
-            putAfter(entries, Blocks.POLISHED_GRANITE_SLAB, List.of(
+            putAfter(event, Blocks.POLISHED_GRANITE_SLAB, List.of(
                     ModItems.POLISHED_GRANITE_WALL.get(),
                     ModItems.GRANITE_PILLAR.get()
             ));
-            putAfter(entries, Blocks.POLISHED_DIORITE_SLAB, List.of(
+            putAfter(event, Blocks.POLISHED_DIORITE_SLAB, List.of(
                     ModItems.POLISHED_DIORITE_WALL.get(),
                     ModItems.DIORITE_PILLAR.get()
             ));
-            putAfter(entries, Blocks.POLISHED_ANDESITE_SLAB, List.of(
+            putAfter(event, Blocks.POLISHED_ANDESITE_SLAB, List.of(
                     ModItems.POLISHED_ANDESITE_WALL.get(),
                     ModItems.ANDESITE_PILLAR.get(),
                     ModItems.PERIDOTITE.get(),
@@ -234,21 +226,21 @@ public class CreativeTabHandler {
                     ModItems.PERIDOTITE_PILLAR.get()
             ));
             // Sandstone Blocks
-            putAfter(entries, Blocks.SMOOTH_SANDSTONE_SLAB, ModItems.SMOOTH_SANDSTONE_WALL.get());
-            putAfter(entries, Blocks.CUT_SANDSTONE, ModItems.CUT_SANDSTONE_STAIRS.get());
-            putAfter(entries, Blocks.CUT_SANDSTONE_SLAB, ModItems.CUT_SANDSTONE_WALL.get());
-            putAfter(entries, Blocks.SMOOTH_RED_SANDSTONE_SLAB, ModItems.SMOOTH_RED_SANDSTONE_WALL.get());
-            putAfter(entries, Blocks.CUT_RED_SANDSTONE, ModItems.CUT_RED_SANDSTONE_STAIRS.get());
-            putAfter(entries, Blocks.CUT_RED_SANDSTONE_SLAB, ModItems.CUT_RED_SANDSTONE_WALL.get());
+            putAfter(event, Blocks.SMOOTH_SANDSTONE_SLAB, ModItems.SMOOTH_SANDSTONE_WALL.get());
+            putAfter(event, Blocks.CUT_SANDSTONE, ModItems.CUT_SANDSTONE_STAIRS.get());
+            putAfter(event, Blocks.CUT_SANDSTONE_SLAB, ModItems.CUT_SANDSTONE_WALL.get());
+            putAfter(event, Blocks.SMOOTH_RED_SANDSTONE_SLAB, ModItems.SMOOTH_RED_SANDSTONE_WALL.get());
+            putAfter(event, Blocks.CUT_RED_SANDSTONE, ModItems.CUT_RED_SANDSTONE_STAIRS.get());
+            putAfter(event, Blocks.CUT_RED_SANDSTONE_SLAB, ModItems.CUT_RED_SANDSTONE_WALL.get());
             // Prismarine Blocks
-            putAfter(entries, Blocks.PRISMARINE_WALL, List.of(
+            putAfter(event, Blocks.PRISMARINE_WALL, List.of(
                     ModItems.POLISHED_PRISMARINE.get(),
                     ModItems.POLISHED_PRISMARINE_STAIRS.get(),
                     ModItems.POLISHED_PRISMARINE_SLAB.get(),
                     ModItems.POLISHED_PRISMARINE_WALL.get()
             ));
-            putAfter(entries, Blocks.PRISMARINE_BRICK_SLAB, List.of(ModItems.PRISMARINE_BRICK_WALL.get(), ModItems.PRISMARINE_PILLAR.get()));
-            putAfter(entries, Blocks.DARK_PRISMARINE_SLAB, List.of(
+            putAfter(event, Blocks.PRISMARINE_BRICK_SLAB, List.of(ModItems.PRISMARINE_BRICK_WALL.get(), ModItems.PRISMARINE_PILLAR.get()));
+            putAfter(event, Blocks.DARK_PRISMARINE_SLAB, List.of(
                     ModItems.DARK_PRISMARINE_WALL.get(),
                     ModItems.POLISHED_DARK_PRISMARINE.get(),
                     ModItems.POLISHED_DARK_PRISMARINE_STAIRS.get(),
@@ -257,7 +249,7 @@ public class CreativeTabHandler {
                     ModItems.DARK_PRISMARINE_PILLAR.get()
             ));
             // Nether Blocks
-            putBefore(entries, Blocks.NETHERRACK, List.of(
+            putBefore(event, Blocks.NETHERRACK, List.of(
                     Blocks.OBSIDIAN,
                     ModItems.OBSIDIAN_STAIRS.get(),
                     ModItems.OBSIDIAN_SLAB.get(),
@@ -269,7 +261,7 @@ public class CreativeTabHandler {
                     ModItems.CHISELED_OBSIDIAN.get(),
                     ModItems.OBSIDIAN_PILLAR.get()
             ));
-            putAfter(entries, Blocks.NETHERRACK, List.of(
+            putAfter(event, Blocks.NETHERRACK, List.of(
                     ModItems.NETHERRACK_STAIRS.get(),
                     ModItems.NETHERRACK_SLAB.get(),
                     ModItems.NETHERRACK_WALL.get(),
@@ -279,14 +271,14 @@ public class CreativeTabHandler {
                     ModItems.POLISHED_NETHERRACK_WALL.get(),
                     ModItems.NETHERRACK_PILLAR.get()
             ));
-            putAfter(entries, Blocks.NETHER_BRICK_FENCE, List.of(
+            putAfter(event, Blocks.NETHER_BRICK_FENCE, List.of(
                     ModItems.NETHER_BRICK_FENCE_GATE.get(),
-                    //Blocks.CRACKED_NETHER_BRICKS,
+                    Blocks.CRACKED_NETHER_BRICKS,
                     ModItems.CRACKED_NETHER_BRICK_STAIRS.get(),
                     ModItems.CRACKED_NETHER_BRICK_SLAB.get(),
                     ModItems.CRACKED_NETHER_BRICK_WALL.get()
             ));
-            putAfter(entries, Blocks.RED_NETHER_BRICK_WALL, List.of(
+            putAfter(event, Blocks.RED_NETHER_BRICK_WALL, List.of(
                     ModItems.RED_NETHER_BRICK_FENCE.get(),
                     ModItems.RED_NETHER_BRICK_FENCE_GATE.get(),
                     ModItems.CRACKED_RED_NETHER_BRICKS.get(),
@@ -295,23 +287,23 @@ public class CreativeTabHandler {
                     ModItems.CRACKED_RED_NETHER_BRICK_WALL.get(),
                     ModItems.CHISELED_RED_NETHER_BRICKS.get()
             ));
-            putBefore(entries, Blocks.BASALT, List.of(
+            putBefore(event, Blocks.BASALT, List.of(
                     Blocks.MAGMA_BLOCK,
                     ModItems.MAGMA_BRICKS.get(),
                     ModItems.MAGMA_BRICK_STAIRS.get(),
                     ModItems.MAGMA_BRICK_SLAB.get(),
                     ModItems.MAGMA_BRICK_WALL.get()
             ));
-            putAfter(entries, Blocks.POLISHED_BLACKSTONE_BRICK_WALL, List.of(
-                    //Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS,
+            putAfter(event, Blocks.POLISHED_BLACKSTONE_BRICK_WALL, List.of(
+                    Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS,
                     ModItems.CRACKED_POLISHED_BLACKSTONE_BRICK_STAIRS.get(),
                     ModItems.CRACKED_POLISHED_BLACKSTONE_BRICK_SLAB.get(),
-                    ModItems.CRACKED_POLISHED_BLACKSTONE_BRICK_WALL.get()
-                    //Blocks.CHISELED_POLISHED_BLACKSTONE,
-                    //Blocks.GILDED_BLACKSTONE
+                    ModItems.CRACKED_POLISHED_BLACKSTONE_BRICK_WALL.get(),
+                    Blocks.CHISELED_POLISHED_BLACKSTONE,
+                    Blocks.GILDED_BLACKSTONE
             ));
             // End Blocks
-            putAfter(entries, Blocks.END_STONE, List.of(
+            putAfter(event, Blocks.END_STONE, List.of(
                     ModItems.END_STONE_STAIRS.get(),
                     ModItems.END_STONE_SLAB.get(),
                     ModItems.END_STONE_WALL.get(),
@@ -320,26 +312,26 @@ public class CreativeTabHandler {
                     ModItems.POLISHED_END_STONE_SLAB.get(),
                     ModItems.POLISHED_END_STONE_WALL.get()
             ));
-            putAfter(entries, Blocks.END_STONE_BRICK_WALL, ModItems.END_STONE_PILLAR.get());
-            putAfter(entries, Blocks.PURPUR_SLAB, List.of(
+            putAfter(event, Blocks.END_STONE_BRICK_WALL, ModItems.END_STONE_PILLAR.get());
+            putAfter(event, Blocks.PURPUR_SLAB, List.of(
                     ModItems.PURPUR_BLOCK_WALL.get(),
-                    ModItems.CHISELED_PURPUR_BLOCK.get()
-                    //Blocks.PURPUR_PILLAR
+                    ModItems.CHISELED_PURPUR_BLOCK.get(),
+                    Blocks.PURPUR_PILLAR
             ));
             // Storage Blocks
-            putAfter(entries, Blocks.COAL_BLOCK, ModItems.CHARCOAL_BLOCK.get());
-            putAfter(entries, Blocks.IRON_BLOCK, List.of(
+            putAfter(event, Blocks.COAL_BLOCK, ModItems.CHARCOAL_BLOCK.get());
+            putAfter(event, Blocks.IRON_BLOCK, List.of(
                     ModItems.IRON_BLOCK_STAIRS.get(),
                     ModItems.IRON_BLOCK_SLAB.get(),
                     ModItems.IRON_BLOCK_WALL.get()
             ));
-            putAfter(entries, Blocks.GOLD_BLOCK, List.of(
+            putAfter(event, Blocks.GOLD_BLOCK, List.of(
                     ModItems.GOLD_BLOCK_STAIRS.get(),
                     ModItems.GOLD_BLOCK_SLAB.get(),
                     ModItems.GOLD_BLOCK_WALL.get(),
                     ModItems.GOLD_BARS.get()
             ));
-            putAfter(entries, Blocks.NETHERITE_BLOCK, List.of(
+            putAfter(event, Blocks.NETHERITE_BLOCK, List.of(
                     ModItems.SUGAR_CANE_BLOCK.get(),
                     ModItems.SUGAR_BLOCK.get(),
                     ModItems.GUNPOWDER_BLOCK.get(),
@@ -348,26 +340,35 @@ public class CreativeTabHandler {
                     ModItems.BLAZE_POWDER_BLOCK.get()
             ));
             // Quartz Blocks
-            putAfter(entries, Blocks.QUARTZ_SLAB, ModItems.QUARTZ_BLOCK_WALL.get());
-            putAfter(entries, Blocks.QUARTZ_BRICKS, List.of(
+            putAfter(event, Blocks.QUARTZ_SLAB, ModItems.QUARTZ_BLOCK_WALL.get());
+            putAfter(event, Blocks.QUARTZ_BRICKS, List.of(
                     ModItems.QUARTZ_BRICK_STAIRS.get(),
                     ModItems.QUARTZ_BRICK_SLAB.get(),
                     ModItems.QUARTZ_BRICK_WALL.get()
             ));
-            putAfter(entries, Blocks.SMOOTH_QUARTZ_SLAB, List.of(
-                    ModItems.SMOOTH_QUARTZ_WALL.get()
-                    //Blocks.QUARTZ_PILLAR
+            putAfter(event, Blocks.SMOOTH_QUARTZ_SLAB, List.of(
+                    ModItems.SMOOTH_QUARTZ_WALL.get(),
+                    Blocks.QUARTZ_PILLAR
             ));
             // Snow Bricks
-            putBefore(entries, Blocks.AMETHYST_BLOCK, List.of(
+            putBefore(event, Blocks.AMETHYST_BLOCK, List.of(
                     Blocks.SNOW_BLOCK,
                     ModItems.SNOW_BRICKS.get(),
                     ModItems.SNOW_BRICK_STAIRS.get(),
                     ModItems.SNOW_BRICK_SLAB.get(),
                     ModItems.SNOW_BRICK_WALL.get()
             ));
+            // Copper
+            putAfter(event, Blocks.COPPER_TRAPDOOR, ModItems.COPPER_BARS);
+            putAfter(event, Blocks.EXPOSED_COPPER_TRAPDOOR, ModItems.EXPOSED_COPPER_BARS);
+            putAfter(event, Blocks.WEATHERED_COPPER_TRAPDOOR, ModItems.WEATHERED_COPPER_BARS);
+            putAfter(event, Blocks.OXIDIZED_COPPER_TRAPDOOR, ModItems.OXIDIZED_COPPER_BARS);
+            putAfter(event, Blocks.WAXED_COPPER_TRAPDOOR, ModItems.WAXED_COPPER_BARS);
+            putAfter(event, Blocks.WAXED_EXPOSED_COPPER_TRAPDOOR, ModItems.WAXED_EXPOSED_COPPER_BARS);
+            putAfter(event, Blocks.WAXED_WEATHERED_COPPER_TRAPDOOR, ModItems.WAXED_WEATHERED_COPPER_BARS);
+            putAfter(event, Blocks.WAXED_OXIDIZED_COPPER_TRAPDOOR, ModItems.WAXED_OXIDIZED_COPPER_BARS);
             // Bedrock
-            put(entries, List.of(
+            put(event, List.of(
                     Blocks.BEDROCK,
                     ModItems.BEDROCK_STAIRS.get(),
                     ModItems.BEDROCK_SLAB.get(),
@@ -377,7 +378,7 @@ public class CreativeTabHandler {
 
         // Colored Blocks
         if (tab == CreativeModeTabs.COLORED_BLOCKS) {
-            putAfter(entries, Blocks.PINK_TERRACOTTA, List.of(
+            putAfter(event, Blocks.PINK_TERRACOTTA, List.of(
                     ModItems.TERRACOTTA_STAIRS.get(),
                     ModItems.WHITE_TERRACOTTA_STAIRS.get(),
                     ModItems.LIGHT_GRAY_TERRACOTTA_STAIRS.get(),
@@ -498,7 +499,7 @@ public class CreativeTabHandler {
                     ModItems.MAGENTA_TERRACOTTA_BRICK_WALL.get(),
                     ModItems.PINK_TERRACOTTA_BRICK_WALL.get()
             ));
-            putAfter(entries, Blocks.PINK_CONCRETE, List.of(
+            putAfter(event, Blocks.PINK_CONCRETE, List.of(
                     ModItems.WHITE_CONCRETE_STAIRS.get(),
                     ModItems.LIGHT_GRAY_CONCRETE_STAIRS.get(),
                     ModItems.GRAY_CONCRETE_STAIRS.get(),
@@ -548,7 +549,7 @@ public class CreativeTabHandler {
                     ModItems.MAGENTA_CONCRETE_WALL.get(),
                     ModItems.PINK_CONCRETE_WALL.get()
             ));
-            putAfter(entries, Blocks.PINK_GLAZED_TERRACOTTA, List.of(
+            putAfter(event, Blocks.PINK_GLAZED_TERRACOTTA, List.of(
                     ModItems.WHITE_DYE_BLOCK.get(),
                     ModItems.LIGHT_GRAY_DYE_BLOCK.get(),
                     ModItems.GRAY_DYE_BLOCK.get(),
@@ -566,7 +567,7 @@ public class CreativeTabHandler {
                     ModItems.MAGENTA_DYE_BLOCK.get(),
                     ModItems.PINK_DYE_BLOCK.get()
             ));
-            putAfter(entries, Blocks.PINK_STAINED_GLASS_PANE, List.of(
+            putAfter(event, Blocks.PINK_STAINED_GLASS_PANE, List.of(
                     ModItems.SOUL_GLASS.get(),
                     ModItems.WHITE_STAINED_SOUL_GLASS.get(),
                     ModItems.LIGHT_GRAY_STAINED_SOUL_GLASS.get(),
@@ -606,59 +607,53 @@ public class CreativeTabHandler {
 
         // Natural Blocks
         if (tab == CreativeModeTabs.NATURAL_BLOCKS) {
-            putAfter(entries, Blocks.ANDESITE, ModItems.PERIDOTITE.get());
-            putAfter(entries, Blocks.PRISMARINE, ModItems.HYDRO_ROCK.get());
-            putAfter(entries, Blocks.SOUL_SOIL, List.of(ModItems.BONE_SAND.get(), ModItems.WITHER_BONE_SAND.get()));
-            putAfter(entries, Blocks.BONE_BLOCK, ModItems.WITHER_BONE_BLOCK.get());
-            putAfter(entries, Blocks.SMOOTH_BASALT, ModItems.INFERNAL_ROCK.get());
-            putAfter(entries, Blocks.LILY_OF_THE_VALLEY, List.of(ModItems.ROSE.get(), ModItems.PEONY.get(), ModItems.LILAC.get()));
-            putAfter(entries, Blocks.ROSE_BUSH, ModItems.SHEARED_ROSE_BUSH.get());
-            putAfter(entries, Blocks.PEONY, ModItems.SHEARED_PEONY.get());
-            putAfter(entries, Blocks.LILAC, ModItems.SHEARED_LILAC.get());
-            putAfter(entries, Items.BEETROOT_SEEDS, List.of(ModItems.TOMATO_SEEDS.get(), ModItems.CHILI_SEEDS.get(), ModItems.RICE_GRAINS.get()));
-            putAfter(entries, Blocks.VINE, ModItems.WITHERED_VINE.get());
+            putAfter(event, Blocks.ANDESITE, ModItems.PERIDOTITE.get());
+            putAfter(event, Blocks.PRISMARINE, ModItems.HYDRO_ROCK.get());
+            putAfter(event, Blocks.SOUL_SOIL, List.of(ModItems.BONE_SAND.get(), ModItems.WITHER_BONE_SAND.get()));
+            putAfter(event, Blocks.BONE_BLOCK, ModItems.WITHER_BONE_BLOCK.get());
+            putAfter(event, Blocks.SMOOTH_BASALT, ModItems.INFERNAL_ROCK.get());
+            putAfter(event, Blocks.LILY_OF_THE_VALLEY, List.of(ModItems.ROSE.get(), ModItems.PEONY.get(), ModItems.LILAC.get()));
+            putAfter(event, Blocks.ROSE_BUSH, ModItems.SHEARED_ROSE_BUSH.get());
+            putAfter(event, Blocks.PEONY, ModItems.SHEARED_PEONY.get());
+            putAfter(event, Blocks.LILAC, ModItems.SHEARED_LILAC.get());
+            putAfter(event, Items.BEETROOT_SEEDS, List.of(ModItems.TOMATO_SEEDS.get(), ModItems.CHILI_SEEDS.get(), ModItems.RICE_GRAINS.get()));
+            putAfter(event, Blocks.VINE, ModItems.WITHERED_VINE.get());
         }
 
         // Functional Blocks
         if (tab == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-            putAfter(entries, Blocks.LOOM, ModItems.EASEL.get());
-            putAfter(entries, Blocks.LADDER, ModLadderBlock.LADDERS.stream().map(ladder -> (ItemLike) ladder.asItem()).toList());
-            putAfter(entries, Blocks.SCAFFOLDING, ModItems.TRELLIS.get());
-            putAfter(entries, Blocks.BOOKSHELF, ModBookshelfBlock.BOOKSHELVES.stream().map(bookshelf -> (ItemLike) bookshelf.asItem()).toList());
-            addUnusedPaintingVariants(entries, List.of(
-                    PaintingUtils.stackFromVariant(PaintingVariants.EARTH),
-                    PaintingUtils.stackFromVariant(PaintingVariants.WIND),
-                    PaintingUtils.stackFromVariant(PaintingVariants.FIRE),
-                    PaintingUtils.stackFromVariant(PaintingVariants.WATER)
-            ));
+            putAfter(event, Blocks.LOOM, ModItems.EASEL.get());
+            putAfter(event, Blocks.LADDER, ModLadderBlock.LADDERS.stream().map(ladder -> (ItemLike) ladder.asItem()).toList());
+            putAfter(event, Blocks.SCAFFOLDING, ModItems.TRELLIS.get());
+            putAfter(event, Blocks.BOOKSHELF, ModBookshelfBlock.BOOKSHELVES.stream().map(bookshelf -> (ItemLike) bookshelf.asItem()).toList());
         }
 
         // Redstone Blocks
         if (tab == CreativeModeTabs.REDSTONE_BLOCKS) {
-            putAfter(entries, Blocks.DAYLIGHT_DETECTOR, ModItems.RAIN_DETECTOR.get());
+            putAfter(event, Blocks.DAYLIGHT_DETECTOR, ModItems.RAIN_DETECTOR.get());
         }
 
         // Tools & Utilities
         if (tab == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-            putAfter(entries, Items.TROPICAL_FISH_BUCKET, List.of(
+            putAfter(event, Items.TROPICAL_FISH_BUCKET, List.of(
                     ModItems.PERCH_BUCKET.get(),
                     ModItems.PIKE_BUCKET.get(),
                     ModItems.TUNA_BUCKET.get(),
                     ModItems.EEL_BUCKET.get()
             ));
-            putAfter(entries, Items.BONE_MEAL, ModItems.WITHER_BONE_MEAL.get());
+            putAfter(event, Items.BONE_MEAL, ModItems.WITHER_BONE_MEAL.get());
         }
 
         // Combat
         if (tab == CreativeModeTabs.COMBAT) {
-            putAfter(entries, Items.SPECTRAL_ARROW, ModItems.PRISMARINE_ARROW.get());
+            putAfter(event, Items.SPECTRAL_ARROW, ModItems.PRISMARINE_ARROW.get());
         }
 
         // Food & Drinks
         if (tab == CreativeModeTabs.FOOD_AND_DRINKS) {
-            putAfter(entries, Items.BEETROOT, List.of(ModItems.TOMATO.get(), ModItems.CHILI.get(), ModItems.PINE_CONE.get()));
-            putAfter(entries, Items.COOKED_PORKCHOP, List.of(ModItems.RAW_POLAR_BEAR_MEAT.get(), ModItems.POLAR_BEAR_STEAK.get()));
-            putAfter(entries, Items.COOKED_SALMON, List.of(
+            putAfter(event, Items.BEETROOT, List.of(ModItems.TOMATO.get(), ModItems.CHILI.get(), ModItems.PINE_CONE.get()));
+            putAfter(event, Items.COOKED_PORKCHOP, List.of(ModItems.RAW_POLAR_BEAR_MEAT.get(), ModItems.POLAR_BEAR_STEAK.get()));
+            putAfter(event, Items.COOKED_SALMON, List.of(
                     ModItems.PERCH.get(),
                     ModItems.COOKED_PERCH.get(),
                     ModItems.PIKE.get(),
@@ -668,62 +663,58 @@ public class CreativeTabHandler {
                     ModItems.EEL.get(),
                     ModItems.COOKED_EEL.get()
             ));
-            putBefore(entries, Items.BREAD, ModItems.FRIED_EGG.get());
-            putAfter(entries, Items.COOKIE, List.of(ModItems.CHOCOLATE.get(), ModItems.MELON_POPSICLE.get()));
-            putAfter(entries, Items.CAKE, List.of(ModItems.CHOCOLATE_CAKE.get(), ModItems.BERRY_CAKE.get(), ModItems.CARROT_CAKE.get()));
-            putAfter(entries, Items.PUMPKIN_PIE, List.of(ModItems.APPLE_PIE.get(), ModItems.BERRY_PIE.get(), ModItems.MONSTER_PIE.get()));
-            putAfter(entries, Items.ROTTEN_FLESH, ModItems.DROWNED_FLESH.get());
-            putBefore(entries, Items.MUSHROOM_STEW, ModItems.RICE_BOWL.get());
-            putAfter(entries, Items.RABBIT_STEW, List.of(ModItems.POTATO_SOUP.get(), ModItems.MEAT_SOUP.get(), ModItems.FISH_SOUP.get()));
+            putBefore(event, Items.BREAD, ModItems.FRIED_EGG.get());
+            putAfter(event, Items.COOKIE, List.of(ModItems.CHOCOLATE.get(), ModItems.MELON_POPSICLE.get()));
+            putAfter(event, Items.CAKE, List.of(ModItems.CHOCOLATE_CAKE.get(), ModItems.BERRY_CAKE.get(), ModItems.CARROT_CAKE.get()));
+            putAfter(event, Items.PUMPKIN_PIE, List.of(ModItems.APPLE_PIE.get(), ModItems.BERRY_PIE.get(), ModItems.MONSTER_PIE.get()));
+            putAfter(event, Items.ROTTEN_FLESH, ModItems.DROWNED_FLESH.get());
+            putBefore(event, Items.MUSHROOM_STEW, ModItems.RICE_BOWL.get());
+            putAfter(event, Items.RABBIT_STEW, List.of(ModItems.POTATO_SOUP.get(), ModItems.MEAT_SOUP.get(), ModItems.FISH_SOUP.get()));
         }
 
         // Ingredients
         if (tab == CreativeModeTabs.INGREDIENTS) {
-            putAfter(entries, Items.BONE, ModItems.WITHER_BONE.get());
-            putAfter(entries, Items.BONE_MEAL, ModItems.WITHER_BONE_MEAL.get());
-            putAfter(entries, Items.LEATHER, ModItems.POLAR_BEAR_FUR.get());
-            putAfter(entries, Items.NETHER_BRICK, ModItems.MAGMA_BRICK.get());
-            putAfter(entries, Items.PAPER, ModItems.CANVAS.get());
+            putAfter(event, Items.BONE, ModItems.WITHER_BONE.get());
+            putAfter(event, Items.BONE_MEAL, ModItems.WITHER_BONE_MEAL.get());
+            putAfter(event, Items.LEATHER, ModItems.POLAR_BEAR_FUR.get());
+            putAfter(event, Items.NETHER_BRICK, ModItems.MAGMA_BRICK.get());
+            putAfter(event, Items.PAPER, ModItems.CANVAS.get());
         }
 
         // Spawn Eggs
         if (tab == CreativeModeTabs.SPAWN_EGGS) {
-            putBefore(entries, Items.ELDER_GUARDIAN_SPAWN_EGG, ModItems.EEL_SPAWN_EGG.get());
-            putBefore(entries, Items.PHANTOM_SPAWN_EGG, ModItems.PERCH_SPAWN_EGG.get());
-            putBefore(entries, Items.PILLAGER_SPAWN_EGG, ModItems.PIKE_SPAWN_EGG.get());
-            putBefore(entries, Items.TURTLE_SPAWN_EGG, ModItems.TUNA_SPAWN_EGG.get());
+            putBefore(event, Items.ELDER_GUARDIAN_SPAWN_EGG, ModItems.EEL_SPAWN_EGG.get());
+            putBefore(event, Items.PHANTOM_SPAWN_EGG, ModItems.PERCH_SPAWN_EGG.get());
+            putBefore(event, Items.PILLAGER_SPAWN_EGG, ModItems.PIKE_SPAWN_EGG.get());
+            putBefore(event, Items.TURTLE_SPAWN_EGG, ModItems.TUNA_SPAWN_EGG.get());
         }
     }
 
-    private static void addUnusedPaintingVariants(MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries, List<ItemStack> paintings) {
-        paintings.forEach(stack -> entries.putBefore(new ItemStack(Blocks.BOOKSHELF), stack, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
+    private static void put(BuildCreativeModeTabContentsEvent event, List<ItemLike> items) {
+        items.forEach(item -> event.accept(new ItemStack(item), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
     }
 
-    private static void put(MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries, List<ItemLike> items) {
-        items.forEach(item -> entries.put(new ItemStack(item), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
+    private static void putAfter(BuildCreativeModeTabContentsEvent event, ItemLike before, List<ItemLike> afterItems) {
+        Lists.reverse(afterItems).forEach(after -> putAfter(event, before, after));
     }
 
-    private static void putAfter(MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries, ItemLike before, List<ItemLike> afterItems) {
-        Lists.reverse(afterItems).forEach(after -> putAfter(entries, before, after));
+    private static void putAfter(BuildCreativeModeTabContentsEvent event, ItemLike before, ItemLike after) {
+        event.insertAfter(new ItemStack(before), new ItemStack(after), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
     }
 
-    private static void putAfter(MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries, ItemLike before, ItemLike after) {
-        entries.putAfter(new ItemStack(before), new ItemStack(after), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+    private static void putBefore(BuildCreativeModeTabContentsEvent event, ItemLike after, List<ItemLike> beforeItems) {
+        beforeItems.forEach(before -> putBefore(event, after, before));
     }
 
-    private static void putBefore(MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries, ItemLike after, List<ItemLike> beforeItems) {
-        beforeItems.forEach(before -> putBefore(entries, after, before));
+    private static void putBefore(BuildCreativeModeTabContentsEvent event, ItemLike after, ItemLike before) {
+        event.insertBefore(new ItemStack(after), new ItemStack(before), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
     }
 
-    private static void putBefore(MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries, ItemLike after, ItemLike before) {
-        entries.putBefore(new ItemStack(after), new ItemStack(before), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+    private static void remove(BuildCreativeModeTabContentsEvent event, List<ItemLike> items) {
+        items.forEach(item -> remove(event, item));
     }
 
-    private static void remove(MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries, List<ItemLike> items) {
-        items.forEach(item -> remove(entries, item));
-    }
-
-    private static void remove(MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries, ItemLike item) {
-        entries.remove(new ItemStack(item));
+    private static void remove(BuildCreativeModeTabContentsEvent event, ItemLike item) {
+        event.remove(new ItemStack(item), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
     }
 }

@@ -1,0 +1,29 @@
+{
+  "type": "vanillaboom:painting",
+  "canvas": {
+    "tag": "c:canvases"
+  },
+  "dyes": [
+    {
+      "tag": "c:dyes/cyan"
+    },
+    {
+      "tag": "c:dyes/cyan"
+    },
+    {
+      "tag": "c:dyes/red"
+    },
+    {
+      "tag": "c:dyes/black"
+    },
+    {
+      "tag": "c:dyes/brown"
+    },
+    {
+      "tag": "c:dyes/light_gray"
+    }
+  ],
+  "result": {
+    "variant": "minecraft:backyard"
+  }
+}

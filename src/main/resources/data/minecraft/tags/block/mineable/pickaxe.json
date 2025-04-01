@@ -1,0 +1,31 @@
+{
+  "values": [
+    "vanillaboom:peridotite",
+    "vanillaboom:hydro_rock",
+    "vanillaboom:infernal_rock",
+    "vanillaboom:cracked_red_nether_bricks",
+    "vanillaboom:chiseled_red_nether_bricks",
+    "vanillaboom:chiseled_purpur_block",
+    "vanillaboom:chiseled_obsidian",
+    "vanillaboom:charcoal_block",
+    "vanillaboom:prismarine_crystal_block",
+    "vanillaboom:wither_bone_block",
+    "vanillaboom:gold_bars",
+    "vanillaboom:copper_bars",
+    "vanillaboom:exposed_copper_bars",
+    "vanillaboom:weathered_copper_bars",
+    "vanillaboom:oxidized_copper_bars",
+    "vanillaboom:waxed_copper_bars",
+    "vanillaboom:waxed_exposed_copper_bars",
+    "vanillaboom:waxed_weathered_copper_bars",
+    "vanillaboom:waxed_oxidized_copper_bars",
+    "#vanillaboom:bricks",
+    "#vanillaboom:polished",
+    "#vanillaboom:pillars",
+    "#vanillaboom:dye_blocks",
+    "#vanillaboom:stairs",
+    "#vanillaboom:slabs",
+    "#vanillaboom:nether_brick_fences",
+    "#vanillaboom:nether_brick_fence_gates"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "type": "vanillaboom:painting",
+  "canvas": {
+    "tag": "c:canvases"
+  },
+  "dyes": [
+    {
+      "tag": "c:dyes/brown"
+    },
+    {
+      "tag": "c:dyes/brown"
+    },
+    {
+      "tag": "c:dyes/black"
+    },
+    {
+      "tag": "c:dyes/yellow"
+    },
+    {
+      "tag": "c:dyes/gray"
+    },
+    {
+      "tag": "c:dyes/light_gray"
+    }
+  ],
+  "result": {
+    "variant": "minecraft:owlemons"
+  }
+}

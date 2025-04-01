@@ -1,0 +1,16 @@
+{
+  "values": {
+    "vanillaboom:copper_bars": {
+      "waxed": "vanillaboom:waxed_copper_bars"
+    },
+    "vanillaboom:exposed_copper_bars": {
+      "waxed": "vanillaboom:waxed_exposed_copper_bars"
+    },
+    "vanillaboom:oxidized_copper_bars": {
+      "waxed": "vanillaboom:waxed_oxidized_copper_bars"
+    },
+    "vanillaboom:weathered_copper_bars": {
+      "waxed": "vanillaboom:waxed_weathered_copper_bars"
+    }
+  }
+}

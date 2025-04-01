@@ -13,6 +13,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.*;
@@ -169,6 +170,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
         easelBlock(ModBlocks.EASEL.get());
         rainDetectorBlock(ModBlocks.RAIN_DETECTOR.get());
         barsBlock(ModBlocks.GOLD_BARS.get());
+        barsBlock(ModBlocks.COPPER_BARS.get());
+        barsBlock(ModBlocks.EXPOSED_COPPER_BARS.get());
+        barsBlock(ModBlocks.WEATHERED_COPPER_BARS.get());
+        barsBlock(ModBlocks.OXIDIZED_COPPER_BARS.get());
+        barsBlock(ModBlocks.WAXED_COPPER_BARS.get());
+        barsBlock(ModBlocks.WAXED_EXPOSED_COPPER_BARS.get());
+        barsBlock(ModBlocks.WAXED_WEATHERED_COPPER_BARS.get());
+        barsBlock(ModBlocks.WAXED_OXIDIZED_COPPER_BARS.get());
         flowerBlock(ModBlocks.ROSE.get(), ModBlocks.POTTED_ROSE.get());
         doublePlantBlock(ModBlocks.SHEARED_ROSE_BUSH.get());
         flowerBlock(ModBlocks.PEONY.get(), ModBlocks.POTTED_PEONY.get());
@@ -265,12 +274,103 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     public void barsBlock(Block bars) {
-        paneBlockWithRenderType(
-                (IronBarsBlock) bars,
-                blockTexture(bars),
-                blockTexture(bars),
-                ModBlockStateProvider.RENDER_TYPE_CUTOUT_MIPPED
-        );
+        ModelFile cap = models().withExistingParent(name(bars) + "_cap", ModelProvider.BLOCK_FOLDER + "/iron_bars_cap")
+                .texture("particle", blockTexture(bars))
+                .texture("bars", blockTexture(bars))
+                .texture("edge", blockTexture(bars))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT_MIPPED);
+        ModelFile capAlt = models().withExistingParent(name(bars) + "_cap_alt", ModelProvider.BLOCK_FOLDER + "/iron_bars_cap_alt")
+                .texture("particle", blockTexture(bars))
+                .texture("bars", blockTexture(bars))
+                .texture("edge", blockTexture(bars))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT_MIPPED);
+        ModelFile post = models().withExistingParent(name(bars) + "_post", ModelProvider.BLOCK_FOLDER + "/iron_bars_post")
+                .texture("particle", blockTexture(bars))
+                .texture("bars", blockTexture(bars))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT_MIPPED);
+        ModelFile postEnds = models().withExistingParent(name(bars) + "_post_ends", ModelProvider.BLOCK_FOLDER + "/iron_bars_post_ends")
+                .texture("particle", blockTexture(bars))
+                .texture("edge", blockTexture(bars))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT_MIPPED);
+        ModelFile side = models().withExistingParent(name(bars) + "_side", ModelProvider.BLOCK_FOLDER + "/iron_bars_side")
+                .texture("particle", blockTexture(bars))
+                .texture("bars", blockTexture(bars))
+                .texture("edge", blockTexture(bars))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT_MIPPED);
+        ModelFile sideAlt = models().withExistingParent(name(bars) + "_side_alt", ModelProvider.BLOCK_FOLDER + "/iron_bars_side_alt")
+                .texture("particle", blockTexture(bars))
+                .texture("bars", blockTexture(bars))
+                .texture("edge", blockTexture(bars))
+                .renderType(ModBlockStateProvider.RENDER_TYPE_CUTOUT_MIPPED);
+        getMultipartBuilder(bars)
+                .part()
+                .modelFile(postEnds)
+                .addModel()
+                .end()
+                .part()
+                .modelFile(post)
+                .addModel()
+                .condition(BlockStateProperties.NORTH, false)
+                .condition(BlockStateProperties.SOUTH, false)
+                .condition(BlockStateProperties.EAST, false)
+                .condition(BlockStateProperties.WEST, false)
+                .end()
+                .part()
+                .modelFile(cap)
+                .addModel()
+                .condition(BlockStateProperties.NORTH, true)
+                .condition(BlockStateProperties.EAST, false)
+                .condition(BlockStateProperties.SOUTH, false)
+                .condition(BlockStateProperties.WEST, false)
+                .end()
+                .part()
+                .modelFile(cap)
+                .rotationY(90)
+                .addModel()
+                .condition(BlockStateProperties.NORTH, false)
+                .condition(BlockStateProperties.EAST, true)
+                .condition(BlockStateProperties.SOUTH, false)
+                .condition(BlockStateProperties.WEST, false)
+                .end()
+                .part()
+                .modelFile(capAlt)
+                .addModel()
+                .condition(BlockStateProperties.NORTH, false)
+                .condition(BlockStateProperties.EAST, false)
+                .condition(BlockStateProperties.SOUTH, true)
+                .condition(BlockStateProperties.WEST, false)
+                .end()
+                .part()
+                .modelFile(capAlt)
+                .rotationY(90)
+                .addModel()
+                .condition(BlockStateProperties.NORTH, false)
+                .condition(BlockStateProperties.EAST, false)
+                .condition(BlockStateProperties.SOUTH, false)
+                .condition(BlockStateProperties.WEST, true)
+                .end()
+                .part()
+                .modelFile(side)
+                .addModel()
+                .condition(BlockStateProperties.NORTH, true)
+                .end()
+                .part()
+                .modelFile(side)
+                .rotationY(90)
+                .addModel()
+                .condition(BlockStateProperties.EAST, true)
+                .end()
+                .part()
+                .modelFile(sideAlt)
+                .addModel()
+                .condition(BlockStateProperties.SOUTH, true)
+                .end()
+                .part()
+                .modelFile(sideAlt)
+                .rotationY(90)
+                .addModel()
+                .condition(BlockStateProperties.WEST, true)
+                .end();
     }
 
     public void flowerBlock(Block flower, Block pot) {
@@ -572,7 +672,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected ResourceLocation variantTexture(Block block) {
         ResourceLocation name = Objects.requireNonNull(BuiltInRegistries.BLOCK.getKey(block));
 
-        return new ResourceLocation(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath()
+        return ResourceLocation.fromNamespaceAndPath(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath()
                 .replace("_wood", "_log")
                 .replace("_hyphae", "_stem")
                 .replace("smooth_sandstone", "sandstone_top")

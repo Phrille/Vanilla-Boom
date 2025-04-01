@@ -1,3 +1,11 @@
+/*
+ * Copyright (C) 2025 Phrille
+ *
+ * This file is part of the Vanilla Boom Mod.
+ * Unauthorized distribution or modification is prohibited.
+ * See LICENSE for details.
+ */
+
 package phrille.vanillaboom.block.entity;
 
 import net.minecraft.core.BlockPos;
@@ -20,6 +28,7 @@ public class EaselBlockEntity extends BaseContainerBlockEntity {
     public static final int DYE_SLOT_START = 0;
     public static final int DYE_SLOT_END = 6;
     public static final int CANVAS_SLOT = 7;
+    public static final int INPUT_SIZE = 8;
     public static final int RESULT_SLOT = 8;
 
     private NonNullList<ItemStack> items = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
@@ -59,21 +68,21 @@ public class EaselBlockEntity extends BaseContainerBlockEntity {
 
     @Override
     public int getContainerSize() {
-        return CANVAS_SLOT + 1;
+        return INPUT_SIZE;
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider lookupProvider) {
-        super.loadAdditional(tag, lookupProvider);
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
+        super.loadAdditional(tag, provider);
         items = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(tag, items, lookupProvider);
+        ContainerHelper.loadAllItems(tag, items, provider);
         containerData.set(0, tag.contains("SelectedIndex") ? tag.getInt("SelectedIndex") : -1);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider lookupProvider) {
-        super.saveAdditional(tag, lookupProvider);
-        ContainerHelper.saveAllItems(tag, items, lookupProvider);
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
+        super.saveAdditional(tag, provider);
+        ContainerHelper.saveAllItems(tag, items, provider);
         tag.putInt("SelectedIndex", containerData.get(0));
     }
 

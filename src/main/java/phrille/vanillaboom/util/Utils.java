@@ -9,11 +9,19 @@
 package phrille.vanillaboom.util;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.stats.Stats;
+import net.minecraft.world.entity.decoration.Painting;
+import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -74,6 +82,16 @@ public class Utils {
 
     public static <T extends Comparable<T>> BlockState copyState(BlockState from, BlockState to, Property<T> property) {
         return to.setValue(property, from.getValue(property));
+    }
+
+    public static ItemStack stackFromHolder(HolderLookup.Provider registries, Holder<PaintingVariant> holder) {
+        CustomData data = CustomData.EMPTY
+                .update(registries.createSerializationContext(NbtOps.INSTANCE), Painting.VARIANT_MAP_CODEC, holder)
+                .getOrThrow()
+                .update(compoundTag -> compoundTag.putString("id", holder.getRegisteredName()));
+        ItemStack painting = new ItemStack(Items.PAINTING);
+        painting.set(DataComponents.ENTITY_DATA, data);
+        return painting;
     }
 
     public static void registerFlowerPots() {

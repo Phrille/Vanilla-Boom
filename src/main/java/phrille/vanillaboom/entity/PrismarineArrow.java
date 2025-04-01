@@ -18,18 +18,20 @@ import net.minecraft.world.phys.EntityHitResult;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.ModTags;
 
+import javax.annotation.Nullable;
+
 public class PrismarineArrow extends AbstractArrow {
     public PrismarineArrow(EntityType<? extends PrismarineArrow> arrow, Level level) {
         super(arrow, level);
     }
 
-    public PrismarineArrow(Level level, LivingEntity owner, ItemStack pickupStack) {
-        super(ModEntityTypes.PRISMARINE_ARROW.get(), owner, level, pickupStack);
+    @SuppressWarnings("unused")
+    public PrismarineArrow(Level level, double x, double y, double z, ItemStack pickupStack, @Nullable ItemStack weapon) {
+        super(ModEntityTypes.PRISMARINE_ARROW.get(), x, y, z, level, pickupStack, weapon);
     }
 
-    @SuppressWarnings("unused")
-    public PrismarineArrow(Level level, double x, double y, double z, ItemStack pickupStack) {
-        super(ModEntityTypes.PRISMARINE_ARROW.get(), x, y, z, level, pickupStack);
+    public PrismarineArrow(Level level, LivingEntity owner, ItemStack pickupStack, @Nullable ItemStack weapon) {
+        super(ModEntityTypes.PRISMARINE_ARROW.get(), owner, level, pickupStack, weapon);
     }
 
     @Override

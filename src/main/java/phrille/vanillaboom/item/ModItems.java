@@ -51,10 +51,10 @@ public class ModItems {
     public static final DeferredItem<Item> MONSTER_PIE = ITEMS.register("monster_pie", () -> new Item(new Item.Properties().food(ModFoods.MONSTER_PIE)));
     public static final DeferredItem<Item> RAW_POLAR_BEAR_MEAT = ITEMS.register("raw_polar_bear_meat", () -> new Item(new Item.Properties().food(ModFoods.RAW_POLAR_BEAR_MEAT)));
     public static final DeferredItem<Item> POLAR_BEAR_STEAK = ITEMS.register("polar_bear_steak", () -> new Item(new Item.Properties().food(ModFoods.POLAR_BEAR_STEAK)));
-    public static final DeferredItem<Item> POTATO_SOUP = ITEMS.register("potato_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.POTATO_SOUP).stacksTo(1).craftRemainder(Items.BOWL)));
-    public static final DeferredItem<Item> MEAT_SOUP = ITEMS.register("meat_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.MEAT_SOUP).stacksTo(1).craftRemainder(Items.BOWL)));
-    public static final DeferredItem<Item> FISH_SOUP = ITEMS.register("fish_soup", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.FISH_SOUP).stacksTo(1).craftRemainder(Items.BOWL)));
-    public static final DeferredItem<Item> RICE_BOWL = ITEMS.register("rice_bowl", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.RICE_BOWL).stacksTo(1).craftRemainder(Items.BOWL)));
+    public static final DeferredItem<Item> POTATO_SOUP = ITEMS.register("potato_soup", () -> new Item(new Item.Properties().food(ModFoods.POTATO_SOUP).stacksTo(1).craftRemainder(Items.BOWL)));
+    public static final DeferredItem<Item> MEAT_SOUP = ITEMS.register("meat_soup", () -> new Item(new Item.Properties().food(ModFoods.MEAT_SOUP).stacksTo(1).craftRemainder(Items.BOWL)));
+    public static final DeferredItem<Item> FISH_SOUP = ITEMS.register("fish_soup", () -> new Item(new Item.Properties().food(ModFoods.FISH_SOUP).stacksTo(1).craftRemainder(Items.BOWL)));
+    public static final DeferredItem<Item> RICE_BOWL = ITEMS.register("rice_bowl", () -> new Item(new Item.Properties().food(ModFoods.RICE_BOWL).stacksTo(1).craftRemainder(Items.BOWL)));
 
     // Fish
     public static final DeferredItem<Item> TUNA = ITEMS.register("tuna", () -> new Item(new Item.Properties().food(ModFoods.TUNA)));
@@ -254,6 +254,14 @@ public class ModItems {
     public static final DeferredItem<Item> EASEL = ITEMS.register("easel", () -> new BlockItem(ModBlocks.EASEL.get(), new Item.Properties()));
     public static final DeferredItem<Item> RAIN_DETECTOR = ITEMS.register("rain_detector", () -> new BlockItem(ModBlocks.RAIN_DETECTOR.get(), new Item.Properties()));
     public static final DeferredItem<Item> GOLD_BARS = ITEMS.register("gold_bars", () -> new BlockItem(ModBlocks.GOLD_BARS.get(), new Item.Properties()));
+    public static final DeferredItem<Item> COPPER_BARS = ITEMS.register("copper_bars", () -> new BlockItem(ModBlocks.COPPER_BARS.get(), new Item.Properties()));
+    public static final DeferredItem<Item> EXPOSED_COPPER_BARS = ITEMS.register("exposed_copper_bars", () -> new BlockItem(ModBlocks.EXPOSED_COPPER_BARS.get(), new Item.Properties()));
+    public static final DeferredItem<Item> WEATHERED_COPPER_BARS = ITEMS.register("weathered_copper_bars", () -> new BlockItem(ModBlocks.WEATHERED_COPPER_BARS.get(), new Item.Properties()));
+    public static final DeferredItem<Item> OXIDIZED_COPPER_BARS = ITEMS.register("oxidized_copper_bars", () -> new BlockItem(ModBlocks.OXIDIZED_COPPER_BARS.get(), new Item.Properties()));
+    public static final DeferredItem<Item> WAXED_COPPER_BARS = ITEMS.register("waxed_copper_bars", () -> new BlockItem(ModBlocks.WAXED_COPPER_BARS.get(), new Item.Properties()));
+    public static final DeferredItem<Item> WAXED_EXPOSED_COPPER_BARS = ITEMS.register("waxed_exposed_copper_bars", () -> new BlockItem(ModBlocks.WAXED_EXPOSED_COPPER_BARS.get(), new Item.Properties()));
+    public static final DeferredItem<Item> WAXED_WEATHERED_COPPER_BARS = ITEMS.register("waxed_weathered_copper_bars", () -> new BlockItem(ModBlocks.WAXED_WEATHERED_COPPER_BARS.get(), new Item.Properties()));
+    public static final DeferredItem<Item> WAXED_OXIDIZED_COPPER_BARS = ITEMS.register("waxed_oxidized_copper_bars", () -> new BlockItem(ModBlocks.WAXED_OXIDIZED_COPPER_BARS.get(), new Item.Properties()));
     public static final DeferredItem<Item> ROSE = ITEMS.register("rose", () -> new BlockItem(ModBlocks.ROSE.get(), new Item.Properties()));
     public static final DeferredItem<Item> SHEARED_ROSE_BUSH = ITEMS.register("sheared_rose_bush", () -> new BlockItem(ModBlocks.SHEARED_ROSE_BUSH.get(), new Item.Properties()));
     public static final DeferredItem<Item> PEONY = ITEMS.register("peony", () -> new BlockItem(ModBlocks.PEONY.get(), new Item.Properties()));

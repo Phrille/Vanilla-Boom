@@ -22,11 +22,9 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import phrille.vanillaboom.crafting.PaintingRecipe;
-import phrille.vanillaboom.util.PaintingUtils;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -93,9 +91,7 @@ public class PaintingRecipeBuilder implements RecipeBuilder {
                 .requirements(AdvancementRequirements.Strategy.OR);
         Objects.requireNonNull(builder);
         criteria.forEach(builder::addCriterion);
-        ItemStack result = PaintingUtils.stackFromHolder(variant);
-        result.setCount(count);
-        PaintingRecipe recipe = new PaintingRecipe(Objects.requireNonNullElse(group, ""), canvas, dyes, result);
+        PaintingRecipe recipe = new PaintingRecipe(Objects.requireNonNullElse(group, ""), canvas, dyes, variant, count);
         output.accept(id, recipe, builder.build(id.withPrefix("recipes/" + category.getFolderName() + "/")));
     }
 

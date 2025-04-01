@@ -21,13 +21,13 @@ import phrille.vanillaboom.util.ModTags;
 import java.util.concurrent.CompletableFuture;
 
 public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
-    public ModEntityTypeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, VanillaBoom.MOD_ID, existingFileHelper);
+    public ModEntityTypeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper fileHelper) {
+        super(output, registries, VanillaBoom.MOD_ID, fileHelper);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    protected void addTags(HolderLookup.Provider provider) {
+    protected void addTags(HolderLookup.Provider registries) {
         // Mod Tags
         tag(ModTags.Entities.FISHES)
                 .add(ModEntityTypes.TUNA.get())

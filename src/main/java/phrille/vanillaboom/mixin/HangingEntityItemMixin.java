@@ -14,7 +14,6 @@ import net.minecraft.world.item.HangingEntityItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
-import phrille.vanillaboom.config.VanillaBoomConfig;
 import phrille.vanillaboom.entity.ModAttachmentTypes;
 
 @Mixin(HangingEntityItem.class)
@@ -22,13 +21,13 @@ public class HangingEntityItemMixin {
     @ModifyArg(
             method = "useOn",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/EntityType;" +
-                                                "updateCustomEntityTag(Lnet/minecraft/world/level/Level;" +
-                                                "Lnet/minecraft/world/entity/player/Player;" +
-                                                "Lnet/minecraft/world/entity/Entity;" +
-                                                "Lnet/minecraft/world/item/component/CustomData;)V"),
+                    "updateCustomEntityTag(Lnet/minecraft/world/level/Level;" +
+                    "Lnet/minecraft/world/entity/player/Player;" +
+                    "Lnet/minecraft/world/entity/Entity;" +
+                    "Lnet/minecraft/world/item/component/CustomData;)V"),
             index = 2)
     private Entity modifyPaintingDrop(Entity entity) {
-        if (VanillaBoomConfig.variantSensitivePaintingDrops && entity instanceof Painting) {
+        if (entity instanceof Painting) {
             entity.setData(ModAttachmentTypes.VARIANT_SET, true);
         }
         return entity;

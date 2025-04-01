@@ -1,3 +1,11 @@
+/*
+ * Copyright (C) 2025 Phrille
+ *
+ * This file is part of the Vanilla Boom Mod.
+ * Unauthorized distribution or modification is prohibited.
+ * See LICENSE for details.
+ */
+
 package phrille.vanillaboom.util;
 
 import net.minecraft.resources.ResourceLocation;
@@ -37,7 +45,7 @@ public class CommonTags {
         public static final TagKey<Block> STORAGE_BLOCKS_YELLOW_DYE = blockTag("storage_blocks/yellow_dye");
 
         private static TagKey<Block> blockTag(String name) {
-            return BlockTags.create(new ResourceLocation("c", name));
+            return BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", name));
         }
     }
 
@@ -82,7 +90,7 @@ public class CommonTags {
         public static final TagKey<Item> WITHER_BONE_MEALS = itemTag("wither_bone_meals");
 
         private static TagKey<Item> itemTag(String name) {
-            return ItemTags.create(new ResourceLocation("c", name));
+            return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", name));
         }
     }
 }

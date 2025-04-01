@@ -24,20 +24,18 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import net.neoforged.neoforge.network.PacketDistributor;
 import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.crafting.PaintingRecipe;
 import phrille.vanillaboom.inventory.EaselMenu;
 import phrille.vanillaboom.inventory.EaselTooltip;
 import phrille.vanillaboom.network.EaselScreenPacket;
-import phrille.vanillaboom.util.PaintingUtils;
 
 import java.util.List;
 import java.util.Optional;
 
 public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
-    private static final ResourceLocation BG_LOCATION = VanillaBoom.resLoc("textures/gui/container/easel.png");
+    public static final ResourceLocation BACKGROUND = VanillaBoom.resLoc("textures/gui/container/easel.png");
 
     public static final int SCREEN_WIDTH = 176;
     public static final int SCREEN_HEIGHT = 184;
@@ -77,11 +75,10 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         ImmutableList<RecipeHolder<PaintingRecipe>> recipes = menu.getRecipeList();
         for (int buttonId = 0; buttonId < recipes.size(); buttonId++) {
             RecipeHolder<PaintingRecipe> recipe = recipes.get(buttonId);
-            PaintingVariant variant = PaintingUtils.holderFromStack(recipe.value().result()).value();
-            PaintingButton button = new PaintingButton(buttonId, recipe, variant);
+            PaintingButton button = new PaintingButton(buttonId, recipe, recipe.value().variant().value());
             button.register();
         }
-        PacketDistributor.sendToServer(new EaselScreenPacket((short) menu.containerId));
+        EaselScreenPacket.send(menu.containerId);
     }
 
     @Override
@@ -96,21 +93,21 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         int y = topPos;
 
         // Background
-        guiGraphics.blit(BG_LOCATION, x, y, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        guiGraphics.blit(BACKGROUND, x, y, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
         // Scrollbar
         int scrollY = (int) ((float) (SCROLLBAR_HEIGHT - SCROLL_BUTTON_HEIGHT) * scrollOffset);
-        guiGraphics.blit(BG_LOCATION, x + SCROLLBAR_X, y + SCROLLBAR_Y + scrollY, SCREEN_WIDTH + (isScrollBarActive() ? 0 : SCROLL_BUTTON_WIDTH), 0, SCROLL_BUTTON_WIDTH, SCROLL_BUTTON_HEIGHT);
+        guiGraphics.blit(BACKGROUND, x + SCROLLBAR_X, y + SCROLLBAR_Y + scrollY, SCREEN_WIDTH + (isScrollBarActive() ? 0 : SCROLL_BUTTON_WIDTH), 0, SCROLL_BUTTON_WIDTH, SCROLL_BUTTON_HEIGHT);
 
         // Dye slots
         menu.getDyeSlots().stream()
                 .filter(slot -> !slot.hasItem())
-                .forEach(slot -> guiGraphics.blit(BG_LOCATION, x + slot.x, y + slot.y, SCREEN_WIDTH, 15, SLOT_SIZE, SLOT_SIZE));
+                .forEach(slot -> guiGraphics.blit(BACKGROUND, x + slot.x, y + slot.y, SCREEN_WIDTH, 15, SLOT_SIZE, SLOT_SIZE));
 
         // Canvas slot
         Slot canvasSlot = menu.getCanvasSlot();
         if (!canvasSlot.hasItem()) {
-            guiGraphics.blit(BG_LOCATION, x + canvasSlot.x, y + canvasSlot.y, SCREEN_WIDTH + SLOT_SIZE, 15, SLOT_SIZE, SLOT_SIZE);
+            guiGraphics.blit(BACKGROUND, x + canvasSlot.x, y + canvasSlot.y, SCREEN_WIDTH + SLOT_SIZE, 15, SLOT_SIZE, SLOT_SIZE);
         }
 
         // Grid
@@ -244,19 +241,19 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
             this.buttonId = buttonId;
             this.recipe = recipe;
             this.sprite = Minecraft.getInstance().getPaintingTextures().get(variant);
-            this.result = recipe.value().result();
+            this.result = recipe.value().getResultItem(Minecraft.getInstance().level.registryAccess());
             this.tooltip = new EaselTooltip(recipe.value().getCombinedDyeStacks());
 
             float maxSize = BUTTON_SIZE - 2;
-            float scaleFactor = Math.min(maxSize / variant.getWidth(), maxSize / variant.getHeight());
-            if (variant.getWidth() <= 16 && variant.getHeight() <= 16) {
+            float scaleFactor = Math.min(maxSize / variant.width(), maxSize / variant.height());
+            if (variant.width() <= 1 && variant.height() <= 1) {
                 scaleFactor *= 0.6F;
-            } else if (variant.getWidth() <= 32 && variant.getHeight() <= 32) {
+            } else if (variant.width() <= 2 && variant.height() <= 2) {
                 scaleFactor *= 0.85F;
             }
 
-            this.paintingWidth = Math.max(1, (int) (variant.getWidth() * scaleFactor));
-            this.paintingHeight = Math.max(1, (int) (variant.getHeight() * scaleFactor));
+            this.paintingWidth = Math.max(1, (int) (variant.width() * scaleFactor));
+            this.paintingHeight = Math.max(1, (int) (variant.height() * scaleFactor));
             this.xOffset = (int) ((maxSize - paintingWidth) / 2);
             this.yOffset = (int) ((maxSize - paintingHeight) / 2);
             this.enabled = false;
@@ -277,7 +274,7 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
                 textureY += BUTTON_SIZE * 2;
             }
 
-            guiGraphics.blit(BG_LOCATION, x, y, SCREEN_WIDTH, textureY, BUTTON_SIZE, BUTTON_SIZE);
+            guiGraphics.blit(BACKGROUND, x, y, SCREEN_WIDTH, textureY, BUTTON_SIZE, BUTTON_SIZE);
             guiGraphics.blit(x + 1 + xOffset, y + 1 + yOffset, 0, paintingWidth, paintingHeight, sprite);
         }
 
