@@ -1,0 +1,29 @@
+{
+  "type": "vanillaboom:painting",
+  "canvas": {
+    "tag": "c:canvases"
+  },
+  "dyes": [
+    {
+      "tag": "c:dyes/white"
+    },
+    {
+      "tag": "c:dyes/light_gray"
+    },
+    {
+      "tag": "c:dyes/red"
+    },
+    {
+      "tag": "c:dyes/pink"
+    },
+    {
+      "tag": "c:dyes/green"
+    },
+    {
+      "tag": "c:dyes/yellow"
+    }
+  ],
+  "result": {
+    "variant": "minecraft:pond"
+  }
+}

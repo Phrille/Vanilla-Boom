@@ -1,0 +1,20 @@
+{
+  "type": "vanillaboom:painting",
+  "canvas": {
+    "tag": "c:canvases"
+  },
+  "dyes": [
+    {
+      "tag": "c:dyes/brown"
+    },
+    {
+      "tag": "c:dyes/yellow"
+    },
+    {
+      "tag": "c:dyes/green"
+    }
+  ],
+  "result": {
+    "variant": "minecraft:baroque"
+  }
+}

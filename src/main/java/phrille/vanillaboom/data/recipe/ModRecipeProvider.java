@@ -324,37 +324,62 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Blocks.WHITE_WOOL), has(Blocks.WHITE_WOOL))
                 .unlockedBy(getHasName(Items.SHEARS), has(Items.SHEARS))
                 .save(output);
-        painting(output, registries, PaintingVariants.KEBAB, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_LIME));
-        painting(output, registries,  PaintingVariants.AZTEC, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_LIGHT_GRAY));
-        painting(output, registries,  PaintingVariants.ALBAN, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_GREEN));
-        painting(output, registries,  PaintingVariants.AZTEC2, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN));
-        painting(output, registries,  PaintingVariants.BOMB, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_LIME));
-        painting(output, registries,  PaintingVariants.PLANT, List.of(Tags.Items.DYES_GREEN, Tags.Items.DYES_WHITE));
-        painting(output, registries,  PaintingVariants.WASTELAND, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_BROWN));
-        painting(output, registries,  PaintingVariants.POOL, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_BROWN));
-        painting(output, registries,  PaintingVariants.COURBET, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_BLACK, Tags.Items.DYES_LIGHT_GRAY));
-        painting(output, registries,  PaintingVariants.SEA, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_LIME));
-        painting(output, registries,  PaintingVariants.SUNSET, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BLACK));
-        painting(output, registries,  PaintingVariants.CREEBET, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_LIME));
-        painting(output, registries,  PaintingVariants.WANDERER, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_PINK, Tags.Items.DYES_BLACK));
-        painting(output, registries,  PaintingVariants.GRAHAM, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_YELLOW));
-        painting(output, registries,  PaintingVariants.MATCH, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN, Tags.Items.DYES_ORANGE));
-        painting(output, registries,  PaintingVariants.BUST, List.of(Tags.Items.DYES_LIME, Tags.Items.DYES_BLACK, Tags.Items.DYES_ORANGE));
-        painting(output, registries,  PaintingVariants.STAGE, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_WHITE));
-        painting(output, registries,  PaintingVariants.VOID, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_MAGENTA));
-        painting(output, registries,  PaintingVariants.SKULL_AND_ROSES, List.of(Tags.Items.DYES_CYAN, Tags.Items.DYES_GREEN, Tags.Items.DYES_RED));
-        painting(output, registries,  PaintingVariants.WITHER, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_GREEN, Tags.Items.DYES_RED));
-        painting(output, registries,  PaintingVariants.FIGHTERS, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN, Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN, Tags.Items.DYES_BLACK, Tags.Items.DYES_ORANGE));
-        painting(output, registries,  PaintingVariants.POINTER, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_WHITE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BLACK, Tags.Items.DYES_PURPLE, Tags.Items.DYES_BROWN));
-        painting(output, registries,  PaintingVariants.PIGSCENE, List.of(Tags.Items.DYES_PINK, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BROWN, Tags.Items.DYES_BLACK, Tags.Items.DYES_BLACK, Tags.Items.DYES_GREEN));
-        painting(output, registries,  PaintingVariants.BURNING_SKULL, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN, Tags.Items.DYES_BLACK, Tags.Items.DYES_WHITE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_LIGHT_GRAY));
-        painting(output, registries,  PaintingVariants.SKELETON, List.of(Tags.Items.DYES_ORANGE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_WHITE, Tags.Items.DYES_WHITE, Tags.Items.DYES_GRAY, Tags.Items.DYES_LIGHT_GRAY));
-        painting(output, registries,  PaintingVariants.DONKEY_KONG, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_BLACK, Tags.Items.DYES_PINK, Tags.Items.DYES_RED, Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN));
 
-        painting(output, registries,  PaintingVariants.EARTH, List.of(Tags.Items.DYES_BROWN, Tags.Items.DYES_BROWN, Tags.Items.DYES_ORANGE));
-        painting(output, registries,  PaintingVariants.WIND, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_LIGHT_GRAY, Tags.Items.DYES_YELLOW));
-        painting(output, registries,  PaintingVariants.FIRE, List.of(Tags.Items.DYES_ORANGE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_YELLOW));
-        painting(output, registries,  PaintingVariants.WATER, List.of(Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_BLUE, Tags.Items.DYES_WHITE));
+        // Paintings
+        painting(output, registries, PaintingVariants.KEBAB, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_LIME));
+        painting(output, registries, PaintingVariants.AZTEC, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_LIGHT_GRAY));
+        painting(output, registries, PaintingVariants.ALBAN, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_GREEN));
+        painting(output, registries, PaintingVariants.AZTEC2, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN));
+        painting(output, registries, PaintingVariants.BOMB, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_LIME));
+        painting(output, registries, PaintingVariants.PLANT, List.of(Tags.Items.DYES_GREEN, Tags.Items.DYES_WHITE));
+        painting(output, registries, PaintingVariants.WASTELAND, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_BROWN));
+        painting(output, registries, PaintingVariants.POOL, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_BROWN));
+        painting(output, registries, PaintingVariants.COURBET, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_BLACK, Tags.Items.DYES_LIGHT_GRAY));
+        painting(output, registries, PaintingVariants.SEA, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_LIME));
+        painting(output, registries, PaintingVariants.SUNSET, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BLACK));
+        painting(output, registries, PaintingVariants.CREEBET, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_LIME));
+        painting(output, registries, PaintingVariants.WANDERER, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_PINK, Tags.Items.DYES_BLACK));
+        painting(output, registries, PaintingVariants.GRAHAM, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_YELLOW));
+        painting(output, registries, PaintingVariants.MATCH, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN, Tags.Items.DYES_ORANGE));
+        painting(output, registries, PaintingVariants.BUST, List.of(Tags.Items.DYES_LIME, Tags.Items.DYES_BLACK, Tags.Items.DYES_ORANGE));
+        painting(output, registries, PaintingVariants.STAGE, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_WHITE));
+        painting(output, registries, PaintingVariants.VOID, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_MAGENTA));
+        painting(output, registries, PaintingVariants.SKULL_AND_ROSES, List.of(Tags.Items.DYES_CYAN, Tags.Items.DYES_GREEN, Tags.Items.DYES_RED));
+        painting(output, registries, PaintingVariants.WITHER, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_GREEN, Tags.Items.DYES_RED));
+        painting(output, registries, PaintingVariants.FIGHTERS, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN, Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN, Tags.Items.DYES_BLACK, Tags.Items.DYES_ORANGE));
+        painting(output, registries, PaintingVariants.POINTER, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_WHITE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BLACK, Tags.Items.DYES_PURPLE, Tags.Items.DYES_BROWN));
+        painting(output, registries, PaintingVariants.PIGSCENE, List.of(Tags.Items.DYES_PINK, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BROWN, Tags.Items.DYES_BLACK, Tags.Items.DYES_BLACK, Tags.Items.DYES_GREEN));
+        painting(output, registries, PaintingVariants.BURNING_SKULL, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN, Tags.Items.DYES_BLACK, Tags.Items.DYES_WHITE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_LIGHT_GRAY));
+        painting(output, registries, PaintingVariants.SKELETON, List.of(Tags.Items.DYES_ORANGE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_WHITE, Tags.Items.DYES_WHITE, Tags.Items.DYES_GRAY, Tags.Items.DYES_LIGHT_GRAY));
+        painting(output, registries, PaintingVariants.DONKEY_KONG, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_BLACK, Tags.Items.DYES_PINK, Tags.Items.DYES_RED, Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN));
+
+        // Unused paintings
+        painting(output, registries, PaintingVariants.EARTH, List.of(Tags.Items.DYES_BROWN, Tags.Items.DYES_BROWN, Tags.Items.DYES_ORANGE));
+        painting(output, registries, PaintingVariants.WIND, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_LIGHT_GRAY, Tags.Items.DYES_YELLOW));
+        painting(output, registries, PaintingVariants.FIRE, List.of(Tags.Items.DYES_ORANGE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_YELLOW));
+        painting(output, registries, PaintingVariants.WATER, List.of(Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_BLUE, Tags.Items.DYES_WHITE));
+
+        // 1.21 paintings
+        painting(output, registries, PaintingVariants.MEDITATIVE, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_RED));
+        painting(output, registries, PaintingVariants.PRAIRIE_RIDE, List.of(Tags.Items.DYES_BROWN, Tags.Items.DYES_YELLOW, Tags.Items.DYES_LIGHT_BLUE));
+        painting(output, registries, PaintingVariants.BAROQUE, List.of(Tags.Items.DYES_BROWN, Tags.Items.DYES_YELLOW, Tags.Items.DYES_GREEN));
+        painting(output, registries, PaintingVariants.HUMBLE, List.of(Tags.Items.DYES_BROWN, Tags.Items.DYES_GRAY, Tags.Items.DYES_LIGHT_BLUE));
+        painting(output, registries, PaintingVariants.CHANGING, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_GREEN, Tags.Items.DYES_LIME, Tags.Items.DYES_BLACK, Tags.Items.DYES_GRAY, Tags.Items.DYES_ORANGE));
+        painting(output, registries, PaintingVariants.FINDING, List.of(Tags.Items.DYES_BROWN, Tags.Items.DYES_BROWN, Tags.Items.DYES_BLUE, Tags.Items.DYES_WHITE, Tags.Items.DYES_LIGHT_GRAY, Tags.Items.DYES_PINK));
+        painting(output, registries, PaintingVariants.LOWMIST, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_PURPLE, Tags.Items.DYES_BLACK, Tags.Items.DYES_GRAY, Tags.Items.DYES_LIGHT_GRAY, Tags.Items.DYES_WHITE));
+        painting(output, registries, PaintingVariants.PASSAGE, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_WHITE, Tags.Items.DYES_CYAN, Tags.Items.DYES_BLACK, Tags.Items.DYES_GRAY, Tags.Items.DYES_LIGHT_GRAY));
+        painting(output, registries, PaintingVariants.BOUQUET, List.of(Tags.Items.DYES_CYAN, Tags.Items.DYES_GRAY, Tags.Items.DYES_BLACK, Tags.Items.DYES_BROWN, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_LIGHT_GRAY));
+        painting(output, registries, PaintingVariants.CAVEBIRD, List.of(Tags.Items.DYES_CYAN, Tags.Items.DYES_GRAY, Tags.Items.DYES_BROWN, Tags.Items.DYES_LIME, Tags.Items.DYES_WHITE, Tags.Items.DYES_LIGHT_GRAY));
+        painting(output, registries, PaintingVariants.COTAN, List.of(Tags.Items.DYES_LIGHT_GRAY, Tags.Items.DYES_LIGHT_GRAY, Tags.Items.DYES_RED, Tags.Items.DYES_YELLOW, Tags.Items.DYES_GREEN, Tags.Items.DYES_BLACK));
+        painting(output, registries, PaintingVariants.ENDBOSS, List.of(Tags.Items.DYES_LIGHT_GRAY, Tags.Items.DYES_LIGHT_GRAY, Tags.Items.DYES_WHITE, Tags.Items.DYES_YELLOW, Tags.Items.DYES_GREEN, Tags.Items.DYES_BLACK));
+        painting(output, registries, PaintingVariants.FERN, List.of(Tags.Items.DYES_BROWN, Tags.Items.DYES_RED, Tags.Items.DYES_YELLOW, Tags.Items.DYES_GREEN, Tags.Items.DYES_GRAY, Tags.Items.DYES_LIGHT_GRAY));
+        painting(output, registries, PaintingVariants.OWLEMONS, List.of(Tags.Items.DYES_BROWN, Tags.Items.DYES_BROWN, Tags.Items.DYES_BLACK, Tags.Items.DYES_YELLOW, Tags.Items.DYES_GRAY, Tags.Items.DYES_LIGHT_GRAY));
+        painting(output, registries, PaintingVariants.SUNFLOWERS, List.of(Tags.Items.DYES_BROWN, Tags.Items.DYES_YELLOW, Tags.Items.DYES_GREEN, Tags.Items.DYES_PINK, Tags.Items.DYES_BLACK, Tags.Items.DYES_LIGHT_GRAY));
+        painting(output, registries, PaintingVariants.TIDES, List.of(Tags.Items.DYES_CYAN, Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN, Tags.Items.DYES_YELLOW, Tags.Items.DYES_WHITE, Tags.Items.DYES_PINK));
+        painting(output, registries, PaintingVariants.BACKYARD, List.of(Tags.Items.DYES_CYAN, Tags.Items.DYES_CYAN, Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_BROWN, Tags.Items.DYES_LIGHT_GRAY));
+        painting(output, registries, PaintingVariants.POND, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_LIGHT_GRAY, Tags.Items.DYES_RED, Tags.Items.DYES_PINK, Tags.Items.DYES_GREEN, Tags.Items.DYES_YELLOW));
+        painting(output, registries, PaintingVariants.ORB, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_BLACK, Tags.Items.DYES_YELLOW, Tags.Items.DYES_GREEN, Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_GRAY));
+        painting(output, registries, PaintingVariants.UNPACKED, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_GREEN, Tags.Items.DYES_BROWN, Tags.Items.DYES_LIGHT_GRAY, Tags.Items.DYES_PINK));
     }
 
     // Templates

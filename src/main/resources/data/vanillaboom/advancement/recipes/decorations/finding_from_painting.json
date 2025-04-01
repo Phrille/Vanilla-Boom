@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_canvas": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vanillaboom:canvas"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vanillaboom:finding_from_painting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_canvas"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vanillaboom:finding_from_painting"
+    ]
+  }
+}

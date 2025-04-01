@@ -1,0 +1,29 @@
+{
+  "type": "vanillaboom:painting",
+  "canvas": {
+    "tag": "c:canvases"
+  },
+  "dyes": [
+    {
+      "tag": "c:dyes/blue"
+    },
+    {
+      "tag": "c:dyes/purple"
+    },
+    {
+      "tag": "c:dyes/black"
+    },
+    {
+      "tag": "c:dyes/gray"
+    },
+    {
+      "tag": "c:dyes/light_gray"
+    },
+    {
+      "tag": "c:dyes/white"
+    }
+  ],
+  "result": {
+    "variant": "minecraft:lowmist"
+  }
+}
