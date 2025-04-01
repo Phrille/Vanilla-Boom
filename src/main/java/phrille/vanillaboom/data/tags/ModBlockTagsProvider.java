@@ -145,6 +145,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.PRISMARINE_CRYSTAL_BLOCK.get())
                 .add(ModBlocks.WITHER_BONE_BLOCK.get())
                 .add(ModBlocks.GOLD_BARS.get())
+                .add(ModBlocks.COPPER_BARS.get())
+                .add(ModBlocks.EXPOSED_COPPER_BARS.get())
+                .add(ModBlocks.WEATHERED_COPPER_BARS.get())
+                .add(ModBlocks.OXIDIZED_COPPER_BARS.get())
+                .add(ModBlocks.WAXED_COPPER_BARS.get())
+                .add(ModBlocks.WAXED_EXPOSED_COPPER_BARS.get())
+                .add(ModBlocks.WAXED_WEATHERED_COPPER_BARS.get())
+                .add(ModBlocks.WAXED_OXIDIZED_COPPER_BARS.get())
                 .addTags(ModTags.Blocks.BRICKS)
                 .addTags(ModTags.Blocks.POLISHED)
                 .addTags(ModTags.Blocks.PILLARS)
@@ -176,6 +184,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.GOLD_BLOCK_WALL.get()));
         tag(BlockTags.NEEDS_STONE_TOOL, List.of(
                 Blocks.IRON_BARS,
+                ModBlocks.COPPER_BARS.get(),
+                ModBlocks.EXPOSED_COPPER_BARS.get(),
+                ModBlocks.WEATHERED_COPPER_BARS.get(),
+                ModBlocks.OXIDIZED_COPPER_BARS.get(),
+                ModBlocks.WAXED_COPPER_BARS.get(),
+                ModBlocks.WAXED_EXPOSED_COPPER_BARS.get(),
+                ModBlocks.WAXED_WEATHERED_COPPER_BARS.get(),
+                ModBlocks.WAXED_OXIDIZED_COPPER_BARS.get(),
                 ModBlocks.IRON_BLOCK_STAIRS.get(),
                 ModBlocks.IRON_BLOCK_SLAB.get(),
                 ModBlocks.IRON_BLOCK_WALL.get()));

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "x": {
+      "item": "minecraft:copper_ingot"
+    },
+    "y": {
+      "item": "minecraft:weathered_copper_grate"
+    }
+  },
+  "pattern": [
+    "xyx",
+    "xyx"
+  ],
+  "result": {
+    "count": 16,
+    "id": "vanillaboom:weathered_copper_bars"
+  }
+}

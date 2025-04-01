@@ -201,6 +201,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModItems.EASEL.get());
         blockItem(ModItems.RAIN_DETECTOR.get());
         item(ModBlocks.GOLD_BARS.get());
+        item(ModBlocks.COPPER_BARS.get());
+        item(ModBlocks.EXPOSED_COPPER_BARS.get());
+        item(ModBlocks.WEATHERED_COPPER_BARS.get());
+        item(ModBlocks.OXIDIZED_COPPER_BARS.get());
+        item(ModBlocks.WAXED_COPPER_BARS.get());
+        item(ModBlocks.WAXED_EXPOSED_COPPER_BARS.get());
+        item(ModBlocks.WAXED_WEATHERED_COPPER_BARS.get());
+        item(ModBlocks.WAXED_OXIDIZED_COPPER_BARS.get());
         item(ModBlocks.ROSE.get());
         item(ModBlocks.SHEARED_ROSE_BUSH.get().asItem(), "generated")
                 .texture("layer0", ModDataGenerator.extend(blockTexture(ModBlocks.SHEARED_ROSE_BUSH.get()), "_top"));

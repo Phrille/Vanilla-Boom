@@ -155,6 +155,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("xxx")
                 .unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(output);
+        copperBars(output, ModItems.COPPER_BARS, Blocks.COPPER_GRATE);
+        copperBars(output, ModItems.EXPOSED_COPPER_BARS, Blocks.EXPOSED_COPPER_GRATE);
+        copperBars(output, ModItems.WEATHERED_COPPER_BARS, Blocks.WEATHERED_COPPER_GRATE);
+        copperBars(output, ModItems.OXIDIZED_COPPER_BARS, Blocks.OXIDIZED_COPPER_GRATE);
+        copperBars(output, ModItems.WAXED_COPPER_BARS, Blocks.WAXED_COPPER_GRATE);
+        copperBars(output, ModItems.WAXED_EXPOSED_COPPER_BARS, Blocks.WAXED_EXPOSED_COPPER_GRATE);
+        copperBars(output, ModItems.WAXED_WEATHERED_COPPER_BARS, Blocks.WAXED_WEATHERED_COPPER_GRATE);
+        copperBars(output, ModItems.WAXED_OXIDIZED_COPPER_BARS, Blocks.WAXED_OXIDIZED_COPPER_GRATE);
+        waxedCopperBars(output, ModItems.WAXED_COPPER_BARS, ModItems.COPPER_BARS);
+        waxedCopperBars(output, ModItems.WAXED_EXPOSED_COPPER_BARS, ModItems.EXPOSED_COPPER_BARS);
+        waxedCopperBars(output, ModItems.WAXED_WEATHERED_COPPER_BARS, ModItems.WEATHERED_COPPER_BARS);
+        waxedCopperBars(output, ModItems.WAXED_OXIDIZED_COPPER_BARS, ModItems.OXIDIZED_COPPER_BARS);
         oneToOneShapeless(output, RecipeCategory.MISC, Items.RED_DYE, ModItems.ROSE.get(), 1);
         oneToOneShapeless(output, RecipeCategory.MISC, Items.PINK_DYE, ModItems.PEONY.get(), 1);
         oneToOneShapeless(output, RecipeCategory.MISC, Items.MAGENTA_DYE, ModItems.LILAC.get(), 1);
@@ -669,6 +681,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(output);
     }
 
+    public void copperBars(RecipeOutput output, ItemLike result, ItemLike copper) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, result, 16)
+                .define('x', Items.COPPER_INGOT)
+                .define('y', copper)
+                .pattern("xyx")
+                .pattern("xyx")
+                .unlockedBy(getHasName(copper), has(copper))
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(output);
+    }
+
     // Shapeless Recipe
     public void oneToOneShapeless(RecipeOutput output, RecipeCategory category, ItemLike result, ItemLike ingredient, int amount) {
         ShapelessRecipeBuilder.shapeless(category, result, amount)
@@ -694,6 +717,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(Items.SUGAR)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(output);
+    }
+
+    public void waxedCopperBars(RecipeOutput output, ItemLike result, ItemLike copperBar) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, result)
+                .requires(copperBar)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy(getHasName(copperBar), has(copperBar))
+                .unlockedBy(getHasName(Items.HONEYCOMB), has(Items.HONEYCOMB))
+                .save(output, getConversionRecipeResourceLocation(result, Items.HONEYCOMB));
     }
 
     // Smelting

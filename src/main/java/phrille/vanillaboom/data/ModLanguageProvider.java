@@ -177,6 +177,14 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.EASEL.get(), "Easel");
         add(ModBlocks.RAIN_DETECTOR.get(), "Rain Detector");
         add(ModBlocks.GOLD_BARS.get(), "Gold Bars");
+        add(ModBlocks.COPPER_BARS.get(), "Copper Bars");
+        add(ModBlocks.EXPOSED_COPPER_BARS.get(), "Exposed Copper Bars");
+        add(ModBlocks.WEATHERED_COPPER_BARS.get(), "Weathered Copper Bars");
+        add(ModBlocks.OXIDIZED_COPPER_BARS.get(), "Oxidized Copper Bars");
+        add(ModBlocks.WAXED_COPPER_BARS.get(), "Waxed Copper Bars");
+        add(ModBlocks.WAXED_EXPOSED_COPPER_BARS.get(), "Waxed Exposed Copper Bars");
+        add(ModBlocks.WAXED_WEATHERED_COPPER_BARS.get(), "Waxed Weathered Copper Bars");
+        add(ModBlocks.WAXED_OXIDIZED_COPPER_BARS.get(), "Waxed Oxidized Copper Bars");
         add(ModBlocks.ROSE.get(), "Rose");
         add(ModBlocks.SHEARED_ROSE_BUSH.get(), "Sheared Rose Bush");
         add(ModBlocks.PEONY.get(), "Peony");

@@ -1,6 +1,14 @@
 {
   "values": [
     "minecraft:iron_bars",
+    "vanillaboom:copper_bars",
+    "vanillaboom:exposed_copper_bars",
+    "vanillaboom:weathered_copper_bars",
+    "vanillaboom:oxidized_copper_bars",
+    "vanillaboom:waxed_copper_bars",
+    "vanillaboom:waxed_exposed_copper_bars",
+    "vanillaboom:waxed_weathered_copper_bars",
+    "vanillaboom:waxed_oxidized_copper_bars",
     "vanillaboom:iron_block_stairs",
     "vanillaboom:iron_block_slab",
     "vanillaboom:iron_block_wall"

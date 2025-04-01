@@ -1,8 +1,9 @@
 {
-  "parent": "minecraft:block/template_glass_pane_side",
+  "parent": "minecraft:block/iron_bars_side",
   "render_type": "minecraft:cutout_mipped",
   "textures": {
+    "bars": "vanillaboom:block/gold_bars",
     "edge": "vanillaboom:block/gold_bars",
-    "pane": "vanillaboom:block/gold_bars"
+    "particle": "vanillaboom:block/gold_bars"
   }
 }

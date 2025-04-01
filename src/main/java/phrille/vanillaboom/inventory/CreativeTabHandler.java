@@ -358,6 +358,15 @@ public class CreativeTabHandler {
                     ModItems.SNOW_BRICK_SLAB.get(),
                     ModItems.SNOW_BRICK_WALL.get()
             ));
+            // Copper
+            putAfter(event, Blocks.COPPER_TRAPDOOR, ModItems.COPPER_BARS);
+            putAfter(event, Blocks.EXPOSED_COPPER_TRAPDOOR, ModItems.EXPOSED_COPPER_BARS);
+            putAfter(event, Blocks.WEATHERED_COPPER_TRAPDOOR, ModItems.WEATHERED_COPPER_BARS);
+            putAfter(event, Blocks.OXIDIZED_COPPER_TRAPDOOR, ModItems.OXIDIZED_COPPER_BARS);
+            putAfter(event, Blocks.WAXED_COPPER_TRAPDOOR, ModItems.WAXED_COPPER_BARS);
+            putAfter(event, Blocks.WAXED_EXPOSED_COPPER_TRAPDOOR, ModItems.WAXED_EXPOSED_COPPER_BARS);
+            putAfter(event, Blocks.WAXED_WEATHERED_COPPER_TRAPDOOR, ModItems.WAXED_WEATHERED_COPPER_BARS);
+            putAfter(event, Blocks.WAXED_OXIDIZED_COPPER_TRAPDOOR, ModItems.WAXED_OXIDIZED_COPPER_BARS);
             // Bedrock
             put(event, List.of(
                     Blocks.BEDROCK,

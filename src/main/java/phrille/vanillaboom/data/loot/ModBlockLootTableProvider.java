@@ -178,6 +178,14 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.EASEL.get());
         dropSelf(ModBlocks.RAIN_DETECTOR.get());
         dropSelf(ModBlocks.GOLD_BARS.get());
+        dropSelf(ModBlocks.COPPER_BARS.get());
+        dropSelf(ModBlocks.EXPOSED_COPPER_BARS.get());
+        dropSelf(ModBlocks.WEATHERED_COPPER_BARS.get());
+        dropSelf(ModBlocks.OXIDIZED_COPPER_BARS.get());
+        dropSelf(ModBlocks.WAXED_COPPER_BARS.get());
+        dropSelf(ModBlocks.WAXED_EXPOSED_COPPER_BARS.get());
+        dropSelf(ModBlocks.WAXED_WEATHERED_COPPER_BARS.get());
+        dropSelf(ModBlocks.WAXED_OXIDIZED_COPPER_BARS.get());
         dropSelf(ModBlocks.ROSE.get());
         dropPottedContents(ModBlocks.POTTED_ROSE.get());
         add(ModBlocks.SHEARED_ROSE_BUSH.get(), shearedRoseBush -> createSinglePropConditionTable(shearedRoseBush, ShearedTallFlowerBlock.HALF, DoubleBlockHalf.LOWER));

@@ -12,9 +12,8 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.data.DataMapProvider;
-import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
-import net.neoforged.neoforge.registries.datamaps.builtin.FurnaceFuel;
-import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
+import net.neoforged.neoforge.registries.datamaps.builtin.*;
+import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.util.ModTags;
 
@@ -64,5 +63,16 @@ public class ModDataMapProvider extends DataMapProvider {
                 .add(ModTags.Items.OVERWORLD_WOODEN_FENCE_GATES, new FurnaceFuel(300), false)
                 .add(ModTags.Items.OVERWORLD_WOODEN_SLABS, new FurnaceFuel(300), false)
                 .add(ModTags.Items.OVERWORLD_WOODEN_SLABS, new FurnaceFuel(300), false);
+
+        builder(NeoForgeDataMaps.OXIDIZABLES)
+                .add(ModBlocks.COPPER_BARS, new Oxidizable(ModBlocks.EXPOSED_COPPER_BARS.get()), false)
+                .add(ModBlocks.EXPOSED_COPPER_BARS, new Oxidizable(ModBlocks.WEATHERED_COPPER_BARS.get()), false)
+                .add(ModBlocks.WEATHERED_COPPER_BARS, new Oxidizable(ModBlocks.OXIDIZED_COPPER_BARS.get()), false);
+
+        builder(NeoForgeDataMaps.WAXABLES)
+                .add(ModBlocks.COPPER_BARS, new Waxable(ModBlocks.WAXED_COPPER_BARS.get()), false)
+                .add(ModBlocks.EXPOSED_COPPER_BARS, new Waxable(ModBlocks.WAXED_EXPOSED_COPPER_BARS.get()), false)
+                .add(ModBlocks.WEATHERED_COPPER_BARS, new Waxable(ModBlocks.WAXED_WEATHERED_COPPER_BARS.get()), false)
+                .add(ModBlocks.OXIDIZED_COPPER_BARS, new Waxable(ModBlocks.WAXED_OXIDIZED_COPPER_BARS.get()), false);
     }
 }
