@@ -14,7 +14,9 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.client.screen.EaselScreen;
@@ -51,5 +53,9 @@ public record EaselRecipePacket(short containerId,
                 }
             }
         });
+    }
+
+    public static void send(ServerPlayer player, int containerId, List<RecipeHolder<PaintingRecipe>> recipes) {
+        PacketDistributor.sendToPlayer(player, new EaselRecipePacket((short) containerId, recipes));
     }
 }

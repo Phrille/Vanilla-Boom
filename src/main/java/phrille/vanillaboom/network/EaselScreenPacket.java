@@ -13,6 +13,7 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.inventory.EaselMenu;
@@ -39,6 +40,10 @@ public record EaselScreenPacket(short containerId) implements CustomPacketPayloa
                 }
             }
         });
+    }
+
+    public static void send(int containerId) {
+        PacketDistributor.sendToServer(new EaselScreenPacket((short) containerId));
     }
 }
 

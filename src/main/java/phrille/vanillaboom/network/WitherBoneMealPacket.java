@@ -14,8 +14,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.util.Utils;
@@ -41,5 +43,9 @@ public record WitherBoneMealPacket(BlockPos pos) implements CustomPacketPayload 
                 level.playLocalSound(payload.pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
             }
         });
+    }
+
+    public static void send(ServerLevel level, BlockPos pos) {
+        PacketDistributor.sendToPlayersNear(level, null, pos.getX(), pos.getY(), pos.getZ(), 64.0, new WitherBoneMealPacket(pos));
     }
 }

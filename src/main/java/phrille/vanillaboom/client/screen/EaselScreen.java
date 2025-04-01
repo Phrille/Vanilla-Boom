@@ -24,7 +24,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import net.neoforged.neoforge.network.PacketDistributor;
 import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.crafting.PaintingRecipe;
@@ -79,7 +78,7 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
             PaintingButton button = new PaintingButton(buttonId, recipe, recipe.value().variant().value());
             button.register();
         }
-        PacketDistributor.sendToServer(new EaselScreenPacket((short) menu.containerId));
+        EaselScreenPacket.send(menu.containerId);
     }
 
     @Override

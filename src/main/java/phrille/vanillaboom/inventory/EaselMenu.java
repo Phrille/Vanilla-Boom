@@ -24,7 +24,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.network.PacketDistributor;
 import phrille.vanillaboom.block.entity.EaselBlockEntity;
 import phrille.vanillaboom.crafting.EaselRecipeInput;
 import phrille.vanillaboom.crafting.ModRecipes;
@@ -163,7 +162,7 @@ public class EaselMenu extends AbstractContainerMenu implements ContainerListene
                 setupResultSlot();
             }
 
-            PacketDistributor.sendToPlayer(serverPlayer, new EaselRecipePacket((short) containerId, availableRecipes));
+            EaselRecipePacket.send(serverPlayer, containerId, availableRecipes);
         }
     }
 
