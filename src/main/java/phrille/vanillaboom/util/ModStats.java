@@ -8,12 +8,12 @@
 
 package phrille.vanillaboom.util;
 
+import com.google.common.collect.Lists;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.stats.StatFormatter;
 import net.minecraft.stats.Stats;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.VanillaBoom;
 
 import java.util.List;
