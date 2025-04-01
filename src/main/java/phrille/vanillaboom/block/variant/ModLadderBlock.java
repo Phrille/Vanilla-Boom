@@ -8,11 +8,11 @@
 
 package phrille.vanillaboom.block.variant;
 
+import com.google.common.collect.Lists;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LadderBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import org.apache.commons.compress.utils.Lists;
 
 import java.util.List;
 import java.util.function.Supplier;

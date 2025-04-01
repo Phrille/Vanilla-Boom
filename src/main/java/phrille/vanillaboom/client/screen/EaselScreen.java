@@ -9,6 +9,7 @@
 package phrille.vanillaboom.client.screen;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
@@ -24,7 +25,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.crafting.PaintingRecipe;
 import phrille.vanillaboom.inventory.EaselMenu;

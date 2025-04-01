@@ -8,6 +8,7 @@
 
 package phrille.vanillaboom.data.recipe;
 
+import com.google.common.collect.Lists;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -26,7 +27,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
-import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.variant.*;

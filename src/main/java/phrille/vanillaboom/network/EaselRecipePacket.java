@@ -8,8 +8,6 @@
 
 package phrille.vanillaboom.network;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -19,9 +17,8 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.client.screen.EaselScreen;
+import phrille.vanillaboom.client.ClientPacketHandler;
 import phrille.vanillaboom.crafting.PaintingRecipe;
-import phrille.vanillaboom.inventory.EaselMenu;
 
 import java.util.List;
 
@@ -43,16 +40,8 @@ public record EaselRecipePacket(short containerId,
         return TYPE;
     }
 
-    public static void handle(EaselRecipePacket payload, IPayloadContext context) {
-        context.enqueueWork(() -> {
-            if (context.player() instanceof LocalPlayer player) {
-                if (player.containerMenu instanceof EaselMenu menu && menu.containerId == payload.containerId()) {
-                    if (Minecraft.getInstance().screen instanceof EaselScreen screen) {
-                        screen.updateRecipes(payload.recipes());
-                    }
-                }
-            }
-        });
+    public static void handle(EaselRecipePacket packet, IPayloadContext context) {
+        context.enqueueWork(() -> ClientPacketHandler.handleEaselRecipePacket(context.player(), packet.containerId(), packet.recipes()));
     }
 
     public static void send(ServerPlayer player, int containerId, List<RecipeHolder<PaintingRecipe>> recipes) {
