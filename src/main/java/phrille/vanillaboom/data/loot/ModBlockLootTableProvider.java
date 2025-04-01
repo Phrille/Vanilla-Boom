@@ -8,12 +8,14 @@
 
 package phrille.vanillaboom.data.loot;
 
-import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -29,10 +31,8 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.neoforged.neoforge.common.Tags;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.ModCakeBlock;
 import phrille.vanillaboom.block.crop.ITrellisCrop;
@@ -48,8 +48,8 @@ import java.util.Set;
 public class ModBlockLootTableProvider extends BlockLootSubProvider {
     private static final float[] PINE_CONE_CHANCES = new float[]{0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
 
-    public ModBlockLootTableProvider() {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+    public ModBlockLootTableProvider(HolderLookup.Provider registries) {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
     }
 
     @Override
@@ -224,12 +224,14 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     }
 
     protected LootTable.Builder createBoneSandDrops(Block block, ItemLike item) {
+        HolderLookup.RegistryLookup<Enchantment> enchantmentLookup = registries.lookupOrThrow(Registries.ENCHANTMENT);
         return createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(item)
                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 5.0F)))
-                .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.FORTUNE))));
+                .apply(ApplyBonusCount.addUniformBonusCount(enchantmentLookup.getOrThrow(Enchantments.FORTUNE)))));
     }
 
     protected LootTable.Builder createTrellisCropDrops(Block cropBlock) {
+        HolderLookup.RegistryLookup<Enchantment> enchantmentLookup = registries.lookupOrThrow(Registries.ENCHANTMENT);
         ITrellisCrop trellisCrop = (ITrellisCrop) cropBlock;
         LootItemCondition.Builder ageCondition = LootItemBlockStatePropertyCondition
                 .hasBlockStateProperties(cropBlock)
@@ -249,7 +251,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                         .when(ageCondition)
                         .when(halfCondition)
                         .add(LootItem.lootTableItem(trellisCrop.getSeed()))
-                        .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.FORTUNE, 0.5714286F, 3)))
+                        .apply(ApplyBonusCount.addBonusBinomialDistributionCount(enchantmentLookup.getOrThrow(Enchantments.FORTUNE), 0.5714286F, 3)))
                 .withPool(LootPool.lootPool()
                         .add(LootItem.lootTableItem(ModBlocks.TRELLIS.get())
                                 .when(halfCondition)))
@@ -257,14 +259,13 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     }
 
     protected LootTable.Builder createPineConeDrops() {
+        HolderLookup.RegistryLookup<Enchantment> enchantmentLookup = registries.lookupOrThrow(Registries.ENCHANTMENT);
         return LootTable.lootTable()
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1.0F))
-                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(Tags.Items.TOOLS_SHEARS))
-                                .or(HAS_SILK_TOUCH)
-                                .invert())
+                        .when(HAS_SHEARS.or(hasSilkTouch()).invert())
                         .add(applyExplosionDecay(Blocks.SPRUCE_LEAVES, LootItem.lootTableItem(ModItems.PINE_CONE.get())
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))))
-                        .when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.FORTUNE, PINE_CONE_CHANCES)));
+                        .when(BonusLevelTableCondition.bonusLevelFlatChance(enchantmentLookup.getOrThrow(Enchantments.FORTUNE), PINE_CONE_CHANCES)));
     }
 }

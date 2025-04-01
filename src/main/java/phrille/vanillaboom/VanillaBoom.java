@@ -77,6 +77,6 @@ public class VanillaBoom {
     }
 
     public static ResourceLocation resLoc(String path) {
-        return new ResourceLocation(VanillaBoom.MOD_ID, path);
+        return ResourceLocation.fromNamespaceAndPath(VanillaBoom.MOD_ID, path);
     }
 }

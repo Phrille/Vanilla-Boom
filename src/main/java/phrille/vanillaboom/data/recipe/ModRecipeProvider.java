@@ -40,12 +40,12 @@ import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    public ModRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, lookupProvider);
+    public ModRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, registries);
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput output) {
+    protected void buildRecipes(RecipeOutput output, HolderLookup.Provider registries) {
         bricks(output, ModItems.COBBLESTONE_BRICKS.get(), Blocks.COBBLESTONE);
         bricks(output, ModItems.MOSSY_COBBLESTONE_BRICKS.get(), Blocks.MOSSY_COBBLESTONE);
         mossyCobblestoneBricksShapeless(output, Blocks.MOSS_BLOCK);
@@ -266,15 +266,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.MEAT_SOUP.get())
                 .requires(Items.BOWL)
                 .requires(Tags.Items.CROPS_POTATO)
-                .requires(Tags.Items.FOODS_COOKED_MEATS)
-                .requires(Tags.Items.FOODS_COOKED_MEATS)
+                .requires(Tags.Items.FOODS_COOKED_MEAT)
+                .requires(Tags.Items.FOODS_COOKED_MEAT)
                 .unlockedBy(getHasName(Items.BOWL), has(Items.BOWL))
                 .save(output);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.FISH_SOUP.get())
                 .requires(Items.BOWL)
                 .requires(Items.SEA_PICKLE)
-                .requires(Tags.Items.FOODS_COOKED_FISHES)
-                .requires(Tags.Items.FOODS_COOKED_FISHES)
+                .requires(Tags.Items.FOODS_COOKED_FISH)
+                .requires(Tags.Items.FOODS_COOKED_FISH)
                 .unlockedBy(getHasName(Items.BOWL), has(Items.BOWL))
                 .unlockedBy(getHasName(Items.SEA_PICKLE), has(Items.SEA_PICKLE))
                 .save(output);
@@ -320,41 +320,41 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(output);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CANVAS.get(), 2)
                 .requires(ItemTags.WOOL)
-                .requires(Tags.Items.TOOLS_SHEARS)
+                .requires(Tags.Items.TOOLS_SHEAR)
                 .unlockedBy(getHasName(Blocks.WHITE_WOOL), has(Blocks.WHITE_WOOL))
                 .unlockedBy(getHasName(Items.SHEARS), has(Items.SHEARS))
                 .save(output);
-        painting(output, PaintingVariants.KEBAB, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_LIME));
-        painting(output, PaintingVariants.AZTEC, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_LIGHT_GRAY));
-        painting(output, PaintingVariants.ALBAN, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_GREEN));
-        painting(output, PaintingVariants.AZTEC2, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN));
-        painting(output, PaintingVariants.BOMB, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_LIME));
-        painting(output, PaintingVariants.PLANT, List.of(Tags.Items.DYES_GREEN, Tags.Items.DYES_WHITE));
-        painting(output, PaintingVariants.WASTELAND, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_BROWN));
-        painting(output, PaintingVariants.POOL, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_BROWN));
-        painting(output, PaintingVariants.COURBET, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_BLACK, Tags.Items.DYES_LIGHT_GRAY));
-        painting(output, PaintingVariants.SEA, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_LIME));
-        painting(output, PaintingVariants.SUNSET, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BLACK));
-        painting(output, PaintingVariants.CREEBET, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_LIME));
-        painting(output, PaintingVariants.WANDERER, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_PINK, Tags.Items.DYES_BLACK));
-        painting(output, PaintingVariants.GRAHAM, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_YELLOW));
-        painting(output, PaintingVariants.MATCH, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN, Tags.Items.DYES_ORANGE));
-        painting(output, PaintingVariants.BUST, List.of(Tags.Items.DYES_LIME, Tags.Items.DYES_BLACK, Tags.Items.DYES_ORANGE));
-        painting(output, PaintingVariants.STAGE, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_WHITE));
-        painting(output, PaintingVariants.VOID, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_MAGENTA));
-        painting(output, PaintingVariants.SKULL_AND_ROSES, List.of(Tags.Items.DYES_CYAN, Tags.Items.DYES_GREEN, Tags.Items.DYES_RED));
-        painting(output, PaintingVariants.WITHER, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_GREEN, Tags.Items.DYES_RED));
-        painting(output, PaintingVariants.FIGHTERS, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN, Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN, Tags.Items.DYES_BLACK, Tags.Items.DYES_ORANGE));
-        painting(output, PaintingVariants.POINTER, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_WHITE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BLACK, Tags.Items.DYES_PURPLE, Tags.Items.DYES_BROWN));
-        painting(output, PaintingVariants.PIGSCENE, List.of(Tags.Items.DYES_PINK, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BROWN, Tags.Items.DYES_BLACK, Tags.Items.DYES_BLACK, Tags.Items.DYES_GREEN));
-        painting(output, PaintingVariants.BURNING_SKULL, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN, Tags.Items.DYES_BLACK, Tags.Items.DYES_WHITE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_LIGHT_GRAY));
-        painting(output, PaintingVariants.SKELETON, List.of(Tags.Items.DYES_ORANGE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_WHITE, Tags.Items.DYES_WHITE, Tags.Items.DYES_GRAY, Tags.Items.DYES_LIGHT_GRAY));
-        painting(output, PaintingVariants.DONKEY_KONG, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_BLACK, Tags.Items.DYES_PINK, Tags.Items.DYES_RED, Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN));
+        painting(output, registries, PaintingVariants.KEBAB, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_LIME));
+        painting(output, registries,  PaintingVariants.AZTEC, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_LIGHT_GRAY));
+        painting(output, registries,  PaintingVariants.ALBAN, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_GREEN));
+        painting(output, registries,  PaintingVariants.AZTEC2, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN));
+        painting(output, registries,  PaintingVariants.BOMB, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_LIME));
+        painting(output, registries,  PaintingVariants.PLANT, List.of(Tags.Items.DYES_GREEN, Tags.Items.DYES_WHITE));
+        painting(output, registries,  PaintingVariants.WASTELAND, List.of(Tags.Items.DYES_YELLOW, Tags.Items.DYES_BROWN));
+        painting(output, registries,  PaintingVariants.POOL, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_BROWN));
+        painting(output, registries,  PaintingVariants.COURBET, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_BLACK, Tags.Items.DYES_LIGHT_GRAY));
+        painting(output, registries,  PaintingVariants.SEA, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_LIME));
+        painting(output, registries,  PaintingVariants.SUNSET, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BLACK));
+        painting(output, registries,  PaintingVariants.CREEBET, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_LIME));
+        painting(output, registries,  PaintingVariants.WANDERER, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_PINK, Tags.Items.DYES_BLACK));
+        painting(output, registries,  PaintingVariants.GRAHAM, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_YELLOW));
+        painting(output, registries,  PaintingVariants.MATCH, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN, Tags.Items.DYES_ORANGE));
+        painting(output, registries,  PaintingVariants.BUST, List.of(Tags.Items.DYES_LIME, Tags.Items.DYES_BLACK, Tags.Items.DYES_ORANGE));
+        painting(output, registries,  PaintingVariants.STAGE, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_WHITE));
+        painting(output, registries,  PaintingVariants.VOID, List.of(Tags.Items.DYES_RED, Tags.Items.DYES_BLACK, Tags.Items.DYES_MAGENTA));
+        painting(output, registries,  PaintingVariants.SKULL_AND_ROSES, List.of(Tags.Items.DYES_CYAN, Tags.Items.DYES_GREEN, Tags.Items.DYES_RED));
+        painting(output, registries,  PaintingVariants.WITHER, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_GREEN, Tags.Items.DYES_RED));
+        painting(output, registries,  PaintingVariants.FIGHTERS, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN, Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN, Tags.Items.DYES_BLACK, Tags.Items.DYES_ORANGE));
+        painting(output, registries,  PaintingVariants.POINTER, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_WHITE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BLACK, Tags.Items.DYES_PURPLE, Tags.Items.DYES_BROWN));
+        painting(output, registries,  PaintingVariants.PIGSCENE, List.of(Tags.Items.DYES_PINK, Tags.Items.DYES_ORANGE, Tags.Items.DYES_BROWN, Tags.Items.DYES_BLACK, Tags.Items.DYES_BLACK, Tags.Items.DYES_GREEN));
+        painting(output, registries,  PaintingVariants.BURNING_SKULL, List.of(Tags.Items.DYES_BLUE, Tags.Items.DYES_GREEN, Tags.Items.DYES_BLACK, Tags.Items.DYES_WHITE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_LIGHT_GRAY));
+        painting(output, registries,  PaintingVariants.SKELETON, List.of(Tags.Items.DYES_ORANGE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_WHITE, Tags.Items.DYES_WHITE, Tags.Items.DYES_GRAY, Tags.Items.DYES_LIGHT_GRAY));
+        painting(output, registries,  PaintingVariants.DONKEY_KONG, List.of(Tags.Items.DYES_BLACK, Tags.Items.DYES_BLACK, Tags.Items.DYES_PINK, Tags.Items.DYES_RED, Tags.Items.DYES_WHITE, Tags.Items.DYES_BROWN));
 
-        painting(output, PaintingVariants.EARTH, List.of(Tags.Items.DYES_BROWN, Tags.Items.DYES_BROWN, Tags.Items.DYES_ORANGE));
-        painting(output, PaintingVariants.WIND, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_LIGHT_GRAY, Tags.Items.DYES_YELLOW));
-        painting(output, PaintingVariants.FIRE, List.of(Tags.Items.DYES_ORANGE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_YELLOW));
-        painting(output, PaintingVariants.WATER, List.of(Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_BLUE, Tags.Items.DYES_WHITE));
+        painting(output, registries,  PaintingVariants.EARTH, List.of(Tags.Items.DYES_BROWN, Tags.Items.DYES_BROWN, Tags.Items.DYES_ORANGE));
+        painting(output, registries,  PaintingVariants.WIND, List.of(Tags.Items.DYES_WHITE, Tags.Items.DYES_LIGHT_GRAY, Tags.Items.DYES_YELLOW));
+        painting(output, registries,  PaintingVariants.FIRE, List.of(Tags.Items.DYES_ORANGE, Tags.Items.DYES_ORANGE, Tags.Items.DYES_YELLOW));
+        painting(output, registries,  PaintingVariants.WATER, List.of(Tags.Items.DYES_LIGHT_BLUE, Tags.Items.DYES_BLUE, Tags.Items.DYES_WHITE));
     }
 
     // Templates
@@ -707,8 +707,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(output, ModDataGenerator.extend(getConversionRecipeResourceLocation(result, ingredient), "_from_stonecutting"));
     }
 
-    public void painting(RecipeOutput output, ResourceKey<PaintingVariant> variant, List<TagKey<Item>> dyes) {
-        Holder<PaintingVariant> holder = BuiltInRegistries.PAINTING_VARIANT.getHolderOrThrow(variant);
+    public void painting(RecipeOutput output, HolderLookup.Provider registries, ResourceKey<PaintingVariant> variant, List<TagKey<Item>> dyes) {
+        Holder<PaintingVariant> holder = registries.holderOrThrow(variant);
         List<Ingredient> ingredientDyes = Lists.newArrayList();
         dyes.forEach(dye -> ingredientDyes.add(Ingredient.of(dye)));
         PaintingRecipeBuilder.painting(RecipeCategory.DECORATIONS, holder)

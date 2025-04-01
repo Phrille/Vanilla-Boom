@@ -23,7 +23,7 @@ public class ModRecipes {
     public static final Supplier<RecipeSerializer<PaintingRecipe>> PAINTING_SERIALIZER = RECIPE_SERIALIZERS.register("painting", PaintingRecipe.Serializer::new);
 
     public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(BuiltInRegistries.RECIPE_TYPE, VanillaBoom.MOD_ID);
-    public static final Supplier<RecipeType<PaintingRecipe>> PAINTING = RECIPE_TYPES.register("painting", () -> new VanillaBoomRecipeType<>(new ResourceLocation(VanillaBoom.MOD_ID, "painting")));
+    public static final Supplier<RecipeType<PaintingRecipe>> PAINTING = RECIPE_TYPES.register("painting", () -> new VanillaBoomRecipeType<>(VanillaBoom.resLoc("painting")));
 
     private record VanillaBoomRecipeType<T extends Recipe<?>>(ResourceLocation id) implements RecipeType<T> {
         @Override

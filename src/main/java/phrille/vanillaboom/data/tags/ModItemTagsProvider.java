@@ -27,12 +27,12 @@ import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("unchecked")
 public class ModItemTagsProvider extends ItemTagsProvider {
-    public ModItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, TagsProvider<Block> blockTags, ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, blockTags.contentsGetter(), VanillaBoom.MOD_ID, existingFileHelper);
+    public ModItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, TagsProvider<Block> blockTags, ExistingFileHelper fileHelper) {
+        super(output, registries, blockTags.contentsGetter(), VanillaBoom.MOD_ID, fileHelper);
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider provider) {
+    protected void addTags(HolderLookup.Provider registries) {
         modTags();
         customCommonTags();
         defaultCommonTags();
@@ -120,12 +120,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(Tags.Items.FOODS)
                 .addTags(CommonTags.Items.FOODS_PIES)
                 .addTags(CommonTags.Items.FOODS_RICES);
-        tag(Tags.Items.FOODS_CANDIES)
+        tag(Tags.Items.FOODS_CANDY)
                 .add(ModItems.CHOCOLATE.get())
                 .add(ModItems.MELON_POPSICLE.get());
-        tag(Tags.Items.FOODS_COOKED_FISHES)
+        tag(Tags.Items.FOODS_COOKED_FISH)
                 .addTags(ModTags.Items.COOKED_FISHES);
-        tag(Tags.Items.FOODS_COOKED_MEATS)
+        tag(Tags.Items.FOODS_COOKED_MEAT)
                 .add(ModItems.POLAR_BEAR_STEAK.get());
         tag(Tags.Items.FOODS_EDIBLE_WHEN_PLACED)
                 .add(ModItems.CHOCOLATE_CAKE.get())
@@ -134,15 +134,15 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(Tags.Items.FOODS_FOOD_POISONING)
                 .add(ModItems.DROWNED_FLESH.get())
                 .add(ModItems.MONSTER_PIE.get());
-        tag(Tags.Items.FOODS_RAW_FISHES)
+        tag(Tags.Items.FOODS_RAW_FISH)
                 .addTags(ModTags.Items.RAW_FISHES);
-        tag(Tags.Items.FOODS_RAW_MEATS)
+        tag(Tags.Items.FOODS_RAW_MEAT)
                 .add(ModItems.RAW_POLAR_BEAR_MEAT.get());
-        tag(Tags.Items.FOODS_SOUPS)
+        tag(Tags.Items.FOODS_SOUP)
                 .add(ModItems.FISH_SOUP.get())
                 .add(ModItems.MEAT_SOUP.get())
                 .add(ModItems.POTATO_SOUP.get());
-        tag(Tags.Items.FOODS_VEGETABLES)
+        tag(Tags.Items.FOODS_VEGETABLE)
                 .add(ModItems.CHILI.get())
                 .add(ModItems.TOMATO.get());
         tag(Tags.Items.INGOTS)

@@ -233,20 +233,16 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     public void blockItem(Item blockItem) {
         ResourceLocation parent = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(blockItem));
-        withExistingParent(name(blockItem), new ResourceLocation(parent.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + parent.getPath()));
+        withExistingParent(name(blockItem), ResourceLocation.fromNamespaceAndPath(parent.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + parent.getPath()));
     }
 
     public void inventoryBlockItem(Block block) {
         ResourceLocation parent = Objects.requireNonNull(BuiltInRegistries.BLOCK.getKey(block));
-        withExistingParent(name(block.asItem()), new ResourceLocation(parent.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + parent.getPath() + "_inventory"));
+        withExistingParent(name(block.asItem()), ResourceLocation.fromNamespaceAndPath(parent.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + parent.getPath() + "_inventory"));
     }
 
     public void glassPaneItem(Block block) {
         item(block.asItem(), "generated").texture("layer0", blockTexture(block)).renderType(ModBlockStateProvider.RENDER_TYPE_TRANSLUCENT);
-    }
-
-    public void spawnEggItem(Item item) {
-        item(item, "template_spawn_egg");
     }
 
     protected ItemModelBuilder item(Item item, String parent) {
@@ -255,12 +251,12 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     protected ResourceLocation itemTexture(Item item) {
         ResourceLocation name = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(item));
-        return new ResourceLocation(name.getNamespace(), ModelProvider.ITEM_FOLDER + "/" + name.getPath());
+        return ResourceLocation.fromNamespaceAndPath(name.getNamespace(), ModelProvider.ITEM_FOLDER + "/" + name.getPath());
     }
 
     protected ResourceLocation blockTexture(Block block) {
         ResourceLocation name = Objects.requireNonNull(BuiltInRegistries.BLOCK.getKey(block));
-        return new ResourceLocation(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath().replace("_pane", ""));
+        return ResourceLocation.fromNamespaceAndPath(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath().replace("_pane", ""));
     }
 
     protected String name(Item item) {

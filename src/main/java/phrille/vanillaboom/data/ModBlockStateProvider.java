@@ -572,7 +572,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected ResourceLocation variantTexture(Block block) {
         ResourceLocation name = Objects.requireNonNull(BuiltInRegistries.BLOCK.getKey(block));
 
-        return new ResourceLocation(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath()
+        return ResourceLocation.fromNamespaceAndPath(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath()
                 .replace("_wood", "_log")
                 .replace("_hyphae", "_stem")
                 .replace("smooth_sandstone", "sandstone_top")

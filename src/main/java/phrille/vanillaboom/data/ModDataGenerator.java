@@ -35,15 +35,16 @@ import phrille.vanillaboom.data.loot.ModGlobalLootModifierProvider;
 import phrille.vanillaboom.data.loot.ModModifierLootTableProvider;
 import phrille.vanillaboom.data.recipe.ModRecipeProvider;
 import phrille.vanillaboom.data.tags.ModBlockTagsProvider;
-import phrille.vanillaboom.data.tags.ModDamageTypeTagsProvider;
 import phrille.vanillaboom.data.tags.ModEntityTypeTagsProvider;
 import phrille.vanillaboom.data.tags.ModItemTagsProvider;
+import phrille.vanillaboom.data.tags.ModUtilTagsProvider;
 import phrille.vanillaboom.util.ModDamageTypes;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicReference;
 
 @EventBusSubscriber(modid = VanillaBoom.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class ModDataGenerator {
@@ -120,8 +121,8 @@ public class ModDataGenerator {
         DataGenerator generator = event.getGenerator();
         PackOutput output = generator.getPackOutput();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-        ModBlockTagsProvider blockTagProvider = new ModBlockTagsProvider(output, lookupProvider, existingFileHelper);
+        CompletableFuture<HolderLookup.Provider> registries = event.getLookupProvider();
+        ModBlockTagsProvider blockTagProvider = new ModBlockTagsProvider(output, registries, existingFileHelper);
         List<LootTableProvider.SubProviderEntry> lootProviders = getLootProviders();
 
         // Assets
@@ -131,25 +132,32 @@ public class ModDataGenerator {
 
         // Data
         generator.addProvider(event.includeServer(), blockTagProvider);
-        generator.addProvider(event.includeServer(), new ModItemTagsProvider(output, lookupProvider, blockTagProvider, existingFileHelper));
-        generator.addProvider(event.includeServer(), new ModEntityTypeTagsProvider(output, lookupProvider, existingFileHelper));
-        generator.addProvider(event.includeServer(), new ModDamageTypeTagsProvider(output, lookupProvider, existingFileHelper));
-        generator.addProvider(event.includeServer(), new ModRecipeProvider(output, lookupProvider));
-        generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(), lootProviders, lookupProvider));
-        generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(output, lookupProvider));
-        generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(output, lookupProvider, REGISTRY_SET_BUILDER, Set.of(VanillaBoom.MOD_ID)));
-        generator.addProvider(event.includeClient(), new ModDataMapProvider(output, lookupProvider));
+        generator.addProvider(event.includeServer(), new ModItemTagsProvider(output, registries, blockTagProvider, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ModEntityTypeTagsProvider(output, registries, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ModUtilTagsProvider.ModDamageTypeTagsProvider(output, registries, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ModUtilTagsProvider.ModPaintingVariantTagsProvider(output, registries, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ModRecipeProvider(output, registries));
+        generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(), lootProviders, registries));
+        generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(output, registries));
+        generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(output, registries, REGISTRY_SET_BUILDER, Set.of(VanillaBoom.MOD_ID)));
+        generator.addProvider(event.includeClient(), new ModDataMapProvider(output, registries));
     }
 
     private static List<LootTableProvider.SubProviderEntry> getLootProviders() {
-        ModBlockLootTableProvider blockLootTableProvider = new ModBlockLootTableProvider();
-        ModEntityLootTableProvider entityLootTableProvider = new ModEntityLootTableProvider();
+        AtomicReference<ModBlockLootTableProvider> blockLootTableProvider = new AtomicReference<>();
+        AtomicReference<ModEntityLootTableProvider> entityLootTableProvider = new AtomicReference<>();
         return List.of(
-                new LootTableProvider.SubProviderEntry(() -> blockLootTableProvider, LootContextParamSets.BLOCK),
-                new LootTableProvider.SubProviderEntry(() -> entityLootTableProvider, LootContextParamSets.ENTITY),
-                new LootTableProvider.SubProviderEntry(() -> new ModModifierLootTableProvider.Blocks(blockLootTableProvider), LootContextParamSets.BLOCK),
-                new LootTableProvider.SubProviderEntry(() -> new ModModifierLootTableProvider.Entities(entityLootTableProvider), LootContextParamSets.ENTITY),
-                new LootTableProvider.SubProviderEntry(ModModifierLootTableProvider.Fishing::new, LootContextParamSets.FISHING)
+                new LootTableProvider.SubProviderEntry((registries) -> {
+                    blockLootTableProvider.set(new ModBlockLootTableProvider(registries));
+                    return blockLootTableProvider.get();
+                }, LootContextParamSets.BLOCK),
+                new LootTableProvider.SubProviderEntry((registries) -> {
+                    entityLootTableProvider.set(new ModEntityLootTableProvider(registries));
+                    return entityLootTableProvider.get();
+                }, LootContextParamSets.ENTITY),
+                new LootTableProvider.SubProviderEntry((registries) -> new ModModifierLootTableProvider.Blocks(blockLootTableProvider.get()), LootContextParamSets.BLOCK),
+                new LootTableProvider.SubProviderEntry((registries) -> new ModModifierLootTableProvider.Entities(entityLootTableProvider.get()), LootContextParamSets.ENTITY),
+                new LootTableProvider.SubProviderEntry((registries) -> new ModModifierLootTableProvider.Fishing(), LootContextParamSets.FISHING)
         );
     }
 
@@ -158,10 +166,10 @@ public class ModDataGenerator {
     }
 
     public static ResourceLocation extend(ResourceLocation rl, String extend) {
-        return new ResourceLocation(rl.getNamespace(), rl.getPath() + extend);
+        return ResourceLocation.fromNamespaceAndPath(rl.getNamespace(), rl.getPath() + extend);
     }
 
     public static ResourceLocation shrink(ResourceLocation rl, String shrink) {
-        return new ResourceLocation(rl.getNamespace(), rl.getPath().replace(shrink, ""));
+        return ResourceLocation.fromNamespaceAndPath(rl.getNamespace(), rl.getPath().replace(shrink, ""));
     }
 }

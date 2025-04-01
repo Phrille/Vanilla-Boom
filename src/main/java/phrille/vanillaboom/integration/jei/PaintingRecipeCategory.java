@@ -20,28 +20,24 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.entity.EaselBlockEntity;
+import phrille.vanillaboom.client.screen.EaselScreen;
 import phrille.vanillaboom.crafting.PaintingRecipe;
-import phrille.vanillaboom.util.PaintingUtils;
 
 public class PaintingRecipeCategory implements IRecipeCategory<PaintingRecipe> {
-    public static final ResourceLocation BACKGROUND = VanillaBoom.resLoc("textures/gui/container/easel.png");
-    private static final int PAINTING_BOX_SIZE = 38;
+    private static final int PAINTING_BOX_SIZE = 40;
 
     private final IGuiHelper guiHelper;
     private final Component title;
-    private final IDrawable background;
 
     public PaintingRecipeCategory(IGuiHelper guiHelper) {
         this.guiHelper = guiHelper;
         this.title = Component.translatable(VanillaBoom.MOD_ID + ".recipe.category.painting");
-        this.background = guiHelper.createDrawable(BACKGROUND, 0, 184, 106, 72);
     }
 
     @Override
@@ -52,11 +48,6 @@ public class PaintingRecipeCategory implements IRecipeCategory<PaintingRecipe> {
     @Override
     public Component getTitle() {
         return title;
-    }
-
-    @Override
-    public IDrawable getBackground() {
-        return background;
     }
 
     @Override
@@ -75,6 +66,7 @@ public class PaintingRecipeCategory implements IRecipeCategory<PaintingRecipe> {
     }
 
     @Override
+    @SuppressWarnings("ConstantConditions")
     public void setRecipe(IRecipeLayoutBuilder builder, PaintingRecipe recipe, IFocusGroup focuses) {
         for (int i = EaselBlockEntity.DYE_SLOT_START; i < EaselBlockEntity.DYE_SLOT_END + 1; i++) {
             Ingredient dye = i < recipe.dyes().size() ? recipe.dyes().get(i) : Ingredient.EMPTY;
@@ -83,25 +75,25 @@ public class PaintingRecipeCategory implements IRecipeCategory<PaintingRecipe> {
         }
 
         builder.addSlot(RecipeIngredientRole.INPUT, 19, 55).addIngredients(recipe.canvas());
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 85, 51).addItemStack(recipe.result());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 85, 51).addItemStack(recipe.getResultItem(Minecraft.getInstance().level.registryAccess()));
     }
 
     @Override
     public void draw(PaintingRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        // guiGraphics.blit(BACKGROUND, 0, 0, 0, 184, getWidth(), getHeight());
-        PaintingVariant variant = PaintingUtils.holderFromStack(recipe.result()).value();
+        guiGraphics.blit(EaselScreen.BACKGROUND, 0, 0, 0, 184, getWidth(), getHeight());
+        PaintingVariant variant = recipe.variant().value();
         TextureAtlasSprite sprite = Minecraft.getInstance().getPaintingTextures().get(variant);
         float maxSize = PAINTING_BOX_SIZE;
-        float scaleFactor = Math.min(maxSize / variant.getWidth(), maxSize / variant.getHeight());
+        float scaleFactor = Math.min(maxSize / variant.width(), maxSize / variant.height());
 
-        if (variant.getWidth() <= 16 && variant.getHeight() <= 16) {
-            scaleFactor *= 0.5F;
-        } else if (variant.getWidth() <= 32 && variant.getHeight() <= 32) {
-            scaleFactor *= 0.85F;
+        if (variant.width() <= 1 && variant.height() <= 1) {
+            scaleFactor *= 0.4F;
+        } else if (variant.width() <= 2 && variant.height() <= 2) {
+            scaleFactor *= 0.7F;
         }
 
-        int paintingWidth = Math.max(1, (int) (variant.getWidth() * scaleFactor));
-        int paintingHeight = Math.max(1, (int) (variant.getHeight() * scaleFactor));
+        int paintingWidth = Math.max(1, (int) (variant.width() * scaleFactor));
+        int paintingHeight = Math.max(1, (int) (variant.height() * scaleFactor));
         int xOffset = (int) ((maxSize - paintingWidth) / 2);
         int yOffset = (int) ((maxSize - paintingHeight) / 2);
         guiGraphics.blit(52 + xOffset, 4 + yOffset, 0, paintingWidth, paintingHeight, sprite);

@@ -19,6 +19,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -47,6 +48,10 @@ public class RainDetectorBlock extends BaseEntityBlock {
         registerDefaultState(stateDefinition.any()
                 .setValue(INVERTED, false)
                 .setValue(POWER, 0));
+    }
+    @Override
+    protected RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
     }
 
     @Override
@@ -99,13 +104,11 @@ public class RainDetectorBlock extends BaseEntityBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     protected int getSignal(BlockState state, BlockGetter getter, BlockPos pos, Direction direction) {
         return state.getValue(POWER);
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     protected boolean isSignalSource(BlockState state) {
         return true;
     }

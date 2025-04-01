@@ -28,6 +28,8 @@ import phrille.vanillaboom.crafting.PaintingRecipe;
 import phrille.vanillaboom.inventory.EaselMenu;
 import phrille.vanillaboom.inventory.ModMenuTypes;
 
+import java.util.List;
+
 @JeiPlugin
 public class VanillaBoomJEIPlugin implements IModPlugin {
     public static final ResourceLocation UID = VanillaBoom.resLoc("main");
@@ -42,7 +44,8 @@ public class VanillaBoomJEIPlugin implements IModPlugin {
     @Override
     @SuppressWarnings("ConstantConditions")
     public void registerRecipes(IRecipeRegistration registration) {
-        registration.addRecipes(PAINTING, Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(ModRecipes.PAINTING.get()).stream().map(RecipeHolder::value).toList());
+        List<RecipeHolder<PaintingRecipe>> recipes = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(ModRecipes.PAINTING.get());
+        registration.addRecipes(PAINTING, recipes.stream().sorted(PaintingRecipe.RECIPE_COMPARATOR).map(RecipeHolder::value).toList());
     }
 
     @Override

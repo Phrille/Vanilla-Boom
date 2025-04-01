@@ -71,7 +71,7 @@ public abstract class TrellisCropBlock extends DoubleCropBlock implements ITrell
 
         int age = getAge(state);
         if (age < getMaxAge()) {
-            float growthSpeed = getGrowthSpeed(this, level, pos);
+            float growthSpeed = getGrowthSpeed(state, level, pos);
             if (CommonHooks.canCropGrow(level, pos, state, rand.nextInt((int) (25.0F / growthSpeed) + 1) == 0)) {
                 growToAge(level, state, pos, age + 1, 2);
                 CommonHooks.fireCropGrowPost(level, pos, state);

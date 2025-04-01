@@ -16,13 +16,15 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import phrille.vanillaboom.entity.PrismarineArrow;
 
+import javax.annotation.Nullable;
+
 public class PrismarineArrowItem extends ArrowItem {
     public PrismarineArrowItem() {
         super(new Item.Properties());
     }
 
     @Override
-    public AbstractArrow createArrow(Level level, ItemStack stack, LivingEntity shooter) {
-        return new PrismarineArrow(level, shooter, stack.copyWithCount(1));
+    public AbstractArrow createArrow(Level level, ItemStack ammo, LivingEntity shooter, @Nullable ItemStack weapon) {
+        return new PrismarineArrow(level, shooter, ammo.copyWithCount(1), weapon);
     }
 }

@@ -26,9 +26,9 @@ import java.util.Objects;
 
 @EventBusSubscriber(modid = VanillaBoom.MOD_ID)
 public class VillageHandler {
-    private static final ResourceLocation PLAINS_HOUSES = new ResourceLocation("village/plains/houses");
-    private static final ResourceLocation DESERT_HOUSES = new ResourceLocation("village/desert/houses");
-    private static final ResourceLocation SAVANNA_HOUSES = new ResourceLocation("village/savanna/houses");
+    private static final ResourceLocation PLAINS_HOUSES = ResourceLocation.withDefaultNamespace("village/plains/houses");
+    private static final ResourceLocation DESERT_HOUSES = ResourceLocation.withDefaultNamespace("village/desert/houses");
+    private static final ResourceLocation SAVANNA_HOUSES = ResourceLocation.withDefaultNamespace("village/savanna/houses");
 
     @SubscribeEvent
     public static void onTagsUpdated(TagsUpdatedEvent event) {

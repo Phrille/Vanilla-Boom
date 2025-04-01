@@ -11,8 +11,7 @@ issueTrackerURL="https://github.com/Phrille/Vanilla-Boom/issues"
     logoFile="vanillaboom_logo.png"
     authors="${mod_authors}"
     description='''${mod_description}'''
-    updateJSONURL="https://github.com/Phrille/Vanilla-Boom/blob/main/update-neoforge.json"
-# displayTest="MATCH_VERSION"
+    updateJSONURL="https://raw.githubusercontent.com/Phrille/Vanilla-Boom/refs/heads/main/update-neoforge.json"
 
 [[mixins]]
     config="${mod_id}.mixins.json"

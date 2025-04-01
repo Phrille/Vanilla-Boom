@@ -8,7 +8,6 @@
 
 package phrille.vanillaboom.data.loot;
 
-import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -28,7 +27,7 @@ public class ModModifierLootTableProvider {
         }
 
         @Override
-        public void generate(HolderLookup.Provider lookUpProvider, BiConsumer<ResourceKey<LootTable>, LootTable.Builder> generator) {
+        public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> generator) {
             generator.accept(ModLootTables.SPRUCE_LEAVES, blockProvider.createPineConeDrops());
         }
     }
@@ -41,7 +40,7 @@ public class ModModifierLootTableProvider {
         }
 
         @Override
-        public void generate(HolderLookup.Provider lookUpProvider, BiConsumer<ResourceKey<LootTable>, LootTable.Builder> generator) {
+        public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> generator) {
             generator.accept(ModLootTables.DROWNED, entityProvider.createDrownedDrops());
             generator.accept(ModLootTables.POLAR_BEAR, entityProvider.createPolarBearDrops());
             generator.accept(ModLootTables.SILVERFISH, entityProvider.createSilverfishDrops());
@@ -51,7 +50,7 @@ public class ModModifierLootTableProvider {
 
     public static class Fishing implements LootTableSubProvider {
         @Override
-        public void generate(HolderLookup.Provider lookUpProvider, BiConsumer<ResourceKey<LootTable>, LootTable.Builder> generator) {
+        public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> generator) {
             generator.accept(ModLootTables.FISHING_FISH, LootTable.lootTable()
                     .withPool(LootPool.lootPool()
                             .add(LootItem.lootTableItem(ModItems.PERCH.get())

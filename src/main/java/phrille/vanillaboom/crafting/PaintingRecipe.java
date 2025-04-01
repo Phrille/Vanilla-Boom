@@ -8,17 +8,15 @@
 
 package phrille.vanillaboom.crafting;
 
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.Container;
 import net.minecraft.world.entity.decoration.Painting;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.DyeColor;
@@ -29,30 +27,31 @@ import net.minecraft.world.level.Level;
 import org.apache.commons.compress.utils.Lists;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.entity.EaselBlockEntity;
-import phrille.vanillaboom.util.PaintingUtils;
+import phrille.vanillaboom.util.Utils;
 
 import java.util.Comparator;
 import java.util.List;
 
 public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingredient> dyes,
-                             ItemStack result) implements Recipe<Container> {
+                             Holder<PaintingVariant> variant,
+                             int resultCount) implements Recipe<EaselRecipeInput> {
     public static final int MAX_DYES = 7;
-    public static final Comparator<RecipeHolder<PaintingRecipe>> RECIPE_COMPARATOR = Comparator.comparing(recipe -> PaintingUtils.holderFromStack(recipe.value().result()).value(),
-            Comparator.<PaintingVariant>comparingInt(variant -> variant.getHeight() * variant.getWidth())
-                    .thenComparing(PaintingVariant::getWidth)
-                    .thenComparing(BuiltInRegistries.PAINTING_VARIANT::getKey));
+    public static final Comparator<RecipeHolder<PaintingRecipe>> RECIPE_COMPARATOR =
+            Comparator.comparing(recipe -> recipe.value().variant().value(),
+                    Comparator.comparingInt(PaintingVariant::area)
+                            .thenComparing(PaintingVariant::width)
+                            .thenComparing(PaintingVariant::assetId));
 
     @Override
-    public boolean matches(Container container, Level level) {
-        if (!canvas.test(container.getItem(EaselBlockEntity.CANVAS_SLOT))) {
+    public boolean matches(EaselRecipeInput input, Level level) {
+        if (!canvas.test(input.getItem(EaselBlockEntity.CANVAS_SLOT))) {
             return false;
         }
 
-        List<ItemStack> dyeStacks = Lists.newArrayList();
-        for (int i = EaselBlockEntity.DYE_SLOT_START; i < EaselBlockEntity.DYE_SLOT_END + 1; i++) {
-            dyeStacks.add(container.getItem(i).copy());
-        }
-
+        List<ItemStack> dyeStacks = input.dyes()
+                .stream()
+                .map(ItemStack::copy)
+                .toList();
         for (Ingredient ingredient : dyes) {
             boolean foundMatch = false;
             for (ItemStack dyeStack : dyeStacks) {
@@ -64,33 +63,23 @@ public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingred
             }
             if (!foundMatch) return false;
         }
-
         return true;
     }
 
     @Override
-    public ItemStack assemble(Container container, HolderLookup.Provider provider) {
-        return result.copy();
+    public ItemStack assemble(EaselRecipeInput input, HolderLookup.Provider registries) {
+        return loadVariantToStack(registries).copy();
     }
 
     @Override
-    public ItemStack getResultItem(HolderLookup.Provider provider) {
+    public ItemStack getResultItem(HolderLookup.Provider registries) {
+        return loadVariantToStack(registries);
+    }
+
+    private ItemStack loadVariantToStack(HolderLookup.Provider registries) {
+        ItemStack result = Utils.stackFromHolder(registries, variant);
+        result.setCount(resultCount);
         return result;
-    }
-
-    @Override
-    public RecipeType<PaintingRecipe> getType() {
-        return ModRecipes.PAINTING.get();
-    }
-
-    @Override
-    public RecipeSerializer<PaintingRecipe> getSerializer() {
-        return ModRecipes.PAINTING_SERIALIZER.get();
-    }
-
-    @Override
-    public boolean canCraftInDimensions(int width, int height) {
-        return true;
     }
 
     @Override
@@ -99,11 +88,6 @@ public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingred
         ingredients.add(canvas);
         ingredients.addAll(dyes);
         return ingredients;
-    }
-
-    @Override
-    public ItemStack getToastSymbol() {
-        return new ItemStack(ModBlocks.EASEL.get());
     }
 
     public List<ItemStack> getCombinedDyeStacks() {
@@ -133,6 +117,26 @@ public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingred
         return dyeStacks;
     }
 
+    @Override
+    public RecipeType<PaintingRecipe> getType() {
+        return ModRecipes.PAINTING.get();
+    }
+
+    @Override
+    public RecipeSerializer<PaintingRecipe> getSerializer() {
+        return ModRecipes.PAINTING_SERIALIZER.get();
+    }
+
+    @Override
+    public boolean canCraftInDimensions(int width, int height) {
+        return true;
+    }
+
+    @Override
+    public ItemStack getToastSymbol() {
+        return new ItemStack(ModBlocks.EASEL.get());
+    }
+
     public static class Serializer implements RecipeSerializer<PaintingRecipe> {
         private static final MapCodec<PaintingRecipe> CODEC = RecordCodecBuilder.mapCodec(inst ->
                 inst.group(
@@ -152,14 +156,9 @@ public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingred
                                 }, DataResult::success)
                                 .forGetter(recipe -> recipe.dyes),
                         Painting.VARIANT_MAP_CODEC.fieldOf("result")
-                                .xmap(PaintingUtils::stackFromHolder, PaintingUtils::holderFromStack)
-                                .dependent(Codec.INT.optionalFieldOf("count", 1),
-                                        stack -> Pair.of(stack.getCount(), Codec.INT.optionalFieldOf("count", stack.getCount())),
-                                        (stack, count) -> {
-                                            stack.setCount(count);
-                                            return stack;
-                                        })
-                                .forGetter(recipe -> recipe.result)
+                                .forGetter(recipe -> recipe.variant),
+                        Codec.INT.optionalFieldOf("count", 1)
+                                .forGetter(recipe -> recipe.resultCount)
                 ).apply(inst, PaintingRecipe::new));
 
         private static final StreamCodec<RegistryFriendlyByteBuf, PaintingRecipe> STREAM_CODEC = StreamCodec.of(
@@ -184,20 +183,22 @@ public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingred
             NonNullList<Ingredient> dyes = NonNullList.withSize(size, Ingredient.EMPTY);
             dyes.replaceAll(ingredient -> Ingredient.CONTENTS_STREAM_CODEC.decode(buffer));
 
-            ItemStack result = ItemStack.STREAM_CODEC.decode(buffer);
-            return new PaintingRecipe(group, canvas, dyes, result);
+            Holder<PaintingVariant> variant = PaintingVariant.STREAM_CODEC.decode(buffer);
+            int resultCount = buffer.readInt();
+            return new PaintingRecipe(group, canvas, dyes, variant, resultCount);
         }
 
-        public static void toNetwork(RegistryFriendlyByteBuf buffer, PaintingRecipe paintingRecipe) {
-            buffer.writeUtf(paintingRecipe.group());
-            Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, paintingRecipe.canvas());
+        public static void toNetwork(RegistryFriendlyByteBuf buffer, PaintingRecipe recipe) {
+            buffer.writeUtf(recipe.group());
+            Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.canvas());
 
-            buffer.writeVarInt(paintingRecipe.dyes().size());
-            for (Ingredient dye : paintingRecipe.dyes()) {
+            buffer.writeVarInt(recipe.dyes().size());
+            for (Ingredient dye : recipe.dyes()) {
                 Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, dye);
             }
 
-            ItemStack.STREAM_CODEC.encode(buffer, paintingRecipe.result());
+            PaintingVariant.STREAM_CODEC.encode(buffer, recipe.variant());
+            buffer.writeInt(recipe.resultCount);
         }
     }
 }

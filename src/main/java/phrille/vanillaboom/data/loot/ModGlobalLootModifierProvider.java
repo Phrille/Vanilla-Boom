@@ -35,8 +35,8 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
-    public ModGlobalLootModifierProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, lookupProvider, VanillaBoom.MOD_ID);
+    public ModGlobalLootModifierProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, registries, VanillaBoom.MOD_ID);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
 
         // Gameplay
         add("fishing", new FishingLootModifier(new LootItemCondition[]{
-                LootTableIdCondition.builder(new ResourceLocation("minecraft", "gameplay/fishing/fish")).build()},
+                LootTableIdCondition.builder(ResourceLocation.withDefaultNamespace("gameplay/fishing/fish")).build()},
                 ModGlobalLootModifiers.nestedTable(ModLootTables.FISHING_FISH),
                 0.45F));
     }

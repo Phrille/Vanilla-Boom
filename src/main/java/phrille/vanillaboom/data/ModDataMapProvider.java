@@ -21,13 +21,13 @@ import phrille.vanillaboom.util.ModTags;
 import java.util.concurrent.CompletableFuture;
 
 public class ModDataMapProvider extends DataMapProvider {
-    protected ModDataMapProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, lookupProvider);
+    protected ModDataMapProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, registries);
     }
 
     @Override
     @SuppressWarnings("deprecation")
-    protected void gather() {
+    protected void gather(HolderLookup.Provider registries) {
         builder(NeoForgeDataMaps.COMPOSTABLES)
                 .add(ModItems.PINE_CONE, new Compostable(0.35F), false)
                 .add(ModItems.TOMATO, new Compostable(0.6F), false)

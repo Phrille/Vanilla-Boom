@@ -53,11 +53,11 @@ public class ItemEventHandler {
 
         InteractionResult result = InteractionResult.PASS;
 
-        if (stack.is(Tags.Items.SLIMEBALLS)) {
+        if (stack.is(Tags.Items.SLIME_BALLS)) {
             result = useSlimeBall(level, player, state, pos, stack);
         } else if (stack.is(ItemTags.AXES) && player.isCrouching()) {
             result = removeSlimeBall(level, player, state, pos, stack, hand);
-        } else if (stack.is(Tags.Items.TOOLS_SHEARS)) {
+        } else if (stack.is(Tags.Items.TOOLS_SHEAR)) {
             result = shearTallFlower(level, player, state, pos, stack, hand);
         }
 

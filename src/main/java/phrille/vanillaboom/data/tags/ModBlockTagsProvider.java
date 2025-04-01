@@ -31,12 +31,12 @@ import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("unchecked")
 public class ModBlockTagsProvider extends BlockTagsProvider {
-    public ModBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, VanillaBoom.MOD_ID, existingFileHelper);
+    public ModBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper fileHelper) {
+        super(output, registries, VanillaBoom.MOD_ID, fileHelper);
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider provider) {
+    protected void addTags(HolderLookup.Provider registries) {
         modTags();
         customCommonTags();
         defaultCommonTags();
