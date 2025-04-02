@@ -15,6 +15,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.decoration.Painting;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.entity.player.Player;
@@ -47,9 +48,10 @@ public class Utils {
         }
     }
 
-    public static void fillAndAwardStat(ItemStack heldStack, Player player, ItemStack newStack) {
+    public static void fillAndAwardStat(ItemStack heldStack, Player player, InteractionHand hand, ItemStack stackToFill) {
+        player.setItemInHand(hand, ItemUtils.createFilledResult(heldStack, player, stackToFill));
         player.awardStat(Stats.ITEM_USED.get(heldStack.getItem()));
-        ItemUtils.createFilledResult(heldStack, player, newStack);
+
     }
 
     public static void preventCreativeDropFromBottomPart(Level level, BlockPos pos, BlockState state, Player player, EnumProperty<DoubleBlockHalf> halfProperty) {

@@ -49,6 +49,7 @@ public class RainDetectorBlock extends BaseEntityBlock {
                 .setValue(INVERTED, false)
                 .setValue(POWER, 0));
     }
+
     @Override
     protected RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;

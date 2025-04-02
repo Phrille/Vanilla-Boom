@@ -19,6 +19,8 @@ import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -44,7 +46,7 @@ public class HydroRockBlock extends Block {
                 level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, 1.0F);
                 Utils.spawnParticles(ParticleTypes.SMOKE, level, pos.above());
             } else {
-                Utils.fillAndAwardStat(stack, player, new ItemStack(Items.GLASS_BOTTLE));
+                Utils.fillAndAwardStat(stack, player, hand, PotionContents.createItemStack(Items.POTION, Potions.WATER));
                 level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                 Utils.spawnParticles(ParticleTypes.SPLASH, level, pos.above());
             }
@@ -57,6 +59,8 @@ public class HydroRockBlock extends Block {
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
+        if (!VanillaBoomConfig.particleEffectHydroRock || rand.nextFloat() > 0.6) return;
+
         Direction direction = Direction.getRandom(rand);
         BlockPos blockpos = pos.relative(direction);
         BlockState blockstate = level.getBlockState(blockpos);
@@ -88,14 +92,12 @@ public class HydroRockBlock extends Block {
                         }
                     }
                 }
-
                 level.addParticle(ParticleTypes.DRIPPING_WATER, x, y, z, 0.0D, 0.0D, 0.0D);
             }
         } else if (level.dimensionType().ultraWarm()) {
             y++;
             x += rand.nextDouble();
             z += rand.nextDouble();
-
             level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
         }
     }

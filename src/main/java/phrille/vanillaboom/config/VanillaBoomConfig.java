@@ -43,6 +43,12 @@ public final class VanillaBoomConfig {
     private static final ModConfigSpec.BooleanValue FILL_WATER_BOTTLE_HYDRO_ROCK = BUILDER
             .comment("Set this to false to disable Glass Bottles being able to be filled up when right clicking a Hydro Rock block.")
             .define("fill_water_bottle_hydro_rock", true);
+    private static final ModConfigSpec.BooleanValue HYDRO_ROCK_PARTICLE_EFFECTS = BUILDER
+            .comment("Set this to false to disable the dripping particle effects for Hydro Rock.")
+            .define("hydro_rock_particle_effects", true);
+    private static final ModConfigSpec.BooleanValue INFERNAL_ROCK_PARTICLE_EFFECTS = BUILDER
+            .comment("Set this to false to disable the dripping particle effects for Infernal Rock.")
+            .define("infernal_rock_particle_effects", true);
     private static final ModConfigSpec.BooleanValue SHEAR_TALL_FLOWERS = BUILDER
             .comment("Set this to false to disable shearing Tall Flower Blocks to obtain their flower.")
             .define("shear_rose_bushes", true);
@@ -63,6 +69,8 @@ public final class VanillaBoomConfig {
     public static boolean placeSlimeBallPistons;
     public static boolean removeSlimeBallPistons;
     public static boolean fillWaterBottleHydroRock;
+    public static boolean particleEffectHydroRock;
+    public static boolean particleEffectInfernalRock;
     public static boolean shearTallFlowers;
     public static boolean generateVillageStructures;
     public static boolean variantSensitivePaintingDrops;
@@ -77,6 +85,8 @@ public final class VanillaBoomConfig {
         placeSlimeBallPistons = PLACE_SLIME_BALLS_PISTONS.get();
         removeSlimeBallPistons = REMOVE_SLIME_BALLS_PISTONS.get();
         fillWaterBottleHydroRock = FILL_WATER_BOTTLE_HYDRO_ROCK.get();
+        particleEffectHydroRock = HYDRO_ROCK_PARTICLE_EFFECTS.get();
+        particleEffectInfernalRock = INFERNAL_ROCK_PARTICLE_EFFECTS.get();
         shearTallFlowers = SHEAR_TALL_FLOWERS.get();
         generateVillageStructures = GENERATE_VILLAGE_STRUCTURES.get();
         variantSensitivePaintingDrops = VARIANT_SENSITIVE_PAINTING_DROPS.get();

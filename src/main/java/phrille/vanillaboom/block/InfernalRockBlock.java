@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
+import phrille.vanillaboom.config.VanillaBoomConfig;
 
 public class InfernalRockBlock extends Block {
     public InfernalRockBlock() {
@@ -32,12 +33,12 @@ public class InfernalRockBlock extends Block {
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
-        Direction direction = Direction.getRandom(rand);
+        if (!VanillaBoomConfig.particleEffectInfernalRock || rand.nextFloat() > 0.6) return;
 
+        Direction direction = Direction.getRandom(rand);
         if (direction != Direction.UP) {
             BlockPos blockpos = pos.relative(direction);
             BlockState blockstate = level.getBlockState(blockpos);
-
             if (!state.canOcclude() || !blockstate.isFaceSturdy(level, blockpos, direction.getOpposite())) {
                 double x = pos.getX();
                 double y = pos.getY();
@@ -65,7 +66,6 @@ public class InfernalRockBlock extends Block {
                         }
                     }
                 }
-
                 level.addParticle(ParticleTypes.DRIPPING_LAVA, x, y, z, 0.0D, 0.0D, 0.0D);
             }
         }
