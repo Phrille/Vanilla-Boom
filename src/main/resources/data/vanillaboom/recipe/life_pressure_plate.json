@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "vanillaboom:infernal_rock"
+    },
+    {
+      "item": "minecraft:stone_pressure_plate"
+    },
+    {
+      "item": "minecraft:quartz"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "vanillaboom:life_pressure_plate"
+  }
+}

@@ -630,6 +630,7 @@ public class CreativeTabHandler {
 
         // Redstone Blocks
         if (tab == CreativeModeTabs.REDSTONE_BLOCKS) {
+            putAfter(event, Blocks.HEAVY_WEIGHTED_PRESSURE_PLATE, ModItems.LIFE_PRESSURE_PLATE.get());
             putAfter(event, Blocks.DAYLIGHT_DETECTOR, ModItems.RAIN_DETECTOR.get());
         }
 

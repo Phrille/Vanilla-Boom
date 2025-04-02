@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/pressure_plate_up",
+  "textures": {
+    "texture": "vanillaboom:block/life_pressure_plate"
+  }
+}

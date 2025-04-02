@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_infernal_rock": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vanillaboom:infernal_rock"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_quartz": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:quartz"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_stone_pressure_plate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:stone_pressure_plate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vanillaboom:life_pressure_plate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_infernal_rock",
+      "has_stone_pressure_plate",
+      "has_quartz"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vanillaboom:life_pressure_plate"
+    ]
+  }
+}

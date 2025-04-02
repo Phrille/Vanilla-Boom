@@ -140,6 +140,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         stainedSoulGlass(output, ModItems.GREEN_STAINED_SOUL_GLASS.get(), ModItems.GREEN_STAINED_SOUL_GLASS_PANE.get(), Tags.Items.DYES_GREEN);
         stainedSoulGlass(output, ModItems.RED_STAINED_SOUL_GLASS.get(), ModItems.RED_STAINED_SOUL_GLASS_PANE.get(), Tags.Items.DYES_RED);
         stainedSoulGlass(output, ModItems.BLACK_STAINED_SOUL_GLASS.get(), ModItems.BLACK_STAINED_SOUL_GLASS_PANE.get(), Tags.Items.DYES_BLACK);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ModItems.LIFE_PRESSURE_PLATE.get())
+                .requires(ModItems.INFERNAL_ROCK.get())
+                .requires(Blocks.STONE_PRESSURE_PLATE)
+                .requires(Items.QUARTZ)
+                .unlockedBy(getHasName(ModItems.INFERNAL_ROCK.get()), has(ModItems.INFERNAL_ROCK.get()))
+                .unlockedBy(getHasName(Blocks.STONE_PRESSURE_PLATE), has(Blocks.STONE_PRESSURE_PLATE))
+                .unlockedBy(getHasName(Items.QUARTZ), has(Items.QUARTZ))
+                .save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModItems.RAIN_DETECTOR.get())
                 .define('x', Blocks.GLASS)
                 .define('y', ModItems.HYDRO_ROCK.get())

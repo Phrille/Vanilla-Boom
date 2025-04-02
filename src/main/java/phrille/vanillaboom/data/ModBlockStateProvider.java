@@ -19,10 +19,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.*;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import phrille.vanillaboom.VanillaBoom;
-import phrille.vanillaboom.block.EaselBlock;
-import phrille.vanillaboom.block.ModBlocks;
-import phrille.vanillaboom.block.ModCakeBlock;
-import phrille.vanillaboom.block.RainDetectorBlock;
+import phrille.vanillaboom.block.*;
 import phrille.vanillaboom.block.crop.RicePlantBlock;
 import phrille.vanillaboom.block.crop.TrellisBlock;
 import phrille.vanillaboom.block.crop.TrellisCropBlock;
@@ -168,6 +165,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         // Misc
         easelBlock(ModBlocks.EASEL.get());
+        lifePressurePlateBlock(ModBlocks.LIFE_PRESSURE_PLATE.get());
         rainDetectorBlock(ModBlocks.RAIN_DETECTOR.get());
         barsBlock(ModBlocks.GOLD_BARS.get());
         barsBlock(ModBlocks.COPPER_BARS.get());
@@ -570,6 +568,20 @@ public class ModBlockStateProvider extends BlockStateProvider {
                         }
                     }
                 });
+    }
+
+    public void lifePressurePlateBlock(Block block) {
+        ModelFile pressurePlate = models().pressurePlate(name(block), blockTexture(block));
+        ModelFile pressurePlateDown = models().pressurePlateDown(name(block) + "_down", blockTexture(block));
+        lifePressurePlateBlock((LifePressurePlateBlock) block, pressurePlate, pressurePlateDown);
+    }
+
+    public void lifePressurePlateBlock(LifePressurePlateBlock block, ModelFile pressurePlate, ModelFile pressurePlateDown) {
+        VariantBlockStateBuilder builder = getVariantBuilder(block);
+        LifePressurePlateBlock.POWER.getPossibleValues().forEach(power -> {
+            ModelFile model = power == 0 ? pressurePlate : pressurePlateDown;
+            builder.partialState().with(LifePressurePlateBlock.POWER, power).addModels(new ConfiguredModel(model));
+        });
     }
 
     public void rainDetectorBlock(Block rainDetector) {

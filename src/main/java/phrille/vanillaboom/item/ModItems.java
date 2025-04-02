@@ -252,6 +252,7 @@ public class ModItems {
 
     // Misc
     public static final DeferredItem<Item> EASEL = ITEMS.register("easel", () -> new BlockItem(ModBlocks.EASEL.get(), new Item.Properties()));
+    public static final DeferredItem<Item> LIFE_PRESSURE_PLATE = ITEMS.register("life_pressure_plate", () -> new BlockItem(ModBlocks.LIFE_PRESSURE_PLATE.get(), new Item.Properties()));
     public static final DeferredItem<Item> RAIN_DETECTOR = ITEMS.register("rain_detector", () -> new BlockItem(ModBlocks.RAIN_DETECTOR.get(), new Item.Properties()));
     public static final DeferredItem<Item> GOLD_BARS = ITEMS.register("gold_bars", () -> new BlockItem(ModBlocks.GOLD_BARS.get(), new Item.Properties()));
     public static final DeferredItem<Item> COPPER_BARS = ITEMS.register("copper_bars", () -> new BlockItem(ModBlocks.COPPER_BARS.get(), new Item.Properties()));

@@ -176,6 +176,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         // Misc
         dropSelf(ModBlocks.EASEL.get());
+        dropSelf(ModBlocks.LIFE_PRESSURE_PLATE.get());
         dropSelf(ModBlocks.RAIN_DETECTOR.get());
         dropSelf(ModBlocks.GOLD_BARS.get());
         dropSelf(ModBlocks.COPPER_BARS.get());

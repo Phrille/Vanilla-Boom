@@ -169,6 +169,7 @@ public class ModBlocks {
 
     // Misc
     public static final DeferredBlock<Block> EASEL = BLOCKS.register("easel", EaselBlock::new);
+    public static final DeferredBlock<Block> LIFE_PRESSURE_PLATE = BLOCKS.register("life_pressure_plate", LifePressurePlateBlock::new);
     public static final DeferredBlock<Block> RAIN_DETECTOR = BLOCKS.register("rain_detector", RainDetectorBlock::new);
     public static final DeferredBlock<Block> GOLD_BARS = BLOCKS.register("gold_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.METAL).noOcclusion()));
     public static final DeferredBlock<Block> COPPER_BARS = BLOCKS.register("copper_bars", () -> new WeatheringCopperBarsBlock(WeatheringCopper.WeatherState.UNAFFECTED, BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.COPPER_GRATE).noOcclusion()));

@@ -175,6 +175,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
         // Misc
         add(ModBlocks.EASEL.get(), "Easel");
+        add(ModBlocks.LIFE_PRESSURE_PLATE.get(), "Life Pressure Plate");
         add(ModBlocks.RAIN_DETECTOR.get(), "Rain Detector");
         add(ModBlocks.GOLD_BARS.get(), "Gold Bars");
         add(ModBlocks.COPPER_BARS.get(), "Copper Bars");

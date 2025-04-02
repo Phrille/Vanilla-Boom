@@ -199,6 +199,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         // Misc
         blockItem(ModItems.EASEL.get());
+        blockItem(ModItems.LIFE_PRESSURE_PLATE.get());
         blockItem(ModItems.RAIN_DETECTOR.get());
         item(ModBlocks.GOLD_BARS.get());
         item(ModBlocks.COPPER_BARS.get());
