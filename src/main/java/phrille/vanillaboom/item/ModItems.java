@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 Phrille
+ * Copyright (C) 2023-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -12,13 +12,17 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.ModBlocks;
+import phrille.vanillaboom.block.crop.TrellisCropBlock;
 import phrille.vanillaboom.entity.ModEntityTypes;
 
 public class ModItems {
@@ -30,8 +34,8 @@ public class ModItems {
     public static final DeferredItem<Item> WITHER_BONE_MEAL = ITEMS.register("wither_bone_meal", WitherBoneMealItem::new);
     public static final DeferredItem<Item> PRISMARINE_ARROW = ITEMS.register("prismarine_arrow", PrismarineArrowItem::new);
     public static final DeferredItem<Item> POLAR_BEAR_FUR = ITEMS.register("polar_bear_fur", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> CHILI_SEEDS = ITEMS.register("chili_seeds", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds", () -> new TrellisCropSeed((TrellisCropBlock) ModBlocks.TOMATO.get(), new Item.Properties()));
+    public static final DeferredItem<Item> CHILI_SEEDS = ITEMS.register("chili_seeds", () -> new TrellisCropSeed((TrellisCropBlock) ModBlocks.CHILI.get(), new Item.Properties()));
     public static final DeferredItem<Item> RICE_GRAINS = ITEMS.register("rice_grains", () -> new BlockItem(ModBlocks.RICE.get(), new Item.Properties()));
     public static final DeferredItem<Item> CANVAS = ITEMS.register("canvas", () -> new Item(new Item.Properties()));
 
@@ -77,40 +81,6 @@ public class ModItems {
     public static final DeferredItem<Item> PERCH_SPAWN_EGG = ITEMS.register("perch_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.PERCH, 0x464614, 0xFD5100, new Item.Properties()));
     public static final DeferredItem<Item> PIKE_SPAWN_EGG = ITEMS.register("pike_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.PIKE, 0x4C462A, 0xA0A169, new Item.Properties()));
     public static final DeferredItem<Item> EEL_SPAWN_EGG = ITEMS.register("eel_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.EEL, 0x5F4F37, 0x312517, new Item.Properties()));
-
-    public static class ModFoods {
-        public static final FoodProperties RAW_POLAR_BEAR_MEAT = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3F).build();
-        public static final FoodProperties POLAR_BEAR_STEAK = new FoodProperties.Builder().nutrition(8).saturationModifier(0.8F).build();
-        public static final FoodProperties FRIED_EGG = new FoodProperties.Builder().nutrition(6).saturationModifier(0.6F).build();
-        public static final FoodProperties DROWNED_FLESH = new FoodProperties.Builder().nutrition(4).saturationModifier(0.1F)
-                .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 0.8F)
-                .effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 600, 0), 0.5F).build();
-        public static final FoodProperties MELON_POPSICLE = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3F).fast().build();
-        public static final FoodProperties PINE_CONE = new FoodProperties.Builder().nutrition(3).saturationModifier(0.2F).fast().build();
-        public static final FoodProperties CHOCOLATE = new FoodProperties.Builder().nutrition(5).saturationModifier(0.3F)
-                .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 200, 0), 0.5F).build();
-        public static final FoodProperties TOMATO = new FoodProperties.Builder().nutrition(4).saturationModifier(0.2F).build();
-        public static final FoodProperties CHILI = new FoodProperties.Builder().nutrition(3).saturationModifier(0.1F).alwaysEdible()
-                .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1200, 0), 1.0F).build();
-        public static final FoodProperties APPLE_PIE = new FoodProperties.Builder().nutrition(8).saturationModifier(0.3F).build();
-        public static final FoodProperties BERRY_PIE = new FoodProperties.Builder().nutrition(8).saturationModifier(0.3F).build();
-        public static final FoodProperties MONSTER_PIE = new FoodProperties.Builder().nutrition(10).saturationModifier(0.2F)
-                .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 1.0F).build();
-        public static final FoodProperties POTATO_SOUP = new FoodProperties.Builder().nutrition(8).saturationModifier(0.5F).build();
-        public static final FoodProperties MEAT_SOUP = new FoodProperties.Builder().nutrition(12).saturationModifier(0.7F).build();
-        public static final FoodProperties FISH_SOUP = new FoodProperties.Builder().nutrition(10).saturationModifier(0.6F).build();
-        public static final FoodProperties RICE_BOWL = new FoodProperties.Builder().nutrition(5).saturationModifier(0.2F).build();
-
-        public static final FoodProperties TUNA = new FoodProperties.Builder().nutrition(3).saturationModifier(0.1F).build();
-        public static final FoodProperties COOKED_TUNA = new FoodProperties.Builder().nutrition(7).saturationModifier(0.6F).build();
-        public static final FoodProperties PERCH = new FoodProperties.Builder().nutrition(2).saturationModifier(0.1F).build();
-        public static final FoodProperties COOKED_PERCH = new FoodProperties.Builder().nutrition(6).saturationModifier(0.6F).build();
-        public static final FoodProperties PIKE = new FoodProperties.Builder().nutrition(2).saturationModifier(0.1F).build();
-        public static final FoodProperties COOKED_PIKE = new FoodProperties.Builder().nutrition(7).saturationModifier(0.6F).build();
-        public static final FoodProperties EEL = new FoodProperties.Builder().nutrition(2).saturationModifier(0.1F).build();
-        public static final FoodProperties COOKED_EEL = new FoodProperties.Builder().nutrition(6).saturationModifier(0.6F).build();
-    }
-
     // Bricks
     public static final DeferredItem<Item> COBBLESTONE_BRICKS = ITEMS.register("cobblestone_bricks", () -> new BlockItem(ModBlocks.COBBLESTONE_BRICKS.get(), new Item.Properties()));
     public static final DeferredItem<Item> MOSSY_COBBLESTONE_BRICKS = ITEMS.register("mossy_cobblestone_bricks", () -> new BlockItem(ModBlocks.MOSSY_COBBLESTONE_BRICKS.get(), new Item.Properties()));
@@ -134,29 +104,24 @@ public class ModItems {
     public static final DeferredItem<Item> GREEN_TERRACOTTA_BRICKS = ITEMS.register("green_terracotta_bricks", () -> new BlockItem(ModBlocks.GREEN_TERRACOTTA_BRICKS.get(), new Item.Properties()));
     public static final DeferredItem<Item> RED_TERRACOTTA_BRICKS = ITEMS.register("red_terracotta_bricks", () -> new BlockItem(ModBlocks.RED_TERRACOTTA_BRICKS.get(), new Item.Properties()));
     public static final DeferredItem<Item> BLACK_TERRACOTTA_BRICKS = ITEMS.register("black_terracotta_bricks", () -> new BlockItem(ModBlocks.BLACK_TERRACOTTA_BRICKS.get(), new Item.Properties()));
-
     // Rocks
     public static final DeferredItem<Item> PERIDOTITE = ITEMS.register("peridotite", () -> new BlockItem(ModBlocks.PERIDOTITE.get(), new Item.Properties()));
     public static final DeferredItem<Item> HYDRO_ROCK = ITEMS.register("hydro_rock", () -> new BlockItem(ModBlocks.HYDRO_ROCK.get(), new Item.Properties()));
     public static final DeferredItem<Item> INFERNAL_ROCK = ITEMS.register("infernal_rock", () -> new BlockItem(ModBlocks.INFERNAL_ROCK.get(), new Item.Properties()));
-
     // Sand and Gravel
     public static final DeferredItem<Item> BONE_SAND = ITEMS.register("bone_sand", () -> new BlockItem(ModBlocks.BONE_SAND.get(), new Item.Properties()));
     public static final DeferredItem<Item> WITHER_BONE_SAND = ITEMS.register("wither_bone_sand", () -> new BlockItem(ModBlocks.WITHER_BONE_SAND.get(), new Item.Properties()));
-
     // Polished
     public static final DeferredItem<Item> POLISHED_PERIDOTITE = ITEMS.register("polished_peridotite", () -> new BlockItem(ModBlocks.POLISHED_PERIDOTITE.get(), new Item.Properties()));
     public static final DeferredItem<Item> POLISHED_PRISMARINE = ITEMS.register("polished_prismarine", () -> new BlockItem(ModBlocks.POLISHED_PRISMARINE.get(), new Item.Properties()));
     public static final DeferredItem<Item> POLISHED_DARK_PRISMARINE = ITEMS.register("polished_dark_prismarine", () -> new BlockItem(ModBlocks.POLISHED_DARK_PRISMARINE.get(), new Item.Properties()));
     public static final DeferredItem<Item> POLISHED_END_STONE = ITEMS.register("polished_end_stone", () -> new BlockItem(ModBlocks.POLISHED_END_STONE.get(), new Item.Properties()));
     public static final DeferredItem<Item> POLISHED_NETHERRACK = ITEMS.register("polished_netherrack", () -> new BlockItem(ModBlocks.POLISHED_NETHERRACK.get(), new Item.Properties()));
-
     // Chiseled and cracked
     public static final DeferredItem<Item> CRACKED_RED_NETHER_BRICKS = ITEMS.register("cracked_red_nether_bricks", () -> new BlockItem(ModBlocks.CRACKED_RED_NETHER_BRICKS.get(), new Item.Properties()));
     public static final DeferredItem<Item> CHISELED_RED_NETHER_BRICKS = ITEMS.register("chiseled_red_nether_bricks", () -> new BlockItem(ModBlocks.CHISELED_RED_NETHER_BRICKS.get(), new Item.Properties()));
     public static final DeferredItem<Item> CHISELED_PURPUR_BLOCK = ITEMS.register("chiseled_purpur_block", () -> new BlockItem(ModBlocks.CHISELED_PURPUR_BLOCK.get(), new Item.Properties()));
     public static final DeferredItem<Item> CHISELED_OBSIDIAN = ITEMS.register("chiseled_obsidian", () -> new BlockItem(ModBlocks.CHISELED_OBSIDIAN.get(), new Item.Properties()));
-
     // Pillars
     public static final DeferredItem<Item> GRANITE_PILLAR = ITEMS.register("granite_pillar", () -> new BlockItem(ModBlocks.GRANITE_PILLAR.get(), new Item.Properties()));
     public static final DeferredItem<Item> DIORITE_PILLAR = ITEMS.register("diorite_pillar", () -> new BlockItem(ModBlocks.DIORITE_PILLAR.get(), new Item.Properties()));
@@ -167,7 +132,6 @@ public class ModItems {
     public static final DeferredItem<Item> END_STONE_PILLAR = ITEMS.register("end_stone_pillar", () -> new BlockItem(ModBlocks.END_STONE_PILLAR.get(), new Item.Properties()));
     public static final DeferredItem<Item> NETHERRACK_PILLAR = ITEMS.register("netherrack_pillar", () -> new BlockItem(ModBlocks.NETHERRACK_PILLAR.get(), new Item.Properties()));
     public static final DeferredItem<Item> OBSIDIAN_PILLAR = ITEMS.register("obsidian_pillar", () -> new BlockItem(ModBlocks.OBSIDIAN_PILLAR.get(), new Item.Properties()));
-
     // Wood Variations
     public static final DeferredItem<Item> SPRUCE_BOOKSHELF = ITEMS.register("spruce_bookshelf", () -> new BlockItem(ModBlocks.SPRUCE_BOOKSHELF.get(), new Item.Properties()));
     public static final DeferredItem<Item> BIRCH_BOOKSHELF = ITEMS.register("birch_bookshelf", () -> new BlockItem(ModBlocks.BIRCH_BOOKSHELF.get(), new Item.Properties()));
@@ -187,7 +151,6 @@ public class ModItems {
     public static final DeferredItem<Item> CHERRY_LADDER = ITEMS.register("cherry_ladder", () -> new BlockItem(ModBlocks.CHERRY_LADDER.get(), new Item.Properties()));
     public static final DeferredItem<Item> CRIMSON_LADDER = ITEMS.register("crimson_ladder", () -> new BlockItem(ModBlocks.CRIMSON_LADDER.get(), new Item.Properties()));
     public static final DeferredItem<Item> WARPED_LADDER = ITEMS.register("warped_ladder", () -> new BlockItem(ModBlocks.WARPED_LADDER.get(), new Item.Properties()));
-
     // Storage
     public static final DeferredItem<Item> CHARCOAL_BLOCK = ITEMS.register("charcoal_block", () -> new BlockItem(ModBlocks.CHARCOAL_BLOCK.get(), new Item.Properties()));
     public static final DeferredItem<Item> SUGAR_BLOCK = ITEMS.register("sugar_block", () -> new BlockItem(ModBlocks.SUGAR_BLOCK.get(), new Item.Properties()));
@@ -213,7 +176,6 @@ public class ModItems {
     public static final DeferredItem<Item> GREEN_DYE_BLOCK = ITEMS.register("green_dye_block", () -> new BlockItem(ModBlocks.GREEN_DYE_BLOCK.get(), new Item.Properties()));
     public static final DeferredItem<Item> RED_DYE_BLOCK = ITEMS.register("red_dye_block", () -> new BlockItem(ModBlocks.RED_DYE_BLOCK.get(), new Item.Properties()));
     public static final DeferredItem<Item> BLACK_DYE_BLOCK = ITEMS.register("black_dye_block", () -> new BlockItem(ModBlocks.BLACK_DYE_BLOCK.get(), new Item.Properties()));
-
     // Glass
     public static final DeferredItem<Item> SOUL_GLASS = ITEMS.register("soul_glass", () -> new BlockItem(ModBlocks.SOUL_GLASS.get(), new Item.Properties()));
     public static final DeferredItem<Item> WHITE_STAINED_SOUL_GLASS = ITEMS.register("white_stained_soul_glass", () -> new BlockItem(ModBlocks.WHITE_STAINED_SOUL_GLASS.get(), new Item.Properties()));
@@ -249,7 +211,6 @@ public class ModItems {
     public static final DeferredItem<Item> GREEN_STAINED_SOUL_GLASS_PANE = ITEMS.register("green_stained_soul_glass_pane", () -> new BlockItem(ModBlocks.GREEN_STAINED_SOUL_GLASS_PANE.get(), new Item.Properties()));
     public static final DeferredItem<Item> RED_STAINED_SOUL_GLASS_PANE = ITEMS.register("red_stained_soul_glass_pane", () -> new BlockItem(ModBlocks.RED_STAINED_SOUL_GLASS_PANE.get(), new Item.Properties()));
     public static final DeferredItem<Item> BLACK_STAINED_SOUL_GLASS_PANE = ITEMS.register("black_stained_soul_glass_pane", () -> new BlockItem(ModBlocks.BLACK_STAINED_SOUL_GLASS_PANE.get(), new Item.Properties()));
-
     // Misc
     public static final DeferredItem<Item> EASEL = ITEMS.register("easel", () -> new BlockItem(ModBlocks.EASEL.get(), new Item.Properties()));
     public static final DeferredItem<Item> LIFE_PRESSURE_PLATE = ITEMS.register("life_pressure_plate", () -> new BlockItem(ModBlocks.LIFE_PRESSURE_PLATE.get(), new Item.Properties()));
@@ -271,7 +232,6 @@ public class ModItems {
     public static final DeferredItem<Item> SHEARED_LILAC = ITEMS.register("sheared_lilac", () -> new BlockItem(ModBlocks.SHEARED_LILAC.get(), new Item.Properties()));
     public static final DeferredItem<Item> TRELLIS = ITEMS.register("trellis", () -> new BlockItem(ModBlocks.TRELLIS.get(), new Item.Properties()));
     public static final DeferredItem<Item> WITHERED_VINE = ITEMS.register("withered_vine", () -> new BlockItem(ModBlocks.WITHERED_VINE.get(), new Item.Properties()));
-
     // VanillaBoom Stairs
     public static final DeferredItem<Item> COBBLESTONE_BRICK_STAIRS = ITEMS.register("cobblestone_brick_stairs", () -> new BlockItem(ModBlocks.COBBLESTONE_BRICK_STAIRS.get(), new Item.Properties()));
     public static final DeferredItem<Item> MOSSY_COBBLESTONE_BRICK_STAIRS = ITEMS.register("mossy_cobblestone_brick_stairs", () -> new BlockItem(ModBlocks.MOSSY_COBBLESTONE_BRICK_STAIRS.get(), new Item.Properties()));
@@ -302,7 +262,6 @@ public class ModItems {
     public static final DeferredItem<Item> POLISHED_END_STONE_STAIRS = ITEMS.register("polished_end_stone_stairs", () -> new BlockItem(ModBlocks.POLISHED_END_STONE_STAIRS.get(), new Item.Properties()));
     public static final DeferredItem<Item> POLISHED_NETHERRACK_STAIRS = ITEMS.register("polished_netherrack_stairs", () -> new BlockItem(ModBlocks.POLISHED_NETHERRACK_STAIRS.get(), new Item.Properties()));
     public static final DeferredItem<Item> CRACKED_RED_NETHER_BRICK_STAIRS = ITEMS.register("cracked_red_nether_brick_stairs", () -> new BlockItem(ModBlocks.CRACKED_RED_NETHER_BRICK_STAIRS.get(), new Item.Properties()));
-
     // Vanilla Stairs
     public static final DeferredItem<Item> CRACKED_STONE_BRICK_STAIRS = ITEMS.register("cracked_stone_brick_stairs", () -> new BlockItem(ModBlocks.CRACKED_STONE_BRICK_STAIRS.get(), new Item.Properties()));
     public static final DeferredItem<Item> IRON_BLOCK_STAIRS = ITEMS.register("iron_block_stairs", () -> new BlockItem(ModBlocks.IRON_BLOCK_STAIRS.get(), new Item.Properties()));
@@ -370,7 +329,6 @@ public class ModItems {
     public static final DeferredItem<Item> CUT_SANDSTONE_STAIRS = ITEMS.register("cut_sandstone_stairs", () -> new BlockItem(ModBlocks.CUT_SANDSTONE_STAIRS.get(), new Item.Properties()));
     public static final DeferredItem<Item> CUT_RED_SANDSTONE_STAIRS = ITEMS.register("cut_red_sandstone_stairs", () -> new BlockItem(ModBlocks.CUT_RED_SANDSTONE_STAIRS.get(), new Item.Properties()));
     public static final DeferredItem<Item> SMOOTH_STONE_STAIRS = ITEMS.register("smooth_stone_stairs", () -> new BlockItem(ModBlocks.SMOOTH_STONE_STAIRS.get(), new Item.Properties()));
-
     // VanillaBoom Slabs
     public static final DeferredItem<Item> COBBLESTONE_BRICK_SLAB = ITEMS.register("cobblestone_brick_slab", () -> new BlockItem(ModBlocks.COBBLESTONE_BRICK_SLAB.get(), new Item.Properties()));
     public static final DeferredItem<Item> MOSSY_COBBLESTONE_BRICK_SLAB = ITEMS.register("mossy_cobblestone_brick_slab", () -> new BlockItem(ModBlocks.MOSSY_COBBLESTONE_BRICK_SLAB.get(), new Item.Properties()));
@@ -401,7 +359,6 @@ public class ModItems {
     public static final DeferredItem<Item> POLISHED_END_STONE_SLAB = ITEMS.register("polished_end_stone_slab", () -> new BlockItem(ModBlocks.POLISHED_END_STONE_SLAB.get(), new Item.Properties()));
     public static final DeferredItem<Item> POLISHED_NETHERRACK_SLAB = ITEMS.register("polished_netherrack_slab", () -> new BlockItem(ModBlocks.POLISHED_NETHERRACK_SLAB.get(), new Item.Properties()));
     public static final DeferredItem<Item> CRACKED_RED_NETHER_BRICK_SLAB = ITEMS.register("cracked_red_nether_brick_slab", () -> new BlockItem(ModBlocks.CRACKED_RED_NETHER_BRICK_SLAB.get(), new Item.Properties()));
-
     // Vanilla Slabs
     public static final DeferredItem<Item> CRACKED_STONE_BRICK_SLAB = ITEMS.register("cracked_stone_brick_slab", () -> new BlockItem(ModBlocks.CRACKED_STONE_BRICK_SLAB.get(), new Item.Properties()));
     public static final DeferredItem<Item> IRON_BLOCK_SLAB = ITEMS.register("iron_block_slab", () -> new BlockItem(ModBlocks.IRON_BLOCK_SLAB.get(), new Item.Properties()));
@@ -466,7 +423,6 @@ public class ModItems {
     public static final DeferredItem<Item> STRIPPED_CHERRY_WOOD_SLAB = ITEMS.register("stripped_cherry_wood_slab", () -> new BlockItem(ModBlocks.STRIPPED_CHERRY_WOOD_SLAB.get(), new Item.Properties()));
     public static final DeferredItem<Item> STRIPPED_CRIMSON_HYPHAE_SLAB = ITEMS.register("stripped_crimson_hyphae_slab", () -> new BlockItem(ModBlocks.STRIPPED_CRIMSON_HYPHAE_SLAB.get(), new Item.Properties()));
     public static final DeferredItem<Item> STRIPPED_WARPED_HYPHAE_SLAB = ITEMS.register("stripped_warped_hyphae_slab", () -> new BlockItem(ModBlocks.STRIPPED_WARPED_HYPHAE_SLAB.get(), new Item.Properties()));
-
     // VanillaBoom Walls
     public static final DeferredItem<Item> COBBLESTONE_BRICK_WALL = ITEMS.register("cobblestone_brick_wall", () -> new BlockItem(ModBlocks.COBBLESTONE_BRICK_WALL.get(), new Item.Properties()));
     public static final DeferredItem<Item> MOSSY_COBBLESTONE_BRICK_WALL = ITEMS.register("mossy_cobblestone_brick_wall", () -> new BlockItem(ModBlocks.MOSSY_COBBLESTONE_BRICK_WALL.get(), new Item.Properties()));
@@ -497,7 +453,6 @@ public class ModItems {
     public static final DeferredItem<Item> POLISHED_END_STONE_WALL = ITEMS.register("polished_end_stone_wall", () -> new BlockItem(ModBlocks.POLISHED_END_STONE_WALL.get(), new Item.Properties()));
     public static final DeferredItem<Item> POLISHED_NETHERRACK_WALL = ITEMS.register("polished_netherrack_wall", () -> new BlockItem(ModBlocks.POLISHED_NETHERRACK_WALL.get(), new Item.Properties()));
     public static final DeferredItem<Item> CRACKED_RED_NETHER_BRICK_WALL = ITEMS.register("cracked_red_nether_brick_wall", () -> new BlockItem(ModBlocks.CRACKED_RED_NETHER_BRICK_WALL.get(), new Item.Properties()));
-
     // Vanilla Walls
     public static final DeferredItem<Item> CRACKED_STONE_BRICK_WALL = ITEMS.register("cracked_stone_brick_wall", () -> new BlockItem(ModBlocks.CRACKED_STONE_BRICK_WALL.get(), new Item.Properties()));
     public static final DeferredItem<Item> IRON_BLOCK_WALL = ITEMS.register("iron_block_wall", () -> new BlockItem(ModBlocks.IRON_BLOCK_WALL.get(), new Item.Properties()));
@@ -556,7 +511,6 @@ public class ModItems {
     public static final DeferredItem<Item> SMOOTH_QUARTZ_WALL = ITEMS.register("smooth_quartz_wall", () -> new BlockItem(ModBlocks.SMOOTH_QUARTZ_WALL.get(), new Item.Properties()));
     public static final DeferredItem<Item> PRISMARINE_BRICK_WALL = ITEMS.register("prismarine_brick_wall", () -> new BlockItem(ModBlocks.PRISMARINE_BRICK_WALL.get(), new Item.Properties()));
     public static final DeferredItem<Item> DARK_PRISMARINE_WALL = ITEMS.register("dark_prismarine_wall", () -> new BlockItem(ModBlocks.DARK_PRISMARINE_WALL.get(), new Item.Properties()));
-
     // Vanilla Fences and Fence Gates
     public static final DeferredItem<Item> OAK_WOOD_FENCE = ITEMS.register("oak_wood_fence", () -> new BlockItem(ModBlocks.OAK_WOOD_FENCE.get(), new Item.Properties()));
     public static final DeferredItem<Item> SPRUCE_WOOD_FENCE = ITEMS.register("spruce_wood_fence", () -> new BlockItem(ModBlocks.SPRUCE_WOOD_FENCE.get(), new Item.Properties()));
@@ -601,4 +555,37 @@ public class ModItems {
     public static final DeferredItem<Item> STRIPPED_WARPED_HYPHAE_FENCE_GATE = ITEMS.register("stripped_warped_hyphae_fence_gate", () -> new BlockItem(ModBlocks.STRIPPED_WARPED_HYPHAE_FENCE_GATE.get(), new Item.Properties()));
     public static final DeferredItem<Item> NETHER_BRICK_FENCE_GATE = ITEMS.register("nether_brick_fence_gate", () -> new BlockItem(ModBlocks.NETHER_BRICK_FENCE_GATE.get(), new Item.Properties()));
     public static final DeferredItem<Item> RED_NETHER_BRICK_FENCE_GATE = ITEMS.register("red_nether_brick_fence_gate", () -> new BlockItem(ModBlocks.RED_NETHER_BRICK_FENCE_GATE.get(), new Item.Properties()));
+
+    public static class ModFoods {
+        public static final FoodProperties RAW_POLAR_BEAR_MEAT = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3F).build();
+        public static final FoodProperties POLAR_BEAR_STEAK = new FoodProperties.Builder().nutrition(8).saturationModifier(0.8F).build();
+        public static final FoodProperties FRIED_EGG = new FoodProperties.Builder().nutrition(6).saturationModifier(0.6F).build();
+        public static final FoodProperties DROWNED_FLESH = new FoodProperties.Builder().nutrition(4).saturationModifier(0.1F)
+                .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 0.8F)
+                .effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 600, 0), 0.5F).build();
+        public static final FoodProperties MELON_POPSICLE = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3F).fast().build();
+        public static final FoodProperties PINE_CONE = new FoodProperties.Builder().nutrition(3).saturationModifier(0.2F).fast().build();
+        public static final FoodProperties CHOCOLATE = new FoodProperties.Builder().nutrition(5).saturationModifier(0.3F)
+                .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 200, 0), 0.5F).build();
+        public static final FoodProperties TOMATO = new FoodProperties.Builder().nutrition(4).saturationModifier(0.2F).build();
+        public static final FoodProperties CHILI = new FoodProperties.Builder().nutrition(3).saturationModifier(0.1F).alwaysEdible()
+                .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 600, 0), 1.0F).build();
+        public static final FoodProperties APPLE_PIE = new FoodProperties.Builder().nutrition(8).saturationModifier(0.3F).build();
+        public static final FoodProperties BERRY_PIE = new FoodProperties.Builder().nutrition(8).saturationModifier(0.3F).build();
+        public static final FoodProperties MONSTER_PIE = new FoodProperties.Builder().nutrition(10).saturationModifier(0.2F)
+                .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 1.0F).build();
+        public static final FoodProperties POTATO_SOUP = new FoodProperties.Builder().nutrition(8).saturationModifier(0.5F).build();
+        public static final FoodProperties MEAT_SOUP = new FoodProperties.Builder().nutrition(12).saturationModifier(0.7F).build();
+        public static final FoodProperties FISH_SOUP = new FoodProperties.Builder().nutrition(10).saturationModifier(0.6F).build();
+        public static final FoodProperties RICE_BOWL = new FoodProperties.Builder().nutrition(5).saturationModifier(0.2F).build();
+
+        public static final FoodProperties TUNA = new FoodProperties.Builder().nutrition(3).saturationModifier(0.1F).build();
+        public static final FoodProperties COOKED_TUNA = new FoodProperties.Builder().nutrition(7).saturationModifier(0.6F).build();
+        public static final FoodProperties PERCH = new FoodProperties.Builder().nutrition(2).saturationModifier(0.1F).build();
+        public static final FoodProperties COOKED_PERCH = new FoodProperties.Builder().nutrition(6).saturationModifier(0.6F).build();
+        public static final FoodProperties PIKE = new FoodProperties.Builder().nutrition(2).saturationModifier(0.1F).build();
+        public static final FoodProperties COOKED_PIKE = new FoodProperties.Builder().nutrition(7).saturationModifier(0.6F).build();
+        public static final FoodProperties EEL = new FoodProperties.Builder().nutrition(2).saturationModifier(0.1F).build();
+        public static final FoodProperties COOKED_EEL = new FoodProperties.Builder().nutrition(6).saturationModifier(0.6F).build();
+    }
 }

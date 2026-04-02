@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Phrille
+ * Copyright (C) 2025-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -17,10 +17,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import phrille.vanillaboom.block.BlockUtils;
 import phrille.vanillaboom.client.screen.EaselScreen;
 import phrille.vanillaboom.crafting.PaintingRecipe;
 import phrille.vanillaboom.inventory.EaselMenu;
-import phrille.vanillaboom.util.Utils;
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class ClientPacketHandler {
 
     public static void handleWitherBoneMealPacket(Player player, BlockPos pos) {
         if (player.level() instanceof ClientLevel level) {
-            Utils.spawnParticles(ParticleTypes.SOUL, level, pos);
+            BlockUtils.spawnParticles(ParticleTypes.SOUL, level, pos);
             level.playLocalSound(pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
         }
     }

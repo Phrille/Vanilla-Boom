@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 Phrille
+ * Copyright (C) 2023-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -13,11 +13,13 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
@@ -28,7 +30,6 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import phrille.vanillaboom.config.VanillaBoomConfig;
-import phrille.vanillaboom.util.Utils;
 
 public class HydroRockBlock extends Block {
     public HydroRockBlock() {
@@ -44,11 +45,12 @@ public class HydroRockBlock extends Block {
         if (VanillaBoomConfig.fillWaterBottleHydroRock && stack.is(Items.GLASS_BOTTLE)) {
             if (level.dimensionType().ultraWarm()) {
                 level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, 1.0F);
-                Utils.spawnParticles(ParticleTypes.SMOKE, level, pos.above());
+                BlockUtils.spawnParticles(ParticleTypes.SMOKE, level, pos.above());
             } else {
-                Utils.fillAndAwardStat(stack, player, hand, PotionContents.createItemStack(Items.POTION, Potions.WATER));
+                player.setItemInHand(hand, ItemUtils.createFilledResult(stack, player, PotionContents.createItemStack(Items.POTION, Potions.WATER)));
+                player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
                 level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                Utils.spawnParticles(ParticleTypes.SPLASH, level, pos.above());
+                BlockUtils.spawnParticles(ParticleTypes.SPLASH, level, pos.above());
             }
 
             return ItemInteractionResult.sidedSuccess(level.isClientSide);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Phrille
+ * Copyright (C) 2025-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -14,8 +14,8 @@ import net.minecraft.world.entity.item.ItemEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import phrille.vanillaboom.config.VanillaBoomConfig;
+import phrille.vanillaboom.crafting.PaintingRecipe;
 import phrille.vanillaboom.entity.ModAttachmentTypes;
-import phrille.vanillaboom.util.Utils;
 
 @Mixin(Painting.class)
 public class PaintingMixin {
@@ -27,7 +27,7 @@ public class PaintingMixin {
     private ItemEntity modifyPaintingDrop(ItemEntity original) {
         Painting painting = (Painting) (Object) this;
         if (painting != null && VanillaBoomConfig.variantSensitivePaintingDrops && painting.getData(ModAttachmentTypes.VARIANT_SET)) {
-            original.setItem(Utils.stackFromHolder(painting.level().registryAccess(), painting.getVariant()));
+            original.setItem(PaintingRecipe.stackFromHolder(painting.level().registryAccess(), painting.getVariant()));
         }
         return original;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 Phrille
+ * Copyright (C) 2023-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -420,7 +420,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     public void trellisBlock(Block trellis) {
-        List<ModelFile> files = TrellisBlock.HALF.getAllValues()
+        List<ModelFile> files = BlockStateProperties.DOUBLE_BLOCK_HALF.getAllValues()
                 .map(property -> models()
                         .withExistingParent(name(trellis) + "_" + property.value(), ModelProvider.BLOCK_FOLDER + "/crop")
                         .texture("crop", blockTexture(trellis))
@@ -431,7 +431,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     protected void trellisBlock(TrellisBlock trellis, List<ModelFile> files) {
         getVariantBuilder(trellis).forAllStates(state -> {
-            DoubleBlockHalf doubleBlock = state.getValue(TrellisBlock.HALF);
+            DoubleBlockHalf doubleBlock = state.getValue(BlockStateProperties.DOUBLE_BLOCK_HALF);
 
             return ConfiguredModel.builder()
                     .modelFile(doubleBlock == DoubleBlockHalf.UPPER ? files.get(0) : files.get(1))
@@ -457,7 +457,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     protected void trellisCropBlock(TrellisCropBlock trellisCrop, List<ModelFile> filesLower, List<ModelFile> filesUpper) {
         getVariantBuilder(trellisCrop).forAllStates(state -> {
-            DoubleBlockHalf doubleBlock = state.getValue(TrellisCropBlock.HALF);
+            DoubleBlockHalf doubleBlock = state.getValue(BlockStateProperties.DOUBLE_BLOCK_HALF);
             int age = state.getValue(TrellisCropBlock.AGE);
 
             return ConfiguredModel.builder()

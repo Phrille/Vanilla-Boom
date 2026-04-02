@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 Phrille
+ * Copyright (C) 2023-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -21,6 +21,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -35,9 +36,7 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.ModCakeBlock;
-import phrille.vanillaboom.block.crop.ITrellisCrop;
 import phrille.vanillaboom.block.crop.ShearedTallFlowerBlock;
-import phrille.vanillaboom.block.crop.TrellisBlock;
 import phrille.vanillaboom.block.crop.TrellisCropBlock;
 import phrille.vanillaboom.block.variant.*;
 import phrille.vanillaboom.data.ModDataGenerator;
@@ -196,7 +195,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.LILAC.get());
         dropPottedContents(ModBlocks.POTTED_LILAC.get());
         add(ModBlocks.SHEARED_LILAC.get(), shearedLilac -> createSinglePropConditionTable(shearedLilac, ShearedTallFlowerBlock.HALF, DoubleBlockHalf.LOWER));
-        add(ModBlocks.TRELLIS.get(), trellis -> createSinglePropConditionTable(trellis, TrellisBlock.HALF, DoubleBlockHalf.LOWER));
+        add(ModBlocks.TRELLIS.get(), trellis -> createSinglePropConditionTable(trellis, BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER));
         add(ModBlocks.TOMATO.get(), this::createTrellisCropDrops);
         add(ModBlocks.CHILI.get(), this::createTrellisCropDrops);
         LootItemCondition.Builder riceCondition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.RICE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 8));
@@ -241,13 +240,13 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
     protected LootTable.Builder createTrellisCropDrops(Block cropBlock) {
         HolderLookup.RegistryLookup<Enchantment> enchantmentLookup = registries.lookupOrThrow(Registries.ENCHANTMENT);
-        ITrellisCrop trellisCrop = (ITrellisCrop) cropBlock;
+        TrellisCropBlock trellisCrop = (TrellisCropBlock) cropBlock;
         LootItemCondition.Builder ageCondition = LootItemBlockStatePropertyCondition
                 .hasBlockStateProperties(cropBlock)
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7));
         LootItemBlockStatePropertyCondition.Builder halfCondition = LootItemBlockStatePropertyCondition
                 .hasBlockStateProperties(cropBlock)
-                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(TrellisCropBlock.HALF, DoubleBlockHalf.LOWER));
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER));
 
         return applyExplosionDecay(cropBlock, LootTable.lootTable()
                 .withPool(LootPool.lootPool()

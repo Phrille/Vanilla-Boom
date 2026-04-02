@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 Phrille
+ * Copyright (C) 2023-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -23,6 +23,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.TallFlowerBlock;
 import net.minecraft.world.level.block.piston.PistonBaseBlock;
 import net.minecraft.world.level.block.piston.PistonHeadBlock;
@@ -36,7 +37,6 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.block.crop.ShearedTallFlowerBlock;
 import phrille.vanillaboom.config.VanillaBoomConfig;
-import phrille.vanillaboom.util.Utils;
 
 @EventBusSubscriber(modid = VanillaBoom.MOD_ID)
 public class ItemEventHandler {
@@ -84,7 +84,7 @@ public class ItemEventHandler {
 
         player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
         level.playSound(null, pos, SoundEvents.SLIME_BLOCK_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
-        if (!player.isCreative()) {
+        if (!player.isCreative() && !level.isClientSide) {
             stack.shrink(1);
         }
 
@@ -124,12 +124,17 @@ public class ItemEventHandler {
 
         ShearedTallFlowerBlock shearedTallFlower;
         if (state.getBlock() instanceof TallFlowerBlock tallFlower && ShearedTallFlowerBlock.getShearedFlowerBlocks().containsKey(tallFlower)) {
-            DoubleBlockHalf half = state.getValue(TallFlowerBlock.HALF);
-            if (half == DoubleBlockHalf.UPPER) {
-                pos = pos.below();
-            }
+            BlockPos lowerPos = state.getValue(TallFlowerBlock.HALF) == DoubleBlockHalf.LOWER ? pos : pos.below();
             shearedTallFlower = ShearedTallFlowerBlock.getShearedFlowerBlocks().get(tallFlower);
-            Utils.setDoubleBlock(level, shearedTallFlower.defaultBlockState(), pos, TallFlowerBlock.HALF);
+            if (!level.isClientSide) {
+                // Hacky workaround to prevent the newly placed ShearedTallFlowerBlock from breaking due to the lower
+                // part being placed. This causes the upper part of TallFlowerBlock to break which in turn sends an
+                // update to lower part of ShearedTallFlowerBlock. Thus, we are left with a floating upper part of
+                // TallShearedFlowerPart. Prevent this by first setting the upper part of TallFlowerBlock to air and
+                // suppress its drops.
+                level.setBlock(lowerPos.above(), Blocks.AIR.defaultBlockState(), 20);
+                DoublePlantBlock.placeAt(level, shearedTallFlower.defaultBlockState(), lowerPos, Block.UPDATE_CLIENTS);
+            }
         } else {
             return InteractionResult.PASS;
         }

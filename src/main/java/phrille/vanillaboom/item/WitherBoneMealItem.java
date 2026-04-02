@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 Phrille
+ * Copyright (C) 2024-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -20,31 +20,15 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.NetherWartBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.Property;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.crop.IWitherBonemealable;
 import phrille.vanillaboom.config.VanillaBoomConfig;
 import phrille.vanillaboom.network.WitherBoneMealPacket;
-import phrille.vanillaboom.util.Utils;
 
 public class WitherBoneMealItem extends Item {
     public WitherBoneMealItem() {
         super(new Item.Properties());
-    }
-
-    @Override
-    public InteractionResult useOn(UseOnContext context) {
-        Level level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-
-        if (VanillaBoomConfig.witherBoneMealEnabled) {
-            if (applyWitherBoneMeal(level, pos, context.getItemInHand())) {
-                if (!level.isClientSide) {
-                    WitherBoneMealPacket.send((ServerLevel) level, pos);
-                }
-                return InteractionResult.sidedSuccess(level.isClientSide);
-            }
-        }
-        return InteractionResult.PASS;
     }
 
     public static boolean apply(ItemStack stack, Level level, BlockPos pos) {
@@ -102,7 +86,7 @@ public class WitherBoneMealItem extends Item {
         if (VanillaBoomConfig.witherVines) {
             if (level instanceof ServerLevel) {
                 BlockState witheredVineState = ModBlocks.WITHERED_VINE.get().defaultBlockState();
-                level.setBlock(pos, Utils.copyState(state, witheredVineState), 2);
+                level.setBlock(pos, copyState(state, witheredVineState), 2);
                 stack.shrink(1);
             }
             return true;
@@ -119,5 +103,32 @@ public class WitherBoneMealItem extends Item {
             return true;
         }
         return false;
+    }
+
+    private static BlockState copyState(BlockState from, BlockState to) {
+        for (Property<?> property : from.getProperties()) {
+            to = copyState(from, to, property);
+        }
+        return to;
+    }
+
+    private static <T extends Comparable<T>> BlockState copyState(BlockState from, BlockState to, Property<T> property) {
+        return to.setValue(property, from.getValue(property));
+    }
+
+    @Override
+    public InteractionResult useOn(UseOnContext context) {
+        Level level = context.getLevel();
+        BlockPos pos = context.getClickedPos();
+
+        if (VanillaBoomConfig.witherBoneMealEnabled) {
+            if (applyWitherBoneMeal(level, pos, context.getItemInHand())) {
+                if (!level.isClientSide) {
+                    WitherBoneMealPacket.send((ServerLevel) level, pos);
+                }
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
+        }
+        return InteractionResult.PASS;
     }
 }

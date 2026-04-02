@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2025 Phrille
+ * Copyright (C) 2024-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -14,11 +14,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.TallFlowerBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import phrille.vanillaboom.util.Utils;
+import phrille.vanillaboom.block.ModBlocks;
 
 import java.util.function.Supplier;
 
@@ -31,20 +34,10 @@ public class ShearedTallFlowerBlock extends TallFlowerBlock {
         this.flowerBlock = flowerBlock;
     }
 
-    @Override
-    public void performBonemeal(ServerLevel level, RandomSource rand, BlockPos pos, BlockState state) {
-        if (rand.nextFloat() < 0.5F) {
-            DoubleBlockHalf half = state.getValue(TallFlowerBlock.HALF);
-            if (half == DoubleBlockHalf.UPPER) {
-                pos = pos.below();
-            }
-
-            Utils.setDoubleBlock(level, SHEARED_FLOWER_BLOCKS.inverse().get(this).defaultBlockState(), pos, TallFlowerBlock.HALF);
-        }
-    }
-
-    public Block getFlower() {
-        return flowerBlock.get();
+    public static void registerShearedTallFlowers() {
+        ShearedTallFlowerBlock.registerShearedTallFlowerBlock((TallFlowerBlock) Blocks.ROSE_BUSH, (ShearedTallFlowerBlock) ModBlocks.SHEARED_ROSE_BUSH.get());
+        ShearedTallFlowerBlock.registerShearedTallFlowerBlock((TallFlowerBlock) Blocks.PEONY, (ShearedTallFlowerBlock) ModBlocks.SHEARED_PEONY.get());
+        ShearedTallFlowerBlock.registerShearedTallFlowerBlock((TallFlowerBlock) Blocks.LILAC, (ShearedTallFlowerBlock) ModBlocks.SHEARED_LILAC.get());
     }
 
     public static void registerShearedTallFlowerBlock(TallFlowerBlock tallFlower, ShearedTallFlowerBlock shearedTallFlower) {
@@ -53,5 +46,17 @@ public class ShearedTallFlowerBlock extends TallFlowerBlock {
 
     public static BiMap<TallFlowerBlock, ShearedTallFlowerBlock> getShearedFlowerBlocks() {
         return SHEARED_FLOWER_BLOCKS;
+    }
+
+    @Override
+    public void performBonemeal(ServerLevel level, RandomSource rand, BlockPos pos, BlockState state) {
+        if (rand.nextFloat() < 0.5F) {
+            BlockPos lowerPos = state.getValue(BlockStateProperties.DOUBLE_BLOCK_HALF) == DoubleBlockHalf.LOWER ? pos : pos.below();
+            DoublePlantBlock.placeAt(level, SHEARED_FLOWER_BLOCKS.inverse().get(this).defaultBlockState(), lowerPos, 2);
+        }
+    }
+
+    public Block getFlower() {
+        return flowerBlock.get();
     }
 }

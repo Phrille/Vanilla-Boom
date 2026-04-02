@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Phrille
+ * Copyright (C) 2025-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -16,6 +16,8 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.entity.decoration.Painting;
@@ -23,11 +25,12 @@ import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.entity.EaselBlockEntity;
-import phrille.vanillaboom.util.Utils;
 
 import java.util.Comparator;
 import java.util.List;
@@ -41,6 +44,16 @@ public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingred
                     Comparator.comparingInt(PaintingVariant::area)
                             .thenComparing(PaintingVariant::width)
                             .thenComparing(PaintingVariant::assetId));
+
+    public static ItemStack stackFromHolder(HolderLookup.Provider registries, Holder<PaintingVariant> holder) {
+        CustomData data = CustomData.EMPTY
+                .update(registries.createSerializationContext(NbtOps.INSTANCE), Painting.VARIANT_MAP_CODEC, holder)
+                .getOrThrow()
+                .update(compoundTag -> compoundTag.putString("id", holder.getRegisteredName()));
+        ItemStack painting = new ItemStack(Items.PAINTING);
+        painting.set(DataComponents.ENTITY_DATA, data);
+        return painting;
+    }
 
     @Override
     public boolean matches(EaselRecipeInput input, Level level) {
@@ -77,7 +90,7 @@ public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingred
     }
 
     private ItemStack loadVariantToStack(HolderLookup.Provider registries) {
-        ItemStack result = Utils.stackFromHolder(registries, variant);
+        ItemStack result = stackFromHolder(registries, variant);
         result.setCount(resultCount);
         return result;
     }
@@ -165,16 +178,6 @@ public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingred
                 PaintingRecipe.Serializer::toNetwork, PaintingRecipe.Serializer::fromNetwork
         );
 
-        @Override
-        public MapCodec<PaintingRecipe> codec() {
-            return CODEC;
-        }
-
-        @Override
-        public StreamCodec<RegistryFriendlyByteBuf, PaintingRecipe> streamCodec() {
-            return STREAM_CODEC;
-        }
-
         public static PaintingRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
             String group = buffer.readUtf();
             Ingredient canvas = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
@@ -199,6 +202,16 @@ public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingred
 
             PaintingVariant.STREAM_CODEC.encode(buffer, recipe.variant());
             buffer.writeInt(recipe.resultCount);
+        }
+
+        @Override
+        public MapCodec<PaintingRecipe> codec() {
+            return CODEC;
+        }
+
+        @Override
+        public StreamCodec<RegistryFriendlyByteBuf, PaintingRecipe> streamCodec() {
+            return STREAM_CODEC;
         }
     }
 }

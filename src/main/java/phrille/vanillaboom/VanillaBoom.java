@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 Phrille
+ * Copyright (C) 2023-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -19,18 +19,19 @@ import net.neoforged.fml.event.lifecycle.InterModEnqueueEvent;
 import net.neoforged.fml.event.lifecycle.InterModProcessEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import phrille.vanillaboom.block.BlockUtils;
 import phrille.vanillaboom.block.ModBlocks;
+import phrille.vanillaboom.block.crop.ShearedTallFlowerBlock;
 import phrille.vanillaboom.block.entity.ModBlockEntities;
 import phrille.vanillaboom.config.VanillaBoomConfig;
+import phrille.vanillaboom.crafting.ModRecipes;
 import phrille.vanillaboom.entity.ModAttachmentTypes;
 import phrille.vanillaboom.entity.ModEntityTypes;
 import phrille.vanillaboom.inventory.ModMenuTypes;
-import phrille.vanillaboom.crafting.ModRecipes;
 import phrille.vanillaboom.item.ModItems;
 import phrille.vanillaboom.loot.ModGlobalLootModifiers;
 import phrille.vanillaboom.util.ModDispenserBehavior;
 import phrille.vanillaboom.util.ModStats;
-import phrille.vanillaboom.util.Utils;
 
 @Mod(VanillaBoom.MOD_ID)
 public class VanillaBoom {
@@ -57,12 +58,15 @@ public class VanillaBoom {
         modContainer.registerConfig(ModConfig.Type.COMMON, VanillaBoomConfig.SPEC);
     }
 
+    public static ResourceLocation resLoc(String path) {
+        return ResourceLocation.fromNamespaceAndPath(VanillaBoom.MOD_ID, path);
+    }
+
     public void setup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             ModStats.registerStats();
-            Utils.registerFlowerPots();
-            Utils.registerShearedTallFlowers();
-            Utils.registerTrellisCrops();
+            BlockUtils.registerFlowerPots();
+            ShearedTallFlowerBlock.registerShearedTallFlowers();
             ModDispenserBehavior.registerWitherBonemealBehavior();
         });
     }
@@ -74,9 +78,5 @@ public class VanillaBoom {
     }
 
     private void processIMC(InterModProcessEvent event) {
-    }
-
-    public static ResourceLocation resLoc(String path) {
-        return ResourceLocation.fromNamespaceAndPath(VanillaBoom.MOD_ID, path);
     }
 }
