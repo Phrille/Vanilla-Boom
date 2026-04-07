@@ -67,7 +67,7 @@ public class VanillaBoom {
             ModStats.registerStats();
             BlockUtils.registerFlowerPots();
             ShearedTallFlowerBlock.registerShearedTallFlowers();
-            ModDispenserBehavior.registerWitherBonemealBehavior();
+            ModDispenserBehavior.registerModDispenserBehavior();
         });
     }
 

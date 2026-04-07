@@ -24,7 +24,7 @@ import net.minecraft.world.level.block.state.properties.Property;
 import phrille.vanillaboom.block.ModBlocks;
 import phrille.vanillaboom.block.crop.IWitherBonemealable;
 import phrille.vanillaboom.config.VanillaBoomConfig;
-import phrille.vanillaboom.network.WitherBoneMealPacket;
+import phrille.vanillaboom.network.LevelEventPacket;
 
 public class WitherBoneMealItem extends Item {
     public WitherBoneMealItem() {
@@ -124,7 +124,7 @@ public class WitherBoneMealItem extends Item {
         if (VanillaBoomConfig.witherBoneMealEnabled) {
             if (applyWitherBoneMeal(level, pos, context.getItemInHand())) {
                 if (!level.isClientSide) {
-                    WitherBoneMealPacket.send((ServerLevel) level, pos);
+                    LevelEventPacket.send((ServerLevel) level, pos, LevelEventPacket.LevelEventType.WITHER_BONE_MEAL);
                 }
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }

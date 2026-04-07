@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Phrille
+ * Copyright (C) 2025-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -20,14 +20,14 @@ public class PacketHandler {
     public static void register(RegisterPayloadHandlersEvent event) {
         PayloadRegistrar registrar = event.registrar(Integer.toString(1));
         registrar.playToClient(
+                LevelEventPacket.TYPE,
+                LevelEventPacket.STREAM_CODEC,
+                LevelEventPacket::handle
+        );
+        registrar.playToClient(
                 EaselRecipePacket.TYPE,
                 EaselRecipePacket.STREAM_CODEC,
                 EaselRecipePacket::handle
-        );
-        registrar.playToClient(
-                WitherBoneMealPacket.TYPE,
-                WitherBoneMealPacket.STREAM_CODEC,
-                WitherBoneMealPacket::handle
         );
         registrar.playToServer(
                 EaselScreenPacket.TYPE,

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 Phrille
+ * Copyright (C) 2023-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -20,7 +20,7 @@ public final class VanillaBoomConfig {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
     private static final ModConfigSpec.BooleanValue WITHER_BONE_MEAL_ENABLED = BUILDER
-            .comment("Set this to false to disable Wither Bone Meal all together. This config option will override all other Wither Bone Meal config options")
+            .comment("Set this to false to disable Wither Bone Meal all together. This config option will override all other Wither Bone Meal config options.")
             .define("wither_bone_meal_enabled", true);
     private static final ModConfigSpec.BooleanValue GROW_NETHER_WARTS = BUILDER
             .comment("Set this to false to disable Wither Bone Meal being used to grow Nether Wart.")
@@ -59,6 +59,18 @@ public final class VanillaBoomConfig {
             .comment("Set this to false to disable Paintings dropping variant sensitive items.")
             .define("variant_sensitive_painting_drops", true);
 
+    // Dispenser Config
+    private static final ModConfigSpec.BooleanValue DISPENSER_MILK_COWS = BUILDER
+            .comment("Set this to false to disable Dispensers behavior to milk Cows with empty Buckets.")
+            .define("dispenser_milk_cows", true);
+    private static final ModConfigSpec.BooleanValue DISPENSER_FILL_CAULDRONS = BUILDER
+            .comment("Set this to false to disable Dispenser behavior to fill Cauldrons with Water, Lava or Snow Powder Buckets.")
+            .define("dispenser_fill_cauldrons", true);
+    private static final ModConfigSpec.BooleanValue DISPENSER_EMPTY_CAULDRONS = BUILDER
+            .comment("Set this to false to disable Dispensers behavior to empty Cauldrons with Buckets.")
+            .define("dispenser_empty_cauldrons", true);
+
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     public static boolean witherBoneMealEnabled;
@@ -75,6 +87,10 @@ public final class VanillaBoomConfig {
     public static boolean generateVillageStructures;
     public static boolean variantSensitivePaintingDrops;
 
+    public static boolean dispenserMilkCows;
+    public static boolean dispenserFillCauldrons;
+    public static boolean dispenserEmptyCauldrons;
+
     @SubscribeEvent
     static void onLoad(ModConfigEvent event) {
         witherBoneMealEnabled = WITHER_BONE_MEAL_ENABLED.get();
@@ -90,5 +106,9 @@ public final class VanillaBoomConfig {
         shearTallFlowers = SHEAR_TALL_FLOWERS.get();
         generateVillageStructures = GENERATE_VILLAGE_STRUCTURES.get();
         variantSensitivePaintingDrops = VARIANT_SENSITIVE_PAINTING_DROPS.get();
+
+        dispenserMilkCows = DISPENSER_MILK_COWS.get();
+        dispenserFillCauldrons = DISPENSER_FILL_CAULDRONS.get();
+        dispenserEmptyCauldrons = DISPENSER_EMPTY_CAULDRONS.get();
     }
 }
