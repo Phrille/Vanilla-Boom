@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 Phrille
+ * Copyright (C) 2023-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -31,7 +31,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
         // Containers
         add("vanillaboom.container.easel", "Easel");
-        add("vanillaboom.recipe.category.painting", "Painting");
+        add("vanillaboom.jei.category.painting", "Painting");
         add("stat.vanillaboom.interact_with_easel", "Interactions with Easel");
 
         // Bricks

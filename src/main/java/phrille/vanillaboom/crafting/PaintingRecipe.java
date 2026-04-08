@@ -8,7 +8,6 @@
 
 package phrille.vanillaboom.crafting;
 
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
@@ -22,8 +21,6 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.entity.decoration.Painting;
 import net.minecraft.world.entity.decoration.PaintingVariant;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.CustomData;
@@ -35,9 +32,11 @@ import phrille.vanillaboom.block.entity.EaselBlockEntity;
 import java.util.Comparator;
 import java.util.List;
 
-public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingredient> dyes,
+public record PaintingRecipe(String group,
+                             Ingredient canvas,
+                             NonNullList<Ingredient> dyes,
                              Holder<PaintingVariant> variant,
-                             int resultCount) implements Recipe<EaselRecipeInput> {
+                             int resultCount) implements Recipe<PaintingRecipeInput> {
     public static final int MAX_DYES = 7;
     public static final Comparator<RecipeHolder<PaintingRecipe>> RECIPE_COMPARATOR =
             Comparator.comparing(recipe -> recipe.value().variant().value(),
@@ -56,7 +55,7 @@ public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingred
     }
 
     @Override
-    public boolean matches(EaselRecipeInput input, Level level) {
+    public boolean matches(PaintingRecipeInput input, Level level) {
         if (!canvas.test(input.getItem(EaselBlockEntity.CANVAS_SLOT))) {
             return false;
         }
@@ -80,7 +79,7 @@ public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingred
     }
 
     @Override
-    public ItemStack assemble(EaselRecipeInput input, HolderLookup.Provider registries) {
+    public ItemStack assemble(PaintingRecipeInput input, HolderLookup.Provider registries) {
         return loadVariantToStack(registries).copy();
     }
 
@@ -103,33 +102,6 @@ public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingred
         return ingredients;
     }
 
-    public List<ItemStack> getCombinedDyeStacks() {
-        List<ItemStack> dyeStacks = Lists.newArrayList();
-        dyeStacks.add(canvas().getItems()[0]);
-
-        for (Ingredient dye : dyes()) {
-            if (dye.hasNoItems()) continue;
-
-            ItemStack[] possibleStacks = dye.getItems();
-            DyeColor color = DyeColor.getColor(possibleStacks[0]);
-            if (color == null) continue;
-
-            ItemStack dyeStack = new ItemStack(DyeItem.byColor(color));
-            boolean foundMatch = false;
-            for (ItemStack existingStack : dyeStacks) {
-                if (existingStack.is(dyeStack.getItem())) {
-                    existingStack.grow(1);
-                    foundMatch = true;
-                    break;
-                }
-            }
-            if (!foundMatch) {
-                dyeStacks.add(dyeStack);
-            }
-        }
-        return dyeStacks;
-    }
-
     @Override
     public RecipeType<PaintingRecipe> getType() {
         return ModRecipes.PAINTING.get();
@@ -148,6 +120,11 @@ public record PaintingRecipe(String group, Ingredient canvas, NonNullList<Ingred
     @Override
     public ItemStack getToastSymbol() {
         return new ItemStack(ModBlocks.EASEL.get());
+    }
+
+    @Override
+    public boolean isSpecial() {
+        return true; // Disables unknown recipe category warnings from ClientRecipeBook
     }
 
     public static class Serializer implements RecipeSerializer<PaintingRecipe> {

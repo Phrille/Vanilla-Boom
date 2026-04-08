@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Phrille
+ * Copyright (C) 2025-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -38,30 +38,25 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
     public static final ResourceLocation BACKGROUND = VanillaBoom.resLoc("textures/gui/container/easel.png");
 
     public static final int SCREEN_WIDTH = 176;
-    public static final int SCREEN_HEIGHT = 184;
+    public static final int SCREEN_HEIGHT = 225;
 
     /* Buttons */
     public static final int BUTTON_SIZE = 24;
-    private final List<PaintingButton> buttonList = Lists.newArrayList();
-    private int startIndex;
-
     /* Grid */
-    public static final int GRID_X = 49;
+    public static final int GRID_X = 40;
     public static final int GRID_Y = 15;
     public static final int GRID_ROWS = 3;
     public static final int GRID_COLUMNS = 3;
     public static final int GRID_MAX_ITEMS = GRID_ROWS * GRID_COLUMNS;
-
-    /* Slots */
-    public static final int SLOT_SIZE = 16;
-
     /* Scrolling */
-    public static final int SCROLLBAR_X = 124;
+    public static final int SCROLLBAR_X = 115;
     public static final int SCROLLBAR_Y = 15;
     public static final int SCROLLBAR_WIDTH = 12;
     public static final int SCROLLBAR_HEIGHT = 72;
     public static final int SCROLL_BUTTON_WIDTH = SCROLLBAR_WIDTH;
     public static final int SCROLL_BUTTON_HEIGHT = 15;
+    private final List<PaintingButton> buttonList = Lists.newArrayList();
+    private int startIndex;
     private float scrollOffset;
     private boolean scrolling;
 
@@ -69,8 +64,8 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         super(menu, inventory, title);
         imageWidth = SCREEN_WIDTH;
         imageHeight = SCREEN_HEIGHT;
-        --titleLabelY;
-        inventoryLabelY += 19;
+        titleLabelY -= 1;
+        inventoryLabelY += 59;
 
         ImmutableList<RecipeHolder<PaintingRecipe>> recipes = menu.getRecipeList();
         for (int buttonId = 0; buttonId < recipes.size(); buttonId++) {
@@ -95,20 +90,21 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         // Background
         guiGraphics.blit(BACKGROUND, x, y, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-        // Scrollbar
-        int scrollY = (int) ((float) (SCROLLBAR_HEIGHT - SCROLL_BUTTON_HEIGHT) * scrollOffset);
-        guiGraphics.blit(BACKGROUND, x + SCROLLBAR_X, y + SCROLLBAR_Y + scrollY, SCREEN_WIDTH + (isScrollBarActive() ? 0 : SCROLL_BUTTON_WIDTH), 0, SCROLL_BUTTON_WIDTH, SCROLL_BUTTON_HEIGHT);
+        // Canvas slot
+        Slot canvasSlot = menu.canvasSlot();
+        if (!canvasSlot.hasItem()) {
+            guiGraphics.blit(BACKGROUND, x + canvasSlot.x, y + canvasSlot.y, 240, 0, 16, 16);
+        }
 
         // Dye slots
-        menu.getDyeSlots().stream()
+        menu.dyeSlots().stream()
                 .filter(slot -> !slot.hasItem())
-                .forEach(slot -> guiGraphics.blit(BACKGROUND, x + slot.x, y + slot.y, SCREEN_WIDTH, 15, SLOT_SIZE, SLOT_SIZE));
+                .forEach(slot -> guiGraphics.blit(BACKGROUND, x + slot.x, y + slot.y, 224, 0, 16, 16));
 
-        // Canvas slot
-        Slot canvasSlot = menu.getCanvasSlot();
-        if (!canvasSlot.hasItem()) {
-            guiGraphics.blit(BACKGROUND, x + canvasSlot.x, y + canvasSlot.y, SCREEN_WIDTH + SLOT_SIZE, 15, SLOT_SIZE, SLOT_SIZE);
-        }
+        // Scrollbar
+        int scrollY = (int) ((float) (SCROLLBAR_HEIGHT - SCROLL_BUTTON_HEIGHT) * scrollOffset);
+        int scrollTextureX = SCREEN_WIDTH + BUTTON_SIZE + (isScrollBarActive() ? 0 : SCROLL_BUTTON_WIDTH);
+        guiGraphics.blit(BACKGROUND, x + SCROLLBAR_X, y + SCROLLBAR_Y + scrollY, scrollTextureX, 0, SCROLL_BUTTON_WIDTH, SCROLL_BUTTON_HEIGHT);
 
         // Grid
         renderGrid(guiGraphics, x + GRID_X, y + GRID_Y, mouseX, mouseY);
@@ -242,7 +238,7 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
             this.recipe = recipe;
             this.sprite = Minecraft.getInstance().getPaintingTextures().get(variant);
             this.result = recipe.value().getResultItem(Minecraft.getInstance().level.registryAccess());
-            this.tooltip = new EaselTooltip(recipe.value().getCombinedDyeStacks());
+            this.tooltip = new EaselTooltip(recipe.value());
 
             float maxSize = BUTTON_SIZE - 2;
             float scaleFactor = Math.min(maxSize / variant.width(), maxSize / variant.height());
@@ -265,13 +261,13 @@ public class EaselScreen extends AbstractContainerScreen<EaselMenu> {
         }
 
         public void render(GuiGraphics guiGraphics, int x, int y, int mouseX, int mouseY) {
-            int textureY = 31;
+            int textureY = 0;
             if (!enabled) {
                 textureY += BUTTON_SIZE;
             } else if (selected) {
-                textureY += BUTTON_SIZE * 3;
-            } else if (mouseX >= x && mouseY >= y && mouseX < x + BUTTON_SIZE && mouseY < y + BUTTON_SIZE) {
                 textureY += BUTTON_SIZE * 2;
+            } else if (mouseX >= x && mouseY >= y && mouseX < x + BUTTON_SIZE && mouseY < y + BUTTON_SIZE) {
+                textureY += BUTTON_SIZE * 3;
             }
 
             guiGraphics.blit(BACKGROUND, x, y, SCREEN_WIDTH, textureY, BUTTON_SIZE, BUTTON_SIZE);

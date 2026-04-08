@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Phrille
+ * Copyright (C) 2025-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -25,7 +25,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.Tags;
 import phrille.vanillaboom.block.entity.EaselBlockEntity;
-import phrille.vanillaboom.crafting.EaselRecipeInput;
+import phrille.vanillaboom.crafting.PaintingRecipeInput;
 import phrille.vanillaboom.crafting.ModRecipes;
 import phrille.vanillaboom.crafting.PaintingRecipe;
 import phrille.vanillaboom.network.EaselRecipePacket;
@@ -36,16 +36,27 @@ import java.util.List;
 import java.util.Objects;
 
 public class EaselMenu extends AbstractContainerMenu implements ContainerListener {
+    public static final int CANVAS_SLOT_X = 17;
+    public static final int CANVAS_SLOT_Y = 43;
+    public static final int DYE_SLOT_START_X = 17;
+    public static final int DYE_SLOT_START_Y = 94;
+    public static final int RESULT_SLOT_INDEX = 17;
+    public static final int RESULT_SLOT_X = 139;
+    public static final int RESULT_SLOT_Y = 43;
+    public static final int INVENTORY_SLOT_START_X = 8;
+    public static final int INVENTORY_SLOT_START_Y = 143;
+    public static final int HOTBAR_SLOT_START_X = 8;
+    public static final int HOTBAR_SLOT_Y = 201;
+    public static final int SLOT_SPACING = 18;
+
     private final Player player;
     private final ContainerLevelAccess access;
-    private long lastSoundTime;
-
     private final Container container;
     private final ContainerData containerData;
     private final ResultContainer resultContainer = new ResultContainer();
-
-    private final List<Slot> dyeSlots = Lists.newArrayList();
+    private long lastSoundTime;
     private Slot canvasSlot;
+    private List<Slot> dyeSlots;
     private Slot resultSlot;
 
     private ImmutableList<RecipeHolder<PaintingRecipe>> recipeList;
@@ -56,7 +67,7 @@ public class EaselMenu extends AbstractContainerMenu implements ContainerListene
         super(ModMenuTypes.EASEL_MENU.get(), containerId);
         player = inventory.player;
         access = ContainerLevelAccess.NULL;
-        container = new SimpleContainer(8);
+        container = new SimpleContainer(EaselBlockEntity.INPUT_SIZE);
         containerData = new SimpleContainerData(1);
         generateAllRecipes();
         addSlots(inventory);
@@ -75,18 +86,39 @@ public class EaselMenu extends AbstractContainerMenu implements ContainerListene
     }
 
     protected void addSlots(Inventory inventory) {
-        for (int i = EaselBlockEntity.DYE_SLOT_START; i < EaselBlockEntity.DYE_SLOT_END + 1; i++) {
-            dyeSlots.add(i, addSlot(new EaselSlot(container, i, 8 + (i % 2) * 18, 16 + (i / 2) * 18, this)));
-        }
-
-        canvasSlot = addSlot(new EaselSlot(container, EaselBlockEntity.CANVAS_SLOT, 26, 70, this));
-
-        resultSlot = addSlot(new Slot(resultContainer, 0, 147, 43) {
+        canvasSlot = addSlot(new Slot(container, EaselBlockEntity.CANVAS_SLOT, CANVAS_SLOT_X, CANVAS_SLOT_Y) {
             @Override
-            public boolean mayPlace(ItemStack pStack) {
-                return false;
+            public boolean mayPlace(ItemStack stack) {
+                return stack.is(CommonTags.Items.CANVASES);
             }
 
+            @Override
+            public void setChanged() {
+                super.setChanged();
+                EaselMenu.this.slotsChanged(container);
+            }
+        });
+
+        dyeSlots = Lists.newArrayList();
+        for (int dyeSlotIndex = EaselBlockEntity.DYE_SLOT_START; dyeSlotIndex <= EaselBlockEntity.DYE_SLOT_END; dyeSlotIndex++) {
+            int dyeSlotX = DYE_SLOT_START_X + ((dyeSlotIndex - EaselBlockEntity.DYE_SLOT_START) % 8) * SLOT_SPACING;
+            int dyeSlotY = DYE_SLOT_START_Y + ((dyeSlotIndex - EaselBlockEntity.DYE_SLOT_START) / 8) * SLOT_SPACING;
+            Slot dyeSlot = addSlot(new Slot(container, dyeSlotIndex, dyeSlotX, dyeSlotY) {
+                @Override
+                public boolean mayPlace(ItemStack stack) {
+                    return stack.is(Tags.Items.DYES);
+                }
+
+                @Override
+                public void setChanged() {
+                    super.setChanged();
+                    EaselMenu.this.slotsChanged(container);
+                }
+            });
+            dyeSlots.add(dyeSlotIndex - EaselBlockEntity.DYE_SLOT_START, dyeSlot);
+        }
+
+        resultSlot = addSlot(new Slot(resultContainer, 0, RESULT_SLOT_X, RESULT_SLOT_Y) {
             @Override
             public void onTake(Player player, ItemStack stack) {
                 stack.onCraftedBy(player.level(), player, stack.getCount());
@@ -122,24 +154,27 @@ public class EaselMenu extends AbstractContainerMenu implements ContainerListene
                 });
                 super.onTake(player, stack);
             }
+
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return false;
+            }
         });
 
-        for (int invRow = 0; invRow < 3; ++invRow) {
-            for (int invCol = 0; invCol < 9; ++invCol) {
-                addSlot(new Slot(inventory, invCol + invRow * 9 + 9, 8 + invCol * 18, 102 + invRow * 18));
+        for (int hotbarIndex = 0; hotbarIndex < 9; hotbarIndex++) {
+            addSlot(new Slot(inventory, hotbarIndex, HOTBAR_SLOT_START_X + hotbarIndex * SLOT_SPACING, HOTBAR_SLOT_Y));
+        }
+
+        for (int inventoryRow = 0; inventoryRow < 3; inventoryRow++) {
+            for (int inventoryCol = 0; inventoryCol < 9; inventoryCol++) {
+                int inventoryIndex = inventoryCol + inventoryRow * 9 + 9;
+                int inventorySlotX = INVENTORY_SLOT_START_X + inventoryCol * SLOT_SPACING;
+                int inventorySlotY = INVENTORY_SLOT_START_Y + inventoryRow * SLOT_SPACING;
+                addSlot(new Slot(inventory, inventoryIndex, inventorySlotX, inventorySlotY));
             }
         }
 
-        for (int hotBar = 0; hotBar < 9; ++hotBar) {
-            addSlot(new Slot(inventory, hotBar, 8 + hotBar * 18, 160));
-        }
-
         addDataSlots(containerData);
-    }
-
-    @Override
-    public void slotChanged(AbstractContainerMenu pContainerToSend, int pDataSlotIndex, ItemStack pStack) {
-        refreshRecipes();
     }
 
     @Override
@@ -197,13 +232,13 @@ public class EaselMenu extends AbstractContainerMenu implements ContainerListene
         return false;
     }
 
-    private EaselRecipeInput inputView() {
+    private PaintingRecipeInput inputView() {
         ItemStack canvas = container.getItem(EaselBlockEntity.CANVAS_SLOT);
         List<ItemStack> dyes = Lists.newArrayList();
-        for (int i = EaselBlockEntity.DYE_SLOT_START; i < EaselBlockEntity.DYE_SLOT_END; i++) {
+        for (int i = EaselBlockEntity.DYE_SLOT_START; i <= EaselBlockEntity.DYE_SLOT_END; i++) {
             dyes.add(container.getItem(i));
         }
-        return new EaselRecipeInput(canvas, dyes);
+        return new PaintingRecipeInput(canvas, dyes);
     }
 
     @Override
@@ -217,17 +252,17 @@ public class EaselMenu extends AbstractContainerMenu implements ContainerListene
         Item item = stackInSlot.getItem();
         ItemStack copy = stackInSlot.copy();
 
-        if (index == EaselBlockEntity.RESULT_SLOT) {
+        if (index == RESULT_SLOT_INDEX) {
             item.onCraftedBy(stackInSlot, player.level(), player);
-            if (!moveItemStackTo(stackInSlot, EaselBlockEntity.RESULT_SLOT + 1, slots.size(), true)) {
+            if (!moveItemStackTo(stackInSlot, RESULT_SLOT_INDEX + 1, slots.size(), true)) {
                 return ItemStack.EMPTY;
             }
             slot.onQuickCraft(stackInSlot, copy);
-        } else if (index >= EaselBlockEntity.DYE_SLOT_START && index <= EaselBlockEntity.CANVAS_SLOT) {
-            if (!moveItemStackTo(stackInSlot, EaselBlockEntity.RESULT_SLOT + 1, slots.size(), true)) {
+        } else if (index >= EaselBlockEntity.DYE_SLOT_START && index <= RESULT_SLOT_INDEX) {
+            if (!moveItemStackTo(stackInSlot, RESULT_SLOT_INDEX + 1, slots.size(), true)) {
                 return ItemStack.EMPTY;
             }
-        } else if (index > EaselBlockEntity.RESULT_SLOT) {
+        } else if (index > RESULT_SLOT_INDEX) {
             if (stackInSlot.is(Tags.Items.DYES)) {
                 if (!moveItemStackTo(stackInSlot, EaselBlockEntity.DYE_SLOT_START, EaselBlockEntity.DYE_SLOT_END + 1, false)) {
                     return ItemStack.EMPTY;
@@ -270,7 +305,12 @@ public class EaselMenu extends AbstractContainerMenu implements ContainerListene
     }
 
     @Override
-    public void dataChanged(AbstractContainerMenu pContainerMenu, int pDataSlotIndex, int pValue) {
+    public void slotChanged(AbstractContainerMenu menu, int slotIndex, ItemStack stack) {
+        refreshRecipes();
+    }
+
+    @Override
+    public void dataChanged(AbstractContainerMenu menu, int index, int value) {
         // No-op implementation
     }
 
@@ -285,16 +325,16 @@ public class EaselMenu extends AbstractContainerMenu implements ContainerListene
         return recipeList;
     }
 
-    public List<Slot> getDyeSlots() {
-        return dyeSlots;
+    public int getSelectedIndex() {
+        return containerData.get(0);
     }
 
-    public Slot getCanvasSlot() {
+    public Slot canvasSlot() {
         return canvasSlot;
     }
 
-    public int getSelectedIndex() {
-        return containerData.get(0);
+    public List<Slot> dyeSlots() {
+        return dyeSlots;
     }
 
     private boolean isValidIndex(int index) {

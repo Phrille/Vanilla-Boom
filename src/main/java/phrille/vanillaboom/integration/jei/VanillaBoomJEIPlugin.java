@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Phrille
+ * Copyright (C) 2025-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -17,6 +17,7 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -42,10 +43,15 @@ public class VanillaBoomJEIPlugin implements IModPlugin {
     }
 
     @Override
-    @SuppressWarnings("ConstantConditions")
     public void registerRecipes(IRecipeRegistration registration) {
-        List<RecipeHolder<PaintingRecipe>> recipes = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(ModRecipes.PAINTING.get());
-        registration.addRecipes(PAINTING, recipes.stream().sorted(PaintingRecipe.RECIPE_COMPARATOR).map(RecipeHolder::value).toList());
+        ClientLevel level = Minecraft.getInstance().level;
+        if (level == null) {
+            VanillaBoom.LOGGER.error("ClientLevel was null when registering recipes for VanillaBoom JEI Plugin");
+            return;
+        }
+
+        List<RecipeHolder<PaintingRecipe>> paintingRecipes = level.getRecipeManager().getAllRecipesFor(ModRecipes.PAINTING.get());
+        registration.addRecipes(PAINTING, paintingRecipes.stream().sorted(PaintingRecipe.RECIPE_COMPARATOR).map(RecipeHolder::value).toList());
     }
 
     @Override
@@ -55,7 +61,7 @@ public class VanillaBoomJEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
-        registration.addRecipeTransferHandler(EaselMenu.class, ModMenuTypes.EASEL_MENU.get(), PAINTING, EaselBlockEntity.DYE_SLOT_START, EaselBlockEntity.CANVAS_SLOT + 1, 9, 36);
+        registration.addRecipeTransferHandler(EaselMenu.class, ModMenuTypes.EASEL_MENU.get(), PAINTING, EaselBlockEntity.CANVAS_SLOT, EaselBlockEntity.INPUT_SIZE, EaselMenu.RESULT_SLOT_INDEX, 36);
     }
 
     @Override

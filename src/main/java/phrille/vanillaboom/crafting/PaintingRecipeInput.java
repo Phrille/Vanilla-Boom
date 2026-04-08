@@ -14,7 +14,7 @@ import phrille.vanillaboom.block.entity.EaselBlockEntity;
 
 import java.util.List;
 
-public record EaselRecipeInput(ItemStack canvas, List<ItemStack> dyes) implements RecipeInput {
+public record PaintingRecipeInput(ItemStack canvas, List<ItemStack> dyes) implements RecipeInput {
     @Override
     public ItemStack getItem(int index) {
         if (index >= size()) {

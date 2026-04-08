@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Phrille
+ * Copyright (C) 2025-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -25,45 +25,49 @@ import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.inventory.EaselMenu;
 
 public class EaselBlockEntity extends BaseContainerBlockEntity {
-    public static final int DYE_SLOT_START = 0;
-    public static final int DYE_SLOT_END = 6;
-    public static final int CANVAS_SLOT = 7;
-    public static final int INPUT_SIZE = 8;
-    public static final int RESULT_SLOT = 8;
+    public static final Component NAME = VanillaBoom.translatable("container.easel");
 
-    private NonNullList<ItemStack> items = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
-    private final ContainerData containerData = new ContainerData() {
-        @Override
-        public int get(int slotIndex) {
-            return slotIndex == 0 ? EaselBlockEntity.this.selectedIndex : -1;
-        }
+    public static final int CANVAS_SLOT = 0;
+    public static final int DYE_SLOT_START = 1;
+    public static final int DYE_SLOT_END = 16;
+    public static final int INPUT_SIZE = 17;
 
-        @Override
-        public void set(int slotIndex, int value) {
-            if (slotIndex == 0) {
-                EaselBlockEntity.this.selectedIndex = value;
-            }
-        }
-
-        @Override
-        public int getCount() {
-            return 1;
-        }
-    };
-    private int selectedIndex = -1;
+    private final ContainerData containerData;
+    private NonNullList<ItemStack> items;
+    private int selectedIndex;
 
     public EaselBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.EASEL.get(), pos, state);
-    }
+        containerData = new ContainerData() {
+            @Override
+            public int get(int slotIndex) {
+                return slotIndex == 0 ? EaselBlockEntity.this.selectedIndex : -1;
+            }
 
-    @Override
-    protected void setItems(NonNullList<ItemStack> itemList) {
-        items = itemList;
+            @Override
+            public void set(int slotIndex, int value) {
+                if (slotIndex == 0) {
+                    EaselBlockEntity.this.selectedIndex = value;
+                }
+            }
+
+            @Override
+            public int getCount() {
+                return 1;
+            }
+        };
+        items = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
+        selectedIndex = -1;
     }
 
     @Override
     protected NonNullList<ItemStack> getItems() {
         return items;
+    }
+
+    @Override
+    protected void setItems(NonNullList<ItemStack> items) {
+        this.items = items;
     }
 
     @Override
@@ -93,6 +97,6 @@ public class EaselBlockEntity extends BaseContainerBlockEntity {
 
     @Override
     protected Component getDefaultName() {
-        return Component.translatable(VanillaBoom.MOD_ID + ".container.easel");
+        return NAME;
     }
 }

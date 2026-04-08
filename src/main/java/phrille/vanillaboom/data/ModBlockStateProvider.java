@@ -672,7 +672,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .texture("top", ModDataGenerator.extend(blockTexture(easel), "_top"));
 
         getVariantBuilder(easel).forAllStates(state -> {
-            Direction facing = state.getValue(EaselBlock.FACING);
+            Direction facing = state.getValue(BlockStateProperties.FACING);
 
             return ConfiguredModel.builder()
                     .modelFile(model)

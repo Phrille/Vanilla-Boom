@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Phrille
+ * Copyright (C) 2025-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -8,26 +8,25 @@
 
 package phrille.vanillaboom.client.screen;
 
+import com.google.common.collect.ImmutableList;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.List;
-
 public class EaselClientTooltip implements ClientTooltipComponent {
-    public static final int MAX_ITEMS_PER_ROW = 7;
-    public static final int ITEM_SIZE = 16;
-    public static final int ITEM_SPACING = 2;
+    private static final int MAX_ITEMS_PER_ROW = 6;
+    private static final int ITEM_SIZE = 16;
+    private static final int PADDING = 2;
 
-    private final List<ItemStack> items;
+    private final ImmutableList<ItemStack> ingredients;
     private final int width;
     private final int height;
 
-    public EaselClientTooltip(List<ItemStack> items) {
-        this.items = items;
-        width = Math.min(items.size(), MAX_ITEMS_PER_ROW) * (ITEM_SIZE + ITEM_SPACING);
-        height = (int) Math.ceil(items.size() / (double) MAX_ITEMS_PER_ROW) * (ITEM_SIZE + ITEM_SPACING);
+    public EaselClientTooltip(ImmutableList<ItemStack> ingredients) {
+        this.ingredients = ingredients;
+        width = Math.min(ingredients.size(), MAX_ITEMS_PER_ROW) * (ITEM_SIZE + PADDING);
+        height = (int) Math.ceil(ingredients.size() / (double) MAX_ITEMS_PER_ROW) * (ITEM_SIZE + PADDING);
     }
 
     @Override
@@ -42,19 +41,12 @@ public class EaselClientTooltip implements ClientTooltipComponent {
 
     @Override
     public void renderImage(Font font, int x, int y, GuiGraphics guiGraphics) {
-        int itemX = x;
-        int itemY = y;
-
-        for (int i = 0; i < items.size(); i++) {
-            ItemStack stack = items.get(i);
+        for (int i = 0; i < ingredients.size(); i++) {
+            ItemStack stack = ingredients.get(i);
+            int itemX = x + (ITEM_SIZE + PADDING) * (i % MAX_ITEMS_PER_ROW);
+            int itemY = y + (ITEM_SIZE + PADDING) * (i / MAX_ITEMS_PER_ROW);
             guiGraphics.renderItem(stack, itemX, itemY);
             guiGraphics.renderItemDecorations(font, stack, itemX, itemY);
-
-            itemX += ITEM_SIZE + ITEM_SPACING;
-            if ((i + 1) % MAX_ITEMS_PER_ROW == 0) {
-                itemX = x;
-                itemY += ITEM_SIZE + ITEM_SPACING;
-            }
         }
     }
 }
