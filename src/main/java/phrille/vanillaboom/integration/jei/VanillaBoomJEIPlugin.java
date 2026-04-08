@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Phrille
+ * Copyright (C) 2025-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -17,6 +17,7 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -42,9 +43,13 @@ public class VanillaBoomJEIPlugin implements IModPlugin {
     }
 
     @Override
-    @SuppressWarnings("ConstantConditions")
     public void registerRecipes(IRecipeRegistration registration) {
-        List<RecipeHolder<PaintingRecipe>> recipes = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(ModRecipes.PAINTING.get());
+        ClientLevel level = Minecraft.getInstance().level;
+        if (level == null) {
+            VanillaBoom.LOGGER.warn("ClientLevel was null when registering recipes for VanillaBoom JEI recipes");
+        }
+
+        List<RecipeHolder<PaintingRecipe>> recipes = level.getRecipeManager().getAllRecipesFor(ModRecipes.PAINTING.get());
         registration.addRecipes(PAINTING, recipes.stream().sorted(PaintingRecipe.RECIPE_COMPARATOR).map(RecipeHolder::value).toList());
     }
 

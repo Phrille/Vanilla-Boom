@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Phrille
+ * Copyright (C) 2025-2026 Phrille
  *
  * This file is part of the Vanilla Boom Mod.
  * Unauthorized distribution or modification is prohibited.
@@ -25,13 +25,16 @@ import phrille.vanillaboom.VanillaBoom;
 import phrille.vanillaboom.inventory.EaselMenu;
 
 public class EaselBlockEntity extends BaseContainerBlockEntity {
-    public static final int DYE_SLOT_START = 0;
-    public static final int DYE_SLOT_END = 6;
-    public static final int CANVAS_SLOT = 7;
-    public static final int INPUT_SIZE = 8;
-    public static final int RESULT_SLOT = 8;
+    public static final Component NAME = VanillaBoom.translatable("container.easel");
+
+    public static final int CANVAS_SLOT = 0;
+    public static final int DYE_SLOT_START = 1;
+    public static final int DYE_SLOT_END = 16;
+    public static final int INPUT_SIZE = 17;
+    public static final int RESULT_SLOT = 17;
 
     private NonNullList<ItemStack> items = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
+    private int selectedIndex;
     private final ContainerData containerData = new ContainerData() {
         @Override
         public int get(int slotIndex) {
@@ -50,10 +53,10 @@ public class EaselBlockEntity extends BaseContainerBlockEntity {
             return 1;
         }
     };
-    private int selectedIndex = -1;
 
     public EaselBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.EASEL.get(), pos, state);
+        selectedIndex = -1;
     }
 
     @Override
@@ -93,6 +96,6 @@ public class EaselBlockEntity extends BaseContainerBlockEntity {
 
     @Override
     protected Component getDefaultName() {
-        return Component.translatable(VanillaBoom.MOD_ID + ".container.easel");
+        return NAME;
     }
 }

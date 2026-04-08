@@ -8,6 +8,7 @@
 
 package phrille.vanillaboom;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -60,6 +61,10 @@ public class VanillaBoom {
 
     public static ResourceLocation resLoc(String path) {
         return ResourceLocation.fromNamespaceAndPath(VanillaBoom.MOD_ID, path);
+    }
+
+    public static Component translatable(String path) {
+        return Component.translatable(VanillaBoom.MOD_ID + "." + path);
     }
 
     public void setup(FMLCommonSetupEvent event) {
